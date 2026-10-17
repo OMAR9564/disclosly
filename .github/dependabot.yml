@@ -1,3 +1,6 @@
+# Ecosystems are added by the task that creates their manifest
+# (github-actions: T008, docker: T013, terraform: T020), because Dependabot
+# fails with dependency_file_not_found when a directory has no manifest.
 version: 2
 updates:
   - package-ecosystem: uv
@@ -6,17 +9,5 @@ updates:
       interval: weekly
   - package-ecosystem: npm
     directory: /web
-    schedule:
-      interval: weekly
-  - package-ecosystem: docker
-    directory: /api
-    schedule:
-      interval: weekly
-  - package-ecosystem: github-actions
-    directory: /
-    schedule:
-      interval: weekly
-  - package-ecosystem: terraform
-    directory: /infra/terraform
     schedule:
       interval: weekly
