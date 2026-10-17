@@ -11,6 +11,19 @@ updates:
     directory: /web
     schedule:
       interval: weekly
+    groups:
+      # react and react-dom must have the exact same version; separate PRs always fail.
+      react:
+        patterns:
+          - react
+          - react-dom
+    ignore:
+      # Types must match the Node.js 24 runtime (web/.nvmrc, engines).
+      - dependency-name: "@types/node"
+        versions: [">=25"]
+      # plan.md pins TypeScript 5.x; a major upgrade needs a spec change first.
+      - dependency-name: typescript
+        versions: [">=6"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
@@ -19,3 +32,7 @@ updates:
     directory: /api
     schedule:
       interval: weekly
+    ignore:
+      # The image must match .python-version (3.12); other versions break `uv sync`.
+      - dependency-name: python
+        versions: [">=3.13"]
