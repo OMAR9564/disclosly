@@ -16,6 +16,7 @@ All work goes through Spec Kit, in this order:
 - If behavior changes, update the spec first, then the code.
 
 ## Hard rules
+- Never run `git commit` (or push, merge, amend). Only propose commit messages; the owner commits.
 - Never delete, skip or weaken tests; never disable CI.
 - Never add a dependency, paid service or infra component without asking first.
 - Never edit the constitution on your own.
