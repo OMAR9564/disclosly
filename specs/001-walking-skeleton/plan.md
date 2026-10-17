@@ -24,7 +24,7 @@ alternatives: [research.md](./research.md).
 
 **Storage**: PostgreSQL 16 + pgvector and Redis are deployed and checked by `/readyz`; no application tables (empty Alembic baseline only)
 
-**Testing**: pytest + pytest-asyncio + pytest-cov + httpx (backend unit and integration against CI service containers); Vitest + Testing Library + coverage-v8 (web unit); Playwright (1 smoke test against the built web app); `terraform validate` + `terraform fmt -check`; `docker compose config` validation
+**Testing**: pytest + pytest-asyncio + pytest-cov + httpx2 (backend unit and integration against CI service containers); Vitest + Testing Library + coverage-v8 (web unit); Playwright (1 smoke test against the built web app); `terraform validate` + `terraform fmt -check`; `docker compose config` validation
 
 **Target Platform**: Backend — Linux containers on a Hetzner Cloud VPS (2 vCPU / 4 GB / 40 GB, Ubuntu 24.04). Web — Vercel free plan. CI — GitHub-hosted Ubuntu runners.
 

@@ -1,6 +1,6 @@
 # One-command entry points. See README.md.
 
-COMPOSE := docker compose -f infra/docker-compose.yml -f infra/docker-compose.dev.yml
+COMPOSE := docker compose --env-file .env -f infra/docker-compose.yml -f infra/docker-compose.dev.yml
 COMPOSE_FILES := infra/docker-compose.yml infra/docker-compose.dev.yml
 
 .PHONY: up down logs web lint fmt typecheck test check-compose check-web
