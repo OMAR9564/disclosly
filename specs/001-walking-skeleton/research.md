@@ -9,7 +9,7 @@ The Technical Context had no open NEEDS CLARIFICATION items after the spec clari
 
 - **Decision**: One Python project at the repository root (`pyproject.toml`) containing the `api`
   and `evals` packages. Use `uv` for environments and a committed `uv.lock`. Run `ruff` (lint +
-  format), `mypy --strict`, and `pytest` with `pytest-asyncio`, `pytest-cov`, and `httpx`.
+  format), `mypy --strict`, and `pytest` with `pytest-asyncio`, `pytest-cov`, and `httpx2`.
 - **Rationale**: `PROJECT_SPEC.md` §18 puts Python packages at the top level. With one project,
   later packages (`agent/`, `llm/`, …) share one lockfile, one type-check run and one coverage
   number. `uv` gives a fast, hash-pinned lockfile (constitution "dependencies pinned"). It is
@@ -204,7 +204,7 @@ npm audit, CodeQL.
 | `SQLAlchemy` | runtime (transitive) | Required by Alembic | none (Alembic needs it) |
 | `prometheus-client` | runtime | `/metrics`, multiprocess (FR-007) | Hand-written text exposition, 1 worker |
 | `pytest-cov` | dev | Coverage gate | `coverage` directly |
-| `httpx` | dev | FastAPI `TestClient` requirement | none (FastAPI needs it for tests) |
+| `httpx2` | dev | FastAPI/Starlette `TestClient` requirement. Pydantic-maintained continuation of `httpx`; Starlette 1.8 deprecates plain `httpx` for the test client. Replaced `httpx` on 2026-10-17 (owner request). | `httpx` (deprecated by Starlette for `TestClient`) |
 | Vitest, `@vitest/coverage-v8`, `@testing-library/react`, `jsdom` | web dev | Web unit tests + 80% coverage gate | Jest + equivalents |
 | Vercel CLI (pinned, CI only) | CI tool | Gated web deploy (R10) | Vercel Git auto-deploy (skips CI gate) |
 | gitleaks CLI (pinned, CI only) | CI tool | Secret scanning gate | GitHub secret scanning only (not a PR check) |
