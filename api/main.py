@@ -5,7 +5,11 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from api.config import Settings, get_settings
 from api.errors import register_exception_handlers
+from api.health import default_probes
+from api.health import router as health_router
 from api.logging import REQUEST_ID_HEADER, RequestContextMiddleware, configure_logging
+from api.metrics import MetricsMiddleware
+from api.metrics import router as metrics_router
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -21,7 +25,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         openapi_url="/openapi.json" if docs_enabled else None,
     )
     app.state.settings = settings
+    app.state.readiness_probes = default_probes(settings)
     register_exception_handlers(app)
+    app.include_router(health_router)
+    app.include_router(metrics_router)
 
     # Starlette runs the last added middleware first: request IDs wrap everything, CORS included.
     app.add_middleware(
@@ -31,5 +38,6 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         allow_headers=[REQUEST_ID_HEADER],
         expose_headers=[REQUEST_ID_HEADER],
     )
+    app.add_middleware(MetricsMiddleware)
     app.add_middleware(RequestContextMiddleware, version=settings.app_version)
     return app

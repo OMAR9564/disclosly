@@ -71,28 +71,28 @@ Paths follow plan.md "Source Code": Python packages `api/`, `evals/` and `tests/
 
 **Independent Test**: quickstart V3, V4 and V6. Run `curl https://api.disclosly.com/healthz`: it returns 200 with a valid certificate from two networks. `http://` redirects. `/readyz` returns 503 when Redis is stopped.
 
-- [ ] T016 [US2] Implement `GET /healthz` in `api/health.py` and register it in `api/main.py`. Write `tests/unit/test_health.py` first. The body is exactly `{"status": "ok", "version": <APP_VERSION>, "service": "disclosly-api"}` (`additionalProperties: false`, version is "Git SHA or 'dev'"), and the test asserts that the handler makes no Postgres or Redis calls
-- [ ] T017 [US2] Implement `GET /readyz` in `api/health.py`:
+- [X] T016 [US2] Implement `GET /healthz` in `api/health.py` and register it in `api/main.py`. Write `tests/unit/test_health.py` first. The body is exactly `{"status": "ok", "version": <APP_VERSION>, "service": "disclosly-api"}` (`additionalProperties: false`, version is "Git SHA or 'dev'"), and the test asserts that the handler makes no Postgres or Redis calls
+- [X] T017 [US2] Implement `GET /readyz` in `api/health.py`:
   - Postgres check: `SELECT 1` via psycopg 3. Redis check: `PING` via redis-py. Each check runs concurrently with a 2 s timeout.
   - Each `DependencyCheck` has `status` (`ok` | `error`), `latency_ms ≥ 0` and `error` (null or one of `timeout`, `connection_refused`, `auth_failed`, `unknown`), and never contains a connection string or a stack trace.
   - Top-level `status` is `ready` (HTTP 200) only if both checks are `ok`, else `not_ready` (HTTP 503).
 
   Write `tests/unit/test_readyz.py` first with fake clients covering each error mapping. Add `tests/integration/test_readyz.py` against the real CI services
-- [ ] T018 [P] [US2] Implement Prometheus metrics in `api/metrics.py`: multiprocess registry, middleware recording `http_requests_total{method,route,status}` and histogram `http_request_duration_seconds{method,route}` (route template, not raw path), and `GET /metrics` in text format 0.0.4. Write `tests/unit/test_metrics.py` first (counters increase after a request; unknown paths are recorded under one fixed route label to avoid cardinality blow-up)
-- [ ] T019 [P] [US2] Create `infra/Caddyfile`:
+- [X] T018 [P] [US2] Implement Prometheus metrics in `api/metrics.py`: multiprocess registry, middleware recording `http_requests_total{method,route,status}` and histogram `http_request_duration_seconds{method,route}` (route template, not raw path), and `GET /metrics` in text format 0.0.4. Write `tests/unit/test_metrics.py` first (counters increase after a request; unknown paths are recorded under one fixed route label to avoid cardinality blow-up)
+- [X] T019 [P] [US2] Create `infra/Caddyfile`:
   - site `{$API_DOMAIN}` with global `email {$ACME_EMAIL}`;
   - `reverse_proxy api:8000` with `X-Request-ID` passed through;
   - headers `Strict-Transport-Security "max-age=31536000"`, `X-Content-Type-Options nosniff`, `Referrer-Policy no-referrer` and `-Server`;
   - automatic HTTP to HTTPS redirect.
 
   Check it with `docker run --rm -v ./infra/Caddyfile:/etc/caddy/Caddyfile caddy:2 caddy validate --config /etc/caddy/Caddyfile` (with the env vars set)
-- [ ] T020 [P] [US2] Create the Terraform Hetzner config. Pin `hetznercloud/hcloud` and `cloudflare/cloudflare` in `infra/terraform/versions.tf`.
+- [X] T020 [P] [US2] Create the Terraform Hetzner config. Pin `hetznercloud/hcloud` and `cloudflare/cloudflare` in `infra/terraform/versions.tf`.
   - `infra/terraform/variables.tf`: `server_type` (2 vCPU / 4 GB / 40 GB class; check the current type name before apply), `location` (default `fsn1`), `image` (default `ubuntu-24.04`), `ssh_public_keys` (list), `domain` (default `disclosly.com`), and Vercel DNS targets.
   - `infra/terraform/main.tf`: `hcloud_ssh_key`, `hcloud_server` with `user_data = file("cloud-init.yaml")`, and `hcloud_firewall` allowing inbound only TCP 22, 80 and 443 (attached to the server).
   - `infra/terraform/outputs.tf` (server IPv4) and `infra/terraform/terraform.tfvars.example`.
 
   Add the `terraform` (`/infra/terraform`) entry to `.github/dependabot.yml`. The check is `terraform fmt -check` and `terraform validate`
-- [ ] T021 [P] [US2] Create `infra/terraform/cloud-init.yaml`. It must:
+- [X] T021 [P] [US2] Create `infra/terraform/cloud-init.yaml`. It must:
   - install Docker Engine and the Compose plugin from Docker's apt repo;
   - create user `deploy` in the `docker` group with the deploy public key;
   - create `/swapfile` of 4 GB with `vm.swappiness=10`, persisted in `/etc/fstab`;
@@ -100,13 +100,13 @@ Paths follow plan.md "Source Code": Python packages `api/`, `evals/` and `tests/
   - install and enable `unattended-upgrades`;
   - `systemctl enable docker`;
   - create `/home/deploy/disclosly/.deploy/`
-- [ ] T022 [US2] Add the Cloudflare resources to `infra/terraform/main.tf`:
+- [X] T022 [US2] Add the Cloudflare resources to `infra/terraform/main.tf`:
   - a zone data source for `var.domain`;
   - DNS records `api` (A to the server IPv4, proxied), the apex and `www` (Vercel targets from variables, not proxied);
   - zone settings `ssl = "strict"`, `always_use_https = "off"` and `min_tls_version = "1.2"`.
 
   Use the resource names of the pinned provider major version. The check is `terraform validate`
-- [ ] T023 [US2] Create `infra/scripts/deploy.sh <sha>` (`set -euo pipefail`):
+- [X] T023 [US2] Create `infra/scripts/deploy.sh <sha>` (`set -euo pipefail`):
   1. Read the current `API_IMAGE_TAG` from `~/disclosly/.env` and save it to `.deploy/previous`.
   2. Write the new tag and run `docker compose pull api`.
   3. Run `docker compose --profile migrate run --rm migrate`. If it fails, exit non-zero and leave the old version running.

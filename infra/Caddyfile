@@ -1,0 +1,23 @@
+# Public TLS entry point for the API (research.md R8).
+# Cloudflare proxies api.disclosly.com here with SSL mode "Full (strict)". Caddy gets a
+# Let's Encrypt certificate with the HTTP-01 challenge and redirects HTTP to HTTPS on its own
+# (automatic HTTPS), because "Always Use HTTPS" is off in Cloudflare.
+# API_DOMAIN and ACME_EMAIL come from the server .env (contracts/configuration.md).
+{
+	email {$ACME_EMAIL}
+}
+
+{$API_DOMAIN} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "no-referrer"
+		-Server
+	}
+
+	# reverse_proxy forwards every request header, so a client X-Request-ID reaches the API
+	# unchanged; the API validates it and echoes it back (or generates a new one).
+	reverse_proxy api:8000
+}

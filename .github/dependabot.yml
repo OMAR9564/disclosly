@@ -36,3 +36,7 @@ updates:
       # The image must match .python-version (3.12); other versions break `uv sync`.
       - dependency-name: python
         versions: [">=3.13"]
+  - package-ecosystem: terraform
+    directory: /infra/terraform
+    schedule:
+      interval: weekly
