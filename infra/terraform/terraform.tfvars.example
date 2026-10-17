@@ -1,0 +1,12 @@
+# Copy to terraform.tfvars (gitignored). Public keys only; tokens go in HCLOUD_TOKEN and
+# CLOUDFLARE_API_TOKEN environment variables.
+
+ssh_public_keys = [
+  "ssh-ed25519 AAAA...replace-me maintainer@laptop",
+]
+
+deploy_ssh_public_key = "ssh-ed25519 AAAA...replace-me github-actions-deploy"
+
+# server_type = "cx23"   # check `hcloud server-type list` before apply
+# location    = "fsn1"
+# domain      = "disclosly.com"

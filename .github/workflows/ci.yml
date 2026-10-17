@@ -29,6 +29,8 @@ jobs:
       - run: uv sync
       - run: uv run ruff check .
       - run: uv run ruff format --check .
+      # shellcheck is preinstalled on GitHub-hosted Ubuntu runners.
+      - run: shellcheck infra/scripts/*.sh
       - run: npm ci
         working-directory: web
       - run: npm run lint
