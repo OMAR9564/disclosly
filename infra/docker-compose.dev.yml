@@ -1,0 +1,27 @@
+# Local development override: builds the API from source, publishes ports on the host,
+# and turns off Caddy (no TLS locally). Used by `make up`.
+
+services:
+  caddy:
+    profiles: ["caddy"]
+
+  api:
+    image: disclosly-api:dev
+    build:
+      context: ..
+      dockerfile: api/Dockerfile
+      args:
+        APP_VERSION: dev
+    ports:
+      - "127.0.0.1:8000:8000"
+
+  migrate:
+    image: disclosly-api:dev
+
+  postgres:
+    ports:
+      - "127.0.0.1:5432:5432"
+
+  redis:
+    ports:
+      - "127.0.0.1:6379:6379"

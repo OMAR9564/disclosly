@@ -1,0 +1,93 @@
+# Production stack (PROJECT_SPEC.md §16.1). Values come from the `.env` file next to this file
+# on the server (contract: specs/001-walking-skeleton/contracts/configuration.md).
+# Local development adds docker-compose.dev.yml on top (see Makefile).
+
+x-api-environment: &api-environment
+  APP_ENV: ${APP_ENV:?APP_ENV is required}
+  DATABASE_URL: ${DATABASE_URL:?DATABASE_URL is required}
+  REDIS_URL: ${REDIS_URL:?REDIS_URL is required}
+  CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:?CORS_ALLOWED_ORIGINS is required}
+  LOG_LEVEL: ${LOG_LEVEL:-INFO}
+
+services:
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    mem_limit: 64m
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      API_DOMAIN: ${API_DOMAIN:?API_DOMAIN is required}
+      ACME_EMAIL: ${ACME_EMAIL:?ACME_EMAIL is required}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - api
+
+  api:
+    image: ghcr.io/omar9564/disclosly-api:${API_IMAGE_TAG:?API_IMAGE_TAG is required}
+    restart: unless-stopped
+    mem_limit: 512m
+    environment: *api-environment
+    tmpfs:
+      - /tmp/prometheus
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  postgres:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    mem_limit: 1g
+    command:
+      - postgres
+      - -c
+      - shared_buffers=256MB
+      - -c
+      - work_mem=8MB
+      - -c
+      - max_connections=40
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?POSTGRES_USER is required}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      POSTGRES_DB: ${POSTGRES_DB:?POSTGRES_DB is required}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    mem_limit: 160m
+    command: ["redis-server", "--maxmemory", "128mb", "--maxmemory-policy", "allkeys-lru"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # One-off: `docker compose --profile migrate run --rm migrate` (infra/scripts/deploy.sh).
+  migrate:
+    image: ghcr.io/omar9564/disclosly-api:${API_IMAGE_TAG:?API_IMAGE_TAG is required}
+    profiles: ["migrate"]
+    mem_limit: 256m
+    environment: *api-environment
+    command: ["alembic", "upgrade", "head"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  caddy_data:
+  caddy_config:
+  postgres_data:
