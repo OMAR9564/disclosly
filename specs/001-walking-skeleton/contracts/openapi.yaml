@@ -1,0 +1,152 @@
+openapi: 3.1.0
+info:
+  title: Disclosly API — Phase 1 (walking skeleton)
+  version: 0.1.0
+  description: >
+    Operational endpoints only. Every non-2xx JSON response uses ErrorEnvelope.
+    Every response carries an X-Request-ID header.
+servers:
+  - url: https://api.disclosly.com
+  - url: http://localhost:8000
+    description: Local development
+
+paths:
+  /healthz:
+    get:
+      operationId: getHealth
+      summary: Liveness. No dependency I/O.
+      responses:
+        "200":
+          description: Process is alive.
+          headers:
+            X-Request-ID: { $ref: "#/components/headers/XRequestID" }
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/HealthStatus" }
+              example: { status: ok, version: 3f2a9c1, service: disclosly-api }
+
+  /readyz:
+    get:
+      operationId: getReadiness
+      summary: Readiness. Checks Postgres and Redis (2 s timeout each).
+      responses:
+        "200":
+          description: All dependencies reachable.
+          headers:
+            X-Request-ID: { $ref: "#/components/headers/XRequestID" }
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ReadinessStatus" }
+        "503":
+          description: At least one dependency unreachable.
+          headers:
+            X-Request-ID: { $ref: "#/components/headers/XRequestID" }
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ReadinessStatus" }
+              example:
+                status: not_ready
+                version: 3f2a9c1
+                checks:
+                  postgres: { status: ok, latency_ms: 3.1, error: null }
+                  redis: { status: error, latency_ms: 2000.0, error: timeout }
+
+  /metrics:
+    get:
+      operationId: getMetrics
+      summary: Prometheus text exposition.
+      description: >
+        Includes at least http_requests_total{method,route,status} and
+        http_request_duration_seconds{method,route} (histogram). Aggregated across workers.
+      responses:
+        "200":
+          description: Metrics.
+          content:
+            text/plain; version=0.0.4:
+              schema: { type: string }
+
+  /{unknown}:
+    get:
+      operationId: unknownRoute
+      summary: Illustrates the not_found contract for any unknown path.
+      parameters:
+        - { name: unknown, in: path, required: true, schema: { type: string } }
+      responses:
+        "404":
+          description: Unknown route.
+          headers:
+            X-Request-ID: { $ref: "#/components/headers/XRequestID" }
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ErrorEnvelope" }
+              example:
+                error: { code: not_found, message: Resource not found., request_id: 6b1d…, details: null }
+
+components:
+  headers:
+    XRequestID:
+      description: Echoes a valid incoming X-Request-ID or a newly generated UUID4.
+      schema: { type: string, maxLength: 64 }
+
+  schemas:
+    HealthStatus:
+      type: object
+      additionalProperties: false
+      required: [status, version, service]
+      properties:
+        status: { type: string, const: ok }
+        version: { type: string, description: "Git SHA or 'dev'" }
+        service: { type: string, const: disclosly-api }
+
+    DependencyCheck:
+      type: object
+      additionalProperties: false
+      required: [status, latency_ms, error]
+      properties:
+        status: { type: string, enum: [ok, error] }
+        latency_ms: { type: number, minimum: 0 }
+        error:
+          oneOf:
+            - { type: "null" }
+            - { type: string, enum: [timeout, connection_refused, auth_failed, unknown] }
+
+    ReadinessStatus:
+      type: object
+      additionalProperties: false
+      required: [status, version, checks]
+      properties:
+        status: { type: string, enum: [ready, not_ready] }
+        version: { type: string }
+        checks:
+          type: object
+          additionalProperties: false
+          required: [postgres, redis]
+          properties:
+            postgres: { $ref: "#/components/schemas/DependencyCheck" }
+            redis: { $ref: "#/components/schemas/DependencyCheck" }
+
+    ErrorEnvelope:
+      type: object
+      additionalProperties: false
+      required: [error]
+      properties:
+        error:
+          type: object
+          additionalProperties: false
+          required: [code, message, request_id, details]
+          properties:
+            code:
+              type: string
+              enum: [not_found, method_not_allowed, validation_error, dependency_unavailable, internal_error]
+            message: { type: string }
+            request_id: { type: string }
+            details:
+              oneOf:
+                - { type: "null" }
+                - type: array
+                  items:
+                    type: object
+                    required: [loc, msg]
+                    properties:
+                      loc: { type: array, items: { type: [string, integer] } }
+                      msg: { type: string }
