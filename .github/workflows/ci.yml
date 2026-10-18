@@ -155,6 +155,8 @@ jobs:
           -v "$PWD/infra/Caddyfile:/etc/caddy/Caddyfile:ro"
           caddy:2 caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
       - run: shellcheck infra/scripts/*.sh api/entrypoint.sh
+      - name: Local stack smoke test (make up)
+        run: cp .env.example .env && make up && curl -fsS localhost:8000/healthz && make down
 
   security:
     runs-on: ubuntu-latest
