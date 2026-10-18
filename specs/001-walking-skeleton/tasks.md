@@ -240,7 +240,7 @@ Paths follow plan.md "Source Code": Python packages `api/`, `evals/` and `tests/
   - the toggle switches to English and the choice persists after a reload;
   - `backend-status` reaches `data-state="unavailable"` when `/healthz` is routed to a 503, and `available` when it is routed to a valid body;
   - there is no horizontal scroll at a 360 px viewport.
-- [ ] T042 [US3] Validate quickstart V9 in production: desktop and mobile, TR/EN, `www` redirects to the apex, and the API stopped then restarted shows `unavailable` and then `available`
+- [X] T042 [US3] Validate quickstart V9 in production: desktop and mobile, TR/EN, `www` redirects to the apex, and the API stopped then restarted shows `unavailable` and then `available`
 
 **Checkpoint**: All five user stories work independently.
 
