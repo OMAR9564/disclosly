@@ -115,7 +115,7 @@ Paths follow plan.md "Source Code": Python packages `api/`, `evals/` and `tests/
   6. If polling fails, restore the previous tag, run `up -d --no-deps api` and exit non-zero (rolled back).
 
   Write `tests/integration/test_deploy_script.py` first. It runs the script with fake `docker` and `curl` executables on `PATH` and covers success, migrate failure and health-check failure with rollback. Lint the script with `shellcheck`, which is preinstalled on GitHub runners
-- [ ] T024 [US2] (owner action) Provision and do the first manual deploy, and document it in `docs/runbook.md` ("Provisioning" and "First deploy" sections):
+- [X] T024 [US2] (owner action) Provision and do the first manual deploy, and document it in `docs/runbook.md` ("Provisioning" and "First deploy" sections):
   1. Point the `disclosly.com` nameservers to Cloudflare.
   2. Create the zone-scoped Cloudflare token and the Hetzner token.
   3. Run `terraform apply`.
