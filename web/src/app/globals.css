@@ -1,24 +1,261 @@
 @import "tailwindcss";
 
+/*
+ * Trading-hall split-flap board. The whole viewport is the board housing; letters sit on
+ * flap tiles split by a hinge. Flat paint only. Amber is reserved for the live row.
+ * The board is a physical object in a dim hall, so it keeps one palette in both schemes.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --housing: #181817;
+  --flap: #2b2b29;
+  --flap-low: #1e1e1d;
+  --hinge: #0b0b0a;
+  --letter: #efe9dc;
+  --letter-muted: #b9b3a7;
+  --amber: #f2a51f;
+  --plate: #efe9dc;
+  --plate-ink: #16181b;
+  --rule: #383835;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--housing);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: system-ui, sans-serif;
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--housing);
+  color: var(--letter);
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--letter);
+  color: var(--housing);
+}
+
+:focus-visible {
+  outline: 2px solid var(--letter);
+  outline-offset: 3px;
+}
+
+.board {
+  box-sizing: border-box;
+  min-height: 100dvh;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: clamp(1rem, 4vw, 3.5rem);
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  gap: clamp(2rem, 6vw, 4.5rem);
+}
+
+/* Top strip: sources on the left, the language key on the right. */
+.board__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* Printed enamel fixtures: the sources plate, the tagline band and the legal plate. */
+.board__sources {
+  margin: 0;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  background: var(--plate);
+  color: var(--plate-ink);
+  box-shadow:
+    inset 0 0 0 3px var(--plate),
+    inset 0 0 0 4px var(--plate-ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-variation-settings: "wdth" 80;
+  text-transform: uppercase;
+}
+
+.toggle {
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  font-variation-settings: "wdth" 80;
+  letter-spacing: 0.04em;
+  color: var(--letter);
+  background: var(--flap);
+  border: 0;
+  border-radius: 3px;
+  box-shadow: inset 0 -2px 0 var(--hinge);
+  padding: 0.5rem 1rem;
+  min-height: 2.75rem;
+  cursor: pointer;
+}
+
+.toggle:hover {
+  background: #343432;
+}
+
+.toggle:active {
+  box-shadow: none;
+  transform: translateY(1px);
+}
+
+/* Split-flap tiles. Each row sizes its tiles from its own width. */
+.flaps {
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+  gap: clamp(2px, 0.6cqi, 6px);
+  width: 100%;
+}
+
+.flap {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 3 / 4;
+  border-radius: clamp(2px, 0.5cqi, 5px);
+  background-color: var(--flap);
+  color: var(--letter);
+  font-size: calc(100cqi / var(--n) * 1.1);
+  font-weight: 700;
+  font-variation-settings: "wdth" 68;
+  line-height: 1;
+  overflow: hidden;
+}
+
+/* Lower leaf, a step darker, and the hinge across the middle of every tile. */
+.flap::before,
+.flap::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.flap::before {
+  top: 50%;
+  bottom: 0;
+  background: var(--flap-low);
+  z-index: -1;
+}
+
+.flap::after {
+  top: 50%;
+  height: max(2px, 0.35cqi);
+  background: var(--hinge);
+}
+
+.flap {
+  isolation: isolate;
+}
+
+.flap--blank {
+  color: transparent;
+}
+
+.flaps--live .flap {
+  color: var(--amber);
+}
+
+/* Name block. */
+.board__name {
+  display: grid;
+  gap: clamp(1rem, 3vw, 1.75rem);
+}
+
+.name {
+  margin: 0;
+}
+
+.placard {
+  margin: 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-size: clamp(1.125rem, 2.8vw, 1.625rem);
+  font-weight: 500;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+/* Status row. */
+.row {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.row__label {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-variation-settings: "wdth" 80;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--letter-muted);
+}
+
+.row__board {
+  display: grid;
+  grid-template-columns: 12fr 7fr;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  max-width: 52rem;
+}
+
+@media (max-width: 30rem) {
+  .row__board {
+    grid-template-columns: 1fr;
+  }
+
+  .row__board > .flaps:last-child {
+    width: 58%;
+  }
+}
+
+.row__note {
+  margin: 0;
+  max-width: 60ch;
+  font-size: 1rem;
+  color: var(--letter-muted);
+}
+
+.sha {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.9375em;
+  color: var(--letter);
+}
+
+/* Legal notice: an enamel plate fixed to the bottom of the board. */
+.plate {
+  align-self: end;
+  display: grid;
+  gap: 0.25rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  background: var(--plate);
+  color: var(--plate-ink);
+  box-shadow:
+    inset 0 0 0 5px var(--plate),
+    inset 0 0 0 7px var(--plate-ink);
+}
+
+.plate__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 800;
+  font-variation-settings: "wdth" 85;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.plate__body {
+  margin: 0;
+  max-width: 72ch;
+  font-size: 0.9375rem;
 }

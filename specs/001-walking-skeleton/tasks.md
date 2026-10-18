@@ -223,19 +223,19 @@ Paths follow plan.md "Source Code": Python packages `api/`, `evals/` and `tests/
 
 **Independent Test**: quickstart V9 on desktop and mobile. Check the TR default, the toggle to EN that persists, the visible disclaimer, `available` with the SHA, and friendly `unavailable` when the API is stopped.
 
-- [ ] T037 [P] [US3] Create the typed i18n dictionary in `web/src/i18n/tr.ts`, `web/src/i18n/en.ts` and `web/src/i18n/index.ts`, plus `useLanguage()` in `web/src/i18n/useLanguage.ts`. Use the exact strings from `contracts/web-page.md`: the disclaimer is "Yatırım tavsiyesi değildir" / "Not investment advice", plus the status texts for `loading`, `available` and `unavailable` and the toggle labels "English" / "Türkçe". The default is `tr`. The choice is persisted in `localStorage`, and read and write are wrapped in try/catch with a fallback to `tr`. Write `web/tests/unit/i18n.test.ts` first: both dictionaries have identical keys, the default is TR, and the hook falls back when storage throws
-- [ ] T038 [P] [US3] Implement `fetchHealth()` in `web/src/lib/health.ts`. It calls `${NEXT_PUBLIC_API_BASE_URL}/healthz` with a "5 s" `AbortController` timeout and checks that the body matches `{status: "ok", version: string, service: "disclosly-api"}`. It returns `{state: "available", version}` or `{state: "unavailable"}` on non-200, invalid body, network error or timeout. Write `web/tests/unit/health.test.ts` first with a mocked `fetch` covering each case
-- [ ] T039 [US3] Implement components, writing `web/tests/unit/components.test.tsx` first:
+- [X] T037 [P] [US3] Create the typed i18n dictionary in `web/src/i18n/tr.ts`, `web/src/i18n/en.ts` and `web/src/i18n/index.ts`, plus `useLanguage()` in `web/src/i18n/useLanguage.ts`. Use the exact strings from `contracts/web-page.md`: the disclaimer is "Yatırım tavsiyesi değildir" / "Not investment advice", plus the status texts for `loading`, `available` and `unavailable` and the toggle labels "English" / "Türkçe". The default is `tr`. The choice is persisted in `localStorage`, and read and write are wrapped in try/catch with a fallback to `tr`. Write `web/tests/unit/i18n.test.ts` first: both dictionaries have identical keys, the default is TR, and the hook falls back when storage throws
+- [X] T038 [P] [US3] Implement `fetchHealth()` in `web/src/lib/health.ts`. It calls `${NEXT_PUBLIC_API_BASE_URL}/healthz` with a "5 s" `AbortController` timeout and checks that the body matches `{status: "ok", version: string, service: "disclosly-api"}`. It returns `{state: "available", version}` or `{state: "unavailable"}` on non-200, invalid body, network error or timeout. Write `web/tests/unit/health.test.ts` first with a mocked `fetch` covering each case
+- [X] T039 [US3] Implement components, writing `web/tests/unit/components.test.tsx` first:
   - `web/src/components/BackendStatus.tsx`: `data-testid="backend-status"` and `data-state="loading|available|unavailable"`, showing the version when `available`;
   - `web/src/components/LanguageToggle.tsx`: `data-testid="language-toggle"`, a native `<button>` so it is keyboard-operable;
   - `web/src/components/Disclaimer.tsx`: `data-testid="disclaimer"`, always rendered.
-- [ ] T040 [US3] Implement `web/src/app/layout.tsx` and `web/src/app/page.tsx`:
+- [X] T040 [US3] Implement `web/src/app/layout.tsx` and `web/src/app/page.tsx`:
   - `<html lang>` is synced with the active language (`tr`/`en`);
   - the page uses `data-testid="product-name"` and `data-testid="tagline"` and renders `Disclaimer`, `BackendStatus` and `LanguageToggle`;
   - the layout is responsive at 360 px with no horizontal scroll and meets WCAG AA contrast.
 
   Write `web/tests/unit/page.test.tsx` first: the TR render shows every test id, and toggling switches all visible text to EN
-- [ ] T041 [US3] Write the Playwright smoke test `web/tests/e2e/smoke.spec.ts` against `next start`. It checks that:
+- [X] T041 [US3] Write the Playwright smoke test `web/tests/e2e/smoke.spec.ts` against `next start`. It checks that:
   - the page loads in Turkish with the disclaimer visible;
   - the toggle switches to English and the choice persists after a reload;
   - `backend-status` reaches `data-state="unavailable"` when `/healthz` is routed to a 503, and `available` when it is routed to a valid body;
