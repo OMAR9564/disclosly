@@ -166,7 +166,7 @@ Paths follow plan.md "Source Code": Python packages `api/`, `evals/` and `tests/
 
 **Depends on**: US2 (server, Caddy, `deploy.sh`) and US5 (CI workflow named `CI` with all gates).
 
-- [ ] T031 [US1] Create job `api` in `.github/workflows/deploy.yml`:
+- [X] T031 [US1] Create job `api` in `.github/workflows/deploy.yml`:
   - Triggers: `on: workflow_run` with `workflows: [CI]`, `types: [completed]`, `branches: [main]`; the job condition requires `conclusion == 'success'` and `event == 'push'`.
   - Settings: `concurrency: {group: deploy-production, cancel-in-progress: false}`, `permissions: {contents: read, packages: write}`, actions pinned by SHA.
   - Steps:
@@ -176,7 +176,7 @@ Paths follow plan.md "Source Code": Python packages `api/`, `evals/` and `tests/
     4. `scp` `infra/docker-compose.yml`, `infra/Caddyfile` and `infra/scripts/deploy.sh` to `deploy@$DEPLOY_HOST:~/disclosly/`.
     5. `ssh … ./deploy.sh <head_sha>`.
     6. Run a final `curl` that checks the `/healthz` version.
-- [ ] T032 [US1] Create job `web` in `.github/workflows/deploy.yml`. It uses the same trigger and condition but does not depend on `api`. Steps:
+- [X] T032 [US1] Create job `web` in `.github/workflows/deploy.yml`. It uses the same trigger and condition but does not depend on `api`. Steps:
   1. `npx vercel@<pinned> pull --yes --environment=production`.
   2. `vercel build --prod` with `NEXT_PUBLIC_API_BASE_URL=https://api.disclosly.com` and `NEXT_PUBLIC_APP_VERSION=<head_sha>`.
   3. `vercel deploy --prebuilt --prod`.

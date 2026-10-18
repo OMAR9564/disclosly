@@ -291,3 +291,70 @@ Then try a direct push. GitHub must reject it with a ruleset violation:
 ```bash
 git push origin HEAD:main   # laptop
 ```
+
+## Deploy secrets
+
+`deploy.yml` reaches the server as `deploy` with a key that is used for nothing else.
+
+```bash
+ssh-keygen -t ed25519 -N '' -C 'github-actions-deploy' -f /tmp/disclosly-deploy   # laptop
+ssh deploy@<server> 'cat >> ~/.ssh/authorized_keys' < /tmp/disclosly-deploy.pub
+gh secret set DEPLOY_SSH_KEY < /tmp/disclosly-deploy
+gh secret set DEPLOY_HOST --body "$(terraform -chdir=infra/terraform output -raw server_ipv4)"
+gh secret set DEPLOY_KNOWN_HOSTS --body "$(ssh-keyscan -t ed25519 <server ip>)"
+shred -u /tmp/disclosly-deploy /tmp/disclosly-deploy.pub
+```
+
+Check the `ssh-keyscan` fingerprint against the server console (`ssh-keygen -lf
+/etc/ssh/ssh_host_ed25519_key.pub`) before saving it. The workflow never disables host key checks.
+
+## Vercel
+
+1. Create a Vercel project from this repository with **Root Directory** `web/`. Git deploys stay
+   off: `web/vercel.json` sets `git.deploymentEnabled: false`, so only `deploy.yml` publishes.
+2. Domains: add `disclosly.com` (primary) and `www.disclosly.com` (redirect to apex). Put the DNS
+   targets Vercel shows into the Terraform variables and run `terraform apply`.
+3. Create a token (Account Settings → Tokens, scoped to the team) and read the IDs from
+   `.vercel/project.json` after `npx vercel link` in the repository root:
+
+```bash
+gh secret set VERCEL_TOKEN                                   # laptop, paste when prompted
+gh secret set VERCEL_ORG_ID --body "<orgId>"
+gh secret set VERCEL_PROJECT_ID --body "<projectId>"
+```
+
+## Deploy
+
+Every squash merge to `main` runs `CI`. When `CI` passes, `Deploy` (`.github/workflows/deploy.yml`)
+starts two independent jobs for the merge commit SHA:
+
+- `api`: builds and pushes `ghcr.io/omar9564/disclosly-api:<sha>` and `:main`, copies
+  `docker-compose.yml`, `Caddyfile` and `deploy.sh` to `~/disclosly/`, runs `deploy.sh <sha>`,
+  then checks that `/healthz` reports `<sha>`.
+- `web`: `vercel pull`, `vercel build --prod`, `vercel deploy --prebuilt --prod`, with
+  `NEXT_PUBLIC_APP_VERSION=<sha>`.
+
+Deploys run one at a time (`concurrency: deploy-production`). To redeploy a commit, re-run the
+`Deploy` workflow run for it in the Actions tab.
+
+Validate (quickstart V5 steps 1–2): merge a trivial PR and confirm within 15 minutes that both
+`/healthz` and the web status show the new SHA.
+
+## Rollback
+
+`deploy.sh` rolls back on its own: if `/healthz` does not report the new SHA within 60 s, it
+restores the previous `API_IMAGE_TAG`, restarts `api` and exits 2, which fails the `api` job.
+A failed migration or image pull exits 1 before the switch, so the old container keeps running.
+
+Manual rollback to any earlier image:
+
+```bash
+ssh deploy@<server> 'bash ~/disclosly/deploy.sh <older sha>'   # laptop
+```
+
+Migrations are not reverted by either path; write them backward compatible. For the web app,
+promote an earlier deployment in the Vercel dashboard (Deployments → … → Promote to Production).
+
+Validate (quickstart V7): merge a PR that makes `/healthz` return 500. The `api` job must fail,
+`/healthz` must still report the previous SHA, with less than 1 minute of failed checks. Then
+revert the change through a PR.
