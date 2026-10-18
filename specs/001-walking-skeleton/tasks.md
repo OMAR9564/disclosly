@@ -148,7 +148,7 @@ Paths follow plan.md "Source Code": Python packages `api/`, `evals/` and `tests/
   - `npm --prefix web audit --audit-level=high --omit=dev` (runtime dependencies only, like `pip-audit` with `--no-dev`; dev-only advisories are tracked by Dependabot alerts);
   - pinned gitleaks CLI `detect` over the full history (`fetch-depth: 0`), with `.gitleaks.toml` allowlisting only the placeholder values in `.env.example`.
 - [X] T029 [P] [US5] Create `.github/workflows/codeql.yml` for `python` and `javascript-typescript`, triggered on PR, push to `main` and a weekly schedule, with actions pinned by SHA
-- [ ] T030 [US5] (owner action) Configure the repository settings and document them in `docs/runbook.md` ("Repository settings"):
+- [X] T030 [US5] (owner action) Configure the repository settings and document them in `docs/runbook.md` ("Repository settings"):
   - a branch ruleset on `main`: PR required; required checks `lint`, `typecheck`, `test-backend`, `test-web`, `evals`, `build`, `security` and `CodeQL`; squash merge only; block force pushes and deletions; no bypass actors;
   - secret scanning with push protection, Dependabot alerts and private vulnerability reporting.
 
