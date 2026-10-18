@@ -182,12 +182,12 @@ Paths follow plan.md "Source Code": Python packages `api/`, `evals/` and `tests/
   3. `vercel deploy --prebuilt --prod`.
 
   Secrets are `VERCEL_TOKEN`, `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID`. Create `web/vercel.json` with `{"git": {"deploymentEnabled": false}}`
-- [ ] T033 [US1] (owner action) Set up the external accounts and document them in `docs/runbook.md` ("Deploy secrets" and "Vercel"):
+- [X] T033 [US1] (owner action) Set up the external accounts and document them in `docs/runbook.md` ("Deploy secrets" and "Vercel"):
   - Create the Vercel project with root directory `web/`.
   - Attach the domains `disclosly.com` (primary) and `www.disclosly.com` (redirect to apex), and put the Vercel DNS targets into the Terraform variables.
   - Generate a deploy-only ed25519 key for user `deploy`.
   - Add the GitHub secrets `DEPLOY_SSH_KEY`, `DEPLOY_HOST`, `DEPLOY_KNOWN_HOSTS`, `VERCEL_TOKEN`, `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID`.
-- [ ] T034 [US1] Validate end to end and document the deploy and rollback procedure in `docs/runbook.md` ("Deploy" and "Rollback"). Run quickstart V5 steps 1–2 (merge-to-live < 15 min) and V7 (a broken `/healthz` rolls back, with < 1 min of failed checks), then revert the broken change through a PR
+- [X] T034 [US1] Validate end to end and document the deploy and rollback procedure in `docs/runbook.md` ("Deploy" and "Rollback"). Run quickstart V5 steps 1–2 (merge-to-live < 15 min) and V7 (a broken `/healthz` rolls back, with < 1 min of failed checks), then revert the broken change through a PR
 
 **Checkpoint**: Phase 1 acceptance criteria met: a push to `main` deploys automatically, `/healthz` is live over HTTPS, and the web app is on Vercel.
 
