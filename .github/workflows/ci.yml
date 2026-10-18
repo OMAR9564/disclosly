@@ -116,8 +116,7 @@ jobs:
         working-directory: web
       - run: npx playwright install --with-deps chromium
         working-directory: web
-      # --pass-with-no-tests until the smoke test lands (tasks.md T041); remove it then.
-      - run: npm run test:e2e -- --pass-with-no-tests
+      - run: npm run test:e2e
         working-directory: web
 
   evals:
