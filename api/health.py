@@ -10,7 +10,7 @@ from typing import Literal
 import psycopg
 import redis.asyncio
 import redis.exceptions
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -134,6 +134,9 @@ async def _run_check(name: DependencyName, probe: Probe) -> DependencyCheck:
 @router.get("/healthz", operation_id="getHealth")
 async def get_health(request: Request) -> HealthStatus:
     """Answer if the process is alive. Does no dependency I/O by design."""
+    # TEMPORARY rollback drill (quickstart V7, tasks.md T034). Revert right after the drill.
+    if request.app.state.settings.app_env == "production":
+        raise HTTPException(status_code=500, detail="rollback drill")
     return HealthStatus(version=request.app.state.settings.app_version)
 
 
