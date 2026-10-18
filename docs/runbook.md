@@ -371,3 +371,169 @@ the failed checks lasted about 64 s (2 × 502 while the container switched, ~28 
 while it switched back). This is slightly above the 1-minute target of SC-006 and was accepted.
 The cause is that `deploy.sh` waits the full 60 s even when `/healthz` returns 5xx. Rolling back
 after a few consecutive 5xx responses would cut this to about 15 s if the target becomes strict.
+
+## Logs
+
+The commands below run on the server as `deploy`.
+
+```bash
+cd ~/disclosly && alias dc='docker compose --env-file .env -f docker-compose.yml'   # server
+dc ps                         # state and health of every service
+dc logs --tail 200 api        # last 200 API log lines (JSON, one event per line)
+dc logs -f api                # follow the API logs
+dc logs --since 1h caddy      # proxy and certificate events of the last hour
+```
+
+API logs are JSON. Every request line carries `request_id`, which matches the `X-Request-ID`
+response header, so a user-reported failure can be traced with:
+
+```bash
+dc logs api | grep '"request_id": "<id>"'   # server
+```
+
+## Server reboot
+
+Every service has `restart: unless-stopped`, and Docker starts at boot, so a reboot needs no
+manual step.
+
+The `deploy` user has no password, so `sudo reboot` over SSH does not work. Reboot from Hetzner
+instead: Cloud Console → project `disclosly` → the server → Power → **Shutdown** (a clean ACPI
+shutdown), wait for the server to show as off, then **Power on**. Do not use Power off or Power
+cycle: both cut power like pulling the plug, and Postgres can lose data. The `hcloud` CLI does
+the same clean reboot in one step (`hcloud server reboot <name>`, with `HCLOUD_TOKEN` exported).
+Then:
+
+```bash
+until curl -fsS https://api.disclosly.com/healthz; do sleep 5; done # laptop, < 5 min
+ssh deploy@<server> 'uptime -p'                                     # must show minutes
+ssh deploy@<server> 'cd ~/disclosly && docker compose --env-file .env -f docker-compose.yml ps'
+```
+
+All four services must be running, and `postgres` and `redis` must be healthy. To check memory:
+
+```bash
+ssh deploy@<server> 'docker stats --no-stream'   # laptop
+```
+
+## Certificate renewal check
+
+Caddy renews the Let's Encrypt certificate on its own, about 30 days before it expires. It keeps
+the certificate in the `caddy_data` volume, so a container restart does not request a new one.
+Check the expiry date of the certificate Caddy serves:
+
+```bash
+ssh deploy@<server> "echo | openssl s_client -connect localhost:443 -servername api.disclosly.com 2>/dev/null | openssl x509 -noout -enddate"
+```
+
+The public address shows Cloudflare's edge certificate instead. Fewer than 20 days left on the
+origin certificate means renewal is failing. Read why:
+
+```bash
+ssh deploy@<server> 'cd ~/disclosly && docker compose --env-file .env -f docker-compose.yml logs --since 72h caddy | grep -i -E "renew|acme|error"'
+```
+
+The usual cause is the HTTP-01 challenge not reaching Caddy: check that "Always Use HTTPS" is
+still off in Cloudflare and that port 80 is open in the Hetzner firewall.
+
+## Full server rebuild
+
+Use this when the server is lost or broken beyond repair. The database is rebuilt empty, so
+restore data from a backup if one exists (Phase 1 stores no user data).
+
+1. Make sure the Terraform state is current (see "Terraform state backup").
+2. Replace the server and let cloud-init prepare the new one:
+
+   ```bash
+   terraform -chdir=infra/terraform apply -replace=hcloud_server.api   # laptop
+   ```
+
+   The Cloudflare `api` record follows the new IPv4 address in the same apply.
+3. Update the host secrets for the deploy workflow, because the IP address and the host key
+   changed:
+
+   ```bash
+   IP=$(terraform -chdir=infra/terraform output -raw server_ipv4)                   # laptop
+   gh secret set DEPLOY_HOST --body "$IP"
+   gh secret set DEPLOY_KNOWN_HOSTS --body "$(ssh-keyscan -t ed25519 "$IP" 2>/dev/null)"
+   ```
+
+   Check the fingerprint against the server console, as in "Deploy secrets".
+4. Add the deploy public key to `~deploy/.ssh/authorized_keys` on the new server.
+5. Follow "First deploy" steps 1 and 3. Use the SHA that is live on `main` as `API_IMAGE_TAG`;
+   its image is already in GHCR.
+6. Validate with `curl -s https://api.disclosly.com/healthz` and by re-running the latest
+   `Deploy` workflow run.
+
+## Secret rotation
+
+Rotate a secret right away if it may have leaked, and otherwise once a year.
+
+### Deploy key
+
+```bash
+ssh-keygen -t ed25519 -N '' -C 'github-actions-deploy' -f /tmp/disclosly-deploy   # laptop
+ssh deploy@<server> 'cat >> ~/.ssh/authorized_keys' < /tmp/disclosly-deploy.pub
+gh secret set DEPLOY_SSH_KEY < /tmp/disclosly-deploy
+shred -u /tmp/disclosly-deploy /tmp/disclosly-deploy.pub
+```
+
+Re-run the latest `Deploy` run to prove the new key works. Then remove the old public key line
+from `~deploy/.ssh/authorized_keys` on the server.
+
+### Vercel token
+
+1. Vercel → Account Settings → Tokens: create a new token with the same scope.
+2. Save it:
+
+   ```bash
+   gh secret set VERCEL_TOKEN   # laptop, paste when prompted
+   ```
+
+3. Re-run the latest `Deploy` run and check that the `web` job is green.
+4. Delete the old token in Vercel.
+
+### Postgres password
+
+The password appears twice in the server `.env`: in `POSTGRES_PASSWORD` and inside
+`DATABASE_URL`. Changing `POSTGRES_PASSWORD` alone has no effect on an existing database, so
+change it in Postgres first.
+
+```bash
+cd ~/disclosly && alias dc='docker compose --env-file .env -f docker-compose.yml'   # server
+NEW="$(openssl rand -hex 24)"
+dc exec -T postgres psql -U disclosly -d disclosly -c "ALTER USER disclosly WITH PASSWORD '$NEW';"
+cp .env .env.bak && chmod 600 .env.bak
+sed -i "s|^POSTGRES_PASSWORD=.*|POSTGRES_PASSWORD=$NEW|" .env
+sed -i "s|^DATABASE_URL=postgresql://disclosly:[^@]*@|DATABASE_URL=postgresql://disclosly:$NEW@|" .env
+unset NEW
+dc up -d --no-deps api
+curl -fsS https://api.disclosly.com/readyz && shred -u .env.bak
+```
+
+If `/readyz` does not report `ready`, restore `.env.bak` and run `dc up -d --no-deps api` again.
+
+### Provider tokens (Hetzner, Cloudflare)
+
+These are never stored anywhere. Create a new token in the provider console, delete the old one,
+and export the new one in the shell that runs Terraform (see "Provisioning").
+
+## Terraform state backup
+
+The state is the local file `infra/terraform/terraform.tfstate`. It is gitignored and holds
+resource IDs and the server IP, but no provider tokens. Back it up after every `apply`, encrypted,
+outside the repository:
+
+```bash
+gpg --symmetric --cipher-algo AES256 \
+  -o ~/Backups/disclosly-tfstate-$(date +%F).gpg infra/terraform/terraform.tfstate   # laptop
+```
+
+Keep a copy outside the laptop too (for example, a password manager attachment). To restore:
+
+```bash
+gpg -d ~/Backups/disclosly-tfstate-<date>.gpg > infra/terraform/terraform.tfstate   # laptop
+terraform -chdir=infra/terraform plan   # must show no changes
+```
+
+Without any backup, run `terraform import` for each resource listed in `infra/terraform/main.tf`
+before the next `apply`.

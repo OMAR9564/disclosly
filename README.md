@@ -10,13 +10,25 @@ Disclosly is a multi-agent research platform that answers questions about compan
 
 ## Architecture
 
-<!-- Diagram and flow description: added in a later phase (PROJECT_SPEC.md §19.2). -->
+Phase 1 runtime and deploy flow: [docs/architecture.md](docs/architecture.md).
+
+<!-- Full agent architecture diagram: added in a later phase (PROJECT_SPEC.md §19.2). -->
 
 ## Eval results
 
 <!-- Results table and how to rerun: added in a later phase (PROJECT_SPEC.md §19.3). -->
 
 ## Cost and latency
+
+Production idle memory (Phase 1, measured 2026-10-19 with `docker stats --no-stream`):
+
+| Service | Used | Limit |
+|---|---|---|
+| api | 133.7 MiB | 512 MiB |
+| postgres | 31.1 MiB | 1 GiB |
+| caddy | 12.8 MiB | 64 MiB |
+| redis | 3.2 MiB | 160 MiB |
+| total | about 181 MiB | 2 GB target |
 
 <!-- Model calls per run, cache hit rate, p95, $0 budget design: later phase (§19.4). -->
 
@@ -26,7 +38,9 @@ Disclosly is a multi-agent research platform that answers questions about compan
 
 ## Key decisions
 
-<!-- Links to ADRs in docs/adr/: later phase (PROJECT_SPEC.md §19.6). -->
+- [ADR 0001: walking-skeleton delivery path](docs/adr/0001-walking-skeleton-delivery.md)
+
+<!-- Agent design ADRs (LangGraph, pgvector, router, sandbox): later phases (§19.6). -->
 
 ## Security model
 
