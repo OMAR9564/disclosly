@@ -294,6 +294,9 @@ git push origin HEAD:main   # laptop
 
 ## Deploy secrets
 
+Terraform must be installed on the laptop, and `HCLOUD_TOKEN` and `CLOUDFLARE_API_TOKEN` must be
+exported in the same shell (see Provisioning). Run it as `terraform -chdir=infra/terraform …`.
+
 `deploy.yml` reaches the server as `deploy` with a key that is used for nothing else.
 
 ```bash
@@ -313,7 +316,11 @@ Check the `ssh-keyscan` fingerprint against the server console (`ssh-keygen -lf
 1. Create a Vercel project from this repository with **Root Directory** `web/`. Git deploys stay
    off: `web/vercel.json` sets `git.deploymentEnabled: false`, so only `deploy.yml` publishes.
 2. Domains: add `disclosly.com` (primary) and `www.disclosly.com` (redirect to apex). Put the DNS
-   targets Vercel shows into the Terraform variables and run `terraform apply`.
+   targets Vercel shows into the Terraform variables and run `terraform apply`. The defaults
+   (`76.76.21.21`, `cname.vercel-dns.com`) are Vercel's legacy targets and still work.
+   Check that the apex has no other records: when the zone was created, Cloudflare imported two
+   proxied A records from the registrar's parking page, and they caused HTTP 522 until deleted.
+   Manage DNS only through Terraform.
 3. Create a token (Account Settings → Tokens, scoped to the team) and read the IDs from
    `.vercel/project.json` after `npx vercel link` in the repository root:
 
@@ -358,3 +365,9 @@ promote an earlier deployment in the Vercel dashboard (Deployments → … → P
 Validate (quickstart V7): merge a PR that makes `/healthz` return 500. The `api` job must fail,
 `/healthz` must still report the previous SHA, with less than 1 minute of failed checks. Then
 revert the change through a PR.
+
+Drill result (2026-10-18, PR #20): `deploy.sh` rolled back to the previous SHA as designed, but
+the failed checks lasted about 64 s (2 × 502 while the container switched, ~28 × 500, 2 × 502
+while it switched back). This is slightly above the 1-minute target of SC-006 and was accepted.
+The cause is that `deploy.sh` waits the full 60 s even when `/healthz` returns 5xx. Rolling back
+after a few consecutive 5xx responses would cut this to about 15 s if the target becomes strict.
