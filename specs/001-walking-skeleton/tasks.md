@@ -199,13 +199,13 @@ Paths follow plan.md "Source Code": Python packages `api/`, `evals/` and `tests/
 
 **Independent Test**: quickstart V1 on a clean clone. Copy `.env.example` and run `make up`. The local `/healthz` returns 200 within 10 minutes (excluding first image pulls), and `make down` stops all services.
 
-- [ ] T035 [US4] Finalize the `Makefile` targets:
+- [X] T035 [US4] Finalize the `Makefile` targets:
   - `up`: runs `docker compose … up -d --build --wait`, then polls `http://localhost:8000/readyz` for up to 120 s with a clear failure message.
   - `down`: stops and removes the containers and keeps the volumes. `down-v` also removes the volumes.
   - `web`: runs `npm --prefix web run dev` with `NEXT_PUBLIC_API_BASE_URL=http://localhost:8000`.
 
   Add a CI step to the `build` job in `.github/workflows/ci.yml` that runs `cp .env.example .env && make up && curl -fsS localhost:8000/healthz && make down`
-- [ ] T036 [P] [US4] Write `README.md` with the following content, and leave placeholders for the other §19 sections, which later phases fill in:
+- [X] T036 [P] [US4] Write `README.md` with the following content, and leave placeholders for the other §19 sections, which later phases fill in:
   - the one-sentence description;
   - live links to `https://disclosly.com` and `https://api.disclosly.com/healthz`;
   - prerequisites (Docker + Compose plugin, uv, Node 24, make);
