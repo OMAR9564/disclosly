@@ -187,3 +187,107 @@ script once with the same SHA; it must end with `deploy: live: <sha>`:
 ```bash
 ./deploy.sh <sha>    # server
 ```
+
+## Repository settings
+
+Done once by the owner in the GitHub repository settings. CI cannot enforce these itself, so check
+them again after any change to the required checks in `.github/workflows/ci.yml` or
+`.github/workflows/codeql.yml`.
+
+### 1. Merge options
+
+Settings → General → Pull Requests: allow **squash merging** only. Turn off merge commits and
+rebase merging. Turn on "Automatically delete head branches".
+
+```bash
+gh api -X PATCH repos/OMAR9564/disclosly -F allow_squash_merge=true -F allow_merge_commit=false -F allow_rebase_merge=false -F delete_branch_on_merge=true   # laptop
+```
+
+### 2. Branch ruleset on `main`
+
+Settings → Rules → Rulesets → New branch ruleset:
+
+- Name `main`, enforcement **Active**, target the default branch, **no bypass actors**.
+- Restrict deletions; block force pushes.
+- Require a pull request before merging, with allowed merge method **Squash** only.
+- Require status checks to pass, with the branch up to date: `lint`, `typecheck`,
+  `test-backend`, `test-web`, `evals`, `build`, `security` and `CodeQL`.
+
+The same ruleset from the command line:
+
+```bash
+gh api -X POST repos/OMAR9564/disclosly/rulesets --input - <<'JSON'   # laptop
+{
+  "name": "main",
+  "target": "branch",
+  "enforcement": "active",
+  "bypass_actors": [],
+  "conditions": {"ref_name": {"include": ["~DEFAULT_BRANCH"], "exclude": []}},
+  "rules": [
+    {"type": "deletion"},
+    {"type": "non_fast_forward"},
+    {"type": "pull_request", "parameters": {
+      "required_approving_review_count": 0,
+      "dismiss_stale_reviews_on_push": false,
+      "require_code_owner_review": false,
+      "require_last_push_approval": false,
+      "required_review_thread_resolution": false,
+      "allowed_merge_methods": ["squash"]
+    }},
+    {"type": "required_status_checks", "parameters": {
+      "strict_required_status_checks_policy": true,
+      "required_status_checks": [
+        {"context": "lint"}, {"context": "typecheck"}, {"context": "test-backend"},
+        {"context": "test-web"}, {"context": "evals"}, {"context": "build"},
+        {"context": "security"}, {"context": "CodeQL"}
+      ]
+    }}
+  ]
+}
+JSON
+```
+
+A check name only appears in the picker after it has run once, so open the Phase 4 pull request
+first and create the ruleset while it is open. `CodeQL` is the summary check that code scanning
+posts once both language analyses have uploaded, not the `CodeQL (python)` or
+`CodeQL (javascript-typescript)` job names.
+
+### 3. Security features
+
+Settings → Advanced Security (or Code security):
+
+- Secret scanning: on, with **push protection** on.
+- Dependabot alerts: on. Dependabot version updates come from `.github/dependabot.yml`.
+- Private vulnerability reporting: on (`SECURITY.md` points reporters to it).
+- Code scanning: leave default setup **off**. The advanced setup in `codeql.yml` runs instead,
+  and GitHub rejects uploads from both at once.
+
+```bash
+gh api -X PATCH repos/OMAR9564/disclosly --input - <<'JSON'   # laptop
+{"security_and_analysis": {
+  "secret_scanning": {"status": "enabled"},
+  "secret_scanning_push_protection": {"status": "enabled"}
+}}
+JSON
+gh api -X PUT repos/OMAR9564/disclosly/vulnerability-alerts            # laptop
+gh api -X PUT repos/OMAR9564/disclosly/private-vulnerability-reporting # laptop
+```
+
+### 4. Validate (quickstart V5 steps 3–4)
+
+Open one throwaway pull request per case below. Each must turn its check red and show the merge
+button blocked. Close each one without merging and delete its branch.
+
+| Change | Red check |
+|---|---|
+| `import os` unused in an `api/` module | `lint` |
+| `x: int = "a"` in an `api/` module | `typecheck` |
+| `assert False` in a unit test | `test-backend` |
+| a new `api/` module with untested branches, enough to drop total coverage below 80% | `test-backend` |
+| a gitleaks test pattern (for example a fake `ghp_` token) in a new file | `security` |
+
+Then try a direct push. GitHub must reject it with a ruleset violation:
+
+```bash
+git push origin HEAD:main   # laptop
+```

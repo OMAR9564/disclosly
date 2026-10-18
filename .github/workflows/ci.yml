@@ -31,6 +31,11 @@ jobs:
       - run: uv run ruff format --check .
       # shellcheck is preinstalled on GitHub-hosted Ubuntu runners.
       - run: shellcheck infra/scripts/*.sh
+      - uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4.0.1
+        with:
+          terraform_version: 1.16.4
+          terraform_wrapper: false
+      - run: terraform -chdir=infra/terraform fmt -check -recursive
       - run: npm ci
         working-directory: web
       - run: npm run lint
@@ -90,6 +95,7 @@ jobs:
       - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
       - run: uv sync
       # Unit and integration tests (marker `integration`) against the service containers.
+      # pyproject.toml addopts fail the run below 80% line coverage (api + evals).
       - run: uv run pytest
 
   test-web:
@@ -103,5 +109,77 @@ jobs:
           cache-dependency-path: web/package-lock.json
       - run: npm ci
         working-directory: web
+      # Fails below 80% line coverage (web/vitest.config.ts).
       - run: npm test
         working-directory: web
+      - run: npm run build
+        working-directory: web
+      - run: npx playwright install --with-deps chromium
+        working-directory: web
+      # --pass-with-no-tests until the smoke test lands (tasks.md T041); remove it then.
+      - run: npm run test:e2e -- --pass-with-no-tests
+        working-directory: web
+
+  evals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+      - run: uv sync
+      # Replays recorded cassettes only; never calls a model.
+      - run: uv run python -m evals.run --cassettes-only
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Build API image (no push)
+        run: docker build -f api/Dockerfile --build-arg APP_VERSION=${{ github.sha }} .
+      - name: Validate compose files
+        run: |
+          docker compose --env-file .env.example -f infra/docker-compose.yml config -q
+          docker compose --env-file .env.example -f infra/docker-compose.yml -f infra/docker-compose.dev.yml config -q
+      - uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4.0.1
+        with:
+          terraform_version: 1.16.4
+          terraform_wrapper: false
+      - name: Validate Terraform
+        run: |
+          terraform -chdir=infra/terraform fmt -check -recursive
+          terraform -chdir=infra/terraform init -backend=false -input=false
+          terraform -chdir=infra/terraform validate
+      - name: Validate Caddyfile
+        run: >-
+          docker run --rm
+          -e API_DOMAIN=api.example.com -e ACME_EMAIL=ops@example.com
+          -v "$PWD/infra/Caddyfile:/etc/caddy/Caddyfile:ro"
+          caddy:2 caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
+      - run: shellcheck infra/scripts/*.sh api/entrypoint.sh
+
+  security:
+    runs-on: ubuntu-latest
+    env:
+      GITLEAKS_VERSION: 8.30.1
+      GITLEAKS_SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: web/.nvmrc
+      - run: uv sync
+      - name: pip-audit (runtime dependencies)
+        run: uv export --frozen --no-dev --format requirements-txt | uv run pip-audit -r /dev/stdin --strict
+      # Runtime dependencies only, like pip-audit above (research.md R11).
+      - name: npm audit (runtime dependencies)
+        run: npm --prefix web audit --audit-level=high --omit=dev
+      - name: Install gitleaks
+        run: |
+          archive="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          curl -fsSLO "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/${archive}"
+          echo "${GITLEAKS_SHA256}  ${archive}" | sha256sum --check
+          tar -xzf "${archive}" gitleaks
+      - name: gitleaks (full history)
+        run: ./gitleaks detect --source . --config .gitleaks.toml --redact --verbose

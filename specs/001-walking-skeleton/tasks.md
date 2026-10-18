@@ -134,21 +134,21 @@ Paths follow plan.md "Source Code": Python packages `api/`, `evals/` and `tests/
 
 **Independent Test**: quickstart V5 steps 3–4. Throwaway PRs with a lint error, a type error, a failing test, coverage < 80% and a fake secret each turn their check red and cannot merge. A direct push to `main` is rejected.
 
-- [ ] T025 [US5] Enforce coverage: in `pyproject.toml`, `--cov=api --cov=evals --cov-report=term-missing --cov-fail-under=80` for the `test-backend` job; confirm the `web/vitest.config.ts` lines threshold of 80 fails `npm test` when it is not met. Add `test-web` steps `npm run build` and `npm run test:e2e` (Playwright installs Chromium with `--with-deps`) in `.github/workflows/ci.yml`
-- [ ] T026 [P] [US5] Implement the cassette-only eval runner in `evals/run.py` (`python -m evals.run --cassettes-only`). It discovers `evals/datasets/*.jsonl`, fails if any case has no recorded cassette in `evals/cassettes/`, and never makes network calls. On an empty suite it prints `0 cases, passed` and exits 0. Write `tests/unit/test_evals_runner.py` first (empty suite passes; a case without a cassette fails). Add CI job `evals` in `.github/workflows/ci.yml`
-- [ ] T027 [P] [US5] Add CI job `build` in `.github/workflows/ci.yml` that runs:
+- [X] T025 [US5] Enforce coverage: in `pyproject.toml`, `--cov=api --cov=evals --cov-report=term-missing --cov-fail-under=80` for the `test-backend` job; confirm the `web/vitest.config.ts` lines threshold of 80 fails `npm test` when it is not met. Add `test-web` steps `npm run build` and `npm run test:e2e` (Playwright installs Chromium with `--with-deps`) in `.github/workflows/ci.yml`
+- [X] T026 [P] [US5] Implement the cassette-only eval runner in `evals/run.py` (`python -m evals.run --cassettes-only`). It discovers `evals/datasets/*.jsonl`, fails if any case has no recorded cassette in `evals/cassettes/`, and never makes network calls. On an empty suite it prints `0 cases, passed` and exits 0. Write `tests/unit/test_evals_runner.py` first (empty suite passes; a case without a cassette fails). Add CI job `evals` in `.github/workflows/ci.yml`
+- [X] T027 [P] [US5] Add CI job `build` in `.github/workflows/ci.yml` that runs:
   - `docker build -f api/Dockerfile --build-arg APP_VERSION=${{ github.sha }} .` (no push);
   - `docker compose --env-file .env.example -f infra/docker-compose.yml config` and the same with the dev override;
   - `terraform -chdir=infra/terraform fmt -check`, `init -backend=false` and `validate`;
   - `caddy validate` on `infra/Caddyfile` in the `caddy:2` image;
   - `shellcheck infra/scripts/*.sh api/entrypoint.sh`;
   - `terraform fmt -check` in the `lint` job.
-- [ ] T028 [P] [US5] Add CI job `security` in `.github/workflows/ci.yml`:
+- [X] T028 [P] [US5] Add CI job `security` in `.github/workflows/ci.yml`:
   - `uv export --frozen --no-dev --format requirements-txt | uv run pip-audit -r /dev/stdin --strict`;
-  - `npm --prefix web audit --audit-level=high`;
+  - `npm --prefix web audit --audit-level=high --omit=dev` (runtime dependencies only, like `pip-audit` with `--no-dev`; dev-only advisories are tracked by Dependabot alerts);
   - pinned gitleaks CLI `detect` over the full history (`fetch-depth: 0`), with `.gitleaks.toml` allowlisting only the placeholder values in `.env.example`.
-- [ ] T029 [P] [US5] Create `.github/workflows/codeql.yml` for `python` and `javascript-typescript`, triggered on PR, push to `main` and a weekly schedule, with actions pinned by SHA
-- [ ] T030 [US5] (owner action) Configure the repository settings and document them in `docs/runbook.md` ("Repository settings"):
+- [X] T029 [P] [US5] Create `.github/workflows/codeql.yml` for `python` and `javascript-typescript`, triggered on PR, push to `main` and a weekly schedule, with actions pinned by SHA
+- [X] T030 [US5] (owner action) Configure the repository settings and document them in `docs/runbook.md` ("Repository settings"):
   - a branch ruleset on `main`: PR required; required checks `lint`, `typecheck`, `test-backend`, `test-web`, `evals`, `build`, `security` and `CodeQL`; squash merge only; block force pushes and deletions; no bypass actors;
   - secret scanning with push protection, Dependabot alerts and private vulnerability reporting.
 

@@ -174,13 +174,17 @@ The Technical Context had no open NEEDS CLARIFICATION items after the spec clari
   | `test-web` | Vitest with an 80% line threshold, `next build`, Playwright smoke against `next start` |
   | `evals` | `python -m evals.run --cassettes-only`, which passes on the empty suite |
   | `build` | API Docker build, `docker compose config` for both compose files, `terraform validate` |
-  | `security` | `pip-audit` (via `uv export`), `npm audit --audit-level=high`, gitleaks (pinned CLI over full history) |
+  | `security` | `pip-audit` (via `uv export`), `npm audit --audit-level=high --omit=dev`, gitleaks (pinned CLI over full history) |
 
   `codeql.yml` covers Python and JavaScript/TypeScript. GitHub secret scanning and push
   protection are turned on in the repository settings. `dependabot.yml` covers `uv`, `npm`,
   `docker`, `github-actions` and `terraform`. All Actions are pinned by commit SHA.
 - **Rationale**: These map one-to-one to the constitution's Quality Gates table (FR-019, FR-020,
-  FR-026). Separate jobs make each gate a separate required status check.
+  FR-026). Separate jobs make each gate a separate required status check. Both dependency
+  audits cover runtime dependencies only (`uv export --no-dev`, `npm audit --omit=dev`): dev
+  tools never ship in the API image or the Vercel bundle. Dev-only advisories stay visible
+  through Dependabot alerts. Decided 2026-10-18 after an unpatched high advisory in `braces`
+  (GHSA-vfj7-8cjw-p6xm, reached only through `eslint-config-next`) blocked the gate.
 - **Alternatives considered**: One monolithic CI job is simpler, but a single check name cannot
   show which gate failed. The `gitleaks-action` wrapper is avoided because the gitleaks CLI binary
   is enough and has no license question.

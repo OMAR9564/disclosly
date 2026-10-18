@@ -1,0 +1,12 @@
+# gitleaks configuration for the CI `security` job (research.md R11).
+# Keep every default rule. The only exception is the documented placeholder value in
+# .env.example; a real-looking value in that file, or CHANGE_ME anywhere else, is still reported.
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Placeholder values in .env.example"
+condition = "AND"
+paths = ['''^\.env\.example$''']
+regexes = ['''CHANGE_ME''']
