@@ -252,8 +252,8 @@ Paths follow plan.md "Source Code": Python packages `api/`, `evals/` and `tests/
 - [X] T044 [P] Write `docs/adr/0001-walking-skeleton-delivery.md` recording research.md R7 (deploy and rollback), R8 (TLS via Cloudflare Full strict + Caddy HTTP-01), R9 (Terraform with local state) and R10 (Vercel deploy from CI only), with alternatives
 - [X] T045 [P] Complete `docs/runbook.md` with sections for: server reboot, certificate renewal check, full server rebuild from Terraform, secret rotation (deploy key, Vercel token, Postgres password), Terraform state backup, and reading logs (`docker compose logs api`)
 - [X] T046 Run quickstart V8 (reboot recovery < 5 min; `docker stats --no-stream` with each container under its limit and total < 2 GB) and record the measured memory numbers in `README.md` (SC-008)
-- [ ] T047 Update `PROJECT_SPEC.md` §22 to mark the domain decision as resolved (`disclosly.com`, Hetzner + Terraform) with the date. This is a spec change, so the owner reviews it in its own PR
-- [ ] T048 Run the full quickstart V1–V9, confirm SC-001 to SC-009, and record the results in `specs/001-walking-skeleton/checklists/acceptance.md`
+- [X] T047 Update `PROJECT_SPEC.md` §22 to mark the domain decision as resolved (`disclosly.com`, Hetzner + Terraform) with the date. This is a spec change, so the owner reviews it in its own PR
+- [X] T048 Run the full quickstart V1–V9, confirm SC-001 to SC-009, and record the results in `specs/001-walking-skeleton/checklists/acceptance.md`
 
 ---
 
