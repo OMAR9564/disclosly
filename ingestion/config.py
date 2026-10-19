@@ -11,6 +11,7 @@ from pydantic import (
     BaseModel,
     ConfigDict,
     Field,
+    SecretStr,
     field_validator,
     model_validator,
 )
@@ -39,6 +40,7 @@ class IngestionSettings(BaseSettings):
 
     model_config = SettingsConfigDict(case_sensitive=False, frozen=True, extra="ignore")
 
+    database_url: SecretStr | None = None
     sec_user_agent: str | None = None
     ingest_data_dir: Path = Path("/tmp/disclosly-ingest")  # noqa: S108 - placeholder default
     corpus_disk_limit_gb: int = Field(default=20, gt=0)
@@ -62,6 +64,11 @@ class IngestionSettings(BaseSettings):
         if self.retrieval_rerank_top > self.retrieval_candidates:
             raise ValueError("RETRIEVAL_RERANK_TOP must not exceed RETRIEVAL_CANDIDATES")
         return self
+
+    def require_database_url(self) -> str:
+        if self.database_url is None:
+            raise RuntimeError("DATABASE_URL is required")
+        return self.database_url.get_secret_value()
 
     def require_sec_user_agent(self) -> str:
         """Return the SEC User-Agent; the SEC source calls this before any request."""
