@@ -77,7 +77,9 @@ services:
       retries: 5
 
   # Background jobs: ingestion, OCR and small-batch embedding (arq). deploy.sh does not touch
-  # it; the image is built by CI (workers/Dockerfile).
+  # it; the image is built by CI (workers/Dockerfile). Its variables are optional here, because
+  # a missing required variable fails the whole file and with it every API deploy. The worker
+  # itself stops at startup when SEC_USER_AGENT is empty or has no contact address.
   worker:
     image: ghcr.io/omar9564/disclosly-worker:${WORKER_IMAGE_TAG:-main}
     restart: unless-stopped
@@ -85,7 +87,7 @@ services:
     environment:
       DATABASE_URL: ${DATABASE_URL:?DATABASE_URL is required}
       REDIS_URL: ${REDIS_URL:?REDIS_URL is required}
-      SEC_USER_AGENT: ${SEC_USER_AGENT:?SEC_USER_AGENT is required}
+      SEC_USER_AGENT: ${SEC_USER_AGENT:-}
       INGEST_DATA_DIR: /data/ingest
       CORPUS_DISK_LIMIT_GB: ${CORPUS_DISK_LIMIT_GB:-20}
       RETRIEVAL_CHUNKER_VERSION: ${RETRIEVAL_CHUNKER_VERSION:-v1-600-64}
