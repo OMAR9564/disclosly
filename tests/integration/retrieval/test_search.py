@@ -6,9 +6,6 @@ from collections.abc import AsyncIterator, Sequence
 
 import pytest
 import redis.asyncio
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import SimpleSpanProcessor
-from opentelemetry.sdk.trace.export.in_memory_span_exporter import InMemorySpanExporter
 from sqlalchemy import Engine
 
 from ingestion.models import DocType
@@ -122,17 +119,37 @@ async def test_search_logs_latency(corpus: Corpus, caplog: pytest.LogCaptureFixt
     assert record.filters == {"language": "tr"}  # type: ignore[attr-defined]
 
 
+class FakeSpan:
+    def __init__(self) -> None:
+        self.attributes: dict[str, object] = {}
+
+    def __enter__(self) -> "FakeSpan":
+        return self
+
+    def __exit__(self, *exc: object) -> None:
+        return None
+
+    def set_attribute(self, key: str, value: object) -> None:
+        self.attributes[key] = value
+
+
+class FakeTracer:
+    def __init__(self) -> None:
+        self.spans: list[tuple[str, FakeSpan]] = []
+
+    def start_as_current_span(self, name: str) -> FakeSpan:
+        span = FakeSpan()
+        self.spans.append((name, span))
+        return span
+
+
 async def test_search_emits_span(corpus: Corpus, monkeypatch: pytest.MonkeyPatch) -> None:
-    exporter = InMemorySpanExporter()
-    provider = TracerProvider()
-    provider.add_span_processor(SimpleSpanProcessor(exporter))
-    monkeypatch.setattr(search_module, "tracer", provider.get_tracer("test"))
+    tracer = FakeTracer()
+    monkeypatch.setattr(search_module, "tracer", tracer)
     await service(corpus.engine).search("favok", k=2)
-    (span,) = exporter.get_finished_spans()
-    assert span.name == "search_documents"
-    assert span.attributes is not None
-    assert (span.attributes["search.k"], span.attributes["search.hits"]) == (2, 2)
-    assert span.attributes["search.rerank"] is False
+    ((name, span),) = tracer.spans
+    assert name == "search_documents"
+    assert span.attributes == {"search.k": 2, "search.rerank": False, "search.hits": 2}
 
 
 @pytest.fixture
