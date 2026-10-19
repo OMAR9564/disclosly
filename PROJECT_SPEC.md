@@ -407,7 +407,7 @@ disclosly/
 ---
 
 ## 22. Open decisions (ask the owner before assuming)
-- Final product name and domain (candidate: disclosly.com — check availability before buying; free fallback: subdomain of Numiver's domain).
+- ~~Final product name and domain.~~ **Resolved 2026-10-19:** domain `disclosly.com` (web on the apex, API on `api.disclosly.com`, `www` redirects to the apex), hosted on one Hetzner server provisioned with Terraform, DNS on Cloudflare. The product name stays a working name. See `docs/adr/0001-walking-skeleton-delivery.md`.
 - Integration depth with Numiver: separate app linked from Numiver vs. embedded "Derin Araştırma" feature calling this API.
 - Exact free-user daily quotas.
 - Which BIST companies and funds are in the first data set.
