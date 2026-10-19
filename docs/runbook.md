@@ -537,3 +537,78 @@ terraform -chdir=infra/terraform plan   # must show no changes
 
 Without any backup, run `terraform import` for each resource listed in `infra/terraform/main.tf`
 before the next `apply`.
+
+## Corpus ingestion
+
+Phase 2, US1 (`specs/002-data-retrieval/`). The worker fetches, parses and chunks; the laptop
+embeds in bulk. Commands are in `specs/002-data-retrieval/contracts/cli.md`.
+
+### 1. Worker image and `.env`
+
+The deploy workflow pushes only the API image. Build and push the worker image by hand until CI
+publishes it:
+
+```bash
+SHA=$(git rev-parse HEAD)                                                              # laptop
+docker build -f workers/Dockerfile -t ghcr.io/omar9564/disclosly-worker:$SHA .
+docker push ghcr.io/omar9564/disclosly-worker:$SHA
+```
+
+Add to the server `.env` (values from `.env.example`; `SEC_USER_AGENT` needs a real contact
+address, SEC rejects requests without one):
+
+```bash
+WORKER_IMAGE_TAG=<sha>
+SEC_USER_AGENT=Disclosly <contact email>
+CORPUS_DISK_LIMIT_GB=20
+RETRIEVAL_CHUNKER_VERSION=v1-600-64
+```
+
+```bash
+cd ~/disclosly && dc pull worker && dc --profile migrate run --rm migrate && dc up -d worker  # server
+dc ps worker          # healthy after about a minute (`arq --check`)
+```
+
+### 2. Full ingestion
+
+Run inside the worker container. SEC goes first (5 req/s); KAP is limited to 1 req/s, so the
+BIST half takes longer. A run is safe to stop and start again: finished documents are skipped,
+interrupted and failed ones are processed again.
+
+```bash
+dc exec worker python -m ingestion.run ingest --source sec                             # server
+dc exec worker python -m ingestion.run ingest --source kap
+dc exec worker python -m ingestion.run status --json
+```
+
+The nightly cron (02:30 UTC) runs `ingest_company` for every ticker and then `embed_pending`.
+
+### 3. Bulk embedding on the laptop
+
+Postgres listens only inside the Docker network and on the server's loopback through the dev
+override, so open a tunnel to the container port. Do not publish 5432 on the public interface.
+
+```bash
+PG_IP=$(ssh deploy@<server> "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' disclosly-postgres-1")
+ssh -N -L 15432:${PG_IP}:5432 deploy@<server>                                          # laptop, keep open
+```
+
+```bash
+uv sync --group ml                                                                     # laptop
+DATABASE_URL=postgresql://disclosly:<password>@localhost:15432/disclosly \
+  uv run python -m ingestion.embed --batch 64 --chunker-version v1-600-64
+```
+
+The command embeds chunks with a null vector and exits; stop it at any time and run it again to
+resume. Expected duration: record the measured value below.
+
+### 4. Results (SC-001, SC-003, SC-006)
+
+Fill in after the full run:
+
+| Item | Value | Date |
+|---|---|---|
+| Companies with ≥ 1 document per required type (SC-001) | _pending_ | |
+| `status --json`: chunks missing metadata / facts missing source (SC-003) | _pending_ | |
+| Database size, `disk_bytes` (SC-006) | _pending_ | |
+| Bulk embedding duration on the laptop | _pending_ | |

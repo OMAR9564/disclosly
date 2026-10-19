@@ -134,6 +134,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Build API image (no push)
         run: docker build -f api/Dockerfile --build-arg APP_VERSION=${{ github.sha }} .
+      - name: Build worker image (no push)
+        run: docker build -f workers/Dockerfile .
       - name: Validate compose files
         run: |
           docker compose --env-file .env.example -f infra/docker-compose.yml config -q
@@ -155,7 +157,13 @@ jobs:
           caddy:2 caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
       - run: shellcheck infra/scripts/*.sh api/entrypoint.sh
       - name: Local stack smoke test (make up)
-        run: cp .env.example .env && make up && curl -fsS localhost:8000/healthz && make down
+        run: |
+          cp .env.example .env
+          make up
+          curl -fsS localhost:8000/healthz
+          # `make up` waits for health checks; the worker's is `arq --check`.
+          test "$(docker inspect -f '{{.State.Health.Status}}' "$(docker compose --env-file .env -f infra/docker-compose.yml -f infra/docker-compose.dev.yml ps -q worker)")" = healthy
+          make down
 
   security:
     runs-on: ubuntu-latest

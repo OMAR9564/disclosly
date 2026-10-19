@@ -127,13 +127,26 @@ class RateLimitedClient:
         return bucket
 
     async def get(self, url: str, params: Mapping[str, str] | None = None) -> httpx.Response:
+        return await self._request("GET", url, params=params)
+
+    async def post_json(self, url: str, body: object) -> httpx.Response:
+        return await self._request("POST", url, json=body)
+
+    async def _request(
+        self,
+        method: str,
+        url: str,
+        *,
+        params: Mapping[str, str] | None = None,
+        json: object = None,
+    ) -> httpx.Response:
         host = httpx.URL(url).host
         status: int | None = None
         for attempt in range(1, self._max_attempts + 1):
             await self._bucket(host).acquire()
             retry_after: float | None = None
             try:
-                response = await self._client.get(url, params=params)
+                response = await self._client.request(method, url, params=params, json=json)
             except httpx.TransportError:
                 status = None
             else:

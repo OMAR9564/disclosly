@@ -76,6 +76,30 @@ services:
       timeout: 5s
       retries: 5
 
+  # Background jobs: ingestion, OCR and small-batch embedding (arq). deploy.sh does not touch
+  # it; the image is built by CI (workers/Dockerfile).
+  worker:
+    image: ghcr.io/omar9564/disclosly-worker:${WORKER_IMAGE_TAG:-main}
+    restart: unless-stopped
+    mem_limit: 768m
+    environment:
+      DATABASE_URL: ${DATABASE_URL:?DATABASE_URL is required}
+      REDIS_URL: ${REDIS_URL:?REDIS_URL is required}
+      SEC_USER_AGENT: ${SEC_USER_AGENT:?SEC_USER_AGENT is required}
+      INGEST_DATA_DIR: /data/ingest
+      CORPUS_DISK_LIMIT_GB: ${CORPUS_DISK_LIMIT_GB:-20}
+      RETRIEVAL_CHUNKER_VERSION: ${RETRIEVAL_CHUNKER_VERSION:-v1-600-64}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-intfloat/multilingual-e5-small}
+      RERANK_MODEL: ${RERANK_MODEL:-cross-encoder/mmarco-mMiniLMv2-L12-H384-v1}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    volumes:
+      - ingest_data:/data/ingest
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
   # One-off: `docker compose --profile migrate run --rm migrate` (infra/scripts/deploy.sh).
   migrate:
     image: ghcr.io/omar9564/disclosly-api:${API_IMAGE_TAG:?API_IMAGE_TAG is required}
@@ -91,3 +115,4 @@ volumes:
   caddy_data:
   caddy_config:
   postgres_data:
+  ingest_data:

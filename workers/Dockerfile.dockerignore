@@ -1,0 +1,13 @@
+# Allowlist: the worker image needs the Python project files and its packages.
+# `api` is included for the shared JSON log formatter.
+*
+!pyproject.toml
+!uv.lock
+!.python-version
+!api/
+!ingestion/
+!retrieval/
+!workers/
+**/__pycache__
+**/*.pyc
+workers/Dockerfile*
