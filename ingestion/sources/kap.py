@@ -26,6 +26,18 @@ _RULE_TYPES = {"3 Aylık": "Q1", "6 Aylık": "Q2", "9 Aylık": "Q3", "Yıllık":
 _ENGLISH_MARKERS = ("ing ", "ing.", "ingilizce", "english", " eng ", "_eng", "-eng")
 
 
+# Disclosures whose content is the PDF attachment; the others are read from the rendered body.
+PDF_DOC_TYPES = frozenset({DocType.KAP_ANNUAL_REPORT, DocType.KAP_PROSPECTUS})
+
+
+def stored_extra(doc_type: DocType, source_url: str) -> dict[str, str]:
+    """`RemoteDocument.extra` for a stored document, as `list_documents` would build it."""
+    return {
+        "disclosure_index": source_url.rsplit("/", 1)[-1],
+        "format": "pdf" if doc_type in PDF_DOC_TYPES else "kap_json",
+    }
+
+
 def kap_client(user_agent: str = "Disclosly", **kwargs: Any) -> RateLimitedClient:
     return RateLimitedClient(
         {KAP_HOST: KAP_RATE_PER_S},
@@ -150,7 +162,6 @@ class KapSource:
                 if published < since:
                     continue
                 index = str(item["disclosureIndex"])
-                wants_pdf = doc_type in (DocType.KAP_ANNUAL_REPORT, DocType.KAP_PROSPECTUS)
                 documents[index] = RemoteDocument(
                     ticker=company.ticker,
                     source_url=disclosure_url(index),
@@ -159,8 +170,7 @@ class KapSource:
                     published_at=published,
                     language=Language.TR,
                     extra={
-                        "disclosure_index": index,
-                        "format": "pdf" if wants_pdf else "kap_json",
+                        **stored_extra(doc_type, disclosure_url(index)),
                         "subject": str(item.get("subject") or ""),
                     },
                 )
