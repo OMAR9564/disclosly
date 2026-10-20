@@ -30,7 +30,7 @@ def test_settings_defaults() -> None:
     assert settings.ingest_data_dir == Path("/tmp/disclosly-ingest")  # noqa: S108
     assert settings.corpus_disk_limit_gb == 20
     assert settings.retrieval_chunker_version == "v1-600-64"
-    assert settings.retrieval_rerank is False
+    assert settings.retrieval_rerank is True  # chosen in ADR 0002 (golden set)
     assert settings.retrieval_candidates == 50
     assert settings.retrieval_rerank_top == 20
     assert settings.embedding_model == "intfloat/multilingual-e5-small"
@@ -38,10 +38,10 @@ def test_settings_defaults() -> None:
 
 
 def test_settings_read_env(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setenv("RETRIEVAL_RERANK", "true")
+    monkeypatch.setenv("RETRIEVAL_RERANK", "false")
     monkeypatch.setenv("RETRIEVAL_CANDIDATES", "80")
     settings = IngestionSettings()
-    assert settings.retrieval_rerank is True
+    assert settings.retrieval_rerank is False
     assert settings.retrieval_candidates == 80
 
 

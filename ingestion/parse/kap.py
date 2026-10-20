@@ -21,6 +21,16 @@ from ingestion.parse.types import (
 )
 
 UNIT_LABEL = "Sunum Para Birimi"
+# Form fields every KAP disclosure repeats; they carry no content and made all material event
+# chunks look alike to the embedding model.
+BOILERPLATE_LABELS = frozenset(
+    {
+        "Yapılan Açıklama Güncelleme mi?",
+        "Yapılan Açıklama Düzeltme mi?",
+        "Konuya İlişkin Daha Önce Yapılan Açıklamanın Tarihi",
+        "Yapılan Açıklama Ertelenmiş Bir Açıklama mı?",
+    }
+)
 
 
 def _tr_text(node: LexborNode | None) -> str:
@@ -93,6 +103,8 @@ def _form(part: str) -> ParsedSection | None:
             if label:
                 section.blocks.append(Paragraph(label))
             section.blocks.extend(Paragraph(t) for t in texts if t)
+            continue
+        if label in BOILERPLATE_LABELS:
             continue
         cell = row.css_first("td.taxonomy-context-value")
         value = " ".join(cell.text(separator=" ").split()) if cell else ""

@@ -13,6 +13,7 @@ from ingestion import schema
 from ingestion.chunk import ChunkerConfig, WhitespaceCounter
 from ingestion.config import Company
 from ingestion.facts import FactDraft, extract_sec_facts
+from ingestion.models import DocType
 from ingestion.parse.types import ParsedDocument
 from ingestion.pipeline import Pipeline, SourceAdapter
 from ingestion.sources.base import RemoteDocument
@@ -296,3 +297,31 @@ async def test_kap_financial_report_facts(engine: Engine, tmp_path: Path) -> Non
     assert sections == 3
     assert facts[("revenue", "2025-Q3")].currency == "TRY"
     assert "Hasılat" in facts[("revenue", "2025-Q3")].source_ref
+
+
+async def test_rechunk_replace_rebuilds_selected_types(engine: Engine, tmp_path: Path) -> None:
+    sec, kap = _sources()
+    pipeline = _pipeline(engine, sec, kap, tmp_path)
+    await pipeline.run([AAPL, THYAO], SINCE)
+    with engine.begin() as conn:
+        conn.execute(text("UPDATE chunks SET text = 'stale'"))
+        conn.execute(text("UPDATE documents SET status = 'embedded'"))
+    with engine.connect() as conn:
+        kap_doc_type = conn.execute(
+            text("SELECT doc_type FROM documents WHERE source = 'kap'")
+        ).scalar_one()
+
+    result = await pipeline.rechunk(
+        ChunkerConfig(size=60, overlap=8), doc_types=[DocType(kap_doc_type)], replace=True
+    )
+    assert (result.documents, result.failed) == (1, 0) and result.chunks > 0
+    with engine.connect() as conn:
+        rows = conn.execute(
+            text(
+                "SELECT d.source, d.status, bool_or(c.text = 'stale') AS stale "
+                "FROM documents d JOIN chunks c ON c.document_id = d.id GROUP BY 1, 2"
+            )
+        ).all()
+    by_source = {r.source: (r.status, r.stale) for r in rows}
+    assert by_source["kap"] == ("chunked", False)  # rebuilt, waits for new vectors
+    assert by_source["sec"] == ("embedded", True)  # other types untouched

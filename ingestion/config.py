@@ -45,7 +45,7 @@ class IngestionSettings(BaseSettings):
     ingest_data_dir: Path = Path("/tmp/disclosly-ingest")  # noqa: S108 - placeholder default
     corpus_disk_limit_gb: int = Field(default=20, gt=0)
     retrieval_chunker_version: str = Field(default="v1-600-64", min_length=1)
-    retrieval_rerank: bool = False
+    retrieval_rerank: bool = True
     retrieval_candidates: int = Field(default=50, gt=0)
     retrieval_rerank_top: int = Field(default=20, gt=0)
     embedding_model: str = "intfloat/multilingual-e5-small"

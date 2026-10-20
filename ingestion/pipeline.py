@@ -15,7 +15,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Literal
 
-from sqlalchemy import Connection, Engine, delete, insert, or_, select, update
+from sqlalchemy import Connection, Engine, delete, insert, or_, select, true, update
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 from ingestion import schema
@@ -376,18 +376,31 @@ class Pipeline:
                 )
             )
 
-    async def rechunk(self, chunker: ChunkerConfig) -> RechunkSummary:
+    async def rechunk(
+        self,
+        chunker: ChunkerConfig,
+        *,
+        doc_types: Sequence[DocType] | None = None,
+        replace: bool = False,
+    ) -> RechunkSummary:
         """Build chunks for another chunker version (sweeps, research §R4).
 
         Raw files are deleted after parsing, so each document is fetched again; a document
         whose bytes changed since ingestion is skipped (the next `ingest` supersedes it).
+        With `replace`, existing chunks of this version are rebuilt (after a parser change);
+        their vectors are recomputed by `ingestion.embed`.
         """
         docs = schema.documents
         summary = RechunkSummary(chunker_version=chunker.version)
         adapters = {a.name: a for a in self._adapters}
         with self._engine.connect() as conn:
             rows = conn.execute(
-                select(docs).where(docs.c.status.in_(DONE_STATUSES)).order_by(docs.c.id)
+                select(docs)
+                .where(
+                    docs.c.status.in_(DONE_STATUSES),
+                    docs.c.doc_type.in_([d.value for d in doc_types]) if doc_types else true(),
+                )
+                .order_by(docs.c.id)
             ).all()
         for row in rows:
             adapter = adapters.get(row.source)
@@ -421,6 +434,22 @@ class Pipeline:
                     )
                     if len(section_ids) != len(parsed.sections):
                         raise ValueError("section count differs from stored sections")
+                    if replace:
+                        chunks = schema.chunks
+                        conn.execute(
+                            delete(chunks).where(
+                                chunks.c.document_id == row.id,
+                                chunks.c.chunker_version == chunker.version,
+                            )
+                        )
+                        conn.execute(
+                            update(docs)
+                            .where(
+                                docs.c.id == row.id,
+                                docs.c.status == DocumentStatus.EMBEDDED.value,
+                            )
+                            .values(status=DocumentStatus.CHUNKED.value)
+                        )
                     ticker = conn.execute(
                         select(schema.companies.c.ticker).where(
                             schema.companies.c.id == row.company_id

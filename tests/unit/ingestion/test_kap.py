@@ -153,6 +153,10 @@ def test_parse_material_event_text() -> None:
     assert any("CFM International" in t for t in texts)
     assert not any(isinstance(b, ExtractedTable) for b in doc.sections[0].blocks)
     assert len(texts) == len(set(texts))
+    # Form fields repeated by every disclosure are dropped.
+    assert not any(
+        t.startswith("Yapılan Açıklama") or t.startswith("Konuya İlişkin") for t in texts
+    )
 
 
 def test_parse_bad_payload_fails() -> None:

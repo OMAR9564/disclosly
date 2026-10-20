@@ -7,6 +7,7 @@ import pytest
 from ingestion import run
 from ingestion.chunk import ChunkerConfig, WhitespaceCounter
 from ingestion.config import Company, IngestionSettings
+from ingestion.models import DocType
 from ingestion.pipeline import RechunkSummary, RunSummary
 
 COMPANIES = [
@@ -23,8 +24,11 @@ class FakePipeline:
         self.calls.append(("run", ([c.ticker for c in companies], since, dry_run)))
         return RunSummary(run_id=None if dry_run else 7, fetched=2, skipped=3, failed=1, listed=6)
 
-    async def rechunk(self, config: ChunkerConfig) -> RechunkSummary:
+    async def rechunk(
+        self, config: ChunkerConfig, *, doc_types: Any = None, replace: bool = False
+    ) -> RechunkSummary:
         self.calls.append(("rechunk", config.version))
+        self.calls.append(("rechunk_options", (doc_types, replace)))
         return RechunkSummary(config.version, documents=2, chunks=10)
 
 
@@ -78,6 +82,13 @@ def test_rechunk(fake: FakePipeline, capsys: pytest.CaptureFixture[str]) -> None
     assert run.main(["rechunk", "--size", "400", "--overlap", "32"]) == 0
     assert json.loads(capsys.readouterr().out)["chunker_version"] == "v1-400-32"
     assert ("rechunk", "v1-400-32") in fake.calls
+    assert ("rechunk_options", (None, False)) in fake.calls
+
+
+def test_rechunk_replace_selected_types(fake: FakePipeline) -> None:
+    argv = ["rechunk", "--size", "600", "--doc-types", "kap_material_event", "--replace"]
+    assert run.main(argv) == 0
+    assert ("rechunk_options", ([DocType.KAP_MATERIAL_EVENT], True)) in fake.calls
 
 
 def test_status_json(
