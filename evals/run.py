@@ -4,6 +4,9 @@ Discovers every case in `evals/datasets/*.jsonl` (one JSON object per line with 
 and requires a recorded response at `evals/cassettes/<dataset>/<id>.json`. It never makes
 network calls. With no LLM features yet there is nothing to score, so a case passes when its
 cassette exists; scoring is added with the first real eval.
+
+`retrieval_golden.jsonl` has its own runner and cassette layout (`python -m evals.retrieval`),
+so this runner skips it.
 """
 
 import argparse
@@ -15,6 +18,8 @@ from pathlib import Path
 
 DATASETS_DIR = Path(__file__).parent / "datasets"
 CASSETTES_DIR = Path(__file__).parent / "cassettes"
+# Datasets scored by their own runner (evals/retrieval.py).
+OWN_RUNNER = frozenset({"retrieval_golden"})
 
 
 @dataclass
@@ -26,6 +31,8 @@ class Report:
 def run_suite(datasets_dir: Path, cassettes_dir: Path) -> Report:
     report = Report()
     for dataset in sorted(datasets_dir.glob("*.jsonl")):
+        if dataset.stem in OWN_RUNNER:
+            continue
         lines = dataset.read_text(encoding="utf-8").splitlines()
         for number, line in enumerate(lines, start=1):
             if not line.strip():
