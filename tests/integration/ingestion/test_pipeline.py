@@ -325,3 +325,24 @@ async def test_rechunk_replace_rebuilds_selected_types(engine: Engine, tmp_path:
     by_source = {r.source: (r.status, r.stale) for r in rows}
     assert by_source["kap"] == ("chunked", False)  # rebuilt, waits for new vectors
     assert by_source["sec"] == ("embedded", True)  # other types untouched
+
+
+async def test_rechunk_fetches_and_parses_like_ingestion(engine: Engine, tmp_path: Path) -> None:
+    from ingestion.pipeline import default_parser
+
+    sec, kap = _sources()
+    pipeline = _pipeline(engine, sec, kap, tmp_path)
+    await pipeline.run([AAPL, THYAO], SINCE)
+    seen: dict[str, dict[str, str]] = {}
+
+    def recording(remote: RemoteDocument, content: bytes) -> ParsedDocument:
+        seen[remote.source_url] = dict(remote.extra)
+        return default_parser(remote, content)
+
+    for adapter in pipeline._adapters:
+        adapter.parser = recording
+    await pipeline.rechunk(ChunkerConfig(size=30, overlap=4))
+    assert seen[SEC_URL] == {"format": "html"}
+    # The fixture KAP document is an annual report: its content is the PDF attachment.
+    assert seen[KAP_URL]["format"] == "pdf"
+    assert seen[KAP_URL]["disclosure_index"] == KAP_URL.rsplit("/", 1)[-1]

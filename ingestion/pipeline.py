@@ -29,6 +29,7 @@ from ingestion.parse.kap import parse_kap_detail
 from ingestion.parse.pdf import parse_pdf
 from ingestion.parse.types import ParsedDocument
 from ingestion.sources.base import RemoteDocument, Source
+from ingestion.sources.kap import stored_extra as kap_stored_extra
 
 logger = logging.getLogger("ingestion.pipeline")
 
@@ -407,13 +408,18 @@ class Pipeline:
             if adapter is None:
                 summary.skipped += 1
                 continue
+            doc_type = DocType(row.doc_type)
             remote = RemoteDocument(
                 ticker="",
                 source_url=row.source_url,
-                doc_type=DocType(row.doc_type),
+                doc_type=doc_type,
                 period=row.period,
                 published_at=row.published_at,
                 language=Language(row.language),
+                # Fetch and parse the same way as at ingestion (PDF attachment vs KAP body).
+                extra=kap_stored_extra(doc_type, row.source_url)
+                if row.source == "kap"
+                else {"format": "html"},
             )
             try:
                 content = await adapter.source.fetch(remote)
