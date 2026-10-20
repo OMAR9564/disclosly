@@ -19,7 +19,7 @@ pytestmark = pytest.mark.integration
 
 # Query text (with the e5 prefix) to the axis of the chunks it means.
 MEANINGS = {
-    "THYAO net borç 2025": 0,
+    "net borç 2025": 0,
     "fleet expansion aircraft": 2,  # no literal match: the uçak siparişi chunk is on axis 2
     "favok": 1,
     "net debt": 0,
@@ -50,9 +50,7 @@ def service(engine: Engine, reranker: Reranker | None = None) -> SearchService:
 
 
 async def test_ticker_filter_returns_only_that_company(corpus: Corpus) -> None:
-    hits = await service(corpus.engine).search(
-        "THYAO net borç 2025", SearchFilters(tickers=["THYAO"])
-    )
+    hits = await service(corpus.engine).search("net borç 2025", SearchFilters(tickers=["THYAO"]))
     assert hits and {h.source.ticker for h in hits} == {"THYAO"}
     top = hits[0]
     assert top.chunk_id == corpus.ids["thy-debt"]

@@ -13,15 +13,22 @@ CONFIGS = ("tr_unaccent", "en_unaccent")
 
 
 def _tsquery(query: str) -> ColumnElement[str] | None:
-    """Any query word may match (OR); ranking rewards chunks that match more of them."""
+    """Every query word must match (AND), parsed with the Turkish or the English config.
+
+    Matching any word (OR) let common words ("ne", "kaç", "company") pull in hundreds of
+    unrelated chunks, which outranked good vector hits after fusion (golden set: TR recall@10
+    0.59 with OR, 0.82 with AND, rerank on; see ADR 0002). Stop words are dropped by
+    each config.
+    """
     words = _WORD_RE.findall(query)
     if not words:
         return None
-    ored = " or ".join(words)
+    joined = " ".join(words)
     parts = [
-        func.websearch_to_tsquery(literal_column(f"'{config}'::regconfig"), ored)
+        func.websearch_to_tsquery(literal_column(f"'{config}'::regconfig"), joined)
         for config in CONFIGS
     ]
+    # OR between configs: an English chunk only has English stems, a Turkish one Turkish stems.
     return parts[0].op("||")(parts[1])
 
 

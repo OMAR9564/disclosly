@@ -81,9 +81,9 @@ def test_unaccent_favok_matches_favok_with_umlaut(corpus: Corpus) -> None:
     assert corpus.names(_text(corpus, "FAVÖK marjı"))[0] == "thy-favok"
 
 
-def test_fulltext_ranks_more_matches_first(corpus: Corpus) -> None:
-    names = corpus.names(_text(corpus, "net debt revenue"))
-    assert names[0] == "aapl-debt"
+def test_fulltext_needs_every_word(corpus: Corpus) -> None:
+    assert corpus.names(_text(corpus, "net debt revenue")) == ["aapl-debt"]  # old is superseded
+    names = corpus.names(_text(corpus, "revenue"))
     assert "aapl-raw" in names  # full text does not need an embedding
     assert "aapl-old" not in names
 

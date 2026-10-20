@@ -6,9 +6,13 @@ All commands exit 0 on success, 1 on failure, and log JSON lines to stderr.
 |---|---|---|
 | `python -m ingestion.run ingest` | Fetch, parse, chunk, extract facts, clean up | `--tickers THYAO,AAPL`, `--source kap\|sec`, `--since 2024-10-01`, `--dry-run` |
 | `python -m ingestion.run status` | Counts per status, last run, disk usage | `--json` |
-| `python -m ingestion.run rechunk` | Build chunks for another chunker version (sweep) | `--size 400 --overlap 64` |
+| `python -m ingestion.run rechunk` | Build chunks for another chunker version (sweep), or rebuild one version after a parser change | `--size 400 --overlap 64`, `--doc-types kap_material_event`, `--replace` |
 | `python -m ingestion.embed` | Embed chunks with null embedding | `--batch 64`, `--limit N`, `--chunker-version v1-600-64` |
 | `python -m evals.retrieval` | Run golden set, write report | `--configs v1-400-64,v1-600-64 --rerank on,off`, `--cassettes-only` |
+
+`rechunk --replace` deletes the chunks of that version for each selected document before
+inserting the new ones (vectors are recomputed by `ingestion.embed`) and sets embedded documents
+back to `chunked`.
 
 `ingest` output summary (stdout, JSON): `{"run_id": 7, "fetched": 12, "skipped": 340,
 "failed": 1, "duration_s": 512.4}`.

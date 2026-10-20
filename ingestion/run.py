@@ -22,6 +22,7 @@ from ingestion.adapters import build_adapters
 from ingestion.chunk import ChunkerConfig, HuggingFaceCounter, TokenCounter, WhitespaceCounter
 from ingestion.config import Company, IngestionSettings, load_companies
 from ingestion.db import database_size_bytes, make_engine
+from ingestion.models import DocType
 from ingestion.pipeline import Pipeline, SourceAdapter
 
 logger = logging.getLogger("ingestion.run")
@@ -125,6 +126,10 @@ def _parser() -> argparse.ArgumentParser:
     rechunk = sub.add_parser("rechunk", help="build chunks for another chunker version")
     rechunk.add_argument("--size", type=int, required=True)
     rechunk.add_argument("--overlap", type=int, default=64)
+    rechunk.add_argument("--doc-types", help="comma-separated, default all")
+    rechunk.add_argument(
+        "--replace", action="store_true", help="rebuild existing chunks of this version"
+    )
     return parser
 
 
@@ -171,7 +176,19 @@ def main(argv: Sequence[str] | None = None) -> int:
             print(json.dumps(out))
             return 0
         config = ChunkerConfig(args.size, args.overlap)
-        result = asyncio.run(_with_pipeline(settings, engine, None, lambda p: p.rechunk(config)))
+        doc_types = (
+            [DocType(t.strip()) for t in args.doc_types.split(",") if t.strip()]
+            if args.doc_types
+            else None
+        )
+        result = asyncio.run(
+            _with_pipeline(
+                settings,
+                engine,
+                None,
+                lambda p: p.rechunk(config, doc_types=doc_types, replace=args.replace),
+            )
+        )
         print(json.dumps(result.as_dict()))
         return 0 if result.failed == 0 else 1
     except Exception as exc:
