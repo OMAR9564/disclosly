@@ -61,3 +61,16 @@ def test_unreadable_pdf_fails() -> None:
 def test_real_tesseract_reads_scanned_page() -> None:
     doc = parse_pdf((FIXTURES / "scanned-page.pdf").read_bytes(), ocr=tesseract_ocr)
     assert "AYDINLATMA" in doc.text.upper()
+
+
+def test_aes_encrypted_pdf_with_empty_user_password() -> None:
+    import io
+
+    from pypdf import PdfReader, PdfWriter
+
+    writer = PdfWriter(clone_from=PdfReader(FIXTURES / "text-report.pdf"))
+    writer.encrypt(user_password="", owner_password="owner", algorithm="AES-256")  # noqa: S106
+    buffer = io.BytesIO()
+    writer.write(buffer)
+    doc = parse_pdf(buffer.getvalue(), ocr=_never_ocr)
+    assert "Hasilat 1.000.000 TL" in doc.text

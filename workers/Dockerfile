@@ -36,7 +36,7 @@ ENV PATH=/opt/venv/bin:${PATH} \
     TRANSFORMERS_OFFLINE=1 \
     INGEST_DATA_DIR=/data/ingest
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-tur \
+    && apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-tur jbig2dec \
     && rm -rf /var/lib/apt/lists/*
 RUN groupadd --system --gid 10001 app \
     && useradd --system --uid 10001 --gid app --no-create-home --shell /usr/sbin/nologin app \
