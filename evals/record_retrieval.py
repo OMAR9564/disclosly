@@ -18,7 +18,7 @@ from typing import Any
 from sqlalchemy import Engine, and_, select
 from sqlalchemy.orm import aliased
 
-from evals.retrieval import CASSETTES_DIR, GOLDEN_PATH, GoldenCase, load_golden
+from evals.retrieval import CASSETTES_DIR, GOLDEN_PATH, GoldenCase, load_golden, normalise
 from ingestion import schema
 from ingestion.embed import Embedder
 from retrieval.embeddings import QUERY_PREFIX
@@ -28,15 +28,30 @@ from retrieval.rerank import Reranker
 DEFAULT_MAX_DOCUMENTS = 10
 
 
+def interleave(cases: Sequence[GoldenCase]) -> list[GoldenCase]:
+    """Alternate languages (tr, en, tr, ...) so a small fixture corpus covers both."""
+    by_language: dict[str, list[GoldenCase]] = {}
+    for case in cases:
+        by_language.setdefault(case.language, []).append(case)
+    queues = [by_language[k] for k in sorted(by_language, reverse=True)]  # "tr" first
+    out: list[GoldenCase] = []
+    while any(queues):
+        for queue in queues:
+            if queue:
+                out.append(queue.pop(0))
+    return out
+
+
 def pick_documents(engine: Engine, cases: Sequence[GoldenCase], limit: int) -> list[int]:
-    """Current documents named by the cases' expected evidence, in case order, at most `limit`."""
+    """Current documents named by the cases' expected evidence, languages interleaved, at most
+    `limit`."""
     docs, companies = schema.documents, schema.companies
     newer = aliased(docs)
     picked: list[int] = []
     with engine.connect() as conn:
-        for case in cases:
+        for case in interleave(cases):
             for e in case.expected:
-                row = conn.execute(
+                candidates = conn.execute(
                     select(docs.c.id)
                     .join(companies, companies.c.id == docs.c.company_id)
                     .outerjoin(newer, newer.c.supersedes_id == docs.c.id)
@@ -47,10 +62,19 @@ def pick_documents(engine: Engine, cases: Sequence[GoldenCase], limit: int) -> l
                         newer.c.id.is_(None),
                     )
                     .order_by(docs.c.published_at.desc())
-                    .limit(1)
-                ).first()
-                if row is not None and row.id not in picked:
-                    picked.append(int(row.id))
+                ).scalars()
+                # A quarter has many material events: take the one that holds the quote.
+                quote = normalise(e.quote)
+                for document_id in candidates:
+                    texts = conn.execute(
+                        select(schema.chunks.c.text).where(
+                            schema.chunks.c.document_id == document_id
+                        )
+                    ).scalars()
+                    if any(quote in normalise(t) for t in texts):
+                        if document_id not in picked:
+                            picked.append(int(document_id))
+                        break
                 if len(picked) >= limit:
                     return picked
     return picked
@@ -64,7 +88,8 @@ def _plain(row: Any, skip: frozenset[str] = frozenset()) -> dict[str, Any]:
         if key == "published_at":
             value = value.isoformat()
         elif key == "embedding" and value is not None:
-            value = [float(v) for v in value]
+            # 4 decimals keep the cassette small; replay uses the stored values as they are.
+            value = [round(float(v), 4) for v in value]
         out[key] = value
     return out
 
@@ -148,14 +173,19 @@ def record(
     with (out / "corpus.jsonl").open("w", encoding="utf-8") as fh:
         for item in records:
             fh.write(json.dumps(item, ensure_ascii=False) + "\n")
-    covered = {
-        (r["row"]["ticker"], r["row"]["doc_type"], r["row"]["period"])
-        for r in records
-        if r["table"] == "chunks"
-    }
+    chunk_rows = [r["row"] for r in records if r["table"] == "chunks"]
+
+    def covered(case: GoldenCase) -> bool:
+        return any(
+            (c["ticker"], c["doc_type"], c["period"]) == (e.ticker, e.doc_type.value, e.period)
+            and normalise(e.quote) in normalise(c["text"])
+            for e in case.expected
+            for c in chunk_rows
+        )
+
     recorded = []
     for case in cases:
-        if not any((e.ticker, e.doc_type.value, e.period) in covered for e in case.expected):
+        if not covered(case):
             continue
         for folder, payload in (
             ("queries", record_query(embedder, embedding_model, case)),

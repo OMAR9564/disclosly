@@ -326,6 +326,9 @@ async def test_rechunk_replace_rebuilds_selected_types(engine: Engine, tmp_path:
     assert by_source["kap"] == ("chunked", False)  # rebuilt, waits for new vectors
     assert by_source["sec"] == ("embedded", True)  # other types untouched
 
+    none = await pipeline.rechunk(ChunkerConfig(size=60, overlap=8), document_ids=[], replace=True)
+    assert none.documents == 0
+
 
 async def test_rechunk_fetches_and_parses_like_ingestion(engine: Engine, tmp_path: Path) -> None:
     from ingestion.pipeline import default_parser

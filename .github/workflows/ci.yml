@@ -121,12 +121,35 @@ jobs:
 
   evals:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: disclosly
+          POSTGRES_PASSWORD: ci-only-password
+          POSTGRES_DB: disclosly
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U disclosly -d disclosly"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      APP_ENV: test
+      DATABASE_URL: postgresql://disclosly:ci-only-password@localhost:5432/disclosly
+      REDIS_URL: redis://localhost:6379/0
+      CORS_ALLOWED_ORIGINS: https://disclosly.com
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
       - run: uv sync
       # Replays recorded cassettes only; never calls a model.
       - run: uv run python -m evals.run --cassettes-only
+      # Retrieval regression gate (contracts/golden-set.md): fixture corpus, recorded query
+      # vectors and rerank scores; fails when recall@10 drops more than 0.02 below the baseline.
+      - run: uv run alembic upgrade head
+      - run: uv run python -m evals.retrieval --cassettes-only --reports "$RUNNER_TEMP/reports"
 
   build:
     runs-on: ubuntu-latest
