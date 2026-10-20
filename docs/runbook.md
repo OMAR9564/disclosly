@@ -604,11 +604,11 @@ resume. Expected duration: record the measured value below.
 
 ### 4. Results (SC-001, SC-003, SC-006)
 
-Fill in after the full run:
+First full run (SEC run 2, KAP run 3; 40 companies, 2-year window):
 
 | Item | Value | Date |
 |---|---|---|
-| Companies with ≥ 1 document per required type (SC-001) | _pending_ | |
-| `status --json`: chunks missing metadata / facts missing source (SC-003) | _pending_ | |
-| Database size, `disk_bytes` (SC-006) | _pending_ | |
-| Bulk embedding duration on the laptop | _pending_ | |
+| Companies with ≥ 1 document per required type (SC-001) | 39 / 40 (target ≥ 35). XOM: the current registrant CIK 0002115436 only has filings since the 2026 holding reorganisation (2 × 10-Q); older reports sit under the previous CIK and are not ingested (accepted) | 2026-10-20 |
+| `status --json`: chunks missing metadata / facts missing source (SC-003) | 0 / 0 (2,454 documents embedded, 17 failed, 85,966 chunks) | 2026-10-20 |
+| Database size, `disk_bytes` (SC-006) | 632 MB with vectors (345 MB before embedding); limit 20 GB | 2026-10-20 |
+| Bulk embedding duration on the laptop | 4 h 12 min for 85,266 chunks (~5.6 chunks/s, CPU, batch 64) | 2026-10-20 |

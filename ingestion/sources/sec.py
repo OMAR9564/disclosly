@@ -47,17 +47,31 @@ class SecSource:
     async def list_documents(self, company: Company, since: datetime) -> list[RemoteDocument]:
         if company.sec_cik is None:
             return []
-        response = await self._client.get(
-            f"https://{SEC_DATA_HOST}/submissions/CIK{company.sec_cik}.json"
-        )
-        recent = response.json()["filings"]["recent"]
+        base = f"https://{SEC_DATA_HOST}/submissions"
+        filings = (await self._client.get(f"{base}/CIK{company.sec_cik}.json")).json()["filings"]
+        pages = [filings["recent"]]
+        # Busy filers (JPM files thousands of 424B2 notes) overflow `recent`; older filings
+        # are in extra pages listed under `files`, each with its filing date range.
+        for extra in filings.get("files", []):
+            if date.fromisoformat(extra["filingTo"]) >= since.date():
+                pages.append((await self._client.get(f"{base}/{extra['name']}")).json())
+        documents: dict[str, RemoteDocument] = {}
+        for page in pages:
+            for remote in self._page_documents(company.ticker, company.sec_cik, page, since):
+                documents.setdefault(remote.source_url, remote)
+        return list(documents.values())
+
+    @staticmethod
+    def _page_documents(
+        ticker: str, cik: str, page: dict[str, Any], since: datetime
+    ) -> list[RemoteDocument]:
         documents: list[RemoteDocument] = []
         for accession, filed, reported, form, primary in zip(
-            recent["accessionNumber"],
-            recent["filingDate"],
-            recent["reportDate"],
-            recent["form"],
-            recent["primaryDocument"],
+            page["accessionNumber"],
+            page["filingDate"],
+            page["reportDate"],
+            page["form"],
+            page["primaryDocument"],
             strict=True,
         ):
             doc_type = SUPPORTED_FORMS.get(form)
@@ -68,8 +82,8 @@ class SecSource:
                 continue
             documents.append(
                 RemoteDocument(
-                    ticker=company.ticker,
-                    source_url=archive_url(company.sec_cik, accession, primary),
+                    ticker=ticker,
+                    source_url=archive_url(cik, accession, primary),
                     doc_type=doc_type,
                     period=period_for(form, date.fromisoformat(reported)),
                     published_at=published,
