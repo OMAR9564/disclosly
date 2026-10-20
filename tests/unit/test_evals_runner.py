@@ -108,3 +108,10 @@ def test_defaults_point_at_repository_suite() -> None:
     assert package / "datasets" == run.DATASETS_DIR
     assert package / "cassettes" == run.CASSETTES_DIR
     assert run.main(["--cassettes-only"]) == 0
+
+
+def test_retrieval_golden_has_its_own_runner(suite: tuple[Path, Path]) -> None:
+    datasets, cassettes = suite
+    _write_dataset(datasets, "retrieval_golden", "tr-1")
+    report = run.run_suite(datasets, cassettes)
+    assert (report.cases, report.failures) == (0, [])
