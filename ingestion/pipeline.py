@@ -382,6 +382,7 @@ class Pipeline:
         chunker: ChunkerConfig,
         *,
         doc_types: Sequence[DocType] | None = None,
+        document_ids: Sequence[int] | None = None,
         replace: bool = False,
     ) -> RechunkSummary:
         """Build chunks for another chunker version (sweeps, research §R4).
@@ -400,6 +401,7 @@ class Pipeline:
                 .where(
                     docs.c.status.in_(DONE_STATUSES),
                     docs.c.doc_type.in_([d.value for d in doc_types]) if doc_types else true(),
+                    docs.c.id.in_(list(document_ids)) if document_ids is not None else true(),
                 )
                 .order_by(docs.c.id)
             ).all()
