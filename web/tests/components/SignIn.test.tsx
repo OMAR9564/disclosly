@@ -112,6 +112,12 @@ describe("SignIn", () => {
     expect(screen.getByText(tr.signinBotFailed)).toBeTruthy();
   });
 
+  it("reports a missing site key instead of waiting", () => {
+    render(<SignIn siteKey="" />);
+    expect(screen.getByText(tr.signinBotFailed)).toBeTruthy();
+    expect((googleKey() as HTMLButtonElement).disabled).toBe(true);
+  });
+
   it("shows the callback error from the URL", () => {
     searchParams.value = new URLSearchParams({ error: "email_unverified" });
     render(<SignIn siteKey="site" />);
