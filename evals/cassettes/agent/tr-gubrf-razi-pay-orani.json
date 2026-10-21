@@ -1,0 +1,167 @@
+{
+ "case_id": "tr-gubrf-razi-pay-orani",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "4ff8ea56b11a46e8bab8643f602f0aa0736c5006047931758b193ed2453e2ab8",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1005096",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "GUBRF",
+       "query": "Razi Petrochemical pay satış yüzde"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TCvmC3GBG8+304ydVvolrmz+0eyhQq/wmLzySGhXCjf4MHpBdb8eVCLa6ZmXLLBcduk0EsEc+Ik1mbFJHxMMBmRaDHZg0JUe3pJhMC3u/xzH++8pi4F8kD2E="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1618,
+    "tokens_out": 30,
+    "latency_ms": 2148.966,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "2ef7ca606e6854c8f3e34b80b15e74c17935607dc2a991b79079f93229b6d426",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Gübre Fabrikaları, bağlı ortaklığı Razi Petrochemical Co.'da sahip olduğu %48,88 oranındaki payların tamamını satışa çıkarmıştır [04ca890c75c3ae4982c986faafa354777b21c2167184f104712b77659f1e9682].\",\n  \"points\": [\n    {\n      \"cite_ids\": [\n        \"04ca890c75c3ae4982c986faafa354777b21c2167184f104712b77659f1e9682\"\n      ],\n      \"text\": \"Gübre Fabrikaları, Razi Petrochemical Co.'da sahip olduğu %48,88 oranındaki payların tamamını ihale yoluyla satışa çıkarmıştır.\"\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"04ca890c75c3ae4982c986faafa354777b21c2167184f104712b77659f1e9682\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 3173,
+    "tokens_out": 367,
+    "latency_ms": 1373.091,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "db39e9783d0f3b5579be75bce2b7267453bd1370a15e6b376151f067a3e7f15c",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Gübre Fabrikaları, bağlı ortaklığı Razi Petrochemical Co.'da sahip olduğu %48,88 oranındaki payların tamamının (%48,88) satışı için ihale açılmasına karar vermiştir [1].\",\n  \"points\": [\n    {\n      \"text\": \"Gübre Fabrikaları, Razi Petrochemical Co.'nun sermayesinde sahip olduğu %48,88 payın tamamının (%48,88) satışı için ihale açmıştır.\",\n      \"cite_ids\": [\n        \"c:04ca890c75c3ae4982c986faafa354777b21c2167184f104712b77659f1e9682\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:04ca890c75c3ae4982c986faafa354777b21c2167184f104712b77659f1e9682\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash",
+    "model": "gemini-3.5-flash",
+    "tokens_in": 3178,
+    "tokens_out": 330,
+    "latency_ms": 4710.204,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"Razi Petrochemical pay satış yüzde\",\"ticker\":\"GUBRF\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:40d591764bcf4ac258a7e1d05b473d44c4162b0639ead5fd5d0f7372c6606a16\">Yönetim Kurulumuzun 28.11.2025 tarihli toplantısında; Bağlı ortaklığımız Razi Petrochemical Co.'da sahip olduğumuz %48,88 oranındaki payların satışına ilişkin ihale sürecinin, mevcut teklifler değerlendirilerek satış tamamlanmadan sonlandırılması kararı alınmıştır. Kamuoyunun ve yatırımcılarımızın bilgisine sunarız.</untrusted_document>\n<untrusted_document cite_id=\"c:04ca890c75c3ae4982c986faafa354777b21c2167184f104712b77659f1e9682\">Şirket Yönetim Kurulu'nun 28/02/2025 tarihli toplantısında; Sermayesinde %48,88 paya sahip olduğumuz bağlı ortaklığımız Razi Petrochemical Co.'nun paylarının tamamının (%48,88) satışı için ihale açılmasına karar verilmiştir. İhale sürecine ve şartlarına ilişkin bilgi ekli PDF dosyada yer almaktadır. Kamuoyuna saygıyla duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:83fc666ba4e08d0664b099f64b634b27afa389e99968dd435e8aad510b659c14\">Şirket Yönetim Kurulu'nun 28/02/2025 tarihli toplantısında; Sermayesinde %48,88 paya sahip olduğumuz bağlı ortaklığımız Razi Petrochemical Co.'nun paylarının tamamının (%48,88) satışı için ihale açılmasına karar verilmişti. Şirket Yönetim Kurulu'nun 10.03.2025 tarihli toplantısında; Şartname temini ve ihale için ilk teklif verebilme süresinin 13.03.2025 Perşembe günü saat 17:00'a kadar uzatılmasına karar verilmiştir. İhale süreci devam etmekte olup, sürece ilişkin bilgi kamuoyu ile paylaşılacaktır. Kamuoyuna saygıyla duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:5c963e8442480aa2e0393ee0d8d7aec639b8cf9c401253c33a3ac1fb80d51209\">Şirketimizin 25.11.2024 tarihli Olağanüstü Genel Kurul toplantısında, %48,88 payına sahip olduğumuz bağlı ortaklığımız Razi Petrochemical Co. (Razi) şirketinin satışı konusunda Yönetim Kurulu yetkilendirilmişti. Yönetim Kurulumuzun 19.12.2024 tarihli toplantısında, hisse satışı öncesinde gerekli görüşmelerin ve hazırlıkların yapılması, tüm iş ve işlemlerin yapılması/yaptırılması ve takip edilmesi konularında yetkili olmak üzere; Tarım Kredi Holding Yönetim ve İcra Kurulu Başkan Vekili Temel Tayyar Yeşil, şirketimizin Yönetim Kurulu Başkan Vekili Yasin Ayaz, Yönetim Kurulu Üyesi ve Genel Müdürü Aytaç Onkun'un yer aldığı bir komisyon kurulmasına ve yetkilendirilmesine karar verilmiştir. Konuya ilişkin önemli nitelikte gelişme bulunması halinde kamuoyu ayrıca bilgilendirilecektir. İşbu açıklamamızın İngilizce çevirisi ekte yer almakta olup, açıklama metinlerinde herhangi bir farklılık olması durumunda, Türkçe açıklama esas kabul edilecektir.</untrusted_document>\n<untrusted_document cite_id=\"c:92f973a3829bdd9166c85f9a74350e148c516f7cc111998b53e1d9493d414b94\">Bağlı ortaklığımız Razi Petrochemical Co.'da sahip olduğumuz payların tamamının (%48,88) ihale ile satışı süreci ile ilgili olarak Şirket Yönetim Kurulunun 02.06.2025 tarihinde aldığı karar doğrultusunda teklif veren istekliler ile ihalenin açık artırma sürecine geçilmesine karar verildiği aynı tarihte kamuoyuna duyurulmuştu. Şirket Yönetim Kurulunun 17.09.2025 tarihli toplantısında, İhale Komisyonu tarafından açık artırma şeklinde yapılacak ihalenin 26.09.2025 tarihinde gerçekleştirilmesine karar verilmiştir. Açık artırmanın sonucu İhale Komisyonu tarafından Şirket Yönetim Kurulu'nun değerlendirmesine sunulacaktır. Süreç hakkında önemli bir gelişme olduğunda kamuoyuna bilgilendirme yapılmaya devam edilecektir. Kamuoyunun bilgilerine sunarız.</untrusted_document>\n<untrusted_document cite_id=\"c:e30c3524b106b6db1af462bebe792383a5dac56296aa522c1887d5f512aa390b\">Şirket Genel Kurulu'nun 25.11.2024 tarihli yetkilendirmesi ve Yönetim Kurulu'nun 28.02.2025 tarihli kararı ile bağlı ortaklığımız Razi Petrochemical Co.'nun sahip olduğumuz paylarının tamamının (%48,88) ihale ile satışı için karar alınmış ve kamuya duyurulmuştu. İlgili duyuruda ihale sürecinin iki aşamalı kapalı usulde teklif ve takiben açık artırma şeklinde ilerleyeceği belirtilmiştir. Kamuya ilan edildiği şekilde ihale sürecine ilişkin iki aşamalı planlanan kapalı usulde teklif verme süreci tamamlanmış ve sonuçlar Yönetim Kurulunca değerlendirilmiştir. Yönetim Kurulunun 02.06.2025 tarihli kararı doğrultusunda teklif veren istekliler ile ihalenin açık artırma sürecine geçilmesine karar verildiğini kamuoyunun bilgilerine sunarız. Saygılarımızla.</untrusted_document>",
+   "summary": "GUBRF Razi Petrochemical pay satış yüzde",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:40d591764bcf4ac258a7e1d05b473d44c4162b0639ead5fd5d0f7372c6606a16",
+     "text": "Yönetim Kurulumuzun 28.11.2025 tarihli toplantısında; Bağlı ortaklığımız Razi Petrochemical Co.'da sahip olduğumuz %48,88 oranındaki payların satışına ilişkin ihale sürecinin, mevcut teklifler değerlendirilerek satış tamamlanmadan sonlandırılması kararı alınmıştır. Kamuoyunun ve yatırımcılarımızın bilgisine sunarız.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2200,
+      "ticker": "GUBRF",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1521029"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:04ca890c75c3ae4982c986faafa354777b21c2167184f104712b77659f1e9682",
+     "text": "Şirket Yönetim Kurulu'nun 28/02/2025 tarihli toplantısında; Sermayesinde %48,88 paya sahip olduğumuz bağlı ortaklığımız Razi Petrochemical Co.'nun paylarının tamamının (%48,88) satışı için ihale açılmasına karar verilmiştir. İhale sürecine ve şartlarına ilişkin bilgi ekli PDF dosyada yer almaktadır. Kamuoyuna saygıyla duyurulur.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2163,
+      "ticker": "GUBRF",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q1",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1397789"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:83fc666ba4e08d0664b099f64b634b27afa389e99968dd435e8aad510b659c14",
+     "text": "Şirket Yönetim Kurulu'nun 28/02/2025 tarihli toplantısında; Sermayesinde %48,88 paya sahip olduğumuz bağlı ortaklığımız Razi Petrochemical Co.'nun paylarının tamamının (%48,88) satışı için ihale açılmasına karar verilmişti. Şirket Yönetim Kurulu'nun 10.03.2025 tarihli toplantısında; Şartname temini ve ihale için ilk teklif verebilme süresinin 13.03.2025 Perşembe günü saat 17:00'a kadar uzatılmasına karar verilmiştir. İhale süreci devam etmekte olup, sürece ilişkin bilgi kamuoyu ile paylaşılacaktır. Kamuoyuna saygıyla duyurulur.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2166,
+      "ticker": "GUBRF",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q1",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1403154"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:5c963e8442480aa2e0393ee0d8d7aec639b8cf9c401253c33a3ac1fb80d51209",
+     "text": "Şirketimizin 25.11.2024 tarihli Olağanüstü Genel Kurul toplantısında, %48,88 payına sahip olduğumuz bağlı ortaklığımız Razi Petrochemical Co. (Razi) şirketinin satışı konusunda Yönetim Kurulu yetkilendirilmişti. Yönetim Kurulumuzun 19.12.2024 tarihli toplantısında, hisse satışı öncesinde gerekli görüşmelerin ve hazırlıkların yapılması, tüm iş ve işlemlerin yapılması/yaptırılması ve takip edilmesi konularında yetkili olmak üzere; Tarım Kredi Holding Yönetim ve İcra Kurulu Başkan Vekili Temel Tayyar Yeşil, şirketimizin Yönetim Kurulu Başkan Vekili Yasin Ayaz, Yönetim Kurulu Üyesi ve Genel Müdürü Aytaç Onkun'un yer aldığı bir komisyon kurulmasına ve yetkilendirilmesine karar verilmiştir. Konuya ilişkin önemli nitelikte gelişme bulunması halinde kamuoyu ayrıca bilgilendirilecektir. İşbu açıklamamızın İngilizce çevirisi ekte yer almakta olup, açıklama metinlerinde herhangi bir farklılık olması durumunda, Türkçe açıklama esas kabul edilecektir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2156,
+      "ticker": "GUBRF",
+      "doc_type": "kap_material_event",
+      "period": "2024-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1367170"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:92f973a3829bdd9166c85f9a74350e148c516f7cc111998b53e1d9493d414b94",
+     "text": "Bağlı ortaklığımız Razi Petrochemical Co.'da sahip olduğumuz payların tamamının (%48,88) ihale ile satışı süreci ile ilgili olarak Şirket Yönetim Kurulunun 02.06.2025 tarihinde aldığı karar doğrultusunda teklif veren istekliler ile ihalenin açık artırma sürecine geçilmesine karar verildiği aynı tarihte kamuoyuna duyurulmuştu. Şirket Yönetim Kurulunun 17.09.2025 tarihli toplantısında, İhale Komisyonu tarafından açık artırma şeklinde yapılacak ihalenin 26.09.2025 tarihinde gerçekleştirilmesine karar verilmiştir. Açık artırmanın sonucu İhale Komisyonu tarafından Şirket Yönetim Kurulu'nun değerlendirmesine sunulacaktır. Süreç hakkında önemli bir gelişme olduğunda kamuoyuna bilgilendirme yapılmaya devam edilecektir. Kamuoyunun bilgilerine sunarız.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2189,
+      "ticker": "GUBRF",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1490573"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:e30c3524b106b6db1af462bebe792383a5dac56296aa522c1887d5f512aa390b",
+     "text": "Şirket Genel Kurulu'nun 25.11.2024 tarihli yetkilendirmesi ve Yönetim Kurulu'nun 28.02.2025 tarihli kararı ile bağlı ortaklığımız Razi Petrochemical Co.'nun sahip olduğumuz paylarının tamamının (%48,88) ihale ile satışı için karar alınmış ve kamuya duyurulmuştu. İlgili duyuruda ihale sürecinin iki aşamalı kapalı usulde teklif ve takiben açık artırma şeklinde ilerleyeceği belirtilmiştir. Kamuya ilan edildiği şekilde ihale sürecine ilişkin iki aşamalı planlanan kapalı usulde teklif verme süreci tamamlanmış ve sonuçlar Yönetim Kurulunca değerlendirilmiştir. Yönetim Kurulunun 02.06.2025 tarihli kararı doğrultusunda teklif veren istekliler ile ihalenin açık artırma sürecine geçilmesine karar verildiğini kamuoyunun bilgilerine sunarız. Saygılarımızla.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2180,
+      "ticker": "GUBRF",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1444408"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  }
+ ]
+}

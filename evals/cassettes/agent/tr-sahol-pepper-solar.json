@@ -1,0 +1,170 @@
+{
+ "case_id": "tr-sahol-pepper-solar",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "d9d3c595828085c1217d219380de8e41fa2c8b59374295a64fcf0be91de048f2",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_991137",
+      "name": "search_documents",
+      "arguments": {
+       "query": "Sabancı Holding Teksas güneş santrali MW kapasite",
+       "ticker": "SAHOL",
+       "language": "tr"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T8mNDn6MjPr6YiuNqN8C26FSanLgvmIvBggIYsJe3NtauQ3vCIHu8TxAg2MRbtnAXwF9YvPpCYfdO//XpjISQlHvyByZ8em0Q4P1wqzRtyCYzFnU7lDjHTP4="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1615,
+    "tokens_out": 40,
+    "latency_ms": 828.438,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "62913226a8b613e64ef02305c44f8683f3549338368cf879c3e1a631840568a0",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Sabancı Holding'in bağlı ortaklığı Sabancı Renewables Inc. tarafından ABD'nin Teksas eyaletinde gerçekleştirilen güneş santrali yatırımları kapsamında; 156 MW kapasiteli güneş enerjisi santralinin lisans hakkına sahip olan Pepper Solar Farm LLC'nin %100 hissesi [c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa] ve 130 MWdc kapasiteli güneş enerjisi santrali geliştirme hakkına sahip olan Lucky 7 Solar Farm LLC'nin %100 hissesi satın alınmıştır [c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d]. Bu projelerle birlikte toplam 286 MW kurulu güce sahip santraller için finansman süreçleri tamamlanmıştır [c:e87c749612c7d1539baf165295ec546e1cd4b0e46ef9cd749c94e02b9ce3e67b].\",\n  \"points\": [\n    {\n      \"text\": \"Sabancı Renewables Inc., Teksas'ta 156 MW kapasiteli Pepper Solar güneş enerjisi santralinin lisans hakkına sahip Pepper Solar Farm LLC'nin %100 hissesini satın almıştır.\",\n      \"cite_ids\": [\n        \"c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa\"\n      ]\n    },\n    {\n      \"text\": \"Sabancı Renewables Inc., Teksas'ta 130 MWdc kapasiteli Lucky 7 Solar güneş enerjisi santrali geliştirme hakkına sahip Lucky 7 Solar Farm LLC'nin %100 hissesini satın almıştır.\",\n      \"cite_ids\": [\n        \"c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d\"\n      ]\n    },\n    {\n      \"text\": \"Lucky 7 ve Pepper Güneş Enerjisi Projeleri kapsamında toplam 286 MW kurulu güce sahip santraller için proje finansmanı ve vergi avantajlı özsermaye yatırımı süreçleri tamamlanmıştır.\",\n      \"cite_ids\": [\n        \"c:e87c749612c7d1539baf165295ec546e1cd4b0e46ef9cd749c94e02b9ce3e67b\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"c:e87c749612c7d1539baf165295ec546e1cd4b0e46ef9cd749c94e02b9ce3e67b\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 4626,
+    "tokens_out": 1020,
+    "latency_ms": 2824.435,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "fc0efab26e19c65c46e22e725b8a37d58d1b3d0cf609cd71ba35b7baa7d73332",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Sabancı Holding'in bağlı ortaklığı Sabancı Renewables Inc. tarafından ABD'nin Teksas eyaletinde gerçekleştirilen güneş santrali yatırımları kapsamında; 156 MW kapasiteli güneş enerjisi santralinin lisans hakkına sahip olan Pepper Solar Farm LLC'nin %100 hissesi [c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa] ve 130 MWdc kapasiteli güneş enerjisi santrali geliştirme hakkına sahip olan Lucky 7 Solar Farm LLC'nin %100 hissesi satın alınmıştır [c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d]. Bu projelerle birlikte toplam 286 MW kurulu güce sahip santraller için finansman süreçleri tamamlanmıştır [c:e87c749612c7d1539baf165295ec546e1cd4b0e46ef9cd749c94e02b9ce3e67b].\",\n  \"points\": [\n    {\n      \"text\": \"Sabancı Renewables Inc., Teksas'ta 156 MW kapasiteli Pepper Solar güneş enerjisi santralinin lisans hakkına sahip Pepper Solar Farm LLC'nin %100 hissesini satın almıştır.\",\n      \"cite_ids\": [\n        \"c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa\"\n      ]\n    },\n    {\n      \"text\": \"Sabancı Renewables Inc., Teksas'ta 130 MWdc kapasiteli Lucky 7 Solar güneş enerjisi santrali geliştirme hakkına sahip Lucky 7 Solar Farm LLC'nin %100 hissesini satın almıştır.\",\n      \"cite_ids\": [\n        \"c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d\"\n      ]\n    },\n    {\n      \"text\": \"Lucky 7 ve Pepper Güneş Enerjisi Projeleri kapsamında toplam 286 MW kurulu güce sahip santraller için proje finansmanı ve vergi avantajlı özsermaye yatırımı süreçleri tamamlanmıştır.\",\n      \"cite_ids\": [\n        \"c:e87c749612c7d1539baf165295ec546e1cd4b0e46ef9cd749c94e02b9ce3e67b\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"c:e87c749612c7d1539baf165295ec546e1cd4b0e46ef9cd749c94e02b9ce3e67b\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 5110,
+    "tokens_out": 1628,
+    "latency_ms": 4157.025,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"language\":\"tr\",\"query\":\"Sabancı Holding Teksas güneş santrali MW kapasite\",\"ticker\":\"SAHOL\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa\">Sermayesinin tamamı Şirketimize ait olan Sabancı İklim Teknolojileri A.Ş.'nin %100 oranında bağlı ortaklığı olan Sabancı Renewables Inc. tarafından, ABD'nin Teksas eyaletinde 156 MW kapasiteli güneş enerjisi santralinin lisans hakkına sahip olan Pepper Solar Farm LLC'nin %100 hissesi ilişkili olmayan bir üçüncü taraftan satın alınmıştır. Söz konusu güneş enerjisi santrali yatırımının tamamlanmasıyla birlikte ilgili tesisin 2027 yılının üçüncü çeyreğinde devreye alınması hedeflenmektedir. Halihazırda faaliyette olan Cutlass II güneş enerjisi santrali ile Temmuz ayı içerisinde devreye alınması planlanan Oriana güneş enerjisi santraline ek olarak gerçekleştirilecek bu yeni kapasite yatırımının devreye alınması sonrasında, Sabancı Renewables Inc.'in ABD'deki toplam yenilenebilir enerji portföyü 660 MW'a ulaşacaktır. Sabancı Renewables Inc., Sabancı Topluluğu'nun yeni ekonomiye odaklı büyüme stratejisi, küresel ayak izini güçlendirme ve sürdürülebilirlik hedefleri doğrultusunda ABD'de yenilenebilir enerji yatırımlarını sürdürmektedir.</untrusted_document>\n<untrusted_document cite_id=\"c:af5848cab51d868646dfaf733fdb6d37a4ab2d17093f7549a0548e82fd281d23\">tarafından, ABD'nin Teksas eyaletinde 232 MWdc kurulu güce sahip Oriana Güneş Enerjisi Santrali projesi planlandığı şekilde tamamlanarak tam kapasiteyle devreye alınmıştır. 12 Eylül 2024 tarihinde imzalanan tax equity (vergi avantajlı sermaye) sözleşmesi kapsamında toplam 138 milyon ABD Doları tutarındaki yatırımın fonlaması başarıyla tamamlanmış; 28 Mart 2024 tarihinde imzalanan finansman sözleşmeleri çerçevesinde mevcut inşaat kredileri uzun vadeli proje finansman kredisine dönüştürülmüştür. Halihazırda faaliyette olan Cutlass II Güneş Enerjisi Santrali ve kısa süre önce satın alınan Pepper Solar ve Lucky 7 Solar projeleri ile birlikte Sabancı Renewables Inc., ABD'deki toplam yenilenebilir enerji portföyü 790 MW seviyesine ulaşacaktır. Yeni gelişmeler olması halinde kamu ile paylaşılacaktır.</untrusted_document>\n<untrusted_document cite_id=\"c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d\">tarafından, ABD’nin Teksas eyaletinde 130 MWdc kapasiteli güneş enerjisi santrali g eliştirme hakkına sahip olan Lucky 7 Solar Farm LLC’nin %100 hissesi, ilişkili olmayan üçüncü bir taraftan satın alınmıştır. Söz konusu güneş enerjisi santrali yatırımının tamamlanmasıyla birlikte ilgili tesisin 2027 yılının üçüncü çeyreğinde de vreye alınması hedeflenmektedir. Halihazırda faaliyette olan Cutlass II güneş enerjisi santrali ile Temmuz ayı içerisinde devreye alma faaliyetleri başlayan Oriana güneş enerjisi santrali ve kısa süre önce satın alınan Pepper Solar yatırımlarına ek olarak gerçekleştirilecek bu yeni kapasite yatırımının da devreye alınması sonrasında, Sabancı Renewables Inc.’in ABD’deki toplam yenilenebilir enerji portföyü 790 MW’a ulaşacaktır. Sabancı Renewables Inc., Sabancı Topluluğu’nun yeni ekonomiye odaklı büyüme stratejisi, küresel ayak izini güçlendirme ve sürdürülebilirlik hedefleri doğrultusunda ABD’de yenilenebilir enerji yatırımlarını sürdürmektedir. 11 4. Faaliyetler ve Faaliyetlere İlişkin Önemli Gelişmeler (Devamı) c) Dönem İçi Gerçekleşen Önemli Gelişmeler(devamı) 12 Eylül 2025 tarihli açıklamaya göre; Kordsa Yönetim Kurulu, 500.000.000 TL kayıtlı sermaye tavanı içinde çıkarılmış sermayenin tamamen nakden artırılmasıyla 194.529.076 TL’den 484.305.475 TL’ye (%148,96 oranında) çıkarılmasına, artırılan 289.776.399 TL nominal değerli sermayeyi temsil eden 28.977.639.900 adet nama yazılı, borsada işlem gören ve imtiyazsız pay oluşturulmasına, yeni pay alma hakkı kullanım fiyatının 1 TL nominal değerli 100 adet pay için 10 TL olarak belirlenmesine, yeni pay alma hakkı kull anım süresinin 15 gün olmasına ve sürenin son gününün tatile denk gelmesi halinde izleyen iş günü sona ermesine, satılamayan payların 2 iş günü süreyle 10 TL’den düşük olmamak kaydıyla Borsa İstanbul Birincil Piyasa’da satışa sunulmasına, pay ihracı için i zahnamenin Sermaye Piyasası Kurulu’na sunulmasına ve ihraç edilecek payların kaydi olarak dağıtılmasına karar vermiştir. Sermaye artışından elde edilecek fonun finansal borçların azaltılmasında kullanılması planlanmaktadır.</untrusted_document>\n<untrusted_document cite_id=\"c:97afb15cc51aa3e6f3b13bc7ba5854837dddfe863e5801d55e2b35a4197fe06b\">Sermayesinin tamamı Şirketimize ait olan Sabancı İklim Teknolojileri A.Ş.'nin %100 oranında bağlı ortaklığı olan Sabancı Renewables Inc. tarafından, ABD'nin Teksas eyaletinde 130 MWdc kapasiteli güneş enerjisi santrali geliştirme hakkına sahip olan Lucky 7 Solar Farm LLC'nin %100 hissesi, ilişkili olmayan üçüncü bir taraftan satın alınmıştır. Söz konusu güneş enerjisi santrali yatırımının tamamlanmasıyla birlikte ilgili tesisin 2027 yılının üçüncü çeyreğinde devreye alınması hedeflenmektedir. Halihazırda faaliyette olan Cutlass II güneş enerjisi santrali ile Temmuz ayı içerisinde devreye alma faaliyetleri başlayan Oriana güneş enerjisi santrali ve kısa süre önce satın alınan Pepper Solar yatırımlarına ek olarak gerçekleştirilecek bu yeni kapasite yatırımının da devreye alınması sonrasında, Sabancı Renewables Inc.'in ABD'deki toplam yenilenebilir enerji portföyü 790 MW'a ulaşacaktır. Sabancı Renewables Inc., Sabancı Topluluğu'nun yeni ekonomiye odaklı büyüme stratejisi, küresel ayak izini güçlendirme ve sürdürülebilirlik hedefleri doğrultusunda ABD'de yenilenebilir enerji yatırımlarını sürdürmektedir.</untrusted_document>\n<untrusted_document cite_id=\"c:e87c749612c7d1539baf165295ec546e1cd4b0e46ef9cd749c94e02b9ce3e67b\">Sermayesinin tamamı Şirketimize ait olan Sabancı İklim Teknolojileri A.Ş.'nin %100 oranında pay sahibi olduğu Sabancı Renewables Inc.'nin ABD'nin Teksas eyaletinde yer alan Lucky 7 ve Pepper Güneş Enerjisi Projeleri kapsamında yürütülen proje finansmanı ve vergi avantajlı özsermaye yatırımı (tax equity) süreçleri tamamlanmıştır. Söz konusu projeler kapsamında, toplam 286 MW kurulu güce sahip santraller için uluslararası finans kuruluşları ile toplam 382 milyon ABD Doları tutarında proje finansmanı kredi sözleşmesi ve vergi avantajlı sermaye yatırımcısı (tax equity investor) tarafından sağlanacak 151 milyon ABD Doları tutarında finansmana ilişkin vergi avantajlı özsermaye yatırımı sözleşmesi imzalanmıştır. Proje finansmanı kapsamında, NORD/LB, MUFG Bank, BBVA ve Intesa Sanpaolo bankalarının eşit katılımıyla oluşturulan kulüp kredi yapısı ve Advantage Capital tarafından sağlanan tax equity yatırımı ile birlikte projelerin yaşam döngüsüne uygun bütüncül bir finansman yapısı oluşturulmuştur. Tesislerin 2027 yılının üçüncü çeyreğinde devreye alınması hedeflenmektedir. Söz konusu yatırımların devreye alınmasını takiben 15.08.2025 tarihli özel durum açıklamasında belirtildiği şekilde Sabancı Renewables Inc.'in ABD'deki toplam yenilenebilir enerji portföyünün yaklaşık 790 MW seviyesine ulaşması öngörülmektedir. Kamuoyuna saygıyla duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:f0eddbfaa311d0eea2f27460829d34dd21b794cc98f397ad929e50ed2dd3e54b\">- Yaklaşık 14,2 MWp DC kurulu güce sahip GES tesisinin kurulumunun yapılmasına ve - Yatırımla ilgili olarak mevcut yatırım destek unsurlarından yararlanılmak üzere yatırım teşvik belgesi alınması için gerekli başvurunun yapılmasına karar verilmiştir. Söz konusu yatırıma 2024 yılının ikinci çeyreğinde başlanılması planlanmakta olup, yatırım sürecinin 2025 yılının ikinci çeyreğinde tamamlanması hedeflenmektedir. Yatırımın devreye alınmasıyla birlikte, elde edilecek elektriğin Eskişehir Fabrikasının toplam yıllık elektrik tüketiminin %14'ünü karşılaması beklenmektedir. Böylece, bu yatırımın ve atık ısıdan elektrik üretimi yatırımının devreye girmesiyle birlikte Esk işehir fabrikasının elektrik ihtiyacının yaklaşık %40'ı kendi ürettiği elektrikten karşılanacaktır. 17 Nisan 2024 tarihli açıklamaya göre; Akbank, uluslararası piyasalardan 309,75 milyon ABD Doları ve 267 milyon Avro olmak üzere iki dilimden oluşan 367 gün vadeli sendikasyon kredisi sağlamıştır. Kredinin toplam maliyeti ABD Doları ve Avro kısımlar için sırasıyla Sofr+%2,50 ve Euribor+%2,25'dir. Sabancı Holding’in 29 Nisan 2024 tarihinde gerçekleştirilen 2023 Yılı Olağan Genel Kurul toplantısında; Grup’un sermaye piyasası mevzuatına uygun olarak hazırlanmış 2023 yılı faaliyet dönemine ait Konsolide Finansal Tablolarının incelenmesi sonucunda, 1 Ocak 2023 – 31 Aralık 2023 hesap döneminde oluşan kardan ortaklara toplam 6.181.406.477,30 TL nakit kar payı dağıtılmasına, Hacı Ömer Sabancı Vakfı'na brüt 294.200.523,64 TL ödenmesine ve kalan tutarın olağanüstü yedek akçe olarak ayrılmasına karar verilmiş olup, nakit kar payı ödemelerine 2 Mayıs 2024 tarihinde başlanmıştır. 20 Mayıs 2024 tarihli açıklamaya göre; Sabancı Holding’in Sabancı İklim Teknolojileri A.Ş. üzerinden %100 oranında hissedar olduğu Sabancı Renewables Inc. tarafından ABD'de gerçekleştirilen 272 MW kurulu gücündeki Cutlass II Güneş Enerjisi Santrali projesi öngörülen hedef tarihinden önce tamamlanarak tam kapasite ile 17 Mayıs 2024 tarihinde devreye alınmştır. Ayrıca, 15 Kasım 2023 tarihinde kamuya duyurulan finansman sözleşmeleri kapsamında, 184 milyon USD tax equity (vergi avantajlı sermaye) yatırımının fonlaması 17 Mayıs 2024 tarihi itibarıyla tamamlanmış ve eş zamanlı olarak çeşitli bankalardan alınan mevcut inşaat kredileri uzun vadeli proje finansman kredisine dönüştürülmüştür. Devreye alınan Cutlass II Güneş Enerjisi Santrali yıllık bazda 15 milyon USD seviyesinde FAVÖK yaratması hedeflenmektedir.</untrusted_document>",
+   "summary": "SAHOL Sabancı Holding Teksas güneş santrali MW kapasite",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa",
+     "text": "Sermayesinin tamamı Şirketimize ait olan Sabancı İklim Teknolojileri A.Ş.'nin %100 oranında bağlı ortaklığı olan Sabancı Renewables Inc. tarafından, ABD'nin Teksas eyaletinde 156 MW kapasiteli güneş enerjisi santralinin lisans hakkına sahip olan Pepper Solar Farm LLC'nin %100 hissesi ilişkili olmayan bir üçüncü taraftan satın alınmıştır. Söz konusu güneş enerjisi santrali yatırımının tamamlanmasıyla birlikte ilgili tesisin 2027 yılının üçüncü çeyreğinde devreye alınması hedeflenmektedir. Halihazırda faaliyette olan Cutlass II güneş enerjisi santrali ile Temmuz ayı içerisinde devreye alınması planlanan Oriana güneş enerjisi santraline ek olarak gerçekleştirilecek bu yeni kapasite yatırımının devreye alınması sonrasında, Sabancı Renewables Inc.'in ABD'deki toplam yenilenebilir enerji portföyü 660 MW'a ulaşacaktır. Sabancı Renewables Inc., Sabancı Topluluğu'nun yeni ekonomiye odaklı büyüme stratejisi, küresel ayak izini güçlendirme ve sürdürülebilirlik hedefleri doğrultusunda ABD'de yenilenebilir enerji yatırımlarını sürdürmektedir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1750,
+      "ticker": "SAHOL",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1458753"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:af5848cab51d868646dfaf733fdb6d37a4ab2d17093f7549a0548e82fd281d23",
+     "text": "tarafından, ABD'nin Teksas eyaletinde 232 MWdc kurulu güce sahip Oriana Güneş Enerjisi Santrali projesi planlandığı şekilde tamamlanarak tam kapasiteyle devreye alınmıştır. 12 Eylül 2024 tarihinde imzalanan tax equity (vergi avantajlı sermaye) sözleşmesi kapsamında toplam 138 milyon ABD Doları tutarındaki yatırımın fonlaması başarıyla tamamlanmış; 28 Mart 2024 tarihinde imzalanan finansman sözleşmeleri çerçevesinde mevcut inşaat kredileri uzun vadeli proje finansman kredisine dönüştürülmüştür. Halihazırda faaliyette olan Cutlass II Güneş Enerjisi Santrali ve kısa süre önce satın alınan Pepper Solar ve Lucky 7 Solar projeleri ile birlikte Sabancı Renewables Inc., ABD'deki toplam yenilenebilir enerji portföyü 790 MW seviyesine ulaşacaktır. Yeni gelişmeler olması halinde kamu ile paylaşılacaktır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1757,
+      "ticker": "SAHOL",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1508786"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d",
+     "text": "tarafından, ABD’nin Teksas eyaletinde 130 MWdc kapasiteli güneş enerjisi santrali g eliştirme hakkına sahip olan Lucky 7 Solar Farm LLC’nin %100 hissesi, ilişkili olmayan üçüncü bir taraftan satın alınmıştır. Söz konusu güneş enerjisi santrali yatırımının tamamlanmasıyla birlikte ilgili tesisin 2027 yılının üçüncü çeyreğinde de vreye alınması hedeflenmektedir. Halihazırda faaliyette olan Cutlass II güneş enerjisi santrali ile Temmuz ayı içerisinde devreye alma faaliyetleri başlayan Oriana güneş enerjisi santrali ve kısa süre önce satın alınan Pepper Solar yatırımlarına ek olarak gerçekleştirilecek bu yeni kapasite yatırımının da devreye alınması sonrasında, Sabancı Renewables Inc.’in ABD’deki toplam yenilenebilir enerji portföyü 790 MW’a ulaşacaktır. Sabancı Renewables Inc., Sabancı Topluluğu’nun yeni ekonomiye odaklı büyüme stratejisi, küresel ayak izini güçlendirme ve sürdürülebilirlik hedefleri doğrultusunda ABD’de yenilenebilir enerji yatırımlarını sürdürmektedir. 11 4. Faaliyetler ve Faaliyetlere İlişkin Önemli Gelişmeler (Devamı) c) Dönem İçi Gerçekleşen Önemli Gelişmeler(devamı) 12 Eylül 2025 tarihli açıklamaya göre; Kordsa Yönetim Kurulu, 500.000.000 TL kayıtlı sermaye tavanı içinde çıkarılmış sermayenin tamamen nakden artırılmasıyla 194.529.076 TL’den 484.305.475 TL’ye (%148,96 oranında) çıkarılmasına, artırılan 289.776.399 TL nominal değerli sermayeyi temsil eden 28.977.639.900 adet nama yazılı, borsada işlem gören ve imtiyazsız pay oluşturulmasına, yeni pay alma hakkı kullanım fiyatının 1 TL nominal değerli 100 adet pay için 10 TL olarak belirlenmesine, yeni pay alma hakkı kull anım süresinin 15 gün olmasına ve sürenin son gününün tatile denk gelmesi halinde izleyen iş günü sona ermesine, satılamayan payların 2 iş günü süreyle 10 TL’den düşük olmamak kaydıyla Borsa İstanbul Birincil Piyasa’da satışa sunulmasına, pay ihracı için i zahnamenin Sermaye Piyasası Kurulu’na sunulmasına ve ihraç edilecek payların kaydi olarak dağıtılmasına karar vermiştir. Sermaye artışından elde edilecek fonun finansal borçların azaltılmasında kullanılması planlanmaktadır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1759,
+      "ticker": "SAHOL",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": 11,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511259"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:97afb15cc51aa3e6f3b13bc7ba5854837dddfe863e5801d55e2b35a4197fe06b",
+     "text": "Sermayesinin tamamı Şirketimize ait olan Sabancı İklim Teknolojileri A.Ş.'nin %100 oranında bağlı ortaklığı olan Sabancı Renewables Inc. tarafından, ABD'nin Teksas eyaletinde 130 MWdc kapasiteli güneş enerjisi santrali geliştirme hakkına sahip olan Lucky 7 Solar Farm LLC'nin %100 hissesi, ilişkili olmayan üçüncü bir taraftan satın alınmıştır. Söz konusu güneş enerjisi santrali yatırımının tamamlanmasıyla birlikte ilgili tesisin 2027 yılının üçüncü çeyreğinde devreye alınması hedeflenmektedir. Halihazırda faaliyette olan Cutlass II güneş enerjisi santrali ile Temmuz ayı içerisinde devreye alma faaliyetleri başlayan Oriana güneş enerjisi santrali ve kısa süre önce satın alınan Pepper Solar yatırımlarına ek olarak gerçekleştirilecek bu yeni kapasite yatırımının da devreye alınması sonrasında, Sabancı Renewables Inc.'in ABD'deki toplam yenilenebilir enerji portföyü 790 MW'a ulaşacaktır. Sabancı Renewables Inc., Sabancı Topluluğu'nun yeni ekonomiye odaklı büyüme stratejisi, küresel ayak izini güçlendirme ve sürdürülebilirlik hedefleri doğrultusunda ABD'de yenilenebilir enerji yatırımlarını sürdürmektedir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1754,
+      "ticker": "SAHOL",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1478902"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:e87c749612c7d1539baf165295ec546e1cd4b0e46ef9cd749c94e02b9ce3e67b",
+     "text": "Sermayesinin tamamı Şirketimize ait olan Sabancı İklim Teknolojileri A.Ş.'nin %100 oranında pay sahibi olduğu Sabancı Renewables Inc.'nin ABD'nin Teksas eyaletinde yer alan Lucky 7 ve Pepper Güneş Enerjisi Projeleri kapsamında yürütülen proje finansmanı ve vergi avantajlı özsermaye yatırımı (tax equity) süreçleri tamamlanmıştır. Söz konusu projeler kapsamında, toplam 286 MW kurulu güce sahip santraller için uluslararası finans kuruluşları ile toplam 382 milyon ABD Doları tutarında proje finansmanı kredi sözleşmesi ve vergi avantajlı sermaye yatırımcısı (tax equity investor) tarafından sağlanacak 151 milyon ABD Doları tutarında finansmana ilişkin vergi avantajlı özsermaye yatırımı sözleşmesi imzalanmıştır. Proje finansmanı kapsamında, NORD/LB, MUFG Bank, BBVA ve Intesa Sanpaolo bankalarının eşit katılımıyla oluşturulan kulüp kredi yapısı ve Advantage Capital tarafından sağlanan tax equity yatırımı ile birlikte projelerin yaşam döngüsüne uygun bütüncül bir finansman yapısı oluşturulmuştur. Tesislerin 2027 yılının üçüncü çeyreğinde devreye alınması hedeflenmektedir. Söz konusu yatırımların devreye alınmasını takiben 15.08.2025 tarihli özel durum açıklamasında belirtildiği şekilde Sabancı Renewables Inc.'in ABD'deki toplam yenilenebilir enerji portföyünün yaklaşık 790 MW seviyesine ulaşması öngörülmektedir. Kamuoyuna saygıyla duyurulur.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1785,
+      "ticker": "SAHOL",
+      "doc_type": "kap_material_event",
+      "period": "2026-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1611286"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:f0eddbfaa311d0eea2f27460829d34dd21b794cc98f397ad929e50ed2dd3e54b",
+     "text": "- Yaklaşık 14,2 MWp DC kurulu güce sahip GES tesisinin kurulumunun yapılmasına ve - Yatırımla ilgili olarak mevcut yatırım destek unsurlarından yararlanılmak üzere yatırım teşvik belgesi alınması için gerekli başvurunun yapılmasına karar verilmiştir. Söz konusu yatırıma 2024 yılının ikinci çeyreğinde başlanılması planlanmakta olup, yatırım sürecinin 2025 yılının ikinci çeyreğinde tamamlanması hedeflenmektedir. Yatırımın devreye alınmasıyla birlikte, elde edilecek elektriğin Eskişehir Fabrikasının toplam yıllık elektrik tüketiminin %14'ünü karşılaması beklenmektedir. Böylece, bu yatırımın ve atık ısıdan elektrik üretimi yatırımının devreye girmesiyle birlikte Esk işehir fabrikasının elektrik ihtiyacının yaklaşık %40'ı kendi ürettiği elektrikten karşılanacaktır. 17 Nisan 2024 tarihli açıklamaya göre; Akbank, uluslararası piyasalardan 309,75 milyon ABD Doları ve 267 milyon Avro olmak üzere iki dilimden oluşan 367 gün vadeli sendikasyon kredisi sağlamıştır. Kredinin toplam maliyeti ABD Doları ve Avro kısımlar için sırasıyla Sofr+%2,50 ve Euribor+%2,25'dir. Sabancı Holding’in 29 Nisan 2024 tarihinde gerçekleştirilen 2023 Yılı Olağan Genel Kurul toplantısında; Grup’un sermaye piyasası mevzuatına uygun olarak hazırlanmış 2023 yılı faaliyet dönemine ait Konsolide Finansal Tablolarının incelenmesi sonucunda, 1 Ocak 2023 – 31 Aralık 2023 hesap döneminde oluşan kardan ortaklara toplam 6.181.406.477,30 TL nakit kar payı dağıtılmasına, Hacı Ömer Sabancı Vakfı'na brüt 294.200.523,64 TL ödenmesine ve kalan tutarın olağanüstü yedek akçe olarak ayrılmasına karar verilmiş olup, nakit kar payı ödemelerine 2 Mayıs 2024 tarihinde başlanmıştır. 20 Mayıs 2024 tarihli açıklamaya göre; Sabancı Holding’in Sabancı İklim Teknolojileri A.Ş. üzerinden %100 oranında hissedar olduğu Sabancı Renewables Inc. tarafından ABD'de gerçekleştirilen 272 MW kurulu gücündeki Cutlass II Güneş Enerjisi Santrali projesi öngörülen hedef tarihinden önce tamamlanarak tam kapasite ile 17 Mayıs 2024 tarihinde devreye alınmştır. Ayrıca, 15 Kasım 2023 tarihinde kamuya duyurulan finansman sözleşmeleri kapsamında, 184 milyon USD tax equity (vergi avantajlı sermaye) yatırımının fonlaması 17 Mayıs 2024 tarihi itibarıyla tamamlanmış ve eş zamanlı olarak çeşitli bankalardan alınan mevcut inşaat kredileri uzun vadeli proje finansman kredisine dönüştürülmüştür. Devreye alınan Cutlass II Güneş Enerjisi Santrali yıllık bazda 15 milyon USD seviyesinde FAVÖK yaratması hedeflenmektedir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1732,
+      "ticker": "SAHOL",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 14,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1398993"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  }
+ ]
+}

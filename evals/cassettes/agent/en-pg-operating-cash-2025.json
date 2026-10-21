@@ -1,0 +1,279 @@
+{
+ "case_id": "en-pg-operating-cash-2025",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "59ee67a8e7f71a6b9f5fe5954c5d7b705c15da51ca983a7e953dbda51dabb2f8",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1297129",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "PG"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TE+obzTX3BYsDGz159vAkwx2dwu9q/yr5E5vZ2VPe39TS1TaVnEbweUUipJwx0yghVCu6DLvF7rNk1Io7kkhDL3xYLqyYUiK8EWa6m/qP+xgUyWbWejw1JRU="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1491,
+    "tokens_out": 16,
+    "latency_ms": 5893.798,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "c895a59db7ac2f2b8b22680bf7f501f96217fb59bd5ca70930b534f95d3910bf",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_806761",
+      "name": "search_documents",
+      "arguments": {
+       "period_to": "2025-FY",
+       "doc_type": "10-K",
+       "ticker": "PG",
+       "period_from": "2025-FY",
+       "query": "operating cash flow 2025 Consolidated Statements of Cash Flows"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TiuqPgs+sLgruFjEmkcDQfCeLib5BHRu4VRzfhsRjGW2zIVD1mxamDmalv465v1nHlm+jpr8VrJqrEc1/JZ47EuUO3V7lAeF8f9wiSzaYEODR70XwMhEpWkY="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2446,
+    "tokens_out": 71,
+    "latency_ms": 771.551,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "600d84e3447b6f981dda27ba88847a65bfaf0f33211bef15ee6d7468b6fd3b81",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1020196",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "PG",
+       "period_from": "2025-FY",
+       "query": "Consolidated Statements of Cash Flows operating activities net earnings 2025",
+       "period_to": "2025-FY",
+       "doc_type": "10-K"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T9h0E8tE7kngk2e4Sw2xvCVtqjqwQNudEcEaV7xtbzk8HSthzCaOyv9+bSEkUsORKszwK2cH417oMC64Tem6OsZYTDiOV7d+reA47eiJsfuLRo8TujaEpTL8="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 5585,
+    "tokens_out": 73,
+    "latency_ms": 781.378,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "fbd0ecc2381ccfdd28bf5f8f1e25529805fd70d1cab048d2e7a47d18a79ba443",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\":\"en\",\"status\":\"no_evidence\",\"summary\":\"I could not find the exact operating cash flow figure for Procter & Gamble's fiscal year 2025 in the available disclosures.\"}",
+    "tool_calls": [],
+    "provider": "gemini-flash",
+    "model": "gemini-3.5-flash",
+    "tokens_in": 6921,
+    "tokens_out": 42,
+    "latency_ms": 1525.628,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"PG\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 2566, \"ticker\": \"PG\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-08-04T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm\"}, {\"document_id\": 2567, \"ticker\": \"PG\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-24T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/80424/000008042426000060/pg-20260331.htm\"}, {\"document_id\": 2568, \"ticker\": \"PG\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2026-01-23T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/80424/000008042426000011/pg-20251231.htm\"}, {\"document_id\": 2569, \"ticker\": \"PG\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-24T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/80424/000008042425000245/pg-20250930.htm\"}, {\"document_id\": 2570, \"ticker\": \"PG\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-08-04T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm\"}, {\"document_id\": 2571, \"ticker\": \"PG\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-24T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/80424/000008042425000037/pg-20250331.htm\"}, {\"document_id\": 2572, \"ticker\": \"PG\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2025-01-22T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/80424/000008042425000013/pg-20241231.htm\"}]}",
+   "summary": "PG documents",
+   "count": 7,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"doc_type\":\"10-K\",\"period_from\":\"2025-FY\",\"period_to\":\"2025-FY\",\"query\":\"operating cash flow 2025 Consolidated Statements of Cash Flows\",\"ticker\":\"PG\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:e3544055297d0cffcef0206d83896bc2396ed9c0dfd5d34112267682695ad3a1\">Many countries have implemented or are in the process of implementing Pillar Two legislation into their respective domestic laws. Based on current legislation, available guidance and the June 28, 2025 G7 Pillar Two Statement committing to a side-by-side solution for U.S. parented groups, we do not anticipate the Pillar Two global minimum tax to have a material impact to our financial condition, results of operations, cash flows or effective tax rate. The Company continues to assess the overall impact of potential changes as developments occur, consistent with our practice to monitor all changes in tax laws. As the Pillar Two global minimum tax and other tax laws and related regulations are revised, enacted and implemented, a material impact to our financial condition, results of operations, cash flows or effective tax rate may occur. Furthermore, we are subject to regular review and audit by both foreign and domestic tax authorities. While we believe our tax positions will be sustained, the final outcome of tax audits and related litigation, including maintaining our intended tax treatment of divestiture transactions such as the fiscal 2017 Beauty Brands transaction with Coty, may differ materially from the tax amounts recorded in our Consolidated Financial Statements, which could adversely impact our results of operations and cash flows.</untrusted_document>\n<untrusted_document cite_id=\"c:12f39b8fedc154cf2c71a7e0fdf403d88efa978503cc7cf0a5212c84a74933ad\">Research and development costs are charged to expense as incurred and were $ 2.1 billion in 2025 and $ 2.0 billion in 2024 and 2023. Advertising costs, charged to expense as incurred, include television, print, radio, digital and in-store advertising expenses and were $ 9.2 billion in 2025, $ 9.6 billion in 2024 and $ 8.0 billion in 2023. Non-advertising related components of the Company's total marketing spending reported in SG&A include costs associated with consumer promotions, product sampling and sales aids. Other Non-Operating Income, Net Other non-operating income, net primarily includes divestiture gains, net non-service impacts related to postretirement benefit plans, investment income, accumulated foreign currency translation losses recognized upon the substantial liquidation of foreign operations and other non-operating items. Amounts in millions of dollars except per share amounts or as otherwise specified. The Procter & Gamble Company 41 Currency Translation Financial statements of operating subsidiaries outside the U.S. generally are measured using the local currency as the functional currency. Adjustments to translate those statements into U.S. dollars are recorded in Other comprehensive income (OCI). For subsidiaries operating in highly inflationary economies, the U.S. dollar is the functional currency. Re-measurement adjustments for financial statements in highly inflationary economies and other transactional exchange gains and losses are reflected in earnings. Cash Flow Presentation The Consolidated Statements of Cash Flows are prepared using the indirect method, which reconciles net earnings to cash flows from operating activities. Cash flows from foreign currency transactions and operations are translated at monthly exchange rates for each period. Cash flows from hedging activities are included in the same category as the items being hedged. Cash flows from derivative instruments designated as net investment hedges are classified as investing activities. Realized gains and losses from non-qualifying derivative instruments used to hedge currency exposures resulting from intercompany financing transactions are classified as financing activities. Cash flows from other derivative instruments used to manage interest rates, commodity or other currency exposures are classified as operating activities. Cash payments related to income taxes are classified as operating activities. Investments The Company holds minor equity investments in certain companies over which we exert significant influence, but do not control the financial and operating decisions. These are accounted for as equity method investments.</untrusted_document>\n<untrusted_document cite_id=\"c:6009122a7fe4a02587f9bfad852df9795bee8cd9d744df4dd0e154db2b8f000e\">(15) the ability to successfully achieve productivity improvements and cost savings and manage ongoing organizational changes while successfully identifying, developing and retaining key employees, including in key growth markets where the availability of skilled or experienced employees may be limited; (16) the ability to successfully manage current and expanding regulatory and legal requirements and matters (including, without limitation, those laws, regulations, policies and related interpretations involving product liability, product and packaging composition, manufacturing processes, intellectual property, labor and employment, antitrust, privacy, cybersecurity, data protection and data transfers, artificial intelligence, tax, the environment, due diligence, risk oversight, accounting and financial reporting) and to resolve new and pending matters within current estimates; (17) the ability to manage changes in applicable tax laws and regulations; and (18) the ability to continue delivering progress towards our environmental sustainability ambitions. A detailed discussion of risks and uncertainties that could cause actual results and events to differ materially from those projected herein is included in the section titled \"Economic Conditions and Uncertainties\" and the section titled \"Risk Factors\" (Part I, Item 1A) of this Form 10-K. Purpose, Approach and Non-GAAP Measures The purpose of Management's Discussion and Analysis (MD&A) is to provide an understanding of Procter & Gamble's financial condition, results of operations and cash flows by focusing on changes in certain key measures from year to year. The MD&A is provided as a supplement to, and should be read in conjunction with, our Consolidated Financial Statements and accompanying Notes. The MD&A is organized in the following sections: • Overview • Summary of 2025 Results • Economic Conditions and Uncertainties • Results of Operations • Segment Results • Cash Flow, Financial Condition and Liquidity • Critical Accounting Policies and Estimates • Other Information Throughout the MD&A we refer to measures used by management to evaluate performance, including unit volume growth, net sales, net earnings, diluted net earnings per common share (diluted EPS) and operating cash flow. We also refer to a number of financial measures that are not defined under U.S. GAAP, including organic sales growth, Core earnings per share (Core EPS), adjusted free cash flow and adjusted free cash flow productivity. The explanation at the end of the MD&A provides the definition of these non-GAAP measures, details on the use and the derivation of these measures, as well as reconciliations to the most directly comparable U.S. GAAP measure.</untrusted_document>\n<untrusted_document cite_id=\"c:027dbf05e6c2fe9ebc0ce80524f6c8aad530943a4bbfe200ba510fe0a6208163\">hosting, processing and sharing, as appropriate, confidential and proprietary research, business plans and financial information; collaborating via an online and efficient means of global business communications; complying with regulatory, legal and tax requirements; providing data security; and handling other processes necessary to manage our business. Numerous and evolving information security threats, including advanced persistent cybersecurity threats, pose a risk to the security of our services, systems, networks and supply chain, as well as the confidentiality, availability and integrity of our data and of our critical business operations. In addition, because the techniques, tools and tactics used in cyber-attacks frequently change, continue to advance in sophistication and may be difficult to detect for periods of time, we and our third-party providers may face difficulties in anticipating and implementing adequate preventative measures or fully mitigating harms after such an attack, including acquired and divested businesses. Our IT/OT databases and systems and our third-party providers’ databases and systems have been, and will likely continue to be, subject to advanced computer viruses or other malicious codes, ransomware, unauthorized access attempts, denial of service attacks, phishing, social engineering, hacking and other cyber-attacks. Such attacks may originate from outside parties, hackers, criminal organizations or other threat actors, including nation states. In addition, operational errors and insider actors - malicious or otherwise - could cause technical disruptions and/or data incidents. We cannot guarantee that our security efforts or the security efforts of our third-party providers will prevent material breaches, operational outages or other breakdowns to our or our third-party providers’ IT/OT databases or systems. A breach of our data security systems or failure of our IT/OT databases and systems and those of our third-parties may have a material adverse impact on our business operations and financial results. If the IT/OT systems, networks or service providers we rely upon fail to function properly or cause operational outages or aberrations, or if we or one of our third-party providers suffer significant unavailability of key operations, or inadvertent disclosure of, lack of integrity of, or loss of our sensitive The Procter & Gamble Company 7</untrusted_document>\n<untrusted_document cite_id=\"c:2d0b29d9ffa313144d11d3f2a197fb9d1e6c4992dccec42b5a60ab755eba9d15\">Actual results may ultimately differ from estimates, although management does not generally believe such differences would materially affect the financial statements in any individual year. However, regarding ongoing impairment testing of goodwill and indefinite-lived intangible assets, significant deterioration in future cash flow projections or other assumptions used in estimating fair values versus those anticipated at the time of the initial valuations, could result in impairment charges that materially affect the financial statements in a given year. Revenue Recognition Our revenue is primarily generated from the sale of finished product to customers. Those sales predominantly contain a single performance obligation and revenue is recognized at a single point in time when ownership, risks and rewards transfer, which can be on the date of shipment or the date of receipt by the customer. A provision for payment discounts and product return allowances is recorded as a reduction of sales in the same period the revenue is recognized. The revenue recorded is presented net of sales and other taxes we collect on behalf of governmental authorities. The revenue includes shipping and handling costs, which generally are included in the list price to the customer. Trade promotions, consisting primarily of customer pricing allowances, merchandising funds and consumer coupons, are offered through various programs to customers and consumers. Sales are recorded net of trade promotion spending, which is recognized as incurred at the time of the sale. Most of these arrangements have terms of approximately one year. Accruals for expected payouts under these programs are included as accrued marketing and promotion in the Accrued and other liabilities line item in the Consolidated Balance Sheets. Cost of Products Sold Cost of products sold is primarily comprised of direct materials and supplies consumed in the manufacturing of product, as well as manufacturing labor, depreciation expense and direct overhead expenses necessary to acquire and convert the purchased materials and supplies into finished products. Cost of products sold also includes the cost to distribute products to customers, inbound freight costs, customs and duties, internal transfer costs, warehousing costs and other shipping and handling activity. Selling, General and Administrative Expense Selling, general and administrative expense (SG&A) is primarily comprised of marketing expenses, selling expenses, research and development costs, administrative and other indirect overhead costs, depreciation and amortization expense on non-manufacturing assets and other miscellaneous operating items. Research and development costs are charged to expense as incurred and were $ 2.1 billion in 2025 and $ 2.0 billion in 2024 and 2023.</untrusted_document>\n<untrusted_document cite_id=\"c:cbcbdb6bcfa2c9364aa36584b15071abc905f2851c83d9827bf409e6e008b798\">We are exposed to various risks due to economic, political and social instabilities, market volatility, natural disasters, debt and credit issues, currency controls, new or increased tariffs, foreign exchange and interest rate changes. These risks can negatively impact our net sales, net earnings and cash flows. For example, we are exposed to risks due to the ongoing war between Russia and Ukraine. Our Russia business accounted for 1% of consolidated net sales, net earnings and net assets as of June 30, 2025. Foreign Exchange. We have significant exposure to exchange rate fluctuations, both due to translation and transaction exposures. Translation exposures arise from measuring income statements of foreign subsidiaries with functional currencies other than the U.S. dollar. Transaction exposures involve impacts from 1) input costs that are denominated in currencies other than the local reporting currency and 2) revaluation of working capital balances denominated in currencies other than the functional currency. We have experienced significant foreign exchange impacts in the past due to the weakening of certain foreign currencies versus the U.S. dollar, which have negatively impacted net sales, net earnings and cash flows. In response to the devaluation of foreign currencies (including those deemed highly inflationary), any lags or inability (due to government restrictions) to implement price increases or the negative impacts of such actions on product consumption may lead to a decline in our net sales, net earnings and cash flows. Commodities and Supply Chain. Our costs are subject to fluctuations due to changes in commodity and input material prices, transportation costs, inflationary impacts and productivity efforts. We have significant exposures to certain commodities and input materials, in particular certain oil-derived materials like resins and paper-based materials like pulp. Volatility in the market price of commodities and input materials directly affects our costs. Disruptions in manufacturing, supply and distribution operations can lead to increased costs. Legal or regulatory requirements and sustainability initiatives may result in increased costs. We strive to implement, achieve and sustain cost improvement plans, including supply chain optimization and general overhead and workforce optimization. Increased pricing in response to certain inflationary or cost increases may also offset portions of the cost impacts; however, such price increases may negatively impact product consumption. If we are unable to manage cost impacts through pricing actions and consistent productivity improvements, it may negatively impact our net sales, net earnings and cash flows. Government Policies. We are exposed to changes in U.S.</untrusted_document>",
+   "summary": "PG operating cash flow 2025 Consolidated Statements of Cash Flows",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:e3544055297d0cffcef0206d83896bc2396ed9c0dfd5d34112267682695ad3a1",
+     "text": "Many countries have implemented or are in the process of implementing Pillar Two legislation into their respective domestic laws. Based on current legislation, available guidance and the June 28, 2025 G7 Pillar Two Statement committing to a side-by-side solution for U.S. parented groups, we do not anticipate the Pillar Two global minimum tax to have a material impact to our financial condition, results of operations, cash flows or effective tax rate. The Company continues to assess the overall impact of potential changes as developments occur, consistent with our practice to monitor all changes in tax laws. As the Pillar Two global minimum tax and other tax laws and related regulations are revised, enacted and implemented, a material impact to our financial condition, results of operations, cash flows or effective tax rate may occur. Furthermore, we are subject to regular review and audit by both foreign and domestic tax authorities. While we believe our tax positions will be sustained, the final outcome of tax audits and related litigation, including maintaining our intended tax treatment of divestiture transactions such as the fiscal 2017 Beauty Brands transaction with Coty, may differ materially from the tax amounts recorded in our Consolidated Financial Statements, which could adversely impact our results of operations and cash flows.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2570,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:12f39b8fedc154cf2c71a7e0fdf403d88efa978503cc7cf0a5212c84a74933ad",
+     "text": "Research and development costs are charged to expense as incurred and were $ 2.1 billion in 2025 and $ 2.0 billion in 2024 and 2023. Advertising costs, charged to expense as incurred, include television, print, radio, digital and in-store advertising expenses and were $ 9.2 billion in 2025, $ 9.6 billion in 2024 and $ 8.0 billion in 2023. Non-advertising related components of the Company's total marketing spending reported in SG&A include costs associated with consumer promotions, product sampling and sales aids. Other Non-Operating Income, Net Other non-operating income, net primarily includes divestiture gains, net non-service impacts related to postretirement benefit plans, investment income, accumulated foreign currency translation losses recognized upon the substantial liquidation of foreign operations and other non-operating items. Amounts in millions of dollars except per share amounts or as otherwise specified. The Procter & Gamble Company 41 Currency Translation Financial statements of operating subsidiaries outside the U.S. generally are measured using the local currency as the functional currency. Adjustments to translate those statements into U.S. dollars are recorded in Other comprehensive income (OCI). For subsidiaries operating in highly inflationary economies, the U.S. dollar is the functional currency. Re-measurement adjustments for financial statements in highly inflationary economies and other transactional exchange gains and losses are reflected in earnings. Cash Flow Presentation The Consolidated Statements of Cash Flows are prepared using the indirect method, which reconciles net earnings to cash flows from operating activities. Cash flows from foreign currency transactions and operations are translated at monthly exchange rates for each period. Cash flows from hedging activities are included in the same category as the items being hedged. Cash flows from derivative instruments designated as net investment hedges are classified as investing activities. Realized gains and losses from non-qualifying derivative instruments used to hedge currency exposures resulting from intercompany financing transactions are classified as financing activities. Cash flows from other derivative instruments used to manage interest rates, commodity or other currency exposures are classified as operating activities. Cash payments related to income taxes are classified as operating activities. Investments The Company holds minor equity investments in certain companies over which we exert significant influence, but do not control the financial and operating decisions. These are accounted for as equity method investments.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2570,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:6009122a7fe4a02587f9bfad852df9795bee8cd9d744df4dd0e154db2b8f000e",
+     "text": "(15) the ability to successfully achieve productivity improvements and cost savings and manage ongoing organizational changes while successfully identifying, developing and retaining key employees, including in key growth markets where the availability of skilled or experienced employees may be limited; (16) the ability to successfully manage current and expanding regulatory and legal requirements and matters (including, without limitation, those laws, regulations, policies and related interpretations involving product liability, product and packaging composition, manufacturing processes, intellectual property, labor and employment, antitrust, privacy, cybersecurity, data protection and data transfers, artificial intelligence, tax, the environment, due diligence, risk oversight, accounting and financial reporting) and to resolve new and pending matters within current estimates; (17) the ability to manage changes in applicable tax laws and regulations; and (18) the ability to continue delivering progress towards our environmental sustainability ambitions. A detailed discussion of risks and uncertainties that could cause actual results and events to differ materially from those projected herein is included in the section titled \"Economic Conditions and Uncertainties\" and the section titled \"Risk Factors\" (Part I, Item 1A) of this Form 10-K. Purpose, Approach and Non-GAAP Measures The purpose of Management's Discussion and Analysis (MD&A) is to provide an understanding of Procter & Gamble's financial condition, results of operations and cash flows by focusing on changes in certain key measures from year to year. The MD&A is provided as a supplement to, and should be read in conjunction with, our Consolidated Financial Statements and accompanying Notes. The MD&A is organized in the following sections: • Overview • Summary of 2025 Results • Economic Conditions and Uncertainties • Results of Operations • Segment Results • Cash Flow, Financial Condition and Liquidity • Critical Accounting Policies and Estimates • Other Information Throughout the MD&A we refer to measures used by management to evaluate performance, including unit volume growth, net sales, net earnings, diluted net earnings per common share (diluted EPS) and operating cash flow. We also refer to a number of financial measures that are not defined under U.S. GAAP, including organic sales growth, Core earnings per share (Core EPS), adjusted free cash flow and adjusted free cash flow productivity. The explanation at the end of the MD&A provides the definition of these non-GAAP measures, details on the use and the derivation of these measures, as well as reconciliations to the most directly comparable U.S. GAAP measure.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2570,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:027dbf05e6c2fe9ebc0ce80524f6c8aad530943a4bbfe200ba510fe0a6208163",
+     "text": "hosting, processing and sharing, as appropriate, confidential and proprietary research, business plans and financial information; collaborating via an online and efficient means of global business communications; complying with regulatory, legal and tax requirements; providing data security; and handling other processes necessary to manage our business. Numerous and evolving information security threats, including advanced persistent cybersecurity threats, pose a risk to the security of our services, systems, networks and supply chain, as well as the confidentiality, availability and integrity of our data and of our critical business operations. In addition, because the techniques, tools and tactics used in cyber-attacks frequently change, continue to advance in sophistication and may be difficult to detect for periods of time, we and our third-party providers may face difficulties in anticipating and implementing adequate preventative measures or fully mitigating harms after such an attack, including acquired and divested businesses. Our IT/OT databases and systems and our third-party providers’ databases and systems have been, and will likely continue to be, subject to advanced computer viruses or other malicious codes, ransomware, unauthorized access attempts, denial of service attacks, phishing, social engineering, hacking and other cyber-attacks. Such attacks may originate from outside parties, hackers, criminal organizations or other threat actors, including nation states. In addition, operational errors and insider actors - malicious or otherwise - could cause technical disruptions and/or data incidents. We cannot guarantee that our security efforts or the security efforts of our third-party providers will prevent material breaches, operational outages or other breakdowns to our or our third-party providers’ IT/OT databases or systems. A breach of our data security systems or failure of our IT/OT databases and systems and those of our third-parties may have a material adverse impact on our business operations and financial results. If the IT/OT systems, networks or service providers we rely upon fail to function properly or cause operational outages or aberrations, or if we or one of our third-party providers suffer significant unavailability of key operations, or inadvertent disclosure of, lack of integrity of, or loss of our sensitive The Procter & Gamble Company 7",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2570,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:2d0b29d9ffa313144d11d3f2a197fb9d1e6c4992dccec42b5a60ab755eba9d15",
+     "text": "Actual results may ultimately differ from estimates, although management does not generally believe such differences would materially affect the financial statements in any individual year. However, regarding ongoing impairment testing of goodwill and indefinite-lived intangible assets, significant deterioration in future cash flow projections or other assumptions used in estimating fair values versus those anticipated at the time of the initial valuations, could result in impairment charges that materially affect the financial statements in a given year. Revenue Recognition Our revenue is primarily generated from the sale of finished product to customers. Those sales predominantly contain a single performance obligation and revenue is recognized at a single point in time when ownership, risks and rewards transfer, which can be on the date of shipment or the date of receipt by the customer. A provision for payment discounts and product return allowances is recorded as a reduction of sales in the same period the revenue is recognized. The revenue recorded is presented net of sales and other taxes we collect on behalf of governmental authorities. The revenue includes shipping and handling costs, which generally are included in the list price to the customer. Trade promotions, consisting primarily of customer pricing allowances, merchandising funds and consumer coupons, are offered through various programs to customers and consumers. Sales are recorded net of trade promotion spending, which is recognized as incurred at the time of the sale. Most of these arrangements have terms of approximately one year. Accruals for expected payouts under these programs are included as accrued marketing and promotion in the Accrued and other liabilities line item in the Consolidated Balance Sheets. Cost of Products Sold Cost of products sold is primarily comprised of direct materials and supplies consumed in the manufacturing of product, as well as manufacturing labor, depreciation expense and direct overhead expenses necessary to acquire and convert the purchased materials and supplies into finished products. Cost of products sold also includes the cost to distribute products to customers, inbound freight costs, customs and duties, internal transfer costs, warehousing costs and other shipping and handling activity. Selling, General and Administrative Expense Selling, general and administrative expense (SG&A) is primarily comprised of marketing expenses, selling expenses, research and development costs, administrative and other indirect overhead costs, depreciation and amortization expense on non-manufacturing assets and other miscellaneous operating items. Research and development costs are charged to expense as incurred and were $ 2.1 billion in 2025 and $ 2.0 billion in 2024 and 2023.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2570,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:cbcbdb6bcfa2c9364aa36584b15071abc905f2851c83d9827bf409e6e008b798",
+     "text": "We are exposed to various risks due to economic, political and social instabilities, market volatility, natural disasters, debt and credit issues, currency controls, new or increased tariffs, foreign exchange and interest rate changes. These risks can negatively impact our net sales, net earnings and cash flows. For example, we are exposed to risks due to the ongoing war between Russia and Ukraine. Our Russia business accounted for 1% of consolidated net sales, net earnings and net assets as of June 30, 2025. Foreign Exchange. We have significant exposure to exchange rate fluctuations, both due to translation and transaction exposures. Translation exposures arise from measuring income statements of foreign subsidiaries with functional currencies other than the U.S. dollar. Transaction exposures involve impacts from 1) input costs that are denominated in currencies other than the local reporting currency and 2) revaluation of working capital balances denominated in currencies other than the functional currency. We have experienced significant foreign exchange impacts in the past due to the weakening of certain foreign currencies versus the U.S. dollar, which have negatively impacted net sales, net earnings and cash flows. In response to the devaluation of foreign currencies (including those deemed highly inflationary), any lags or inability (due to government restrictions) to implement price increases or the negative impacts of such actions on product consumption may lead to a decline in our net sales, net earnings and cash flows. Commodities and Supply Chain. Our costs are subject to fluctuations due to changes in commodity and input material prices, transportation costs, inflationary impacts and productivity efforts. We have significant exposures to certain commodities and input materials, in particular certain oil-derived materials like resins and paper-based materials like pulp. Volatility in the market price of commodities and input materials directly affects our costs. Disruptions in manufacturing, supply and distribution operations can lead to increased costs. Legal or regulatory requirements and sustainability initiatives may result in increased costs. We strive to implement, achieve and sustain cost improvement plans, including supply chain optimization and general overhead and workforce optimization. Increased pricing in response to certain inflationary or cost increases may also offset portions of the cost impacts; however, such price increases may negatively impact product consumption. If we are unable to manage cost impacts through pricing actions and consistent productivity improvements, it may negatively impact our net sales, net earnings and cash flows. Government Policies. We are exposed to changes in U.S.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2570,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"doc_type\":\"10-K\",\"period_from\":\"2025-FY\",\"period_to\":\"2025-FY\",\"query\":\"Consolidated Statements of Cash Flows operating activities net earnings 2025\",\"ticker\":\"PG\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:12f39b8fedc154cf2c71a7e0fdf403d88efa978503cc7cf0a5212c84a74933ad\">Research and development costs are charged to expense as incurred and were $ 2.1 billion in 2025 and $ 2.0 billion in 2024 and 2023. Advertising costs, charged to expense as incurred, include television, print, radio, digital and in-store advertising expenses and were $ 9.2 billion in 2025, $ 9.6 billion in 2024 and $ 8.0 billion in 2023. Non-advertising related components of the Company's total marketing spending reported in SG&A include costs associated with consumer promotions, product sampling and sales aids. Other Non-Operating Income, Net Other non-operating income, net primarily includes divestiture gains, net non-service impacts related to postretirement benefit plans, investment income, accumulated foreign currency translation losses recognized upon the substantial liquidation of foreign operations and other non-operating items. Amounts in millions of dollars except per share amounts or as otherwise specified. The Procter & Gamble Company 41 Currency Translation Financial statements of operating subsidiaries outside the U.S. generally are measured using the local currency as the functional currency. Adjustments to translate those statements into U.S. dollars are recorded in Other comprehensive income (OCI). For subsidiaries operating in highly inflationary economies, the U.S. dollar is the functional currency. Re-measurement adjustments for financial statements in highly inflationary economies and other transactional exchange gains and losses are reflected in earnings. Cash Flow Presentation The Consolidated Statements of Cash Flows are prepared using the indirect method, which reconciles net earnings to cash flows from operating activities. Cash flows from foreign currency transactions and operations are translated at monthly exchange rates for each period. Cash flows from hedging activities are included in the same category as the items being hedged. Cash flows from derivative instruments designated as net investment hedges are classified as investing activities. Realized gains and losses from non-qualifying derivative instruments used to hedge currency exposures resulting from intercompany financing transactions are classified as financing activities. Cash flows from other derivative instruments used to manage interest rates, commodity or other currency exposures are classified as operating activities. Cash payments related to income taxes are classified as operating activities. Investments The Company holds minor equity investments in certain companies over which we exert significant influence, but do not control the financial and operating decisions. These are accounted for as equity method investments.</untrusted_document>\n<untrusted_document cite_id=\"c:02effc09de5adad0832a2273b070cecf8d0581bf00e9c2b45adec13464c18bc0\">Changes in Accumulated Other Comprehensive Income/(Loss) by Component |  |  |  |  |  |  |  |  | \n | Investment Securities |  | Post-retirement Benefit Plans |  | Foreign Currency Translation |  | Total AOCI |  | \nBALANCE AT JUNE 30, 2023, NET OF TAX |  | 13 |  |  |  | 67 |  | ( 12,300 ) | ( 12,220 )\nOther comprehensive income/(loss), before tax: |  |  |  |  |  |  |  |  | \nOCI before reclassifications | ( 4 ) |  |  | 823 |  |  | ( 376 ) | 443 | \nAmounts reclassified to the Consolidated Statement of Earnings | — |  |  | ( 47 ) |  |  | 216 | 169 | \nTotal other comprehensive income/(loss), before tax | ( 4 ) |  |  | 776 |  |  | ( 160 ) | 612 | \nTax effect | 1 |  |  | ( 230 ) |  |  | ( 66 ) | ( 295 ) | \nTotal other comprehensive income/(loss), net of tax | ( 3 ) |  |  | 546 |  |  | ( 226 ) | 317 | \nLess: OCI attributable to non-controlling interests, net of tax | — |  |  | — |  |  | ( 3 ) | ( 3 ) | \nBALANCE AT JUNE 30, 2024, NET OF TAX | 10 |  |  | 613 |  |  | ( 12,522 ) | ( 11,900 ) | \nOther comprehensive income/(loss), before tax: |  |  |  |  |  |  |  |  | \nOCI before reclassifications | ( 1 ) |  |  | ( 1,717 ) |  |  | ( 51 ) | ( 1,769 ) | \nAmounts reclassified to the Consolidated Statement of Earnings | — |  |  | ( 81 ) |  |  | 752 | 671 | \nTotal other comprehensive income/(loss), before tax | ( 1 ) |  |  | ( 1,798 ) |  |  | 701 | ( 1,098 ) | </untrusted_document>\n<untrusted_document cite_id=\"c:027dbf05e6c2fe9ebc0ce80524f6c8aad530943a4bbfe200ba510fe0a6208163\">hosting, processing and sharing, as appropriate, confidential and proprietary research, business plans and financial information; collaborating via an online and efficient means of global business communications; complying with regulatory, legal and tax requirements; providing data security; and handling other processes necessary to manage our business. Numerous and evolving information security threats, including advanced persistent cybersecurity threats, pose a risk to the security of our services, systems, networks and supply chain, as well as the confidentiality, availability and integrity of our data and of our critical business operations. In addition, because the techniques, tools and tactics used in cyber-attacks frequently change, continue to advance in sophistication and may be difficult to detect for periods of time, we and our third-party providers may face difficulties in anticipating and implementing adequate preventative measures or fully mitigating harms after such an attack, including acquired and divested businesses. Our IT/OT databases and systems and our third-party providers’ databases and systems have been, and will likely continue to be, subject to advanced computer viruses or other malicious codes, ransomware, unauthorized access attempts, denial of service attacks, phishing, social engineering, hacking and other cyber-attacks. Such attacks may originate from outside parties, hackers, criminal organizations or other threat actors, including nation states. In addition, operational errors and insider actors - malicious or otherwise - could cause technical disruptions and/or data incidents. We cannot guarantee that our security efforts or the security efforts of our third-party providers will prevent material breaches, operational outages or other breakdowns to our or our third-party providers’ IT/OT databases or systems. A breach of our data security systems or failure of our IT/OT databases and systems and those of our third-parties may have a material adverse impact on our business operations and financial results. If the IT/OT systems, networks or service providers we rely upon fail to function properly or cause operational outages or aberrations, or if we or one of our third-party providers suffer significant unavailability of key operations, or inadvertent disclosure of, lack of integrity of, or loss of our sensitive The Procter & Gamble Company 7</untrusted_document>",
+   "summary": "PG Consolidated Statements of Cash Flows operating activities net earnings 2025",
+   "count": 3,
+   "items": [
+    {
+     "cite_id": "c:12f39b8fedc154cf2c71a7e0fdf403d88efa978503cc7cf0a5212c84a74933ad",
+     "text": "Research and development costs are charged to expense as incurred and were $ 2.1 billion in 2025 and $ 2.0 billion in 2024 and 2023. Advertising costs, charged to expense as incurred, include television, print, radio, digital and in-store advertising expenses and were $ 9.2 billion in 2025, $ 9.6 billion in 2024 and $ 8.0 billion in 2023. Non-advertising related components of the Company's total marketing spending reported in SG&A include costs associated with consumer promotions, product sampling and sales aids. Other Non-Operating Income, Net Other non-operating income, net primarily includes divestiture gains, net non-service impacts related to postretirement benefit plans, investment income, accumulated foreign currency translation losses recognized upon the substantial liquidation of foreign operations and other non-operating items. Amounts in millions of dollars except per share amounts or as otherwise specified. The Procter & Gamble Company 41 Currency Translation Financial statements of operating subsidiaries outside the U.S. generally are measured using the local currency as the functional currency. Adjustments to translate those statements into U.S. dollars are recorded in Other comprehensive income (OCI). For subsidiaries operating in highly inflationary economies, the U.S. dollar is the functional currency. Re-measurement adjustments for financial statements in highly inflationary economies and other transactional exchange gains and losses are reflected in earnings. Cash Flow Presentation The Consolidated Statements of Cash Flows are prepared using the indirect method, which reconciles net earnings to cash flows from operating activities. Cash flows from foreign currency transactions and operations are translated at monthly exchange rates for each period. Cash flows from hedging activities are included in the same category as the items being hedged. Cash flows from derivative instruments designated as net investment hedges are classified as investing activities. Realized gains and losses from non-qualifying derivative instruments used to hedge currency exposures resulting from intercompany financing transactions are classified as financing activities. Cash flows from other derivative instruments used to manage interest rates, commodity or other currency exposures are classified as operating activities. Cash payments related to income taxes are classified as operating activities. Investments The Company holds minor equity investments in certain companies over which we exert significant influence, but do not control the financial and operating decisions. These are accounted for as equity method investments.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2570,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:02effc09de5adad0832a2273b070cecf8d0581bf00e9c2b45adec13464c18bc0",
+     "text": "Changes in Accumulated Other Comprehensive Income/(Loss) by Component |  |  |  |  |  |  |  |  | \n | Investment Securities |  | Post-retirement Benefit Plans |  | Foreign Currency Translation |  | Total AOCI |  | \nBALANCE AT JUNE 30, 2023, NET OF TAX |  | 13 |  |  |  | 67 |  | ( 12,300 ) | ( 12,220 )\nOther comprehensive income/(loss), before tax: |  |  |  |  |  |  |  |  | \nOCI before reclassifications | ( 4 ) |  |  | 823 |  |  | ( 376 ) | 443 | \nAmounts reclassified to the Consolidated Statement of Earnings | — |  |  | ( 47 ) |  |  | 216 | 169 | \nTotal other comprehensive income/(loss), before tax | ( 4 ) |  |  | 776 |  |  | ( 160 ) | 612 | \nTax effect | 1 |  |  | ( 230 ) |  |  | ( 66 ) | ( 295 ) | \nTotal other comprehensive income/(loss), net of tax | ( 3 ) |  |  | 546 |  |  | ( 226 ) | 317 | \nLess: OCI attributable to non-controlling interests, net of tax | — |  |  | — |  |  | ( 3 ) | ( 3 ) | \nBALANCE AT JUNE 30, 2024, NET OF TAX | 10 |  |  | 613 |  |  | ( 12,522 ) | ( 11,900 ) | \nOther comprehensive income/(loss), before tax: |  |  |  |  |  |  |  |  | \nOCI before reclassifications | ( 1 ) |  |  | ( 1,717 ) |  |  | ( 51 ) | ( 1,769 ) | \nAmounts reclassified to the Consolidated Statement of Earnings | — |  |  | ( 81 ) |  |  | 752 | 671 | \nTotal other comprehensive income/(loss), before tax | ( 1 ) |  |  | ( 1,798 ) |  |  | 701 | ( 1,098 ) | ",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2570,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:027dbf05e6c2fe9ebc0ce80524f6c8aad530943a4bbfe200ba510fe0a6208163",
+     "text": "hosting, processing and sharing, as appropriate, confidential and proprietary research, business plans and financial information; collaborating via an online and efficient means of global business communications; complying with regulatory, legal and tax requirements; providing data security; and handling other processes necessary to manage our business. Numerous and evolving information security threats, including advanced persistent cybersecurity threats, pose a risk to the security of our services, systems, networks and supply chain, as well as the confidentiality, availability and integrity of our data and of our critical business operations. In addition, because the techniques, tools and tactics used in cyber-attacks frequently change, continue to advance in sophistication and may be difficult to detect for periods of time, we and our third-party providers may face difficulties in anticipating and implementing adequate preventative measures or fully mitigating harms after such an attack, including acquired and divested businesses. Our IT/OT databases and systems and our third-party providers’ databases and systems have been, and will likely continue to be, subject to advanced computer viruses or other malicious codes, ransomware, unauthorized access attempts, denial of service attacks, phishing, social engineering, hacking and other cyber-attacks. Such attacks may originate from outside parties, hackers, criminal organizations or other threat actors, including nation states. In addition, operational errors and insider actors - malicious or otherwise - could cause technical disruptions and/or data incidents. We cannot guarantee that our security efforts or the security efforts of our third-party providers will prevent material breaches, operational outages or other breakdowns to our or our third-party providers’ IT/OT databases or systems. A breach of our data security systems or failure of our IT/OT databases and systems and those of our third-parties may have a material adverse impact on our business operations and financial results. If the IT/OT systems, networks or service providers we rely upon fail to function properly or cause operational outages or aberrations, or if we or one of our third-party providers suffer significant unavailability of key operations, or inadvertent disclosure of, lack of integrity of, or loss of our sensitive The Procter & Gamble Company 7",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2570,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  }
+ ]
+}

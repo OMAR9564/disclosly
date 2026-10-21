@@ -1,0 +1,98 @@
+{
+ "case_id": "tr-none-toyota",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "ccd3ec24810ac8054866f52f754b53542c434a9f76308e417baf7f32a87735ad",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_770130",
+      "name": "search_documents",
+      "arguments": {
+       "query": "Toyota net income 2025",
+       "ticker": "TM"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TGtEjPOALHLs3T9Odl5Y9YuowBNv+OXDhDn4Ly3tuGQtwFppkmdA6tWclON9U3/JIku+XaHuYoeZpCPB++/MQADUooJCdiYm8iXXNHH1UdXQMLA1UCMsHfPQ="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1613,
+    "tokens_out": 29,
+    "latency_ms": 2376.25,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "0e21e74bf2fd496116f1c1c01628c6e54500ff167f716db62fa05d5a0e3f1df8",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_776639",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "TM"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T3lvo6T/mF6P45C1I7an+SRxCvLo9r9JtNj6pK5DjSqUdqLjSta3VFhZlrhXM6w8xRtLwsfKaozd2IHzcRJrBmlYOub/KbJqkNj8ak2mB4j/CNiTN5ySLR4U="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1658,
+    "tokens_out": 16,
+    "latency_ms": 653.382,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "b98227421f86bc480377dfc562de72793404d6f7bfa37acd2cc288e93d1031c8",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"Toyota'nın (TM) 2025 yılı net kârına ilişkin sistemde herhangi bir belge veya finansal veri bulunmamaktadır.\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1692,
+    "tokens_out": 62,
+    "latency_ms": 691.481,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"Toyota net income 2025\",\"ticker\":\"TM\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "TM Toyota net income 2025",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"TM\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": []}",
+   "summary": "TM documents",
+   "count": 0,
+   "items": [],
+   "error": null
+  }
+ ]
+}

@@ -289,3 +289,44 @@ def test_payload_response_schema_mode() -> None:
 
     assert payload["response_format"]["json_schema"]["schema"] == schema
     assert "tools" not in payload
+
+
+def test_gemini_thought_signature_round_trips() -> None:
+    """Gemini 3 rejects a follow-up turn unless the call's `extra_content` is sent back."""
+    from llm.client import _native_tool_calls
+
+    extra = {"google": {"thought_signature": "c2ln"}}
+    calls = _native_tool_calls(
+        "gemini",
+        {
+            "tool_calls": [
+                {
+                    "id": "call_1",
+                    "type": "function",
+                    "function": {"name": "search_documents", "arguments": '{"query": "x"}'},
+                    "extra_content": extra,
+                }
+            ]
+        },
+    )
+    assert calls[0].extra == extra
+    request = ChatRequest(
+        messages=[
+            ChatMessage(role="user", content="q"),
+            ChatMessage(role="assistant", tool_calls=calls),
+            ChatMessage(role="tool", content="r", tool_call_id="call_1"),
+        ]
+    )
+    sent = build_payload(_provider(name="gemini-flash"), request)["messages"][1]["tool_calls"][0]
+    assert sent["extra_content"] == extra
+
+
+def test_extra_content_is_not_part_of_the_cache_key() -> None:
+    from llm.cache_key import cache_key
+    from llm.types import ChatMessage, ChatRequest, ToolCall
+
+    def request(extra: dict[str, object] | None) -> ChatRequest:
+        call = ToolCall(id="1", name="t", arguments={}, extra=extra)
+        return ChatRequest(messages=[ChatMessage(role="assistant", tool_calls=[call])])
+
+    assert cache_key(request(None), "m") == cache_key(request({"google": {"a": 1}}), "m")

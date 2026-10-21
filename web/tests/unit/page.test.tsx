@@ -94,3 +94,52 @@ describe("RootLayout", () => {
     expect(html.props.lang).toBe("tr");
   });
 });
+
+describe("Home ask", () => {
+  it("starts a run and goes to its page", async () => {
+    const { routerPush } = await import("./setup");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string) =>
+        String(url).endsWith("/v1/research")
+          ? new Response(JSON.stringify({ run_id: "run-9" }), { status: 202 })
+          : new Response(
+              JSON.stringify({
+                status: "ok",
+                version: "abc1234",
+                service: "disclosly-api",
+              }),
+              { status: 200 },
+            ),
+      ),
+    );
+    render(<Home />);
+    fireEvent.change(screen.getByLabelText(tr.askLabel), {
+      target: { value: "THYAO net kâr?" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: tr.askSubmit }));
+    await waitFor(() => expect(routerPush).toHaveBeenCalledWith("/runs/run-9"));
+  });
+
+  it("shows a localized error when asking fails", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string) =>
+        String(url).endsWith("/v1/research")
+          ? new Response(
+              JSON.stringify({ error: { code: "unauthorized", message: "x" } }),
+              { status: 401 },
+            )
+          : new Response("{}", { status: 503 }),
+      ),
+    );
+    render(<Home />);
+    fireEvent.change(screen.getByLabelText(tr.askLabel), {
+      target: { value: "THYAO net kâr?" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: tr.askSubmit }));
+    await waitFor(() =>
+      expect(screen.getByRole("alert").textContent).toBe(tr.errorUnauthorized),
+    );
+  });
+});

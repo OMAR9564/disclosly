@@ -150,6 +150,9 @@ jobs:
       # vectors and rerank scores; fails when recall@10 drops more than 0.02 below the baseline.
       - run: uv run alembic upgrade head
       - run: uv run python -m evals.retrieval --cassettes-only --reports "$RUNNER_TEMP/reports"
+      # Agent gate (T021): replays recorded agent runs; fails below 100% citation coverage,
+      # refusal or injection pass rate, or when numeric match drops > 5 pp below the baseline.
+      - run: uv run python -m evals.run agent --replay --reports "$RUNNER_TEMP/reports"
 
   build:
     runs-on: ubuntu-latest

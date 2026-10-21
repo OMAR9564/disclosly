@@ -1,0 +1,167 @@
+{
+ "case_id": "tr-isctr-greeneco-degerleme",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "df3c20586cd19201c15503d9933767afebd4a49b7cfdef26cf8f356e2f86a8c8",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_204662",
+      "name": "search_documents",
+      "arguments": {
+       "query": "Greeneco Enerji değerleme raporu tutar",
+       "ticker": "ISCTR"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TE4SU6ecNFirlN8R9YNY/X0qwyOG6l+fYkwUNva4xjby9BsYpwN4fJUK8qFEMBeyGh/o0oJkeReknRZ++KKu6CZSgmAVo6w6J49LT5XbOw/rVO/XbH/dE0Dc="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1616,
+    "tokens_out": 32,
+    "latency_ms": 876.069,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "f5bfea86d9332ffe482372a76c4334bbcc728f1ff46c9d054eaa434f3d47975e",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"İş Bankası'nın Greeneco Enerji Elektrik Üretim A.Ş. paylarının satış işlemine ilişkin KPMG Yönetim Danışmanlığı A.Ş. tarafından hazırlanan değerleme raporunda bulunan tutar 100.000.000 USD'dir [c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e, c:fb0b75df249ecb681d843ec353679b1d696c79def253454e14b9c04687f3f967].\",\n  \"points\": [\n    {\n      \"text\": \"KPMG Yönetim Danışmanlığı A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: 100.000.000 USD\",\n      \"cite_ids\": [\n        \"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\",\n        \"c:fb0b75df249ecb681d843ec353679b1d696c79def253454e14b9c04687f3f967\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:fb0b75df249ecb681d843ec353679b1d696c79def253454e14b9c04687f3f967\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 5638,
+    "tokens_out": 611,
+    "latency_ms": 1936.571,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "890928bcaf2d28bdc5b29e6e9c972ee97bd91cfb5fe1cac7feb339da92a9494e",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"İş Bankası'nın Greeneco Enerji Elektrik Üretim A.Ş. paylarının satış işlemine ilişkin KPMG Yönetim Danışmanlığı A.Ş. tarafından hazırlanan değerleme raporunda bulunan tutar 100.000.000 USD'dir [c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e].\",\n  \"points\": [\n    {\n      \"text\": \"KPMG Yönetim Danışmanlığı A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: 100.000.000 USD\",\n      \"cite_ids\": [\n        \"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\",\n        \"c:fb0b75df249ecb681d843ec353679b1d696c79def253454e14b9c04687f3f967\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash",
+    "model": "gemini-3.5-flash",
+    "tokens_in": 5804,
+    "tokens_out": 462,
+    "latency_ms": 3147.42,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"Greeneco Enerji değerleme raporu tutar\",\"ticker\":\"ISCTR\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\">KPMG Yönetim Danışmanlığı A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: 100.000.000 USD İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: - İlgi: 15.09.2023 ve 20.09.2023 tarihli özel durum açıklamalarımız. İlgide kayıtlı açıklamalarımızda Greeneco Enerji Elektrik Üretim A.Ş.'nin %50 oranındaki paylarının Bankamıza devrinin gerçekleştiği duyurulmuştu. Bankamız mali tablolarında 3.533.527 bin TL değerle takip edilen ilgili paylar, %100 oranında dolaylı pay sahibi olduğumuz İş Enerji Yatırımları A.Ş.'ye satılmış olup, satış bedelinin 20 milyon USD'lik bölümü peşin olarak tahsil edilmiştir. Söz konusu bedelin kalan kısmı ise 2026 yılı içerisinde tahsil edilecektir.</untrusted_document>\n<untrusted_document cite_id=\"c:fb0b75df249ecb681d843ec353679b1d696c79def253454e14b9c04687f3f967\">Satışa İlişkin Yönetim Kurulu Karar Tarihi: 26/12/2025 Satışa İlişkin Yönetim Kurulu Kararında Bağımsız Üyelerin Çoğunluğunun Onayı Var mı?: Evet Satılan Finansal Duran Varlığın Ünvanı: Greeneco Enerji Elektrik Üretim A.Ş. Satılan Finansal Duran Varlığın Faaliyet Konusu: Elektrik üretimi Satılan Finansal Duran Varlığın Sermayesi: 1.755.000.000 TL İşlemin Tamamlandığı/Tamamlanacağı Tarih: 30.12.2025 Satış Koşulları: Vadeli (Timed) Satılan Payların Nominal Tutarı: 877.500.000 TL Beher Pay Fiyatı: - Toplam Tutar: 100.000.000 USD Satılan Payların Finansal Duran Varlığın Sermayesine Oranı (%): %50 Satış Sonrasında Finansal Duran Varlıktaki İştirak Oranı (%): %0 Satış Sonrası Sahip Olunan Oy Haklarının Finansal Duran Varlığın Toplam Oy Haklarına Oranı (%): %0 Satılan Finansal Duran Varlığın Ortaklığın Kamuya Açıklanan Son Finansal Tablosundaki Aktif Toplamına Oranı (%): %0,08 İşlem Bedelinin Ortaklığın Kamuya Açıklanan Son Yıllık Finansal Tablolara Göre Oluşan Hasılat Tutarına Oranı (%): %0,67 Ortaklığın Faaliyetlerine Etkisi: Bulunmamaktadır. Satış Sonucu Oluşan Kar/Zarar Tutarı: Kamuya açıklanacak 31.12.2025 tarihli finansal raporun ilgili dipnotunda yer verilecektir. Varsa Satış Karının Ne Şekilde Değerlendirileceği: - Varsa Satış Karının Ne Şekilde Değerlendirileceğine İlişkin Yönetim Kurulu Karar Tarihi: - Satın Alan Kişinin Adı/Ünvanı: İş Enerji Yatırımları A.Ş. Karşı Taraf SPK Düzenlemelerine Göre İlişkili Taraf mıdır?: Evet (Yes) Satın Alan Kişinin Ortaklıkla İlişkisi: Dolaylı bağlı ortaklığıdır. Varsa İşleme İlişkin Sözleşme Tarihi: 29/12/2025 Finansal Duran Varlığın Değerinin Belirlenme Yöntemi: İndirgenmiş Nakit Akımları Yöntemi Değerleme Raporu Düzenlendi mi?: Düzenlendi (Prepared) Değerleme Raporu Düzenlenmediyse Nedeni: - Değerleme Raporu Düzenlendiyse Tarih ve Numarası: 25.12.2025/202512K14580452 Değerleme Raporunu Hazırlayan Değerleme Kuruluşunun Ünvanı: KPMG Yönetim Danışmanlığı A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: 100.000.000 USD İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: - İlgi:</untrusted_document>\n<untrusted_document cite_id=\"c:c343ffb5f5a1c3f5eb68d84500856a512177bf2c2abf7eb2bb8e8332f7792eeb\">26.11.2024 - ISGY-2411002 Değerleme Raporunu Hazırlayan Değerleme Kuruluşunun Ünvanı: Reel Gayrimenkul Değerleme A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: 902.400.000 TL + KDV İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: - Yönetim Kurulumuzun 27.11.2024 tarihli toplantısında; Türkiye İş Bankası A.Ş.'nin mülkiyetinde olan ve İş Kuleleri Kompleksinde yer alan, İstanbul İli, Beşiktaş İlçesi, Rumelihisarı Mahallesi, 81 pafta, 1420 ada 1 parselde kayıtlı, ticaret fonksiyonuna sahip, toplam 5.954 m2 kiralanabilir alanı bulunan 50 numaralı bağımsız bölümün KDV hariç 900.000.000 TL bedelle satın alınmasına ve bağımsız bölümdeki 5.892 m2'lik alanın aylık 4.124.400 TL + KDV bedelle T. İş Bankası A.Ş.'ye 1 yıllık süre ile kiralanmasına karar verilmiştir. İlgili bağımsız bölüme yönelik hazırlanan değerleme raporu ekte yer almaktadır.</untrusted_document>\n<untrusted_document cite_id=\"c:186d2eb3e0027defccdaf1b3f5904b62bd23c12aef0108201638628ac19d5745\">2025 yılında yenilenebilir enerji kaynaklarından üretilen enerji miktarının toplam enerji tüketimi içerisindeki payı %100 olarak gerçekleşmiştir. 2 2025 yılından itibaren Kapsam 3 emisyonlarının raporlanan alt kategorileri genişletilmiş; karşılaştırılabilirliği sağlamak amacıyla 2023 yılından itibaren veriler geriye dönük olarak güncellenmiştir. 3 Emisyon yoğunlukları Kapsam 1 ve Kapsam 2 emisyonlarının toplanmasıyla ulaşılan değer üzerinden hesaplanmaktadır. 4 2025 yılı için Genel Müdürlük (Kule ve ATLAS Veri Binası) toplanan yağmur suyu miktarını ifade etmektedir. 5 Genel Müdürlük binalarında tüketilen içme suyu miktarını ifade etmektedir. Bu binalar için tankerler, damacana ve şişe su aracılığıyla tedarik edilen içme suyu miktarı 2021 yılından itibaren takip edilmektedir. ISO 14001 sertifikasına sahip hizmet binalarında ise içme suyu, şişe ve damacana su tedariki ile sağlanmaktadır. 146 147 İş Bankası I 2025 Entegre Faaliyet Raporu YANINDAYIZ.YARINDAYIZ. İnsan Odaklı Değer Yaratan Bankacılık I Sorumluluk Odaklı Şeffaf Bankacılık I Finansal Raporlar ve Ekler İş Bankası’na Genel Bakış I Güven Odaklı Sürdürülebilir Bankacılık I Dönüşüm Odaklı Yenilikçi Bankacılık Araç Yakıt Tüketimleri (lt) Şirket Araçları Yakıt Tüketimi (Motorin) 1.846.268 1.397.654 1.186.059 Şirket Araçları Yakıt Tüketimi (Benzin) 2.205.462 2.787.594 2.492.206 Personel Servisleri ile Tüketilen Yakıt (Motorin) 596.531 589.561 569.383 Şahsi Araçlarla Yapılan İş Seyahatleri (Dizel) 57.329 48.790 56.413 Şahsi Araçlarla Yapılan İş Seyahatleri (Benzin) 70.440 93.117 119.855 Şahsi Araçlarla Yapılan İş Seyahatleri (LPG) 39.218 28.441 24.728 Şirket Araçları Yakıt Tüketimi (Elektrik Yakıt Tüketimi (kWh)) - - 1.200.375 Kâğıt Tüketimi (ton) 914 792 599 Atık Miktarları6 (ton) Toplam Atık Miktarı 1.814 1.894 1.588 Evsel Atık Miktarı 1.150 1.200 1.019 Tehlikeli Atık Miktarı (batarya, floresan lamba, araba aküsü, pil, toner kartuşu, tıbbı atık) 21 28 36 Elektronik Atık Miktarı 56 47 32 Tıbbi atık 3 4 2 6 Genel Müdürlük binalarını ve ISO 14001 sertifikasına sahip tüm hizmet binalarını kapsamaktadır.</untrusted_document>\n<untrusted_document cite_id=\"c:c7710c7f497a0c4d83902b36bc1c6a769fba9bf153285e4bbd11f5e92ddf0e3f\">Bu nedenle, Seçilmiş Bilgiler’in Raporlama Kılavuzu çerçevesinde okunması ve incelenmesi önem arz etmektedir. Diğer hususların yanı sıra, özellikle enerji kaynağı yakıtların tüketimlerinde MWh birimine dönüşüm faktörleri ve karbon emisyonu ile ilgili hesaplamalar konusunda, Raporlama Kılavuzu bölümünde belirtildiği gibi Banka içinde elde edilen bilgilere ve faktörlere ve/veya bağımsız üçüncü şahıslarca sağlanan bilgilere ve faktörlere bağlıdır. Bu farklı faktörler ve üçüncü taraflarca sağlanan bilgiler çalışmamız kapsamına alınmamıştır. Bağımsızlık ve Kalite Yönetim Muhasebe Meslek Mensupları için Uluslararası Etik Standartları Kurulu (“IESBA”) tarafından yayımlanan; dürüstlük, tarafsızlık, profesyonel yetkinlik ve gerekli özen gösterilmesi, gizlilik ve profesyonel davranış temel ilkelerini belirleyen IESBA Profesyonel Muhasebeciler için Etik Kurallar’ın bağımsızlık ve diğer etik gerekliliklerine uyum göstermekteyiz. Kalite Yönetime ilişkin Uluslararası Standart 1’i uygulamakta ve bu doğrultuda ilişkili etik ve profesyonel standartlar ve kanun veya yönetmelik gerekliliklerine uygun belgelendirilmiş politikalar ve süreçleri içeren bir kalite yönetim sistemi muhafaza etmekteyiz. Sorumluluklarımız Sorumluluğumuz, gerçekleştirdiğimiz sınırlı güvence çalışmasına dayanarak Seçilmiş Bilgiler’in, tüm önemli yönleriyle, Raporlama Kılavuzu’na uygun hazırlanmadığı kanaatine varmamıza sebep olacak herhangi bir hususun dikkatimizi çekip çekmediğine ilişkin bir sınırlı güvence bildirmektir. Sınırlı güvence çalışmamız, Uluslararası Denetim ve Güvence Standartları Kurulu tarafından çıkarılmış Uluslararası Güvence Denetimleri Standardı 3000- “Tarihi Finansal Bilgilerin Bağımsız Denetimi veya Sınırlı Bağımsız Denetimi Dışındaki Diğer Güvence Denetimleri Standardı”na (“ISAE 3000” Revize) ve Uluslararası Güvence Denetimi Standardı 3410- “Sera Gazı Beyanlarına İlişkin Güvence Denetimleri Standardı”na (“ISAE 3410”) uygun olarak gerçekleştirilmiştir. ISAE 3000 (Revize) ve ISAE 3410 standartlarına uygun olarak yürütmüş olduğumuz sınırlı güvencenin kapsamı, makul güvencenin kapsamına kıyasla önemli ölçüde dardır. Bir sınırlı güvence çalışmasında yeterli ve uygun denetim kanıtlarının toplanması kapsamında gerçekleştirilen prosedürlerin niteliği, zamanlaması ve kapsamı makul güvence çalışmalarına oranla çok daha dardır. Yürütmüş olduğumuz prosedürler profesyonel yargımıza dayanmakta ve araştırmalar, görüşmeler, gerçekleştirilen süreçlerin gözlenmesi, belgelerin incelenmesi, analitik prosedürler, ölçüm yöntemlerinin uygunluğunun ve raporlama politikalarının değerlendirilmesi ve altta yatan kayıtların üzerinde mutabakata varılmasından oluşmaktadır.</untrusted_document>\n<untrusted_document cite_id=\"c:cd2fe9fedee24894bb3916b094e033bb29f605e66719bd5dbbe6cfc98aeb34d2\">Değerleme neticesinde oluşan farklar ise sonuç hesaplarına yansıtılır. Banka, sözleşme şartları belirli tarihlerde anapara ve anapara bakiyesinden kaynaklanan faiz ödemelerini içeren nakit akışlarına yol açmayan kredilerini, gerçeğe uygun değer farkı kar zarara yansıtılan olarak izlemektedir. Bu krediler kayda alınmalarını müteakip gerçeğe uygun değerleri üzerinden değerlemeye tabi tutulmakta, değerleme sonucunda ortaya çıkan kayıp veya kazançlar ise kar/zarar hesaplarına dahil edilmektedir. 2. Gerçeğe Uygun Değer Farkı Diğer Kapsamlı Gelire Yansıtılan Finansal Varlıklar Gerçeğe uygun değer farkı diğer kapsamlı gelire yansıtılan finansal varlıklar, hem sözleşmeye bağlı nakit akışlarının tahsil edilmesi hem de finansal varlıkların satılmasını amaçlayan bir iş modeli kapsamında elde tutulan, sözleşme şartları belirli tarihlerde anapara ve anapara bakiyesinden kaynaklanan faiz ödemelerini içeren nakit akışlarına yol açan finansal varlıkları ifade etmektedir. Gerçeğe uygun değer farkı diğer kapsamlı gelire yansıtılan finansal varlıklar ilk muhasebeleştirme sırasında işlem maliyetleri de dahil olmak üzere gerçeğe uygun değerleri üzerinden finansal tablolara alınmaktadır. Söz konusu finansal varlıkların işlem maliyetleri dahil olmak üzere ilk muhasebeleştirilmesi ve müteakip değerlemesi gerçeğe uygun değer esasına göre yapılmakta olup, borçlanma araçları için etkin faiz yöntemi kullanılarak iskonto edilen değer ile maliyet arasındaki fark kar/zarara yansıtılmaktadır. Gerçeğe uygun değer farkı diğer kapsamlı gelire yansıtılan olarak sınıflandırılmış özkaynak araçlarına yapılan yatırımlardan kaynaklanan temettü gelirleri de kar/zarara yansıtılmaktadır. Gerçeğe uygun değer farkı diğer kapsamlı gelire yansıtılan finansal varlıkların gerçeğe uygun değerlerindeki değişikliklerden kaynaklanan kazanç ve kayıplardan, değer düşüklüğü kazanç veya kayıpları ile kur farkı kazanç veya kayıpları dışında kalanlar, finansal varlık finansal tablo dışı bırakılıncaya ya da yeniden sınıflandırılıncaya kadar diğer kapsamlı gelire yansıtılmaktadır. İlgili varlığın değerinin tahsil edilmesi veya elden çıkarılması durumunda, özkaynak hesaplarında oluşan gerçeğe uygun değer farkları kar veya zarar tablosuna yansıtılmaktadır. İş Bankası 2024 Entegre Faaliyet Raporu 279 31 Aralık 2024 Tarihli Konsolide Olmayan Finansal Rapor Türkiye İş Bankası A.Ş. Finansal Raporlar ve EklerSorumlu Operasyonlar İyi Kurumsal Vatandaş</untrusted_document>",
+   "summary": "ISCTR Greeneco Enerji değerleme raporu tutar",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e",
+     "text": "KPMG Yönetim Danışmanlığı A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: 100.000.000 USD İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: - İlgi: 15.09.2023 ve 20.09.2023 tarihli özel durum açıklamalarımız. İlgide kayıtlı açıklamalarımızda Greeneco Enerji Elektrik Üretim A.Ş.'nin %50 oranındaki paylarının Bankamıza devrinin gerçekleştiği duyurulmuştu. Bankamız mali tablolarında 3.533.527 bin TL değerle takip edilen ilgili paylar, %100 oranında dolaylı pay sahibi olduğumuz İş Enerji Yatırımları A.Ş.'ye satılmış olup, satış bedelinin 20 milyon USD'lik bölümü peşin olarak tahsil edilmiştir. Söz konusu bedelin kalan kısmı ise 2026 yılı içerisinde tahsil edilecektir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1297,
+      "ticker": "ISCTR",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1531462"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:fb0b75df249ecb681d843ec353679b1d696c79def253454e14b9c04687f3f967",
+     "text": "Satışa İlişkin Yönetim Kurulu Karar Tarihi: 26/12/2025 Satışa İlişkin Yönetim Kurulu Kararında Bağımsız Üyelerin Çoğunluğunun Onayı Var mı?: Evet Satılan Finansal Duran Varlığın Ünvanı: Greeneco Enerji Elektrik Üretim A.Ş. Satılan Finansal Duran Varlığın Faaliyet Konusu: Elektrik üretimi Satılan Finansal Duran Varlığın Sermayesi: 1.755.000.000 TL İşlemin Tamamlandığı/Tamamlanacağı Tarih: 30.12.2025 Satış Koşulları: Vadeli (Timed) Satılan Payların Nominal Tutarı: 877.500.000 TL Beher Pay Fiyatı: - Toplam Tutar: 100.000.000 USD Satılan Payların Finansal Duran Varlığın Sermayesine Oranı (%): %50 Satış Sonrasında Finansal Duran Varlıktaki İştirak Oranı (%): %0 Satış Sonrası Sahip Olunan Oy Haklarının Finansal Duran Varlığın Toplam Oy Haklarına Oranı (%): %0 Satılan Finansal Duran Varlığın Ortaklığın Kamuya Açıklanan Son Finansal Tablosundaki Aktif Toplamına Oranı (%): %0,08 İşlem Bedelinin Ortaklığın Kamuya Açıklanan Son Yıllık Finansal Tablolara Göre Oluşan Hasılat Tutarına Oranı (%): %0,67 Ortaklığın Faaliyetlerine Etkisi: Bulunmamaktadır. Satış Sonucu Oluşan Kar/Zarar Tutarı: Kamuya açıklanacak 31.12.2025 tarihli finansal raporun ilgili dipnotunda yer verilecektir. Varsa Satış Karının Ne Şekilde Değerlendirileceği: - Varsa Satış Karının Ne Şekilde Değerlendirileceğine İlişkin Yönetim Kurulu Karar Tarihi: - Satın Alan Kişinin Adı/Ünvanı: İş Enerji Yatırımları A.Ş. Karşı Taraf SPK Düzenlemelerine Göre İlişkili Taraf mıdır?: Evet (Yes) Satın Alan Kişinin Ortaklıkla İlişkisi: Dolaylı bağlı ortaklığıdır. Varsa İşleme İlişkin Sözleşme Tarihi: 29/12/2025 Finansal Duran Varlığın Değerinin Belirlenme Yöntemi: İndirgenmiş Nakit Akımları Yöntemi Değerleme Raporu Düzenlendi mi?: Düzenlendi (Prepared) Değerleme Raporu Düzenlenmediyse Nedeni: - Değerleme Raporu Düzenlendiyse Tarih ve Numarası: 25.12.2025/202512K14580452 Değerleme Raporunu Hazırlayan Değerleme Kuruluşunun Ünvanı: KPMG Yönetim Danışmanlığı A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: 100.000.000 USD İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: - İlgi:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1297,
+      "ticker": "ISCTR",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1531462"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:c343ffb5f5a1c3f5eb68d84500856a512177bf2c2abf7eb2bb8e8332f7792eeb",
+     "text": "26.11.2024 - ISGY-2411002 Değerleme Raporunu Hazırlayan Değerleme Kuruluşunun Ünvanı: Reel Gayrimenkul Değerleme A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: 902.400.000 TL + KDV İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: - Yönetim Kurulumuzun 27.11.2024 tarihli toplantısında; Türkiye İş Bankası A.Ş.'nin mülkiyetinde olan ve İş Kuleleri Kompleksinde yer alan, İstanbul İli, Beşiktaş İlçesi, Rumelihisarı Mahallesi, 81 pafta, 1420 ada 1 parselde kayıtlı, ticaret fonksiyonuna sahip, toplam 5.954 m2 kiralanabilir alanı bulunan 50 numaralı bağımsız bölümün KDV hariç 900.000.000 TL bedelle satın alınmasına ve bağımsız bölümdeki 5.892 m2'lik alanın aylık 4.124.400 TL + KDV bedelle T. İş Bankası A.Ş.'ye 1 yıllık süre ile kiralanmasına karar verilmiştir. İlgili bağımsız bölüme yönelik hazırlanan değerleme raporu ekte yer almaktadır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1191,
+      "ticker": "ISCTR",
+      "doc_type": "kap_material_event",
+      "period": "2024-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1360908"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:186d2eb3e0027defccdaf1b3f5904b62bd23c12aef0108201638628ac19d5745",
+     "text": "2025 yılında yenilenebilir enerji kaynaklarından üretilen enerji miktarının toplam enerji tüketimi içerisindeki payı %100 olarak gerçekleşmiştir. 2 2025 yılından itibaren Kapsam 3 emisyonlarının raporlanan alt kategorileri genişletilmiş; karşılaştırılabilirliği sağlamak amacıyla 2023 yılından itibaren veriler geriye dönük olarak güncellenmiştir. 3 Emisyon yoğunlukları Kapsam 1 ve Kapsam 2 emisyonlarının toplanmasıyla ulaşılan değer üzerinden hesaplanmaktadır. 4 2025 yılı için Genel Müdürlük (Kule ve ATLAS Veri Binası) toplanan yağmur suyu miktarını ifade etmektedir. 5 Genel Müdürlük binalarında tüketilen içme suyu miktarını ifade etmektedir. Bu binalar için tankerler, damacana ve şişe su aracılığıyla tedarik edilen içme suyu miktarı 2021 yılından itibaren takip edilmektedir. ISO 14001 sertifikasına sahip hizmet binalarında ise içme suyu, şişe ve damacana su tedariki ile sağlanmaktadır. 146 147 İş Bankası I 2025 Entegre Faaliyet Raporu YANINDAYIZ.YARINDAYIZ. İnsan Odaklı Değer Yaratan Bankacılık I Sorumluluk Odaklı Şeffaf Bankacılık I Finansal Raporlar ve Ekler İş Bankası’na Genel Bakış I Güven Odaklı Sürdürülebilir Bankacılık I Dönüşüm Odaklı Yenilikçi Bankacılık Araç Yakıt Tüketimleri (lt) Şirket Araçları Yakıt Tüketimi (Motorin) 1.846.268 1.397.654 1.186.059 Şirket Araçları Yakıt Tüketimi (Benzin) 2.205.462 2.787.594 2.492.206 Personel Servisleri ile Tüketilen Yakıt (Motorin) 596.531 589.561 569.383 Şahsi Araçlarla Yapılan İş Seyahatleri (Dizel) 57.329 48.790 56.413 Şahsi Araçlarla Yapılan İş Seyahatleri (Benzin) 70.440 93.117 119.855 Şahsi Araçlarla Yapılan İş Seyahatleri (LPG) 39.218 28.441 24.728 Şirket Araçları Yakıt Tüketimi (Elektrik Yakıt Tüketimi (kWh)) - - 1.200.375 Kâğıt Tüketimi (ton) 914 792 599 Atık Miktarları6 (ton) Toplam Atık Miktarı 1.814 1.894 1.588 Evsel Atık Miktarı 1.150 1.200 1.019 Tehlikeli Atık Miktarı (batarya, floresan lamba, araba aküsü, pil, toner kartuşu, tıbbı atık) 21 28 36 Elektronik Atık Miktarı 56 47 32 Tıbbi atık 3 4 2 6 Genel Müdürlük binalarını ve ISO 14001 sertifikasına sahip tüm hizmet binalarını kapsamaktadır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1315,
+      "ticker": "ISCTR",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 73,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1569176"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:c7710c7f497a0c4d83902b36bc1c6a769fba9bf153285e4bbd11f5e92ddf0e3f",
+     "text": "Bu nedenle, Seçilmiş Bilgiler’in Raporlama Kılavuzu çerçevesinde okunması ve incelenmesi önem arz etmektedir. Diğer hususların yanı sıra, özellikle enerji kaynağı yakıtların tüketimlerinde MWh birimine dönüşüm faktörleri ve karbon emisyonu ile ilgili hesaplamalar konusunda, Raporlama Kılavuzu bölümünde belirtildiği gibi Banka içinde elde edilen bilgilere ve faktörlere ve/veya bağımsız üçüncü şahıslarca sağlanan bilgilere ve faktörlere bağlıdır. Bu farklı faktörler ve üçüncü taraflarca sağlanan bilgiler çalışmamız kapsamına alınmamıştır. Bağımsızlık ve Kalite Yönetim Muhasebe Meslek Mensupları için Uluslararası Etik Standartları Kurulu (“IESBA”) tarafından yayımlanan; dürüstlük, tarafsızlık, profesyonel yetkinlik ve gerekli özen gösterilmesi, gizlilik ve profesyonel davranış temel ilkelerini belirleyen IESBA Profesyonel Muhasebeciler için Etik Kurallar’ın bağımsızlık ve diğer etik gerekliliklerine uyum göstermekteyiz. Kalite Yönetime ilişkin Uluslararası Standart 1’i uygulamakta ve bu doğrultuda ilişkili etik ve profesyonel standartlar ve kanun veya yönetmelik gerekliliklerine uygun belgelendirilmiş politikalar ve süreçleri içeren bir kalite yönetim sistemi muhafaza etmekteyiz. Sorumluluklarımız Sorumluluğumuz, gerçekleştirdiğimiz sınırlı güvence çalışmasına dayanarak Seçilmiş Bilgiler’in, tüm önemli yönleriyle, Raporlama Kılavuzu’na uygun hazırlanmadığı kanaatine varmamıza sebep olacak herhangi bir hususun dikkatimizi çekip çekmediğine ilişkin bir sınırlı güvence bildirmektir. Sınırlı güvence çalışmamız, Uluslararası Denetim ve Güvence Standartları Kurulu tarafından çıkarılmış Uluslararası Güvence Denetimleri Standardı 3000- “Tarihi Finansal Bilgilerin Bağımsız Denetimi veya Sınırlı Bağımsız Denetimi Dışındaki Diğer Güvence Denetimleri Standardı”na (“ISAE 3000” Revize) ve Uluslararası Güvence Denetimi Standardı 3410- “Sera Gazı Beyanlarına İlişkin Güvence Denetimleri Standardı”na (“ISAE 3410”) uygun olarak gerçekleştirilmiştir. ISAE 3000 (Revize) ve ISAE 3410 standartlarına uygun olarak yürütmüş olduğumuz sınırlı güvencenin kapsamı, makul güvencenin kapsamına kıyasla önemli ölçüde dardır. Bir sınırlı güvence çalışmasında yeterli ve uygun denetim kanıtlarının toplanması kapsamında gerçekleştirilen prosedürlerin niteliği, zamanlaması ve kapsamı makul güvence çalışmalarına oranla çok daha dardır. Yürütmüş olduğumuz prosedürler profesyonel yargımıza dayanmakta ve araştırmalar, görüşmeler, gerçekleştirilen süreçlerin gözlenmesi, belgelerin incelenmesi, analitik prosedürler, ölçüm yöntemlerinin uygunluğunun ve raporlama politikalarının değerlendirilmesi ve altta yatan kayıtların üzerinde mutabakata varılmasından oluşmaktadır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1315,
+      "ticker": "ISCTR",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 299,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1569176"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:cd2fe9fedee24894bb3916b094e033bb29f605e66719bd5dbbe6cfc98aeb34d2",
+     "text": "Değerleme neticesinde oluşan farklar ise sonuç hesaplarına yansıtılır. Banka, sözleşme şartları belirli tarihlerde anapara ve anapara bakiyesinden kaynaklanan faiz ödemelerini içeren nakit akışlarına yol açmayan kredilerini, gerçeğe uygun değer farkı kar zarara yansıtılan olarak izlemektedir. Bu krediler kayda alınmalarını müteakip gerçeğe uygun değerleri üzerinden değerlemeye tabi tutulmakta, değerleme sonucunda ortaya çıkan kayıp veya kazançlar ise kar/zarar hesaplarına dahil edilmektedir. 2. Gerçeğe Uygun Değer Farkı Diğer Kapsamlı Gelire Yansıtılan Finansal Varlıklar Gerçeğe uygun değer farkı diğer kapsamlı gelire yansıtılan finansal varlıklar, hem sözleşmeye bağlı nakit akışlarının tahsil edilmesi hem de finansal varlıkların satılmasını amaçlayan bir iş modeli kapsamında elde tutulan, sözleşme şartları belirli tarihlerde anapara ve anapara bakiyesinden kaynaklanan faiz ödemelerini içeren nakit akışlarına yol açan finansal varlıkları ifade etmektedir. Gerçeğe uygun değer farkı diğer kapsamlı gelire yansıtılan finansal varlıklar ilk muhasebeleştirme sırasında işlem maliyetleri de dahil olmak üzere gerçeğe uygun değerleri üzerinden finansal tablolara alınmaktadır. Söz konusu finansal varlıkların işlem maliyetleri dahil olmak üzere ilk muhasebeleştirilmesi ve müteakip değerlemesi gerçeğe uygun değer esasına göre yapılmakta olup, borçlanma araçları için etkin faiz yöntemi kullanılarak iskonto edilen değer ile maliyet arasındaki fark kar/zarara yansıtılmaktadır. Gerçeğe uygun değer farkı diğer kapsamlı gelire yansıtılan olarak sınıflandırılmış özkaynak araçlarına yapılan yatırımlardan kaynaklanan temettü gelirleri de kar/zarara yansıtılmaktadır. Gerçeğe uygun değer farkı diğer kapsamlı gelire yansıtılan finansal varlıkların gerçeğe uygun değerlerindeki değişikliklerden kaynaklanan kazanç ve kayıplardan, değer düşüklüğü kazanç veya kayıpları ile kur farkı kazanç veya kayıpları dışında kalanlar, finansal varlık finansal tablo dışı bırakılıncaya ya da yeniden sınıflandırılıncaya kadar diğer kapsamlı gelire yansıtılmaktadır. İlgili varlığın değerinin tahsil edilmesi veya elden çıkarılması durumunda, özkaynak hesaplarında oluşan gerçeğe uygun değer farkları kar veya zarar tablosuna yansıtılmaktadır. İş Bankası 2024 Entegre Faaliyet Raporu 279 31 Aralık 2024 Tarihli Konsolide Olmayan Finansal Rapor Türkiye İş Bankası A.Ş. Finansal Raporlar ve EklerSorumlu Operasyonlar İyi Kurumsal Vatandaş",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1229,
+      "ticker": "ISCTR",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 281,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1401873"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  }
+ ]
+}

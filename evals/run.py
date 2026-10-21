@@ -6,7 +6,8 @@ network calls. With no LLM features yet there is nothing to score, so a case pas
 cassette exists; scoring is added with the first real eval.
 
 `retrieval_golden.jsonl` has its own runner and cassette layout (`python -m evals.retrieval`),
-so this runner skips it.
+and the agent datasets have theirs (`python -m evals.run agent --replay`, evals/agent.py), so
+this runner skips them.
 """
 
 import argparse
@@ -18,8 +19,8 @@ from pathlib import Path
 
 DATASETS_DIR = Path(__file__).parent / "datasets"
 CASSETTES_DIR = Path(__file__).parent / "cassettes"
-# Datasets scored by their own runner (evals/retrieval.py).
-OWN_RUNNER = frozenset({"retrieval_golden"})
+# Datasets scored by their own runner (evals/retrieval.py, evals/agent.py).
+OWN_RUNNER = frozenset({"retrieval_golden", "answers_golden", "advice_refusal", "injection"})
 
 
 @dataclass
@@ -54,6 +55,11 @@ def run_suite(datasets_dir: Path, cassettes_dir: Path) -> Report:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    args_list = list(sys.argv[1:] if argv is None else argv)
+    if args_list[:1] == ["agent"]:
+        from evals.agent import main as agent_main
+
+        return agent_main(args_list[1:])
     parser = argparse.ArgumentParser(prog="python -m evals.run", description=__doc__)
     parser.add_argument(
         "--cassettes-only",
@@ -63,7 +69,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     parser.add_argument("--datasets", type=Path, default=DATASETS_DIR)
     parser.add_argument("--cassettes", type=Path, default=CASSETTES_DIR)
-    args = parser.parse_args(argv)
+    args = parser.parse_args(args_list)
 
     report = run_suite(args.datasets, args.cassettes)
     for failure in report.failures:

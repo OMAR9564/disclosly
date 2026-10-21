@@ -1,0 +1,152 @@
+"""`get_financial_facts` over the `financial_facts` table (contracts/agent-answer.md)."""
+
+import asyncio
+from decimal import Decimal
+from typing import Literal
+
+from sqlalchemy import Engine, select
+
+from ingestion import schema
+from ingestion.models import Period
+from tools.types import SeenItem
+
+MAX_METRICS = 10
+MAX_PERIODS = 12
+
+Language = Literal["tr", "en"]
+
+METRIC_LABELS: dict[str, dict[Language, str]] = {
+    "net_income": {"tr": "Net dönem kârı", "en": "Net income"},
+    "cash": {"tr": "Nakit ve nakit benzerleri", "en": "Cash and cash equivalents"},
+    "total_debt": {"tr": "Toplam borç", "en": "Total debt"},
+    "depreciation_amortization": {"tr": "Amortisman", "en": "Depreciation and amortization"},
+    "revenue": {"tr": "Hasılat", "en": "Revenue"},
+    "gross_profit": {"tr": "Brüt kâr", "en": "Gross profit"},
+    "operating_income": {"tr": "Esas faaliyet kârı", "en": "Operating income"},
+    "ebitda": {"tr": "FAVÖK", "en": "EBITDA"},
+    "net_debt": {"tr": "Net borç", "en": "Net debt"},
+    "total_assets": {"tr": "Toplam varlıklar", "en": "Total assets"},
+    "total_equity": {"tr": "Özkaynaklar", "en": "Total equity"},
+    "operating_cash_flow": {"tr": "İşletme nakit akışı", "en": "Operating cash flow"},
+    "eps": {"tr": "Hisse başına kâr", "en": "Earnings per share"},
+}
+# Metrics the ingestion pipeline extracts into `financial_facts` (ingestion/facts).
+KNOWN_METRICS = (
+    "net_income",
+    "revenue",
+    "operating_income",
+    "ebitda",
+    "cash",
+    "total_debt",
+    "depreciation_amortization",
+)
+
+UNIT_LABELS: dict[str, dict[Language, str]] = {
+    "thousand": {"tr": "bin", "en": "thousand"},
+    "million": {"tr": "milyon", "en": "million"},
+    "billion": {"tr": "milyar", "en": "billion"},
+}
+
+
+def metric_label(metric: str, language: Language) -> str:
+    return METRIC_LABELS.get(metric, {}).get(language) or metric.replace("_", " ")
+
+
+def format_number(value: Decimal, language: Language) -> str:
+    """`1.234,5` (tr) or `1,234.5` (en); trailing zeros dropped."""
+    text = format(value.normalize(), "f")
+    whole, _, fraction = text.partition(".")
+    sign = "-" if whole.startswith("-") else ""
+    grouped = f"{int(whole.lstrip('-')):,}"
+    if language == "tr":
+        grouped = grouped.replace(",", ".")
+    decimal = "," if language == "tr" else "."
+    return sign + grouped + (decimal + fraction if fraction else "")
+
+
+def render_fact(
+    metric: str,
+    period: str,
+    value: Decimal,
+    unit: str,
+    currency: str | None,
+    language: Language,
+) -> str:
+    """Readable citation excerpt, e.g. "Net dönem kârı (2025-Q3): 1.234,5 milyon TRY"."""
+    unit_text = UNIT_LABELS.get(unit, {}).get(language, unit)
+    tail = " ".join(p for p in (unit_text, currency) if p)
+    number = format_number(value, language)
+    return f"{metric_label(metric, language)} ({period}): {number}" + (f" {tail}" if tail else "")
+
+
+def _query(
+    engine: Engine, ticker: str, metrics: list[str], periods: list[str], language: Language
+) -> list[SeenItem]:
+    facts, companies, docs = schema.financial_facts, schema.companies, schema.documents
+    query = (
+        select(
+            facts.c.id,
+            facts.c.metric,
+            facts.c.period,
+            facts.c.value,
+            facts.c.unit,
+            facts.c.currency,
+            facts.c.source_document_id,
+            facts.c.source_ref,
+            companies.c.ticker,
+            docs.c.doc_type,
+            docs.c.source_url,
+        )
+        .select_from(
+            facts.join(companies, companies.c.id == facts.c.company_id).join(
+                docs, docs.c.id == facts.c.source_document_id
+            )
+        )
+        .where(
+            companies.c.ticker == ticker,
+            facts.c.metric.in_(metrics),
+            facts.c.period.in_(periods),
+        )
+        .order_by(facts.c.metric, facts.c.period, facts.c.id)
+    )
+    with engine.connect() as conn:
+        rows = list(conn.execute(query))
+    return [
+        SeenItem(
+            cite_id=f"f:{r.id}",
+            text=render_fact(r.metric, r.period, r.value, r.unit, r.currency, language),
+            value=r.value,
+            source={
+                "kind": "fact",
+                "document_id": r.source_document_id,
+                "ticker": r.ticker,
+                "doc_type": r.doc_type,
+                "period": r.period,
+                "metric": r.metric,
+                "unit": r.unit,
+                "currency": r.currency,
+                "source_ref": r.source_ref,
+                "source_url": r.source_url,
+            },
+        )
+        for r in rows
+    ]
+
+
+async def get_financial_facts(
+    engine: Engine,
+    *,
+    ticker: str,
+    metrics: list[str],
+    periods: list[str],
+    language: Language = "tr",
+) -> list[SeenItem]:
+    if not metrics or len(metrics) > MAX_METRICS:
+        raise ValueError(f"metrics must have 1 to {MAX_METRICS} entries")
+    if not periods or len(periods) > MAX_PERIODS:
+        raise ValueError(f"periods must have 1 to {MAX_PERIODS} entries")
+    for period in periods:
+        Period.parse(period)
+    return await asyncio.to_thread(
+        _query, engine, ticker.strip().upper(), [m.strip() for m in metrics], periods, language
+    )

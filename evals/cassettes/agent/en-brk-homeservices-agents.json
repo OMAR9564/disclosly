@@ -1,0 +1,190 @@
+{
+ "case_id": "en-brk-homeservices-agents",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "44733b4a34836b00a52b9c84a38bf6e4e80047b78002d2bd0b86286b3cf40dbf",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1116266",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "BRK.A",
+       "query": "HomeServices real estate agents"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TtkkvBH4nuoNrRy8WSvPzYPqyVL2aJ/ff8AIp3m8AjAY3nkBg++UdnKxUkg0pu9q0qYwFeGLtNXDEEQPYFRbQKHAE5vn4T+cWlVXZw3MLzi04E3ArLsgaokI="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1487,
+    "tokens_out": 29,
+    "latency_ms": 613.987,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "82a02b1844b24b51f29109b7f13cefeceb91f8df6477791a3f57f3fec9daf669",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_783545",
+      "name": "search_documents",
+      "arguments": {
+       "query": "HomeServices real estate agents",
+       "ticker": "BRK-B"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TAeubFXfZeRwADBKx8PFxnoxlrQ6vxfBMKrkwEhFrNpEqwmn8AgrbjbLtq3z2vo0rLTcpZht+ObDz1oXMuHZP5S8n8VwPd+tM3twRpZHC+h7TIuIQIoTvT2Q="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1532,
+    "tokens_out": 29,
+    "latency_ms": 543.365,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "b334386b7a4e1e9e0bca29d0393b566e6e2b90d890ee88f06c4007d4a64b722e",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Berkshire Hathaway's HomeServices operates with nearly 35,000 real estate agents in over 770 brokerage offices across 35 states and the District of Columbia [1]. Additionally, HomeServices’ franchise network includes approximately 39,700 third-party real estate agents under two brand names [2].\",\n  \"points\": [\n    {\n      \"text\": \"HomeServices operates with nearly 35,000 real estate agents in over 770 brokerage offices across 35 states and the District of Columbia.\",\n      \"cite_ids\": [\n        \"c:7534cc18640c19b8215ef54f507075d85199beb57d9eb00b83ca07a9ddf7dcc4\"\n      ]\n    },\n    {\n      \"text\": \"HomeServices’ franchise network includes approximately 39,700 third-party real estate agents under two brand names.\",\n      \"cite_ids\": [\n        \"c:7534cc18640c19b8215ef54f507075d85199beb57d9eb00b83ca07a9ddf7dcc4\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:7534cc18640c19b8215ef54f507075d85199beb57d9eb00b83ca07a9ddf7dcc4\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:7534cc18640c19b8215ef54f507075d85199beb57d9eb00b83ca07a9ddf7dcc4\"\n    }\n  ]\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 5191,
+    "tokens_out": 510,
+    "latency_ms": 1677.007,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"HomeServices real estate agents\",\"ticker\":\"BRK.A\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "BRK.A HomeServices real estate agents",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"HomeServices real estate agents\",\"ticker\":\"BRK-B\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:7534cc18640c19b8215ef54f507075d85199beb57d9eb00b83ca07a9ddf7dcc4\">In addition to providing traditional residential real estate brokerage services, HomeServices offers other integrated real estate services, including mortgage originations and mortgage banking, title and closing services, insurance, home warranties, relocation services and other home-related services. It operates under 46 brand names with nearly 35,000 real estate agents in over 770 brokerage offices in 35 states and the District of Columbia. HomeServices’ franchise network includes over 250 franchisees and nearly 1,400 brokerage offices with approximately 39,700 third-party real estate agents under two brand names. In exchange for franchise fees, HomeServices provides the right to use the Berkshire Hathaway HomeServices or Real Living brand names and other related service marks, as well as providing orientation programs, training and consultation services, advertising programs and other services. HomeServices’ principal sources of revenue are dependent on residential real estate transaction volumes, which are normally higher in the second and third quarters of each year. This business is highly competitive and subject to general real estate market conditions. Manufacturing Businesses Berkshire’s numerous and diverse manufacturing subsidiaries are grouped into three categories: (1) industrial products, (2) building products and (3) consumer products. Berkshire’s industrial products businesses manufacture and distribute components for aerospace and power generation applications, specialty chemicals, metal cutting tools and a variety of other products primarily for industrial use. The building products group produces prefabricated and site-built residential homes, flooring products, insulation, roofing and engineered products, building and engineered components, paint and coatings and bricks and masonry products. The consumer products group manufactures and/or distributes recreational vehicles, batteries, apparel, footwear and other products. Information concerning the major activities of these three groups follows. Berkshire’s manufacturing businesses employed approximately 175,600 people at the end of 2025. Industrial products Precision Castparts Precision Castparts Corp. (“PCC”), based in Lake Oswego, Oregon, manufactures complex metal components and products and provides high-quality investment castings, forgings, fasteners/fastener systems and aerostructures for critical aerospace and power and energy applications. PCC also manufactures (1) investment castings and forgings for general industrial, armament, medical and other applications; (2) nickel, titanium and cobalt alloys in all standard mill forms, including specialty alloys used to produce investment castings and forgings for the aerospace, chemical processing, oil and gas, pollution control and other industries; (3) fasteners and engineered products for automotive and general industrial markets; and (4) other products and services for various markets and applications.</untrusted_document>\n<untrusted_document cite_id=\"c:034cbe0e057b4379b195a04c0cffbbe83a2baa435df5c54f16ce71fe49a7deb2\">Cost of sales and services 12,980 13,058 25,309 25,290 6,394 5,959 12,458 11,745 Cost of leasing 305 287 599 530 1,587 1,457 3,176 2,905 Interest expense 298 195 583 393 29 29 56 58 Other segment items 3,139 3,171 6,281 6,113 1,573 1,533 3,089 3,065 Total costs and expenses 16,722 16,711 32,772 32,326 9,583 8,978 18,779 17,773 Earnings before income taxes $ 3,247 $ 3,129 $ 5,963 $ 6,043 $ 1,105 $ 969 $ 2,046 $ 1,877 Other segment items of the manufacturing, service and retailing segments primarily consist of selling, general and administrative expenses. 28 Notes to Consolidated Financial Statements Note 24. Business segment data Pilot McLane Second Quarter First Six Months Second Quarter First Six Months 2025 2024 2025 2024 2025 2024 2025 2024 Revenues $ 10,109 $ 12,999 $ 20,539 $ 25,502 $ 12,601 $ 12,458 $ 24,776 $ 24,933 Costs and expenses: Cost of sales and services 9,010 11,893 18,294 23,450 11,505 11,430 22,606 22,873 Depreciation and amortization 260 251 517 496 47 49 96 99 Other segment items 720 656 1,441 1,287 873 837 1,717 1,654 Total costs and expenses 9,990 12,800 20,252 25,233 12,425 12,316 24,419 24,626 Earnings before income taxes $ 119 $ 199 $ 287 $ 269 $ 176 $ 142 $ 357 $ 307 Other segment items of Pilot primarily consist of store operating, interest and general and administrative expenses. Other segment items of McLane include general and administrative expenses. Reconciliations of revenues and earnings before income taxes of our business segments to the consolidated amounts follow (in millions).</untrusted_document>\n<untrusted_document cite_id=\"c:a05c48e3b232daf0e010454bcc1f8adf6ae4d594544f5f8c79fbdb87e137e3ed\">Insurance recoveries received to date were $ 530 million, which were recorded prior to 2024. No further insurance recoveries are expected to become available. It is reasonably possible PacifiCorp will incur significant additional losses beyond the amounts currently accrued; however, we are currently unable to reasonably estimate the range of possible additional losses that could be incurred due to the number of properties and parties involved, including claimants in the class to the James case and the 2022 Wildfire, the variation in the types of properties and damages and the ultimate outcome of legal actions, including mediation, settlement negotiations, jury verdicts and the appeals process. HomeServices of America, Inc. HomeServices is currently defending against several antitrust cases, all in federal district courts. In each case, plaintiffs claim HomeServices and certain of its subsidiaries (and in one case, BHE) conspired with co-defendants to artificially inflate real estate commissions by following and enforcing multiple listing service (“MLS”) rules that require listing agents to offer a commission split to cooperating agents in order for the property to appear on the MLS (“Cooperative Compensation Rule”). None of the complaints specify damages sought. However, two cases also allege Texas state law deceptive trade practices claims, for which plaintiffs have asserted damages totaling approximately $ 9 billion by separate written notice as required by Texas law. In one of these cases, Burnett (formerly Sitzer) et al. v. HomeServices of America, Inc. et al. (the “Burnett case”), a jury trial in the U.S. District Court for the Western District of Missouri (“U.S. District Court”) returned a verdict for the plaintiffs on October 31, 2023, finding that the named defendants participated in a conspiracy to follow and enforce the Cooperative Compensation Rule, which conspiracy had the purpose or effect of raising, inflating, or stabilizing broker commission rates paid by home sellers. The jury further found that the class plaintiffs had proved damages of $ 1.8 billion. Joint and several liability applies for the co-defendants. Federal law authorizes trebling of damages and the award of pre-judgment interest and attorney fees. To date, all defendants have reached settlements with the plaintiffs. The U.S. District Court approved these settlements in May and November 2024. The U.S. District Court entered a final judgment on the HomeServices settlement on January 15, 2025. All settlements have been appealed to the U.S. Court of Appeals for the Eighth Circuit.</untrusted_document>\n<untrusted_document cite_id=\"c:00d0e8236b6382cfd48ae300ffed002e02db5ece4e4c48bfd9dccc20e2d798e0\">BNSF Operating revenues from coal were $795 million in the third quarter and $2.2 billion in the first nine months of 2024, declines of 14.7% and 25.2%, respectively, from 2023. The revenue declines were attributable to reduced volumes of 12.5% in the third quarter and 20.5% in the first nine months of 2024 compared to 2023 and lower average revenue per car/unit. The volume decreases were primarily attributable to lower natural gas prices, which displaced coal as a fuel used by utilities. Railroad operating expenses were $3.8 billion in the third quarter and $11.6 billion in the first nine months of 2024, decreases of $82 million (2.1%) and $180 million (1.5%), respectively, compared to 2023. Fuel expenses declined $64 million (7.4%) in the third quarter and $185 million (7.0%) in the first nine months of 2024 compared to 2023, which was primarily due to lower average fuel prices, partially offset by higher volumes. Equipment rents, materials and other expenses decreased $20 million (4.0%) in the third quarter and $47 million (2.9%) in the first nine months of 2024 compared to 2023. Expenses in the third quarter declined primarily due to cost reductions across various spend categories and lower property taxes, partially offset by higher casualty costs. Expenses in the first nine months of 2024 declined due to cost reductions across various spend categories and lower property taxes, partially offset by litigation costs related to the judgment in the ongoing legal case with the Swinomish Tribe, which BNSF has appealed. There were no significant changes in compensation and benefits, purchased services, or depreciation and amortization expense as increases from higher volumes and inflation were more than offset by lower costs and improved productivity. BHE Berkshire Hathaway Energy Company (“BHE”) operates a global energy business. BHE’s domestic regulated utility interests include PacifiCorp, MidAmerican Energy Company (“MEC”) and NV Energy. BHE’s natural gas pipelines consist of five domestic regulated interstate natural gas pipeline systems and a 75% interest in a liquefied natural gas export, import and storage facility (“Cove Point”). Other energy businesses include subsidiaries that operate two regulated electricity distribution businesses in Great Britain (“Northern Powergrid”), a regulated electricity transmission-only business in Alberta, Canada, a diversified portfolio of mostly renewable independent power projects and investments and an unregulated retail energy services company.</untrusted_document>\n<untrusted_document cite_id=\"c:91fce2ad0f5171c2f57edf2472d7ae488567a844ee162023e2e2b46b9206a527\">It is reasonably possible PacifiCorp will incur significant additional losses beyond the amounts currently accrued. Through December 31, 2025, PacifiCorp recorded cumulative estimated probable Wildfire losses, before taxes and expected related insurance recoveries, of approximately $ 2.85 billion, of which approximately $ 1.7 billion has been paid in connection with settlements. Wildfire loss accrual estimates recorded were $ 100 million in 2025, $ 346 million in 2024 and $ 1.9 billion in 2023. Estimated unpaid liabilities were approximately $ 1.2 billion at December 31, 2025. Insurance recoveries received to date were $ 530 million, which were recorded prior to 2024. No further insurance recoveries are expected to be available. HomeServices of America, Inc. HomeServices of America, Inc. (“HomeServices”) is also a wholly-owned subsidiary of BHE. HomeServices is currently defending against several antitrust cases, all in federal district courts. In each case, plaintiffs claim HomeServices and certain of its subsidiaries (and in one case, BHE) conspired with co-defendants to artificially inflate real estate commissions by following and enforcing multiple listing service (“MLS”) rules that require listing agents to offer a commission split to cooperating agents in order for the property to appear on the MLS (“Cooperative Compensation Rule”). None of the complaints specify damages sought. However, two cases also allege Texas state law deceptive trade practices claims, for which plaintiffs have asserted damages totaling approximately $ 9 billion by separate written notice as required by Texas law. In one of these cases, Burnett (formerly Sitzer) et al. v. HomeServices of America, Inc. et al. (the “Burnett case”), a jury trial in the U.S. District Court for the Western District of Missouri (“U.S. District Court”) returned a verdict for the plaintiffs on October 31, 2023, finding that the named defendants participated in a conspiracy to follow and enforce the Cooperative Compensation Rule, which conspiracy had the purpose or effect of raising, inflating, or stabilizing broker commission rates paid by home sellers. The jury further found that the class plaintiffs had proved damages of $ 1.8 billion. Joint and several liability applies for the co-defendants. Federal law authorizes trebling of damages and the award of pre-judgment interest and attorney fees. To date, all defendants have reached settlements with the plaintiffs. All settlements received U.S.</untrusted_document>\n<untrusted_document cite_id=\"c:004cc2d7e0735f676849cebd9eec62b7bfc02bb3ae27b175cc1b1014d79dec5a\"> | Year Ended December 31, |  |  |  |  | \nIncrease in cash and cash equivalents and restricted cash |  | 4,193 |  | 9,733 |  | 2,244\nCash and cash equivalents and restricted cash at the beginning of the year |  | 48,376 |  | 38,643 |  | 36,399\nCash and cash equivalents and restricted cash at the end of the year* |  | 52,569 |  | 48,376 |  | 38,643\n* Cash and cash equivalents and restricted cash at the end of the year: |  |  |  |  |  | \nInsurance and Other |  | 47,719 |  | 44,333 |  | 34,268\nRailroad, Utilities and Energy |  | 4,158 |  | 3,396 |  | 3,754\nRestricted cash included in other assets |  | 692 |  | 647 |  | 621\n |  | 52,569 |  | 48,376 |  | 38,643</untrusted_document>",
+   "summary": "BRK-B HomeServices real estate agents",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:7534cc18640c19b8215ef54f507075d85199beb57d9eb00b83ca07a9ddf7dcc4",
+     "text": "In addition to providing traditional residential real estate brokerage services, HomeServices offers other integrated real estate services, including mortgage originations and mortgage banking, title and closing services, insurance, home warranties, relocation services and other home-related services. It operates under 46 brand names with nearly 35,000 real estate agents in over 770 brokerage offices in 35 states and the District of Columbia. HomeServices’ franchise network includes over 250 franchisees and nearly 1,400 brokerage offices with approximately 39,700 third-party real estate agents under two brand names. In exchange for franchise fees, HomeServices provides the right to use the Berkshire Hathaway HomeServices or Real Living brand names and other related service marks, as well as providing orientation programs, training and consultation services, advertising programs and other services. HomeServices’ principal sources of revenue are dependent on residential real estate transaction volumes, which are normally higher in the second and third quarters of each year. This business is highly competitive and subject to general real estate market conditions. Manufacturing Businesses Berkshire’s numerous and diverse manufacturing subsidiaries are grouped into three categories: (1) industrial products, (2) building products and (3) consumer products. Berkshire’s industrial products businesses manufacture and distribute components for aerospace and power generation applications, specialty chemicals, metal cutting tools and a variety of other products primarily for industrial use. The building products group produces prefabricated and site-built residential homes, flooring products, insulation, roofing and engineered products, building and engineered components, paint and coatings and bricks and masonry products. The consumer products group manufactures and/or distributes recreational vehicles, batteries, apparel, footwear and other products. Information concerning the major activities of these three groups follows. Berkshire’s manufacturing businesses employed approximately 175,600 people at the end of 2025. Industrial products Precision Castparts Precision Castparts Corp. (“PCC”), based in Lake Oswego, Oregon, manufactures complex metal components and products and provides high-quality investment castings, forgings, fasteners/fastener systems and aerostructures for critical aerospace and power and energy applications. PCC also manufactures (1) investment castings and forgings for general industrial, armament, medical and other applications; (2) nickel, titanium and cobalt alloys in all standard mill forms, including specialty alloys used to produce investment castings and forgings for the aerospace, chemical processing, oil and gas, pollution control and other industries; (3) fasteners and engineered products for automotive and general industrial markets; and (4) other products and services for various markets and applications.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2520,
+      "ticker": "BRK-B",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526083899/brka-20251231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:034cbe0e057b4379b195a04c0cffbbe83a2baa435df5c54f16ce71fe49a7deb2",
+     "text": "Cost of sales and services 12,980 13,058 25,309 25,290 6,394 5,959 12,458 11,745 Cost of leasing 305 287 599 530 1,587 1,457 3,176 2,905 Interest expense 298 195 583 393 29 29 56 58 Other segment items 3,139 3,171 6,281 6,113 1,573 1,533 3,089 3,065 Total costs and expenses 16,722 16,711 32,772 32,326 9,583 8,978 18,779 17,773 Earnings before income taxes $ 3,247 $ 3,129 $ 5,963 $ 6,043 $ 1,105 $ 969 $ 2,046 $ 1,877 Other segment items of the manufacturing, service and retailing segments primarily consist of selling, general and administrative expenses. 28 Notes to Consolidated Financial Statements Note 24. Business segment data Pilot McLane Second Quarter First Six Months Second Quarter First Six Months 2025 2024 2025 2024 2025 2024 2025 2024 Revenues $ 10,109 $ 12,999 $ 20,539 $ 25,502 $ 12,601 $ 12,458 $ 24,776 $ 24,933 Costs and expenses: Cost of sales and services 9,010 11,893 18,294 23,450 11,505 11,430 22,606 22,873 Depreciation and amortization 260 251 517 496 47 49 96 99 Other segment items 720 656 1,441 1,287 873 837 1,717 1,654 Total costs and expenses 9,990 12,800 20,252 25,233 12,425 12,316 24,419 24,626 Earnings before income taxes $ 119 $ 199 $ 287 $ 269 $ 176 $ 142 $ 357 $ 307 Other segment items of Pilot primarily consist of store operating, interest and general and administrative expenses. Other segment items of McLane include general and administrative expenses. Reconciliations of revenues and earnings before income taxes of our business segments to the consolidated amounts follow (in millions).",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2522,
+      "ticker": "BRK-B",
+      "doc_type": "10-Q",
+      "period": "2025-Q2",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017025101578/brka-20250630.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:a05c48e3b232daf0e010454bcc1f8adf6ae4d594544f5f8c79fbdb87e137e3ed",
+     "text": "Insurance recoveries received to date were $ 530 million, which were recorded prior to 2024. No further insurance recoveries are expected to become available. It is reasonably possible PacifiCorp will incur significant additional losses beyond the amounts currently accrued; however, we are currently unable to reasonably estimate the range of possible additional losses that could be incurred due to the number of properties and parties involved, including claimants in the class to the James case and the 2022 Wildfire, the variation in the types of properties and damages and the ultimate outcome of legal actions, including mediation, settlement negotiations, jury verdicts and the appeals process. HomeServices of America, Inc. HomeServices is currently defending against several antitrust cases, all in federal district courts. In each case, plaintiffs claim HomeServices and certain of its subsidiaries (and in one case, BHE) conspired with co-defendants to artificially inflate real estate commissions by following and enforcing multiple listing service (“MLS”) rules that require listing agents to offer a commission split to cooperating agents in order for the property to appear on the MLS (“Cooperative Compensation Rule”). None of the complaints specify damages sought. However, two cases also allege Texas state law deceptive trade practices claims, for which plaintiffs have asserted damages totaling approximately $ 9 billion by separate written notice as required by Texas law. In one of these cases, Burnett (formerly Sitzer) et al. v. HomeServices of America, Inc. et al. (the “Burnett case”), a jury trial in the U.S. District Court for the Western District of Missouri (“U.S. District Court”) returned a verdict for the plaintiffs on October 31, 2023, finding that the named defendants participated in a conspiracy to follow and enforce the Cooperative Compensation Rule, which conspiracy had the purpose or effect of raising, inflating, or stabilizing broker commission rates paid by home sellers. The jury further found that the class plaintiffs had proved damages of $ 1.8 billion. Joint and several liability applies for the co-defendants. Federal law authorizes trebling of damages and the award of pre-judgment interest and attorney fees. To date, all defendants have reached settlements with the plaintiffs. The U.S. District Court approved these settlements in May and November 2024. The U.S. District Court entered a final judgment on the HomeServices settlement on January 15, 2025. All settlements have been appealed to the U.S. Court of Appeals for the Eighth Circuit.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2521,
+      "ticker": "BRK-B",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312525261548/brka-20250930.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:00d0e8236b6382cfd48ae300ffed002e02db5ece4e4c48bfd9dccc20e2d798e0",
+     "text": "BNSF Operating revenues from coal were $795 million in the third quarter and $2.2 billion in the first nine months of 2024, declines of 14.7% and 25.2%, respectively, from 2023. The revenue declines were attributable to reduced volumes of 12.5% in the third quarter and 20.5% in the first nine months of 2024 compared to 2023 and lower average revenue per car/unit. The volume decreases were primarily attributable to lower natural gas prices, which displaced coal as a fuel used by utilities. Railroad operating expenses were $3.8 billion in the third quarter and $11.6 billion in the first nine months of 2024, decreases of $82 million (2.1%) and $180 million (1.5%), respectively, compared to 2023. Fuel expenses declined $64 million (7.4%) in the third quarter and $185 million (7.0%) in the first nine months of 2024 compared to 2023, which was primarily due to lower average fuel prices, partially offset by higher volumes. Equipment rents, materials and other expenses decreased $20 million (4.0%) in the third quarter and $47 million (2.9%) in the first nine months of 2024 compared to 2023. Expenses in the third quarter declined primarily due to cost reductions across various spend categories and lower property taxes, partially offset by higher casualty costs. Expenses in the first nine months of 2024 declined due to cost reductions across various spend categories and lower property taxes, partially offset by litigation costs related to the judgment in the ongoing legal case with the Swinomish Tribe, which BNSF has appealed. There were no significant changes in compensation and benefits, purchased services, or depreciation and amortization expense as increases from higher volumes and inflation were more than offset by lower costs and improved productivity. BHE Berkshire Hathaway Energy Company (“BHE”) operates a global energy business. BHE’s domestic regulated utility interests include PacifiCorp, MidAmerican Energy Company (“MEC”) and NV Energy. BHE’s natural gas pipelines consist of five domestic regulated interstate natural gas pipeline systems and a 75% interest in a liquefied natural gas export, import and storage facility (“Cove Point”). Other energy businesses include subsidiaries that operate two regulated electricity distribution businesses in Great Britain (“Northern Powergrid”), a regulated electricity transmission-only business in Alberta, Canada, a diversified portfolio of mostly renewable independent power projects and investments and an unregulated retail energy services company.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2525,
+      "ticker": "BRK-B",
+      "doc_type": "10-Q",
+      "period": "2024-Q3",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1067983/000095017024120241/brka-20240930.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:91fce2ad0f5171c2f57edf2472d7ae488567a844ee162023e2e2b46b9206a527",
+     "text": "It is reasonably possible PacifiCorp will incur significant additional losses beyond the amounts currently accrued. Through December 31, 2025, PacifiCorp recorded cumulative estimated probable Wildfire losses, before taxes and expected related insurance recoveries, of approximately $ 2.85 billion, of which approximately $ 1.7 billion has been paid in connection with settlements. Wildfire loss accrual estimates recorded were $ 100 million in 2025, $ 346 million in 2024 and $ 1.9 billion in 2023. Estimated unpaid liabilities were approximately $ 1.2 billion at December 31, 2025. Insurance recoveries received to date were $ 530 million, which were recorded prior to 2024. No further insurance recoveries are expected to be available. HomeServices of America, Inc. HomeServices of America, Inc. (“HomeServices”) is also a wholly-owned subsidiary of BHE. HomeServices is currently defending against several antitrust cases, all in federal district courts. In each case, plaintiffs claim HomeServices and certain of its subsidiaries (and in one case, BHE) conspired with co-defendants to artificially inflate real estate commissions by following and enforcing multiple listing service (“MLS”) rules that require listing agents to offer a commission split to cooperating agents in order for the property to appear on the MLS (“Cooperative Compensation Rule”). None of the complaints specify damages sought. However, two cases also allege Texas state law deceptive trade practices claims, for which plaintiffs have asserted damages totaling approximately $ 9 billion by separate written notice as required by Texas law. In one of these cases, Burnett (formerly Sitzer) et al. v. HomeServices of America, Inc. et al. (the “Burnett case”), a jury trial in the U.S. District Court for the Western District of Missouri (“U.S. District Court”) returned a verdict for the plaintiffs on October 31, 2023, finding that the named defendants participated in a conspiracy to follow and enforce the Cooperative Compensation Rule, which conspiracy had the purpose or effect of raising, inflating, or stabilizing broker commission rates paid by home sellers. The jury further found that the class plaintiffs had proved damages of $ 1.8 billion. Joint and several liability applies for the co-defendants. Federal law authorizes trebling of damages and the award of pre-judgment interest and attorney fees. To date, all defendants have reached settlements with the plaintiffs. All settlements received U.S.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2520,
+      "ticker": "BRK-B",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526083899/brka-20251231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:004cc2d7e0735f676849cebd9eec62b7bfc02bb3ae27b175cc1b1014d79dec5a",
+     "text": " | Year Ended December 31, |  |  |  |  | \nIncrease in cash and cash equivalents and restricted cash |  | 4,193 |  | 9,733 |  | 2,244\nCash and cash equivalents and restricted cash at the beginning of the year |  | 48,376 |  | 38,643 |  | 36,399\nCash and cash equivalents and restricted cash at the end of the year* |  | 52,569 |  | 48,376 |  | 38,643\n* Cash and cash equivalents and restricted cash at the end of the year: |  |  |  |  |  | \nInsurance and Other |  | 47,719 |  | 44,333 |  | 34,268\nRailroad, Utilities and Energy |  | 4,158 |  | 3,396 |  | 3,754\nRestricted cash included in other assets |  | 692 |  | 647 |  | 621\n |  | 52,569 |  | 48,376 |  | 38,643",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2520,
+      "ticker": "BRK-B",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526083899/brka-20251231.htm"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  }
+ ]
+}

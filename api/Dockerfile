@@ -27,6 +27,12 @@ WORKDIR /app
 COPY --from=builder /opt/venv /opt/venv
 COPY alembic.ini ./
 COPY api ./api
+# The research runtime imports these packages (Phase 3).
+COPY agent ./agent
+COPY llm ./llm
+COPY tools ./tools
+COPY retrieval ./retrieval
+COPY ingestion ./ingestion
 USER app
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \

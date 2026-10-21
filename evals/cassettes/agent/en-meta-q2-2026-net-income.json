@@ -1,0 +1,118 @@
+{
+ "case_id": "en-meta-q2-2026-net-income",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "68854ccbc80726a6308c6c4b639fe73eef1aa49020ba7fcbcff06b3301feaca8",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_886915",
+      "name": "get_financial_facts",
+      "arguments": {
+       "metrics": [
+        "net_income"
+       ],
+       "ticker": "META",
+       "periods": [
+        "2026-Q2"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TBgPAYgeCKCCgtuHjtLK3Ys2yi3/hEE7qGhN52qCXjAk+mI5glFCfbYQSWzM9o/8CYGb9dsiOlZU4GtH/nueNyhEfHcXt2w0CIKCMg42hnRGqwrOSgziWmNc="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1495,
+    "tokens_out": 38,
+    "latency_ms": 657.864,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "59db6a5b656847957b984da692df09935fa45d481dea569223a69dfa9d088921",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"For the quarter ended June 30, 2026, Meta's net income was $15,848,000,000 [1].\",\n  \"points\": [\n    {\n      \"text\": \"Meta's net income for the quarter ended June 30, 2026 was 15,848,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:766\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:766\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1648,
+    "tokens_out": 204,
+    "latency_ms": 1066.459,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "c223fe4f2838d9ba9952153380834d2146ab7ed6d7fe31a93f328760432ddc1d",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"For the quarter ended June 30, 2026, Meta's net income was 15,848,000,000 USD [1].\",\n  \"points\": [\n    {\n      \"text\": \"Meta's net income for the quarter ended June 30, 2026 was 15,848,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:766\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:766\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 1630,
+    "tokens_out": 367,
+    "latency_ms": 1403.674,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2026-Q2\"],\"ticker\":\"META\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:766\">Net income (2026-Q2): 15,848,000,000 USD USD</untrusted_document>\n<untrusted_document cite_id=\"f:4170\">Net income (2026-Q2): 15,848,000,000 USD USD</untrusted_document>",
+   "summary": "META 2026-Q2 net_income",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "f:766",
+     "text": "Net income (2026-Q2): 15,848,000,000 USD USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 147,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2026-Q2",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-050705",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm"
+     },
+     "value": "15848000000"
+    },
+    {
+     "cite_id": "f:4170",
+     "text": "Net income (2026-Q2): 15,848,000,000 USD USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2364,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2026-Q2",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-050705",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm"
+     },
+     "value": "15848000000"
+    }
+   ],
+   "error": null
+  }
+ ]
+}
