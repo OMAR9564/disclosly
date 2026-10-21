@@ -10,8 +10,29 @@ import type { ReactNode } from "react";
 export type Block =
   { kind: "h1" | "h2" | "p"; text: string } | { kind: "ul"; items: string[] };
 
+function stripOnce(source: string): string {
+  let out = "";
+  let rest = source;
+  for (;;) {
+    const start = rest.indexOf("<!--");
+    if (start < 0) return out + rest;
+    out += rest.slice(0, start);
+    const end = rest.indexOf("-->", start + 4);
+    if (end < 0) return out;
+    rest = rest.slice(end + 3);
+  }
+}
+
+/** Drop `<!-- … -->` notes until none is left; an unclosed one hides the rest. */
+export function stripComments(source: string): string {
+  let text = source;
+  for (let next = stripOnce(text); next !== text; next = stripOnce(text))
+    text = next;
+  return text;
+}
+
 export function parseBlocks(source: string): Block[] {
-  const text = source.replace(/<!--[\s\S]*?-->/g, "");
+  const text = stripComments(source);
   const blocks: Block[] = [];
   let paragraph: string[] = [];
   let list: string[] | null = null;

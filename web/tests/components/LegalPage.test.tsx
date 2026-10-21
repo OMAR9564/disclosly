@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 
 import { LegalPage } from "@/components/LegalPage";
 import { type LegalDoc, loadLegal } from "@/lib/legal/content";
-import { parseBlocks, renderInline } from "@/lib/markdown";
+import { parseBlocks, renderInline, stripComments } from "@/lib/markdown";
 
 beforeEach(() => window.localStorage.clear());
 
@@ -71,6 +71,13 @@ describe("markdown subset", () => {
       { kind: "ul", items: ["a more", "b"] },
       { kind: "h2", text: "S" },
     ]);
+  });
+
+  it("strips notes, nested and unclosed ones included", () => {
+    expect(stripComments("a<!-- x -->b<!--<!-- y -->-->c")).toBe("ab-->c");
+    expect(stripComments("a<!-- open")).toBe("a");
+    // Removing one note must not join "<" and "!--" into a new one.
+    expect(stripComments("<<!-- -->!-- z")).toBe("");
   });
 
   it("links only same-site paths", () => {
