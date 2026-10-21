@@ -1,10 +1,15 @@
-# Allowlist: the API image needs only the Python project files and the api package.
+# Allowlist: the API image needs only the Python project files and the runtime packages.
 *
 !pyproject.toml
 !uv.lock
 !.python-version
 !alembic.ini
 !api/
+!agent/
+!llm/
+!tools/
+!retrieval/
+!ingestion/
 **/__pycache__
 **/*.pyc
 api/Dockerfile
