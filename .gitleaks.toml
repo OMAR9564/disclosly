@@ -10,3 +10,13 @@ description = "Placeholder values in .env.example"
 condition = "AND"
 paths = ['''^\.env\.example$''']
 regexes = ['''CHANGE_ME''']
+
+# Recorded agent eval cassettes (evals/cassettes/agent) store each model interaction under
+# "key": the sha256 digest of the request (llm/testing.py), which generic-api-key flags.
+# Matched on the whole line so only a pretty-printed 64-hex "key" field is exempt. A `paths`
+# condition is not used: gitleaks skips a path-matched file entirely, which would also hide real
+# secrets in it.
+[[allowlists]]
+description = "sha256 request digests in agent eval cassettes"
+regexTarget = "line"
+regexes = ['''^\s*"key": "[0-9a-f]{64}",?$''']
