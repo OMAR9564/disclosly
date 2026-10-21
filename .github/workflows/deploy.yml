@@ -17,6 +17,7 @@ concurrency:
 env:
   HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
   API_IMAGE: ghcr.io/omar9564/disclosly-api
+  WORKER_IMAGE: ghcr.io/omar9564/disclosly-worker
   API_BASE_URL: https://api.disclosly.com
   VERCEL_CLI_VERSION: 64.5.0
 
@@ -75,6 +76,67 @@ jobs:
             | sed -n 's/.*"version":"\([^"]*\)".*/\1/p')"
           echo "live version: ${version}"
           test "${version}" = "${HEAD_SHA}"
+
+  # The worker image (ingestion worker and search worker) carries the ML models, so it is
+  # rebuilt only when code it runs changed. Runs after `api`, which copies the compose file.
+  worker:
+    needs: api
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 2
+      - name: Check for worker changes
+        id: changes
+        run: |
+          if git diff --name-only HEAD~1 HEAD \
+            | grep -qE '^(workers|retrieval|ingestion)/|^api/search_client\.py$|^(pyproject\.toml|uv\.lock)$'; then
+            echo "build=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "build=false" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.changes.outputs.build == 'true'
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - if: steps.changes.outputs.build == 'true'
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - if: steps.changes.outputs.build == 'true'
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          file: workers/Dockerfile
+          push: true
+          tags: |
+            ${{ env.WORKER_IMAGE }}:${{ env.HEAD_SHA }}
+            ${{ env.WORKER_IMAGE }}:main
+      - if: steps.changes.outputs.build == 'true'
+        name: Configure SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+      - if: steps.changes.outputs.build == 'true'
+        name: Roll the worker and search services
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+        run: >-
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes "deploy@${DEPLOY_HOST}"
+          "cd ~/disclosly
+          && sed -i '/^WORKER_IMAGE_TAG=/d' .env && echo 'WORKER_IMAGE_TAG=${HEAD_SHA}' >> .env
+          && docker compose --env-file .env -f docker-compose.yml pull worker search
+          && docker compose --env-file .env -f docker-compose.yml up -d --wait worker search"
 
   web:
     if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
