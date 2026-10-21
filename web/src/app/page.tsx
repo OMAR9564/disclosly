@@ -39,6 +39,13 @@ export default function Home() {
     }
   };
 
+  // Next keeps a left page alive in a hidden <Activity> and replays its effects when the visitor
+  // comes back ("Yeni soru"), so the ask key must not stay in its sending state.
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reset on every reveal, see above
+    setBusy(false);
+  }, []);
+
   useEffect(() => {
     let active = true;
     void fetchHealth().then((result) => {
