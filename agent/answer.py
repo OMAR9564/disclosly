@@ -3,8 +3,9 @@
 Rules checked after the schema:
 1. every `cite_id` was returned by a tool in this run;
 2. every number in `summary`/`points` appears in a cited chunk text or fact value (TR
-   `1.234,5` and EN `1,234.5` both normalised); a percentage may instead be derived from two
-   cited facts and must match within 0.1 pp;
+   `1.234,5` and EN `1,234.5` both normalised), or is such a number times 10^3, 10^6 or 10^9
+   (tables state amounts in thousands or millions); a percentage may instead be derived from
+   two cited facts or chunk numbers and must match within 0.1 pp;
 3. the disclaimer is the fixed string (the server overwrites it);
 4. `language` matches the detected question language.
 """
@@ -22,9 +23,21 @@ from tools.types import SeenItem
 
 DISCLAIMER = "Yatırım tavsiyesi değildir / Not investment advice"
 PERCENT_TOLERANCE = Decimal("0.1")
+# "551928" in a million-TL table supports "551.928.000.000 TL".
+UNIT_SCALES = (Decimal(10) ** 3, Decimal(10) ** 6, Decimal(10) ** 9)
+# Bounds the pairwise search for derived percentages over chunk numbers.
+MAX_DERIVATION_INPUTS = 120
+
 
 Language = Literal["tr", "en"]
 AnswerStatus = Literal["completed", "partial", "refused", "no_evidence"]
+
+NO_VERIFIED_ANSWER: dict[Language, str] = {
+    "tr": "Kaynaklarla doğrulanmış bir yanıt üretilemedi. Soruyu şirket ve dönemle "
+    "daha açık sorarak tekrar deneyin.",
+    "en": "No answer could be verified against the sources. Try again with the company "
+    "and period stated more clearly.",
+}
 
 
 class CitationRef(BaseModel):
@@ -64,7 +77,9 @@ _NOT_FIGURES = re.compile(
     r"|\b(?:19|20)\d{2}(?:-(?:Q[1-4]|FY))?\b"
     r"|\bQ[1-4]\b"
     r"|\b[1-4]\.\s?çeyrek"
-    r"|\b[1-4](?:st|nd|rd|th)\s+quarter",
+    r"|\b[1-4](?:st|nd|rd|th)\s+quarter"
+    r"|\b(?:3|6|9|12)\s?(?:aylık|ay)\b"
+    r"|\b(?:3|6|9|12)[\s-]months?\b",
     re.IGNORECASE,
 )
 _NUMBER = re.compile(r"(?<![\w.,])\d+(?:[.,]\d+)*")
@@ -121,8 +136,23 @@ def _source_numbers(items: Iterable[SeenItem]) -> set[Decimal]:
     return numbers
 
 
+def _supported(value: Decimal, numbers: set[Decimal]) -> bool:
+    value = value.normalize()
+    if value in numbers:
+        return True
+    return any((value / scale).normalize() in numbers for scale in UNIT_SCALES if value >= scale)
+
+
 def _derived_percents(items: Iterable[SeenItem]) -> list[Decimal]:
     values = [i.value for i in items if i.value is not None and i.value != 0]
+    seen = set(values)
+    for item in items:
+        for language in ("tr", "en"):
+            for figure in figures(item.text, language):
+                if figure.value > 0 and not figure.percent and figure.value not in seen:
+                    seen.add(figure.value)
+                    values.append(figure.value)
+    values = values[:MAX_DERIVATION_INPUTS]
     derived = []
     for a, b in permutations(values, 2):
         derived.append(a / b * 100)
@@ -135,7 +165,7 @@ def unsupported_figures(text: str, language: Language, cited: list[SeenItem]) ->
     derived: list[Decimal] | None = None
     missing = []
     for figure in figures(text, language):
-        if figure.value >= 0 and figure.value.normalize() in numbers:
+        if figure.value >= 0 and _supported(figure.value, numbers):
             continue
         if figure.percent and figure.value >= 0:
             if derived is None:
@@ -214,6 +244,8 @@ def to_partial(answer: Answer, validation: Validation, language: Language) -> An
             for c in answer.citations
             if f"[{c.marker}]" in summary and c.marker not in keep_markers
         }
+    if not summary and not validation.valid_points:
+        summary = NO_VERIFIED_ANSWER[language]
     return Answer(
         language=language,
         status="partial",

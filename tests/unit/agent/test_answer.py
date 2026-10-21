@@ -7,6 +7,7 @@ from pydantic import ValidationError
 
 from agent.answer import (
     DISCLAIMER,
+    NO_VERIFIED_ANSWER,
     Answer,
     CitationRef,
     Point,
@@ -155,3 +156,51 @@ def test_schema_rejects_extra_fields_and_bad_status() -> None:
     with pytest.raises(ValidationError):
         CitationRef(marker=0, cite_id="f:1")
     assert "properties" in answer_json_schema()
+
+
+# The production case (2026-10-21): a KAP table in million TL, with figures restated in TL
+# and a margin computed from two table cells.
+TABLE = {
+    "c:t": SeenItem(
+        cite_id="c:t",
+        text="Kalem | Cari Dönem 01.01.2024 - 30.09.2024\n"
+        "Hasılat | ifrs-full_Revenue | 19 | 551928 | 358781\n"
+        "Net Dönem Karı | ifrs-full_ProfitLoss | | 88831 | 70212",
+        source={},
+    )
+}
+
+
+def test_unit_scaled_numbers_and_chunk_derived_percent_are_supported() -> None:
+    answer = _answer(
+        "THYAO'nun 9 aylık net kâr marjı yaklaşık %16,09'dur [1].",
+        points=[("Hasılat 551.928.000.000 TL, net kâr 88.831 milyon TL.", ["c:t"])],
+        citations=[(1, "c:t")],
+    )
+    assert validate_answer(answer, TABLE, "tr").ok
+
+
+@pytest.mark.parametrize(
+    "text",
+    [
+        "Hasılat 551.928.000.001 TL.",  # not an exact scale of a source number
+        "Hasılat 5.519.280 TL.",  # x10, not a unit scale
+        "Net kâr marjı %17,5.",  # no pair of table numbers gives it
+    ],
+)
+def test_scaling_does_not_admit_other_numbers(text: str) -> None:
+    answer = _answer("Özet.", points=[(text, ["c:t"])])
+    assert not validate_answer(answer, TABLE, "tr").ok
+
+
+def test_empty_partial_gets_the_no_verified_answer_notice() -> None:
+    answer = _answer("Net kâr 9.999 milyon TL [1].", citations=[(1, "f:1")])
+    partial = to_partial(answer, validate_answer(answer, SEEN, "tr"), "tr")
+    assert partial.summary == NO_VERIFIED_ANSWER["tr"]
+    assert partial.points == []
+    assert partial.citations == []
+
+
+@pytest.mark.parametrize("text", ["ilk 9 aylık dönem", "6 ay", "the 9-month period", "12 months"])
+def test_period_lengths_are_not_figures(text: str) -> None:
+    assert figures(text, "tr") == [] and figures(text, "en") == []
