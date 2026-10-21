@@ -289,3 +289,22 @@ def test_bare_chunk_ids_become_markers() -> None:
     fixed = normalize_markers(answer)
     assert fixed.summary == "Sales were $416,161 million [1]."
     assert [(c.marker, c.cite_id) for c in fixed.citations] == [(1, f"c:{chunk}")]
+
+
+def test_bare_chunk_ids_get_their_prefix_everywhere() -> None:
+    from agent.answer import normalize_markers
+
+    chunk = "04" * 32
+    answer = Answer.model_validate(
+        {
+            "language": "tr",
+            "status": "completed",
+            "summary": f"Payın %48,88'i satışa çıkarıldı [{chunk}].",
+            "points": [{"text": "Pay %48,88.", "cite_ids": [chunk]}],
+            "citations": [{"marker": 1, "cite_id": chunk}],
+        }
+    )
+    fixed = normalize_markers(answer)
+    assert fixed.summary == "Payın %48,88'i satışa çıkarıldı [1]."
+    assert [(c.marker, c.cite_id) for c in fixed.citations] == [(1, f"c:{chunk}")]
+    assert fixed.points[0].cite_ids == [f"c:{chunk}"]

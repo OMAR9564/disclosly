@@ -81,24 +81,36 @@ class Answer(BaseModel):
 _INLINE_CITE = re.compile(r"\[([cf]:[^\]\s]+|[0-9a-f]{64})\]")
 
 
+_BARE_CHUNK_ID = re.compile(r"[0-9a-f]{64}")
+
+
+def _prefixed(cite_id: str) -> str:
+    """A chunk id written without its "c:" prefix gets it back."""
+    return f"c:{cite_id}" if _BARE_CHUNK_ID.fullmatch(cite_id) else cite_id
+
+
 def normalize_markers(answer: Answer) -> Answer:
-    """Turn inline `[c:…]`/`[f:…]` cite ids in the summary into `[n]` markers."""
-    if not _INLINE_CITE.search(answer.summary):
-        return answer
-    citations = list(answer.citations)
+    """Repair cite ids the model wrote in the wrong form before they are validated.
+
+    A bare chunk id gets its "c:" prefix back (in `citations` and `points`), and a cite id
+    written inline in the summary becomes its `[n]` marker.
+    """
+    citations = [c.model_copy(update={"cite_id": _prefixed(c.cite_id)}) for c in answer.citations]
+    points = [
+        p.model_copy(update={"cite_ids": [_prefixed(c) for c in p.cite_ids]}) for p in answer.points
+    ]
     by_id = {c.cite_id: c.marker for c in citations}
 
     def marker(match: re.Match[str]) -> str:
-        cite_id = match.group(1)
-        if ":" not in cite_id:
-            cite_id = f"c:{cite_id}"
+        cite_id = _prefixed(match.group(1))
         if cite_id not in by_id:
             by_id[cite_id] = max((c.marker for c in citations), default=0) + 1
             citations.append(CitationRef(marker=by_id[cite_id], cite_id=cite_id))
         return f"[{by_id[cite_id]}]"
 
     summary = _INLINE_CITE.sub(marker, answer.summary)
-    return answer.model_copy(update={"summary": summary, "citations": citations})
+    fixed = answer.model_copy(update={"summary": summary, "citations": citations, "points": points})
+    return answer if fixed == answer else fixed
 
 
 def answer_json_schema() -> dict[str, Any]:
