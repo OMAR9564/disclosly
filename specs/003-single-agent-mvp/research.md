@@ -76,6 +76,12 @@
 - **Alternatives**: arq worker (extra hop, worker memory is already used by the models);
   sse-starlette (dependency not needed).
 
+- **Amendment (2026-10-21)**: document search does not run in the API process. The API image
+  has no ML models; `search_documents` and `list_documents` are arq jobs on the `arq:search`
+  queue, served by a `search` container built from the worker image (T047). Cost: one Redis
+  round trip per search; benefit: the API stays at 512 MB and one copy of the models serves
+  all API workers.
+
 ## R8. Agent loop and citations
 
 - **Decision**: Loop: system prompt + question → `cheap` call with tools → execute tool calls

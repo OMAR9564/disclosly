@@ -86,9 +86,11 @@ export default function Home() {
         error={
           exhausted && quota
             ? quotaExhaustedMessage(quota, t)
-            : askError
-              ? errorMessage(askError, t)
-              : null
+            : askError === "validation_error"
+              ? t.askTooShort
+              : askError
+                ? errorMessage(askError, t)
+                : null
         }
       />
 

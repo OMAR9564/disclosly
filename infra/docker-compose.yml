@@ -132,6 +132,34 @@ services:
       redis:
         condition: service_healthy
 
+  # Document search for the API (workers/search.py, queue `arq:search`). Same image as the
+  # worker; it loads the embedding and rerank models once, so the API image stays model-free.
+  # A separate container keeps searches from waiting behind a long ingestion job.
+  search:
+    image: ghcr.io/omar9564/disclosly-worker:${WORKER_IMAGE_TAG:-main}
+    restart: unless-stopped
+    # Measured ~1.1 GiB idle with both models (2026-10-21); 1.5g leaves room for a query batch.
+    mem_limit: 1536m
+    command: ["arq", "workers.search.SearchWorkerSettings"]
+    healthcheck:
+      test: ["CMD", "arq", "--check", "workers.search.SearchWorkerSettings"]
+      interval: 60s
+      timeout: 10s
+      start_period: 90s
+      retries: 3
+    environment:
+      DATABASE_URL: ${DATABASE_URL:?DATABASE_URL is required}
+      REDIS_URL: ${REDIS_URL:?REDIS_URL is required}
+      RETRIEVAL_CHUNKER_VERSION: ${RETRIEVAL_CHUNKER_VERSION:-v1-600-64}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-intfloat/multilingual-e5-small}
+      RERANK_MODEL: ${RERANK_MODEL:-cross-encoder/mmarco-mMiniLMv2-L12-H384-v1}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
   # One-off: `docker compose --profile migrate run --rm migrate` (infra/scripts/deploy.sh).
   migrate:
     image: ghcr.io/omar9564/disclosly-api:${API_IMAGE_TAG:?API_IMAGE_TAG is required}

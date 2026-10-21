@@ -135,6 +135,7 @@ Backend packages at repo root (`api/`, `llm/`, `agent/`, `tools/`, `evals/`), te
 - [ ] T044 [P] ADR `docs/adr/0003-single-agent-and-router.md`: single loop instead of LangGraph for Phase 3, OpenAI-compatible client, cache key, API-hosted runs + Redis streams, JWT cookie sessions
 - [ ] T045 Run [quickstart.md](./quickstart.md) end to end on staging/production; record results (SC-005: p95 of `time_to_first_event_ms` and `total_ms` from `runs.usage`, SC-006 cache hit rate, eval metrics) in `evals/reports/phase3-<date>.md`
 - [ ] T046 (owner action) Add the owner and at least 3 test accounts (Google and GitHub) to the allowlist; on production each asks one Turkish and one English question and gets a cited answer; record SC-001 results in `evals/reports/phase3-<date>.md`
+- [X] T047 Run document search in a search worker: `workers/search.py` (arq queue `arq:search`, jobs `search` and `list_documents`, models loaded once at startup) and `api/search_client.py` (`RemoteSearch` enqueues and waits up to 25 s; failure → `SearchUnavailable`). The API image stays model-free (512 MB); compose adds a `search` service from the worker image (1.5 GB, reranker on; measured ~1.1 GiB idle, owner chose this over turning the reranker off). Found in production: the API image had no `sentence_transformers`, so every run failed at its first search. Tests: `tests/unit/api/test_search_client.py`, `tests/unit/workers/test_search.py`, `tests/integration/workers/test_search_queue.py` (Redis round trip)
 
 ---
 
