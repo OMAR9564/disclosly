@@ -11,8 +11,9 @@ from agent.runs import RunService, StreamRedis
 from api.config import Settings
 from ingestion.db import make_engine
 from ingestion.models import DocType
+from llm.cache import CacheRedis, ResponseCache
 from llm.config import load_providers
-from llm.router import ModelRouter
+from llm.router import ModelRouter, RouterStore
 from retrieval.types import DocumentMeta, SearchFilters, SearchHit
 from tools.registry import ToolRegistry
 
@@ -54,7 +55,12 @@ def build_run_service(settings: Settings) -> tuple[RunService, list[Any]]:
     engine = make_engine(settings.database_url.get_secret_value())
     client = redis.asyncio.from_url(settings.redis_url)
     http = httpx.AsyncClient(timeout=ROUTER_TIMEOUT_SECONDS)
-    router = ModelRouter(load_providers(settings.llm_providers_file, os.environ), http)
+    router = ModelRouter(
+        load_providers(settings.llm_providers_file, os.environ),
+        http,
+        store=cast(RouterStore, client),
+        cache=ResponseCache(cast(CacheRedis, client), engine),
+    )
     service = RunService(
         engine,
         cast(StreamRedis, client),

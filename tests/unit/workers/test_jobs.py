@@ -103,3 +103,21 @@ def test_worker_settings() -> None:
     assert settings.max_jobs == 1
     assert {f.name for f in settings.functions} == {"ingest_company", "embed_pending"}
     assert settings.cron_jobs[0].hour == 2
+
+
+async def test_cleanup_llm_cache_deletes_stale_rows(monkeypatch: pytest.MonkeyPatch) -> None:
+    seen: list[object] = []
+
+    def fake_delete(engine: object) -> int:
+        seen.append(engine)
+        return 4
+
+    monkeypatch.setattr(jobs, "delete_stale", fake_delete)
+    ctx = _ctx()
+    assert await jobs.cleanup_llm_cache(ctx) == 4
+    assert seen == [ctx["engine"]]
+
+
+def test_cleanup_runs_nightly() -> None:
+    (cleanup,) = [c for c in jobs.WorkerSettings.cron_jobs if c.name.endswith("cleanup_llm_cache")]
+    assert cleanup.hour == 3

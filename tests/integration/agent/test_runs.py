@@ -119,7 +119,7 @@ async def test_failure_is_recorded_and_streamed(engine: Engine, redis: Any) -> N
     run_id = await service.create(user, QUESTION)
     await service.wait_idle()
     events = await _events(service, run_id)
-    assert events[-1] == ("error", {"code": "internal_error", "message": "internal_error"})
+    assert events[-1] == ("error", {"code": "internal_error", "message": "Sunucu hatası."})
     run = await service.get(run_id, user)
     assert run is not None
     assert (run["status"], run["error_code"]) == ("failed", "internal_error")

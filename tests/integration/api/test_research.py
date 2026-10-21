@@ -150,3 +150,33 @@ async def test_cors_allows_web_origin_with_credentials(service: RunService) -> N
         )
         assert response.headers["access-control-allow-origin"] == "https://disclosly.com"
         assert response.headers["access-control-allow-credentials"] == "true"
+
+
+class UnavailableRouter:
+    async def chat(self, request: Any, *, task_class: Any) -> Any:
+        from llm.types import ProvidersUnavailable
+
+        raise ProvidersUnavailable(task_class, ["gemini-flash-lite", "groq-llama"])
+
+
+async def test_providers_unavailable_is_a_localized_error_event(engine: Engine, redis: Any) -> None:
+    from sqlalchemy import select
+
+    from api import schema
+
+    service = RunService(engine, redis, UnavailableRouter(), FakeTools({}), Budget())
+    async with _client(service, add_user(engine)) as client:
+        run_id = await _start(client, service)
+        events = parse_sse((await client.get(f"/v1/research/{run_id}/stream")).text)
+    assert events[-1]["event"] == "error"
+    assert events[-1]["data"] == {
+        "code": "providers_unavailable",
+        "message": "Yanıt verme geçici olarak kullanılamıyor. Lütfen sonra deneyin.",
+    }
+    with engine.begin() as conn:
+        row = conn.execute(
+            select(schema.runs.c.status, schema.runs.c.error_code).where(
+                schema.runs.c.id == uuid.UUID(run_id)
+            )
+        ).one()
+    assert (row.status, row.error_code) == ("failed", "providers_unavailable")

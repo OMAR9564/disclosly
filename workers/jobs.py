@@ -1,4 +1,5 @@
-"""arq jobs (contracts/cli.md): `ingest_company`, `embed_pending`, nightly ingestion.
+"""arq jobs (contracts/cli.md): `ingest_company`, `embed_pending`, nightly ingestion and
+the nightly `llm_cache` cleanup.
 
 One job at a time (`max_jobs = 1`) keeps the worker inside its 768 MB limit. The server embeds
 only small batches; the laptop does bulk embedding (`python -m ingestion.embed`).
@@ -23,6 +24,7 @@ from ingestion.db import make_engine
 from ingestion.embed import Embedder, SentenceTransformerEmbedder, embed_pending
 from ingestion.pipeline import Pipeline, RunSummary, Trigger
 from ingestion.run import DEFAULT_WINDOW_DAYS, parse_chunker_version, token_counter
+from llm.cache import delete_stale
 
 logger = logging.getLogger("workers.jobs")
 
@@ -112,9 +114,19 @@ async def nightly_ingest(ctx: Ctx) -> int:
     return len(ctx["tickers"])
 
 
+async def cleanup_llm_cache(ctx: Ctx) -> int:
+    """Remove cached model responses not hit for 30 days."""
+    removed = await asyncio.to_thread(delete_stale, ctx["engine"])
+    logger.info("llm_cache cleanup finished", extra={"removed": removed})
+    return removed
+
+
 class WorkerSettings:
     functions: ClassVar = [func(ingest_company), func(embed_pending_job, name="embed_pending")]
-    cron_jobs: ClassVar = [cron(nightly_ingest, hour=2, minute=30)]
+    cron_jobs: ClassVar = [
+        cron(nightly_ingest, hour=2, minute=30),
+        cron(cleanup_llm_cache, hour=3, minute=45),
+    ]
     on_startup = startup
     on_shutdown = shutdown
     max_jobs = 1
