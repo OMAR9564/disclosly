@@ -30,6 +30,7 @@ def _settings(app_env: str = "test") -> Settings:
         database_url="postgresql://u:p@localhost:5432/db",
         redis_url="redis://localhost:6379/0",
         cors_allowed_origins=[ALLOWED],
+        jwt_secret="jwt-secret-value-that-is-long-enough-123",  # noqa: S106
     )
 
 

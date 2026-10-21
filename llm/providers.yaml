@@ -1,0 +1,64 @@
+# Model providers per task class (contracts/model-router.md). Model ids appear only here.
+# daily_requests: free-tier request quota per UTC day (placeholders; owner checks the
+# current free-tier limits before launch). price_per_mtok: USD reference price, used only
+# for the would-have-cost telemetry attribute.
+classes:
+  cheap: [gemini-flash-lite, groq-llama, github-mini, openrouter-free, cloudflare]
+  strong: [gemini-flash, groq-large, github-large, openrouter-free]
+providers:
+  gemini-flash-lite:
+    base_url: https://generativelanguage.googleapis.com/v1beta/openai
+    model: gemini-2.5-flash-lite
+    api_key_env: GEMINI_API_KEY
+    daily_requests: 1000
+    native_tools: true
+    price_per_mtok: {input: 0.10, output: 0.40}
+  gemini-flash:
+    base_url: https://generativelanguage.googleapis.com/v1beta/openai
+    model: gemini-2.5-flash
+    api_key_env: GEMINI_API_KEY
+    daily_requests: 250
+    native_tools: true
+    price_per_mtok: {input: 0.30, output: 2.50}
+  groq-llama:
+    base_url: https://api.groq.com/openai/v1
+    model: llama-3.1-8b-instant
+    api_key_env: GROQ_API_KEY
+    daily_requests: 14400
+    native_tools: true
+    price_per_mtok: {input: 0.05, output: 0.08}
+  groq-large:
+    base_url: https://api.groq.com/openai/v1
+    model: llama-3.3-70b-versatile
+    api_key_env: GROQ_API_KEY
+    daily_requests: 1000
+    native_tools: true
+    price_per_mtok: {input: 0.59, output: 0.79}
+  github-mini:
+    base_url: https://models.github.ai/inference
+    model: openai/gpt-4.1-mini
+    api_key_env: GITHUB_MODELS_TOKEN
+    daily_requests: 150
+    native_tools: true
+    price_per_mtok: {input: 0.40, output: 1.60}
+  github-large:
+    base_url: https://models.github.ai/inference
+    model: openai/gpt-4.1
+    api_key_env: GITHUB_MODELS_TOKEN
+    daily_requests: 50
+    native_tools: true
+    price_per_mtok: {input: 2.00, output: 8.00}
+  openrouter-free:
+    base_url: https://openrouter.ai/api/v1
+    model: meta-llama/llama-3.3-70b-instruct:free
+    api_key_env: OPENROUTER_API_KEY
+    daily_requests: 50
+    native_tools: true
+    price_per_mtok: {input: 0.0, output: 0.0}
+  cloudflare:
+    base_url: https://api.cloudflare.com/client/v4/accounts/{CLOUDFLARE_ACCOUNT_ID}/ai/v1
+    model: "@cf/meta/llama-3.1-8b-instruct"
+    api_key_env: CLOUDFLARE_AI_TOKEN
+    daily_requests: 1000
+    native_tools: false
+    price_per_mtok: {input: 0.28, output: 0.83}

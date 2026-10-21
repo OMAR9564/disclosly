@@ -148,3 +148,14 @@ class RequestContextMiddleware:
                     "version": self.version,
                 },
             )
+
+
+def mask_email(email: str) -> str:
+    """`ayse@disclosly.com` → `a***@d***.com`; used wherever an email must be shown or logged."""
+    local, at, domain = email.strip().partition("@")
+    if not at or not local or not domain:
+        return "***"
+    host, dot, tld = domain.rpartition(".")
+    if not dot or not host:
+        return f"{local[0]}***@***"
+    return f"{local[0]}***@{host[0]}***.{tld}"

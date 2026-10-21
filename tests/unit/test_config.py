@@ -17,6 +17,8 @@ ENV_VARS = (
     "CORS_ALLOWED_ORIGINS",
     "LOG_LEVEL",
     "PROMETHEUS_MULTIPROC_DIR",
+    "JWT_SECRET",
+    "WEB_ORIGIN",
 )
 
 
@@ -29,6 +31,7 @@ def env(monkeypatch: pytest.MonkeyPatch) -> pytest.MonkeyPatch:
     monkeypatch.setenv("DATABASE_URL", PRIVATE_DSN)
     monkeypatch.setenv("REDIS_URL", "redis://redis:6379/0")
     monkeypatch.setenv("CORS_ALLOWED_ORIGINS", "https://disclosly.com, https://www.disclosly.com")
+    monkeypatch.setenv("JWT_SECRET", "jwt-secret-value-that-is-long-enough-123")
     return monkeypatch
 
 
