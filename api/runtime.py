@@ -14,38 +14,15 @@ from api.config import Settings
 from api.guards import Guards
 from api.guards.quota import Quota, QuotaRedis
 from api.guards.ratelimit import CounterRedis, RateLimiter
+from api.search_client import RemoteSearch
 from ingestion.db import make_engine
-from ingestion.models import DocType
 from llm.cache import CacheRedis, ResponseCache
 from llm.config import load_providers
 from llm.router import ModelRouter, RouterStore
-from retrieval.types import DocumentMeta, SearchFilters, SearchHit
 from tools.registry import ToolRegistry
 
 ROUTER_TIMEOUT_SECONDS = 15.0
 GUARD_HTTP_TIMEOUT_SECONDS = 10.0
-
-
-class LazySearch:
-    """Loads the retrieval models on first use, not at API startup."""
-
-    async def search(
-        self, query: str, filters: SearchFilters | None = None, k: int = 6
-    ) -> list[SearchHit]:
-        from retrieval.search import search_documents
-
-        return await search_documents(query, filters, k)
-
-    async def list_documents(
-        self,
-        ticker: str,
-        doc_types: list[DocType] | None = None,
-        period_from: str | None = None,
-        period_to: str | None = None,
-    ) -> list[DocumentMeta]:
-        from retrieval.search import list_documents
-
-        return await list_documents(ticker, doc_types, period_from, period_to)
 
 
 def budget_from(settings: Settings) -> Budget:
@@ -86,11 +63,12 @@ def build_run_service(settings: Settings) -> tuple[RunService, list[Any]]:
         store=cast(RouterStore, client),
         cache=ResponseCache(cast(CacheRedis, client), engine),
     )
+    search = RemoteSearch(settings.redis_url)
     service = RunService(
         engine,
         cast(StreamRedis, client),
         router,
-        ToolRegistry(LazySearch(), engine),
+        ToolRegistry(search, engine),
         budget_from(settings),
     )
-    return service, [engine, client, http]
+    return service, [engine, client, http, search]

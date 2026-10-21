@@ -21,6 +21,9 @@ services:
       context: ..
       dockerfile: workers/Dockerfile
 
+  search:
+    image: disclosly-worker:dev
+
   migrate:
     image: disclosly-api:dev
 

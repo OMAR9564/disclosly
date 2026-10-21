@@ -18,8 +18,6 @@ export function errorMessage(
       return t.errorProviders;
     case "not_found":
       return t.errorNotFound;
-    case "validation_error":
-      return t.askTooShort;
     default:
       return t.errorGeneric;
   }

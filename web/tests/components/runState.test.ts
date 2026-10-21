@@ -36,7 +36,8 @@ describe("errorMessage", () => {
     ["rate_limited", tr.errorRateLimited],
     ["providers_unavailable", tr.errorProviders],
     ["not_found", tr.errorNotFound],
-    ["validation_error", tr.askTooShort],
+    // Only the ask box knows a validation error means "too short"; elsewhere it is generic.
+    ["validation_error", tr.errorGeneric],
     ["interrupted", tr.errorGeneric],
     [null, tr.errorGeneric],
   ])("%s", (code, text) => {

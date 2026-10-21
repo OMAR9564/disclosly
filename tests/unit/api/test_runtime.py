@@ -9,7 +9,7 @@ from fastapi.testclient import TestClient
 
 from api.config import Settings
 from api.main import create_app
-from api.runtime import LazySearch, budget_from, build_guards, build_run_service
+from api.runtime import budget_from, build_guards, build_run_service
 from tools.registry import ToolRegistry
 
 SETTINGS = Settings(
@@ -42,7 +42,7 @@ def test_budget_from_settings() -> None:
 async def test_build_run_service_without_connecting() -> None:
     service, resources = build_run_service(SETTINGS)
     assert isinstance(service._tools, ToolRegistry)
-    assert len(resources) == 3
+    assert len(resources) == 4
     for resource in resources:
         close = getattr(resource, "aclose", None)
         if close is not None:
@@ -74,10 +74,6 @@ def test_lifespan_marks_interrupted_and_drains(monkeypatch: Any) -> None:
         pass
     assert seen == [stub.engine]
     assert stub.idle
-
-
-def test_lazy_search_is_constructible() -> None:
-    assert LazySearch() is not None
 
 
 def test_lifespan_survives_an_unreachable_database(monkeypatch: Any, capsys: Any) -> None:
