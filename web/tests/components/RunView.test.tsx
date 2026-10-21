@@ -1,7 +1,7 @@
 import { act, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { RunView } from "@/components/RunView";
+import { RunView, runIdFromPath } from "@/components/RunView";
 import { tr } from "@/i18n/tr";
 
 import { routeParams } from "../unit/setup";
@@ -101,5 +101,20 @@ describe("RunView", () => {
     render(<RunView />);
     for (let i = 0; i < 6; i += 1) act(() => FakeSource.last.onerror?.());
     expect(screen.getByText(tr.runLost)).toBeTruthy();
+  });
+});
+
+describe("runIdFromPath", () => {
+  it.each([
+    [
+      "/runs/f6cc8636-5ec5-451e-bf65-26143e0afd51",
+      "f6cc8636-5ec5-451e-bf65-26143e0afd51",
+    ],
+    ["/runs/abc/", "abc"],
+    ["/runs/a%20b", "a b"],
+    ["/runs/%E0%A4%A", "%E0%A4%A"],
+    [null, ""],
+  ])("%s -> %s", (path, id) => {
+    expect(runIdFromPath(path)).toBe(id);
   });
 });

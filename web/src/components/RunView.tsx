@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 import { useLanguage } from "@/i18n/useLanguage";
 import { errorMessage } from "@/lib/messages";
@@ -13,9 +13,20 @@ import { FlapRow } from "./FlapRow";
 import { LanguageToggle } from "./LanguageToggle";
 import { Timeline } from "./Timeline";
 
+/** The run id from `/runs/<id>`. Read from the URL, not `useParams`: on Vercel the cached
+ * prerender shell can hand the client a placeholder param, and the API then answers 422. */
+export function runIdFromPath(pathname: string | null): string {
+  const last = (pathname ?? "").split("/").filter(Boolean).pop() ?? "";
+  try {
+    return decodeURIComponent(last);
+  } catch {
+    return last;
+  }
+}
+
 /** Reload-safe view of one run: the stream replays its history, then the stored answer. */
 export function RunView() {
-  const { id } = useParams<{ id: string }>();
+  const id = runIdFromPath(usePathname());
   const { language, t, toggle } = useLanguage();
   const { run, state, lost, loadError } = useRun(id, language);
   const failure =
