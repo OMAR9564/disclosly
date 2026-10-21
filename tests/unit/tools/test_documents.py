@@ -226,3 +226,18 @@ def test_fact_metrics_are_enumerated_for_the_model() -> None:
     items = SCHEMAS[1].parameters["properties"]["metrics"]["items"]
     assert items["enum"] == list(KNOWN_METRICS)
     assert set(KNOWN_METRICS) <= METRIC_LABELS.keys()
+
+
+async def test_search_outage_is_a_tool_error_not_a_crash() -> None:
+    from retrieval.types import SearchUnavailable
+
+    class DownSearch(FakeSearch):
+        async def search(self, *args: Any, **kwargs: Any) -> list[SearchHit]:
+            raise SearchUnavailable("search")
+
+    registry = ToolRegistry(DownSearch([]), engine=None, units=lambda items: items)  # type: ignore[arg-type]
+    result = await registry.dispatch(
+        ToolCall(id="1", name="search_documents", arguments={"query": "net borç"})
+    )
+    assert result.error == "document search is temporarily unavailable"
+    assert result.items == []

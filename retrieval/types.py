@@ -67,3 +67,7 @@ class DocumentMeta(BaseModel):
     language: Literal["tr", "en"]
     status: str
     source_url: str
+
+
+class SearchUnavailable(RuntimeError):
+    """The search worker did not answer in time or failed."""

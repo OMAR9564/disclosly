@@ -8,7 +8,10 @@
 | `get_financial_facts` | `ticker`, `metrics[]`, `periods[]` | `{cite_id: "f:<id>", metric, period, value, unit, currency}` |
 | `list_documents` | `ticker`, `doc_type?`, `period_from?`, `period_to?` | document metadata (not citable) |
 
-Results are sent to the model inside `<untrusted_document cite_id="…">…</untrusted_document>`.
+Results are sent to the model inside `<untrusted_document cite_id="…">…</untrusted_document>`;
+a chunk whose unit is known also carries `amounts_in="…"` (see rule 2 below). When the search
+worker does not answer, `search_documents` and `list_documents` return a tool error ("document
+search is temporarily unavailable") and the run goes on.
 
 ## Answer (final model output, validated)
 

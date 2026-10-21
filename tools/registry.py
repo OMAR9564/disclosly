@@ -17,6 +17,7 @@ from pydantic import ValidationError
 from sqlalchemy import Engine
 
 from llm.types import ToolCall, ToolSchema
+from retrieval.types import SearchUnavailable
 from tools import documents, facts
 from tools.documents import SearchBackend
 from tools.facts import Language
@@ -152,6 +153,9 @@ class ToolRegistry:
                 return self._error(call.name, summary, f"unknown tool {call.name!r}")
         except (TypeError, ValueError, ValidationError) as exc:
             return self._error(call.name, summary, f"invalid arguments: {exc}")
+        except SearchUnavailable:
+            # The model can still answer from financial facts, or say there is no evidence.
+            return self._error(call.name, summary, "document search is temporarily unavailable")
         if not items:
             return ToolResult(call.name, "No results.", summary)
         content = "\n".join(wrap(item) for item in items)

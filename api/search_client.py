@@ -10,14 +10,10 @@ from arq import create_pool
 from arq.connections import RedisSettings
 
 from ingestion.models import DocType
-from retrieval.types import DocumentMeta, SearchFilters, SearchHit
+from retrieval.types import DocumentMeta, SearchFilters, SearchHit, SearchUnavailable
 
 SEARCH_QUEUE = "arq:search"
 RESULT_TIMEOUT_SECONDS = 25.0
-
-
-class SearchUnavailable(RuntimeError):
-    """The search worker did not answer in time or failed."""
 
 
 class JobPool(Protocol):
