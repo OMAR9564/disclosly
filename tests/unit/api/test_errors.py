@@ -37,6 +37,10 @@ def _app() -> FastAPI:
             raise ApiError("quota_exhausted", params={"resets_at": "00:00"})
         raise ApiError(code)  # type: ignore[arg-type]
 
+    @app.get("/item/{item_id}")
+    def item(item_id: int) -> None:
+        return None
+
     return app
 
 
@@ -99,3 +103,14 @@ def test_every_code_has_both_languages(code: ErrorCode, language: str) -> None:
     message = localized_message(code, language)  # type: ignore[arg-type]
     assert message
     assert "{" not in message
+
+
+def test_validation_failure_logs_location_but_not_input(
+    client: TestClient, caplog: pytest.LogCaptureFixture
+) -> None:
+    caplog.set_level("INFO", logger="api.errors")
+    response = client.get("/item/secret-value")
+    assert response.status_code == 422
+    record = next(r for r in caplog.records if r.getMessage() == "request validation failed")
+    assert record.errors == [{"loc": ["path", "item_id"], "type": "int_parsing"}]  # type: ignore[attr-defined]
+    assert "secret-value" not in str(record.__dict__)

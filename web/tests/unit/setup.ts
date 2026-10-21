@@ -14,5 +14,6 @@ export const searchParams = { value: new URLSearchParams() };
 vi.mock("next/navigation", () => ({
   useRouter: () => ({ push: routerPush }),
   useParams: () => routeParams,
+  usePathname: () => `/runs/${routeParams.id}`,
   useSearchParams: () => searchParams.value,
 }));

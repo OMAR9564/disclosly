@@ -186,6 +186,16 @@ def register_exception_handlers(app: FastAPI) -> None:
             ErrorDetail(loc=list(error.get("loc", ())), msg=str(error.get("msg", "")))
             for error in exc.errors()
         ]
+        # Location and error type only: input values may be personal or secret.
+        logger.info(
+            "request validation failed",
+            extra={
+                "errors": [
+                    {"loc": list(e.get("loc", ())), "type": str(e.get("type", ""))}
+                    for e in exc.errors()
+                ]
+            },
+        )
         return error_response(request, "validation_error", details=details)
 
     @app.exception_handler(Exception)
