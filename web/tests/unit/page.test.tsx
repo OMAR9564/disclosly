@@ -5,6 +5,7 @@ import {
   screen,
   waitFor,
 } from "@testing-library/react";
+import { Activity } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import RootLayout from "@/app/layout";
@@ -119,6 +120,44 @@ describe("Home ask", () => {
     });
     fireEvent.click(screen.getByRole("button", { name: tr.askSubmit }));
     await waitFor(() => expect(routerPush).toHaveBeenCalledWith("/runs/run-9"));
+  });
+
+  it("is ready again when the visitor comes back for a new question", async () => {
+    const { routerPush } = await import("./setup");
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string) =>
+        String(url).endsWith("/v1/research")
+          ? new Response(JSON.stringify({ run_id: "run-9" }), { status: 202 })
+          : new Response("{}", { status: 401 }),
+      ),
+    );
+    // Next keeps the left page in a hidden Activity and shows it again on "Yeni soru".
+    const view = render(
+      <Activity mode="visible">
+        <Home />
+      </Activity>,
+    );
+    fireEvent.change(screen.getByLabelText(tr.askLabel), {
+      target: { value: "THYAO net kâr?" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: tr.askSubmit }));
+    await waitFor(() => expect(routerPush).toHaveBeenCalledWith("/runs/run-9"));
+    expect(screen.getByRole("button", { name: tr.askSending })).toBeTruthy();
+
+    view.rerender(
+      <Activity mode="hidden">
+        <Home />
+      </Activity>,
+    );
+    view.rerender(
+      <Activity mode="visible">
+        <Home />
+      </Activity>,
+    );
+    await waitFor(() =>
+      expect(screen.getByRole("button", { name: tr.askSubmit })).toBeTruthy(),
+    );
   });
 
   it("shows a localized error when asking fails", async () => {
