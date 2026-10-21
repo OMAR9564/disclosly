@@ -327,6 +327,28 @@ def test_gemini_thought_signature_round_trips() -> None:
     assert sent["extra_content"] == extra
 
 
+def test_call_from_another_provider_gets_geminis_skip_signature() -> None:
+    """After a fallback, a Groq tool call replayed to Gemini 3 would be rejected with 400."""
+    from llm.client import GEMINI_SKIP_SIGNATURE
+    from llm.types import ToolCall
+
+    call = ToolCall(id="call_1", name="search_documents", arguments={"query": "x"})
+    request = ChatRequest(
+        messages=[
+            ChatMessage(role="user", content="q"),
+            ChatMessage(role="assistant", tool_calls=[call]),
+            ChatMessage(role="tool", content="r", tool_call_id="call_1"),
+        ]
+    )
+    gemini = _provider(name="gemini-flash-lite").model_copy(
+        update={"base_url": "https://generativelanguage.googleapis.com/v1beta/openai"}
+    )
+    sent = build_payload(gemini, request)["messages"][1]["tool_calls"][0]
+    assert sent["extra_content"] == GEMINI_SKIP_SIGNATURE
+    other = build_payload(_provider(), request)["messages"][1]["tool_calls"][0]
+    assert "extra_content" not in other
+
+
 def test_extra_content_is_not_part_of_the_cache_key() -> None:
     from llm.cache_key import cache_key
     from llm.types import ChatMessage, ChatRequest, ToolCall
