@@ -1,11 +1,12 @@
 # Allowlist: the worker image needs the Python project files and its packages.
-# `api` is included for the shared JSON log formatter.
+# `api` is included for the shared JSON log formatter; `llm` for the cache cleanup job.
 *
 !pyproject.toml
 !uv.lock
 !.python-version
 !api/
 !ingestion/
+!llm/
 !retrieval/
 !workers/
 **/__pycache__

@@ -51,9 +51,7 @@ def would_have_cost(response: ChatResponse, price: Price) -> float:
     )
 
 
-def record_response(
-    span: trace.Span, response: ChatResponse, price: Price | None = None
-) -> None:
+def record_response(span: trace.Span, response: ChatResponse, price: Price | None = None) -> None:
     span.set_attribute("gen_ai.usage.input_tokens", response.tokens_in)
     span.set_attribute("gen_ai.usage.output_tokens", response.tokens_out)
     span.set_attribute("disclosly.cache_hit", response.cache_hit)
