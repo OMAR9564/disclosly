@@ -381,7 +381,7 @@ disclosly/
 |---|---|---|---|
 | 1. Walking skeleton | 1 | Monorepo, CI, compose, Caddy, empty API + web deployed | Push to `main` deploys automatically; `/healthz` live over HTTPS; web on Vercel |
 | 2. Data + retrieval | 2–3 | KAP + SEC ingestion for ~40 companies; hybrid search; retrieval golden set | Idempotent pipeline; recall@10 measured and reported; chunk/rerank decision in ADR |
-| 3. Single-agent MVP | 4 | ModelRouter with fallback + cache; one tool-calling agent; SSE UI with citations; auth, quotas, Turnstile, disclaimer, privacy page | Real users can sign in and get cited answers; provider fallback demonstrated; **closed beta to Numiver users** |
+| 3. Single-agent MVP | 4 | ModelRouter with fallback + cache; one tool-calling agent; SSE UI with citations; auth, quotas, Turnstile, disclaimer, privacy page | Owner and allowlisted test accounts sign in on production and get cited answers (TR + EN); provider fallback demonstrated. Real users come with the Phase 5 public launch (changed 2026-10-21: Numiver has no users yet) |
 | 4. Multi-agent | 5–6 | LangGraph graph (Section 6), HITL plan approval, sandbox, verifier loop, memory, checkpoint resume | Server restart mid-run resumes; single vs multi-agent compared on evals and documented honestly |
 | 5. Production hardening | 7–8 | Full evals + CI gate, OTel dashboards and alerts, guardrail sets, MCP server, feedback loop, nightly reports cache, load test, runbook, one postmortem | All Section 21 items checked; public launch; blog post; demo video |
 
