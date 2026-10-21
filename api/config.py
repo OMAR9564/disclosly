@@ -1,5 +1,6 @@
 """Environment configuration (contract: specs/001-walking-skeleton/contracts/configuration.md)."""
 
+import ipaddress
 import logging
 from functools import lru_cache
 from typing import Annotated, Literal
@@ -47,7 +48,11 @@ class Settings(BaseSettings):
     jwt_secret: SecretStr | None = None
     session_cookie_domain: str = ".disclosly.com"
     web_origin: str = "https://disclosly.com"
+    # Public origin of the API itself; OAuth redirect URIs are built from it.
+    api_origin: str = "https://api.disclosly.com"
     turnstile_secret_key: SecretStr | None = None
+    # Peers whose `CF-Connecting-IP` header is trusted (Caddy's network), as CIDRs.
+    trusted_proxies: Annotated[list[str], NoDecode] = Field(default_factory=list)
 
     # Quotas, rate limits and agent budget.
     quota_daily_questions: int = Field(default=20, ge=1)
@@ -113,12 +118,29 @@ class Settings(BaseSettings):
             raise ValueError(f"must be at least {JWT_SECRET_MIN_LENGTH} characters")
         return value
 
-    @field_validator("web_origin", mode="before")
+    @field_validator("trusted_proxies", mode="before")
+    @classmethod
+    def _split_proxies(cls, value: object) -> object:
+        if isinstance(value, str):
+            return [item.strip() for item in value.split(",") if item.strip()]
+        return value
+
+    @field_validator("trusted_proxies")
+    @classmethod
+    def _check_proxies(cls, value: list[str]) -> list[str]:
+        for network in value:
+            try:
+                ipaddress.ip_network(network, strict=False)
+            except ValueError:
+                raise ValueError("entries must be IP addresses or CIDR networks") from None
+        return value
+
+    @field_validator("web_origin", "api_origin", mode="before")
     @classmethod
     def _strip_web_origin(cls, value: object) -> object:
         return value.strip().rstrip("/") if isinstance(value, str) else value
 
-    @field_validator("web_origin")
+    @field_validator("web_origin", "api_origin")
     @classmethod
     def _check_web_origin(cls, value: str, info: ValidationInfo) -> str:
         if not _is_allowed_origin(value, info.data.get("app_env")):

@@ -75,4 +75,5 @@ PK (`run_id`, `cite_id`).
 | `rl:user:{user_id}:{minute}`, `rl:ip:{ip_hash}:{minute}` | counter | 120 s |
 | `allow:{email_hash}` | `0`/`1` | 60 s |
 | `refresh:{token_id}` | user_id | 7 days |
+| `oauth:state:{state}` | provider, PKCE verifier, return_to (JSON) | 10 min, read once |
 | `run:{run_id}:events` | stream | 24 h after finish |

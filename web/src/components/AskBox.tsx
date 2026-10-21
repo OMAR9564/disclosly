@@ -11,11 +11,14 @@ export function AskBox({
   t,
   onAsk,
   busy = false,
+  disabled = false,
   error = null,
 }: {
   t: Dictionary;
   onAsk: (question: string) => void;
   busy?: boolean;
+  /** No questions left today: the key stays up but cannot be pressed. */
+  disabled?: boolean;
   error?: string | null;
 }) {
   const id = useId();
@@ -58,7 +61,11 @@ export function AskBox({
             }
           }}
         />
-        <button type="submit" className="key key--ask" disabled={busy}>
+        <button
+          type="submit"
+          className="key key--ask"
+          disabled={busy || disabled}
+        >
           {busy ? t.askSending : t.askSubmit}
         </button>
       </div>

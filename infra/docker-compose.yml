@@ -17,6 +17,22 @@ x-api-environment: &api-environment
   OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
   CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
   CLOUDFLARE_AI_TOKEN: ${CLOUDFLARE_AI_TOKEN:-}
+  # Sign-in (research §R4). An empty OAuth pair turns that provider off; an empty Turnstile
+  # secret makes every sign-in fail the bot check.
+  GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+  GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+  GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-}
+  GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-}
+  TURNSTILE_SECRET_KEY: ${TURNSTILE_SECRET_KEY:-}
+  WEB_ORIGIN: ${WEB_ORIGIN:-https://disclosly.com}
+  API_ORIGIN: ${API_ORIGIN:-https://api.disclosly.com}
+  SESSION_COOKIE_DOMAIN: ${SESSION_COOKIE_DOMAIN:-.disclosly.com}
+  # Only Caddy sits on the edge network, so only it may set the client IP (CF-Connecting-IP).
+  TRUSTED_PROXIES: ${TRUSTED_PROXIES:-172.30.0.0/24}
+  # Quotas, rate limits and agent budget; unset means the API defaults.
+  QUOTA_DAILY_QUESTIONS: ${QUOTA_DAILY_QUESTIONS:-20}
+  RATE_LIMIT_USER_PER_MIN: ${RATE_LIMIT_USER_PER_MIN:-30}
+  RATE_LIMIT_IP_PER_MIN: ${RATE_LIMIT_IP_PER_MIN:-60}
 
 services:
   caddy:
@@ -34,6 +50,8 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - caddy_data:/data
       - caddy_config:/config
+    networks:
+      - edge
     depends_on:
       - api
 
@@ -42,6 +60,9 @@ services:
     restart: unless-stopped
     mem_limit: 512m
     environment: *api-environment
+    networks:
+      - default
+      - edge
     tmpfs:
       - /tmp/prometheus
     depends_on:
@@ -121,6 +142,13 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+
+# `edge` joins Caddy and the API only; its fixed subnet is what TRUSTED_PROXIES names.
+networks:
+  edge:
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
 
 volumes:
   caddy_data:

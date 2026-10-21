@@ -8,6 +8,7 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
+from api.auth.allowlist import email_hash
 from api.auth.session import (
     SESSION_COOKIE,
     CurrentUser,
@@ -17,9 +18,11 @@ from api.auth.session import (
 )
 from api.config import Settings
 from api.errors import ApiError, register_exception_handlers
+from tests.api_fakes import fake_guards
 
 SECRET = "jwt-secret-value-that-is-long-enough-123"  # noqa: S105
 USER_ID = uuid.UUID("11111111-2222-4333-8444-555555555555")
+EH = email_hash("user@example.test")
 
 
 def _settings(app_env: str = "test", jwt_secret: str | None = SECRET) -> Settings:
@@ -35,6 +38,7 @@ def _settings(app_env: str = "test", jwt_secret: str | None = SECRET) -> Setting
 def _client(settings: Settings) -> TestClient:
     app = FastAPI()
     app.state.settings = settings
+    app.state.guards = fake_guards()
     register_exception_handlers(app)
 
     @app.get("/whoami")
@@ -46,23 +50,26 @@ def _client(settings: Settings) -> TestClient:
 
 def test_round_trip() -> None:
     settings = _settings()
-    assert verify_session(issue_session(USER_ID, settings), settings).id == USER_ID
+    assert verify_session(issue_session(USER_ID, settings, email_hash=EH), settings).id == USER_ID
 
 
 def test_claims_and_lifetime() -> None:
     now = datetime(2026, 10, 21, 12, 0, tzinfo=UTC)
-    token = issue_session(USER_ID, _settings(), now=now)
+    token = issue_session(USER_ID, _settings(), now=now, email_hash=EH)
     claims = jwt.decode(
         token, SECRET, algorithms=["HS256"], options={"verify_exp": False, "verify_iat": False}
     )
 
     assert claims["sub"] == str(USER_ID)
+    assert claims["eh"] == EH
     assert claims["exp"] - claims["iat"] == 15 * 60
 
 
 def test_expired_token_rejected() -> None:
     settings = _settings()
-    token = issue_session(USER_ID, settings, now=datetime.now(UTC) - timedelta(minutes=16))
+    token = issue_session(
+        USER_ID, settings, now=datetime.now(UTC) - timedelta(minutes=16), email_hash=EH
+    )
     with pytest.raises(ApiError) as excinfo:
         verify_session(token, settings)
     assert excinfo.value.code == "unauthorized"
@@ -70,14 +77,15 @@ def test_expired_token_rejected() -> None:
 
 def test_tampered_token_rejected() -> None:
     settings = _settings()
-    header, payload, signature = issue_session(USER_ID, settings).split(".")
+    header, payload, signature = issue_session(USER_ID, settings, email_hash=EH).split(".")
     flipped = signature[:-2] + ("AA" if signature[-2:] != "AA" else "BB")
     with pytest.raises(ApiError):
         verify_session(f"{header}.{payload}.{flipped}", settings)
 
 
 def test_other_secret_rejected() -> None:
-    token = issue_session(USER_ID, _settings(jwt_secret="another-secret-that-is-long-enough-xx"))  # noqa: S106
+    other = _settings(jwt_secret="another-secret-that-is-long-enough-xx")  # noqa: S106
+    token = issue_session(USER_ID, other, email_hash=EH)
     with pytest.raises(ApiError):
         verify_session(token, _settings())
 
@@ -91,7 +99,7 @@ def test_other_secret_rejected() -> None:
 )
 def test_bad_claims_rejected(claims: dict[str, object]) -> None:
     now = datetime.now(UTC)
-    payload = {"sub": str(USER_ID), "iat": now, "exp": now + timedelta(minutes=5)}
+    payload = {"sub": str(USER_ID), "eh": EH, "iat": now, "exp": now + timedelta(minutes=5)}
     payload.update(claims)
     if claims.get("iat") == 0:
         del payload["sub"]
@@ -108,7 +116,7 @@ def test_none_algorithm_rejected() -> None:
 
 def test_dev_secret_used_when_unset_in_test() -> None:
     settings = _settings(jwt_secret=None)
-    assert verify_session(issue_session(USER_ID, settings), settings).id == USER_ID
+    assert verify_session(issue_session(USER_ID, settings, email_hash=EH), settings).id == USER_ID
 
 
 def test_dependency_accepts_valid_cookie() -> None:
@@ -137,3 +145,19 @@ def test_dependency_garbage_cookie_is_unauthorized() -> None:
 def test_mint_refused_in_production() -> None:
     with pytest.raises(RuntimeError):
         mint_test_session(USER_ID, _settings(app_env="production"))
+
+
+def test_missing_email_hash_claim_rejected() -> None:
+    now = datetime.now(UTC)
+    payload = {"sub": str(USER_ID), "iat": now, "exp": now + timedelta(minutes=5)}
+    with pytest.raises(ApiError):
+        verify_session(jwt.encode(payload, SECRET, algorithm="HS256"), _settings())
+
+
+def test_dependency_rejects_user_not_on_allowlist() -> None:
+    settings = _settings()
+    client = _client(settings)
+    client.cookies.update(mint_test_session(USER_ID, settings, email="other@example.test"))
+    response = client.get("/whoami")
+    assert response.status_code == 403
+    assert response.json()["error"]["code"] == "beta_closed"

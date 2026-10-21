@@ -13,7 +13,9 @@ from agent.loop import Budget
 from agent.runs import RunService, stream_key
 from api.auth.session import mint_test_session
 from api.config import Settings
+from api.guards import Guards
 from api.main import create_app
+from tests.api_fakes import fake_guards
 from tests.integration.agent.helpers import FACT, FakeTools, add_user, good_script, redis_client
 
 QUESTION = "THYAO 2025 üçüncü çeyrek net kârı ne kadar?"
@@ -38,9 +40,17 @@ def service(engine: Engine, redis: Any) -> RunService:
     return RunService(engine, redis, good_script(), tools, Budget())
 
 
-def _client(service: RunService, user_id: uuid.UUID | None = None) -> httpx.AsyncClient:
-    app = create_app(SETTINGS, run_service=service)
-    cookies = mint_test_session(user_id, SETTINGS) if user_id else None
+ALLOWED = {"user@example.test", "a@example.test", "b@example.test"}
+
+
+def _client(
+    service: RunService,
+    user_id: uuid.UUID | None = None,
+    email: str = "user@example.test",
+    guards: Guards | None = None,
+) -> httpx.AsyncClient:
+    app = create_app(SETTINGS, run_service=service, guards=guards or fake_guards(ALLOWED))
+    cookies = mint_test_session(user_id, SETTINGS, email) if user_id else None
     return httpx.AsyncClient(
         transport=httpx.ASGITransport(app=app), base_url="http://test", cookies=cookies
     )
@@ -118,9 +128,9 @@ async def test_expired_stream_replays_stored_result(
 
 async def test_other_user_gets_404(engine: Engine, service: RunService) -> None:
     owner, other = add_user(engine, "a@example.test"), add_user(engine, "b@example.test")
-    async with _client(service, owner) as client:
+    async with _client(service, owner, "a@example.test") as client:
         run_id = await _start(client, service)
-    async with _client(service, other) as client:
+    async with _client(service, other, "b@example.test") as client:
         for path in (f"/v1/research/{run_id}", f"/v1/research/{run_id}/stream"):
             response = await client.get(path)
             assert response.status_code == 404
@@ -180,3 +190,29 @@ async def test_providers_unavailable_is_a_localized_error_event(engine: Engine, 
             )
         ).one()
     assert (row.status, row.error_code) == ("failed", "providers_unavailable")
+
+
+async def test_start_returns_quota_and_refunds_early_failure(engine: Engine, redis: Any) -> None:
+    guards = fake_guards(ALLOWED, quota_limit=2)
+    user = add_user(engine)
+    service = RunService(engine, redis, UnavailableRouter(), FakeTools({}), Budget())
+    async with _client(service, user, guards=guards) as client:
+        response = await client.post("/v1/research", json={"question": QUESTION})
+        assert response.status_code == 202
+        assert response.json()["quota"]["remaining"] == 1
+        await service.wait_idle()
+    # The run failed before any model answered, so the question was given back.
+    assert (await guards.quota.status(user)).used == 0
+
+
+async def test_quota_exhausted_has_reset_time(engine: Engine, service: RunService) -> None:
+    guards = fake_guards(ALLOWED, quota_limit=1)
+    async with _client(service, add_user(engine), guards=guards) as client:
+        await _start(client, service)
+        response = await client.post(
+            "/v1/research", json={"question": QUESTION}, headers={"Accept-Language": "en"}
+        )
+    assert response.status_code == 429
+    body = response.json()["error"]
+    assert body["code"] == "quota_exhausted"
+    assert "00:00 (TRT)" in body["message"]

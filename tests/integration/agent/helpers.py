@@ -7,6 +7,7 @@ from typing import Any
 
 import redis.asyncio
 from sqlalchemy import Engine, insert
+from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 from api import schema
 from tests.agent_fakes import (
@@ -29,8 +30,14 @@ __all__ = [
 ]
 
 
-def add_user(engine: Engine, email: str = "user@example.test") -> uuid.UUID:
+def add_user(
+    engine: Engine, email: str = "user@example.test", *, allowlisted: bool = True
+) -> uuid.UUID:
     with engine.begin() as conn:
+        if allowlisted:
+            conn.execute(
+                pg_insert(schema.beta_allowlist).values(email=email).on_conflict_do_nothing()
+            )
         user_id = conn.execute(
             insert(schema.users)
             .values(
