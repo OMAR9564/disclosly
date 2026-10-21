@@ -9,6 +9,7 @@ import {
   dictionaries,
   isLanguage,
 } from ".";
+import { updateLanguage } from "@/lib/api";
 
 export const STORAGE_KEY = "disclosly.language";
 
@@ -29,6 +30,14 @@ function storeLanguage(language: Language): void {
   }
 }
 
+/** Signed in, the choice also follows the account (PUT /v1/me); signed out, the 401 is ignored. */
+export function syncLanguage(
+  language: Language,
+  save: (language: Language) => Promise<unknown> = updateLanguage,
+): void {
+  save(language).catch(() => undefined);
+}
+
 export function useLanguage(): {
   language: Language;
   t: Dictionary;
@@ -47,12 +56,11 @@ export function useLanguage(): {
   }, [language]);
 
   const toggle = useCallback(() => {
-    setLanguage((current) => {
-      const next: Language = current === "tr" ? "en" : "tr";
-      storeLanguage(next);
-      return next;
-    });
-  }, []);
+    const next: Language = language === "tr" ? "en" : "tr";
+    storeLanguage(next);
+    setLanguage(next);
+    syncLanguage(next);
+  }, [language]);
 
   return { language, t: dictionaries[language], toggle };
 }

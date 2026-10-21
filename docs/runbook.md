@@ -644,3 +644,109 @@ rm -rf /tmp/probe
 | Worker memory, idle (`docker stats`) | 38 MiB of 768 MiB | 2026-10-20 |
 
 The reranker caused almost all the latency of the first setting; ADR 0002 has the comparison.
+
+## Research agent, sign-in and quotas
+
+Everything below lives in the server `~/disclosly/.env` (mode 600), never in the repository.
+`.env.example` lists every name with a placeholder. After a change, recreate the API:
+
+```bash
+cd ~/disclosly && dc up -d api                                                             # server
+```
+
+### 1. Model provider keys
+
+Set the keys for the providers you have. A provider whose key is empty is skipped, and at least
+two are needed for fallback (FR-028):
+
+```bash
+GEMINI_API_KEY=...          # Google AI Studio
+GROQ_API_KEY=...            # console.groq.com
+GITHUB_MODELS_TOKEN=...     # fine-grained PAT with the "Models" read permission
+OPENROUTER_API_KEY=...      # openrouter.ai, free models only
+CLOUDFLARE_ACCOUNT_ID=...   # Workers AI
+CLOUDFLARE_AI_TOKEN=...
+```
+
+Models and free-tier quotas are in `llm/providers.yaml`. The router skips a provider once it
+has used 90% of `daily_requests` for the UTC day; check the providers' current limits and edit
+the file (a code change, deployed as usual). A provider that answers 400, 401 or 403 is cooled
+down for an hour and logs a config error: look for it with `dc logs api | grep config`.
+
+### 2. OAuth apps
+
+Create one app per provider. The redirect URL is the API, not the web app:
+
+| Provider | Where | Redirect URL |
+|---|---|---|
+| Google | Google Cloud console, APIs & Services, Credentials, OAuth client (Web) | `https://api.disclosly.com/v1/auth/google/callback` |
+| GitHub | Settings, Developer settings, OAuth Apps | `https://api.disclosly.com/v1/auth/github/callback` |
+
+Google needs the `openid email profile` scopes on the consent screen. GitHub needs no extra
+setting; the API asks for `read:user user:email`.
+
+```bash
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
+GITHUB_CLIENT_ID=...
+GITHUB_CLIENT_SECRET=...
+JWT_SECRET=...              # openssl rand -base64 48; rotating it signs everyone out
+WEB_ORIGIN=https://disclosly.com
+API_ORIGIN=https://api.disclosly.com
+SESSION_COOKIE_DOMAIN=.disclosly.com
+```
+
+### 3. Turnstile
+
+Create a widget in Cloudflare, Turnstile, for the hostname `disclosly.com`.
+
+- The secret key goes in the server `.env` as `TURNSTILE_SECRET_KEY`.
+- The site key goes in GitHub, Settings, Secrets and variables, Actions, **Variables** (not
+  Secrets) as `TURNSTILE_SITE_KEY`. The deploy workflow builds the web app and inlines it as
+  `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, so a Vercel dashboard redeploy cannot add or change it: push
+  to `main` or re-run the Deploy workflow.
+
+If the sign-in page says the check could not load, the site key is missing from the build.
+
+### 4. Allowlist (closed beta)
+
+Run the CLI inside the API container. Emails are lower-cased, and `list` prints masked addresses:
+
+```bash
+dc exec api python -m api.auth.allowlist add someone@example.com --note "beta"            # server
+dc exec api python -m api.auth.allowlist remove someone@example.com
+dc exec api python -m api.auth.allowlist list
+```
+
+A change takes effect within 60 seconds (the `allow:*` cache). A removed user's next request
+gets `beta_closed`, even with a valid session.
+
+### 5. Quotas and rate limits
+
+```bash
+QUOTA_DAILY_QUESTIONS=20     # per user per Europe/Istanbul day
+RATE_LIMIT_USER_PER_MIN=30
+RATE_LIMIT_IP_PER_MIN=60
+TRUSTED_PROXIES=172.30.0.0/24   # the compose `edge` network; CF-Connecting-IP is trusted only from here
+```
+
+A new daily limit applies to the next request; counts already used today stay. To give one user
+their questions back today:
+
+```bash
+dc exec redis redis-cli --scan --pattern 'quota:<user-id>:*' | xargs -r dc exec -T redis redis-cli del  # server
+```
+
+### 6. Search worker
+
+The API image has no ML models. Searches run in the `search` service (queue `arq:search`, 1.5 GB
+limit, about 1.1 GiB idle) built from the worker image. The deploy workflow does not build that
+image yet, so after a change under `workers/`, `retrieval/` or `ingestion/`, build and push it as
+in [Corpus ingestion](#1-worker-image-and-env), set `WORKER_IMAGE_TAG`, then:
+
+```bash
+dc pull worker search && dc up -d worker search                                            # server
+dc ps search            # healthy once the models are loaded
+```
+
+If every run fails at its first search, check `dc logs search` first.

@@ -212,6 +212,20 @@ export function getMe(
   return request<Me>("/v1/me", { method: "GET" }, language, baseUrl, false);
 }
 
+/** Save the language choice on the account; signed out, the 401 is the caller's to ignore. */
+export function updateLanguage(
+  language: Language,
+  baseUrl: string = apiBase(),
+): Promise<Me> {
+  return request<Me>(
+    "/v1/me",
+    { method: "PUT", body: JSON.stringify({ language }) },
+    language,
+    baseUrl,
+    false,
+  );
+}
+
 export type AuthProvider = "google" | "github";
 
 export function startSignIn(

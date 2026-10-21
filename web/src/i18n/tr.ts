@@ -86,6 +86,8 @@ export const tr = {
   signinErrorBot: "Bot doğrulaması başarısız oldu. Tekrar dene.",
   privacyLink: "Gizlilik",
   termsLink: "Koşullar",
+  disclaimerLink: "Yasal uyarı",
+  legalNav: "Yasal sayfalar",
   betaTitle: "Kapalı beta",
   betaBody:
     "Hesabın beta listesinde değil. Liste Disclosly sahibi tarafından yönetiliyor; adresin eklendiğinde giriş bir dakika içinde açılır.",

@@ -6,6 +6,7 @@ import {
   navigation,
   startResearch,
   startSignIn,
+  updateLanguage,
 } from "@/lib/api";
 
 const QUOTA = {
@@ -163,6 +164,25 @@ describe("me and sign-in", () => {
     ).rejects.toMatchObject({
       code: "bot_check_failed",
     });
+    expect(assign).not.toHaveBeenCalled();
+  });
+});
+
+describe("language", () => {
+  it("updateLanguage puts the choice with Accept-Language and never redirects", async () => {
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce(unauthorized())
+      .mockResolvedValueOnce(unauthorized());
+    vi.stubGlobal("fetch", fetchMock);
+    await expect(updateLanguage("en", "https://api")).rejects.toMatchObject({
+      code: "unauthorized",
+    });
+    const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
+    expect(url).toBe("https://api/v1/me");
+    expect(init.method).toBe("PUT");
+    expect(init.body).toBe(JSON.stringify({ language: "en" }));
+    expect(new Headers(init.headers).get("Accept-Language")).toBe("en");
     expect(assign).not.toHaveBeenCalled();
   });
 });

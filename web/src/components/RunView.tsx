@@ -8,7 +8,7 @@ import { errorMessage } from "@/lib/messages";
 import { useRun } from "@/lib/useRun";
 
 import { AnswerView } from "./AnswerView";
-import { Disclaimer } from "./Disclaimer";
+import { SiteFooter } from "./SiteFooter";
 import { FlapRow } from "./FlapRow";
 import { LanguageToggle } from "./LanguageToggle";
 import { Timeline } from "./Timeline";
@@ -75,7 +75,7 @@ export function RunView() {
         </Link>
       </p>
 
-      <Disclaimer t={t} />
+      <SiteFooter t={t} />
     </main>
   );
 }

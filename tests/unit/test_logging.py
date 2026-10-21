@@ -134,6 +134,19 @@ def test_email_values_are_redacted(stream: io.StringIO) -> None:
     assert line["user"] == REDACTED
 
 
+def test_sensitive_query_values_are_redacted(stream: io.StringIO) -> None:
+    logging.getLogger("httpx").info(
+        'HTTP Request: GET https://api/v1/auth/google/callback?code=abc123&state=s-9&page=2 "302"'
+    )
+    logging.getLogger("t").info("GET /x?api_key=k1&access_token=t1")
+    first, second = _lines(stream)
+    assert first["msg"] == (
+        "HTTP Request: GET https://api/v1/auth/google/callback"
+        f'?code={REDACTED}&state={REDACTED}&page=2 "302"'
+    )
+    assert second["msg"] == f"GET /x?api_key={REDACTED}&access_token={REDACTED}"
+
+
 def test_nested_values_are_redacted(stream: io.StringIO) -> None:
     logging.getLogger("test").info(
         "x", extra={"context": {"token": "t-1", "items": ["a@b.co", "plain"], "safe": 1}}

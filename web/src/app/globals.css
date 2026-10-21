@@ -819,3 +819,55 @@ body {
     display: none;
   }
 }
+
+/* Legal pages: a plain reading column on the board. */
+.legal {
+  max-width: 68ch;
+  font-size: 1.0625rem;
+}
+
+.legal h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.legal h2 {
+  margin: 2.25rem 0 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 1.1875rem;
+  font-weight: 650;
+}
+
+.legal p,
+.legal ul {
+  margin: 0 0 1rem;
+}
+
+.legal ul {
+  padding-left: 1.25rem;
+}
+
+.legal li + li {
+  margin-top: 0.375rem;
+}
+
+.legal h1 + p {
+  color: var(--letter-muted);
+  font-size: 0.9375rem;
+}
+
+.legal a {
+  color: var(--letter);
+  text-underline-offset: 0.2em;
+}
+
+.legal code {
+  font-size: 0.9em;
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
+  background: var(--flap);
+}

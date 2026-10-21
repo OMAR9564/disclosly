@@ -73,7 +73,9 @@ Validation rules:
 | `version` | string | `APP_VERSION`. |
 
 Redaction: email-like values and fields matching `*key*`, `*token*`, `*secret*`, `*password*`,
-`authorization` are replaced with `"[REDACTED]"`.
+`authorization` are replaced with `"[REDACTED]"`. Query values of `code`, `state`, `code_verifier` and
+parameters ending in key, token, secret or password are redacted too (added in 003, T042: the httpx
+request line carried the OAuth code).
 
 ## Deployment (record lives in GitHub Actions run + server files, not the DB)
 

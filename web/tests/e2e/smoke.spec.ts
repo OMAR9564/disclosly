@@ -78,3 +78,17 @@ test("has no horizontal scroll at 360 px", async ({ page }) => {
   );
   expect(overflow).toBe(0);
 });
+
+for (const [path, tr, en] of [
+  ["/privacy", "Gizlilik politikası", "Privacy policy"],
+  ["/terms", "Kullanım koşulları", "Terms of use"],
+  ["/disclaimer", "Yasal uyarı", "Disclaimer"],
+] as const) {
+  test(`opens ${path} signed out in both languages`, async ({ page }) => {
+    await page.goto(path);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(tr);
+    await page.getByTestId("language-toggle").click();
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(en);
+    await expect(page.getByTestId("disclaimer")).toBeVisible();
+  });
+}

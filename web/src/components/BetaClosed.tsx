@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { Disclaimer } from "@/components/Disclaimer";
+import { SiteFooter } from "@/components/SiteFooter";
 import { FlapRow } from "@/components/FlapRow";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useLanguage } from "@/i18n/useLanguage";
@@ -31,7 +31,7 @@ export function BetaClosed() {
         </p>
       </section>
 
-      <Disclaimer t={t} />
+      <SiteFooter t={t} />
     </main>
   );
 }

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { AskBox } from "@/components/AskBox";
 import { BackendStatus } from "@/components/BackendStatus";
-import { Disclaimer } from "@/components/Disclaimer";
+import { SiteFooter } from "@/components/SiteFooter";
 import { FlapRow } from "@/components/FlapRow";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { QuotaBadge, quotaExhaustedMessage } from "@/components/QuotaBadge";
@@ -96,7 +96,7 @@ export default function Home() {
 
       <BackendStatus health={health} t={t} />
 
-      <Disclaimer t={t} />
+      <SiteFooter t={t} />
     </main>
   );
 }

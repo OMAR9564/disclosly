@@ -87,6 +87,8 @@ export const en: Dictionary = {
   signinErrorBot: "The bot check failed. Try again.",
   privacyLink: "Privacy",
   termsLink: "Terms",
+  disclaimerLink: "Disclaimer",
+  legalNav: "Legal pages",
   betaTitle: "Closed beta",
   betaBody:
     "Your account is not on the beta list. The Disclosly owner manages the list; once your address is added, sign-in opens within a minute.",
