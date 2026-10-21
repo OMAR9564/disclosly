@@ -21,7 +21,9 @@ from agent.advice import detect_language
 from agent.loop import Budget, RunOutcome, Tools, run_agent
 from agent.telemetry import run_span
 from api import schema
+from api.errors import ErrorCode, localized_message
 from llm.router import Router
+from llm.types import ProvidersUnavailable
 
 logger = logging.getLogger(__name__)
 
@@ -148,12 +150,15 @@ class RunService:
                 span.set_attribute("disclosly.status", "failed")
                 code = self.error_code(exc)
                 await asyncio.to_thread(self._fail, run_id, code)
-                await self._emit(run_id, "error", {"code": code, "message": code})
+                message = localized_message(code, "en" if language == "en" else "tr")
+                await self._emit(run_id, "error", {"code": code, "message": message})
             finally:
                 await self._redis.expire(stream_key(run_id), STREAM_TTL_SECONDS)
 
     @staticmethod
-    def error_code(exc: Exception) -> str:
+    def error_code(exc: Exception) -> ErrorCode:
+        if isinstance(exc, ProvidersUnavailable):
+            return "providers_unavailable"
         return "internal_error"
 
     def _finish(self, run_id: uuid.UUID, outcome: RunOutcome, usage: dict[str, Any]) -> None:

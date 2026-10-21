@@ -142,3 +142,19 @@ def test_run_and_tool_spans(tracer: RecordingTracer) -> None:
 )
 def test_mask_email(email: str, masked: str) -> None:
     assert mask_email(email) == masked
+
+
+def test_would_have_cost_is_recorded(tracer: RecordingTracer) -> None:
+    from llm.config import Price
+    from llm.telemetry import would_have_cost
+
+    price = Price(input=0.1, output=0.4)
+    response = ChatResponse(
+        content="x", provider="p", model="m", tokens_in=1000, tokens_out=500, cache_hit=True
+    )
+    assert would_have_cost(response, price) == 0.0003
+    with chat_span(provider="p", model="m", task_class="cheap", tracer=tracer) as span:
+        record_response(span, response, price)
+    attributes = tracer.spans[0].attributes
+    assert attributes["disclosly.would_have_cost_usd"] == 0.0003
+    assert attributes["disclosly.cache_hit"] is True

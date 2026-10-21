@@ -46,6 +46,7 @@ COPY --from=builder /opt/venv /opt/venv
 COPY --from=models /opt/models /opt/models
 COPY api ./api
 COPY ingestion ./ingestion
+COPY llm ./llm
 COPY retrieval ./retrieval
 COPY workers ./workers
 USER app

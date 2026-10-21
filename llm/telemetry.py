@@ -10,6 +10,7 @@ from contextlib import contextmanager
 
 from opentelemetry import trace
 
+from llm.config import Price
 from llm.types import ChatResponse, TaskClass
 
 CHAT_SPAN = "gen_ai.chat"
@@ -43,9 +44,18 @@ def chat_span(
         yield span
 
 
-def record_response(span: trace.Span, response: ChatResponse) -> None:
+def would_have_cost(response: ChatResponse, price: Price) -> float:
+    """USD the call would have cost at list prices; the project itself pays $0."""
+    return round(
+        (response.tokens_in * price.input + response.tokens_out * price.output) / 1_000_000, 8
+    )
+
+
+def record_response(span: trace.Span, response: ChatResponse, price: Price | None = None) -> None:
     span.set_attribute("gen_ai.usage.input_tokens", response.tokens_in)
     span.set_attribute("gen_ai.usage.output_tokens", response.tokens_out)
     span.set_attribute("disclosly.cache_hit", response.cache_hit)
     span.set_attribute("disclosly.fallback_from", list(response.fallback_from))
     span.set_attribute("disclosly.latency_ms", response.latency_ms)
+    if price is not None:
+        span.set_attribute("disclosly.would_have_cost_usd", would_have_cost(response, price))
