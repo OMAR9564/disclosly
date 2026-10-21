@@ -8,6 +8,15 @@ x-api-environment: &api-environment
   REDIS_URL: ${REDIS_URL:?REDIS_URL is required}
   CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:?CORS_ALLOWED_ORIGINS is required}
   LOG_LEVEL: ${LOG_LEVEL:-INFO}
+  # Session signing key; api.config requires it (32+ characters) outside development and test.
+  JWT_SECRET: ${JWT_SECRET:-}
+  # Model provider keys (llm/providers.yaml); a provider whose key is empty is skipped.
+  GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+  GROQ_API_KEY: ${GROQ_API_KEY:-}
+  GITHUB_MODELS_TOKEN: ${GITHUB_MODELS_TOKEN:-}
+  OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+  CLOUDFLARE_ACCOUNT_ID: ${CLOUDFLARE_ACCOUNT_ID:-}
+  CLOUDFLARE_AI_TOKEN: ${CLOUDFLARE_AI_TOKEN:-}
 
 services:
   caddy:
