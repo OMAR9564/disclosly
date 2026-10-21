@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-import { Disclaimer } from "@/components/Disclaimer";
 import { FlapRow } from "@/components/FlapRow";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { ProviderGlyph } from "@/components/ProviderGlyph";
+import { SiteFooter } from "@/components/SiteFooter";
 import { Turnstile } from "@/components/Turnstile";
 import type { Dictionary } from "@/i18n";
 import { useLanguage } from "@/i18n/useLanguage";
@@ -173,14 +173,7 @@ export function SignIn({
         ) : null}
       </section>
 
-      <div className="board__foot">
-        <nav className="legal-links" aria-label={t.disclaimerLabel}>
-          <Link href="/privacy">{t.privacyLink}</Link>
-          <span aria-hidden="true">·</span>
-          <Link href="/terms">{t.termsLink}</Link>
-        </nav>
-        <Disclaimer t={t} />
-      </div>
+      <SiteFooter t={t} />
     </main>
   );
 }

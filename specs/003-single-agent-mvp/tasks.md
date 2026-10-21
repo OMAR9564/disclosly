@@ -112,8 +112,8 @@ Backend packages at repo root (`api/`, `llm/`, `agent/`, `tools/`, `evals/`), te
 
 **Independent Test**: open each page signed out in both languages; required statements present; sign-in page links to them.
 
-- [ ] T038 [P] [US4] Draft `web/src/content/legal/{privacy,terms,disclaimer}.{tr,en}.md` for owner review: personal data stored = email and display name only; purpose; retention; KVKK rights and contact; third-party model providers receive only public disclosure text and some free tiers may use prompts for training; no investment advice. Run `anthropic-skills:ai-writing-patterns` on the drafts
-- [ ] T039 [US4] Pages `web/src/app/privacy/page.tsx`, `terms/page.tsx`, `disclaimer/page.tsx` rendering the T038 content in the selected language; footer links on all pages. Vitest tests check each page renders the required statements in TR and EN; extend the Playwright smoke test to visit them signed out
+- [X] T038 [P] [US4] Draft `web/src/content/legal/{privacy,terms,disclaimer}.{tr,en}.md` for owner review: personal data stored = email and display name only; purpose; retention; KVKK rights and contact; third-party model providers receive only public disclosure text and some free tiers may use prompts for training; no investment advice. Run `anthropic-skills:ai-writing-patterns` on the drafts
+- [X] T039 [US4] Pages `web/src/app/privacy/page.tsx`, `terms/page.tsx`, `disclaimer/page.tsx` rendering the T038 content in the selected language; footer links on all pages. Vitest tests check each page renders the required statements in TR and EN; extend the Playwright smoke test to visit them signed out
 
 ---
 
@@ -123,16 +123,16 @@ Backend packages at repo root (`api/`, `llm/`, `agent/`, `tools/`, `evals/`), te
 
 **Independent Test**: toggle, reload, language persists; no untranslated strings; screens usable at 375 px.
 
-- [ ] T040 [US5] Persist the language choice: existing `web/src/i18n/useLanguage.ts` stores it locally and, when signed in, syncs with `PUT /v1/me`; `Accept-Language` sent on API calls. Vitest tests in `web/tests/i18n/useLanguage.test.ts`
-- [ ] T041 [P] [US5] Add an i18n completeness test `web/tests/i18n/keys.test.ts` (every key in `tr.ts` exists in `en.ts` and vice versa) and a Playwright viewport check at 375×812 for ask, answer and sign-in pages in `web/tests/e2e/mobile.spec.ts`
+- [X] T040 [US5] Persist the language choice: existing `web/src/i18n/useLanguage.ts` stores it locally and, when signed in, syncs with `PUT /v1/me`; `Accept-Language` sent on API calls. Vitest tests in `web/tests/i18n/useLanguage.test.ts`
+- [X] T041 [P] [US5] Add an i18n completeness test `web/tests/i18n/keys.test.ts` (every key in `tr.ts` exists in `en.ts` and vice versa) and a Playwright viewport check at 375×812 for ask, answer and sign-in pages in `web/tests/e2e/mobile.spec.ts`
 
 ---
 
 ## Phase 8: Polish & Cross-Cutting Concerns
 
-- [ ] T042 [P] Log/trace scrub test `tests/integration/api/test_no_secrets_in_logs.py`: run a full fake run and sign-in, capture logs and spans, assert no email, JWT, OAuth code or API key appears (SC-008)
-- [ ] T043 [P] (The API auth, quota and `TRUSTED_PROXIES` env vars and the `edge` network for Caddy were moved into Phase 5 so sign-in and IP limits work when US3 ships.) Update `infra/docker-compose.yml` and the deploy workflow with the new API env vars (from the server `.env`, never in the repo) and the Vercel env (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`); document in `docs/runbook.md`: provider key setup, OAuth app redirect URLs, allowlist CLI, quota changes
-- [ ] T044 [P] ADR `docs/adr/0003-single-agent-and-router.md`: single loop instead of LangGraph for Phase 3, OpenAI-compatible client, cache key, API-hosted runs + Redis streams, JWT cookie sessions
+- [X] T042 [P] Log/trace scrub test `tests/integration/api/test_no_secrets_in_logs.py`: run a full fake run and sign-in, capture logs and spans, assert no email, JWT, OAuth code or API key appears (SC-008)
+- [X] T043 [P] (The API auth, quota and `TRUSTED_PROXIES` env vars and the `edge` network for Caddy were moved into Phase 5 so sign-in and IP limits work when US3 ships.) Update `infra/docker-compose.yml` and the deploy workflow with the new API env vars (from the server `.env`, never in the repo) and the Vercel env (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`); document in `docs/runbook.md`: provider key setup, OAuth app redirect URLs, allowlist CLI, quota changes
+- [X] T044 [P] ADR `docs/adr/0003-single-agent-and-router.md`: single loop instead of LangGraph for Phase 3, OpenAI-compatible client, cache key, API-hosted runs + Redis streams, JWT cookie sessions
 - [ ] T045 Run [quickstart.md](./quickstart.md) end to end on staging/production; record results (SC-005: p95 of `time_to_first_event_ms` and `total_ms` from `runs.usage`, SC-006 cache hit rate, eval metrics) in `evals/reports/phase3-<date>.md`
 - [ ] T046 (owner action) Add the owner and at least 3 test accounts (Google and GitHub) to the allowlist; on production each asks one Turkish and one English question and gets a cited answer; record SC-001 results in `evals/reports/phase3-<date>.md`
 - [X] T047 Run document search in a search worker: `workers/search.py` (arq queue `arq:search`, jobs `search` and `list_documents`, models loaded once at startup) and `api/search_client.py` (`RemoteSearch` enqueues and waits up to 25 s; failure → `SearchUnavailable`). The API image stays model-free (512 MB); compose adds a `search` service from the worker image (1.5 GB, reranker on; measured ~1.1 GiB idle, owner chose this over turning the reranker off). Found in production: the API image had no `sentence_transformers`, so every run failed at its first search. Tests: `tests/unit/api/test_search_client.py`, `tests/unit/workers/test_search.py`, `tests/integration/workers/test_search_queue.py` (Redis round trip)

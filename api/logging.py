@@ -19,6 +19,11 @@ REQUEST_ID_HEADER = "X-Request-ID"
 _REQUEST_ID_RE = re.compile(r"^[A-Za-z0-9-]{1,64}$")
 _EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
 _SENSITIVE_KEY_RE = re.compile(r"key|token|secret|password|authorization", re.IGNORECASE)
+# Query values that grant access, e.g. httpx's "HTTP Request: GET ...?code=…&state=…" line.
+_SENSITIVE_QUERY_RE = re.compile(
+    r"([?&](?:code|state|code_verifier|[A-Za-z_]*(?:key|token|secret|password))=)[^&\s\"']+",
+    re.IGNORECASE,
+)
 
 # Attributes every LogRecord has; anything else on a record came from `extra=`.
 # `color_message` is uvicorn's ANSI-colored copy of `msg`.
@@ -34,7 +39,7 @@ def _redact(value: Any, key: str | None = None) -> Any:
     if key is not None and _SENSITIVE_KEY_RE.search(key):
         return REDACTED
     if isinstance(value, str):
-        return _EMAIL_RE.sub(REDACTED, value)
+        return _SENSITIVE_QUERY_RE.sub(rf"\1{REDACTED}", _EMAIL_RE.sub(REDACTED, value))
     if isinstance(value, dict):
         return {k: _redact(v, str(k)) for k, v in value.items()}
     if isinstance(value, list | tuple):
