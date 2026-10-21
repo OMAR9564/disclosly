@@ -401,7 +401,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
             versions = [settings.retrieval_chunker_version]
             embedder = SentenceTransformerEmbedder(settings.embedding_model, prefix="")
-            reranker = CrossEncoderReranker(settings.rerank_model) if True in args.rerank else None
+            reranker = CrossEncoderReranker.from_settings(settings) if True in args.rerank else None
             rerank_options = args.rerank
             corpus = "full"
         if args.configs:

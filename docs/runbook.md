@@ -612,3 +612,35 @@ First full run (SEC run 2, KAP run 3; 40 companies, 2-year window):
 | `status --json`: chunks missing metadata / facts missing source (SC-003) | 0 / 0 (2,454 documents embedded, 17 failed, 85,966 chunks) | 2026-10-20 |
 | Database size, `disk_bytes` (SC-006) | 632 MB with vectors (345 MB before embedding); limit 20 GB | 2026-10-20 |
 | Bulk embedding duration on the laptop | 4 h 12 min for 85,266 chunks (~5.6 chunks/s, CPU, batch 64) | 2026-10-20 |
+
+### 5. Search latency (SC-005)
+
+`evals/latency.py` runs every golden question three times through `search_documents` with the
+production defaults and prints p50, p95 and the maximum in milliseconds. The query embedding
+cache is not used, so each search pays for the embedding. The target is p95 < 1 s.
+
+The search process needs about 1.4 GiB, more than the worker's 768 MiB limit, so run it in a
+one-off container from the worker image with the worker's environment and remove it afterwards.
+The image does not contain `evals/`, so mount it:
+
+```bash
+scp -r evals deploy@<server>:/tmp/probe/                                               # laptop
+```
+
+```bash
+IMG=$(docker inspect -f '{{.Config.Image}}' disclosly-worker-1)                        # server
+NET=$(docker inspect -f '{{range $k,$v := .NetworkSettings.Networks}}{{$k}}{{end}}' disclosly-worker-1)
+docker exec disclosly-worker-1 env | grep -E '^(DATABASE_URL|RETRIEVAL|EMBEDDING|RERANK|HF_)' > /tmp/probe/lat.env
+docker run --rm --memory 2g --network "$NET" --env-file /tmp/probe/lat.env \
+  -v /tmp/probe/evals:/app/evals:ro -w /app "$IMG" python -m evals.latency --rounds 3
+rm -rf /tmp/probe
+```
+
+| Item | Value | Date |
+|---|---|---|
+| Search latency, reranker 512 tokens, float | p50 7,147 ms, p95 8,318 ms, max 10,747 ms (not met) | 2026-10-20 |
+| Search latency, reranker 64 tokens, int8 (SC-005) | p50 614 ms, p95 878 ms, max 1,114 ms (met) | 2026-10-20 |
+| Search process memory, peak | 1.4 GiB (64 tokens, int8); 2.0 GiB (512 tokens, float) | 2026-10-20 |
+| Worker memory, idle (`docker stats`) | 38 MiB of 768 MiB | 2026-10-20 |
+
+The reranker caused almost all the latency of the first setting; ADR 0002 has the comparison.

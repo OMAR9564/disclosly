@@ -225,7 +225,7 @@ def default_service() -> SearchService:
             ),
             chunker_version=settings.retrieval_chunker_version,
             candidates=settings.retrieval_candidates,
-            reranker=CrossEncoderReranker(settings.rerank_model)
+            reranker=CrossEncoderReranker.from_settings(settings)
             if settings.retrieval_rerank
             else None,
             rerank_top=settings.retrieval_rerank_top,

@@ -108,9 +108,9 @@ Paths follow plan.md "Source Code": packages `ingestion/`, `retrieval/`, `worker
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T031 [P] Measure search latency on the VPS over the golden questions run 3× (quickstart §6) and record p95 in `docs/runbook.md` (SC-005); measure worker memory with `docker stats` and record it in README
-- [ ] T032 [P] Update `docs/architecture.md` and README (data sources, pipeline, retrieval flow, eval results table with date and rerun command)
-- [ ] T033 Run quickstart end to end, record results in `specs/002-data-retrieval/quickstart.md`, and close Phase 2 against PROJECT_SPEC §20 acceptance criteria
+- [X] T031 [P] Measure search latency on the VPS over the golden questions run 3× (quickstart §6) and record p95 in `docs/runbook.md` (SC-005); measure worker memory with `docker stats` and record it in README
+- [X] T032 [P] Update `docs/architecture.md` and README (data sources, pipeline, retrieval flow, eval results table with date and rerun command)
+- [X] T033 Run quickstart end to end, record results in `specs/002-data-retrieval/quickstart.md`, and close Phase 2 against PROJECT_SPEC §20 acceptance criteria
 
 ---
 

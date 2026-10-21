@@ -1,4 +1,4 @@
-# Architecture (Phase 1: walking skeleton)
+# Architecture
 
 Phase 1 has no product features. It ships the delivery path that later phases use: a web
 page, an API with its data stores, and the pipeline that deploys both. The decisions
@@ -95,3 +95,58 @@ the SSH key, the Cloudflare DNS records and the zone's SSL settings. It runs fro
 maintainer's laptop with local state. `cloud-init.yaml` prepares a new server: Docker, the
 `deploy` user, swap, SSH hardening and automatic security updates. The runbook covers
 provisioning, the first deploy and day-to-day operations.
+
+## Data and retrieval (Phase 2)
+
+Phase 2 adds the corpus and hybrid search. The spec is in `specs/002-data-retrieval/`, the
+configuration choices in [ADR 0002](adr/0002-retrieval-configuration.md).
+
+### Data sources
+
+| Source | Companies | Documents | Language |
+|---|---|---|---|
+| SEC EDGAR | 20 US tickers (`ingestion/companies.yaml`) | 10-K, 10-Q, `companyfacts` XBRL | en |
+| KAP | top 20 BIST 30 members by market cap | financial statements, annual and interim reports, material events | tr |
+
+The window is the last two years. SEC is limited to 5 requests per second with a contact
+`User-Agent`, KAP to 1 request per second.
+
+### Ingestion pipeline
+
+```mermaid
+flowchart LR
+    src[SEC / KAP adapter] --> fetch[fetch + sha256]
+    fetch -->|known hash| skip[skip]
+    fetch --> parse[parse<br/>HTML, PDF, OCR tur+eng]
+    parse --> sections[sections + tables]
+    sections --> chunks[chunks<br/>600 tokens, overlap 64]
+    sections --> facts[financial facts]
+    chunks --> pg[(Postgres<br/>pgvector + tsvector)]
+    facts --> pg
+    pg --> embed[embed<br/>multilingual-e5-small]
+    embed --> pg
+```
+
+The `worker` container (arq, `max_jobs = 1`, 768 MiB) runs ingestion nightly at 02:30 UTC and
+embeds new chunks in small batches. A document is skipped when its `(source_url, content_hash)`
+already exists; a new hash at a known URL supersedes the old row. A failed document is marked
+`failed` and retried on the next run, and the run continues. Raw files are deleted after
+parsing. The first bulk embedding ran on the maintainer's laptop through an SSH tunnel (runbook,
+"Corpus ingestion").
+
+### Retrieval flow
+
+```mermaid
+flowchart LR
+    q[query + filters] --> emb[query embedding<br/>Redis cache 7 days]
+    emb --> vec[vector top 50<br/>HNSW cosine]
+    q --> fts[full text top 50<br/>tr_unaccent + en_unaccent]
+    vec --> rrf[RRF k=60]
+    fts --> rrf
+    rrf --> rr[cross-encoder rerank<br/>top 20, 64 tokens, int8]
+    rr --> hits[top k = 6 hits<br/>with source refs]
+```
+
+Both paths apply the same filters (ticker, period range, document type, section, language,
+chunker version) in SQL, so no hit can break a filter. Every hit carries its document, section,
+page and source URL for citation.

@@ -49,7 +49,7 @@ packages = ["api", "evals", "ingestion", "retrieval", "workers", "tests"]
 plugins = ["pydantic.mypy"]
 
 [[tool.mypy.overrides]]
-module = ["pytesseract", "transformers", "sentence_transformers", "arq.*"]
+module = ["pytesseract", "transformers", "sentence_transformers", "torch", "torch.*", "arq.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]

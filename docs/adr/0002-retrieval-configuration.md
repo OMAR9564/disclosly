@@ -34,20 +34,63 @@ Turkish gains 8 cases and English loses 3. English questions often contain a wor
 answer chunk does not use, and AND then drops that chunk from the keyword list. The vector path
 still finds most of those chunks.
 
-### 2. Reranker: on by default (`RETRIEVAL_RERANK=true`, top 20)
+### 2. Reranker: on by default, 64 tokens, int8 (`RETRIEVAL_RERANK=true`, top 20)
 
 The cross-encoder `cross-encoder/mmarco-mMiniLMv2-L12-H384-v1` reranks the top 20 fused
-candidates.
+candidates. It reads only the first 64 tokens of each query-passage pair
+(`RETRIEVAL_RERANK_MAX_LENGTH=64`) and runs with int8 weights from PyTorch dynamic quantization
+(`RETRIEVAL_RERANK_QUANTIZE=true`).
 
-| Rerank | recall@5 | recall@10 | MRR | tr recall@10 | en recall@10 |
-|---|---|---|---|---|---|
-| off | 0.647 | 0.706 | 0.464 | 0.794 | 0.618 |
-| on | 0.721 | 0.765 | 0.482 | 0.824 | 0.706 |
+The first setting used the model's full window of 512 tokens with float weights. On the server
+(2 vCPU) that took about 6.7 s per search: p50 7.1 s and p95 8.3 s over 204 searches. Embedding
+and both SQL paths together took about 0.1 s, so the reranker caused almost all the latency.
+The SC-005 target is a p95 below 1 s.
 
-The Turkish effect is small: recall@10 rises from 0.794 to 0.824 (one case) and recall@5 from
-0.706 to 0.735. Turkish MRR falls from 0.549 to 0.479, so the reranker sometimes moves the right
-chunk from first place to a lower place in the top 5. English gains 3 cases at @10. Overall the
-reranker helps, so it stays on. Its latency on the server is measured in T031 (SC-005).
+Measurements on the server, 68 golden questions, full corpus:
+
+| Reranker | recall@5 | recall@10 | MRR | Search time |
+|---|---|---|---|---|
+| off | 0.647 | 0.706 | 0.464 | about 0.1 s |
+| 512 tokens, float | 0.721 | 0.765 | 0.482 | p95 8.3 s |
+| 128 tokens, float | 0.721 | 0.735 | 0.547 | about 1.5 s |
+| 96 tokens, float | 0.735 | 0.750 | 0.550 | about 1.1 s |
+| 64 tokens, float | 0.691 | 0.750 | 0.530 | about 0.8 s |
+| 96 tokens, int8 | 0.735 | 0.779 | 0.589 | about 0.9 s |
+| **64 tokens, int8** | **0.706** | **0.779** | **0.557** | **p50 0.61 s, p95 0.88 s** |
+| 32 tokens, float | 0.456 | 0.647 | 0.289 | about 0.6 s |
+
+"About" values are the eval run time divided by 68. The p50 and p95 values come from
+`python -m evals.latency --rounds 3` (204 searches, no query embedding cache).
+
+Short inputs did not lower recall@10 down to 64 tokens. The first tokens of a chunk carry its
+section title and opening sentence, and the hybrid search already ranks the right chunks into
+the top 20; the reranker only orders them. At 32 tokens recall falls sharply. The int8 weights
+changed scores slightly, and in this set they moved two more cases into the top 10. With 68
+cases, one case is about 0.015, so the gain over float is within noise; the latency gain is not.
+
+Turkish and English, 64 tokens, int8, compared with no reranker:
+
+| Language | recall@10 off | recall@10 on | MRR off | MRR on |
+|---|---|---|---|---|
+| Turkish | 0.794 | 0.824 | 0.549 | 0.542 |
+| English | 0.618 | 0.735 | 0.378 | 0.573 |
+
+The reranker adds one Turkish case and four English cases at @10. Turkish MRR stays about the
+same, so the earlier drop (0.549 to 0.479 with 512 tokens) is gone.
+
+Rejected options:
+
+- ONNX Runtime export (float and int8), measured on the laptop with 2 threads: float was slower
+  than PyTorch, int8 was 1.3x faster at 256 tokens but changed the ranking a lot (rank
+  correlation 0.62 with the float model). `optimum` does not support the installed
+  `transformers` 5, so the export was done by hand. No new dependency was added.
+- A smaller multilingual cross-encoder: `mmarco-mMiniLMv2-L6` is not available on Hugging Face.
+- Fewer candidates (top 10): faster, but with `k = 10` the reranker then cannot change
+  recall@10 at all.
+
+The search process with both models loaded uses about 1.4 GiB at peak. It does not fit next to
+arq in the worker's 768 MiB limit, so the agent phase must give the process that serves search
+enough memory.
 
 ### 3. Chunk size: 600 tokens, overlap 64 (`v1-600-64`)
 
@@ -60,7 +103,8 @@ language.
 
 ### 4. Result count: `k = 6`
 
-recall@5 is 0.721 and recall@10 is 0.765, so four more results add three cases. `k = 6` keeps
+With the first reranker setting, recall@5 was 0.721 and recall@10 0.765, so four more results
+added three cases. `k = 6` keeps
 the context that later goes to the answer model small. The agent can ask for up to 50 results.
 
 ### 5. KAP form fields are dropped before chunking
@@ -72,10 +116,17 @@ the result did not change.
 
 ## Result and SC-004
 
-The chosen configuration (`v1-600-64`, AND full text, rerank on, `k = 6`) reaches recall@10
-**0.765** overall: 0.824 for Turkish and 0.706 for English. The SC-004 target is 0.80. The owner
-accepted the gap on 2026-10-20 to close Phase 2. The open items are the SEC chunk-size sweep and
-English full-text matching, for example with a fallback to OR when AND finds fewer than k chunks.
+The chosen configuration (`v1-600-64`, AND full text, rerank on with 64 tokens and int8 weights,
+`k = 6`) reaches recall@10 **0.779** overall: 0.824 for Turkish and 0.735 for English
+(report `evals/reports/retrieval-2026-10-20-rerank-64-int8.md`). The SC-004 target is 0.80. The
+owner accepted the gap on 2026-10-20 to close Phase 2. The open items are the SEC chunk-size
+sweep and English full-text matching, for example with a fallback to OR when AND finds fewer
+than k chunks.
+
+## SC-005
+
+With the same configuration, search on the server takes p50 0.61 s, p95 0.88 s and at most
+1.11 s (204 searches, 2026-10-20). The target, p95 below 1 s, is met.
 
 ## CI regression gate
 

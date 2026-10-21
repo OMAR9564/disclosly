@@ -220,7 +220,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             load_golden(args.golden),
             args.out,
             embedder=SentenceTransformerEmbedder(settings.embedding_model, prefix=""),
-            reranker=CrossEncoderReranker(settings.rerank_model),
+            reranker=CrossEncoderReranker.from_settings(settings),
             embedding_model=settings.embedding_model,
             rerank_model=settings.rerank_model,
             chunker_version=args.chunker_version or settings.retrieval_chunker_version,

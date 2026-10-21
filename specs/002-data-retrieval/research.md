@@ -60,6 +60,10 @@ Each item lists Decision, Rationale, Alternatives considered.
   MS MARCO, which covers Turkish.
 - **Alternatives**: English MiniLM cross-encoder (weak on Turkish), bge-m3 (1024 dims, too
   large for 768 MB), API embeddings (violates §8.1).
+- **Update (2026-10-20, T031)**: with the full 512-token window the reranker made p95 search
+  latency 8.3 s on the 2 vCPU server (SC-005: < 1 s). The reranker now reads 64 tokens per pair
+  and runs with int8 weights (`RETRIEVAL_RERANK_MAX_LENGTH`, `RETRIEVAL_RERANK_QUANTIZE`):
+  p95 0.88 s, recall@10 0.779. Measurements in ADR 0002.
 
 ## R6. Hybrid search
 
