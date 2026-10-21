@@ -63,6 +63,33 @@ export const tr = {
   errorNotFound: "Bu yanıt bulunamadı.",
   errorGeneric: "Bir sorun oluştu. Lütfen tekrar deneyin.",
   boardError: "Hata",
+  quotaLabel: "Soru",
+  quotaLeft: "soru kaldı",
+  quotaExhausted: "Bugünkü soru hakkın doldu. Kota {time} saatinde yenilenir.",
+  quotaZone: "TSİ",
+  signinTitle: "Giriş",
+  signinGate: "Kapı",
+  signinIntro:
+    "Disclosly kapalı beta aşamasında. Davet edilen e-posta adresiyle Google veya GitHub üzerinden giriş yap.",
+  signinGoogle: "Google ile gir",
+  signinGithub: "GitHub ile gir",
+  signinBotLabel: "Bot kontrolü",
+  signinBotWaiting: "Doğrulama bekleniyor…",
+  signinBotReady: "Doğrulama tamam. Bir giriş yöntemi seç.",
+  signinBotFailed: "Doğrulama yüklenemedi. Sayfayı yenileyip tekrar dene.",
+  signinRedirecting: "Yönlendiriliyor…",
+  signinErrorState: "Giriş isteğinin süresi doldu. Tekrar dene.",
+  signinErrorEmail:
+    "Bu hesabın doğrulanmış bir e-posta adresi yok. Sağlayıcıda e-postanı doğrulayıp tekrar dene.",
+  signinErrorProvider:
+    "Giriş sağlayıcısına ulaşılamadı. Biraz sonra tekrar dene.",
+  signinErrorBot: "Bot doğrulaması başarısız oldu. Tekrar dene.",
+  privacyLink: "Gizlilik",
+  termsLink: "Koşullar",
+  betaTitle: "Kapalı beta",
+  betaBody:
+    "Hesabın beta listesinde değil. Liste Disclosly sahibi tarafından yönetiliyor; adresin eklendiğinde giriş bir dakika içinde açılır.",
+  betaHome: "Ana sayfa",
   newQuestion: "Yeni soru",
 } as const;
 

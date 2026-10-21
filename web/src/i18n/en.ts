@@ -63,5 +63,33 @@ export const en: Dictionary = {
   errorNotFound: "This answer was not found.",
   errorGeneric: "Something went wrong. Please try again.",
   boardError: "Error",
+  quotaLabel: "Questions",
+  quotaLeft: "questions left",
+  quotaExhausted:
+    "You have used today's questions. The quota resets at {time}.",
+  quotaZone: "TRT",
+  signinTitle: "Sign in",
+  signinGate: "Gate",
+  signinIntro:
+    "Disclosly is in closed beta. Sign in with Google or GitHub using the email address you were invited with.",
+  signinGoogle: "Sign in with Google",
+  signinGithub: "Sign in with GitHub",
+  signinBotLabel: "Bot check",
+  signinBotWaiting: "Waiting for the check…",
+  signinBotReady: "Check passed. Choose a sign-in method.",
+  signinBotFailed: "The check could not load. Reload the page and try again.",
+  signinRedirecting: "Redirecting…",
+  signinErrorState: "The sign-in request expired. Try again.",
+  signinErrorEmail:
+    "This account has no verified email address. Verify it with the provider and try again.",
+  signinErrorProvider:
+    "The sign-in provider could not be reached. Try again shortly.",
+  signinErrorBot: "The bot check failed. Try again.",
+  privacyLink: "Privacy",
+  termsLink: "Terms",
+  betaTitle: "Closed beta",
+  betaBody:
+    "Your account is not on the beta list. The Disclosly owner manages the list; once your address is added, sign-in opens within a minute.",
+  betaHome: "Home",
   newQuestion: "New question",
 };

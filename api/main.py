@@ -12,11 +12,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from agent.runs import RunService, mark_interrupted
 from api.config import Settings, get_settings
 from api.errors import register_exception_handlers
+from api.guards import Guards
 from api.health import default_probes
 from api.health import router as health_router
 from api.logging import REQUEST_ID_HEADER, RequestContextMiddleware, configure_logging
 from api.metrics import MetricsMiddleware
 from api.metrics import router as metrics_router
+from api.routes.auth import router as auth_router
+from api.routes.me import router as me_router
 from api.routes.research import router as research_router
 
 logger = logging.getLogger(__name__)
@@ -31,6 +34,11 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
 
         app.state.run_service, resources = build_run_service(app.state.settings)
     service: RunService = app.state.run_service
+    if getattr(app.state, "guards", None) is None:
+        from api.runtime import build_guards
+
+        app.state.guards, extra = build_guards(app.state.settings, service.engine)
+        resources.extend(extra)
     try:
         await asyncio.to_thread(mark_interrupted, service.engine)
     except Exception:
@@ -49,7 +57,11 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
                 resource.dispose()
 
 
-def create_app(settings: Settings | None = None, run_service: RunService | None = None) -> FastAPI:
+def create_app(
+    settings: Settings | None = None,
+    run_service: RunService | None = None,
+    guards: Guards | None = None,
+) -> FastAPI:
     settings = settings or get_settings()
     configure_logging(settings.log_level)
 
@@ -64,10 +76,13 @@ def create_app(settings: Settings | None = None, run_service: RunService | None 
     )
     app.state.settings = settings
     app.state.run_service = run_service
+    app.state.guards = guards
     app.state.readiness_probes = default_probes(settings)
     register_exception_handlers(app)
     app.include_router(health_router)
     app.include_router(metrics_router)
+    app.include_router(auth_router)
+    app.include_router(me_router)
     app.include_router(research_router)
 
     # Starlette runs the last added middleware first: request IDs wrap everything, CORS included.
@@ -75,7 +90,7 @@ def create_app(settings: Settings | None = None, run_service: RunService | None 
         CORSMiddleware,
         allow_origins=sorted({*settings.cors_allowed_origins, settings.web_origin}),
         allow_credentials=True,
-        allow_methods=["GET", "POST"],
+        allow_methods=["GET", "POST", "PUT"],
         allow_headers=[REQUEST_ID_HEADER, "Content-Type", "Last-Event-ID", "Accept-Language"],
         expose_headers=[REQUEST_ID_HEADER],
     )

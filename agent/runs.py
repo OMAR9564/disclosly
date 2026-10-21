@@ -10,7 +10,7 @@ import json
 import logging
 import time
 import uuid
-from collections.abc import AsyncIterator, Callable
+from collections.abc import AsyncIterator, Awaitable, Callable
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from typing import Any, Protocol
@@ -81,10 +81,20 @@ class RunService:
     def engine(self) -> Engine:
         return self._engine
 
-    async def create(self, user_id: uuid.UUID, question: str) -> uuid.UUID:
+    async def create(
+        self,
+        user_id: uuid.UUID,
+        question: str,
+        *,
+        on_early_failure: Callable[[], Awaitable[None]] | None = None,
+    ) -> uuid.UUID:
+        """Start a run. `on_early_failure` runs if it fails before the first model call
+        (the quota refund)."""
         language = detect_language(question)
         run_id = await asyncio.to_thread(self._insert, user_id, question, language)
-        task = asyncio.create_task(self._execute(run_id, user_id, question, language))
+        task = asyncio.create_task(
+            self._execute(run_id, user_id, question, language, on_early_failure)
+        )
         self._tasks.add(task)
         task.add_done_callback(self._tasks.discard)
         return run_id
@@ -109,15 +119,23 @@ class RunService:
         await self._redis.xadd(stream_key(run_id), {"event": event, "data": payload})
 
     async def _execute(
-        self, run_id: uuid.UUID, user_id: uuid.UUID, question: str, language: str
+        self,
+        run_id: uuid.UUID,
+        user_id: uuid.UUID,
+        question: str,
+        language: str,
+        on_early_failure: Callable[[], Awaitable[None]] | None = None,
     ) -> None:
         started = self._clock()
         first_event_ms: float | None = None
+        model_called = False
 
         async def emit(event: str, data: dict[str, Any]) -> None:
-            nonlocal first_event_ms
+            nonlocal first_event_ms, model_called
             if first_event_ms is None:
                 first_event_ms = round((self._clock() - started) * 1000, 1)
+            if event == "model_called":
+                model_called = True
             await self._emit(run_id, event, data)
 
         with run_span(run_id=str(run_id), user_id=str(user_id), language=language) as span:
@@ -152,6 +170,11 @@ class RunService:
                 await asyncio.to_thread(self._fail, run_id, code)
                 message = localized_message(code, "en" if language == "en" else "tr")
                 await self._emit(run_id, "error", {"code": code, "message": message})
+                if on_early_failure is not None and not model_called:
+                    try:
+                        await on_early_failure()
+                    except Exception:
+                        logger.exception("early-failure hook failed", extra={"run_id": str(run_id)})
             finally:
                 await self._redis.expire(stream_key(run_id), STREAM_TTL_SECONDS)
 

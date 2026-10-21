@@ -13,6 +13,14 @@ All errors use the existing envelope `{"error": {"code", "message", "request_id"
 | POST | `/v1/auth/refresh` | — | 204, rotates cookies |
 | POST | `/v1/auth/logout` | — | 204, clears cookies, revokes refresh |
 
+`return_to` is a path (`/ask`) or an absolute URL on `WEB_ORIGIN`; anything else is
+`validation_error`. A failed callback (unknown or reused `state`, unverified email, provider
+error) redirects to `{WEB_ORIGIN}/signin?error=<reason>` with `reason` ∈ `invalid_state`,
+`invalid_code`, `email_unverified`, `provider_error`. The `refresh` cookie has
+`Path=/v1/auth`. The session JWT carries `eh` (SHA-256 of the email) for the allowlist check.
+Every `/v1` route counts against the per-IP limit; authenticated routes also against the
+per-user limit.
+
 ## Research
 
 | Method | Path | Body | Result |

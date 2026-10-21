@@ -8,17 +8,20 @@
 import json
 import uuid
 from collections.abc import AsyncIterator
+from datetime import UTC, datetime
 from typing import Annotated, Any
 
-from fastapi import APIRouter, Header, Request
+from fastapi import APIRouter, Depends, Header, Request
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
 from agent.runs import RunService, StreamEvent
 from api.auth.session import CurrentUser
-from api.errors import ApiError
+from api.errors import ApiError, message_language
+from api.guards import get_guards, ip_rate_limit
+from api.guards.quota import QuotaStatus
 
-router = APIRouter(prefix="/v1/research", tags=["research"])
+router = APIRouter(prefix="/v1/research", tags=["research"], dependencies=[Depends(ip_rate_limit)])
 
 PING_INTERVAL_MS = 15_000
 
@@ -29,6 +32,7 @@ class ResearchRequest(BaseModel):
 
 class ResearchStarted(BaseModel):
     run_id: uuid.UUID
+    quota: QuotaStatus
 
 
 def _service(request: Request) -> RunService:
@@ -49,8 +53,20 @@ async def start_research(
     question = body.question.strip()
     if len(question) < 3:
         raise ApiError("validation_error")
-    run_id = await _service(request).create(user.id, question)
-    return ResearchStarted(run_id=run_id)
+    quota = get_guards(request).quota
+    language = message_language(request.headers.get("accept-language"))
+    status = await quota.take(user.id, language)
+    taken_at = datetime.now(UTC)
+
+    async def refund() -> None:
+        await quota.refund(user.id, taken_at)
+
+    try:
+        run_id = await _service(request).create(user.id, question, on_early_failure=refund)
+    except Exception:
+        await refund()
+        raise
+    return ResearchStarted(run_id=run_id, quota=status)
 
 
 @router.get("/{run_id}")

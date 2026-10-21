@@ -9,7 +9,7 @@ from fastapi.testclient import TestClient
 
 from api.config import Settings
 from api.main import create_app
-from api.runtime import LazySearch, budget_from, build_run_service
+from api.runtime import LazySearch, budget_from, build_guards, build_run_service
 from tools.registry import ToolRegistry
 
 SETTINGS = Settings(
@@ -90,3 +90,11 @@ def test_lifespan_survives_an_unreachable_database(monkeypatch: Any, capsys: Any
         assert client.get("/healthz").status_code == 200
     assert "could not mark interrupted runs" in capsys.readouterr().out
     assert stub.idle
+
+
+async def test_build_guards_without_connecting() -> None:
+    guards, resources = build_guards(SETTINGS, engine=object())  # type: ignore[arg-type]
+    assert guards.redis is resources[0]
+    assert len(resources) == 2
+    for resource in resources:
+        await resource.aclose()
