@@ -277,3 +277,15 @@ def test_inline_cite_ids_become_markers() -> None:
         (3, "f:9"),
     ]
     assert normalize_markers(fixed) == fixed
+
+
+def test_bare_chunk_ids_become_markers() -> None:
+    from agent.answer import normalize_markers
+
+    chunk = "9c" * 32
+    answer = Answer(
+        language="en", status="completed", summary=f"Sales were $416,161 million [{chunk}]."
+    )
+    fixed = normalize_markers(answer)
+    assert fixed.summary == "Sales were $416,161 million [1]."
+    assert [(c.marker, c.cite_id) for c in fixed.citations] == [(1, f"c:{chunk}")]

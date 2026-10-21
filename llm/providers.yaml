@@ -8,7 +8,7 @@
 # gets 413 there and moves on to the next provider without a cooldown.
 classes:
   cheap: [gemini-flash-lite, groq-llama, groq-qwen, openrouter-free, github-mini, cloudflare]
-  strong: [gemini-flash, openrouter-large, groq-large, gemini-flash-stable, github-large]
+  strong: [gemini-flash-stable, gemini-flash, openrouter-large, groq-large, github-large]
 providers:
   gemini-flash-lite:
     base_url: https://generativelanguage.googleapis.com/v1beta/openai
@@ -24,7 +24,8 @@ providers:
     daily_requests: 250
     native_tools: true
     price_per_mtok: {input: 0.30, output: 2.50}
-  # Older but steady when the newest flash model is overloaded (503) or out of quota.
+  # First in `strong`: answers in about 1 s, while the 3.x flash models took 10-15 s and
+  # often returned 503 (measured 2026-10-22); the client timeout is 15 s.
   gemini-flash-stable:
     base_url: https://generativelanguage.googleapis.com/v1beta/openai
     model: gemini-2.5-flash

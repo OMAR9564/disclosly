@@ -130,6 +130,20 @@ def test_presentation_unit(text: str, expected: tuple[Decimal, str] | None) -> N
     assert documents.presentation_unit(text) == expected
 
 
+@pytest.mark.parametrize(
+    ("text", "expected"),
+    [
+        ("(In millions, except number of shares, which are reflected in thousands)", "millions"),
+        ("(Dollars in thousands) | 2025", "thousands"),
+        ("(In millions) ... later table (In thousands)", "thousands"),  # the nearest header wins
+        ("Revenue grew in millions of markets.", None),
+    ],
+)
+def test_table_header_unit(text: str, expected: str | None) -> None:
+    unit = documents.table_header_unit(text)
+    assert (unit[1] if unit else None) == expected
+
+
 def test_wrap_states_the_report_unit() -> None:
     item = SeenItem(cite_id="c:1", text="88831", source={}, unit_note="1.000.000 TL")
     assert wrap(item).startswith('<untrusted_document cite_id="c:1" amounts_in="1.000.000 TL">')

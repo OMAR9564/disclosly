@@ -28,3 +28,22 @@ def test_chunks_get_their_document_unit(corpus: Corpus) -> None:  # noqa: F811
     assert (got[0].scale, got[0].unit_note) == (Decimal(10) ** 6, "1.000.000 TL")
     assert got[1] == items[1]  # a 10-K states no presentation unit
     assert got[2] == items[2]
+
+
+def test_split_table_gets_the_header_of_an_earlier_chunk(corpus: Corpus) -> None:  # noqa: F811
+    # aapl-q and aapl-raw are consecutive chunks of one section of the 10-Q (doc 22).
+    with corpus.engine.begin() as conn:
+        conn.execute(
+            update(schema.chunks)
+            .where(schema.chunks.c.id == corpus.ids["aapl-q"])
+            .values(text="(In millions, except per-share amounts) | Three Months Ended")
+        )
+    items = [
+        _item(corpus.ids["aapl-raw"], 22),
+        _item(corpus.ids["aapl-risk"], 21),  # another section: no header
+    ]
+
+    got = with_presentation_units(corpus.engine, items)
+
+    assert (got[0].scale, got[0].unit_note) == (Decimal(10) ** 6, "millions")
+    assert got[1].scale is None

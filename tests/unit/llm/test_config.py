@@ -49,10 +49,10 @@ def test_repo_file_has_every_provider_and_both_classes() -> None:
         "cloudflare",
     ]
     assert strong == [
+        "gemini-flash-stable",
         "gemini-flash",
         "openrouter-large",
         "groq-large",
-        "gemini-flash-stable",
         "github-large",
     ]
     assert config.skipped == []

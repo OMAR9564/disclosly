@@ -19,6 +19,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from tools.documents import table_header_unit
 from tools.types import SeenItem
 
 DISCLAIMER = "Yatırım tavsiyesi değildir / Not investment advice"
@@ -76,7 +77,8 @@ class Answer(BaseModel):
     disclaimer: str = DISCLAIMER
 
 
-_INLINE_CITE = re.compile(r"\[([cf]:[^\]\s]+)\]")
+# "[c:…]", "[f:12]", or a chunk id without its "c:" prefix (seen in production).
+_INLINE_CITE = re.compile(r"\[([cf]:[^\]\s]+|[0-9a-f]{64})\]")
 
 
 def normalize_markers(answer: Answer) -> Answer:
@@ -88,6 +90,8 @@ def normalize_markers(answer: Answer) -> Answer:
 
     def marker(match: re.Match[str]) -> str:
         cite_id = match.group(1)
+        if ":" not in cite_id:
+            cite_id = f"c:{cite_id}"
         if cite_id not in by_id:
             by_id[cite_id] = max((c.marker for c in citations), default=0) + 1
             citations.append(CitationRef(marker=by_id[cite_id], cite_id=cite_id))
@@ -128,9 +132,6 @@ _CURRENCY_AFTER = re.compile(
     r"\s?(?:TL|TRY|USD|EUR|dolar|dollars?|lira|₺)(?![\wçğıöşü])", re.IGNORECASE
 )
 _CURRENCY_BEFORE = re.compile(r"(?:\$|€|₺|USD|TRY|TL|EUR)\s?$")
-# A table header that says what its amounts are counted in: "(In millions, except ...)".
-_DECLARED_SCALE = re.compile(r"\bin\s+(thousands|millions|billions)\b", re.IGNORECASE)
-_DECLARED_WORDS = {"thousands": "thousand", "millions": "million", "billions": "billion"}
 
 
 def parse_number(token: str, language: Language) -> Decimal | None:
@@ -207,9 +208,8 @@ def _sources(items: Iterable[SeenItem]) -> _Sources:
             found.amounts.add((item.value * (item.scale or 1)).normalize())
         elif item.scale is not None:
             declared.add(item.scale)
-        declared |= {
-            SCALE_WORDS[_DECLARED_WORDS[m.lower()]] for m in _DECLARED_SCALE.findall(item.text)
-        }
+        elif (header := table_header_unit(item.text)) is not None:
+            declared.add(header[0])
         for language in ("tr", "en"):
             for f in figures(item.text, language):
                 if f.value < 0:

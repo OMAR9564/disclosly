@@ -23,8 +23,8 @@ Results are sent to the model inside `<untrusted_document cite_id="…">…</unt
 }
 ```
 
-Before validation, a `cite_id` written inline in `summary` (`[c:…]` or `[f:…]`, seen in
-production from a model that skipped the markers) is replaced by its `[n]` marker; a cite id
+Before validation, a `cite_id` written inline in `summary` (`[c:…]`, `[f:…]`, or a bare
+64-character chunk id, seen in production from models that skipped the markers) is replaced by its `[n]` marker; a cite id
 without a citation entry gets the next free marker. Unknown ids are then caught by rule 1.
 
 Validation (in code, after schema check):
@@ -34,9 +34,10 @@ Validation (in code, after schema check):
    cited facts or two numbers in cited chunk text and must match within 0.1 pp).
    Units are checked too (changed 2026-10-22: production answered "56016 bin TL" from a
    million-TL table). A source amount is its number times its scale: a scale word after it
-   ("23,1 milyar TL", "$391,035 million"), the table header ("(In millions)"), the KAP
-   report's presentation unit ("Sunum Para Birimi: 1.000.000 TL", sent to the model as
-   `amounts_in` on the chunk) or a fact's unit. An answer figure with a scale word or a
+   ("23,1 milyar TL", "$391,035 million"), the KAP report's presentation unit ("Sunum Para
+   Birimi: 1.000.000 TL"), the nearest table header ("(In millions, except ...)") in the chunk
+   or in up to 3 chunks before it in the same section (a split table), or a fact's unit. The
+   chunk's unit is sent to the model as `amounts_in`. An answer figure with a scale word or a
    currency must equal a source amount, rounded to the figure's own precision
    (`31,778` in millions supports "$31.8 billion"). A bare figure must equal a number as
    written in the source or a source amount. When a table's unit is unknown, only its bare
