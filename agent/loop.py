@@ -18,6 +18,7 @@ from pydantic import ValidationError
 
 from agent.advice import detect_language, is_advice_request
 from agent.answer import (
+    NO_VERIFIED_ANSWER,
     Answer,
     AnswerStatus,
     Language,
@@ -243,7 +244,7 @@ async def run_agent(
     if last is not None:
         partial = to_partial(last[0], last[1], language)
     else:
-        partial = Answer(language=language, status="partial", summary="")
+        partial = Answer(language=language, status="partial", summary=NO_VERIFIED_ANSWER[language])
     return _outcome(partial, state, language, advice, deadline_hit=deadline_hit, forced=True)
 
 

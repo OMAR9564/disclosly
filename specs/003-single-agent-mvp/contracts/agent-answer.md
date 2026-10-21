@@ -27,12 +27,16 @@ Validation (in code, after schema check):
 1. Every `cite_id` was returned by a tool in this run.
 2. Every number in `summary`/`points` appears in a cited chunk text or fact value
    (thousand/decimal separators for TR and EN normalised; percentages may be derived from two
-   cited facts and must match within 0.1 pp).
+   cited facts or two numbers in cited chunk text and must match within 0.1 pp). Financial
+   tables state amounts in thousands or millions, so a number also matches a source number
+   multiplied by 10^3, 10^6 or 10^9 (`551928` in a "million TL" table supports
+   `551.928.000.000 TL`).
 3. `disclaimer` equals the fixed string (the server overwrites it regardless).
 4. `language` matches the detected question language.
 
 Failure → one re-ask with the validation errors, only if a model call is left in the run budget (the re-ask counts toward it; otherwise go straight to `partial`); second failure → `status = partial` answer
-containing only the validated points.
+containing only the validated points. If nothing survives (no summary, no points), the
+summary is a fixed notice that no verified answer could be produced, in the run's language.
 
 ## Eval cassettes
 
