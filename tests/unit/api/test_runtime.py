@@ -1,7 +1,10 @@
 """Tests for api.runtime and the app lifespan (T019 wiring)."""
 
+import logging
+from collections.abc import Iterator
 from typing import Any
 
+import pytest
 from fastapi.testclient import TestClient
 
 from api.config import Settings
@@ -19,6 +22,16 @@ SETTINGS = Settings(
     agent_max_tool_calls=2,
     agent_deadline_seconds=30,
 )
+
+
+@pytest.fixture(autouse=True)
+def _restore_logging() -> Iterator[None]:
+    """create_app() installs its JSON handler on the root logger; undo it after each test."""
+    root = logging.getLogger()
+    saved_handlers, saved_level = root.handlers[:], root.level
+    yield
+    root.handlers = saved_handlers
+    root.setLevel(saved_level)
 
 
 def test_budget_from_settings() -> None:
@@ -65,3 +78,15 @@ def test_lifespan_marks_interrupted_and_drains(monkeypatch: Any) -> None:
 
 def test_lazy_search_is_constructible() -> None:
     assert LazySearch() is not None
+
+
+def test_lifespan_survives_an_unreachable_database(monkeypatch: Any, capsys: Any) -> None:
+    def fail(engine: object) -> int:
+        raise RuntimeError("relation runs does not exist")
+
+    monkeypatch.setattr("api.main.mark_interrupted", fail)
+    stub = StubService()
+    with TestClient(create_app(SETTINGS, run_service=stub)) as client:  # type: ignore[arg-type]
+        assert client.get("/healthz").status_code == 200
+    assert "could not mark interrupted runs" in capsys.readouterr().out
+    assert stub.idle

@@ -1,6 +1,7 @@
 """App factory. Run with `uvicorn api.main:create_app --factory`."""
 
 import asyncio
+import logging
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from typing import Any
@@ -18,6 +19,8 @@ from api.metrics import MetricsMiddleware
 from api.metrics import router as metrics_router
 from api.routes.research import router as research_router
 
+logger = logging.getLogger(__name__)
+
 
 @asynccontextmanager
 async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
@@ -28,7 +31,12 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
 
         app.state.run_service, resources = build_run_service(app.state.settings)
     service: RunService = app.state.run_service
-    await asyncio.to_thread(mark_interrupted, service.engine)
+    try:
+        await asyncio.to_thread(mark_interrupted, service.engine)
+    except Exception:
+        # The API must start even when the database is unreachable or not yet migrated;
+        # /readyz reports the dependency, and the next startup retries the recovery.
+        logger.warning("could not mark interrupted runs at startup", exc_info=True)
     try:
         yield
     finally:
