@@ -21,7 +21,12 @@ def test_phase2_packages_import(name: str) -> None:
 
 
 @pytest.mark.parametrize(
-    "name", ["arq", "httpx", "pgvector", "pypdf", "pytesseract", "selectolax", "yaml"]
+    "name", ["arq", "httpx", "jwt", "pgvector", "pypdf", "pytesseract", "selectolax", "yaml"]
 )
 def test_runtime_dependencies_import(name: str) -> None:
+    assert importlib.import_module(name) is not None
+
+
+@pytest.mark.parametrize("name", ["llm", "agent", "tools", "api.auth", "api.guards", "api.routes"])
+def test_phase3_packages_import(name: str) -> None:
     assert importlib.import_module(name) is not None
