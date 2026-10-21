@@ -17,6 +17,7 @@ from api.auth import oauth
 from api.auth.allowlist import cache_key, email_hash
 from api.auth.session import REFRESH_COOKIE, SESSION_COOKIE, refresh_key, verify_session
 from api.config import Settings
+from api.guards.turnstile import SITEVERIFY_URL
 from api.main import create_app
 from tests.agent_fakes import FakeTools, ScriptedRouter
 from tests.api_fakes import FakeRedis, fake_guards
@@ -57,7 +58,7 @@ class Providers:
 
     def __call__(self, request: httpx.Request) -> httpx.Response:
         url = str(request.url)
-        if url.startswith("https://challenges.cloudflare.com"):
+        if url == SITEVERIFY_URL:
             return httpx.Response(200, json={"success": self.turnstile_ok})
         if url in (oauth.ENDPOINTS["google"].token, oauth.ENDPOINTS["github"].token):
             self.token_forms.append(parse_qs(request.content.decode()))
