@@ -97,11 +97,13 @@ export function SignIn({
     }
   };
 
-  const status = botFailed
-    ? t.signinBotFailed
-    : token
-      ? t.signinBotReady
-      : t.signinBotWaiting;
+  // No site key means the build lacked NEXT_PUBLIC_TURNSTILE_SITE_KEY: say so instead of waiting.
+  const status =
+    botFailed || !siteKey
+      ? t.signinBotFailed
+      : token
+        ? t.signinBotReady
+        : t.signinBotWaiting;
 
   return (
     <main className="board">
