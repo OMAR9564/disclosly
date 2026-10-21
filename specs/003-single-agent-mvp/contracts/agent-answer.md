@@ -23,6 +23,10 @@ Results are sent to the model inside `<untrusted_document cite_id="…">…</unt
 }
 ```
 
+Before validation, a `cite_id` written inline in `summary` (`[c:…]` or `[f:…]`, seen in
+production from a model that skipped the markers) is replaced by its `[n]` marker; a cite id
+without a citation entry gets the next free marker. Unknown ids are then caught by rule 1.
+
 Validation (in code, after schema check):
 1. Every `cite_id` was returned by a tool in this run.
 2. Every number in `summary`/`points` appears in a cited chunk text or fact value

@@ -204,3 +204,22 @@ def test_empty_partial_gets_the_no_verified_answer_notice() -> None:
 @pytest.mark.parametrize("text", ["ilk 9 aylık dönem", "6 ay", "the 9-month period", "12 months"])
 def test_period_lengths_are_not_figures(text: str) -> None:
     assert figures(text, "tr") == [] and figures(text, "en") == []
+
+
+def test_inline_cite_ids_become_markers() -> None:
+    from agent.answer import Answer, CitationRef, normalize_markers
+
+    answer = Answer(
+        language="tr",
+        status="completed",
+        summary="Marj %43,5 [c:abc]. FAVÖK 23,1 milyar TL [c:abc]; gelir [f:9] [1].",
+        citations=[CitationRef(marker=1, cite_id="f:7")],
+    )
+    fixed = normalize_markers(answer)
+    assert fixed.summary == "Marj %43,5 [2]. FAVÖK 23,1 milyar TL [2]; gelir [3] [1]."
+    assert [(c.marker, c.cite_id) for c in fixed.citations] == [
+        (1, "f:7"),
+        (2, "c:abc"),
+        (3, "f:9"),
+    ]
+    assert normalize_markers(fixed) == fixed
