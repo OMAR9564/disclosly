@@ -6,8 +6,16 @@ const SPIN_CHARS = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ0123456789";
 const FRAME_MS = 45;
 const FRAMES_PER_CELL = 3;
 
-function pad(text: string, length: number, locale: string): string {
-  return text.toLocaleUpperCase(locale).padEnd(length, " ").slice(0, length);
+function pad(
+  text: string,
+  length: number,
+  locale: string,
+  align: "start" | "end",
+): string {
+  const upper = text.toLocaleUpperCase(locale).slice(0, length);
+  return align === "end"
+    ? upper.padStart(length, " ")
+    : upper.padEnd(length, " ");
 }
 
 function prefersReducedMotion(): boolean {
@@ -25,14 +33,17 @@ export function FlapRow({
   length,
   tone = "plain",
   locale = "en",
+  align = "start",
 }: {
   text: string;
   length: number;
   tone?: "plain" | "live";
   /** Upper-casing locale: "tr" maps i to İ, which the brand name must not get. */
   locale?: string;
+  /** "end" right-aligns figures, as a quote board sets numbers. */
+  align?: "start" | "end";
 }) {
-  const target = pad(text, length, locale);
+  const target = pad(text, length, locale, align);
   const [shown, setShown] = useState(target);
   const frame = useRef(0);
 
