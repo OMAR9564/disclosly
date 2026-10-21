@@ -16,6 +16,9 @@ class ToolCall(BaseModel):
     id: str
     name: str
     arguments: dict[str, Any]
+    # Provider data that must be sent back with the call, e.g. Gemini's `thought_signature`
+    # under `extra_content`. Not part of the cache key.
+    extra: dict[str, Any] | None = None
 
 
 class ChatMessage(BaseModel):

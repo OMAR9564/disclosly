@@ -90,6 +90,7 @@ def _message_payload(message: ChatMessage, native_tools: bool) -> dict[str, Any]
                 "id": call.id,
                 "type": "function",
                 "function": {"name": call.name, "arguments": json.dumps(call.arguments)},
+                **({"extra_content": call.extra} if call.extra else {}),
             }
             for call in message.tool_calls
         ]
@@ -174,6 +175,7 @@ def _native_tool_calls(provider: str, message: dict[str, Any]) -> list[ToolCall]
                 id=str(call_id),
                 name=name,
                 arguments=_parse_arguments(provider, function.get("arguments")),
+                extra=extra if isinstance(extra := raw.get("extra_content"), dict) else None,
             )
         )
     return calls

@@ -8,28 +8,28 @@ classes:
 providers:
   gemini-flash-lite:
     base_url: https://generativelanguage.googleapis.com/v1beta/openai
-    model: gemini-2.5-flash-lite
+    model: gemini-3.5-flash-lite
     api_key_env: GEMINI_API_KEY
     daily_requests: 1000
     native_tools: true
     price_per_mtok: {input: 0.10, output: 0.40}
   gemini-flash:
     base_url: https://generativelanguage.googleapis.com/v1beta/openai
-    model: gemini-2.5-flash
+    model: gemini-3.5-flash
     api_key_env: GEMINI_API_KEY
     daily_requests: 250
     native_tools: true
     price_per_mtok: {input: 0.30, output: 2.50}
   groq-llama:
     base_url: https://api.groq.com/openai/v1
-    model: llama-3.1-8b-instant
+    model: openai/gpt-oss-20b
     api_key_env: GROQ_API_KEY
     daily_requests: 14400
     native_tools: true
     price_per_mtok: {input: 0.05, output: 0.08}
   groq-large:
     base_url: https://api.groq.com/openai/v1
-    model: llama-3.3-70b-versatile
+    model: openai/gpt-oss-120b
     api_key_env: GROQ_API_KEY
     daily_requests: 1000
     native_tools: true
