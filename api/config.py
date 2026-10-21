@@ -13,6 +13,8 @@ logger = logging.getLogger(__name__)
 AppEnv = Literal["development", "test", "production"]
 LogLevel = Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 
+JWT_SECRET_MIN_LENGTH = 32
+
 
 class Settings(BaseSettings):
     """API settings, read from environment variables only."""
@@ -26,6 +28,36 @@ class Settings(BaseSettings):
     cors_allowed_origins: Annotated[list[str], NoDecode, Field(min_length=1)]
     log_level: LogLevel = "INFO"
     prometheus_multiproc_dir: str | None = None
+
+    # Model providers (specs/003-single-agent-mvp/contracts/model-router.md).
+    # An unset key means the provider is skipped.
+    gemini_api_key: SecretStr | None = None
+    groq_api_key: SecretStr | None = None
+    github_models_token: SecretStr | None = None
+    openrouter_api_key: SecretStr | None = None
+    cloudflare_account_id: str | None = None
+    cloudflare_ai_token: SecretStr | None = None
+    llm_providers_file: str = "llm/providers.yaml"
+
+    # Auth (research §R4).
+    google_client_id: str | None = None
+    google_client_secret: SecretStr | None = None
+    github_client_id: str | None = None
+    github_client_secret: SecretStr | None = None
+    jwt_secret: SecretStr | None = None
+    session_cookie_domain: str = ".disclosly.com"
+    web_origin: str = "https://disclosly.com"
+    turnstile_secret_key: SecretStr | None = None
+
+    # Quotas, rate limits and agent budget.
+    quota_daily_questions: int = Field(default=20, ge=1)
+    rate_limit_user_per_min: int = Field(default=30, ge=1)
+    rate_limit_ip_per_min: int = Field(default=60, ge=1)
+    agent_max_model_calls: int = Field(default=4, ge=1)
+    agent_deadline_seconds: int = Field(default=90, ge=1)
+    agent_max_tool_calls: int = Field(default=6, ge=0)
+
+    otel_exporter_otlp_endpoint: str | None = None
 
     @field_validator("cors_allowed_origins", mode="before")
     @classmethod
@@ -45,6 +77,55 @@ class Settings(BaseSettings):
                     "entries must be absolute https:// origins "
                     "(http://localhost is allowed only when APP_ENV=development)"
                 )
+        return value
+
+    @field_validator(
+        "gemini_api_key",
+        "groq_api_key",
+        "github_models_token",
+        "openrouter_api_key",
+        "cloudflare_account_id",
+        "cloudflare_ai_token",
+        "google_client_id",
+        "google_client_secret",
+        "github_client_id",
+        "github_client_secret",
+        "jwt_secret",
+        "turnstile_secret_key",
+        "otel_exporter_otlp_endpoint",
+        mode="before",
+    )
+    @classmethod
+    def _empty_is_unset(cls, value: object) -> object:
+        # `.env.example` leaves optional values empty; treat that as "not set".
+        if isinstance(value, str) and not value.strip():
+            return None
+        return value
+
+    @field_validator("jwt_secret")
+    @classmethod
+    def _check_jwt_secret(cls, value: SecretStr | None, info: ValidationInfo) -> SecretStr | None:
+        if info.data.get("app_env") in ("development", "test"):
+            return value
+        if value is None:
+            raise ValueError("required outside development and test")
+        if len(value.get_secret_value()) < JWT_SECRET_MIN_LENGTH:
+            raise ValueError(f"must be at least {JWT_SECRET_MIN_LENGTH} characters")
+        return value
+
+    @field_validator("web_origin", mode="before")
+    @classmethod
+    def _strip_web_origin(cls, value: object) -> object:
+        return value.strip().rstrip("/") if isinstance(value, str) else value
+
+    @field_validator("web_origin")
+    @classmethod
+    def _check_web_origin(cls, value: str, info: ValidationInfo) -> str:
+        if not _is_allowed_origin(value, info.data.get("app_env")):
+            raise ValueError(
+                "must be an absolute https:// origin "
+                "(http://localhost is allowed only when APP_ENV=development)"
+            )
         return value
 
 

@@ -63,6 +63,12 @@ def test_catalogue_matches_data_model() -> None:
         "validation_error": 422,
         "dependency_unavailable": 503,
         "internal_error": 500,
+        "unauthorized": 401,
+        "beta_closed": 403,
+        "bot_check_failed": 403,
+        "quota_exhausted": 429,
+        "rate_limited": 429,
+        "providers_unavailable": 503,
     }
 
 

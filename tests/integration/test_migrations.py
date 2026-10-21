@@ -12,6 +12,8 @@ from alembic.migration import MigrationContext
 from sqlalchemy import create_engine
 
 from api.config import get_settings
+from api.schema import API_TABLES
+from api.schema import metadata as api_metadata
 from ingestion.schema import metadata
 
 pytestmark = pytest.mark.integration
@@ -44,7 +46,7 @@ def test_upgrade_head_then_downgrade_base(database_url: str) -> None:
     config = Config("alembic.ini")
 
     command.upgrade(config, "head")
-    assert _current_revision(database_url) == "0002"
+    assert _current_revision(database_url) == "0003"
 
     command.downgrade(config, "base")
     assert _current_revision(database_url) is None
@@ -175,3 +177,137 @@ def test_chunk_tsv_generated_by_language(
         "SELECT tsv @@ to_tsquery('en_unaccent', 'revenue') FROM chunks"
     ).fetchone()
     assert row == (True,)
+
+
+def test_api_schema_matches_metadata(
+    migrated: psycopg.Connection[tuple[object, ...]], database_url: str
+) -> None:
+    engine = create_engine(database_url.replace("postgresql://", "postgresql+psycopg://", 1))
+    with engine.connect() as connection:
+        context = MigrationContext.configure(
+            connection,
+            opts={"include_name": lambda name, kind, _: kind != "table" or name in API_TABLES},
+        )
+        diff = compare_metadata(context, api_metadata)
+    engine.dispose()
+    assert diff == []
+
+
+def test_downgrade_0003_drops_api_tables_only(database_url: str) -> None:
+    config = Config("alembic.ini")
+    command.downgrade(config, "base")
+    command.upgrade(config, "head")
+    command.downgrade(config, "0002")
+    with psycopg.connect(database_url) as conn:
+        tables = {
+            str(row[0])
+            for row in conn.execute(
+                "SELECT tablename FROM pg_tables WHERE schemaname = 'public'"
+            ).fetchall()
+        }
+        types = {
+            str(row[0])
+            for row in conn.execute(
+                "SELECT typname FROM pg_type WHERE typname IN ('auth_provider', 'run_status')"
+            ).fetchall()
+        }
+    assert tables.isdisjoint(API_TABLES)
+    assert tables >= CORPUS_TABLES
+    assert types == set()
+    command.downgrade(config, "base")
+
+
+def _seed_user(conn: psycopg.Connection[tuple[object, ...]], email: str = "a@example.com") -> str:
+    row = conn.execute(
+        "INSERT INTO users (email, display_name, auth_provider, provider_subject)"
+        " VALUES (%s, 'Ayşe Öztürk 🚀', 'google', %s) RETURNING id, language",
+        (email, email),
+    ).fetchone()
+    assert row is not None
+    assert row[1] == "tr"
+    return str(row[0])
+
+
+def test_users_constraints(migrated: psycopg.Connection[tuple[object, ...]]) -> None:
+    _seed_user(migrated)
+    with pytest.raises(psycopg.errors.UniqueViolation):
+        _seed_user(migrated)
+    with pytest.raises(psycopg.errors.CheckViolation):
+        _seed_user(migrated, "Upper@Example.com")
+    with pytest.raises(psycopg.errors.CheckViolation):
+        migrated.execute(
+            "INSERT INTO users (email, display_name, auth_provider, provider_subject)"
+            " VALUES ('b@example.com', repeat('x', 201), 'github', 'b')"
+        )
+    with pytest.raises(psycopg.errors.InvalidTextRepresentation):
+        migrated.execute(
+            "INSERT INTO users (email, display_name, auth_provider, provider_subject)"
+            " VALUES ('c@example.com', 'c', 'twitter', 'c')"
+        )
+
+
+def test_users_unique_provider_subject(migrated: psycopg.Connection[tuple[object, ...]]) -> None:
+    insert = (
+        "INSERT INTO users (email, display_name, auth_provider, provider_subject)"
+        " VALUES (%s, 'x', 'github', 'same-subject')"
+    )
+    migrated.execute(insert, ("one@example.com",))
+    with pytest.raises(psycopg.errors.UniqueViolation):
+        migrated.execute(insert, ("two@example.com",))
+
+
+def test_allowlist_email_lower(migrated: psycopg.Connection[tuple[object, ...]]) -> None:
+    migrated.execute("INSERT INTO beta_allowlist (email) VALUES ('a@example.com')")
+    with pytest.raises(psycopg.errors.CheckViolation):
+        migrated.execute("INSERT INTO beta_allowlist (email) VALUES ('B@example.com')")
+
+
+def test_runs_and_citations_constraints(
+    migrated: psycopg.Connection[tuple[object, ...]],
+) -> None:
+    user_id = _seed_user(migrated)
+    run = migrated.execute(
+        "INSERT INTO runs (user_id, question, language) VALUES (%s, 'THYAO net kâr?', 'tr')"
+        " RETURNING id, status, usage",
+        (user_id,),
+    ).fetchone()
+    assert run is not None
+    assert run[1] == "running"
+    assert run[2] == {}
+    for question in ("ab", "x" * 1001):
+        with pytest.raises(psycopg.errors.CheckViolation):
+            migrated.execute(
+                "INSERT INTO runs (user_id, question, language) VALUES (%s, %s, 'en')",
+                (user_id, question),
+            )
+    with pytest.raises(psycopg.errors.InvalidTextRepresentation):
+        migrated.execute(
+            "INSERT INTO runs (user_id, question, language, status)"
+            " VALUES (%s, 'abc', 'en', 'paused')",
+            (user_id,),
+        )
+
+    insert = (
+        "INSERT INTO run_citations (run_id, cite_id, excerpt, source) VALUES (%s, %s, %s, '{}')"
+    )
+    migrated.execute(insert, (run[0], "c:abc", "x" * 1500))
+    with pytest.raises(psycopg.errors.UniqueViolation):
+        migrated.execute(insert, (run[0], "c:abc", "y"))
+    with pytest.raises(psycopg.errors.CheckViolation):
+        migrated.execute(insert, (run[0], "c:long", "x" * 1501))
+    with pytest.raises(psycopg.errors.CheckViolation):
+        migrated.execute(insert, (run[0], "z:1", "x"))
+
+    migrated.execute("DELETE FROM users WHERE id = %s", (user_id,))
+    remaining = migrated.execute("SELECT count(*) FROM run_citations").fetchone()
+    assert remaining == (0,)
+
+
+def test_llm_cache_defaults(migrated: psycopg.Connection[tuple[object, ...]]) -> None:
+    row = migrated.execute(
+        "INSERT INTO llm_cache (key, provider, model, response)"
+        " VALUES (repeat('a', 64), 'groq-llama', 'm', '{}') RETURNING hits, last_hit_at"
+    ).fetchone()
+    assert row is not None
+    assert row[0] == 0
+    assert row[1] is not None
