@@ -65,6 +65,27 @@ class Answer(BaseModel):
     disclaimer: str = DISCLAIMER
 
 
+_INLINE_CITE = re.compile(r"\[([cf]:[^\]\s]+)\]")
+
+
+def normalize_markers(answer: Answer) -> Answer:
+    """Turn inline `[c:…]`/`[f:…]` cite ids in the summary into `[n]` markers."""
+    if not _INLINE_CITE.search(answer.summary):
+        return answer
+    citations = list(answer.citations)
+    by_id = {c.cite_id: c.marker for c in citations}
+
+    def marker(match: re.Match[str]) -> str:
+        cite_id = match.group(1)
+        if cite_id not in by_id:
+            by_id[cite_id] = max((c.marker for c in citations), default=0) + 1
+            citations.append(CitationRef(marker=by_id[cite_id], cite_id=cite_id))
+        return f"[{by_id[cite_id]}]"
+
+    summary = _INLINE_CITE.sub(marker, answer.summary)
+    return answer.model_copy(update={"summary": summary, "citations": citations})
+
+
 def answer_json_schema() -> dict[str, Any]:
     return Answer.model_json_schema()
 

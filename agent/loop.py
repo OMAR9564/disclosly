@@ -25,6 +25,7 @@ from agent.answer import (
     Validation,
     answer_json_schema,
     finalize,
+    normalize_markers,
     to_partial,
     validate_answer,
 )
@@ -109,7 +110,7 @@ def parse_answer(content: str | None) -> tuple[Answer | None, list[str]]:
     if not content:
         return None, ["empty response; return the Answer JSON"]
     try:
-        return Answer.model_validate_json(_FENCE.sub("", content.strip())), []
+        return normalize_markers(Answer.model_validate_json(_FENCE.sub("", content.strip()))), []
     except ValidationError as exc:
         return None, [
             f"{'.'.join(str(p) for p in e['loc']) or 'answer'}: {e['msg']}"
