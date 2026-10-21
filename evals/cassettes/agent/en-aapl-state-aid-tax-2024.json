@@ -1,0 +1,139 @@
+{
+ "case_id": "en-aapl-state-aid-tax-2024",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "9e9a3584bde804ed2b0827f01896645f51b290483717686974a0fe684863d8f8",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1198545",
+      "name": "search_documents",
+      "arguments": {
+       "period_to": "2024-FY",
+       "period_from": "2024-FY",
+       "ticker": "AAPL",
+       "query": "income tax charge one-time tax provision Apple 2024"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TRscQAP3A96oBY//TfVB1ItPVumO0k+gKGCuF/iPBd9JM3exE424VogACrq9H4VyVNYb5I4Al7yXdkPj+J/pT7HZ3/7mUn1WNjWpzmIT83ZXZzQ3Sgy2re/c="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1493,
+    "tokens_out": 61,
+    "latency_ms": 696.621,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "a4b3fbbb35fe76a4518e4c74a9fa04109ca260932c71389ca8b406cd78232865",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"During the fourth quarter of fiscal 2024, following the European Court of Justice judgment confirming the 2016 European Commission State Aid Decision, Apple recorded a one-time income tax charge of $ 10.2 billion, net [1].\",\n  \"points\": [\n    {\n      \"text\": \"During the fourth quarter of 2024, Apple recorded a one-time income tax charge of $ 10.2 billion, net, following the European Court of Justice confirming the 2016 European Commission State Aid Decision.\",\n      \"cite_ids\": [\n        \"c:2c52600a43cb76af384e41b929153663b58979542fa24b50231a0390afc82acb\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:2c52600a43cb76af384e41b929153663b58979542fa24b50231a0390afc82acb\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 3876,
+    "tokens_out": 344,
+    "latency_ms": 1907.428,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2024-FY\",\"period_to\":\"2024-FY\",\"query\":\"income tax charge one-time tax provision Apple 2024\",\"ticker\":\"AAPL\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:00b87f31268aed0ddaad8b398010b7af67f1e7f5cd804272560aeca93040e53c\"> | 2024 |  | 2023 |  | 2022 |  |  | \nSegment operating income |  | 162,044 |  |  |  | 150,888 |  | 152,895\nResearch and development expense | ( 31,370 ) |  |  | ( 29,915 ) |  |  | ( 26,251 ) | \nOther corporate expenses, net (1) | ( 7,458 ) |  |  | ( 6,672 ) |  |  | ( 7,207 ) | \nTotal operating income |  | 123,216 |  |  |  | 114,301 |  | 119,437</untrusted_document>\n<untrusted_document cite_id=\"c:03f89b71c5fbb273345c1b8f63340bc698e9d1fa5536310c86d9e181050dc1a8\">UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-K (Mark One) ☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the fiscal year ended September 28 , 2024 or ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the transition period from to . Commission File Number: 001-36743 Apple Inc. (Exact name of Registrant as specified in its charter)</untrusted_document>\n<untrusted_document cite_id=\"c:2c52600a43cb76af384e41b929153663b58979542fa24b50231a0390afc82acb\">Note 7 – Income Taxes European Commission State Aid Decision On August 30, 2016, the Commission announced its decision that Ireland granted state aid to the Company by providing tax opinions in 1991 and 2007 concerning the tax allocation of profits of the Irish branches of two subsidiaries of the Company (the “State Aid Decision”). The State Aid Decision ordered Ireland to calculate and recover additional taxes from the Company for the period June 2003 through December 2014. Irish legislative changes, effective as of January 2015, eliminated the application of the tax opinions from that date forward. The recovery amount was calculated to be € 13.1 billion, plus interest of € 1.2 billion. From time to time, the Company requested approval from the Irish Minister for Finance to reduce the recovery amount for certain taxes paid to other countries. As of September 28, 2024, the adjusted recovery amount of € 12.7 billion plus interest of € 1.2 billion was held in escrow and restricted from general use. The total balance of the escrow, including net unrealized investment gains, was € 14.2 billion or $ 15.8 billion as of September 28, 2024, of which $ 2.6 billion was classified as cash and cash equivalents and $ 13.2 billion was classified as current marketable securities in the Consolidated Balance Sheet. Refer to the Cash, Cash Equivalents and Marketable Securities section of Note 4, “Financial Instruments” for more information. Apple Inc. | 2024 Form 10-K | 39 The Company and Ireland appealed the State Aid Decision to the General Court of the Court of Justice of the European Union (the “General Court”). On July 15, 2020, the General Court annulled the State Aid Decision. On September 25, 2020, the Commission appealed the General Court’s decision to the European Court of Justice (the “ECJ”) and a hearing was held on May 23, 2023. On September 10, 2024, the ECJ announced that it had set aside the 2020 judgment of the General Court and confirmed the Commission’s 2016 State Aid Decision. As a result, during the fourth quarter of 2024 the Company recorded a one-time income tax charge of $ 10.2 billion, net, which represents $ 15.8 billion payable to Ireland via release of the escrow, partially offset by a U.S. foreign tax credit of $ 4.8 billion and a decrease in unrecognized tax benefits of $ 823 million. Provision for Income Taxes and Effective Tax Rate The provision for income taxes for 2024, 2023 and 2022, consisted of the following (in millions):</untrusted_document>\n<untrusted_document cite_id=\"c:00a12daca15ee7aa79ed846ae626adeafb9969a4607b80e96900de65d13ad151\">Digital Markets Act Investigations On March 25, 2024, the Commission announced that it had opened two formal noncompliance investigations against the Company under the DMA. The Commission’s investigations concern (1) Article 5(4) of the DMA, which relates to how developers may communicate and promote offers to end users for apps distributed through the App Store as well as how developers may conclude contracts with those end users; and (2) Article 6(3) of the DMA, which relates to default settings, uninstallation of apps, and a web browser choice screen on iOS. On June 24, 2024, the Commission announced its preliminary findings in the Article 5(4) investigation alleging that the Company’s App Store rules are in breach of the DMA and announced that it had opened a third formal investigation against the Company regarding whether the Company’s new contractual requirements for third-party app developers and app marketplaces may violate the DMA. If the Commission makes a final determination that there has been a violation, it can issue a cease and desist order and may impose fines up to 10% of the Company’s annual worldwide net sales. Although any decision by the Commission can be appealed to the General Court of the EU, the effectiveness of the Commission’s order would apply immediately while the appeal is pending, unless a stay of the order is granted. The Company believes that it complies with the DMA and has continued to make changes to its compliance plan in response to feedback and engagement with the Commission. Department of Justice Lawsuit On March 21, 2024, the U.S. Department of Justice (the “DOJ”) and a number of state and district attorneys general filed a civil antitrust lawsuit in the U.S. District Court for the District of New Jersey against the Company alleging monopolization or attempted monopolization in the markets for “performance smartphones” and “smartphones” in violation of U.S. antitrust laws. The DOJ is seeking equitable relief to redress the alleged anticompetitive behavior. In addition, various civil litigation matters have been filed in state and federal courts in the U.S. alleging similar violations of U.S. antitrust laws and seeking monetary damages and other nonmonetary relief. The Company believes it has substantial defenses and intends to vigorously defend itself. Epic Games Epic Games, Inc. (“Epic”) filed a lawsuit in the U.S. District Court for the Northern District of California (the “California District Court”) against the Company alleging violations of federal and state antitrust laws and California’s unfair competition law based upon the Company’s operation of its App Store.</untrusted_document>\n<untrusted_document cite_id=\"c:03b3fb0ffa8d78e19988d5d53b79819fcf4d521dc70e5c8fe9ad55acc395321f\">Engagement The Company believes that open and honest communication among team members, managers and leaders helps create an open, collaborative work environment where everyone can contribute, grow and succeed. Team members are encouraged to come to their managers with questions, feedback or concerns, and the Company conducts surveys that gauge employee sentiment in areas like career development, manager performance and inclusivity. Health and Safety The Company is committed to protecting its team members everywhere it operates. The Company identifies potential workplace risks in order to develop measures to mitigate possible hazards. The Company supports employees with general safety, security and crisis management training, and by putting specific programs in place for those working in potentially high-hazard environments. Additionally, the Company works to protect the safety and security of its team members, visitors and customers through its global security team. Apple Inc. | 2024 Form 10-K | 4 Available Information The Company’s Annual Reports on Form 10-K, Quarterly Reports on Form 10-Q, Current Reports on Form 8-K, and amendments to reports filed pursuant to Sections 13(a) and 15(d) of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), are filed with the U.S. Securities and Exchange Commission (the “SEC”). Such reports and other information filed by the Company with the SEC are available free of charge at investor.apple.com/investor-relations/sec-filings/default.aspx when such reports are available on the SEC’s website. The Company periodically provides certain information for investors on its corporate website, www.apple.com, and its investor relations website, investor.apple.com. This includes press releases and other information about financial performance, information on environmental, social and governance matters, and details related to the Company’s annual meeting of shareholders. The information contained on the websites referenced in this Form 10-K is not incorporated by reference into this filing. Further, the Company’s references to website URLs are intended to be inactive textual references only.</untrusted_document>",
+   "summary": "AAPL income tax charge one-time tax provision Apple 2024",
+   "count": 5,
+   "items": [
+    {
+     "cite_id": "c:00b87f31268aed0ddaad8b398010b7af67f1e7f5cd804272560aeca93040e53c",
+     "text": " | 2024 |  | 2023 |  | 2022 |  |  | \nSegment operating income |  | 162,044 |  |  |  | 150,888 |  | 152,895\nResearch and development expense | ( 31,370 ) |  |  | ( 29,915 ) |  |  | ( 26,251 ) | \nOther corporate expenses, net (1) | ( 7,458 ) |  |  | ( 6,672 ) |  |  | ( 7,207 ) | \nTotal operating income |  | 123,216 |  |  |  | 114,301 |  | 119,437",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2485,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:03f89b71c5fbb273345c1b8f63340bc698e9d1fa5536310c86d9e181050dc1a8",
+     "text": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-K (Mark One) ☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the fiscal year ended September 28 , 2024 or ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the transition period from to . Commission File Number: 001-36743 Apple Inc. (Exact name of Registrant as specified in its charter)",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2485,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:2c52600a43cb76af384e41b929153663b58979542fa24b50231a0390afc82acb",
+     "text": "Note 7 – Income Taxes European Commission State Aid Decision On August 30, 2016, the Commission announced its decision that Ireland granted state aid to the Company by providing tax opinions in 1991 and 2007 concerning the tax allocation of profits of the Irish branches of two subsidiaries of the Company (the “State Aid Decision”). The State Aid Decision ordered Ireland to calculate and recover additional taxes from the Company for the period June 2003 through December 2014. Irish legislative changes, effective as of January 2015, eliminated the application of the tax opinions from that date forward. The recovery amount was calculated to be € 13.1 billion, plus interest of € 1.2 billion. From time to time, the Company requested approval from the Irish Minister for Finance to reduce the recovery amount for certain taxes paid to other countries. As of September 28, 2024, the adjusted recovery amount of € 12.7 billion plus interest of € 1.2 billion was held in escrow and restricted from general use. The total balance of the escrow, including net unrealized investment gains, was € 14.2 billion or $ 15.8 billion as of September 28, 2024, of which $ 2.6 billion was classified as cash and cash equivalents and $ 13.2 billion was classified as current marketable securities in the Consolidated Balance Sheet. Refer to the Cash, Cash Equivalents and Marketable Securities section of Note 4, “Financial Instruments” for more information. Apple Inc. | 2024 Form 10-K | 39 The Company and Ireland appealed the State Aid Decision to the General Court of the Court of Justice of the European Union (the “General Court”). On July 15, 2020, the General Court annulled the State Aid Decision. On September 25, 2020, the Commission appealed the General Court’s decision to the European Court of Justice (the “ECJ”) and a hearing was held on May 23, 2023. On September 10, 2024, the ECJ announced that it had set aside the 2020 judgment of the General Court and confirmed the Commission’s 2016 State Aid Decision. As a result, during the fourth quarter of 2024 the Company recorded a one-time income tax charge of $ 10.2 billion, net, which represents $ 15.8 billion payable to Ireland via release of the escrow, partially offset by a U.S. foreign tax credit of $ 4.8 billion and a decrease in unrecognized tax benefits of $ 823 million. Provision for Income Taxes and Effective Tax Rate The provision for income taxes for 2024, 2023 and 2022, consisted of the following (in millions):",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2485,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:00a12daca15ee7aa79ed846ae626adeafb9969a4607b80e96900de65d13ad151",
+     "text": "Digital Markets Act Investigations On March 25, 2024, the Commission announced that it had opened two formal noncompliance investigations against the Company under the DMA. The Commission’s investigations concern (1) Article 5(4) of the DMA, which relates to how developers may communicate and promote offers to end users for apps distributed through the App Store as well as how developers may conclude contracts with those end users; and (2) Article 6(3) of the DMA, which relates to default settings, uninstallation of apps, and a web browser choice screen on iOS. On June 24, 2024, the Commission announced its preliminary findings in the Article 5(4) investigation alleging that the Company’s App Store rules are in breach of the DMA and announced that it had opened a third formal investigation against the Company regarding whether the Company’s new contractual requirements for third-party app developers and app marketplaces may violate the DMA. If the Commission makes a final determination that there has been a violation, it can issue a cease and desist order and may impose fines up to 10% of the Company’s annual worldwide net sales. Although any decision by the Commission can be appealed to the General Court of the EU, the effectiveness of the Commission’s order would apply immediately while the appeal is pending, unless a stay of the order is granted. The Company believes that it complies with the DMA and has continued to make changes to its compliance plan in response to feedback and engagement with the Commission. Department of Justice Lawsuit On March 21, 2024, the U.S. Department of Justice (the “DOJ”) and a number of state and district attorneys general filed a civil antitrust lawsuit in the U.S. District Court for the District of New Jersey against the Company alleging monopolization or attempted monopolization in the markets for “performance smartphones” and “smartphones” in violation of U.S. antitrust laws. The DOJ is seeking equitable relief to redress the alleged anticompetitive behavior. In addition, various civil litigation matters have been filed in state and federal courts in the U.S. alleging similar violations of U.S. antitrust laws and seeking monetary damages and other nonmonetary relief. The Company believes it has substantial defenses and intends to vigorously defend itself. Epic Games Epic Games, Inc. (“Epic”) filed a lawsuit in the U.S. District Court for the Northern District of California (the “California District Court”) against the Company alleging violations of federal and state antitrust laws and California’s unfair competition law based upon the Company’s operation of its App Store.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2485,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 3",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:03b3fb0ffa8d78e19988d5d53b79819fcf4d521dc70e5c8fe9ad55acc395321f",
+     "text": "Engagement The Company believes that open and honest communication among team members, managers and leaders helps create an open, collaborative work environment where everyone can contribute, grow and succeed. Team members are encouraged to come to their managers with questions, feedback or concerns, and the Company conducts surveys that gauge employee sentiment in areas like career development, manager performance and inclusivity. Health and Safety The Company is committed to protecting its team members everywhere it operates. The Company identifies potential workplace risks in order to develop measures to mitigate possible hazards. The Company supports employees with general safety, security and crisis management training, and by putting specific programs in place for those working in potentially high-hazard environments. Additionally, the Company works to protect the safety and security of its team members, visitors and customers through its global security team. Apple Inc. | 2024 Form 10-K | 4 Available Information The Company’s Annual Reports on Form 10-K, Quarterly Reports on Form 10-Q, Current Reports on Form 8-K, and amendments to reports filed pursuant to Sections 13(a) and 15(d) of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), are filed with the U.S. Securities and Exchange Commission (the “SEC”). Such reports and other information filed by the Company with the SEC are available free of charge at investor.apple.com/investor-relations/sec-filings/default.aspx when such reports are available on the SEC’s website. The Company periodically provides certain information for investors on its corporate website, www.apple.com, and its investor relations website, investor.apple.com. This includes press releases and other information about financial performance, information on environmental, social and governance matters, and details related to the Company’s annual meeting of shareholders. The information contained on the websites referenced in this Form 10-K is not incorporated by reference into this filing. Further, the Company’s references to website URLs are intended to be inactive textual references only.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2485,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  }
+ ]
+}

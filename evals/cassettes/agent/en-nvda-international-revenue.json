@@ -1,0 +1,324 @@
+{
+ "case_id": "en-nvda-international-revenue",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "7a8259bba0db870b183065a73ca6f8c32b44c72fc0e4b438e42604d0a35ad3ad",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1202313",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "NVDA"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TijDD5MGX1poJjxaN2QP91jsyqOSEBitIt+UnkNS0JXPhzF/HumzVE3PKg5u9MHOujzOYg7xbYjS6S3tyIVKDUNeHbrP4X27N08XSRwuuP8FVjtelT8xbeog="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1495,
+    "tokens_out": 17,
+    "latency_ms": 557.727,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "585885f1912e6e729877e8acbddaa8bc7d365b2b43f48872a2d3752a4e392d38",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_946831",
+      "name": "search_documents",
+      "arguments": {
+       "doc_type": "10-K",
+       "period_to": "2026-FY",
+       "query": "geographic revenue United States outside US headquarter",
+       "period_from": "2026-FY",
+       "ticker": "NVDA"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TQzKW3K20MFt0xZB0Sav+tiiBN4W0tkbUTRMPD49OQFgqgIGElQ48rspWLq8nmzbWHXG75JmIhpFTdtE9Oo4O45uotiCvU+c6WJ8JYWtlZwTCdd7vO/FdXHQ="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2615,
+    "tokens_out": 67,
+    "latency_ms": 923.147,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "1f85157ff35212d56bbac58ea93c92f86ca3a4f903b42b4ca71c78171e867e66",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1018706",
+      "name": "search_documents",
+      "arguments": {
+       "period_from": "2026-FY",
+       "query": "geographic information revenue by country United States Taiwan China",
+       "doc_type": "10-K",
+       "ticker": "NVDA",
+       "period_to": "2026-FY"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TQ8cPHOovki/olHlKubD0n60u3MzvkZh1m72uZUoSr0AaS/oy2lYWmC/qqonDR0kdrTB16hLU1iYaYDcVW8dvP6DFjfwcUDWGrqx/UZAoe6m2zzkZPPE4gMk="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 5349,
+    "tokens_out": 68,
+    "latency_ms": 762.58,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "76ce7d5cc1e223cd1db0e4c64a8405a4b29466c9e33391cf4a3d9b7fe9f23799",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"The exact geographic breakdown of Nvidia's fiscal 2026 revenue by customer headquarter location (including the proportion originating from outside the United States) is not detailed in the retrieved disclosure documents.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash",
+    "model": "gemini-3.5-flash",
+    "tokens_in": 7622,
+    "tokens_out": 98,
+    "latency_ms": 2944.073,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"NVDA\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 2494, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm\"}, {\"document_id\": 2495, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm\"}, {\"document_id\": 2496, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-02-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm\"}, {\"document_id\": 2497, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-19T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm\"}, {\"document_id\": 2498, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-27T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm\"}, {\"document_id\": 2499, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm\"}, {\"document_id\": 2500, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-02-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm\"}, {\"document_id\": 2501, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm\"}]}",
+   "summary": "NVDA documents",
+   "count": 8,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"doc_type\":\"10-K\",\"period_from\":\"2026-FY\",\"period_to\":\"2026-FY\",\"query\":\"geographic revenue United States outside US headquarter\",\"ticker\":\"NVDA\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:011e35019361cd6d727c85ac6c0a962aa519a295e19737e01e03c239e17f5d40\">(1) Represents reclassifications from non-marketable equity securities to marketable securities following public market trading. Non-marketable equity securities had cumulative gross unrealized gains of $ 2.7 billion and $ 1.1 billion, and cumulative gross unrealized losses and impairments of $ 176 million and $ 105 million on securities held as of January 25, 2026 and January 26, 2025, respectively. Note 9 - Balance Sheet Components We refer to customers who purchase products directly from NVIDIA as direct customers, such as AIBs, distributors, ODMs, OEMs, CSPs, AI model makers, and system integrators. Certain direct customers may use either internal resources or third-party system integrators to complete their build. Three direct customers accounted for 25 %, 18 %, and 13 % of our accounts receivable balance as of January 25, 2026. Two direct customers accounted for 17 % and 16 % of our accounts receivable balance as of January 26, 2025. Certain balance sheet components are as follows:</untrusted_document>\n<untrusted_document cite_id=\"c:0365224d1499d6dd1609ffbe807b53c0cfebd84b48b8bfef637481cbc79b61b0\">As of January 25, 2026, our operating leases have a weighted average remaining lease term of 8.8 years and a weighted average discount rate of 4.38 %. As of January 26, 2025, our operating leases had a weighted average remaining lease term of 6.5 years and a weighted average discount rate of 4.16 %. 80 NVIDIA Corporation and Subsidiaries Schedule II – Valuation and Qualifying Accounts</untrusted_document>\n<untrusted_document cite_id=\"c:0245576b6728820ad399183e941680950a59d756c74df5a6cb11a07b6ad24ccf\">For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue, all of which were primarily attributable to the Compute & Networking segment. With several of these partners, we are selling multiple products and systems in our portfolio through their channels. Our operating results depend on sales to our partner network, as well as the ability of these partners to sell products that incorporate our technologies. We have a small number of partners that are involved in system integration with our key customers. As our system design becomes increasingly complex, system integrators may be unable to meet specifications of our key customers. Changes in our partners' or customers' business models or their ownership can reduce the number of partners available to us and harm our ability to sell our advanced data center systems to customers. In the future, these partners may decide to purchase fewer products, not to incorporate our products into their ecosystem, or to alter their purchasing patterns in some other way. Because most of our sales are made on a purchase order basis, our customers can generally cancel, change, or delay product purchase commitments with little notice to us and without penalty. Our partners or customers may develop their own solutions; our customers may purchase products from our competitors; and our partners may discontinue sales or lose market share in the markets for which they purchase our products, all of which may alter partners’ or customers’ purchasing patterns. Many of our indirect customers often do not purchase directly from us but through multiple OEMs, ODMs, system integrators, distributors, and other channel partners. We generate a significant amount of our revenue from a limited number of indirect customers, and we estimate some individually representing 10% or more of our revenue. If end demand increases or our finished goods supply availability is concentrated near a quarter end, the system integrators, distributors, and channel partners may have limited ability to increase their credit, which could impact the timing and amount of our revenue. The loss of any of our large customers, a significant reduction in purchases by them, our inability to sell to a customer due to U.S. or other countries’ trade restrictions, or any difficulties in collecting accounts receivable would likely harm our financial condition and results of operations. Commercial arrangements expose us to counterparty risks. We have entered and may in the future enter into commercial arrangements, including long-term capacity purchase obligations and financial guarantees, and have been asked to offer financing arrangements to support our customers’ and partners’ buildout of datacenter infrastructure. We have not entered into any financing arrangements.</untrusted_document>\n<untrusted_document cite_id=\"c:02ec0980bfa271c62173ca226734c3521650cbe75ac939762125edd7b92e36b8\"> | Year Ended |  |  |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024 |  |  | \n | (In millions, except per share data) |  |  |  |  |  |  | \nNumerator: |  |  |  |  |  |  |  | \nNet income |  | 120,067 |  |  |  | 72,880 |  | 29,760\nDenominator: |  |  |  |  |  |  |  | \nBasic weighted average shares | 24,359 |  |  | 24,555 |  |  | 24,690 | \nDilutive impact of outstanding equity awards | 155 |  |  | 249 |  |  | 250 | \nDiluted weighted average shares | 24,514 |  |  | 24,804 |  |  | 24,940 | \nNet income per share: |  |  |  |  |  |  |  | \nBasic (1) |  | 4.93 |  |  |  | 2.97 |  | 1.21\nDiluted (2) |  | 4.90 |  |  |  | 2.94 |  | 1.19\nAnti-dilutive equity awards excluded from diluted net income per share | 41 |  |  | 51 |  |  | 150 | </untrusted_document>\n<untrusted_document cite_id=\"c:01d60fa456c60a9f63fea94cae294e33c1b92a55295268509dd1d4bfac5bd57e\">Additional unilateral or multilateral controls are also likely to include deemed export control limitations that negatively impact the ability of our research and development teams to execute our roadmap or other objectives in a timely manner. Additional export restrictions may not only impact our ability to serve overseas markets, but also provoke responses from foreign governments, including China, that negatively impact our supply chain or our ability to provide our products and services to customers in all markets worldwide, which could also substantially reduce our revenue. Regulators in China have inquired about our sales and efforts to supply the China market and our fulfillment of the commitments we entered at the close of our Mellanox acquisition. On September 15, 2025, China’s antitrust regulators published their preliminary finding that our compliance with applicable U.S. export controls, which required us to offer degraded products to the Chinese market, discriminated unfairly against customers in the China market and therefore violated the terms of China’s approval of our Mellanox acquisition. If regulators conclude that we have failed to fulfill the terms of our Mellanox acquisition or we have violated any applicable law in China, we could be subject to financial penalties, restrictions on our ability to conduct our business, restrictions or other orders regarding our networking business, products, and services, or otherwise impact our operations in China, any of which could have a material and adverse impact on our business, operating results and financial condition. Over the past three years, we have been subject to a series of shifting and expanding export control restrictions, impacting our ability to serve customers outside the United States. In August 2022, the USG announced export restrictions and export licensing requirements targeting China’s semiconductor and supercomputing industries. These restrictions impacted exports of certain chips, as well as software, hardware, equipment and technology used to develop, produce and manufacture certain chips to China (including Hong Kong and Macau) and Russia, and specifically impact our A100 and H100 integrated circuits, DGX or any other systems or boards which incorporate A100 or H100 integrated circuits. In July 2023, the USG also informed us of an additional licensing requirement for a subset of A100 and H100 products destined to certain customers and other regions, including some countries in the Middle East.</untrusted_document>\n<untrusted_document cite_id=\"c:025a44e1e8e2041b47f4ebe218fe2ddfb70955ff3cfc8195716efa85e02343e0\">Huang, et al. (Case No. 1:19-cv-01795-MN) and Nelson v. Huang, et. al. (Case No. 1:19-cv-01798-MN), were stayed pending resolution of the plaintiffs’ appeal in the In Re NVIDIA Corporation Securities 71 Table of Contents NVIDIA Corporation and Subsidiaries Notes to the Consolidated Financial Statements (Continued) Litigation action. On March 7, 2025, after the Supreme Court issued its judgment dismissing the Company’s petition for writ of certiorari as improvidently granted in the In Re NVIDIA Securities Litigation action, the district court adopted the parties' stipulation to extend the stay until the final and complete resolution of the In Re NVIDIA Corporation Securities Litigation action. The lawsuits assert claims, purportedly on behalf of us, against certain officers and directors of the Company for breach of fiduciary duty, unjust enrichment, insider trading, misappropriation of information, corporate waste and violations of Sections 14(a), 10(b), and 20(a) of the Exchange Act based on the dissemination of allegedly false, and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand. The plaintiffs seek unspecified damages and other relief, including disgorgement of profits from the sale of NVIDIA stock and unspecified corporate governance measures. Another putative derivative action was filed on October 30, 2023 in the Court of Chancery of the State of Delaware, captioned Horanic v. Huang, et al. (Case No. 2023-1096-KSJM). This lawsuit asserts claims, purportedly on behalf of us, against certain officers and directors of the Company for breach of fiduciary duty and insider trading based on the dissemination of allegedly false and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand. The plaintiffs seek unspecified damages and other relief, including disgorgement of profits from the sale of NVIDIA stock and reform of unspecified corporate governance measures. On August 11, 2025, the court granted the parties’ stipulation to voluntarily dismiss with prejudice plaintiff City of Westland Police and Fire Retirement System. This derivative matter is stayed pending the final resolution of In Re NVIDIA Corporation Securities Litigation action. Accounting for Loss Contingencies</untrusted_document>",
+   "summary": "NVDA geographic revenue United States outside US headquarter",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:011e35019361cd6d727c85ac6c0a962aa519a295e19737e01e03c239e17f5d40",
+     "text": "(1) Represents reclassifications from non-marketable equity securities to marketable securities following public market trading. Non-marketable equity securities had cumulative gross unrealized gains of $ 2.7 billion and $ 1.1 billion, and cumulative gross unrealized losses and impairments of $ 176 million and $ 105 million on securities held as of January 25, 2026 and January 26, 2025, respectively. Note 9 - Balance Sheet Components We refer to customers who purchase products directly from NVIDIA as direct customers, such as AIBs, distributors, ODMs, OEMs, CSPs, AI model makers, and system integrators. Certain direct customers may use either internal resources or third-party system integrators to complete their build. Three direct customers accounted for 25 %, 18 %, and 13 % of our accounts receivable balance as of January 25, 2026. Two direct customers accounted for 17 % and 16 % of our accounts receivable balance as of January 26, 2025. Certain balance sheet components are as follows:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2496,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:0365224d1499d6dd1609ffbe807b53c0cfebd84b48b8bfef637481cbc79b61b0",
+     "text": "As of January 25, 2026, our operating leases have a weighted average remaining lease term of 8.8 years and a weighted average discount rate of 4.38 %. As of January 26, 2025, our operating leases had a weighted average remaining lease term of 6.5 years and a weighted average discount rate of 4.16 %. 80 NVIDIA Corporation and Subsidiaries Schedule II – Valuation and Qualifying Accounts",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2496,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:0245576b6728820ad399183e941680950a59d756c74df5a6cb11a07b6ad24ccf",
+     "text": "For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue, all of which were primarily attributable to the Compute & Networking segment. With several of these partners, we are selling multiple products and systems in our portfolio through their channels. Our operating results depend on sales to our partner network, as well as the ability of these partners to sell products that incorporate our technologies. We have a small number of partners that are involved in system integration with our key customers. As our system design becomes increasingly complex, system integrators may be unable to meet specifications of our key customers. Changes in our partners' or customers' business models or their ownership can reduce the number of partners available to us and harm our ability to sell our advanced data center systems to customers. In the future, these partners may decide to purchase fewer products, not to incorporate our products into their ecosystem, or to alter their purchasing patterns in some other way. Because most of our sales are made on a purchase order basis, our customers can generally cancel, change, or delay product purchase commitments with little notice to us and without penalty. Our partners or customers may develop their own solutions; our customers may purchase products from our competitors; and our partners may discontinue sales or lose market share in the markets for which they purchase our products, all of which may alter partners’ or customers’ purchasing patterns. Many of our indirect customers often do not purchase directly from us but through multiple OEMs, ODMs, system integrators, distributors, and other channel partners. We generate a significant amount of our revenue from a limited number of indirect customers, and we estimate some individually representing 10% or more of our revenue. If end demand increases or our finished goods supply availability is concentrated near a quarter end, the system integrators, distributors, and channel partners may have limited ability to increase their credit, which could impact the timing and amount of our revenue. The loss of any of our large customers, a significant reduction in purchases by them, our inability to sell to a customer due to U.S. or other countries’ trade restrictions, or any difficulties in collecting accounts receivable would likely harm our financial condition and results of operations. Commercial arrangements expose us to counterparty risks. We have entered and may in the future enter into commercial arrangements, including long-term capacity purchase obligations and financial guarantees, and have been asked to offer financing arrangements to support our customers’ and partners’ buildout of datacenter infrastructure. We have not entered into any financing arrangements.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2496,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:02ec0980bfa271c62173ca226734c3521650cbe75ac939762125edd7b92e36b8",
+     "text": " | Year Ended |  |  |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024 |  |  | \n | (In millions, except per share data) |  |  |  |  |  |  | \nNumerator: |  |  |  |  |  |  |  | \nNet income |  | 120,067 |  |  |  | 72,880 |  | 29,760\nDenominator: |  |  |  |  |  |  |  | \nBasic weighted average shares | 24,359 |  |  | 24,555 |  |  | 24,690 | \nDilutive impact of outstanding equity awards | 155 |  |  | 249 |  |  | 250 | \nDiluted weighted average shares | 24,514 |  |  | 24,804 |  |  | 24,940 | \nNet income per share: |  |  |  |  |  |  |  | \nBasic (1) |  | 4.93 |  |  |  | 2.97 |  | 1.21\nDiluted (2) |  | 4.90 |  |  |  | 2.94 |  | 1.19\nAnti-dilutive equity awards excluded from diluted net income per share | 41 |  |  | 51 |  |  | 150 | ",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2496,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:01d60fa456c60a9f63fea94cae294e33c1b92a55295268509dd1d4bfac5bd57e",
+     "text": "Additional unilateral or multilateral controls are also likely to include deemed export control limitations that negatively impact the ability of our research and development teams to execute our roadmap or other objectives in a timely manner. Additional export restrictions may not only impact our ability to serve overseas markets, but also provoke responses from foreign governments, including China, that negatively impact our supply chain or our ability to provide our products and services to customers in all markets worldwide, which could also substantially reduce our revenue. Regulators in China have inquired about our sales and efforts to supply the China market and our fulfillment of the commitments we entered at the close of our Mellanox acquisition. On September 15, 2025, China’s antitrust regulators published their preliminary finding that our compliance with applicable U.S. export controls, which required us to offer degraded products to the Chinese market, discriminated unfairly against customers in the China market and therefore violated the terms of China’s approval of our Mellanox acquisition. If regulators conclude that we have failed to fulfill the terms of our Mellanox acquisition or we have violated any applicable law in China, we could be subject to financial penalties, restrictions on our ability to conduct our business, restrictions or other orders regarding our networking business, products, and services, or otherwise impact our operations in China, any of which could have a material and adverse impact on our business, operating results and financial condition. Over the past three years, we have been subject to a series of shifting and expanding export control restrictions, impacting our ability to serve customers outside the United States. In August 2022, the USG announced export restrictions and export licensing requirements targeting China’s semiconductor and supercomputing industries. These restrictions impacted exports of certain chips, as well as software, hardware, equipment and technology used to develop, produce and manufacture certain chips to China (including Hong Kong and Macau) and Russia, and specifically impact our A100 and H100 integrated circuits, DGX or any other systems or boards which incorporate A100 or H100 integrated circuits. In July 2023, the USG also informed us of an additional licensing requirement for a subset of A100 and H100 products destined to certain customers and other regions, including some countries in the Middle East.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2496,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:025a44e1e8e2041b47f4ebe218fe2ddfb70955ff3cfc8195716efa85e02343e0",
+     "text": "Huang, et al. (Case No. 1:19-cv-01795-MN) and Nelson v. Huang, et. al. (Case No. 1:19-cv-01798-MN), were stayed pending resolution of the plaintiffs’ appeal in the In Re NVIDIA Corporation Securities 71 Table of Contents NVIDIA Corporation and Subsidiaries Notes to the Consolidated Financial Statements (Continued) Litigation action. On March 7, 2025, after the Supreme Court issued its judgment dismissing the Company’s petition for writ of certiorari as improvidently granted in the In Re NVIDIA Securities Litigation action, the district court adopted the parties' stipulation to extend the stay until the final and complete resolution of the In Re NVIDIA Corporation Securities Litigation action. The lawsuits assert claims, purportedly on behalf of us, against certain officers and directors of the Company for breach of fiduciary duty, unjust enrichment, insider trading, misappropriation of information, corporate waste and violations of Sections 14(a), 10(b), and 20(a) of the Exchange Act based on the dissemination of allegedly false, and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand. The plaintiffs seek unspecified damages and other relief, including disgorgement of profits from the sale of NVIDIA stock and unspecified corporate governance measures. Another putative derivative action was filed on October 30, 2023 in the Court of Chancery of the State of Delaware, captioned Horanic v. Huang, et al. (Case No. 2023-1096-KSJM). This lawsuit asserts claims, purportedly on behalf of us, against certain officers and directors of the Company for breach of fiduciary duty and insider trading based on the dissemination of allegedly false and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand. The plaintiffs seek unspecified damages and other relief, including disgorgement of profits from the sale of NVIDIA stock and reform of unspecified corporate governance measures. On August 11, 2025, the court granted the parties’ stipulation to voluntarily dismiss with prejudice plaintiff City of Westland Police and Fire Retirement System. This derivative matter is stayed pending the final resolution of In Re NVIDIA Corporation Securities Litigation action. Accounting for Loss Contingencies",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2496,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"doc_type\":\"10-K\",\"period_from\":\"2026-FY\",\"period_to\":\"2026-FY\",\"query\":\"geographic information revenue by country United States Taiwan China\",\"ticker\":\"NVDA\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:0365224d1499d6dd1609ffbe807b53c0cfebd84b48b8bfef637481cbc79b61b0\">As of January 25, 2026, our operating leases have a weighted average remaining lease term of 8.8 years and a weighted average discount rate of 4.38 %. As of January 26, 2025, our operating leases had a weighted average remaining lease term of 6.5 years and a weighted average discount rate of 4.16 %. 80 NVIDIA Corporation and Subsidiaries Schedule II – Valuation and Qualifying Accounts</untrusted_document>\n<untrusted_document cite_id=\"c:011e35019361cd6d727c85ac6c0a962aa519a295e19737e01e03c239e17f5d40\">(1) Represents reclassifications from non-marketable equity securities to marketable securities following public market trading. Non-marketable equity securities had cumulative gross unrealized gains of $ 2.7 billion and $ 1.1 billion, and cumulative gross unrealized losses and impairments of $ 176 million and $ 105 million on securities held as of January 25, 2026 and January 26, 2025, respectively. Note 9 - Balance Sheet Components We refer to customers who purchase products directly from NVIDIA as direct customers, such as AIBs, distributors, ODMs, OEMs, CSPs, AI model makers, and system integrators. Certain direct customers may use either internal resources or third-party system integrators to complete their build. Three direct customers accounted for 25 %, 18 %, and 13 % of our accounts receivable balance as of January 25, 2026. Two direct customers accounted for 17 % and 16 % of our accounts receivable balance as of January 26, 2025. Certain balance sheet components are as follows:</untrusted_document>\n<untrusted_document cite_id=\"c:0245576b6728820ad399183e941680950a59d756c74df5a6cb11a07b6ad24ccf\">For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue, all of which were primarily attributable to the Compute & Networking segment. With several of these partners, we are selling multiple products and systems in our portfolio through their channels. Our operating results depend on sales to our partner network, as well as the ability of these partners to sell products that incorporate our technologies. We have a small number of partners that are involved in system integration with our key customers. As our system design becomes increasingly complex, system integrators may be unable to meet specifications of our key customers. Changes in our partners' or customers' business models or their ownership can reduce the number of partners available to us and harm our ability to sell our advanced data center systems to customers. In the future, these partners may decide to purchase fewer products, not to incorporate our products into their ecosystem, or to alter their purchasing patterns in some other way. Because most of our sales are made on a purchase order basis, our customers can generally cancel, change, or delay product purchase commitments with little notice to us and without penalty. Our partners or customers may develop their own solutions; our customers may purchase products from our competitors; and our partners may discontinue sales or lose market share in the markets for which they purchase our products, all of which may alter partners’ or customers’ purchasing patterns. Many of our indirect customers often do not purchase directly from us but through multiple OEMs, ODMs, system integrators, distributors, and other channel partners. We generate a significant amount of our revenue from a limited number of indirect customers, and we estimate some individually representing 10% or more of our revenue. If end demand increases or our finished goods supply availability is concentrated near a quarter end, the system integrators, distributors, and channel partners may have limited ability to increase their credit, which could impact the timing and amount of our revenue. The loss of any of our large customers, a significant reduction in purchases by them, our inability to sell to a customer due to U.S. or other countries’ trade restrictions, or any difficulties in collecting accounts receivable would likely harm our financial condition and results of operations. Commercial arrangements expose us to counterparty risks. We have entered and may in the future enter into commercial arrangements, including long-term capacity purchase obligations and financial guarantees, and have been asked to offer financing arrangements to support our customers’ and partners’ buildout of datacenter infrastructure. We have not entered into any financing arrangements.</untrusted_document>\n<untrusted_document cite_id=\"c:02ec0980bfa271c62173ca226734c3521650cbe75ac939762125edd7b92e36b8\"> | Year Ended |  |  |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024 |  |  | \n | (In millions, except per share data) |  |  |  |  |  |  | \nNumerator: |  |  |  |  |  |  |  | \nNet income |  | 120,067 |  |  |  | 72,880 |  | 29,760\nDenominator: |  |  |  |  |  |  |  | \nBasic weighted average shares | 24,359 |  |  | 24,555 |  |  | 24,690 | \nDilutive impact of outstanding equity awards | 155 |  |  | 249 |  |  | 250 | \nDiluted weighted average shares | 24,514 |  |  | 24,804 |  |  | 24,940 | \nNet income per share: |  |  |  |  |  |  |  | \nBasic (1) |  | 4.93 |  |  |  | 2.97 |  | 1.21\nDiluted (2) |  | 4.90 |  |  |  | 2.94 |  | 1.19\nAnti-dilutive equity awards excluded from diluted net income per share | 41 |  |  | 51 |  |  | 150 | </untrusted_document>\n<untrusted_document cite_id=\"c:025a44e1e8e2041b47f4ebe218fe2ddfb70955ff3cfc8195716efa85e02343e0\">Huang, et al. (Case No. 1:19-cv-01795-MN) and Nelson v. Huang, et. al. (Case No. 1:19-cv-01798-MN), were stayed pending resolution of the plaintiffs’ appeal in the In Re NVIDIA Corporation Securities 71 Table of Contents NVIDIA Corporation and Subsidiaries Notes to the Consolidated Financial Statements (Continued) Litigation action. On March 7, 2025, after the Supreme Court issued its judgment dismissing the Company’s petition for writ of certiorari as improvidently granted in the In Re NVIDIA Securities Litigation action, the district court adopted the parties' stipulation to extend the stay until the final and complete resolution of the In Re NVIDIA Corporation Securities Litigation action. The lawsuits assert claims, purportedly on behalf of us, against certain officers and directors of the Company for breach of fiduciary duty, unjust enrichment, insider trading, misappropriation of information, corporate waste and violations of Sections 14(a), 10(b), and 20(a) of the Exchange Act based on the dissemination of allegedly false, and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand. The plaintiffs seek unspecified damages and other relief, including disgorgement of profits from the sale of NVIDIA stock and unspecified corporate governance measures. Another putative derivative action was filed on October 30, 2023 in the Court of Chancery of the State of Delaware, captioned Horanic v. Huang, et al. (Case No. 2023-1096-KSJM). This lawsuit asserts claims, purportedly on behalf of us, against certain officers and directors of the Company for breach of fiduciary duty and insider trading based on the dissemination of allegedly false and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand. The plaintiffs seek unspecified damages and other relief, including disgorgement of profits from the sale of NVIDIA stock and reform of unspecified corporate governance measures. On August 11, 2025, the court granted the parties’ stipulation to voluntarily dismiss with prejudice plaintiff City of Westland Police and Fire Retirement System. This derivative matter is stayed pending the final resolution of In Re NVIDIA Corporation Securities Litigation action. Accounting for Loss Contingencies</untrusted_document>\n<untrusted_document cite_id=\"c:01d60fa456c60a9f63fea94cae294e33c1b92a55295268509dd1d4bfac5bd57e\">Additional unilateral or multilateral controls are also likely to include deemed export control limitations that negatively impact the ability of our research and development teams to execute our roadmap or other objectives in a timely manner. Additional export restrictions may not only impact our ability to serve overseas markets, but also provoke responses from foreign governments, including China, that negatively impact our supply chain or our ability to provide our products and services to customers in all markets worldwide, which could also substantially reduce our revenue. Regulators in China have inquired about our sales and efforts to supply the China market and our fulfillment of the commitments we entered at the close of our Mellanox acquisition. On September 15, 2025, China’s antitrust regulators published their preliminary finding that our compliance with applicable U.S. export controls, which required us to offer degraded products to the Chinese market, discriminated unfairly against customers in the China market and therefore violated the terms of China’s approval of our Mellanox acquisition. If regulators conclude that we have failed to fulfill the terms of our Mellanox acquisition or we have violated any applicable law in China, we could be subject to financial penalties, restrictions on our ability to conduct our business, restrictions or other orders regarding our networking business, products, and services, or otherwise impact our operations in China, any of which could have a material and adverse impact on our business, operating results and financial condition. Over the past three years, we have been subject to a series of shifting and expanding export control restrictions, impacting our ability to serve customers outside the United States. In August 2022, the USG announced export restrictions and export licensing requirements targeting China’s semiconductor and supercomputing industries. These restrictions impacted exports of certain chips, as well as software, hardware, equipment and technology used to develop, produce and manufacture certain chips to China (including Hong Kong and Macau) and Russia, and specifically impact our A100 and H100 integrated circuits, DGX or any other systems or boards which incorporate A100 or H100 integrated circuits. In July 2023, the USG also informed us of an additional licensing requirement for a subset of A100 and H100 products destined to certain customers and other regions, including some countries in the Middle East.</untrusted_document>",
+   "summary": "NVDA geographic information revenue by country United States Taiwan China",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:0365224d1499d6dd1609ffbe807b53c0cfebd84b48b8bfef637481cbc79b61b0",
+     "text": "As of January 25, 2026, our operating leases have a weighted average remaining lease term of 8.8 years and a weighted average discount rate of 4.38 %. As of January 26, 2025, our operating leases had a weighted average remaining lease term of 6.5 years and a weighted average discount rate of 4.16 %. 80 NVIDIA Corporation and Subsidiaries Schedule II – Valuation and Qualifying Accounts",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2496,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:011e35019361cd6d727c85ac6c0a962aa519a295e19737e01e03c239e17f5d40",
+     "text": "(1) Represents reclassifications from non-marketable equity securities to marketable securities following public market trading. Non-marketable equity securities had cumulative gross unrealized gains of $ 2.7 billion and $ 1.1 billion, and cumulative gross unrealized losses and impairments of $ 176 million and $ 105 million on securities held as of January 25, 2026 and January 26, 2025, respectively. Note 9 - Balance Sheet Components We refer to customers who purchase products directly from NVIDIA as direct customers, such as AIBs, distributors, ODMs, OEMs, CSPs, AI model makers, and system integrators. Certain direct customers may use either internal resources or third-party system integrators to complete their build. Three direct customers accounted for 25 %, 18 %, and 13 % of our accounts receivable balance as of January 25, 2026. Two direct customers accounted for 17 % and 16 % of our accounts receivable balance as of January 26, 2025. Certain balance sheet components are as follows:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2496,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:0245576b6728820ad399183e941680950a59d756c74df5a6cb11a07b6ad24ccf",
+     "text": "For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue, all of which were primarily attributable to the Compute & Networking segment. With several of these partners, we are selling multiple products and systems in our portfolio through their channels. Our operating results depend on sales to our partner network, as well as the ability of these partners to sell products that incorporate our technologies. We have a small number of partners that are involved in system integration with our key customers. As our system design becomes increasingly complex, system integrators may be unable to meet specifications of our key customers. Changes in our partners' or customers' business models or their ownership can reduce the number of partners available to us and harm our ability to sell our advanced data center systems to customers. In the future, these partners may decide to purchase fewer products, not to incorporate our products into their ecosystem, or to alter their purchasing patterns in some other way. Because most of our sales are made on a purchase order basis, our customers can generally cancel, change, or delay product purchase commitments with little notice to us and without penalty. Our partners or customers may develop their own solutions; our customers may purchase products from our competitors; and our partners may discontinue sales or lose market share in the markets for which they purchase our products, all of which may alter partners’ or customers’ purchasing patterns. Many of our indirect customers often do not purchase directly from us but through multiple OEMs, ODMs, system integrators, distributors, and other channel partners. We generate a significant amount of our revenue from a limited number of indirect customers, and we estimate some individually representing 10% or more of our revenue. If end demand increases or our finished goods supply availability is concentrated near a quarter end, the system integrators, distributors, and channel partners may have limited ability to increase their credit, which could impact the timing and amount of our revenue. The loss of any of our large customers, a significant reduction in purchases by them, our inability to sell to a customer due to U.S. or other countries’ trade restrictions, or any difficulties in collecting accounts receivable would likely harm our financial condition and results of operations. Commercial arrangements expose us to counterparty risks. We have entered and may in the future enter into commercial arrangements, including long-term capacity purchase obligations and financial guarantees, and have been asked to offer financing arrangements to support our customers’ and partners’ buildout of datacenter infrastructure. We have not entered into any financing arrangements.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2496,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:02ec0980bfa271c62173ca226734c3521650cbe75ac939762125edd7b92e36b8",
+     "text": " | Year Ended |  |  |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024 |  |  | \n | (In millions, except per share data) |  |  |  |  |  |  | \nNumerator: |  |  |  |  |  |  |  | \nNet income |  | 120,067 |  |  |  | 72,880 |  | 29,760\nDenominator: |  |  |  |  |  |  |  | \nBasic weighted average shares | 24,359 |  |  | 24,555 |  |  | 24,690 | \nDilutive impact of outstanding equity awards | 155 |  |  | 249 |  |  | 250 | \nDiluted weighted average shares | 24,514 |  |  | 24,804 |  |  | 24,940 | \nNet income per share: |  |  |  |  |  |  |  | \nBasic (1) |  | 4.93 |  |  |  | 2.97 |  | 1.21\nDiluted (2) |  | 4.90 |  |  |  | 2.94 |  | 1.19\nAnti-dilutive equity awards excluded from diluted net income per share | 41 |  |  | 51 |  |  | 150 | ",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2496,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:025a44e1e8e2041b47f4ebe218fe2ddfb70955ff3cfc8195716efa85e02343e0",
+     "text": "Huang, et al. (Case No. 1:19-cv-01795-MN) and Nelson v. Huang, et. al. (Case No. 1:19-cv-01798-MN), were stayed pending resolution of the plaintiffs’ appeal in the In Re NVIDIA Corporation Securities 71 Table of Contents NVIDIA Corporation and Subsidiaries Notes to the Consolidated Financial Statements (Continued) Litigation action. On March 7, 2025, after the Supreme Court issued its judgment dismissing the Company’s petition for writ of certiorari as improvidently granted in the In Re NVIDIA Securities Litigation action, the district court adopted the parties' stipulation to extend the stay until the final and complete resolution of the In Re NVIDIA Corporation Securities Litigation action. The lawsuits assert claims, purportedly on behalf of us, against certain officers and directors of the Company for breach of fiduciary duty, unjust enrichment, insider trading, misappropriation of information, corporate waste and violations of Sections 14(a), 10(b), and 20(a) of the Exchange Act based on the dissemination of allegedly false, and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand. The plaintiffs seek unspecified damages and other relief, including disgorgement of profits from the sale of NVIDIA stock and unspecified corporate governance measures. Another putative derivative action was filed on October 30, 2023 in the Court of Chancery of the State of Delaware, captioned Horanic v. Huang, et al. (Case No. 2023-1096-KSJM). This lawsuit asserts claims, purportedly on behalf of us, against certain officers and directors of the Company for breach of fiduciary duty and insider trading based on the dissemination of allegedly false and misleading statements related to channel inventory and the impact of cryptocurrency mining on GPU demand. The plaintiffs seek unspecified damages and other relief, including disgorgement of profits from the sale of NVIDIA stock and reform of unspecified corporate governance measures. On August 11, 2025, the court granted the parties’ stipulation to voluntarily dismiss with prejudice plaintiff City of Westland Police and Fire Retirement System. This derivative matter is stayed pending the final resolution of In Re NVIDIA Corporation Securities Litigation action. Accounting for Loss Contingencies",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2496,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:01d60fa456c60a9f63fea94cae294e33c1b92a55295268509dd1d4bfac5bd57e",
+     "text": "Additional unilateral or multilateral controls are also likely to include deemed export control limitations that negatively impact the ability of our research and development teams to execute our roadmap or other objectives in a timely manner. Additional export restrictions may not only impact our ability to serve overseas markets, but also provoke responses from foreign governments, including China, that negatively impact our supply chain or our ability to provide our products and services to customers in all markets worldwide, which could also substantially reduce our revenue. Regulators in China have inquired about our sales and efforts to supply the China market and our fulfillment of the commitments we entered at the close of our Mellanox acquisition. On September 15, 2025, China’s antitrust regulators published their preliminary finding that our compliance with applicable U.S. export controls, which required us to offer degraded products to the Chinese market, discriminated unfairly against customers in the China market and therefore violated the terms of China’s approval of our Mellanox acquisition. If regulators conclude that we have failed to fulfill the terms of our Mellanox acquisition or we have violated any applicable law in China, we could be subject to financial penalties, restrictions on our ability to conduct our business, restrictions or other orders regarding our networking business, products, and services, or otherwise impact our operations in China, any of which could have a material and adverse impact on our business, operating results and financial condition. Over the past three years, we have been subject to a series of shifting and expanding export control restrictions, impacting our ability to serve customers outside the United States. In August 2022, the USG announced export restrictions and export licensing requirements targeting China’s semiconductor and supercomputing industries. These restrictions impacted exports of certain chips, as well as software, hardware, equipment and technology used to develop, produce and manufacture certain chips to China (including Hong Kong and Macau) and Russia, and specifically impact our A100 and H100 integrated circuits, DGX or any other systems or boards which incorporate A100 or H100 integrated circuits. In July 2023, the USG also informed us of an additional licensing requirement for a subset of A100 and H100 products destined to certain customers and other regions, including some countries in the Middle East.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2496,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  }
+ ]
+}

@@ -1,0 +1,135 @@
+{
+ "case_id": "en-none-samsung",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "539a19f41dfe70e9d520ebfd15969eb91166dad30ce9f3a04ad4079851c4745d",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_949339",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "005930.KS"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T2HQih++lijvzZTVtmk/uJBHHNm5IUkavaabuyJDD0rJW7a0eA57R85FZhfiIxcbORNMWsbuXBjDTmuY8TrEso6yUBG9iLyuzPVI5Qx3qItYwKaSFE8fXRn0="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1490,
+    "tokens_out": 23,
+    "latency_ms": 596.587,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "648c6922c6d14aaec560f797f51791cb447adfb0b9f4127a996249eb0adb007d",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_987171",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "005930.KS",
+       "query": "research and development R&D 2025"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TNQxBq2257FH6/Fj2gW3U/D+F7MKSxXV7YFjblcYe4QbiWAf8JoAW60dIcyY7pv20Zfl3ac1IqVo27tPjZsTmRresm3fEnyR048+bzskjuW5S+GbVUGqYPII="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1531,
+    "tokens_out": 39,
+    "latency_ms": 505.105,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "218b72cf55c693bedb56b19cc5ebd7a5ee12fb148ddeaaef6dde94b4a2f66434",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1020875",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "SSNLF"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TGNWUS+BqHQre5JcoaKha7FWTcltwmCxKNxVFM2E/lnfG7WTk0fOgBW2thCXVJk/hl0dfJNMRmolw9QMnyIO8HBB5yImlxy5Wg4SeCWbS29Xl6z2u+JhbcJo="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1586,
+    "tokens_out": 18,
+    "latency_ms": 959.975,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "4565bba01ff4df395b6189c46b8c08f4d9d6e796de8171c55e5497ae9d804933",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\":\"en\",\"status\":\"no_evidence\",\"summary\":\"I could not find any document or disclosures for Samsung Electronics regarding its R&D spending in 2025 in the database.\",\"points\":[],\"citations\":[],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "gemini-flash",
+    "model": "gemini-3.5-flash",
+    "tokens_in": 1160,
+    "tokens_out": 62,
+    "latency_ms": 2949.418,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"005930.KS\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": []}",
+   "summary": "005930.KS documents",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"research and development R&D 2025\",\"ticker\":\"005930.KS\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "005930.KS research and development R&D 2025",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"SSNLF\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": []}",
+   "summary": "SSNLF documents",
+   "count": 0,
+   "items": [],
+   "error": null
+  }
+ ]
+}

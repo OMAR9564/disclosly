@@ -1,0 +1,188 @@
+{
+ "case_id": "en-none-nestle",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "b704c67edebfabda399497cd024f13d4a69301289d39cfb0e024562bd96b10cc",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_554747",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "NESN"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TQSGlDEMeMHNinlQa/Ra+qBWI2JxewqncWGnH+3spjzGc77jwRuXtQQmAnymYWLNhlUF8Y9BUJP9WlCILOWp1PGPA0KMumolgT7mCpYUHajk8xb/TiEK54r4="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1487,
+    "tokens_out": 17,
+    "latency_ms": 486.984,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "805891548cc9c7e7d277efeaa3e0036872dd347b20ad64bc9022648d8aef07f5",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_868413",
+      "name": "search_documents",
+      "arguments": {
+       "query": "Nestlé revenue 2025"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T568iCCJ2MZvIs+QnGfh2/YOTgIVZNgT33YcxNoOb2ntNZUOMRO8+9LnI7zuN+3VU4UANNE1wIfs86pnIl5qiE0pTuxWbk4etOLRyT95jquB0kauqA6MijRo="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1522,
+    "tokens_out": 23,
+    "latency_ms": 1508.946,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "17a1ee16307b0206b640e87271c113eccd39ccfcbf54a4d4aa47cfcfa7746fc5",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"No documents or evidence regarding Nestlé's revenue in 2025 are available in the coverage.\",\n  \"points\": [],\n  \"citations\": []\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 3907,
+    "tokens_out": 66,
+    "latency_ms": 741.833,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"NESN\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": []}",
+   "summary": "NESN documents",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"Nestlé revenue 2025\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:0099ad81efd08080149313ab09ce7f7d70565d7529c39eccdf67070a1537e500\">BNSF BHE Manufacturing Service and Retailing Pilot McLane Insurance, Corporate and other Total Three months ended September 30, 2025 Manufactured products: Industrial and commercial $ — $ — $ 7,630 $ 34 $ — $ — $ — $ 7,664 Building — — 5,106 — — — — 5,106 Consumer — — 4,598 — — — — 4,598 Grocery and convenience store distribution — — — — — 7,884 — 7,884 Food and beverage distribution — — — — — 4,836 — 4,836 Auto sales — — — 2,836 — — — 2,836 Other retail and wholesale distribution — — 896 3,719 10,769 — — 15,384 Service 5,966 1,104 387 1,766 67 233 — 9,523 Electricity and natural gas — 5,916 — — — — — 5,916 Total 5,966 7,020 18,617 8,355 10,836 12,953 — 63,747 Other revenues 47 273 1,398 2,213 43 7 27,244 31,225 $ 6,013 $ 7,293 $ 20,015 $ 10,568 $ 10,879 $ 12,960 $ 27,244 $ 94,972 Nine months ended September 30, 2025 Manufactured products: Industrial and commercial $ — $ — $ 22,685 $ 152 $ — $ — $ — $ 22,837 Building — — 14,817 — — — — 14,817 Consumer — — 13,219 — — — — 13,219 Grocery and convenience store distribution — — — — — 22,842 — 22,842 Food and beverage distribution — — — — — 13,872 — 13,872 Auto sales — — — 8,448 — — — 8,448 Other retail and wholesale distribution — — 2,725 11,073 30,918 — — 44,716 Service 17,319 3,070 1,099 5,152 198 634 — 27,472 Electricity and natural gas — 16,287 — — — — — 16,287 Total 17,319 19,357 54,545 24,825 31,116 37,348 — 184,510 Other revenues 139 685 4,162 6,526 280 27 80,883 92,702 $ 17,458 $ 20,042 $ 58,707 $ 31,351 $ 31,396 $ 37,375 $ 80,883 $ 277,212 28 Notes to Consolidated Financial Statements Note 23. Revenues from contracts with customers BNSF BHE Manufacturing Service and Retailing Pilot McLane Insurance, Corporate and other Total Three months ended September 30, 2024 Manufactured products:</untrusted_document>\n<untrusted_document cite_id=\"c:0224278adecacb97d8473f39b9a1864eade114e03b4c361cdccf36fa83c2a481\"> | Year ended December 31 |  |  |  |  |  |  | \nMillions of dollars | 2025 |  | 2024 |  | 2023 |  |  | \nNet cash provided by operating activities |  | 33,939 |  |  |  | 31,492 |  | 35,609\nLess: Capital expenditures | 17,347 |  |  | 16,448 |  |  | 15,829 | \nFree Cash Flow |  | 16,592 |  |  |  | 15,044 |  | 19,780</untrusted_document>\n<untrusted_document cite_id=\"c:0163b846442ebe9269adb4f17bc59b84a1aebc2ee5848f964087eea4ae537327\"> | Three months ended March 31, |  |  | \n(in millions, except ratios) | 2025 | 2024 |  | \nNet charge-offs |  | 2,332 |  | 1,956\nAverage retained loans | 1,285,401 |  | 1,263,258 | \nNet charge-off rates | 0.74 |  | 0.62 | </untrusted_document>\n<untrusted_document cite_id=\"c:012c9b3d6a59e4fb65985593e86d47dedbf4623ca72788c5fb333fe7b806d01f\">Apple Inc. | Q2 2025 Form 10-Q | 23</untrusted_document>\n<untrusted_document cite_id=\"c:018a2d6d7faf3c2bcb19b050ede69147a414287fa3690ee6c87f8e007de59050\"> | Three Months Ended March 31, 2025 |  |  |  | \n | 2024 |  | 2025 |  | \nTotal sale price |  | 1,090 |  |  | 753\nTotal initial cost | 661 |  |  | 592 | \nCumulative net gains (losses) |  | 429 |  |  | 161</untrusted_document>\n<untrusted_document cite_id=\"c:01e408477a2a7a603afc15b7603825e112f79d6181c2069ec3b0738875294a74\">Certain percentages presented are calculated using actual results prior to rounding. Highlights for 2026 include: • We opened 28 new warehouses, including three relocations, for a total of 25 net new warehouses: 18 in the U.S., five in our Canadian segment, and two in our Other International segment, compared to 27 new warehouses, including three relocations, in 2025; • Net sales increased 10% to $297,247, driven by an increase in comparable sales and sales at new warehouses; • Higher gasoline prices positively impacted net sales by $3,501, or 130 basis points, and changes in foreign currencies positively impacted net sales by $1,332, or 49 basis points; • Membership fee revenue increased 11% to $5,907, driven by new member sign-ups, membership fee increases, and upgrades to Executive membership; • Gross margin percentage decreased three basis points; it increased 10 basis points excluding the impact of gasoline price inflation; • SG&A expenses as a percentage of net sales decreased 10 basis points; it increased one basis point excluding the impact of gasoline price inflation; • The effective tax rate in 2026 was 24.7%, compared to 25.1% in 2025; • Net income increased 14% to $9,226, $20.76 per diluted share, compared to $8,099, $18.21 per diluted share in 2025; and • In April, the Board of Directors approved a 13% increase in the quarterly cash dividend. Tariff Impacts Beginning in February 2025, the United States imposed tariffs under the International Emergency Economic Powers Act (IEEPA) on certain goods, materials, and products imported into the United States. We paid the government approximately $500 in IEEPA tariffs. In February 2026, the U.S. Supreme Court ruled that the IEEPA tariffs were unlawful. Following this ruling, the government launched a program to administer IEEPA refunds. We applied the gain contingency model, in accordance with Accounting Standards Codification (ASC) 450-30, “Gain Contingencies,” recognizing recoveries in our consolidated statements of operations only as they were realized. During 2026, we began filing for refunds and received $184, made up of $174 in refunds, recorded as a reduction to merchandise costs, and $10 recorded as interest income. A portion of these refunds was invested in reducing prices for members. Subsequent to 2026, we received $155 in additional refunds and we intend to continue to invest the majority of the refunds in increased value for the member.</untrusted_document>",
+   "summary": "Nestlé revenue 2025",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:0099ad81efd08080149313ab09ce7f7d70565d7529c39eccdf67070a1537e500",
+     "text": "BNSF BHE Manufacturing Service and Retailing Pilot McLane Insurance, Corporate and other Total Three months ended September 30, 2025 Manufactured products: Industrial and commercial $ — $ — $ 7,630 $ 34 $ — $ — $ — $ 7,664 Building — — 5,106 — — — — 5,106 Consumer — — 4,598 — — — — 4,598 Grocery and convenience store distribution — — — — — 7,884 — 7,884 Food and beverage distribution — — — — — 4,836 — 4,836 Auto sales — — — 2,836 — — — 2,836 Other retail and wholesale distribution — — 896 3,719 10,769 — — 15,384 Service 5,966 1,104 387 1,766 67 233 — 9,523 Electricity and natural gas — 5,916 — — — — — 5,916 Total 5,966 7,020 18,617 8,355 10,836 12,953 — 63,747 Other revenues 47 273 1,398 2,213 43 7 27,244 31,225 $ 6,013 $ 7,293 $ 20,015 $ 10,568 $ 10,879 $ 12,960 $ 27,244 $ 94,972 Nine months ended September 30, 2025 Manufactured products: Industrial and commercial $ — $ — $ 22,685 $ 152 $ — $ — $ — $ 22,837 Building — — 14,817 — — — — 14,817 Consumer — — 13,219 — — — — 13,219 Grocery and convenience store distribution — — — — — 22,842 — 22,842 Food and beverage distribution — — — — — 13,872 — 13,872 Auto sales — — — 8,448 — — — 8,448 Other retail and wholesale distribution — — 2,725 11,073 30,918 — — 44,716 Service 17,319 3,070 1,099 5,152 198 634 — 27,472 Electricity and natural gas — 16,287 — — — — — 16,287 Total 17,319 19,357 54,545 24,825 31,116 37,348 — 184,510 Other revenues 139 685 4,162 6,526 280 27 80,883 92,702 $ 17,458 $ 20,042 $ 58,707 $ 31,351 $ 31,396 $ 37,375 $ 80,883 $ 277,212 28 Notes to Consolidated Financial Statements Note 23. Revenues from contracts with customers BNSF BHE Manufacturing Service and Retailing Pilot McLane Insurance, Corporate and other Total Three months ended September 30, 2024 Manufactured products:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2521,
+      "ticker": "BRK-B",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312525261548/brka-20250930.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:0224278adecacb97d8473f39b9a1864eade114e03b4c361cdccf36fa83c2a481",
+     "text": " | Year ended December 31 |  |  |  |  |  |  | \nMillions of dollars | 2025 |  | 2024 |  | 2023 |  |  | \nNet cash provided by operating activities |  | 33,939 |  |  |  | 31,492 |  | 35,609\nLess: Capital expenditures | 17,347 |  |  | 16,448 |  |  | 15,829 | \nFree Cash Flow |  | 16,592 |  |  |  | 15,044 |  | 19,780",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2624,
+      "ticker": "CVX",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 14",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000078/cvx-20251231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:0163b846442ebe9269adb4f17bc59b84a1aebc2ee5848f964087eea4ae537327",
+     "text": " | Three months ended March 31, |  |  | \n(in millions, except ratios) | 2025 | 2024 |  | \nNet charge-offs |  | 2,332 |  | 1,956\nAverage retained loans | 1,285,401 |  | 1,263,258 | \nNet charge-off rates | 0.74 |  | 0.62 | ",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2539,
+      "ticker": "JPM",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/19617/000001961725000421/jpm-20250331.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:012c9b3d6a59e4fb65985593e86d47dedbf4623ca72788c5fb333fe7b806d01f",
+     "text": "Apple Inc. | Q2 2025 Form 10-Q | 23",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2483,
+      "ticker": "AAPL",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "section": "Item 6",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000057/aapl-20250329.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:018a2d6d7faf3c2bcb19b050ede69147a414287fa3690ee6c87f8e007de59050",
+     "text": " | Three Months Ended March 31, 2025 |  |  |  | \n | 2024 |  | 2025 |  | \nTotal sale price |  | 1,090 |  |  | 753\nTotal initial cost | 661 |  |  | 592 | \nCumulative net gains (losses) |  | 429 |  |  | 161",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2515,
+      "ticker": "GOOGL",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000043/goog-20250331.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:01e408477a2a7a603afc15b7603825e112f79d6181c2069ec3b0738875294a74",
+     "text": "Certain percentages presented are calculated using actual results prior to rounding. Highlights for 2026 include: • We opened 28 new warehouses, including three relocations, for a total of 25 net new warehouses: 18 in the U.S., five in our Canadian segment, and two in our Other International segment, compared to 27 new warehouses, including three relocations, in 2025; • Net sales increased 10% to $297,247, driven by an increase in comparable sales and sales at new warehouses; • Higher gasoline prices positively impacted net sales by $3,501, or 130 basis points, and changes in foreign currencies positively impacted net sales by $1,332, or 49 basis points; • Membership fee revenue increased 11% to $5,907, driven by new member sign-ups, membership fee increases, and upgrades to Executive membership; • Gross margin percentage decreased three basis points; it increased 10 basis points excluding the impact of gasoline price inflation; • SG&A expenses as a percentage of net sales decreased 10 basis points; it increased one basis point excluding the impact of gasoline price inflation; • The effective tax rate in 2026 was 24.7%, compared to 25.1% in 2025; • Net income increased 14% to $9,226, $20.76 per diluted share, compared to $8,099, $18.21 per diluted share in 2025; and • In April, the Board of Directors approved a 13% increase in the quarterly cash dividend. Tariff Impacts Beginning in February 2025, the United States imposed tariffs under the International Emergency Economic Powers Act (IEEPA) on certain goods, materials, and products imported into the United States. We paid the government approximately $500 in IEEPA tariffs. In February 2026, the U.S. Supreme Court ruled that the IEEPA tariffs were unlawful. Following this ruling, the government launched a program to administer IEEPA refunds. We applied the gain contingency model, in accordance with Accounting Standards Codification (ASC) 450-30, “Gain Contingencies,” recognizing recoveries in our consolidated statements of operations only as they were realized. During 2026, we began filing for refunds and received $184, made up of $174 in refunds, recorded as a reduction to merchandise costs, and $10 recorded as interest income. A portion of these refunds was invested in reducing prices for members. Subsequent to 2026, we received $155 in additional refunds and we intend to continue to invest the majority of the refunds in increased value for the member.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2606,
+      "ticker": "COST",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  }
+ ]
+}

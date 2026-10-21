@@ -1,0 +1,416 @@
+{
+ "case_id": "en-meta-ad-revenue-2024",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "f853cd89a9727962a8bd882fc9b6ec23ce42e46c9899b3c3401b66fac10a2b80",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_864766",
+      "name": "search_documents",
+      "arguments": {
+       "period_to": "2025-Q1",
+       "ticker": "META",
+       "period_from": "2024-Q4",
+       "query": "advertising revenue 2024 growth Meta"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TDloJ0kOtwbVJT5a6jAFiWKm38gaZbhgHJIVCLavMhw2xTO2OclOp+8Jn4QFtU1etwnWOtM3tIikxrXujRP2c+dzWBs7PghStvn18CweRiGOvPREENsP+6zM="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1489,
+    "tokens_out": 58,
+    "latency_ms": 568.764,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "fd24a15f0c6b02b3065dbb414dd849a931d6bb2ff2d95ea1dbc2bb26c7e2f12a",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_839507",
+      "name": "search_documents",
+      "arguments": {
+       "period_to": "2025-Q1",
+       "query": "Advertising revenue 2024 2023 Consolidated Statements of Income",
+       "period_from": "2024-Q4",
+       "ticker": "META"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0Tr+OVq1urouIYuDdipSJuGxnnMDXaEt/1fjwvaf0I5Mz4/ZYPgFppO5682JnXN+h1Qbkqb4YPO8mgc5Q0Ql2X31Xc2B5eDRqJBEkD8CMu4MU/yZyg574ned0="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 4344,
+    "tokens_out": 65,
+    "latency_ms": 824.196,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "57a0eeecc649c282c17524fb9b294e8af98f99d6d337fe11b079df40fb26225e",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_813419",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "META",
+       "period_from": "2024-Q4",
+       "period_to": "2025-Q1",
+       "query": "Advertising revenue Year Ended December 31 2024 2023 Consolidated Statements of Income"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TnGvA/A+15sAOlcJodSvpVKa/WR4Z8CQLAcmt0kfhOU7TTv401OUmmTFp7bcjRfDRiEMZSM3kBT5BHG+xikZN/8jRfhbaztD+iZfsQTdM/bcOGGg8mqQxFqk="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 6992,
+    "tokens_out": 71,
+    "latency_ms": 816.436,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "42eb83b724ba89fd5c33ffa8f6f68dba01b2b37ed95c79039d6b4abd467195aa",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\":\"en\",\"status\":\"no_evidence\",\"summary\":\"The retrieved documents from Meta's SEC filings for 2024 do not disclose the specific dollar amount or exact percentage growth of Meta's total advertising revenue in 2024.\",\"points\":[],\"citations\":[],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "gemini-flash",
+    "model": "gemini-3.5-flash",
+    "tokens_in": 8935,
+    "tokens_out": 75,
+    "latency_ms": 1789.524,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2024-Q4\",\"period_to\":\"2025-Q1\",\"query\":\"advertising revenue 2024 growth Meta\",\"ticker\":\"META\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:0360e8b79cc055640c597085053795d1ee8c14044544a8fea7c3a896d5458f68\"> | Year Ended December 31, |  |  |  |  |  |  | \n | 2024 |  | 2023 |  | 2022 |  |  | \nNet income |  | 62,360 |  |  |  | 39,098 |  | 23,200\nOther comprehensive income (loss): |  |  |  |  |  |  |  | \nChange in foreign currency translation adjustment, net of tax | ( 1,413 ) |  |  | 618 |  |  | ( 1,184 ) | \nChange in unrealized gain (loss) on available-for-sale investments and other, net of tax | 471 |  |  | 757 |  |  | ( 1,653 ) | \nComprehensive income |  | 61,418 |  |  |  | 40,473 |  | 20,363</untrusted_document>\n<untrusted_document cite_id=\"c:00b8bcca1fa035d91e5411011d25b1afa4772bebc67929a4be5d4869c50435f2\">These developments have limited our ability to target and measure the effectiveness of ads on our platform and negatively impacted our advertising revenue. For example, our advertising revenue has been negatively impacted by marketer reaction to targeting and measurement challenges associated with iOS changes beginning in 2021. If we are unable to mitigate these developments as they take further effect in the future, our targeting and measurement capabilities will be materially and adversely affected, which would in turn significantly impact our advertising revenue. Our user growth, engagement, and monetization on mobile devices depend upon effective operation with mobile operating systems, networks, technologies, products, and standards that we do not control. The substantial majority of our revenue is generated from advertising on mobile devices. There is no guarantee that popular mobile devices will continue to feature our products, or that mobile device users will continue to use our products rather than competing products. We are dependent on the interoperability of our products with popular mobile operating systems, networks, technologies, products, and standards that we do not control, such as the Android and iOS operating systems and mobile browsers. Changes, bugs, or technical issues in such systems, or changes in our relationships with mobile operating system partners, handset manufacturers, browser developers, or mobile carriers, or in the content or application of their terms of service or policies (which they have made in the past and continue to seek to implement) that degrade our products' functionality, reduce or eliminate our ability to update or distribute our products, give preferential treatment to 19 Table of Contents competitive products, limit our ability to deliver, target, or measure the effectiveness of ads, or charge fees related to the distribution of our products or our delivery of ads have adversely affected, and could in the future adversely affect, the usage of our products and monetization on mobile devices. For example, Apple previously released an update to its Safari browser that limits the use of third-party cookies, which reduces our ability to provide the most relevant ads to our users and impacts monetization, and also released changes to iOS that limit our ability to target and measure ads effectively, while expanding their own advertising business. In addition, Google previously proposed phasing out third-party cookies in its Chrome browser. We expect that any similar changes to Apple's, Google's, or other browser or mobile platforms will further limit our ability to target and measure the effectiveness of ads and impact monetization. Additionally, in order to deliver high quality mobile products, it is important that our products work well with a range of mobile technologies, products, systems, networks, and standards that we do not control, and that we have good relationships with handset manufacturers, mobile carriers, and browser developers.</untrusted_document>\n<untrusted_document cite_id=\"c:042ed959cba98782b27de9a3a103f17c052bc78998a93c4766e1ea848d1cad4e\">• changes to the content or application of third-party policies that limit our ability to deliver, target, or measure the effectiveness of advertising, including changes by mobile operating system and browser providers such as Apple and Google; • the pricing of our ads and other products; • the diversification and growth of revenue sources beyond advertising on Facebook and Instagram; • our ability to generate revenue from Payments, or the sale of our consumer hardware products or other products we may introduce in the future; • changes to existing products or services or the development and introduction of new products or services by us or our competitors; • user behavior or product changes that may reduce traffic to features or products that we successfully monetize; • increases in marketing, sales, and other operating expenses, as well as capital expenditures, that we will incur to grow and expand our business and to remain competitive, including costs related to our data centers and technical infrastructure as well as other costs relating to our AI initiatives; • costs related to our privacy, safety, security, and content and advertising review and enforcement efforts, including as a result of implementing changes to our practices, whether voluntarily, in connection with laws, regulations, regulatory actions, or decisions or recommendations from the independent Oversight Board, or otherwise; • costs and expenses related to the development, manufacturing, and delivery of our consumer hardware products; • our ability to maintain gross margins and operating margins; • costs related to acquisitions, including costs associated with amortization and additional investments to develop the acquired technologies; • charges associated with impairment or abandonment of any assets on our balance sheet, including as a result of changes to our real property lease arrangements and data center assets; • our ability to obtain equipment, components, and labor for our data centers and other technical infrastructure in a timely and cost-effective manner; • system failures or outages or government blocking that prevent us from serving ads for any period of time; • breaches of security or privacy, and the costs associated with any such breaches and remediation; • changes in the manner in which we distribute our products or inaccessibility of our products due to third-party actions; • fees paid to third parties for content or the distribution of our products; • refunds or other concessions provided to advertisers; • share-based compensation expense, including acquisition-related expense; • adverse litigation judgments, settlements, or other litigation-related costs; • changes in the legislative or regulatory environment, including with respect to privacy, data protection, antitrust, content, or AI, or actions by governments or regulators, including fines, orders, or consent decrees; 63 Table of Contents</untrusted_document>\n<untrusted_document cite_id=\"c:3b97190e84e3e3d9412157cfca1d3847bdc7f21c2fbf23a39f61ed643feda61b\">We are investing now because we believe this is the next chapter of the internet and will unlock monetization opportunities for businesses, developers, and creators, including around advertising, hardware, and digital goods. 62 Table of Contents Trends in Our Revenue by User Geography We calculate our revenue by user geography based on our estimate of the geography in which ad impressions are delivered, virtual and digital goods are purchased, or consumer hardware products are shipped. The geography of our users affects our revenue and financial results. Our revenue in regions such as United States & Canada and Europe is relatively higher primarily due to the size and maturity of those online and mobile advertising markets, and ad impression growth is primarily in geographies that monetize at lower rates, such as Asia-Pacific and Rest of World. In 2024, revenue increased by 18% in United States & Canada, 26% in Europe, 22% in Asia-Pacific, and 31% in Rest of World, in each case relative to 2023. - Note: Non-advertising revenue includes RL revenue generated from the delivery of consumer hardware products and FoA Other revenue, which consists of revenue from WhatsApp Business Platform, Meta Verified subscriptions, net fees we receive from developers using our Payments infrastructure, and revenue from various other sources. Our revenue by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when they perform a revenue-generating activity. This allocation differs from our revenue disaggregated by geography disclosure in Note 2 — Revenue in our consolidated financial statements included in Part II, Item 8, \"Financial Statements and Supplemental Data\" where revenue is geographically apportioned based on the addresses of our customers. 63 Table of Contents Trends in Our Family Metrics The numbers for our key Family metrics, our DAP and average revenue per person (ARPP), do not include users on our other products unless they would otherwise qualify as DAP based on their other activities on our Family products. Trends in the number of people in our community affect our revenue and financial results by influencing the number of ads we are able to show, the value of our ads to marketers, as well as our expenses and capital expenditures. Substantially all of our daily active people (as defined below) access our Family products on mobile devices. • Daily Active People (DAP).</untrusted_document>\n<untrusted_document cite_id=\"c:00ce62b79b0cf80f2d1fe243e52d372fbcb6930698e2a8633d55af13038e78aa\">The information required by this item is incorporated by reference to our Proxy Statement for the 2025 Annual Meeting of Stockholders to be filed with the SEC within 120 days of the fiscal year ended December 31, 2024.</untrusted_document>\n<untrusted_document cite_id=\"c:0210d50281848cc212713ddaa98a5894e39f3985079eceb9c1089894f53a74e8\">User growth and engagement are also impacted by a number of other factors, including competitive products and services, such as TikTok, that have reduced some users' engagement with our products and services, as well as global and regional business, macroeconomic, and geopolitical conditions. For example, the COVID-19 pandemic led to increases and decreases in the size and engagement of our active user base from period to period at different points during the pandemic. In addition, in connection with the war in Ukraine, access to Facebook and Instagram was restricted in Russia and these services were then prohibited by the Russian government, which contributed to slight decreases in the size of our active user base following the onset of the war. Any future declines in the size of our active user base may adversely impact our ability to deliver ad impressions and, in turn, our financial performance. If people do not perceive our products to be useful, reliable, and trustworthy, we may not be able to attract or retain users or otherwise maintain or increase the frequency and duration of their engagement. A number of other social networking companies that achieved early popularity have since seen their active user bases or levels of engagement decline, in some cases precipitously. There is no guarantee that we will not experience a similar erosion of our active user base or engagement levels. Our user engagement patterns have changed over time, and user engagement can be difficult to measure, particularly as we and our competitors introduce new and different products and services. Any number of factors can negatively affect user retention, growth, and engagement, including if: • users increasingly engage with other competitive products or services; • we fail to introduce new features, products, or services that users find engaging or if we introduce new products or services, or make changes to existing products and services, that are not favorably received; • users feel that their experience is diminished as a result of the decisions we make with respect to the frequency, prominence, format, size, and quality of ads that we display; • users have difficulty installing, updating, or otherwise accessing our products on mobile devices as a result of actions by us or third parties that we rely on to distribute our products and deliver our services; • user behavior on any of our products changes, including decreases in the quality and frequency of content shared on our products and services; • we are unable to continue to develop products for mobile devices that users find engaging, that work with a variety of mobile operating systems and networks, and that achieve a high level of market acceptance; 52 Table of Contents</untrusted_document>",
+   "summary": "META advertising revenue 2024 growth Meta",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:0360e8b79cc055640c597085053795d1ee8c14044544a8fea7c3a896d5458f68",
+     "text": " | Year Ended December 31, |  |  |  |  |  |  | \n | 2024 |  | 2023 |  | 2022 |  |  | \nNet income |  | 62,360 |  |  |  | 39,098 |  | 23,200\nOther comprehensive income (loss): |  |  |  |  |  |  |  | \nChange in foreign currency translation adjustment, net of tax | ( 1,413 ) |  |  | 618 |  |  | ( 1,184 ) | \nChange in unrealized gain (loss) on available-for-sale investments and other, net of tax | 471 |  |  | 757 |  |  | ( 1,653 ) | \nComprehensive income |  | 61,418 |  |  |  | 40,473 |  | 20,363",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2532,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:00b8bcca1fa035d91e5411011d25b1afa4772bebc67929a4be5d4869c50435f2",
+     "text": "These developments have limited our ability to target and measure the effectiveness of ads on our platform and negatively impacted our advertising revenue. For example, our advertising revenue has been negatively impacted by marketer reaction to targeting and measurement challenges associated with iOS changes beginning in 2021. If we are unable to mitigate these developments as they take further effect in the future, our targeting and measurement capabilities will be materially and adversely affected, which would in turn significantly impact our advertising revenue. Our user growth, engagement, and monetization on mobile devices depend upon effective operation with mobile operating systems, networks, technologies, products, and standards that we do not control. The substantial majority of our revenue is generated from advertising on mobile devices. There is no guarantee that popular mobile devices will continue to feature our products, or that mobile device users will continue to use our products rather than competing products. We are dependent on the interoperability of our products with popular mobile operating systems, networks, technologies, products, and standards that we do not control, such as the Android and iOS operating systems and mobile browsers. Changes, bugs, or technical issues in such systems, or changes in our relationships with mobile operating system partners, handset manufacturers, browser developers, or mobile carriers, or in the content or application of their terms of service or policies (which they have made in the past and continue to seek to implement) that degrade our products' functionality, reduce or eliminate our ability to update or distribute our products, give preferential treatment to 19 Table of Contents competitive products, limit our ability to deliver, target, or measure the effectiveness of ads, or charge fees related to the distribution of our products or our delivery of ads have adversely affected, and could in the future adversely affect, the usage of our products and monetization on mobile devices. For example, Apple previously released an update to its Safari browser that limits the use of third-party cookies, which reduces our ability to provide the most relevant ads to our users and impacts monetization, and also released changes to iOS that limit our ability to target and measure ads effectively, while expanding their own advertising business. In addition, Google previously proposed phasing out third-party cookies in its Chrome browser. We expect that any similar changes to Apple's, Google's, or other browser or mobile platforms will further limit our ability to target and measure the effectiveness of ads and impact monetization. Additionally, in order to deliver high quality mobile products, it is important that our products work well with a range of mobile technologies, products, systems, networks, and standards that we do not control, and that we have good relationships with handset manufacturers, mobile carriers, and browser developers.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2532,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:042ed959cba98782b27de9a3a103f17c052bc78998a93c4766e1ea848d1cad4e",
+     "text": "• changes to the content or application of third-party policies that limit our ability to deliver, target, or measure the effectiveness of advertising, including changes by mobile operating system and browser providers such as Apple and Google; • the pricing of our ads and other products; • the diversification and growth of revenue sources beyond advertising on Facebook and Instagram; • our ability to generate revenue from Payments, or the sale of our consumer hardware products or other products we may introduce in the future; • changes to existing products or services or the development and introduction of new products or services by us or our competitors; • user behavior or product changes that may reduce traffic to features or products that we successfully monetize; • increases in marketing, sales, and other operating expenses, as well as capital expenditures, that we will incur to grow and expand our business and to remain competitive, including costs related to our data centers and technical infrastructure as well as other costs relating to our AI initiatives; • costs related to our privacy, safety, security, and content and advertising review and enforcement efforts, including as a result of implementing changes to our practices, whether voluntarily, in connection with laws, regulations, regulatory actions, or decisions or recommendations from the independent Oversight Board, or otherwise; • costs and expenses related to the development, manufacturing, and delivery of our consumer hardware products; • our ability to maintain gross margins and operating margins; • costs related to acquisitions, including costs associated with amortization and additional investments to develop the acquired technologies; • charges associated with impairment or abandonment of any assets on our balance sheet, including as a result of changes to our real property lease arrangements and data center assets; • our ability to obtain equipment, components, and labor for our data centers and other technical infrastructure in a timely and cost-effective manner; • system failures or outages or government blocking that prevent us from serving ads for any period of time; • breaches of security or privacy, and the costs associated with any such breaches and remediation; • changes in the manner in which we distribute our products or inaccessibility of our products due to third-party actions; • fees paid to third parties for content or the distribution of our products; • refunds or other concessions provided to advertisers; • share-based compensation expense, including acquisition-related expense; • adverse litigation judgments, settlements, or other litigation-related costs; • changes in the legislative or regulatory environment, including with respect to privacy, data protection, antitrust, content, or AI, or actions by governments or regulators, including fines, orders, or consent decrees; 63 Table of Contents",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2531,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:3b97190e84e3e3d9412157cfca1d3847bdc7f21c2fbf23a39f61ed643feda61b",
+     "text": "We are investing now because we believe this is the next chapter of the internet and will unlock monetization opportunities for businesses, developers, and creators, including around advertising, hardware, and digital goods. 62 Table of Contents Trends in Our Revenue by User Geography We calculate our revenue by user geography based on our estimate of the geography in which ad impressions are delivered, virtual and digital goods are purchased, or consumer hardware products are shipped. The geography of our users affects our revenue and financial results. Our revenue in regions such as United States & Canada and Europe is relatively higher primarily due to the size and maturity of those online and mobile advertising markets, and ad impression growth is primarily in geographies that monetize at lower rates, such as Asia-Pacific and Rest of World. In 2024, revenue increased by 18% in United States & Canada, 26% in Europe, 22% in Asia-Pacific, and 31% in Rest of World, in each case relative to 2023. - Note: Non-advertising revenue includes RL revenue generated from the delivery of consumer hardware products and FoA Other revenue, which consists of revenue from WhatsApp Business Platform, Meta Verified subscriptions, net fees we receive from developers using our Payments infrastructure, and revenue from various other sources. Our revenue by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when they perform a revenue-generating activity. This allocation differs from our revenue disaggregated by geography disclosure in Note 2 — Revenue in our consolidated financial statements included in Part II, Item 8, \"Financial Statements and Supplemental Data\" where revenue is geographically apportioned based on the addresses of our customers. 63 Table of Contents Trends in Our Family Metrics The numbers for our key Family metrics, our DAP and average revenue per person (ARPP), do not include users on our other products unless they would otherwise qualify as DAP based on their other activities on our Family products. Trends in the number of people in our community affect our revenue and financial results by influencing the number of ads we are able to show, the value of our ads to marketers, as well as our expenses and capital expenditures. Substantially all of our daily active people (as defined below) access our Family products on mobile devices. • Daily Active People (DAP).",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2532,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:00ce62b79b0cf80f2d1fe243e52d372fbcb6930698e2a8633d55af13038e78aa",
+     "text": "The information required by this item is incorporated by reference to our Proxy Statement for the 2025 Annual Meeting of Stockholders to be filed with the SEC within 120 days of the fiscal year ended December 31, 2024.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2532,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 12",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:0210d50281848cc212713ddaa98a5894e39f3985079eceb9c1089894f53a74e8",
+     "text": "User growth and engagement are also impacted by a number of other factors, including competitive products and services, such as TikTok, that have reduced some users' engagement with our products and services, as well as global and regional business, macroeconomic, and geopolitical conditions. For example, the COVID-19 pandemic led to increases and decreases in the size and engagement of our active user base from period to period at different points during the pandemic. In addition, in connection with the war in Ukraine, access to Facebook and Instagram was restricted in Russia and these services were then prohibited by the Russian government, which contributed to slight decreases in the size of our active user base following the onset of the war. Any future declines in the size of our active user base may adversely impact our ability to deliver ad impressions and, in turn, our financial performance. If people do not perceive our products to be useful, reliable, and trustworthy, we may not be able to attract or retain users or otherwise maintain or increase the frequency and duration of their engagement. A number of other social networking companies that achieved early popularity have since seen their active user bases or levels of engagement decline, in some cases precipitously. There is no guarantee that we will not experience a similar erosion of our active user base or engagement levels. Our user engagement patterns have changed over time, and user engagement can be difficult to measure, particularly as we and our competitors introduce new and different products and services. Any number of factors can negatively affect user retention, growth, and engagement, including if: • users increasingly engage with other competitive products or services; • we fail to introduce new features, products, or services that users find engaging or if we introduce new products or services, or make changes to existing products and services, that are not favorably received; • users feel that their experience is diminished as a result of the decisions we make with respect to the frequency, prominence, format, size, and quality of ads that we display; • users have difficulty installing, updating, or otherwise accessing our products on mobile devices as a result of actions by us or third parties that we rely on to distribute our products and deliver our services; • user behavior on any of our products changes, including decreases in the quality and frequency of content shared on our products and services; • we are unable to continue to develop products for mobile devices that users find engaging, that work with a variety of mobile operating systems and networks, and that achieve a high level of market acceptance; 52 Table of Contents",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2531,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2024-Q4\",\"period_to\":\"2025-Q1\",\"query\":\"Advertising revenue 2024 2023 Consolidated Statements of Income\",\"ticker\":\"META\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:17ac4c68add3712e823c2905713e6cfcd4fbd9e6b8c9c15f88d6954a5b4d553a\">Family of Apps FoA income from operations in 2024 increased $24.24 billion, or 39%, compared to 2023. The increase in FoA income from operations was driven by higher advertising revenue which was partially offset by an increase in costs and expenses. The increase in costs and expenses was mainly due to increases in operational expenses related to our data centers and technical infrastructure, mostly from higher depreciation expense and employee compensation, partially offset by lower restructuring and legal-related costs. Reality Labs RL loss from operations in 2024 increased $1.61 billion, or 10%, compared to 2023, driven by an increase in RL costs and expenses. RL costs and expenses increased primarily due to increases in employee compensation and infrastructure costs. See Note 3 — Restructuring, Note 7 — Property and Equipment, Note 12 — Commitments and Contingencies, and Note 16 — Segment and Geographical Information in the notes to the consolidated financial statements included in Part II, Item 8, \"Financial Statements and Supplementary Data\" of this Annual Report on Form 10-K for additional information regarding restructuring charges, depreciation expense, legal-related costs, and segment employee compensation, respectively. 74 Table of Contents Interest and other income (expense), net</untrusted_document>\n<untrusted_document cite_id=\"c:0360e8b79cc055640c597085053795d1ee8c14044544a8fea7c3a896d5458f68\"> | Year Ended December 31, |  |  |  |  |  |  | \n | 2024 |  | 2023 |  | 2022 |  |  | \nNet income |  | 62,360 |  |  |  | 39,098 |  | 23,200\nOther comprehensive income (loss): |  |  |  |  |  |  |  | \nChange in foreign currency translation adjustment, net of tax | ( 1,413 ) |  |  | 618 |  |  | ( 1,184 ) | \nChange in unrealized gain (loss) on available-for-sale investments and other, net of tax | 471 |  |  | 757 |  |  | ( 1,653 ) | \nComprehensive income |  | 61,418 |  |  |  | 40,473 |  | 20,363</untrusted_document>\n<untrusted_document cite_id=\"c:00ce62b79b0cf80f2d1fe243e52d372fbcb6930698e2a8633d55af13038e78aa\">The information required by this item is incorporated by reference to our Proxy Statement for the 2025 Annual Meeting of Stockholders to be filed with the SEC within 120 days of the fiscal year ended December 31, 2024.</untrusted_document>\n<untrusted_document cite_id=\"c:8e424d5c042b4e1efc4efa11cab20faf9baf155ed3f404b1b76c9fc1e33ac18d\">Note: We updated our definition of ARPP beginning in the first quarter of 2024 and have recast ARPP in prior periods for comparative purposes. Our annual worldwide ARPP in 2024, which represents the sum of quarterly ARPP during such period, was $49.63, an increase of 15% from 2023. 65 Table of Contents Trends in Our Ad Impressions and Average Price Per Ad • Ad Impressions. Our advertising revenue is generated by displaying ad products on Facebook, Instagram, Messenger, and third-party mobile applications. Impressions are considered delivered when an ad is displayed to a user. Note: Our ad impressions growth by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when an ad impression is delivered. 66 Table of Contents • Average Price Per Ad. We calculate average price per ad as total advertising revenue divided by the number of ads delivered. Note: Our average price per ad growth by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when an ad impression is delivered. 67 Table of Contents Critical Accounting Estimates Our consolidated financial statements are prepared in accordance with GAAP. The preparation of these consolidated financial statements requires us to make estimates and assumptions that affect the reported amounts of assets, liabilities, revenue, costs and expenses, and related disclosures. On an ongoing basis, we evaluate our accounting estimates based on historical experience and on various other assumptions that we believe are reasonable under the circumstances. The actual impact on our financial performance could differ from these estimates under different assumptions or conditions. An accounting estimate is considered critical if both (i) the nature of the estimates or assumptions is material due to the levels of subjectivity and judgment involved, and (ii) the impact within a reasonable range of outcomes of the estimates and assumptions is material to our consolidated financial statements. We believe that the estimates and assumptions associated with loss contingencies, income taxes, and valuation of assets, when applicable, have the greatest potential impact on our consolidated financial statements. Therefore, we consider these to be our critical accounting estimates. For further information on all of our significant accounting policies, see Note 1 — Summary of Significant Accounting Policies in the accompanying notes to the consolidated financial statements included in Part II, Item 8, \"Financial Statements and Supplementary Data\" of this Annual Report on Form 10-K. Loss Contingencies</untrusted_document>\n<untrusted_document cite_id=\"c:00b8bcca1fa035d91e5411011d25b1afa4772bebc67929a4be5d4869c50435f2\">These developments have limited our ability to target and measure the effectiveness of ads on our platform and negatively impacted our advertising revenue. For example, our advertising revenue has been negatively impacted by marketer reaction to targeting and measurement challenges associated with iOS changes beginning in 2021. If we are unable to mitigate these developments as they take further effect in the future, our targeting and measurement capabilities will be materially and adversely affected, which would in turn significantly impact our advertising revenue. Our user growth, engagement, and monetization on mobile devices depend upon effective operation with mobile operating systems, networks, technologies, products, and standards that we do not control. The substantial majority of our revenue is generated from advertising on mobile devices. There is no guarantee that popular mobile devices will continue to feature our products, or that mobile device users will continue to use our products rather than competing products. We are dependent on the interoperability of our products with popular mobile operating systems, networks, technologies, products, and standards that we do not control, such as the Android and iOS operating systems and mobile browsers. Changes, bugs, or technical issues in such systems, or changes in our relationships with mobile operating system partners, handset manufacturers, browser developers, or mobile carriers, or in the content or application of their terms of service or policies (which they have made in the past and continue to seek to implement) that degrade our products' functionality, reduce or eliminate our ability to update or distribute our products, give preferential treatment to 19 Table of Contents competitive products, limit our ability to deliver, target, or measure the effectiveness of ads, or charge fees related to the distribution of our products or our delivery of ads have adversely affected, and could in the future adversely affect, the usage of our products and monetization on mobile devices. For example, Apple previously released an update to its Safari browser that limits the use of third-party cookies, which reduces our ability to provide the most relevant ads to our users and impacts monetization, and also released changes to iOS that limit our ability to target and measure ads effectively, while expanding their own advertising business. In addition, Google previously proposed phasing out third-party cookies in its Chrome browser. We expect that any similar changes to Apple's, Google's, or other browser or mobile platforms will further limit our ability to target and measure the effectiveness of ads and impact monetization. Additionally, in order to deliver high quality mobile products, it is important that our products work well with a range of mobile technologies, products, systems, networks, and standards that we do not control, and that we have good relationships with handset manufacturers, mobile carriers, and browser developers.</untrusted_document>\n<untrusted_document cite_id=\"c:042ed959cba98782b27de9a3a103f17c052bc78998a93c4766e1ea848d1cad4e\">• changes to the content or application of third-party policies that limit our ability to deliver, target, or measure the effectiveness of advertising, including changes by mobile operating system and browser providers such as Apple and Google; • the pricing of our ads and other products; • the diversification and growth of revenue sources beyond advertising on Facebook and Instagram; • our ability to generate revenue from Payments, or the sale of our consumer hardware products or other products we may introduce in the future; • changes to existing products or services or the development and introduction of new products or services by us or our competitors; • user behavior or product changes that may reduce traffic to features or products that we successfully monetize; • increases in marketing, sales, and other operating expenses, as well as capital expenditures, that we will incur to grow and expand our business and to remain competitive, including costs related to our data centers and technical infrastructure as well as other costs relating to our AI initiatives; • costs related to our privacy, safety, security, and content and advertising review and enforcement efforts, including as a result of implementing changes to our practices, whether voluntarily, in connection with laws, regulations, regulatory actions, or decisions or recommendations from the independent Oversight Board, or otherwise; • costs and expenses related to the development, manufacturing, and delivery of our consumer hardware products; • our ability to maintain gross margins and operating margins; • costs related to acquisitions, including costs associated with amortization and additional investments to develop the acquired technologies; • charges associated with impairment or abandonment of any assets on our balance sheet, including as a result of changes to our real property lease arrangements and data center assets; • our ability to obtain equipment, components, and labor for our data centers and other technical infrastructure in a timely and cost-effective manner; • system failures or outages or government blocking that prevent us from serving ads for any period of time; • breaches of security or privacy, and the costs associated with any such breaches and remediation; • changes in the manner in which we distribute our products or inaccessibility of our products due to third-party actions; • fees paid to third parties for content or the distribution of our products; • refunds or other concessions provided to advertisers; • share-based compensation expense, including acquisition-related expense; • adverse litigation judgments, settlements, or other litigation-related costs; • changes in the legislative or regulatory environment, including with respect to privacy, data protection, antitrust, content, or AI, or actions by governments or regulators, including fines, orders, or consent decrees; 63 Table of Contents</untrusted_document>",
+   "summary": "META Advertising revenue 2024 2023 Consolidated Statements of Income",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:17ac4c68add3712e823c2905713e6cfcd4fbd9e6b8c9c15f88d6954a5b4d553a",
+     "text": "Family of Apps FoA income from operations in 2024 increased $24.24 billion, or 39%, compared to 2023. The increase in FoA income from operations was driven by higher advertising revenue which was partially offset by an increase in costs and expenses. The increase in costs and expenses was mainly due to increases in operational expenses related to our data centers and technical infrastructure, mostly from higher depreciation expense and employee compensation, partially offset by lower restructuring and legal-related costs. Reality Labs RL loss from operations in 2024 increased $1.61 billion, or 10%, compared to 2023, driven by an increase in RL costs and expenses. RL costs and expenses increased primarily due to increases in employee compensation and infrastructure costs. See Note 3 — Restructuring, Note 7 — Property and Equipment, Note 12 — Commitments and Contingencies, and Note 16 — Segment and Geographical Information in the notes to the consolidated financial statements included in Part II, Item 8, \"Financial Statements and Supplementary Data\" of this Annual Report on Form 10-K for additional information regarding restructuring charges, depreciation expense, legal-related costs, and segment employee compensation, respectively. 74 Table of Contents Interest and other income (expense), net",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2532,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:0360e8b79cc055640c597085053795d1ee8c14044544a8fea7c3a896d5458f68",
+     "text": " | Year Ended December 31, |  |  |  |  |  |  | \n | 2024 |  | 2023 |  | 2022 |  |  | \nNet income |  | 62,360 |  |  |  | 39,098 |  | 23,200\nOther comprehensive income (loss): |  |  |  |  |  |  |  | \nChange in foreign currency translation adjustment, net of tax | ( 1,413 ) |  |  | 618 |  |  | ( 1,184 ) | \nChange in unrealized gain (loss) on available-for-sale investments and other, net of tax | 471 |  |  | 757 |  |  | ( 1,653 ) | \nComprehensive income |  | 61,418 |  |  |  | 40,473 |  | 20,363",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2532,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:00ce62b79b0cf80f2d1fe243e52d372fbcb6930698e2a8633d55af13038e78aa",
+     "text": "The information required by this item is incorporated by reference to our Proxy Statement for the 2025 Annual Meeting of Stockholders to be filed with the SEC within 120 days of the fiscal year ended December 31, 2024.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2532,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 12",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:8e424d5c042b4e1efc4efa11cab20faf9baf155ed3f404b1b76c9fc1e33ac18d",
+     "text": "Note: We updated our definition of ARPP beginning in the first quarter of 2024 and have recast ARPP in prior periods for comparative purposes. Our annual worldwide ARPP in 2024, which represents the sum of quarterly ARPP during such period, was $49.63, an increase of 15% from 2023. 65 Table of Contents Trends in Our Ad Impressions and Average Price Per Ad • Ad Impressions. Our advertising revenue is generated by displaying ad products on Facebook, Instagram, Messenger, and third-party mobile applications. Impressions are considered delivered when an ad is displayed to a user. Note: Our ad impressions growth by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when an ad impression is delivered. 66 Table of Contents • Average Price Per Ad. We calculate average price per ad as total advertising revenue divided by the number of ads delivered. Note: Our average price per ad growth by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when an ad impression is delivered. 67 Table of Contents Critical Accounting Estimates Our consolidated financial statements are prepared in accordance with GAAP. The preparation of these consolidated financial statements requires us to make estimates and assumptions that affect the reported amounts of assets, liabilities, revenue, costs and expenses, and related disclosures. On an ongoing basis, we evaluate our accounting estimates based on historical experience and on various other assumptions that we believe are reasonable under the circumstances. The actual impact on our financial performance could differ from these estimates under different assumptions or conditions. An accounting estimate is considered critical if both (i) the nature of the estimates or assumptions is material due to the levels of subjectivity and judgment involved, and (ii) the impact within a reasonable range of outcomes of the estimates and assumptions is material to our consolidated financial statements. We believe that the estimates and assumptions associated with loss contingencies, income taxes, and valuation of assets, when applicable, have the greatest potential impact on our consolidated financial statements. Therefore, we consider these to be our critical accounting estimates. For further information on all of our significant accounting policies, see Note 1 — Summary of Significant Accounting Policies in the accompanying notes to the consolidated financial statements included in Part II, Item 8, \"Financial Statements and Supplementary Data\" of this Annual Report on Form 10-K. Loss Contingencies",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2532,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:00b8bcca1fa035d91e5411011d25b1afa4772bebc67929a4be5d4869c50435f2",
+     "text": "These developments have limited our ability to target and measure the effectiveness of ads on our platform and negatively impacted our advertising revenue. For example, our advertising revenue has been negatively impacted by marketer reaction to targeting and measurement challenges associated with iOS changes beginning in 2021. If we are unable to mitigate these developments as they take further effect in the future, our targeting and measurement capabilities will be materially and adversely affected, which would in turn significantly impact our advertising revenue. Our user growth, engagement, and monetization on mobile devices depend upon effective operation with mobile operating systems, networks, technologies, products, and standards that we do not control. The substantial majority of our revenue is generated from advertising on mobile devices. There is no guarantee that popular mobile devices will continue to feature our products, or that mobile device users will continue to use our products rather than competing products. We are dependent on the interoperability of our products with popular mobile operating systems, networks, technologies, products, and standards that we do not control, such as the Android and iOS operating systems and mobile browsers. Changes, bugs, or technical issues in such systems, or changes in our relationships with mobile operating system partners, handset manufacturers, browser developers, or mobile carriers, or in the content or application of their terms of service or policies (which they have made in the past and continue to seek to implement) that degrade our products' functionality, reduce or eliminate our ability to update or distribute our products, give preferential treatment to 19 Table of Contents competitive products, limit our ability to deliver, target, or measure the effectiveness of ads, or charge fees related to the distribution of our products or our delivery of ads have adversely affected, and could in the future adversely affect, the usage of our products and monetization on mobile devices. For example, Apple previously released an update to its Safari browser that limits the use of third-party cookies, which reduces our ability to provide the most relevant ads to our users and impacts monetization, and also released changes to iOS that limit our ability to target and measure ads effectively, while expanding their own advertising business. In addition, Google previously proposed phasing out third-party cookies in its Chrome browser. We expect that any similar changes to Apple's, Google's, or other browser or mobile platforms will further limit our ability to target and measure the effectiveness of ads and impact monetization. Additionally, in order to deliver high quality mobile products, it is important that our products work well with a range of mobile technologies, products, systems, networks, and standards that we do not control, and that we have good relationships with handset manufacturers, mobile carriers, and browser developers.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2532,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:042ed959cba98782b27de9a3a103f17c052bc78998a93c4766e1ea848d1cad4e",
+     "text": "• changes to the content or application of third-party policies that limit our ability to deliver, target, or measure the effectiveness of advertising, including changes by mobile operating system and browser providers such as Apple and Google; • the pricing of our ads and other products; • the diversification and growth of revenue sources beyond advertising on Facebook and Instagram; • our ability to generate revenue from Payments, or the sale of our consumer hardware products or other products we may introduce in the future; • changes to existing products or services or the development and introduction of new products or services by us or our competitors; • user behavior or product changes that may reduce traffic to features or products that we successfully monetize; • increases in marketing, sales, and other operating expenses, as well as capital expenditures, that we will incur to grow and expand our business and to remain competitive, including costs related to our data centers and technical infrastructure as well as other costs relating to our AI initiatives; • costs related to our privacy, safety, security, and content and advertising review and enforcement efforts, including as a result of implementing changes to our practices, whether voluntarily, in connection with laws, regulations, regulatory actions, or decisions or recommendations from the independent Oversight Board, or otherwise; • costs and expenses related to the development, manufacturing, and delivery of our consumer hardware products; • our ability to maintain gross margins and operating margins; • costs related to acquisitions, including costs associated with amortization and additional investments to develop the acquired technologies; • charges associated with impairment or abandonment of any assets on our balance sheet, including as a result of changes to our real property lease arrangements and data center assets; • our ability to obtain equipment, components, and labor for our data centers and other technical infrastructure in a timely and cost-effective manner; • system failures or outages or government blocking that prevent us from serving ads for any period of time; • breaches of security or privacy, and the costs associated with any such breaches and remediation; • changes in the manner in which we distribute our products or inaccessibility of our products due to third-party actions; • fees paid to third parties for content or the distribution of our products; • refunds or other concessions provided to advertisers; • share-based compensation expense, including acquisition-related expense; • adverse litigation judgments, settlements, or other litigation-related costs; • changes in the legislative or regulatory environment, including with respect to privacy, data protection, antitrust, content, or AI, or actions by governments or regulators, including fines, orders, or consent decrees; 63 Table of Contents",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2531,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2024-Q4\",\"period_to\":\"2025-Q1\",\"query\":\"Advertising revenue Year Ended December 31 2024 2023 Consolidated Statements of Income\",\"ticker\":\"META\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:0360e8b79cc055640c597085053795d1ee8c14044544a8fea7c3a896d5458f68\"> | Year Ended December 31, |  |  |  |  |  |  | \n | 2024 |  | 2023 |  | 2022 |  |  | \nNet income |  | 62,360 |  |  |  | 39,098 |  | 23,200\nOther comprehensive income (loss): |  |  |  |  |  |  |  | \nChange in foreign currency translation adjustment, net of tax | ( 1,413 ) |  |  | 618 |  |  | ( 1,184 ) | \nChange in unrealized gain (loss) on available-for-sale investments and other, net of tax | 471 |  |  | 757 |  |  | ( 1,653 ) | \nComprehensive income |  | 61,418 |  |  |  | 40,473 |  | 20,363</untrusted_document>\n<untrusted_document cite_id=\"c:042ed959cba98782b27de9a3a103f17c052bc78998a93c4766e1ea848d1cad4e\">• changes to the content or application of third-party policies that limit our ability to deliver, target, or measure the effectiveness of advertising, including changes by mobile operating system and browser providers such as Apple and Google; • the pricing of our ads and other products; • the diversification and growth of revenue sources beyond advertising on Facebook and Instagram; • our ability to generate revenue from Payments, or the sale of our consumer hardware products or other products we may introduce in the future; • changes to existing products or services or the development and introduction of new products or services by us or our competitors; • user behavior or product changes that may reduce traffic to features or products that we successfully monetize; • increases in marketing, sales, and other operating expenses, as well as capital expenditures, that we will incur to grow and expand our business and to remain competitive, including costs related to our data centers and technical infrastructure as well as other costs relating to our AI initiatives; • costs related to our privacy, safety, security, and content and advertising review and enforcement efforts, including as a result of implementing changes to our practices, whether voluntarily, in connection with laws, regulations, regulatory actions, or decisions or recommendations from the independent Oversight Board, or otherwise; • costs and expenses related to the development, manufacturing, and delivery of our consumer hardware products; • our ability to maintain gross margins and operating margins; • costs related to acquisitions, including costs associated with amortization and additional investments to develop the acquired technologies; • charges associated with impairment or abandonment of any assets on our balance sheet, including as a result of changes to our real property lease arrangements and data center assets; • our ability to obtain equipment, components, and labor for our data centers and other technical infrastructure in a timely and cost-effective manner; • system failures or outages or government blocking that prevent us from serving ads for any period of time; • breaches of security or privacy, and the costs associated with any such breaches and remediation; • changes in the manner in which we distribute our products or inaccessibility of our products due to third-party actions; • fees paid to third parties for content or the distribution of our products; • refunds or other concessions provided to advertisers; • share-based compensation expense, including acquisition-related expense; • adverse litigation judgments, settlements, or other litigation-related costs; • changes in the legislative or regulatory environment, including with respect to privacy, data protection, antitrust, content, or AI, or actions by governments or regulators, including fines, orders, or consent decrees; 63 Table of Contents</untrusted_document>\n<untrusted_document cite_id=\"c:016caee2bfd32a3e83f6fb852f8be3969de1b9cbbade14054de62f243b774067\">126 Table of Contents</untrusted_document>\n<untrusted_document cite_id=\"c:00ce62b79b0cf80f2d1fe243e52d372fbcb6930698e2a8633d55af13038e78aa\">The information required by this item is incorporated by reference to our Proxy Statement for the 2025 Annual Meeting of Stockholders to be filed with the SEC within 120 days of the fiscal year ended December 31, 2024.</untrusted_document>\n<untrusted_document cite_id=\"c:02bffc4e3428c049f9c4946c76c2991928f4f1135f96ab146b026b9fc6d5a71f\">In July 2019, we entered into a settlement and modified consent order to resolve the FTC inquiry, which took effect in April 2020 and, among other things, required us to significantly enhance our practices and processes for privacy compliance and oversight. The state attorneys general inquiries and litigation, and certain government inquiries in other jurisdictions remain ongoing. The FTC also continues to monitor us and our compliance with the modified consent order and initiated an administrative proceeding against us, which we are challenging at the agency and in federal court, that alleges deficient compliance and violations of the Children's Online Privacy Protection Act (COPPA), the COPPA Rule, and Section 5 of the Federal Trade Commission Act and seeks changes to our business. If we are unsuccessful in our challenge to the FTC's action and the agency imposes its proposed order in its current form, we would be subject to significant limitations, including on our ability to launch new and modified products or use data of users under 18 years old. We also notify the IDPC, our lead European Union privacy regulator under the GDPR, and other regulators of certain other personal data breaches and privacy issues, issue similar notifications to European regulators under other laws (such as UK GDPR and Member State implementations of the ePrivacy Directive), and are subject to inquiries and investigations by the IDPC and other regulators regarding various aspects of our regulatory compliance. In addition, we are subject to inquiries and investigations by the European Commission regarding our compliance with various provisions of the DSA relating to the use of Facebook and Instagram, including matters related to elections, content reporting and appeals, third-party access to data, political content recommendations, potential deceptive advertising and disinformation, and minors and other vulnerable users. We have been, and may in the future be, subject to penalties, fines, and requirements to change our business practices as a result of such inquiries and investigations. In addition, in July 2024, we entered into a settlement to resolve a lawsuit by the state of Texas in connection with the \"tag suggestions\" feature and other uses of facial recognition technology. We are also subject to various litigation and formal and informal inquiries and investigations by competition authorities in the United States, Europe, and other jurisdictions, which relate to many aspects of our business, including with respect to users and advertisers. Such inquiries, investigations, and lawsuits concern, among other things, our business practices in the areas of social networking or social media services, messaging services, digital advertising, and/or mobile or online applications, as well as our acquisitions.</untrusted_document>\n<untrusted_document cite_id=\"c:00b8bcca1fa035d91e5411011d25b1afa4772bebc67929a4be5d4869c50435f2\">These developments have limited our ability to target and measure the effectiveness of ads on our platform and negatively impacted our advertising revenue. For example, our advertising revenue has been negatively impacted by marketer reaction to targeting and measurement challenges associated with iOS changes beginning in 2021. If we are unable to mitigate these developments as they take further effect in the future, our targeting and measurement capabilities will be materially and adversely affected, which would in turn significantly impact our advertising revenue. Our user growth, engagement, and monetization on mobile devices depend upon effective operation with mobile operating systems, networks, technologies, products, and standards that we do not control. The substantial majority of our revenue is generated from advertising on mobile devices. There is no guarantee that popular mobile devices will continue to feature our products, or that mobile device users will continue to use our products rather than competing products. We are dependent on the interoperability of our products with popular mobile operating systems, networks, technologies, products, and standards that we do not control, such as the Android and iOS operating systems and mobile browsers. Changes, bugs, or technical issues in such systems, or changes in our relationships with mobile operating system partners, handset manufacturers, browser developers, or mobile carriers, or in the content or application of their terms of service or policies (which they have made in the past and continue to seek to implement) that degrade our products' functionality, reduce or eliminate our ability to update or distribute our products, give preferential treatment to 19 Table of Contents competitive products, limit our ability to deliver, target, or measure the effectiveness of ads, or charge fees related to the distribution of our products or our delivery of ads have adversely affected, and could in the future adversely affect, the usage of our products and monetization on mobile devices. For example, Apple previously released an update to its Safari browser that limits the use of third-party cookies, which reduces our ability to provide the most relevant ads to our users and impacts monetization, and also released changes to iOS that limit our ability to target and measure ads effectively, while expanding their own advertising business. In addition, Google previously proposed phasing out third-party cookies in its Chrome browser. We expect that any similar changes to Apple's, Google's, or other browser or mobile platforms will further limit our ability to target and measure the effectiveness of ads and impact monetization. Additionally, in order to deliver high quality mobile products, it is important that our products work well with a range of mobile technologies, products, systems, networks, and standards that we do not control, and that we have good relationships with handset manufacturers, mobile carriers, and browser developers.</untrusted_document>",
+   "summary": "META Advertising revenue Year Ended December 31 2024 2023 Consolidated Statements of Income",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:0360e8b79cc055640c597085053795d1ee8c14044544a8fea7c3a896d5458f68",
+     "text": " | Year Ended December 31, |  |  |  |  |  |  | \n | 2024 |  | 2023 |  | 2022 |  |  | \nNet income |  | 62,360 |  |  |  | 39,098 |  | 23,200\nOther comprehensive income (loss): |  |  |  |  |  |  |  | \nChange in foreign currency translation adjustment, net of tax | ( 1,413 ) |  |  | 618 |  |  | ( 1,184 ) | \nChange in unrealized gain (loss) on available-for-sale investments and other, net of tax | 471 |  |  | 757 |  |  | ( 1,653 ) | \nComprehensive income |  | 61,418 |  |  |  | 40,473 |  | 20,363",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2532,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:042ed959cba98782b27de9a3a103f17c052bc78998a93c4766e1ea848d1cad4e",
+     "text": "• changes to the content or application of third-party policies that limit our ability to deliver, target, or measure the effectiveness of advertising, including changes by mobile operating system and browser providers such as Apple and Google; • the pricing of our ads and other products; • the diversification and growth of revenue sources beyond advertising on Facebook and Instagram; • our ability to generate revenue from Payments, or the sale of our consumer hardware products or other products we may introduce in the future; • changes to existing products or services or the development and introduction of new products or services by us or our competitors; • user behavior or product changes that may reduce traffic to features or products that we successfully monetize; • increases in marketing, sales, and other operating expenses, as well as capital expenditures, that we will incur to grow and expand our business and to remain competitive, including costs related to our data centers and technical infrastructure as well as other costs relating to our AI initiatives; • costs related to our privacy, safety, security, and content and advertising review and enforcement efforts, including as a result of implementing changes to our practices, whether voluntarily, in connection with laws, regulations, regulatory actions, or decisions or recommendations from the independent Oversight Board, or otherwise; • costs and expenses related to the development, manufacturing, and delivery of our consumer hardware products; • our ability to maintain gross margins and operating margins; • costs related to acquisitions, including costs associated with amortization and additional investments to develop the acquired technologies; • charges associated with impairment or abandonment of any assets on our balance sheet, including as a result of changes to our real property lease arrangements and data center assets; • our ability to obtain equipment, components, and labor for our data centers and other technical infrastructure in a timely and cost-effective manner; • system failures or outages or government blocking that prevent us from serving ads for any period of time; • breaches of security or privacy, and the costs associated with any such breaches and remediation; • changes in the manner in which we distribute our products or inaccessibility of our products due to third-party actions; • fees paid to third parties for content or the distribution of our products; • refunds or other concessions provided to advertisers; • share-based compensation expense, including acquisition-related expense; • adverse litigation judgments, settlements, or other litigation-related costs; • changes in the legislative or regulatory environment, including with respect to privacy, data protection, antitrust, content, or AI, or actions by governments or regulators, including fines, orders, or consent decrees; 63 Table of Contents",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2531,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:016caee2bfd32a3e83f6fb852f8be3969de1b9cbbade14054de62f243b774067",
+     "text": "126 Table of Contents",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2532,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:00ce62b79b0cf80f2d1fe243e52d372fbcb6930698e2a8633d55af13038e78aa",
+     "text": "The information required by this item is incorporated by reference to our Proxy Statement for the 2025 Annual Meeting of Stockholders to be filed with the SEC within 120 days of the fiscal year ended December 31, 2024.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2532,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 12",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:02bffc4e3428c049f9c4946c76c2991928f4f1135f96ab146b026b9fc6d5a71f",
+     "text": "In July 2019, we entered into a settlement and modified consent order to resolve the FTC inquiry, which took effect in April 2020 and, among other things, required us to significantly enhance our practices and processes for privacy compliance and oversight. The state attorneys general inquiries and litigation, and certain government inquiries in other jurisdictions remain ongoing. The FTC also continues to monitor us and our compliance with the modified consent order and initiated an administrative proceeding against us, which we are challenging at the agency and in federal court, that alleges deficient compliance and violations of the Children's Online Privacy Protection Act (COPPA), the COPPA Rule, and Section 5 of the Federal Trade Commission Act and seeks changes to our business. If we are unsuccessful in our challenge to the FTC's action and the agency imposes its proposed order in its current form, we would be subject to significant limitations, including on our ability to launch new and modified products or use data of users under 18 years old. We also notify the IDPC, our lead European Union privacy regulator under the GDPR, and other regulators of certain other personal data breaches and privacy issues, issue similar notifications to European regulators under other laws (such as UK GDPR and Member State implementations of the ePrivacy Directive), and are subject to inquiries and investigations by the IDPC and other regulators regarding various aspects of our regulatory compliance. In addition, we are subject to inquiries and investigations by the European Commission regarding our compliance with various provisions of the DSA relating to the use of Facebook and Instagram, including matters related to elections, content reporting and appeals, third-party access to data, political content recommendations, potential deceptive advertising and disinformation, and minors and other vulnerable users. We have been, and may in the future be, subject to penalties, fines, and requirements to change our business practices as a result of such inquiries and investigations. In addition, in July 2024, we entered into a settlement to resolve a lawsuit by the state of Texas in connection with the \"tag suggestions\" feature and other uses of facial recognition technology. We are also subject to various litigation and formal and informal inquiries and investigations by competition authorities in the United States, Europe, and other jurisdictions, which relate to many aspects of our business, including with respect to users and advertisers. Such inquiries, investigations, and lawsuits concern, among other things, our business practices in the areas of social networking or social media services, messaging services, digital advertising, and/or mobile or online applications, as well as our acquisitions.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2531,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:00b8bcca1fa035d91e5411011d25b1afa4772bebc67929a4be5d4869c50435f2",
+     "text": "These developments have limited our ability to target and measure the effectiveness of ads on our platform and negatively impacted our advertising revenue. For example, our advertising revenue has been negatively impacted by marketer reaction to targeting and measurement challenges associated with iOS changes beginning in 2021. If we are unable to mitigate these developments as they take further effect in the future, our targeting and measurement capabilities will be materially and adversely affected, which would in turn significantly impact our advertising revenue. Our user growth, engagement, and monetization on mobile devices depend upon effective operation with mobile operating systems, networks, technologies, products, and standards that we do not control. The substantial majority of our revenue is generated from advertising on mobile devices. There is no guarantee that popular mobile devices will continue to feature our products, or that mobile device users will continue to use our products rather than competing products. We are dependent on the interoperability of our products with popular mobile operating systems, networks, technologies, products, and standards that we do not control, such as the Android and iOS operating systems and mobile browsers. Changes, bugs, or technical issues in such systems, or changes in our relationships with mobile operating system partners, handset manufacturers, browser developers, or mobile carriers, or in the content or application of their terms of service or policies (which they have made in the past and continue to seek to implement) that degrade our products' functionality, reduce or eliminate our ability to update or distribute our products, give preferential treatment to 19 Table of Contents competitive products, limit our ability to deliver, target, or measure the effectiveness of ads, or charge fees related to the distribution of our products or our delivery of ads have adversely affected, and could in the future adversely affect, the usage of our products and monetization on mobile devices. For example, Apple previously released an update to its Safari browser that limits the use of third-party cookies, which reduces our ability to provide the most relevant ads to our users and impacts monetization, and also released changes to iOS that limit our ability to target and measure ads effectively, while expanding their own advertising business. In addition, Google previously proposed phasing out third-party cookies in its Chrome browser. We expect that any similar changes to Apple's, Google's, or other browser or mobile platforms will further limit our ability to target and measure the effectiveness of ads and impact monetization. Additionally, in order to deliver high quality mobile products, it is important that our products work well with a range of mobile technologies, products, systems, networks, and standards that we do not control, and that we have good relationships with handset manufacturers, mobile carriers, and browser developers.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2532,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  }
+ ]
+}

@@ -34,10 +34,11 @@ class FakeRouter:
 
     def load(self, path: str | Path) -> "FakeRouter":
         data = json.loads(Path(path).read_text(encoding="utf-8"))
-        for interaction in data["interactions"]:
-            self._responses[interaction["key"]] = ChatResponse.model_validate(
-                interaction["response"]
-            )
+        return self.load_interactions(data["interactions"])
+
+    def load_interactions(self, interactions: list[dict[str, Any]]) -> "FakeRouter":
+        for entry in interactions:
+            self._responses[entry["key"]] = ChatResponse.model_validate(entry["response"])
         return self
 
     @classmethod

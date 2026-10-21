@@ -1,0 +1,166 @@
+{
+ "case_id": "tr-tralt-mollakara-dokum",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "a97dab169d2dafa852b649c457ac0a9ca3bb10a4d86528b62e7fd3a922f1f071",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_39279",
+      "name": "search_documents",
+      "arguments": {
+       "query": "Mollakara ilk döküm altın ons"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TlQpem+KU0KoK2vW5GJ0W/pknQ+CC/5HmNzARQ1EY1hV1f1BHDk3xudfmVdNGRfEtrginJUCg5Q2utjLEcQ0xtBIpoE3grQIotfHyGqgzwTKCcktGjX5bhSQ="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1617,
+    "tokens_out": 25,
+    "latency_ms": 843.36,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "0dd5260be0f778b49d4bb7d481e0e0e7d64e4175f905332ad2f314d36c893008",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Türk Altın Mollakara Altın Madeni Projesi'nde gerçekleştirilen ilk üretim sonucunda 7.474 ons altın elde edilmiştir [c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85].\",\n  \"points\": [\n    {\n      \"text\": \"Mollakara Altın Madeni Projesi'nde gerçekleştirilen ilk üretim sonucunda 7.474 ons altın elde edilmiştir.\",\n      \"cite_ids\": [\n        \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 5456,
+    "tokens_out": 355,
+    "latency_ms": 1858.283,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "d18040bb8b51aad0ede7cc8e029a66bcaf00f811de22f0911548b023ddbc8c45",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Türk Altın Mollakara Altın Madeni Projesi'nde gerçekleştirilen ilk üretim sonucunda 7.474 ons altın elde edilmiştir [1].\",\n  \"points\": [\n    {\n      \"text\": \"Mollakara Altın Madeni Projesi'nde gerçekleştirilen ilk üretim sonucunda 7.474 ons altın elde edilmiştir.\",\n      \"cite_ids\": [\n        \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash",
+    "model": "gemini-3.5-flash",
+    "tokens_in": 5367,
+    "tokens_out": 293,
+    "latency_ms": 5925.757,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"Mollakara ilk döküm altın ons\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\">Şirketimizin Ağrı İli, Diyadin İlçesi'nde bulunan Mollakara Altın Madeni Projesi'nde ilk altın dökümü başarıyla gerçekleştirilmiştir. Proje kapsamında gerçekleştirilen ilk üretim sonucunda 7.474 ons altın elde edilmiştir. Projede, 2026 yılı sonu itibarıyla yaklaşık 32.000 ONS altın üretimi gerçekleştirilmesi hedeflenmektedir. Mollakara Altın Madeni Projesi'nin görünür ve muhtemel altın rezervi 471.000 ONS seviyesinde olup, bugünkü ons fiyatı ile (ONS : 4.000 USD) hesaplandığında yaklaşık 1.884.000.000 USD hasılat oluşturması beklenmektedir. Emeğin, alın terinin ve büyük bir vizyonun eseri olan tesisimiz; ülkemiz ve bölgemiz için değer üretecek, ekonomimize önemli katkılar sunacaktır. Kamuoyunun bilgisine saygıyla sunarız. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:d53f0edf5bfa08272c69128cf8061f86041d918159a9b5dfe736dd2bcd081f57\">Şirketimizin Ağrı İli, Diyadin İlçesi'nde bulunan Mollakara Altın Madeni Projesi'nde ilk altın dökümü başarıyla gerçekleştirilmiştir. Proje kapsamında gerçekleştirilen ilk üretim sonucunda 7.474,2 gram altın elde edilmiştir. Projede, 2026 yılı sonu itibarıyla yaklaşık 32.000 ONS altın üretimi gerçekleştirilmesi hedeflenmektedir. Mollakara Altın Madeni Projesi'nin görünür ve muhtemel altın rezervi 471.000 ONS seviyesinde olup, bugünkü ons fiyatı ile (ONS : 4.000 USD) hesaplandığında yaklaşık 1.884.000.000 USD hasılat oluşturması beklenmektedir. Emeğin, alın terinin ve büyük bir vizyonun eseri olan tesisimiz; ülkemiz ve bölgemiz için değer üretecek, ekonomimize önemli katkılar sunacaktır. Kamuoyunun bilgisine saygıyla sunarız. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:3b1432f8383b4a8f28fe3b1d2b6553241a8ca6e092eab540be776cb2e3cbb100\">Şirketimiz Türkiye Varlık Fonu bünyesine katıldı. Mollakara Altın Madeni faaliyetlerine başladı. KİLOMETRE TAŞLARI 14 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 Türk Altın İşletmeleri 2005 2006 2007 2009 2011 2008 2010 Ülkenin yeraltı kaynaklarını ekonomiye kazandırmayı hedeﬂeyen Şirketimizin temelleri atıldı. Ovacık Altın Madeni, Şirketimiz tarafından satın alındıktan sonra Türkiye'nin ilk yüzde yüz yerli sermayeli Altın Madeni olarak işletilmeye başlandı. Eskişehir Kaymaz Altın Madeni projesi şirket bünyesine katıldı. Havran Altın Madeni açık ocak üretimine başladı. Ovacık açık ocak üretimi tamamlandı. Mastra’da ilk altın dökümü gerçekleşmiştir . Çukuralan Altın Madeni yeraltı üretimine başladı. Havran Altın Madeni rehabilite edildi. Toplamda 500.000 ons altın döküldü. Çukuralan Altın Madeni açık ocak üretimine başladı. Havran Altın Madeni cevher üretimi tamamlandı. Toplamda 1.000.000 ons altın döküldü. Kilometre Taşları Türk Altın İşletmeleri Türk Altın İşletmeleri 2013 2014 2017 2015 2021 2025 2019 2024 2026 Toplamda 2.000.000 ons altın döküldü. Çoraklıktepe rehabilitasyon çalışmaları tamamlandı. Karapınar Projesi girişimi şirket bünyesine katıldı. Toplamda 4.000.000 ons altın döküldü. Şirketimiz “Türk Altın” ismiyle kimlik yeniledi. Himmetdede İşletmesi üretime başladı. Çukuralan açık ocak üretimi tamamlandı ve rehabilitasyon çalışmaları başladı. Türkiye’nin ilk maden atığı depolama tesisi rehabilitasyonu yapıldı. (Ovacık 1. MADT) Himmetdede İşletmesi açık ocak faaliyetleri tamamlandı. Şirketimiz Türkiye Varlık Fonu bünyesine katıldı. Mollakara Altın Madeni faaliyetlerine başladı. KİLOMETRE TAŞLARI 15 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 YILLARA GÖRE AL TIN ÜRETİMİ Türk Altın İşletmeleri A.Ş. 2005 yılından bu yana üretim artış seviyelerinde kapsamlı bir trend sergilemiş bulunmaktadır . Şirketin madenleri araştırma ve geliştirme projeleri, sürdürülebilir büyüme için önemli bir potansiyel teşkil etmektedir . 2005 yılında, iktisap sonrası Ovacık madeninde yeniden üretime başlanmıştır . 2006 yılında Küçükdere, 2008 yılında Mastra, 2009 yılında Gıcık, 2010 yılında Çukuralan madenleri geliştirilerek cevher üretimi gerçekleştirilmeye başlanmıştır . 2011 yılı Mart ayında Kaymaz açık ocak işletmesinde üretim faaliyetlerine başlanmıştır .</untrusted_document>\n<untrusted_document cite_id=\"c:693a451779e69b64fede456e5757918d00636544c4b11c9a74c3c792ef900e22\">MOLLAKARA İŞLETMESİ • Doğu Anadolu Bölgesi’nde, Ağrı il merkezinin yaklaşık 55 km kuzeydoğusunda, Diyadin ilçesi Mollakara köyünün bitişiğinde yer almaktadır . • 2005–2008 yılları arasında Newmont mülkiyetinde bulunan proje, 2008 yılında Türk Altın tarafından devralınmıştır . • Cevher Y apısı: Mineralizasyon hem yapısal hem de litolojik kontrollü olup oksitli ve sülfitli zon olmak üzere iki bölümden oluşmaktadır . • Fizibilite ve Testler: * Fizibilite çalışmaları ile SGS tarafından yürütülen çalışmalar ve 2 etaplı kaya mekaniği çalışmaları (2. etap 2022 son çeyreği) tamamlanmıştır . * Oksitli zonun metalurjik testleri bitirilmiş; sülfitli cevherin metalurjik çalışmaları ise Türk Altın İşletmeleri Laboratuvarları ve ALS Avustralya tarafından tamamlanmıştır . * Temel ve detay mühendislik süreçleri başarıyla sonuçlandırılmıştır . • Üretim Y öntemi: Oksitli zondaki altını çıkarmak için yığın liçi (heap leach) yöntemi kullanılacaktır . Tesis, Mollakara ve civarındaki yataklar için merkezi proses tesisi olarak projelendirilmiştir . • ÇED Onayı: Proje ÇED süreci nihayete erdirilerek 29 Eylül 2023 tarihinde “ÇED Olumlu” kararı alınmıştır . • Ruhsat ve İzinler: Üretime yönelik 1. Sınıf İşyeri Açma ve Çalışma Ruhsatı 2025 yılında düzenlenmiş ve mülkiyet izin süreçleri tamamlanmıştır . • Kaynak: 536.000 ons (16.671 kg) altındır . • Rezerv: 471.320 ons (14.660 kg) altındır . TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 42 • Mollakara projesinde; * 470 Ha toplam ÇED alanı, * 958 ton/saat kapasiteli kırma eleme tesisi, * 11.1 milyon m³ kapasiteli yığın liç alanı, * 1100 m³/saat solüsyon basma kapasiteli, çift CIC hattına sahip ADR ünitesi, * 10 MVA Kurulu güç kapasitesi, * Açık ocak, pasa ve bitkisel depolama üniteleri bulunmaktadır . MOLLAKARA AÇIK OCAK 2025 1Y Miktar Fark %Fark2026 1Y Çıkarılan Cevher (ton) 0 508.774 100%508.774 Mollakara Açık Ocak maden üretim verileri aşağıdaki tabloda belirtilmiştir; • 16 Temmuz 2026 tarihinde ilk altın dökümü gerçekleştirilerek Mollakara İşletmesi resmen devreye alınmıştır . • Büyüme Potansiyeli:</untrusted_document>\n<untrusted_document cite_id=\"c:098910f10b977dd4b177392d75e115e70d3be302828d60c5c2c42c039b2bc1b8\">Mollakara projesi için fizibilite çalışmaları tamamlanmıştır. SGS tarafından yapılan çalışmalar ve kaya mekaniği çalışmalarının ilk etabı tamamlanmıştır. Kaya mekaniği çalışmalarının ikinci etabı 2022 yılı son çeyre- ğinde tamamlanmıştır. Proje ile ilgili olarak oksitli zonun metalurjik çalışmaları tamamlanmış olup, sülfitli cevherin metalurjik çalışmaları hem Koza Altın işletmeleri Laboratuvarlarında hem de ALS Avustralya tarafından tamamlan- mıştır. Bunlara eş zamanlı olarak projede temel ve detay mühendislik çalışmaları tamamlanmıştır. Buna göre proje- deki görünür ve muhtemel rezerv miktarı 438.000 ons Altın ’dır. Proje için yürütülen ÇED süreci nihai edilmiş olup, 29.09.2023 tarihi itibari ile ÇED olumlu kararı alınmıştır. Sahada kazı-dolgu, mobilizasyon ve tesis kurulum çalışmaları devam etmektedir. FİZİBİLİTE PROJELERİ MOLLAKARA PROJESİ 38 KOZA ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 EYLÜL 2024 Karapınar Projesi Batı Anadolu ’da Çanakkale’nin 18 km güneydoğusunda, Çanakkale ’den Çan yolu istikametinde 21. Km de bulunan Terziler köyü üzerinden ulaşılmaktadır. Koza Karapınar ruhsatını 2007 yılında ihaleden almıştır. Proje alanı daha önceki yıllarda yabancı arama şirketleri tarafından çalışılmıştır. Karapınar projesi jeoloji, alterasyon ve mineralizasyon tipi, doku ve mineral birlikteliğine bağlı olarak epitermal düşük sülfidasyon tip Au -Ag cevherleşmesi olarak tanımlanmıştır. Bu cevherleşme kuvars damar ve breşi, silisleşme ve stokvörk kuvarslara bağlı olarak gelişmiştir. Mineralizasyon metamorfikler içerisinde K20° -25°D doğrultusu boyunca yaklaşık 4.5 km uzanmaktadır. Ana zonun ortasında D -B uzanımlı 500 metre uzunluğunda başka bir kuvars damar ve breşi yer almakatadır. Başka bir mineralizasyon ise K30° -35°D doğrultulu olarak, meta- morfik-ultramafik kontağında yaklaşık 3km boyunca takip edilmektedir. Rapora konu olan kaynağın ortaya kon- duğu cevherleşme ana mineralizasyonun kuzey ucunda volkanik -metamorfik dokanağında kuvars damar/damar breşi ve stokvörk damarlar şeklindedir. Bu cevherleşme kuvars damar ve breşi, bantlı dokuda kuvars ve kalsedonik kuvarslarla temsil edilmektedir. Jeokimyasal değerlendirmelerde arsenik, antimuan, altın ve gümüş anomalileri ile dikkat çekmektedir ve epitermal sistemin üst kotlarını temsil ettiği düşünülmektedir. Cevherleşmenin sınırı halen tam olarak belirlenmemiştir. Bütün yönlerde büyümeye açıktır.</untrusted_document>\n<untrusted_document cite_id=\"c:afcd7a38e866cc1bc96ce440b8d5e0a85b44db6065cd720049af017c1f1a7822\">Mollakara projesi için fizibilite çalışmaları tamamlanmıştır. SGS tarafından yapılan çalışmalar ve kaya mekaniği çalışmalarının ilk etabı tamamlanmıştır. Kaya mekaniği çalışmalarının ikinci etabı 2022 yılı son çeyre- ğinde tamamlanmıştır. Proje ile ilgili olarak oksitli zonun metalurjik çalışmaları tamamlanmış olup, sülfitli cevherin metalurjik çalışmaları hem Koza Altın işletmeleri Laboratuvarlarında hem de ALS Avustralya tarafından tamamlan- mıştır. Bunlara eş zamanlı olarak projede temel ve detay mühendislik çalışmaları tamamlanmıştır. Buna göre proje- deki görünür ve muhtemel rezerv miktarı 438.000 ons Altın’dır. Proje için yürütülen ÇED süreci nihai edilmiş olup, 29 Eylül 2023 tarihi itibari ile ÇED olumlu kararı alınmıştır. Sahada kazı -dolgu, mobilizasyon ve tesis kurulum çalışmaları devam etmektedir. FİZİBİLİTE PROJELERİ MOLLAKARA PROJESİ 37 KOZA ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-31 ARALIK 2024 Karapınar Projesi Batı Anadolu ’da Çanakkale’nin 18 km güneydoğusunda, Çanakkale ’den Çan yolu istikametinde 21. Km de bulunan Terziler köyü üzerinden ulaşılmaktadır. Koza Karapınar ruhsatını 2007 yılında ihaleden almıştır. Proje alanı daha önceki yıllarda yabancı arama şirketleri tarafından çalışılmıştır. Karapınar projesi jeoloji, alterasyon ve mineralizasyon tipi, doku ve mineral birlikteliğine bağlı olarak epitermal düşük sülfidasyon tip Au -Ag cevherleşmesi olarak tanımlanmıştır. Bu cevherleşme kuvars damar ve breşi, silisleşme ve stokvörk kuvarslara bağlı olarak gelişmiştir. Mineralizasyon metamorfikler içerisinde K20° -25°D doğrultusu boyunca yaklaşık 4.5 km uzanmaktadır. Ana zonun ortasında D -B uzanımlı 500 metre uzunluğunda başka bir kuvars damar ve breşi yer almakatadır. Başka bir mineralizasyon ise K30° -35°D doğrultulu olarak, meta- morfik-ultramafik kontağında yaklaşık 3km boyunca takip edilmektedir. Rapora konu olan kaynağın ortaya kon- duğu cevherleşme ana mineralizasyonun kuzey ucunda volkanik -metamorfik dokanağında kuvars damar/damar breşi ve stokvörk damarlar şeklindedir. Bu cevherleşme kuvars damar ve breşi, bantlı dokuda kuvars ve kalsedonik kuvarslarla temsil edilmektedir. Jeokimyasal değerlendirmelerde arsenik, antimuan, altın ve gümüş anomalileri ile dikkat çekmektedir ve epitermal sistemin üst kotlarını temsil ettiği düşünülmektedir. Cevherleşmenin sınırı halen tam olarak belirlenmemiştir. Bütün yönlerde büyümeye açıktır.</untrusted_document>",
+   "summary": "Mollakara ilk döküm altın ons",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85",
+     "text": "Şirketimizin Ağrı İli, Diyadin İlçesi'nde bulunan Mollakara Altın Madeni Projesi'nde ilk altın dökümü başarıyla gerçekleştirilmiştir. Proje kapsamında gerçekleştirilen ilk üretim sonucunda 7.474 ons altın elde edilmiştir. Projede, 2026 yılı sonu itibarıyla yaklaşık 32.000 ONS altın üretimi gerçekleştirilmesi hedeflenmektedir. Mollakara Altın Madeni Projesi'nin görünür ve muhtemel altın rezervi 471.000 ONS seviyesinde olup, bugünkü ons fiyatı ile (ONS : 4.000 USD) hesaplandığında yaklaşık 1.884.000.000 USD hasılat oluşturması beklenmektedir. Emeğin, alın terinin ve büyük bir vizyonun eseri olan tesisimiz; ülkemiz ve bölgemiz için değer üretecek, ekonomimize önemli katkılar sunacaktır. Kamuoyunun bilgisine saygıyla sunarız. Saygılarımızla,",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2109,
+      "ticker": "TRALT",
+      "doc_type": "kap_material_event",
+      "period": "2026-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1634199"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:d53f0edf5bfa08272c69128cf8061f86041d918159a9b5dfe736dd2bcd081f57",
+     "text": "Şirketimizin Ağrı İli, Diyadin İlçesi'nde bulunan Mollakara Altın Madeni Projesi'nde ilk altın dökümü başarıyla gerçekleştirilmiştir. Proje kapsamında gerçekleştirilen ilk üretim sonucunda 7.474,2 gram altın elde edilmiştir. Projede, 2026 yılı sonu itibarıyla yaklaşık 32.000 ONS altın üretimi gerçekleştirilmesi hedeflenmektedir. Mollakara Altın Madeni Projesi'nin görünür ve muhtemel altın rezervi 471.000 ONS seviyesinde olup, bugünkü ons fiyatı ile (ONS : 4.000 USD) hesaplandığında yaklaşık 1.884.000.000 USD hasılat oluşturması beklenmektedir. Emeğin, alın terinin ve büyük bir vizyonun eseri olan tesisimiz; ülkemiz ve bölgemiz için değer üretecek, ekonomimize önemli katkılar sunacaktır. Kamuoyunun bilgisine saygıyla sunarız. Saygılarımızla,",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2110,
+      "ticker": "TRALT",
+      "doc_type": "kap_material_event",
+      "period": "2026-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1634256"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:3b1432f8383b4a8f28fe3b1d2b6553241a8ca6e092eab540be776cb2e3cbb100",
+     "text": "Şirketimiz Türkiye Varlık Fonu bünyesine katıldı. Mollakara Altın Madeni faaliyetlerine başladı. KİLOMETRE TAŞLARI 14 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 Türk Altın İşletmeleri 2005 2006 2007 2009 2011 2008 2010 Ülkenin yeraltı kaynaklarını ekonomiye kazandırmayı hedeﬂeyen Şirketimizin temelleri atıldı. Ovacık Altın Madeni, Şirketimiz tarafından satın alındıktan sonra Türkiye'nin ilk yüzde yüz yerli sermayeli Altın Madeni olarak işletilmeye başlandı. Eskişehir Kaymaz Altın Madeni projesi şirket bünyesine katıldı. Havran Altın Madeni açık ocak üretimine başladı. Ovacık açık ocak üretimi tamamlandı. Mastra’da ilk altın dökümü gerçekleşmiştir . Çukuralan Altın Madeni yeraltı üretimine başladı. Havran Altın Madeni rehabilite edildi. Toplamda 500.000 ons altın döküldü. Çukuralan Altın Madeni açık ocak üretimine başladı. Havran Altın Madeni cevher üretimi tamamlandı. Toplamda 1.000.000 ons altın döküldü. Kilometre Taşları Türk Altın İşletmeleri Türk Altın İşletmeleri 2013 2014 2017 2015 2021 2025 2019 2024 2026 Toplamda 2.000.000 ons altın döküldü. Çoraklıktepe rehabilitasyon çalışmaları tamamlandı. Karapınar Projesi girişimi şirket bünyesine katıldı. Toplamda 4.000.000 ons altın döküldü. Şirketimiz “Türk Altın” ismiyle kimlik yeniledi. Himmetdede İşletmesi üretime başladı. Çukuralan açık ocak üretimi tamamlandı ve rehabilitasyon çalışmaları başladı. Türkiye’nin ilk maden atığı depolama tesisi rehabilitasyonu yapıldı. (Ovacık 1. MADT) Himmetdede İşletmesi açık ocak faaliyetleri tamamlandı. Şirketimiz Türkiye Varlık Fonu bünyesine katıldı. Mollakara Altın Madeni faaliyetlerine başladı. KİLOMETRE TAŞLARI 15 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 YILLARA GÖRE AL TIN ÜRETİMİ Türk Altın İşletmeleri A.Ş. 2005 yılından bu yana üretim artış seviyelerinde kapsamlı bir trend sergilemiş bulunmaktadır . Şirketin madenleri araştırma ve geliştirme projeleri, sürdürülebilir büyüme için önemli bir potansiyel teşkil etmektedir . 2005 yılında, iktisap sonrası Ovacık madeninde yeniden üretime başlanmıştır . 2006 yılında Küçükdere, 2008 yılında Mastra, 2009 yılında Gıcık, 2010 yılında Çukuralan madenleri geliştirilerek cevher üretimi gerçekleştirilmeye başlanmıştır . 2011 yılı Mart ayında Kaymaz açık ocak işletmesinde üretim faaliyetlerine başlanmıştır .",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2118,
+      "ticker": "TRALT",
+      "doc_type": "kap_annual_report",
+      "period": "2026-Q2",
+      "section": "body",
+      "page": 17,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1647395"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:693a451779e69b64fede456e5757918d00636544c4b11c9a74c3c792ef900e22",
+     "text": "MOLLAKARA İŞLETMESİ • Doğu Anadolu Bölgesi’nde, Ağrı il merkezinin yaklaşık 55 km kuzeydoğusunda, Diyadin ilçesi Mollakara köyünün bitişiğinde yer almaktadır . • 2005–2008 yılları arasında Newmont mülkiyetinde bulunan proje, 2008 yılında Türk Altın tarafından devralınmıştır . • Cevher Y apısı: Mineralizasyon hem yapısal hem de litolojik kontrollü olup oksitli ve sülfitli zon olmak üzere iki bölümden oluşmaktadır . • Fizibilite ve Testler: * Fizibilite çalışmaları ile SGS tarafından yürütülen çalışmalar ve 2 etaplı kaya mekaniği çalışmaları (2. etap 2022 son çeyreği) tamamlanmıştır . * Oksitli zonun metalurjik testleri bitirilmiş; sülfitli cevherin metalurjik çalışmaları ise Türk Altın İşletmeleri Laboratuvarları ve ALS Avustralya tarafından tamamlanmıştır . * Temel ve detay mühendislik süreçleri başarıyla sonuçlandırılmıştır . • Üretim Y öntemi: Oksitli zondaki altını çıkarmak için yığın liçi (heap leach) yöntemi kullanılacaktır . Tesis, Mollakara ve civarındaki yataklar için merkezi proses tesisi olarak projelendirilmiştir . • ÇED Onayı: Proje ÇED süreci nihayete erdirilerek 29 Eylül 2023 tarihinde “ÇED Olumlu” kararı alınmıştır . • Ruhsat ve İzinler: Üretime yönelik 1. Sınıf İşyeri Açma ve Çalışma Ruhsatı 2025 yılında düzenlenmiş ve mülkiyet izin süreçleri tamamlanmıştır . • Kaynak: 536.000 ons (16.671 kg) altındır . • Rezerv: 471.320 ons (14.660 kg) altındır . TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 42 • Mollakara projesinde; * 470 Ha toplam ÇED alanı, * 958 ton/saat kapasiteli kırma eleme tesisi, * 11.1 milyon m³ kapasiteli yığın liç alanı, * 1100 m³/saat solüsyon basma kapasiteli, çift CIC hattına sahip ADR ünitesi, * 10 MVA Kurulu güç kapasitesi, * Açık ocak, pasa ve bitkisel depolama üniteleri bulunmaktadır . MOLLAKARA AÇIK OCAK 2025 1Y Miktar Fark %Fark2026 1Y Çıkarılan Cevher (ton) 0 508.774 100%508.774 Mollakara Açık Ocak maden üretim verileri aşağıdaki tabloda belirtilmiştir; • 16 Temmuz 2026 tarihinde ilk altın dökümü gerçekleştirilerek Mollakara İşletmesi resmen devreye alınmıştır . • Büyüme Potansiyeli:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2118,
+      "ticker": "TRALT",
+      "doc_type": "kap_annual_report",
+      "period": "2026-Q2",
+      "section": "body",
+      "page": 45,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1647395"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:098910f10b977dd4b177392d75e115e70d3be302828d60c5c2c42c039b2bc1b8",
+     "text": "Mollakara projesi için fizibilite çalışmaları tamamlanmıştır. SGS tarafından yapılan çalışmalar ve kaya mekaniği çalışmalarının ilk etabı tamamlanmıştır. Kaya mekaniği çalışmalarının ikinci etabı 2022 yılı son çeyre- ğinde tamamlanmıştır. Proje ile ilgili olarak oksitli zonun metalurjik çalışmaları tamamlanmış olup, sülfitli cevherin metalurjik çalışmaları hem Koza Altın işletmeleri Laboratuvarlarında hem de ALS Avustralya tarafından tamamlan- mıştır. Bunlara eş zamanlı olarak projede temel ve detay mühendislik çalışmaları tamamlanmıştır. Buna göre proje- deki görünür ve muhtemel rezerv miktarı 438.000 ons Altın ’dır. Proje için yürütülen ÇED süreci nihai edilmiş olup, 29.09.2023 tarihi itibari ile ÇED olumlu kararı alınmıştır. Sahada kazı-dolgu, mobilizasyon ve tesis kurulum çalışmaları devam etmektedir. FİZİBİLİTE PROJELERİ MOLLAKARA PROJESİ 38 KOZA ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 EYLÜL 2024 Karapınar Projesi Batı Anadolu ’da Çanakkale’nin 18 km güneydoğusunda, Çanakkale ’den Çan yolu istikametinde 21. Km de bulunan Terziler köyü üzerinden ulaşılmaktadır. Koza Karapınar ruhsatını 2007 yılında ihaleden almıştır. Proje alanı daha önceki yıllarda yabancı arama şirketleri tarafından çalışılmıştır. Karapınar projesi jeoloji, alterasyon ve mineralizasyon tipi, doku ve mineral birlikteliğine bağlı olarak epitermal düşük sülfidasyon tip Au -Ag cevherleşmesi olarak tanımlanmıştır. Bu cevherleşme kuvars damar ve breşi, silisleşme ve stokvörk kuvarslara bağlı olarak gelişmiştir. Mineralizasyon metamorfikler içerisinde K20° -25°D doğrultusu boyunca yaklaşık 4.5 km uzanmaktadır. Ana zonun ortasında D -B uzanımlı 500 metre uzunluğunda başka bir kuvars damar ve breşi yer almakatadır. Başka bir mineralizasyon ise K30° -35°D doğrultulu olarak, meta- morfik-ultramafik kontağında yaklaşık 3km boyunca takip edilmektedir. Rapora konu olan kaynağın ortaya kon- duğu cevherleşme ana mineralizasyonun kuzey ucunda volkanik -metamorfik dokanağında kuvars damar/damar breşi ve stokvörk damarlar şeklindedir. Bu cevherleşme kuvars damar ve breşi, bantlı dokuda kuvars ve kalsedonik kuvarslarla temsil edilmektedir. Jeokimyasal değerlendirmelerde arsenik, antimuan, altın ve gümüş anomalileri ile dikkat çekmektedir ve epitermal sistemin üst kotlarını temsil ettiği düşünülmektedir. Cevherleşmenin sınırı halen tam olarak belirlenmemiştir. Bütün yönlerde büyümeye açıktır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2019,
+      "ticker": "TRALT",
+      "doc_type": "kap_annual_report",
+      "period": "2024-Q3",
+      "section": "body",
+      "page": 37,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1359674"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:afcd7a38e866cc1bc96ce440b8d5e0a85b44db6065cd720049af017c1f1a7822",
+     "text": "Mollakara projesi için fizibilite çalışmaları tamamlanmıştır. SGS tarafından yapılan çalışmalar ve kaya mekaniği çalışmalarının ilk etabı tamamlanmıştır. Kaya mekaniği çalışmalarının ikinci etabı 2022 yılı son çeyre- ğinde tamamlanmıştır. Proje ile ilgili olarak oksitli zonun metalurjik çalışmaları tamamlanmış olup, sülfitli cevherin metalurjik çalışmaları hem Koza Altın işletmeleri Laboratuvarlarında hem de ALS Avustralya tarafından tamamlan- mıştır. Bunlara eş zamanlı olarak projede temel ve detay mühendislik çalışmaları tamamlanmıştır. Buna göre proje- deki görünür ve muhtemel rezerv miktarı 438.000 ons Altın’dır. Proje için yürütülen ÇED süreci nihai edilmiş olup, 29 Eylül 2023 tarihi itibari ile ÇED olumlu kararı alınmıştır. Sahada kazı -dolgu, mobilizasyon ve tesis kurulum çalışmaları devam etmektedir. FİZİBİLİTE PROJELERİ MOLLAKARA PROJESİ 37 KOZA ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-31 ARALIK 2024 Karapınar Projesi Batı Anadolu ’da Çanakkale’nin 18 km güneydoğusunda, Çanakkale ’den Çan yolu istikametinde 21. Km de bulunan Terziler köyü üzerinden ulaşılmaktadır. Koza Karapınar ruhsatını 2007 yılında ihaleden almıştır. Proje alanı daha önceki yıllarda yabancı arama şirketleri tarafından çalışılmıştır. Karapınar projesi jeoloji, alterasyon ve mineralizasyon tipi, doku ve mineral birlikteliğine bağlı olarak epitermal düşük sülfidasyon tip Au -Ag cevherleşmesi olarak tanımlanmıştır. Bu cevherleşme kuvars damar ve breşi, silisleşme ve stokvörk kuvarslara bağlı olarak gelişmiştir. Mineralizasyon metamorfikler içerisinde K20° -25°D doğrultusu boyunca yaklaşık 4.5 km uzanmaktadır. Ana zonun ortasında D -B uzanımlı 500 metre uzunluğunda başka bir kuvars damar ve breşi yer almakatadır. Başka bir mineralizasyon ise K30° -35°D doğrultulu olarak, meta- morfik-ultramafik kontağında yaklaşık 3km boyunca takip edilmektedir. Rapora konu olan kaynağın ortaya kon- duğu cevherleşme ana mineralizasyonun kuzey ucunda volkanik -metamorfik dokanağında kuvars damar/damar breşi ve stokvörk damarlar şeklindedir. Bu cevherleşme kuvars damar ve breşi, bantlı dokuda kuvars ve kalsedonik kuvarslarla temsil edilmektedir. Jeokimyasal değerlendirmelerde arsenik, antimuan, altın ve gümüş anomalileri ile dikkat çekmektedir ve epitermal sistemin üst kotlarını temsil ettiği düşünülmektedir. Cevherleşmenin sınırı halen tam olarak belirlenmemiştir. Bütün yönlerde büyümeye açıktır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2032,
+      "ticker": "TRALT",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 36,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1407074"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  }
+ ]
+}

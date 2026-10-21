@@ -1,0 +1,136 @@
+{
+ "case_id": "tr-akbnk-npl-portfoy",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "68f90f2441987403689b9673b1a2bbc49e7b5ccdd8a91f6507a93b67fa947c95",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_772838",
+      "name": "search_documents",
+      "arguments": {
+       "query": "tahsili gecikmiş alacak anapara 2026 üçüncü çeyrek",
+       "ticker": "AKBNK.IS"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TXBU30CE14U5BSyjiHDjN3d23Wvgh2TxCBmw6A8qoZNnZDpi+RpUuhp3OOdnTqr3SqP8InynIJpDJZBeOaaYcKO6Alq4gQ9DQ+D9E4MvKyCykmxTdNlK9cm4="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1635,
+    "tokens_out": 45,
+    "latency_ms": 2078.355,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "fa011ca4073b8513522328a52dd22f74c7ea32e00ece4b49386696df9b7544d2",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1209696",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "AKBNK.IS",
+       "query": "tahsili gecikmiş alacak satışı"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TONz/CyTy5Lu+1LVaraELMVrljC9nRY5wC2UyqpYvIc4ro+xqXcKfGiu4RExB63DkNfXxqHzImn0axCh37mCZcLN+qWsgEyXpGgDCCXKVtSbpAB0zsskt+tQ="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1696,
+    "tokens_out": 35,
+    "latency_ms": 837.931,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "f8f7447ea67422b2af4dffa4d2a567ddcd24d60e8ad5effa8f834b59c0b0dc05",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_974809",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "AKBNK.IS"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TVQ2vJuNB1olqzHeSt+2ALIYh2KUqeDx3FP5XPwCtE1Szij7JvvzyA5/qC6obcsvfPbXsCk0IlHoIuwaINL5TCYBIQwz5xF9vdA/C/fyqw62h5J/ccNQW9iw="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1747,
+    "tokens_out": 20,
+    "latency_ms": 641.194,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "502bb49860429b6a3fcbe91fe399d6e1fbefe57fae673eb735d7cb95058fd2a1",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\":\"tr\",\"status\":\"no_evidence\",\"summary\":\"Akbank (AKBNK.IS) için sistemde herhangi bir belge veya veri bulunamadığından, 2026 üçüncü çeyrekteki tahsili gecikmiş alacak satışına ilişkin anapara büyüklüğü bilgisine ulaşılamamıştır. Ayrıca 2026 üçüncü çeyrek dönemi henüz yaşanmamış/raporlanmamıştır.\",\"points\":[],\"citations\":[],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "gemini-flash",
+    "model": "gemini-3.5-flash",
+    "tokens_in": 1325,
+    "tokens_out": 116,
+    "latency_ms": 2543.11,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"tahsili gecikmiş alacak anapara 2026 üçüncü çeyrek\",\"ticker\":\"AKBNK.IS\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "AKBNK.IS tahsili gecikmiş alacak anapara 2026 üçüncü çeyrek",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"tahsili gecikmiş alacak satışı\",\"ticker\":\"AKBNK.IS\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "AKBNK.IS tahsili gecikmiş alacak satışı",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"AKBNK.IS\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": []}",
+   "summary": "AKBNK.IS documents",
+   "count": 0,
+   "items": [],
+   "error": null
+  }
+ ]
+}

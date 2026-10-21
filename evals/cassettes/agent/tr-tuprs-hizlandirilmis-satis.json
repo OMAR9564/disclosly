@@ -1,0 +1,167 @@
+{
+ "case_id": "tr-tuprs-hizlandirilmis-satis",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "c01fa09b456e83df3039692e02181378eac18769f0cd510ceb496d4036ebf9f7",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_551638",
+      "name": "search_documents",
+      "arguments": {
+       "query": "hızlandırılmış talep toplama pay başına satış fiyatı",
+       "ticker": "TUPRS"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T5MtaI4XBfJvFYjqRzDtGbT49+X9JPzVVfj3pKZV/yWKCwuUUirWqRM3kHt3PkYxhhydZ/6cNSjGJe/+KdtjB/HnUFPwBxet4wrD2L/pu8uQCUMK0ImnnEhY="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1618,
+    "tokens_out": 36,
+    "latency_ms": 693.272,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "f26c001c355563efb7102bcbffa06ba72ed4d993be099e4c109565ff777c60bf",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Tüpraş payları ile ilgili gerçekleştirilen hızlandırılmış talep toplama işlemlerinde pay başına satış fiyatı 233 TL olmuştur [c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64].\",\n  \"points\": [\n    {\n      \"text\": \"Tüpraş payları ile ilgili gerçekleştirilen hızlandırılmış talep toplama işlemlerinde pay başına satış fiyatı 233 TL olmuştur.\",\n      \"cite_ids\": [\n        \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 5709,
+    "tokens_out": 348,
+    "latency_ms": 1377.166,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "1305aae0a1dab335668a0221f899d7dff058a207f07dbc2c191a48773e24e78d",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Tüpraş payları için gerçekleştirilen hızlandırılmış talep toplama yöntemindeki satış işleminde pay başına satış fiyatı 233 TL olarak gerçekleşmiştir [1].\",\n  \"points\": [\n    {\n      \"text\": \"Tüpraş payları için gerçekleştirilen hızlandırılmış talep toplama yöntemindeki satış işleminde pay başına satış fiyatı 233 TL olarak gerçekleşmiştir.\",\n      \"cite_ids\": [\n        \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash",
+    "model": "gemini-3.5-flash",
+    "tokens_in": 5613,
+    "tokens_out": 295,
+    "latency_ms": 3116.1,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"hızlandırılmış talep toplama pay başına satış fiyatı\",\"ticker\":\"TUPRS\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\">Türkiye Petrol Rafinerileri A.Ş. (\" Tüpraş \") payları ile ilgili olarak 1 TL nominal değerli paylar için satış fiyatı 233 TL olmak üzere toplam 40.000.000 TL nominal değerli A grubu payın hızlandırılmış talep toplama yöntemiyle gerçekleştirilen satış işleminin takası 31.03.2026 tarihinde tamamlanmıştır. Bu işlemle birlikte, Koç Holding A.Ş.'nin, Tüpraş sermayesindeki doğrudan pay oranı yaklaşık %4,3'e, Koç Holding A.Ş. ve bağlı ortaklığı Enerji Yatırımları A.Ş.'nin Tüpraş'taki toplam pay oranı ise yaklaşık %50,7'ye düşmüş olup, Tüpraş üzerindeki yönetim kontrolümüz devam etmektedir. Tüpraş'ın halka açıklık oranı ise yaklaşık %48,9'a yükselmiştir. İşlemin detaylarına ilişkin bilgiler aşağıdaki tabloda verilmektedir. Bu açıklamamızın İngilizce çevirisi eş anlı kamuya açıklanmış olup, açıklama metinlerinde herhangi bir farklılık olması durumunda Türkçe açıklama esas kabul edilecektir.</untrusted_document>\n<untrusted_document cite_id=\"c:201e9b3738d67ce8af2c17013bc4b4268bd46b36b28a601ee7f306a424f7a93f\">TOPLAM SATIŞLAR (milyon ton) 24,5 27,6 29,5 30,1 30,4 ✅ 2020 2021 2022 2023 2024 19,8 4,4 5,3 5,7 6,1 6,5 ✅ 21,7 23,5 23,8 23,8 ✅ 0,3 0,6 0,3 0,2 0,1 ✅ Miktar (milyon ton) Değer (milyar ABD doları) Miktar (milyon ton) Değer (milyar ABD doları) ÜRÜN DIŞ ALIMI 2,90,9 1,6 4,0 3,2 4,1 2,8 5,0 6,2 5,0 ULUSLARARASI SATIŞLAR4,4 5,3 6,3 6,6 5,7 Yurt İçi Satışlar Uluslararası Satışlar Transit Satışlar Toplam Satışlar SATIŞLARIN DAĞILIMI (%) Dağıtıcılar Jet Yakıtı Müşterileri LPG Şirketleri İhracat Bitüm THY OPET İGA Diğer Transit Satış DAĞITICILARA YAPILAN SATIŞLARIN DAĞILIMI (%) POAŞ Shell&Turcas Akpet OPET BP Diğer %1 %52 %21 %8 %5 %5 %4 %2 %2 %29 %25%24 %12 %1 %9 1,5 3,1 4,5 3,8 3,9 2024 20242020 20202021 20212022 20222023 2023 145 / Tüpraş 2024 Entegre Faaliyet Raporu GENEL KURUL TÜPRAŞ HAKKINDA TÜPRAŞ’TA SÜRDÜRÜLEBİLİRLİK İLE DEĞER TÜPRAŞ’TA FİNANSAL DEĞER TÜPRAŞ’TA ÇALIŞANLARA DEĞER TÜPRAŞ’TA ÜRETİME DEĞER TÜPRAŞ’TA GELECEĞE DEĞER TÜPRAŞ’TA PAYDAŞLAR VE TOPLUM İÇİN DEĞER TÜPRAŞ’TA ÇEVREYE DEĞER TÜPRAŞ’TA KURUMSAL YÖNETİM AÇIKLAMALARI FİNANSAL BİLGİLEREKLER TÜPRAŞ’TA YÖNETİŞİM İLE DEĞER</untrusted_document>\n<untrusted_document cite_id=\"c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906\">Türkiye Petrol Rafinerileri A.Ş. (\" Tüpraş \") payları ile ilgili olarak 1 TL nominal değerli paylar için satış fiyatı 384,50 TL olmak üzere Şirketimizin sahip olduğu toplam 11.000.000 TL nominal değerli payların ve Ş irketimizin dolaylı ana ortağı Temel Ticaret ve Yatırım A.Ş.'nin sahip olduğu toplam 5.019.979 TL nominal değerli payların satış işleminin takası 07.09.2026 tarihinde tamamlanmıştır. Bu işlemle birlikte, Temel Ticaret ve Yatırım A.Ş.'nin Tüpraş sermayesindeki doğrudan pay sahipliği oranı %0,0'a, Koç Holding A.Ş.'nin Tüpraş sermayesindeki doğrudan pay sahipliği oranı %3,7'ye, Koç Holding A.Ş. ve bağlı ortaklığı Enerji Yatırımları A.Ş.'nin Tüpraş'taki doğrudan pay sahipliği oranı toplamı ise %50,1'e düşmüş olup, Şirketimizin Tüpraş üzerindeki yönetim kontrolü devam etmektedir. İşlem öncesi ve sonrasında Koç Holding A.Ş.'nin Tüpraş'taki pay sahipliğinin detaylarına ilişkin bilgiler aşağıdaki tabloda verilmektedir. Bu açıklamamızın İngilizce çevirisi eş anlı kamuya açıklanmış olup, açıklama metinlerinde herhangi bir farklılık olması durumunda Türkçe açıklama esas kabul edilecektir.</untrusted_document>\n<untrusted_document cite_id=\"c:53e3b14354892403ae58eb537ba67c26218bca36adff41c14a2832bfb95f8a86\">diğer hissedarlara ise 1,00 TL nominal değerli hisse için %4.541,22 oranında ve 45,412 TL brüt, %4.087,10 oranında ve 40,871 TL net nakit temettü ödemesi yapılmıştır. Şirket, 26 Eylül 2023 tarihinde yapılan Olağanüstü Genel Kurul Toplantısında SPK (“TFRS”) mevzuatına göre oluşan geçmiş yıl kârlarından ve yasal kayıtlara göre oluşan olağanüstü yedeklerden karşılanmak üzere ikinci tertip yasal akçeler ayrıldıktan sonra kalan bakiyeden toplam nominal 14.500.000 bin TL’nin temettü olarak dağıtılmasına karar vermiştir. İlgili dağıtım yapılırken, tam mükellef kurumlar ile Türkiye’de bir işyeri veya daimî temsilci aracılığı ile kâr payı elde eden dar mükellef kurum ortaklara, 1,00 TL nominal değerli hisse için %752,54 oranında ve 7,525 TL brüt = net kâr payı; diğer hissedarlara ise 1,00 TL nominal değerli hisse için %752,54 oranında ve 7,525 TL brüt %677,29 oranında ve 6,773 TL net nakit temettü ödemesi yapılmıştır. 31 ARALIK 2024 TARİHİNDE SONA EREN YILA AİT KONSOLİDE FİNANSAL TABLOLARA AİT AÇIKLAYICI NOTLAR Türkiye Petrol Rafinerileri A.Ş. (Tutarlar aksi belirtilmedikçe, Türk Lirasının 31 Aralık 2024 tarihindeki satın alma gücü cinsinden bin Türk Lirası (“TL”) olarak ifade edilmiştir.) 21. Hasılat ve satışların maliyeti 1 Ocak- 31 Aralık 2024 1 Ocak- 31 Aralık 2023 Yurtiçi satışlar 672.850.612 828.545.502 Yurtdışı satışlar 146.741.647 177.818.791 Brüt satışlar 819.592.259 1.006.364.293 Eksi: Satış iskontoları (8.906.928) (13.866.220) Eksi: Satıştan iadeler (299.743) (1.295.080) Net satış gelirleri 810.385.588 991.202.993 Satışların maliyeti (742.355.284) (832.772.469) Brüt kâr 68.030.304 158.430.524 Satışların maliyeti: 1 Ocak- 31 Aralık 2024 1 Ocak- 31 Aralık 2023 Kullanılan hammadde ve sarf malzemeleri 665.981.163 786.359.165 Enerji giderleri 19.095.809 19.819.546 Personel giderleri 8.064.996 6.982.895 Amortisman giderleri (Not 11-12) 7.106.643 5.577.599 Diğer üretim giderleri 42.106.673 14.033.264 Satışların maliyeti 742.355.284 832.772.469 22.</untrusted_document>\n<untrusted_document cite_id=\"c:82d34abea9ad04da823491c4e8295a75f6e4b29ba439f6b436b1b01d274790e6\">Son tarife değişikliğinde, santral tarifesi sabit tutulurken, konut tarifesi %38 artışla 7.772 TL/kcsm, sanayi tarifesi ise %8,4 oranında artışla 15.000 TL/kcsm olmuş ve santrallere satılan gaz fiyatı ile eşitlenmiştir. ➢ Operasyonel Bilgil er (Rafinaj) 2025 yılı ilk altı aylık dönemde % 90,3 kapasite kullanımı gerçekleştirilmiştir. Aşağıdaki tabloda görüldüğü üzere, ilk altı aylık toplam 13,5 milyon ton ham petrol ve yarı mamul şarja verilmiş, 12,9 milyon ton satılabilir ürün üretilmiş tir. RUP ünitelerinin devrede oluşu ve dönüşüm ünitelerinin etkin kullanımı nın etkisiyle beyaz ürün verimi %82,2 seviyesinde gerçekleştirilmiştir. İşlenen Ham Petrol 2025 (6 Aylık) 2024 (6 Aylık) Fark Toplam Şarj (bin ton) 13.538 13.186 352,0 Beyaz Ürün Verimi 82,2 74,4 7,8 API 32,06 32,08 -0,02 Kapasite Kullanımı % 90,3 87,9 2,3 Üretim (1000 ton) 2025 (6 Aylık) 2024 (6 Aylık) Fark LPG 414 392 22 %5,5 Nafta 21 61 -40 %-66,1 Benzinler 2.887 2.793 94 %3,4 Jet Yakıtı/Gazyağı 2.365 2.050 315 %15,4 Motorin 4.774 4.028 746 %18,5 Fuel Oiller 601 1.769 -1.168 %-66,0 Bitümler 1.111 1.162 -51 %-4,4 Diğer 770 448 322 %71,8 Toplam 12.942 12.703 239 %1,9 2025 yılı ilk altı aylık dönemde, özellikle motorin ve bitüm talebinde yaşanan düşmenin etkisiyle yurt içi satışlar geçtiğimiz yılın aynı dönemine göre %2 oranında dü şüşle 10,5 milyon ton, uluslararası satışlar dahil toplam satışlar ise 14 milyon ton gerçekleşmiştir. 7 Satışlar (1000 ton) 2025 (6 Aylık) 2024 (6 Aylık) Fark LPG 357 340 17,5 5% Benzin 2.564 2.204 360 16% Jet Yakıtı 1.908 1.995 -87 -4% Motorin 4.382 5.002 -620 -12% Fuel Oil 134 184 -50 -27% Bitüm 555 632 -76 -12% Diğer 574 360 214 59% Yurtiçi Satış 10.475 10.717 -242 -2% LPG 16 18 -2 -13% Nafta - 68 -68 -100% Benzin 416 661 -245 -37% Jet 411 26 385 1.507% Motorin 981 609 372 61% Fuel Oil 718 2.102 -1.384 -66% Bitüm 598 492 106 21% Diğer 351 85 266 312% Uluslararası Satış 3.492 4.063 -570 -14% Genel Toplam 13.968 14.780 -812 -5% OPET</untrusted_document>\n<untrusted_document cite_id=\"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\">25.03.2026 tarihli özel durum açıklamamızı takiben gerçekleştirilen talep toplama işlemi sonucunda, yatırımcılardan gelen talebe istinaden, satışa konu pay adedi yeniden değerlendirilerek artırılmış ve Türkiye Petrol Rafinerileri A.Ş.'nin (\" Tüpraş \") çıkarılmış sermayesinin yaklaşık %2,1'ine tekabül eden toplam 40.000.000 TL nominal değerli A grubu payın (\" Paylar \") hızlandırılmış talep toplama ( accelerated bookbuilding ) yöntemiyle, yurt içinde ve yurt dışında yerleşik kurumsal yatırımcılara satışı (\" İşlem \"), pay başına 233 TL bedel üzerinden toplam 9.320.000.000 TL karşılığında gerçekleşmiştir. İşlem'in toptan alım satım işlemi olarak gerçekleştirilmesi amacıyla, ÜNLÜ Menkul Değerler A.Ş., 26.03.2026 tarihinde Borsa İstanbul A.Ş.'ye (\" BIST \") başvuruda bulunacaktır. BIST'in onay tarihine bağlı olarak, toptan satış işleminin 27.03.2026 tarihinde gerçekleştirilmesi ve 31.03.2026 tarihinde de takasının tamamlanması beklenmektedir. Paylar halihazırda BIST'te işlem görmeyen nitelikte olup, toptan alım satım işlem günü itibarıyla BIST'te işlem gören niteliğe dönüşümünün tamamlanması beklenmektedir. İşlem'in kapanışını takiben, Tüpraş'taki doğrudan pay sahipliğimiz yaklaşık %4,3 olacak ve Tüpraş'ın halka açıklık oranı %48,9‘a yükselecektir. Böylece, Koç Holding Tüpraş sermayesinin %50,7'sini, doğrudan sahip olduğu %4,3'lük pay ve bağlı ortaklığı Enerji Yatırımları A.Ş.'nin sahip olduğu %46,4'lük pay vasıtasıyla kontrol etmeye devam edecektir. Bu açıklamamızın İngilizce çevirisi eş anlı kamuya açıklanmış olup, açıklama metinlerinde herhangi bir farklılık olması durumunda Türkçe açıklama esas kabul edilecektir.</untrusted_document>",
+   "summary": "TUPRS hızlandırılmış talep toplama pay başına satış fiyatı",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95",
+     "text": "Türkiye Petrol Rafinerileri A.Ş. (\" Tüpraş \") payları ile ilgili olarak 1 TL nominal değerli paylar için satış fiyatı 233 TL olmak üzere toplam 40.000.000 TL nominal değerli A grubu payın hızlandırılmış talep toplama yöntemiyle gerçekleştirilen satış işleminin takası 31.03.2026 tarihinde tamamlanmıştır. Bu işlemle birlikte, Koç Holding A.Ş.'nin, Tüpraş sermayesindeki doğrudan pay oranı yaklaşık %4,3'e, Koç Holding A.Ş. ve bağlı ortaklığı Enerji Yatırımları A.Ş.'nin Tüpraş'taki toplam pay oranı ise yaklaşık %50,7'ye düşmüş olup, Tüpraş üzerindeki yönetim kontrolümüz devam etmektedir. Tüpraş'ın halka açıklık oranı ise yaklaşık %48,9'a yükselmiştir. İşlemin detaylarına ilişkin bilgiler aşağıdaki tabloda verilmektedir. Bu açıklamamızın İngilizce çevirisi eş anlı kamuya açıklanmış olup, açıklama metinlerinde herhangi bir farklılık olması durumunda Türkçe açıklama esas kabul edilecektir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 429,
+      "ticker": "TUPRS",
+      "doc_type": "kap_material_event",
+      "period": "2026-Q1",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1580840"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:201e9b3738d67ce8af2c17013bc4b4268bd46b36b28a601ee7f306a424f7a93f",
+     "text": "TOPLAM SATIŞLAR (milyon ton) 24,5 27,6 29,5 30,1 30,4 ✅ 2020 2021 2022 2023 2024 19,8 4,4 5,3 5,7 6,1 6,5 ✅ 21,7 23,5 23,8 23,8 ✅ 0,3 0,6 0,3 0,2 0,1 ✅ Miktar (milyon ton) Değer (milyar ABD doları) Miktar (milyon ton) Değer (milyar ABD doları) ÜRÜN DIŞ ALIMI 2,90,9 1,6 4,0 3,2 4,1 2,8 5,0 6,2 5,0 ULUSLARARASI SATIŞLAR4,4 5,3 6,3 6,6 5,7 Yurt İçi Satışlar Uluslararası Satışlar Transit Satışlar Toplam Satışlar SATIŞLARIN DAĞILIMI (%) Dağıtıcılar Jet Yakıtı Müşterileri LPG Şirketleri İhracat Bitüm THY OPET İGA Diğer Transit Satış DAĞITICILARA YAPILAN SATIŞLARIN DAĞILIMI (%) POAŞ Shell&Turcas Akpet OPET BP Diğer %1 %52 %21 %8 %5 %5 %4 %2 %2 %29 %25%24 %12 %1 %9 1,5 3,1 4,5 3,8 3,9 2024 20242020 20202021 20212022 20222023 2023 145 / Tüpraş 2024 Entegre Faaliyet Raporu GENEL KURUL TÜPRAŞ HAKKINDA TÜPRAŞ’TA SÜRDÜRÜLEBİLİRLİK İLE DEĞER TÜPRAŞ’TA FİNANSAL DEĞER TÜPRAŞ’TA ÇALIŞANLARA DEĞER TÜPRAŞ’TA ÜRETİME DEĞER TÜPRAŞ’TA GELECEĞE DEĞER TÜPRAŞ’TA PAYDAŞLAR VE TOPLUM İÇİN DEĞER TÜPRAŞ’TA ÇEVREYE DEĞER TÜPRAŞ’TA KURUMSAL YÖNETİM AÇIKLAMALARI FİNANSAL BİLGİLEREKLER TÜPRAŞ’TA YÖNETİŞİM İLE DEĞER",
+     "source": {
+      "kind": "chunk",
+      "document_id": 383,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 147,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1401146"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906",
+     "text": "Türkiye Petrol Rafinerileri A.Ş. (\" Tüpraş \") payları ile ilgili olarak 1 TL nominal değerli paylar için satış fiyatı 384,50 TL olmak üzere Şirketimizin sahip olduğu toplam 11.000.000 TL nominal değerli payların ve Ş irketimizin dolaylı ana ortağı Temel Ticaret ve Yatırım A.Ş.'nin sahip olduğu toplam 5.019.979 TL nominal değerli payların satış işleminin takası 07.09.2026 tarihinde tamamlanmıştır. Bu işlemle birlikte, Temel Ticaret ve Yatırım A.Ş.'nin Tüpraş sermayesindeki doğrudan pay sahipliği oranı %0,0'a, Koç Holding A.Ş.'nin Tüpraş sermayesindeki doğrudan pay sahipliği oranı %3,7'ye, Koç Holding A.Ş. ve bağlı ortaklığı Enerji Yatırımları A.Ş.'nin Tüpraş'taki doğrudan pay sahipliği oranı toplamı ise %50,1'e düşmüş olup, Şirketimizin Tüpraş üzerindeki yönetim kontrolü devam etmektedir. İşlem öncesi ve sonrasında Koç Holding A.Ş.'nin Tüpraş'taki pay sahipliğinin detaylarına ilişkin bilgiler aşağıdaki tabloda verilmektedir. Bu açıklamamızın İngilizce çevirisi eş anlı kamuya açıklanmış olup, açıklama metinlerinde herhangi bir farklılık olması durumunda Türkçe açıklama esas kabul edilecektir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 446,
+      "ticker": "TUPRS",
+      "doc_type": "kap_material_event",
+      "period": "2026-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1659787"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:53e3b14354892403ae58eb537ba67c26218bca36adff41c14a2832bfb95f8a86",
+     "text": "diğer hissedarlara ise 1,00 TL nominal değerli hisse için %4.541,22 oranında ve 45,412 TL brüt, %4.087,10 oranında ve 40,871 TL net nakit temettü ödemesi yapılmıştır. Şirket, 26 Eylül 2023 tarihinde yapılan Olağanüstü Genel Kurul Toplantısında SPK (“TFRS”) mevzuatına göre oluşan geçmiş yıl kârlarından ve yasal kayıtlara göre oluşan olağanüstü yedeklerden karşılanmak üzere ikinci tertip yasal akçeler ayrıldıktan sonra kalan bakiyeden toplam nominal 14.500.000 bin TL’nin temettü olarak dağıtılmasına karar vermiştir. İlgili dağıtım yapılırken, tam mükellef kurumlar ile Türkiye’de bir işyeri veya daimî temsilci aracılığı ile kâr payı elde eden dar mükellef kurum ortaklara, 1,00 TL nominal değerli hisse için %752,54 oranında ve 7,525 TL brüt = net kâr payı; diğer hissedarlara ise 1,00 TL nominal değerli hisse için %752,54 oranında ve 7,525 TL brüt %677,29 oranında ve 6,773 TL net nakit temettü ödemesi yapılmıştır. 31 ARALIK 2024 TARİHİNDE SONA EREN YILA AİT KONSOLİDE FİNANSAL TABLOLARA AİT AÇIKLAYICI NOTLAR Türkiye Petrol Rafinerileri A.Ş. (Tutarlar aksi belirtilmedikçe, Türk Lirasının 31 Aralık 2024 tarihindeki satın alma gücü cinsinden bin Türk Lirası (“TL”) olarak ifade edilmiştir.) 21. Hasılat ve satışların maliyeti 1 Ocak- 31 Aralık 2024 1 Ocak- 31 Aralık 2023 Yurtiçi satışlar 672.850.612 828.545.502 Yurtdışı satışlar 146.741.647 177.818.791 Brüt satışlar 819.592.259 1.006.364.293 Eksi: Satış iskontoları (8.906.928) (13.866.220) Eksi: Satıştan iadeler (299.743) (1.295.080) Net satış gelirleri 810.385.588 991.202.993 Satışların maliyeti (742.355.284) (832.772.469) Brüt kâr 68.030.304 158.430.524 Satışların maliyeti: 1 Ocak- 31 Aralık 2024 1 Ocak- 31 Aralık 2023 Kullanılan hammadde ve sarf malzemeleri 665.981.163 786.359.165 Enerji giderleri 19.095.809 19.819.546 Personel giderleri 8.064.996 6.982.895 Amortisman giderleri (Not 11-12) 7.106.643 5.577.599 Diğer üretim giderleri 42.106.673 14.033.264 Satışların maliyeti 742.355.284 832.772.469 22.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 383,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 339,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1401146"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:82d34abea9ad04da823491c4e8295a75f6e4b29ba439f6b436b1b01d274790e6",
+     "text": "Son tarife değişikliğinde, santral tarifesi sabit tutulurken, konut tarifesi %38 artışla 7.772 TL/kcsm, sanayi tarifesi ise %8,4 oranında artışla 15.000 TL/kcsm olmuş ve santrallere satılan gaz fiyatı ile eşitlenmiştir. ➢ Operasyonel Bilgil er (Rafinaj) 2025 yılı ilk altı aylık dönemde % 90,3 kapasite kullanımı gerçekleştirilmiştir. Aşağıdaki tabloda görüldüğü üzere, ilk altı aylık toplam 13,5 milyon ton ham petrol ve yarı mamul şarja verilmiş, 12,9 milyon ton satılabilir ürün üretilmiş tir. RUP ünitelerinin devrede oluşu ve dönüşüm ünitelerinin etkin kullanımı nın etkisiyle beyaz ürün verimi %82,2 seviyesinde gerçekleştirilmiştir. İşlenen Ham Petrol 2025 (6 Aylık) 2024 (6 Aylık) Fark Toplam Şarj (bin ton) 13.538 13.186 352,0 Beyaz Ürün Verimi 82,2 74,4 7,8 API 32,06 32,08 -0,02 Kapasite Kullanımı % 90,3 87,9 2,3 Üretim (1000 ton) 2025 (6 Aylık) 2024 (6 Aylık) Fark LPG 414 392 22 %5,5 Nafta 21 61 -40 %-66,1 Benzinler 2.887 2.793 94 %3,4 Jet Yakıtı/Gazyağı 2.365 2.050 315 %15,4 Motorin 4.774 4.028 746 %18,5 Fuel Oiller 601 1.769 -1.168 %-66,0 Bitümler 1.111 1.162 -51 %-4,4 Diğer 770 448 322 %71,8 Toplam 12.942 12.703 239 %1,9 2025 yılı ilk altı aylık dönemde, özellikle motorin ve bitüm talebinde yaşanan düşmenin etkisiyle yurt içi satışlar geçtiğimiz yılın aynı dönemine göre %2 oranında dü şüşle 10,5 milyon ton, uluslararası satışlar dahil toplam satışlar ise 14 milyon ton gerçekleşmiştir. 7 Satışlar (1000 ton) 2025 (6 Aylık) 2024 (6 Aylık) Fark LPG 357 340 17,5 5% Benzin 2.564 2.204 360 16% Jet Yakıtı 1.908 1.995 -87 -4% Motorin 4.382 5.002 -620 -12% Fuel Oil 134 184 -50 -27% Bitüm 555 632 -76 -12% Diğer 574 360 214 59% Yurtiçi Satış 10.475 10.717 -242 -2% LPG 16 18 -2 -13% Nafta - 68 -68 -100% Benzin 416 661 -245 -37% Jet 411 26 385 1.507% Motorin 981 609 372 61% Fuel Oil 718 2.102 -1.384 -66% Bitüm 598 492 106 21% Diğer 351 85 266 312% Uluslararası Satış 3.492 4.063 -570 -14% Genel Toplam 13.968 14.780 -812 -5% OPET",
+     "source": {
+      "kind": "chunk",
+      "document_id": 399,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": 7,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1467924"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64",
+     "text": "25.03.2026 tarihli özel durum açıklamamızı takiben gerçekleştirilen talep toplama işlemi sonucunda, yatırımcılardan gelen talebe istinaden, satışa konu pay adedi yeniden değerlendirilerek artırılmış ve Türkiye Petrol Rafinerileri A.Ş.'nin (\" Tüpraş \") çıkarılmış sermayesinin yaklaşık %2,1'ine tekabül eden toplam 40.000.000 TL nominal değerli A grubu payın (\" Paylar \") hızlandırılmış talep toplama ( accelerated bookbuilding ) yöntemiyle, yurt içinde ve yurt dışında yerleşik kurumsal yatırımcılara satışı (\" İşlem \"), pay başına 233 TL bedel üzerinden toplam 9.320.000.000 TL karşılığında gerçekleşmiştir. İşlem'in toptan alım satım işlemi olarak gerçekleştirilmesi amacıyla, ÜNLÜ Menkul Değerler A.Ş., 26.03.2026 tarihinde Borsa İstanbul A.Ş.'ye (\" BIST \") başvuruda bulunacaktır. BIST'in onay tarihine bağlı olarak, toptan satış işleminin 27.03.2026 tarihinde gerçekleştirilmesi ve 31.03.2026 tarihinde de takasının tamamlanması beklenmektedir. Paylar halihazırda BIST'te işlem görmeyen nitelikte olup, toptan alım satım işlem günü itibarıyla BIST'te işlem gören niteliğe dönüşümünün tamamlanması beklenmektedir. İşlem'in kapanışını takiben, Tüpraş'taki doğrudan pay sahipliğimiz yaklaşık %4,3 olacak ve Tüpraş'ın halka açıklık oranı %48,9‘a yükselecektir. Böylece, Koç Holding Tüpraş sermayesinin %50,7'sini, doğrudan sahip olduğu %4,3'lük pay ve bağlı ortaklığı Enerji Yatırımları A.Ş.'nin sahip olduğu %46,4'lük pay vasıtasıyla kontrol etmeye devam edecektir. Bu açıklamamızın İngilizce çevirisi eş anlı kamuya açıklanmış olup, açıklama metinlerinde herhangi bir farklılık olması durumunda Türkçe açıklama esas kabul edilecektir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 427,
+      "ticker": "TUPRS",
+      "doc_type": "kap_material_event",
+      "period": "2026-Q1",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1575944"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  }
+ ]
+}

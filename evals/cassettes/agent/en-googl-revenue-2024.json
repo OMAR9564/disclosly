@@ -1,0 +1,204 @@
+{
+ "case_id": "en-googl-revenue-2024",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "73e2c0e7ac8a6b6d046752ec87483d0e5ef0f72212dab21ba5a142097eb5d6c8",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "fc_7d429274-885c-4cf8-9f9f-19d9e4454490",
+      "name": "get_financial_facts",
+      "arguments": {
+       "metrics": [
+        "revenue"
+       ],
+       "periods": [
+        "2024-FY",
+        "2023-FY"
+       ],
+       "ticker": "GOOGL"
+      },
+      "extra": null
+     }
+    ],
+    "provider": "groq-llama",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 1276,
+    "tokens_out": 130,
+    "latency_ms": 456.827,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-lite"
+    ]
+   }
+  },
+  {
+   "key": "18894039430b2789d3cdf3b10ef5b75a2390c99429a0c6b7293e9c8d32c9fb4b",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\"language\":\"en\",\"status\":\"completed\",\"summary\":\"Alphabet’s total revenue for fiscal year 2024 was $350,018,000,000, up from $307,394,000,000 in fiscal year 2023, representing a growth of approximately 13.9% year‑over‑year.\",\"points\":[{\"text\":\"Alphabet’s total revenue in 2024 was $350,018,000,000.\",\"cite_ids\":[\"f:650\"]},{\"text\":\"Alphabet’s total revenue in 2023 was $307,394,000,000.\",\"cite_ids\":[\"f:647\"]},{\"text\":\"The revenue growth from 2023 to 2024 was about 13.9%.\",\"cite_ids\":[\"f:650\",\"f:647\"]}],\"citations\":[{\"marker\":1,\"cite_id\":\"f:650\"},{\"marker\":2,\"cite_id\":\"f:647\"},{\"marker\":3,\"cite_id\":\"f:650\"},{\"marker\":3,\"cite_id\":\"f:647\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "groq-llama",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 1600,
+    "tokens_out": 306,
+    "latency_ms": 503.694,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-lite"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2024-FY\",\"2023-FY\"],\"ticker\":\"GOOGL\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:647\">Revenue (2023-FY): 307,394,000,000 USD USD</untrusted_document>\n<untrusted_document cite_id=\"f:660\">Revenue (2023-FY): 307,394,000,000 USD USD</untrusted_document>\n<untrusted_document cite_id=\"f:4051\">Revenue (2023-FY): 307,394,000,000 USD USD</untrusted_document>\n<untrusted_document cite_id=\"f:4064\">Revenue (2023-FY): 307,394,000,000 USD USD</untrusted_document>\n<untrusted_document cite_id=\"f:650\">Revenue (2024-FY): 350,018,000,000 USD USD</untrusted_document>\n<untrusted_document cite_id=\"f:663\">Revenue (2024-FY): 350,018,000,000 USD USD</untrusted_document>\n<untrusted_document cite_id=\"f:4054\">Revenue (2024-FY): 350,018,000,000 USD USD</untrusted_document>\n<untrusted_document cite_id=\"f:4067\">Revenue (2024-FY): 350,018,000,000 USD USD</untrusted_document>",
+   "summary": "GOOGL 2024-FY to 2023-FY revenue",
+   "count": 8,
+   "items": [
+    {
+     "cite_id": "f:647",
+     "text": "Revenue (2023-FY): 307,394,000,000 USD USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 141,
+      "ticker": "GOOGL",
+      "doc_type": "10-K",
+      "period": "2023-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0001652044-26-000018",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm"
+     },
+     "value": "307394000000"
+    },
+    {
+     "cite_id": "f:660",
+     "text": "Revenue (2023-FY): 307,394,000,000 USD USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 145,
+      "ticker": "GOOGL",
+      "doc_type": "10-K",
+      "period": "2023-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001652044-25-000014",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm"
+     },
+     "value": "307394000000"
+    },
+    {
+     "cite_id": "f:4051",
+     "text": "Revenue (2023-FY): 307,394,000,000 USD USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2358,
+      "ticker": "GOOGL",
+      "doc_type": "10-K",
+      "period": "2023-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0001652044-26-000018",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm"
+     },
+     "value": "307394000000"
+    },
+    {
+     "cite_id": "f:4064",
+     "text": "Revenue (2023-FY): 307,394,000,000 USD USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2362,
+      "ticker": "GOOGL",
+      "doc_type": "10-K",
+      "period": "2023-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001652044-25-000014",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm"
+     },
+     "value": "307394000000"
+    },
+    {
+     "cite_id": "f:650",
+     "text": "Revenue (2024-FY): 350,018,000,000 USD USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 141,
+      "ticker": "GOOGL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0001652044-26-000018",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm"
+     },
+     "value": "350018000000"
+    },
+    {
+     "cite_id": "f:663",
+     "text": "Revenue (2024-FY): 350,018,000,000 USD USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 145,
+      "ticker": "GOOGL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001652044-25-000014",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm"
+     },
+     "value": "350018000000"
+    },
+    {
+     "cite_id": "f:4054",
+     "text": "Revenue (2024-FY): 350,018,000,000 USD USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2358,
+      "ticker": "GOOGL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0001652044-26-000018",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm"
+     },
+     "value": "350018000000"
+    },
+    {
+     "cite_id": "f:4067",
+     "text": "Revenue (2024-FY): 350,018,000,000 USD USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2362,
+      "ticker": "GOOGL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001652044-25-000014",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm"
+     },
+     "value": "350018000000"
+    }
+   ],
+   "error": null
+  }
+ ]
+}

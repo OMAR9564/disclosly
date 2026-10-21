@@ -1,0 +1,237 @@
+{
+ "case_id": "en-msft-productivity-revenue-2025",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "493c2803c7beccdcdcb7341677a01593ac2d97d7a1023028242af17f27807ea9",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_949738",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "MSFT",
+       "period_from": "2025-Q1",
+       "period_to": "2025-Q4",
+       "query": "Productivity and Business Processes revenue fiscal 2025 growth"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0Te4atJQZQQb7oEZrrHxAqHlDucLNiYGSwQOy8/+fiirumMPk78escFZvfdaTCa5vCHFlWm5+93lhpBv8C19tKpjBA1WLOYLJSD7H4oftxe7Ic96AgTc5tU4Q="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1493,
+    "tokens_out": 63,
+    "latency_ms": 967.494,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "80658bb326528a18a7e19581e33878b0f66c88fdf4ae7a1287523d0e9997f2bf",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1268083",
+      "name": "list_documents",
+      "arguments": {
+       "period_to": "2025-FY",
+       "period_from": "2025-FY",
+       "ticker": "MSFT"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0THpUifmiAae8dg6ADhxP2807MmDZLOKzRzIVtAXVTLoLyFyuSpGaEu1OJEiyeT3Vz58EIDK0tdnLKL94ANCmO9aKHDPb8rgpZDY0IT4oCTbApoGwx6/pN5yI="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2946,
+    "tokens_out": 43,
+    "latency_ms": 716.874,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "8bbc849c776898f707ada25d43029590104fdce0caf4abdc62e726f3b50f5ef4",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_804189",
+      "name": "search_documents",
+      "arguments": {
+       "doc_type": "10-K",
+       "period_to": "2025-FY",
+       "ticker": "MSFT",
+       "query": "Productivity and Business Processes revenue fiscal 2025 growth",
+       "period_from": "2025-FY"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TWuZZcubB+xZHfiOzCWhRuM06YgvXKcOROQ0HalSWOlBPsDNZREoPDB5dq2wutaO4sZWBNGlUdxbxnQP71kVgT1oLdD+c2HCVE17ImzCwQErRZ7n+c/NwDUA="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 3140,
+    "tokens_out": 72,
+    "latency_ms": 998.776,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "e913d44eb1ed7e9b145d61fae41d6caa1bf11cd0fed09df1742747894effe75a",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\":\"en\",\"status\":\"completed\",\"summary\":\"Microsoft's Productivity and Business Processes revenue grew by $14.0 billion, a 13% increase compared with fiscal 2024.[1]\",\"points\":[{\"text\":\"Productivity and Business Processes revenue increased $14.0 billion, or 13%, in fiscal 2025.\",\"cite_ids\":[\"c:2f707bec5a876868b3c84a6aa36ebbe3b373cc377b2a4c313fd847632a082bc8\"]}],\"citations\":[{\"marker\":1,\"cite_id\":\"c:2f707bec5a876868b3c84a6aa36ebbe3b373cc377b2a4c313fd847632a082bc8\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 4294,
+    "tokens_out": 629,
+    "latency_ms": 1966.84,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q1\",\"period_to\":\"2025-Q4\",\"query\":\"Productivity and Business Processes revenue fiscal 2025 growth\",\"ticker\":\"MSFT\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:3fd1bfc12dc025cb8e3b280c4dea5682ca7f973f3640da5a3dd5c0dd304e0bc1\">Seasonality Our revenue fluctuates quarterly and is generally higher in the fourth quarter of our fiscal year. Fourth quarter revenue is driven by a higher volume of multi-year contracts executed during the period. Reportable Segments We report our financial performance based on the following segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. The segment amounts included in MD&A are presented on a basis consistent with our internal management reporting. 33 PART I Item 2 In August 2024, we announced changes to the composition of our segments. These changes align our segments with how we currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the Productivity and Business Processes segment. Beginning in fiscal year 2025, the information that our chief operating decision maker is regularly provided and reviews for purposes of allocating resources and assessing performance reflects these segment changes. Prior period segment information has been recast to conform to the way we internally manage and monitor our business during fiscal year 2025. Additional information on our reportable segments is contained in Note 17 – Segment Information and Geographic Data of the Notes to Financial Statements (Part I, Item 1 of this Form 10-Q). Metrics We use metrics in assessing the performance of our business and to make informed decisions regarding the allocation of resources. We disclose metrics to enable investors to evaluate progress against our ambitions, provide transparency into performance trends, and reflect the continued evolution of our products and services. Our commercial and other business metrics are fundamentally connected based on how customers use our products and services. The metrics are disclosed in the MD&A or the Notes to Financial Statements (Part I, Item 1 of this Form 10-Q). Financial metrics are calculated based on financial results prepared in accordance with accounting principles generally accepted in the United States of America (“GAAP”), and growth comparisons relate to the corresponding period of last fiscal year. In the first quarter of fiscal year 2025, we made updates to our metrics in connection with the segment changes described above. These changes align our metrics with how we manage and monitor certain businesses. The key change was bringing the commercial components of Microsoft 365 together and creating a new Microsoft 365 Commercial cloud revenue growth metric. Other changes include combining Windows OEM and Devices into a single revenue growth metric that brings revenue from PC market-driven businesses together, as well as elevating our cloud revenue growth metrics to align to our strategic focus on cloud growth. Commercial</untrusted_document>\n<untrusted_document cite_id=\"c:02a710ba2e2bbd6b9933a42a5459e3733eafc91c508231d91ce77c02c05145c8\">We create platforms and tools, powered by AI, that deliver innovative solutions that meet the evolving needs of our customers. We generate revenue by offering a wide range of cloud-based solutions, content, and other services to people and businesses; licensing and supporting an array of software products; delivering relevant online advertising to a global audience; and designing and selling devices. Our most significant expenses are related to compensating employees; supporting and investing in our cloud-based services, including datacenter operations; designing, manufacturing, marketing, and selling our other products and services; and income taxes. Highlights from the third quarter of fiscal year 2025 compared with the third quarter of fiscal year 2024 included: Microsoft Cloud revenue increased 20% to $42.4 billion. Microsoft 365 Commercial products and cloud services revenue increased 11% driven by Microsoft 365 Commercial cloud revenue growth of 12%. Microsoft 365 Consumer products and cloud services revenue increased 10% driven by Microsoft 365 Consumer cloud revenue growth of 10%. LinkedIn revenue increased 7%. Dynamics products and cloud services revenue increased 11% driven by Dynamics 365 revenue growth of 16%. Server products and cloud services revenue increased 22% driven by Azure and other cloud services revenue growth of 33%. Windows OEM and Devices revenue increased 3%. Xbox content and services revenue increased 8%. Search and news advertising revenue excluding traffic acquisition costs increased 21%. 32 PART I Item 2 Industry Trends Our industry is dynamic and highly competitive, with frequent changes in both technologies and business models. Each industry shift is an opportunity to conceive new products, new technologies, or new ideas that can further transform the industry and our business. At Microsoft, we push the boundaries of what is possible through a broad range of research and development activities that seek to identify and address the changing demands of customers and users, industry trends, and competitive forces. Economic Conditions, Challenges, and Risks The markets for software, devices, and cloud-based services are dynamic and highly competitive. Our competitors are developing new software and devices, while also deploying competing cloud-based services for consumers and businesses. The devices and form factors customers prefer evolve rapidly, influencing how users access services in the cloud and, in some cases, the user’s choice of which suite of cloud-based services to use. Aggregate demand for our software, services, and devices is also correlated to global macroeconomic and geopolitical factors, which remain dynamic. We must continue to evolve and adapt over an extended time in pace with this changing environment. The investments we are making in cloud and AI infrastructure and devices will continue to increase our operating costs and may decrease our operating margins.</untrusted_document>\n<untrusted_document cite_id=\"c:03341b2f5f4c75fdf79d28deafe1aa755c477fd5e4d3dfb692d4551bb638fe59\">We returned $10.7 billion to shareholders in the form of share repurchases and dividends in the first quarter of fiscal year 2026. Refer to Note 14 – Stockholders’ Equity of the Notes to Financial Statements (Part I, Item 1 of this Form 10-Q) for further discussion regarding share repurchases and dividends. 58 PART II Item 5</untrusted_document>",
+   "summary": "MSFT Productivity and Business Processes revenue fiscal 2025 growth",
+   "count": 3,
+   "items": [
+    {
+     "cite_id": "c:3fd1bfc12dc025cb8e3b280c4dea5682ca7f973f3640da5a3dd5c0dd304e0bc1",
+     "text": "Seasonality Our revenue fluctuates quarterly and is generally higher in the fourth quarter of our fiscal year. Fourth quarter revenue is driven by a higher volume of multi-year contracts executed during the period. Reportable Segments We report our financial performance based on the following segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. The segment amounts included in MD&A are presented on a basis consistent with our internal management reporting. 33 PART I Item 2 In August 2024, we announced changes to the composition of our segments. These changes align our segments with how we currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the Productivity and Business Processes segment. Beginning in fiscal year 2025, the information that our chief operating decision maker is regularly provided and reviews for purposes of allocating resources and assessing performance reflects these segment changes. Prior period segment information has been recast to conform to the way we internally manage and monitor our business during fiscal year 2025. Additional information on our reportable segments is contained in Note 17 – Segment Information and Geographic Data of the Notes to Financial Statements (Part I, Item 1 of this Form 10-Q). Metrics We use metrics in assessing the performance of our business and to make informed decisions regarding the allocation of resources. We disclose metrics to enable investors to evaluate progress against our ambitions, provide transparency into performance trends, and reflect the continued evolution of our products and services. Our commercial and other business metrics are fundamentally connected based on how customers use our products and services. The metrics are disclosed in the MD&A or the Notes to Financial Statements (Part I, Item 1 of this Form 10-Q). Financial metrics are calculated based on financial results prepared in accordance with accounting principles generally accepted in the United States of America (“GAAP”), and growth comparisons relate to the corresponding period of last fiscal year. In the first quarter of fiscal year 2025, we made updates to our metrics in connection with the segment changes described above. These changes align our metrics with how we manage and monitor certain businesses. The key change was bringing the commercial components of Microsoft 365 together and creating a new Microsoft 365 Commercial cloud revenue growth metric. Other changes include combining Windows OEM and Devices into a single revenue growth metric that brings revenue from PC market-driven businesses together, as well as elevating our cloud revenue growth metrics to align to our strategic focus on cloud growth. Commercial",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2491,
+      "ticker": "MSFT",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025061046/msft-20250331.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:02a710ba2e2bbd6b9933a42a5459e3733eafc91c508231d91ce77c02c05145c8",
+     "text": "We create platforms and tools, powered by AI, that deliver innovative solutions that meet the evolving needs of our customers. We generate revenue by offering a wide range of cloud-based solutions, content, and other services to people and businesses; licensing and supporting an array of software products; delivering relevant online advertising to a global audience; and designing and selling devices. Our most significant expenses are related to compensating employees; supporting and investing in our cloud-based services, including datacenter operations; designing, manufacturing, marketing, and selling our other products and services; and income taxes. Highlights from the third quarter of fiscal year 2025 compared with the third quarter of fiscal year 2024 included: Microsoft Cloud revenue increased 20% to $42.4 billion. Microsoft 365 Commercial products and cloud services revenue increased 11% driven by Microsoft 365 Commercial cloud revenue growth of 12%. Microsoft 365 Consumer products and cloud services revenue increased 10% driven by Microsoft 365 Consumer cloud revenue growth of 10%. LinkedIn revenue increased 7%. Dynamics products and cloud services revenue increased 11% driven by Dynamics 365 revenue growth of 16%. Server products and cloud services revenue increased 22% driven by Azure and other cloud services revenue growth of 33%. Windows OEM and Devices revenue increased 3%. Xbox content and services revenue increased 8%. Search and news advertising revenue excluding traffic acquisition costs increased 21%. 32 PART I Item 2 Industry Trends Our industry is dynamic and highly competitive, with frequent changes in both technologies and business models. Each industry shift is an opportunity to conceive new products, new technologies, or new ideas that can further transform the industry and our business. At Microsoft, we push the boundaries of what is possible through a broad range of research and development activities that seek to identify and address the changing demands of customers and users, industry trends, and competitive forces. Economic Conditions, Challenges, and Risks The markets for software, devices, and cloud-based services are dynamic and highly competitive. Our competitors are developing new software and devices, while also deploying competing cloud-based services for consumers and businesses. The devices and form factors customers prefer evolve rapidly, influencing how users access services in the cloud and, in some cases, the user’s choice of which suite of cloud-based services to use. Aggregate demand for our software, services, and devices is also correlated to global macroeconomic and geopolitical factors, which remain dynamic. We must continue to evolve and adapt over an extended time in pace with this changing environment. The investments we are making in cloud and AI infrastructure and devices will continue to increase our operating costs and may decrease our operating margins.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2491,
+      "ticker": "MSFT",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025061046/msft-20250331.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:03341b2f5f4c75fdf79d28deafe1aa755c477fd5e4d3dfb692d4551bb638fe59",
+     "text": "We returned $10.7 billion to shareholders in the form of share repurchases and dividends in the first quarter of fiscal year 2026. Refer to Note 14 – Stockholders’ Equity of the Notes to Financial Statements (Part I, Item 1 of this Form 10-Q) for further discussion regarding share repurchases and dividends. 58 PART II Item 5",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2489,
+      "ticker": "MSFT",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-FY\",\"period_to\":\"2025-FY\",\"ticker\":\"MSFT\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 2490, \"ticker\": \"MSFT\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-07-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm\"}]}",
+   "summary": "MSFT documents",
+   "count": 1,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"doc_type\":\"10-K\",\"period_from\":\"2025-FY\",\"period_to\":\"2025-FY\",\"query\":\"Productivity and Business Processes revenue fiscal 2025 growth\",\"ticker\":\"MSFT\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:9f0fa56fc65b7cbbe7fdb9143bf120c972c17c0a223b557b80050776e138dfef\">Fiscal Year 2025 Compared with Fiscal Year 2024 Revenue increased $36.6 billion or 15% with growth across each of our segments. Intelligent Cloud revenue increased driven by Azure. Productivity and Business Processes revenue increased driven by Microsoft 365 Commercial cloud. More Personal Computing revenue increased driven by Gaming and Search and news advertising. Cost of revenue increased $13.7 billion or 19% driven by growth in Microsoft Cloud. Gross margin increased $22.9 billion or 13% with growth across each of our segments. Gross margin percentage decreased slightly driven by Intelligent Cloud, offset in part by More Personal Computing. Microsoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure. Operating expenses increased $3.8 billion or 6% driven by investments in cloud and AI engineering and Gaming, including the impact of the Activision Blizzard acquisition. Operating income increased $19.1 billion or 17% with growth across each of our segments. 38 PART II Item 7 SEGMENT RESULTS OF OPERATIONS</untrusted_document>\n<untrusted_document cite_id=\"c:2f707bec5a876868b3c84a6aa36ebbe3b373cc377b2a4c313fd847632a082bc8\">Reportable Segments Fiscal Year 2025 Compared with Fiscal Year 2024 Productivity and Business Processes Revenue increased $14.0 billion or 13%. Microsoft 365 Commercial products and cloud services revenue increased $10.8 billion or 14%. Microsoft 365 Commercial cloud revenue grew 15% with Microsoft 365 Commercial seat growth of 6% driven by small and medium businesses and frontline worker offerings, as well as growth in revenue per user. Microsoft 365 Commercial products revenue grew 7% driven by the Windows Commercial on-premises components of Microsoft 365 suite sales and an increase in Office transactional purchasing with the launch of Office 2024. Microsoft 365 Consumer products and cloud services revenue increased $756 million or 11%. Microsoft 365 Consumer cloud revenue grew 11% driven by Microsoft 365 Consumer subscriber growth of 8% to 89.0 million, as well as growth in revenue per user from the price increase announced in January 2025. LinkedIn revenue increased $1.4 billion or 9% with growth across all lines of business. Dynamics products and cloud services revenue increased $996 million or 15% driven by growth in Dynamics 365, offset in part by a decline in Dynamics on-premises products. Dynamics 365 revenue grew 19% with growth across all workloads. Operating income increased $10.1 billion or 17%. Cost of revenue increased $2.8 billion or 14% driven by growth in Microsoft 365 Commercial cloud. Gross margin increased $11.2 billion or 13% driven by growth in Microsoft 365 Commercial cloud. Gross margin percentage decreased slightly primarily driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Microsoft 365 Commercial cloud. Operating expenses increased $1.1 billion or 4% driven by investments in cloud and AI engineering and commercial sales. 39 PART II Item 7 Intelligent Cloud Revenue increased $18.8 billion or 21%. Server products and cloud services revenue increased $18.6 billion or 23% driven by Azure and other cloud services. Azure and other cloud services revenue grew 34% driven by demand for our portfolio of services. Server products revenue decreased 3% driven by a decrease in transactional purchasing with continued customer shift to cloud offerings. Enterprise and partner services revenue increased $166 million or 2% driven by growth in Enterprise Support Services, offset in part by a decline in Industry Solutions. Operating income increased $6.8 billion or 18%. Cost of revenue increased $10.6 billion or 36% driven by growth in Azure. Gross margin increased $8.2 billion or 14% driven by growth in Azure. Gross margin percentage decreased driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure. Operating expenses increased $1.5 billion or 7% driven by investments in cloud and AI engineering. More Personal Computing Revenue increased $3.8 billion or 7%.</untrusted_document>\n<untrusted_document cite_id=\"c:01d426a6a13a6b28caa798d7ee46eb4267da3d12693067b83422fbf333cb793b\">Mr. Hoffman may be deemed to beneficially own the shares held by Reprogrammed and Greylock by virtue of his relationship with such entities. Mr. Hoffman did not participate in any portions of the meetings of our Board of Directors or any committee thereof to review and approve the transaction with Inflection. Recent Accounting Guidance Recently Adopted Accounting Guidance Segment Reporting – Improvements to Reportable Segment Disclosures In November 2023, the Financial Accounting Standards Board (“FASB”) issued a new standard to improve reportable segment disclosures. The guidance expands the disclosures required for reportable segments in our annual and interim consolidated financial statements, primarily through enhanced disclosures about significant segment expenses. We adopted the standard beginning with our annual reporting for fiscal year 2025. The adoption resulted in incremental segment reporting disclosures, most notably disclosure of cost of revenue and operating expenses for each reportable segment. Refer to Note 18 – Segment Information and Geographic Data. Recent Accounting Guidance Not Yet Adopted Income Taxes – Improvements to Income Tax Disclosures In December 2023, the FASB issued a new standard to improve income tax disclosures. The guidance requires disclosure of disaggregated income taxes paid, prescribes standardized categories for the components of the effective tax rate reconciliation, and modifies other income tax-related disclosures. The standard will be effective for us beginning with our annual reporting for fiscal year 2026, with early adoption permitted. We are currently evaluating the impact of this standard on our income tax disclosures. 61 PART II Item 8 Income Statement – Disaggregation of Income Statement Expenses In November 2024, the FASB issued a new standard to expand disclosures about income statement expenses. The guidance requires disaggregation of certain costs and expenses included in each relevant expense caption on our consolidated income statements in a separate note to the financial statements at each interim and annual reporting period, including amounts of purchases of inventory, employee compensation, depreciation, and intangible asset amortization. The standard will be effective for us beginning with our annual reporting for fiscal year 2028 and interim periods thereafter, with early adoption permitted. We are currently evaluating the impact of this standard on our disclosures. NOTE 2 — EARNINGS PER SHARE Basic earnings per share (“EPS”) is computed based on the weighted average number of shares of common stock outstanding during the period.</untrusted_document>",
+   "summary": "MSFT Productivity and Business Processes revenue fiscal 2025 growth",
+   "count": 3,
+   "items": [
+    {
+     "cite_id": "c:9f0fa56fc65b7cbbe7fdb9143bf120c972c17c0a223b557b80050776e138dfef",
+     "text": "Fiscal Year 2025 Compared with Fiscal Year 2024 Revenue increased $36.6 billion or 15% with growth across each of our segments. Intelligent Cloud revenue increased driven by Azure. Productivity and Business Processes revenue increased driven by Microsoft 365 Commercial cloud. More Personal Computing revenue increased driven by Gaming and Search and news advertising. Cost of revenue increased $13.7 billion or 19% driven by growth in Microsoft Cloud. Gross margin increased $22.9 billion or 13% with growth across each of our segments. Gross margin percentage decreased slightly driven by Intelligent Cloud, offset in part by More Personal Computing. Microsoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure. Operating expenses increased $3.8 billion or 6% driven by investments in cloud and AI engineering and Gaming, including the impact of the Activision Blizzard acquisition. Operating income increased $19.1 billion or 17% with growth across each of our segments. 38 PART II Item 7 SEGMENT RESULTS OF OPERATIONS",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2490,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:2f707bec5a876868b3c84a6aa36ebbe3b373cc377b2a4c313fd847632a082bc8",
+     "text": "Reportable Segments Fiscal Year 2025 Compared with Fiscal Year 2024 Productivity and Business Processes Revenue increased $14.0 billion or 13%. Microsoft 365 Commercial products and cloud services revenue increased $10.8 billion or 14%. Microsoft 365 Commercial cloud revenue grew 15% with Microsoft 365 Commercial seat growth of 6% driven by small and medium businesses and frontline worker offerings, as well as growth in revenue per user. Microsoft 365 Commercial products revenue grew 7% driven by the Windows Commercial on-premises components of Microsoft 365 suite sales and an increase in Office transactional purchasing with the launch of Office 2024. Microsoft 365 Consumer products and cloud services revenue increased $756 million or 11%. Microsoft 365 Consumer cloud revenue grew 11% driven by Microsoft 365 Consumer subscriber growth of 8% to 89.0 million, as well as growth in revenue per user from the price increase announced in January 2025. LinkedIn revenue increased $1.4 billion or 9% with growth across all lines of business. Dynamics products and cloud services revenue increased $996 million or 15% driven by growth in Dynamics 365, offset in part by a decline in Dynamics on-premises products. Dynamics 365 revenue grew 19% with growth across all workloads. Operating income increased $10.1 billion or 17%. Cost of revenue increased $2.8 billion or 14% driven by growth in Microsoft 365 Commercial cloud. Gross margin increased $11.2 billion or 13% driven by growth in Microsoft 365 Commercial cloud. Gross margin percentage decreased slightly primarily driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Microsoft 365 Commercial cloud. Operating expenses increased $1.1 billion or 4% driven by investments in cloud and AI engineering and commercial sales. 39 PART II Item 7 Intelligent Cloud Revenue increased $18.8 billion or 21%. Server products and cloud services revenue increased $18.6 billion or 23% driven by Azure and other cloud services. Azure and other cloud services revenue grew 34% driven by demand for our portfolio of services. Server products revenue decreased 3% driven by a decrease in transactional purchasing with continued customer shift to cloud offerings. Enterprise and partner services revenue increased $166 million or 2% driven by growth in Enterprise Support Services, offset in part by a decline in Industry Solutions. Operating income increased $6.8 billion or 18%. Cost of revenue increased $10.6 billion or 36% driven by growth in Azure. Gross margin increased $8.2 billion or 14% driven by growth in Azure. Gross margin percentage decreased driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure. Operating expenses increased $1.5 billion or 7% driven by investments in cloud and AI engineering. More Personal Computing Revenue increased $3.8 billion or 7%.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2490,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
+     },
+     "value": null
+    },
+    {
+     "cite_id": "c:01d426a6a13a6b28caa798d7ee46eb4267da3d12693067b83422fbf333cb793b",
+     "text": "Mr. Hoffman may be deemed to beneficially own the shares held by Reprogrammed and Greylock by virtue of his relationship with such entities. Mr. Hoffman did not participate in any portions of the meetings of our Board of Directors or any committee thereof to review and approve the transaction with Inflection. Recent Accounting Guidance Recently Adopted Accounting Guidance Segment Reporting – Improvements to Reportable Segment Disclosures In November 2023, the Financial Accounting Standards Board (“FASB”) issued a new standard to improve reportable segment disclosures. The guidance expands the disclosures required for reportable segments in our annual and interim consolidated financial statements, primarily through enhanced disclosures about significant segment expenses. We adopted the standard beginning with our annual reporting for fiscal year 2025. The adoption resulted in incremental segment reporting disclosures, most notably disclosure of cost of revenue and operating expenses for each reportable segment. Refer to Note 18 – Segment Information and Geographic Data. Recent Accounting Guidance Not Yet Adopted Income Taxes – Improvements to Income Tax Disclosures In December 2023, the FASB issued a new standard to improve income tax disclosures. The guidance requires disclosure of disaggregated income taxes paid, prescribes standardized categories for the components of the effective tax rate reconciliation, and modifies other income tax-related disclosures. The standard will be effective for us beginning with our annual reporting for fiscal year 2026, with early adoption permitted. We are currently evaluating the impact of this standard on our income tax disclosures. 61 PART II Item 8 Income Statement – Disaggregation of Income Statement Expenses In November 2024, the FASB issued a new standard to expand disclosures about income statement expenses. The guidance requires disaggregation of certain costs and expenses included in each relevant expense caption on our consolidated income statements in a separate note to the financial statements at each interim and annual reporting period, including amounts of purchases of inventory, employee compensation, depreciation, and intangible asset amortization. The standard will be effective for us beginning with our annual reporting for fiscal year 2028 and interim periods thereafter, with early adoption permitted. We are currently evaluating the impact of this standard on our disclosures. NOTE 2 — EARNINGS PER SHARE Basic earnings per share (“EPS”) is computed based on the weighted average number of shares of common stock outstanding during the period.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2490,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
+     },
+     "value": null
+    }
+   ],
+   "error": null
+  }
+ ]
+}
