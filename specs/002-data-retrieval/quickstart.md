@@ -57,3 +57,29 @@ Expected: runs with network disabled; fails if recall@10 < baseline − 0.02.
 ## 6. Latency (SC-005)
 
 Run the golden questions 3× on the VPS; p95 search latency from logs < 1 s.
+
+## Results (T033, 2026-10-20)
+
+Run against the production corpus on the server. The steps that write data (1 and 3) were not
+run again for this record; their evidence comes from the runs and tests named below.
+
+| Step | Result | Evidence |
+|---|---|---|
+| 1. Idempotent ingestion (SC-002) | Pass | `tests/integration/ingestion/test_pipeline.py` (second run: 0 new, 0 changed). On the server, manual run 46 over all tickers skipped 1,137 known documents and fetched 5 new filings. `/data/ingest` in the worker is empty |
+| 2. Metadata and facts (SC-003) | Pass | `status --json`: 2,465 embedded, 10 failed, 89,351 chunks, 0 chunks missing metadata, 0 facts missing source, 0 chunks without embedding, `disk_bytes` 696 MB |
+| 3. Embed and search (US2) | Pass | Bulk embedding on the laptop (runbook, "Corpus ingestion"); `tests/integration/retrieval/test_search.py` covers the US2 scenarios |
+| 4. Retrieval eval (SC-004, SC-007) | Measured, target not met (accepted) | `evals/reports/retrieval-2026-10-20-rerank-64-int8.md`: recall@10 0.779 (tr 0.824, en 0.735), target 0.80; ADR 0002 cites the numbers |
+| 5. CI subset | Pass | CI eval job, `--cassettes-only` against `evals/baselines/retrieval.json` |
+| 6. Latency (SC-005) | Pass | `python -m evals.latency --rounds 3`: p50 614 ms, p95 878 ms, max 1,114 ms (runbook, "Search latency") |
+
+### PROJECT_SPEC §20, phase 2
+
+| Acceptance criterion | Status |
+|---|---|
+| Idempotent pipeline | Met (step 1) |
+| recall@10 measured and reported | Met (step 4; the 0.80 target in SC-004 is not reached, accepted by the owner on 2026-10-20) |
+| Chunk/rerank decision in ADR | Met (`docs/adr/0002-retrieval-configuration.md`) |
+
+Open items carried to later phases: SEC chunk-size sweep, English full-text matching, re-recording
+the rerank cassettes with the new reranker setting, and memory for the process that serves search
+(about 1.4 GiB with both models).

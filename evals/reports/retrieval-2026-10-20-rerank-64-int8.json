@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-20",
+  "corpus": "full",
+  "configs": [
+    {
+      "chunker_version": "v1-600-64",
+      "rerank": true,
+      "k": 10,
+      "recall_at_5": 0.7059,
+      "recall_at_10": 0.7794,
+      "mrr": 0.5575,
+      "cases": 68,
+      "by_language": {
+        "en": {
+          "cases": 34,
+          "recall_at_5": 0.7059,
+          "recall_at_10": 0.7353,
+          "mrr": 0.5728
+        },
+        "tr": {
+          "cases": 34,
+          "recall_at_5": 0.7059,
+          "recall_at_10": 0.8235,
+          "mrr": 0.5422
+        }
+      }
+    },
+    {
+      "chunker_version": "v1-600-64",
+      "rerank": false,
+      "k": 10,
+      "recall_at_5": 0.6471,
+      "recall_at_10": 0.7059,
+      "mrr": 0.4636,
+      "cases": 68,
+      "by_language": {
+        "en": {
+          "cases": 34,
+          "recall_at_5": 0.5882,
+          "recall_at_10": 0.6176,
+          "mrr": 0.3782
+        },
+        "tr": {
+          "cases": 34,
+          "recall_at_5": 0.7059,
+          "recall_at_10": 0.7941,
+          "mrr": 0.549
+        }
+      }
+    }
+  ]
+}

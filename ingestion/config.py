@@ -48,6 +48,10 @@ class IngestionSettings(BaseSettings):
     retrieval_rerank: bool = True
     retrieval_candidates: int = Field(default=50, gt=0)
     retrieval_rerank_top: int = Field(default=20, gt=0)
+    # Server latency (SC-005): the reranker reads only the first 64 tokens of each pair and runs
+    # with int8 weights. ADR 0002 has the measurements.
+    retrieval_rerank_max_length: int = Field(default=64, gt=0)
+    retrieval_rerank_quantize: bool = True
     embedding_model: str = "intfloat/multilingual-e5-small"
     rerank_model: str = "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1"
 

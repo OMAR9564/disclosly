@@ -46,4 +46,6 @@ Rules:
 - No matches returns `[]`, never an error.
 - Hits are sorted by `score` descending; ties broken by `chunk_id`.
 - Configuration (env): `RETRIEVAL_CHUNKER_VERSION`, `RETRIEVAL_RERANK` (bool),
-  `RETRIEVAL_CANDIDATES` (default 50), `RETRIEVAL_RERANK_TOP` (default 20).
+  `RETRIEVAL_CANDIDATES` (default 50), `RETRIEVAL_RERANK_TOP` (default 20),
+  `RETRIEVAL_RERANK_MAX_LENGTH` (tokens per query-passage pair, default 64),
+  `RETRIEVAL_RERANK_QUANTIZE` (int8 reranker weights, default true).

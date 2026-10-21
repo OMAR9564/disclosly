@@ -13,6 +13,8 @@ ENV_VARS = [
     "RETRIEVAL_RERANK",
     "RETRIEVAL_CANDIDATES",
     "RETRIEVAL_RERANK_TOP",
+    "RETRIEVAL_RERANK_MAX_LENGTH",
+    "RETRIEVAL_RERANK_QUANTIZE",
     "EMBEDDING_MODEL",
     "RERANK_MODEL",
 ]
@@ -33,6 +35,8 @@ def test_settings_defaults() -> None:
     assert settings.retrieval_rerank is True  # chosen in ADR 0002 (golden set)
     assert settings.retrieval_candidates == 50
     assert settings.retrieval_rerank_top == 20
+    assert settings.retrieval_rerank_max_length == 64  # SC-005, ADR 0002
+    assert settings.retrieval_rerank_quantize is True
     assert settings.embedding_model == "intfloat/multilingual-e5-small"
     assert settings.rerank_model == "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1"
 
@@ -40,9 +44,13 @@ def test_settings_defaults() -> None:
 def test_settings_read_env(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("RETRIEVAL_RERANK", "false")
     monkeypatch.setenv("RETRIEVAL_CANDIDATES", "80")
+    monkeypatch.setenv("RETRIEVAL_RERANK_MAX_LENGTH", "256")
+    monkeypatch.setenv("RETRIEVAL_RERANK_QUANTIZE", "false")
     settings = IngestionSettings()
     assert settings.retrieval_rerank is False
     assert settings.retrieval_candidates == 80
+    assert settings.retrieval_rerank_max_length == 256
+    assert settings.retrieval_rerank_quantize is False
 
 
 def test_rerank_top_cannot_exceed_candidates(monkeypatch: pytest.MonkeyPatch) -> None:
