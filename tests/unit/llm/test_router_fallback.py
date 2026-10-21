@@ -29,6 +29,7 @@ BAD_ARGS = {"choices": [{"message": {"tool_calls": [
         (httpx.Response(400), 3600),
         (httpx.Response(401), 3600),
         (httpx.Response(403), 3600),
+        (httpx.Response(404), 3600),
     ],
 )
 async def test_failure_sets_cooldown_and_falls_back(
@@ -43,6 +44,17 @@ async def test_failure_sets_cooldown_and_falls_back(
     assert response.fallback_from == ["a"]
     assert store.ttls[cooldown_key("a")] == cooldown
     assert cooldown_key("b") not in store.values
+
+
+async def test_request_too_large_falls_back_without_cooldown() -> None:
+    store = FakeStore()
+    router = ModelRouter(config("a", "b"), http({"a": httpx.Response(413)}, []), store=store)
+
+    response = await router.chat(REQUEST, task_class="cheap")
+
+    assert response.provider == "b"
+    assert response.fallback_from == ["a"]
+    assert cooldown_key("a") not in store.values
 
 
 async def test_config_error_is_logged_as_error(caplog: pytest.LogCaptureFixture) -> None:

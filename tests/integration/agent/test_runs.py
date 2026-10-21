@@ -95,7 +95,7 @@ async def test_long_excerpt_is_truncated(engine: Engine, redis: Any) -> None:
 
     long_fact = SeenItem(
         cite_id="f:1",
-        text="net_income 2025-Q3: 1234.5 " + "x" * 3000,
+        text="net_income 2025-Q3: 1234.5 million TRY " + "x" * 3000,
         value=Decimal("1234.5"),
         source={},
     )

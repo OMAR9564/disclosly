@@ -12,6 +12,7 @@ from llm.client import (
     InvalidResponse,
     ProviderConfigRejected,
     RateLimited,
+    RequestTooLarge,
     Unavailable,
     build_payload,
     chat_completion,
@@ -224,17 +225,22 @@ async def test_429_without_numeric_retry_after(header: str | None) -> None:
     assert excinfo.value.retry_after is None
 
 
-@pytest.mark.parametrize("status", [500, 502, 503, 404])
+@pytest.mark.parametrize("status", [500, 502, 503, 418])
 async def test_server_errors_are_unavailable(status: int) -> None:
     with pytest.raises(Unavailable):
         await _call(lambda _: httpx.Response(status))
 
 
-@pytest.mark.parametrize("status", [400, 401, 403])
+@pytest.mark.parametrize("status", [400, 401, 403, 404])
 async def test_client_errors_are_config_errors(status: int) -> None:
     with pytest.raises(ProviderConfigRejected) as excinfo:
         await _call(lambda _: httpx.Response(status))
     assert excinfo.value.status == status
+
+
+async def test_413_is_request_too_large() -> None:
+    with pytest.raises(RequestTooLarge):
+        await _call(lambda _: httpx.Response(413))
 
 
 @pytest.mark.parametrize("error", [httpx.ReadTimeout("slow"), httpx.ConnectError("refused")])

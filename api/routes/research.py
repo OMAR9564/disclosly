@@ -6,6 +6,7 @@
 """
 
 import json
+import logging
 import uuid
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime
@@ -14,12 +15,15 @@ from typing import Annotated, Any
 from fastapi import APIRouter, Depends, Header, Request
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
+from redis.exceptions import TimeoutError as RedisTimeoutError
 
 from agent.runs import RunService, StreamEvent
 from api.auth.session import CurrentUser
 from api.errors import ApiError, message_language
 from api.guards import get_guards, ip_rate_limit
 from api.guards.quota import QuotaStatus
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/v1/research", tags=["research"], dependencies=[Depends(ip_rate_limit)])
 
@@ -93,13 +97,18 @@ async def stream_research(
         if run["status"] != "running" and await service.stream_expired(run_id):
             yield _replay_from_row(run)
             return
-        async for event in service.events(run_id, last_event_id, block_ms=PING_INTERVAL_MS):
-            if event is None:
-                if await request.is_disconnected():
-                    return
-                yield ": ping\n\n"
-                continue
-            yield _sse(event)
+        try:
+            async for event in service.events(run_id, last_event_id, block_ms=PING_INTERVAL_MS):
+                if event is None:
+                    if await request.is_disconnected():
+                        return
+                    yield ": ping\n\n"
+                    continue
+                yield _sse(event)
+        except RedisTimeoutError:
+            # A closed tab cancels the blocking XREAD, which redis-py reports as a timeout.
+            # End the stream; a client that is still there reconnects with Last-Event-ID.
+            logger.info("stream read ended", extra={"run_id": str(run_id)})
 
     return StreamingResponse(
         body(),

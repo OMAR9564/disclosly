@@ -44,5 +44,6 @@ in order before calling it.
 | 429 | cooldown = `Retry-After` or 60 s, next provider |
 | 5xx, timeout (15 s), connection error | cooldown 60 s, next provider |
 | 200 with empty content and no tool calls, or unparsable tool args | cooldown 30 s, next provider |
-| 400/401/403 | log as config error, cooldown 1 h, next provider |
+| 400/401/403, or 404 (model id gone) | log as config error, cooldown 1 h, next provider |
+| 413 (request larger than the provider's per-minute token limit) | no cooldown (smaller requests still fit), next provider |
 | usage ≥ 90% of `daily_requests` | skip |

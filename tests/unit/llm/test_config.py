@@ -35,7 +35,7 @@ def _raw(**overrides: Any) -> dict[str, Any]:
     return raw
 
 
-def test_repo_file_has_five_providers_and_both_classes() -> None:
+def test_repo_file_has_every_provider_and_both_classes() -> None:
     config = load_providers(REPO_FILE, ALL_KEYS)
 
     cheap = [provider.name for provider in config.providers_for("cheap")]
@@ -43,11 +43,18 @@ def test_repo_file_has_five_providers_and_both_classes() -> None:
     assert cheap == [
         "gemini-flash-lite",
         "groq-llama",
-        "github-mini",
+        "groq-qwen",
         "openrouter-free",
+        "github-mini",
         "cloudflare",
     ]
-    assert strong == ["gemini-flash", "groq-large", "github-large", "openrouter-free"]
+    assert strong == [
+        "gemini-flash",
+        "openrouter-large",
+        "groq-large",
+        "gemini-flash-stable",
+        "github-large",
+    ]
     assert config.skipped == []
     cloudflare = config.providers_for("cheap")[-1]
     assert "acct123" in cloudflare.base_url
@@ -57,7 +64,7 @@ def test_repo_file_has_five_providers_and_both_classes() -> None:
 def test_repo_file_with_no_keys_skips_everything() -> None:
     config = load_providers(REPO_FILE, {})
     assert config.providers_for("cheap") == []
-    assert len(config.skipped) == 8
+    assert len(config.skipped) == 11
 
 
 def test_provider_with_unset_key_is_skipped() -> None:

@@ -23,8 +23,19 @@ from tools.types import SeenItem
 
 DISCLAIMER = "Yatırım tavsiyesi değildir / Not investment advice"
 PERCENT_TOLERANCE = Decimal("0.1")
-# "551928" in a million-TL table supports "551.928.000.000 TL".
-UNIT_SCALES = (Decimal(10) ** 3, Decimal(10) ** 6, Decimal(10) ** 9)
+# Scale words after a number: "23,1 milyar TL", "$31,778 million".
+SCALE_WORDS: dict[str, Decimal] = {
+    "bin": Decimal(10) ** 3,
+    "thousand": Decimal(10) ** 3,
+    "milyon": Decimal(10) ** 6,
+    "million": Decimal(10) ** 6,
+    "mn": Decimal(10) ** 6,
+    "milyar": Decimal(10) ** 9,
+    "billion": Decimal(10) ** 9,
+    "bn": Decimal(10) ** 9,
+    "trilyon": Decimal(10) ** 12,
+    "trillion": Decimal(10) ** 12,
+}
 # Bounds the pairwise search for derived percentages over chunk numbers.
 MAX_DERIVATION_INPUTS = 120
 
@@ -90,11 +101,17 @@ def answer_json_schema() -> dict[str, Any]:
     return Answer.model_json_schema()
 
 
+_MONTHS = (
+    "january|february|march|april|may|june|july|august|september|october|november|december"
+    "|ocak|şubat|mart|nisan|mayıs|haziran|temmuz|ağustos|eylül|ekim|kasım|aralık"
+)
 # Labels that contain digits but are not figures: citation markers, dates, years, quarters.
 _NOT_FIGURES = re.compile(
     r"\[\d+\]"
     r"|\b\d{1,2}[./]\d{1,2}[./](?:19|20)\d{2}\b"
     r"|\b(?:19|20)\d{2}-\d{2}-\d{2}\b"
+    rf"|\b(?:{_MONTHS})\s+\d{{1,2}}\b"
+    rf"|\b\d{{1,2}}\s+(?:{_MONTHS})"
     r"|\b(?:19|20)\d{2}(?:-(?:Q[1-4]|FY))?\b"
     r"|\bQ[1-4]\b"
     r"|\b[1-4]\.\s?çeyrek"
@@ -106,6 +123,14 @@ _NOT_FIGURES = re.compile(
 _NUMBER = re.compile(r"(?<![\w.,])\d+(?:[.,]\d+)*")
 _PERCENT_AFTER = re.compile(r"\s?%")
 _PERCENT_BEFORE = re.compile(r"(?:%|yüzde)\s?$", re.IGNORECASE)
+_SCALE_AFTER = re.compile(rf"\s?({'|'.join(SCALE_WORDS)})(?![\wçğıöşü])", re.IGNORECASE)
+_CURRENCY_AFTER = re.compile(
+    r"\s?(?:TL|TRY|USD|EUR|dolar|dollars?|lira|₺)(?![\wçğıöşü])", re.IGNORECASE
+)
+_CURRENCY_BEFORE = re.compile(r"(?:\$|€|₺|USD|TRY|TL|EUR)\s?$")
+# A table header that says what its amounts are counted in: "(In millions, except ...)".
+_DECLARED_SCALE = re.compile(r"\bin\s+(thousands|millions|billions)\b", re.IGNORECASE)
+_DECLARED_WORDS = {"thousands": "thousand", "millions": "million", "billions": "billion"}
 
 
 def parse_number(token: str, language: Language) -> Decimal | None:
@@ -128,10 +153,15 @@ class Figure:
     value: Decimal
     percent: bool
     raw: str
+    # "23,1 milyar" has multiplier 10^9; `unit` is true when a scale word or currency is attached.
+    multiplier: Decimal = Decimal(1)
+    unit: bool = False
+    places: int = 0
 
 
 def figures(text: str, language: Language) -> list[Figure]:
     cleaned = _NOT_FIGURES.sub(" ", text)
+    decimal = "," if language == "tr" else "."
     found = []
     for match in _NUMBER.finditer(cleaned):
         value = parse_number(match.group(), language)
@@ -141,27 +171,75 @@ def figures(text: str, language: Language) -> list[Figure]:
         percent = bool(_PERCENT_AFTER.match(cleaned, match.end())) or bool(
             _PERCENT_BEFORE.search(cleaned[: match.start()])
         )
-        found.append(Figure(value, percent, match.group()))
+        scale = _SCALE_AFTER.match(cleaned, match.end())
+        multiplier = SCALE_WORDS[scale.group(1).lower()] if scale else Decimal(1)
+        after = scale.end() if scale else match.end()
+        currency = bool(_CURRENCY_AFTER.match(cleaned, after)) or bool(
+            _CURRENCY_BEFORE.search(cleaned[: match.start()])
+        )
+        _, _, fraction = match.group().partition(decimal)
+        found.append(
+            Figure(
+                value,
+                percent,
+                match.group(),
+                multiplier=multiplier,
+                unit=bool(scale) or currency,
+                places=len(fraction),
+            )
+        )
     return found
 
 
-def _source_numbers(items: Iterable[SeenItem]) -> set[Decimal]:
-    numbers: set[Decimal] = set()
+@dataclass
+class _Sources:
+    raw: set[Decimal] = field(default_factory=set)  # every number as written
+    amounts: set[Decimal] = field(default_factory=set)  # with its scale applied
+
+
+def _sources(items: Iterable[SeenItem]) -> _Sources:
+    found = _Sources()
     for item in items:
+        declared: set[Decimal] = set()
         if item.value is not None:
-            numbers.add(item.value.normalize())
+            # A fact's text renders its unit ("1.234,5 milyon TRY"), so it is parsed below too.
+            found.raw.add(item.value.normalize())
+            found.amounts.add((item.value * (item.scale or 1)).normalize())
+        elif item.scale is not None:
+            declared.add(item.scale)
+        declared |= {
+            SCALE_WORDS[_DECLARED_WORDS[m.lower()]] for m in _DECLARED_SCALE.findall(item.text)
+        }
         for language in ("tr", "en"):
-            numbers.update(
-                f.value.normalize() for f in figures(item.text, language) if f.value >= 0
-            )
-    return numbers
+            for f in figures(item.text, language):
+                if f.value < 0:
+                    continue
+                found.raw.add(f.value.normalize())
+                if f.multiplier != 1 or f.percent:
+                    found.amounts.add((f.value * f.multiplier).normalize())
+                elif declared:
+                    found.amounts.update((f.value * s).normalize() for s in declared)
+                else:
+                    found.amounts.add(f.value.normalize())
+    return found
 
 
-def _supported(value: Decimal, numbers: set[Decimal]) -> bool:
-    value = value.normalize()
-    if value in numbers:
-        return True
-    return any((value / scale).normalize() in numbers for scale in UNIT_SCALES if value >= scale)
+def _rounds_to(amount: Decimal, figure: Figure) -> bool:
+    """`amount` written in the figure's scale and precision: 31,778 million is "31.8 billion"."""
+    scaled = amount / figure.multiplier
+    try:
+        return scaled.quantize(Decimal(1).scaleb(-figure.places)) == figure.value
+    except InvalidOperation:
+        return False
+
+
+def _supported(figure: Figure, sources: _Sources) -> bool:
+    if figure.unit:
+        # A stated unit must match the source amount, so "56016 bin TL" fails against a
+        # million-TL table and against a table whose unit is unknown.
+        return any(_rounds_to(amount, figure) for amount in sources.amounts)
+    value = figure.value.normalize()
+    return value in sources.raw or value in sources.amounts
 
 
 def _derived_percents(items: Iterable[SeenItem]) -> list[Decimal]:
@@ -182,11 +260,11 @@ def _derived_percents(items: Iterable[SeenItem]) -> list[Decimal]:
 
 
 def unsupported_figures(text: str, language: Language, cited: list[SeenItem]) -> list[str]:
-    numbers = _source_numbers(cited)
+    sources = _sources(cited)
     derived: list[Decimal] | None = None
     missing = []
     for figure in figures(text, language):
-        if figure.value >= 0 and _supported(figure.value, numbers):
+        if figure.value >= 0 and _supported(figure, sources):
             continue
         if figure.percent and figure.value >= 0:
             if derived is None:

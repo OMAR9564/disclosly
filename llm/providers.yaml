@@ -2,9 +2,13 @@
 # daily_requests: free-tier request quota per UTC day (placeholders; owner checks the
 # current free-tier limits before launch). price_per_mtok: USD reference price, used only
 # for the would-have-cost telemetry attribute.
+# Model ids checked against each provider's live model list on 2026-10-22: Gemini and Groq
+# list endpoints, OpenRouter's free models with tool support; each answered a tool call.
+# Groq allows 8,000 tokens per minute per model on the free tier, so a large final request
+# gets 413 there and moves on to the next provider without a cooldown.
 classes:
-  cheap: [gemini-flash-lite, groq-llama, github-mini, openrouter-free, cloudflare]
-  strong: [gemini-flash, groq-large, github-large, openrouter-free]
+  cheap: [gemini-flash-lite, groq-llama, groq-qwen, openrouter-free, github-mini, cloudflare]
+  strong: [gemini-flash, openrouter-large, groq-large, gemini-flash-stable, github-large]
 providers:
   gemini-flash-lite:
     base_url: https://generativelanguage.googleapis.com/v1beta/openai
@@ -15,7 +19,15 @@ providers:
     price_per_mtok: {input: 0.10, output: 0.40}
   gemini-flash:
     base_url: https://generativelanguage.googleapis.com/v1beta/openai
-    model: gemini-3.5-flash
+    model: gemini-3.8-flash
+    api_key_env: GEMINI_API_KEY
+    daily_requests: 250
+    native_tools: true
+    price_per_mtok: {input: 0.30, output: 2.50}
+  # Older but steady when the newest flash model is overloaded (503) or out of quota.
+  gemini-flash-stable:
+    base_url: https://generativelanguage.googleapis.com/v1beta/openai
+    model: gemini-2.5-flash
     api_key_env: GEMINI_API_KEY
     daily_requests: 250
     native_tools: true
@@ -24,16 +36,23 @@ providers:
     base_url: https://api.groq.com/openai/v1
     model: openai/gpt-oss-20b
     api_key_env: GROQ_API_KEY
-    daily_requests: 14400
+    daily_requests: 1000
     native_tools: true
     price_per_mtok: {input: 0.05, output: 0.08}
+  groq-qwen:
+    base_url: https://api.groq.com/openai/v1
+    model: qwen/qwen3.8-27b
+    api_key_env: GROQ_API_KEY
+    daily_requests: 1000
+    native_tools: true
+    price_per_mtok: {input: 0.29, output: 0.59}
   groq-large:
     base_url: https://api.groq.com/openai/v1
     model: openai/gpt-oss-120b
     api_key_env: GROQ_API_KEY
     daily_requests: 1000
     native_tools: true
-    price_per_mtok: {input: 0.59, output: 0.79}
+    price_per_mtok: {input: 0.15, output: 0.60}
   github-mini:
     base_url: https://models.github.ai/inference
     model: openai/gpt-4.1-mini
@@ -48,17 +67,25 @@ providers:
     daily_requests: 50
     native_tools: true
     price_per_mtok: {input: 2.00, output: 8.00}
+  # OpenRouter free models share 50 requests per day per account (without credits).
   openrouter-free:
     base_url: https://openrouter.ai/api/v1
     model: minimax/minimax-m3.1-flash:free
     api_key_env: OPENROUTER_API_KEY
-    daily_requests: 50
+    daily_requests: 25
+    native_tools: true
+    price_per_mtok: {input: 0.0, output: 0.0}
+  openrouter-large:
+    base_url: https://openrouter.ai/api/v1
+    model: nvidia/nemotron-3-ultra-550b-a55b:free
+    api_key_env: OPENROUTER_API_KEY
+    daily_requests: 25
     native_tools: true
     price_per_mtok: {input: 0.0, output: 0.0}
   cloudflare:
     base_url: https://api.cloudflare.com/client/v4/accounts/{CLOUDFLARE_ACCOUNT_ID}/ai/v1
-    model: "@cf/meta/llama-3.1-8b-instruct"
+    model: "@cf/meta/llama-4-scout-17b-16e-instruct"
     api_key_env: CLOUDFLARE_AI_TOKEN
     daily_requests: 1000
     native_tools: false
-    price_per_mtok: {input: 0.28, output: 0.83}
+    price_per_mtok: {input: 0.27, output: 0.85}

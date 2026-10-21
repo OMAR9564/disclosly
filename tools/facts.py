@@ -41,6 +41,11 @@ KNOWN_METRICS = (
     "depreciation_amortization",
 )
 
+UNIT_SCALES: dict[str, Decimal] = {
+    "thousand": Decimal(10) ** 3,
+    "million": Decimal(10) ** 6,
+    "billion": Decimal(10) ** 9,
+}
 UNIT_LABELS: dict[str, dict[Language, str]] = {
     "thousand": {"tr": "bin", "en": "thousand"},
     "million": {"tr": "milyon", "en": "million"},
@@ -74,7 +79,8 @@ def render_fact(
 ) -> str:
     """Readable citation excerpt, e.g. "Net dönem kârı (2025-Q3): 1.234,5 milyon TRY"."""
     unit_text = UNIT_LABELS.get(unit, {}).get(language, unit)
-    tail = " ".join(p for p in (unit_text, currency) if p)
+    # A currency unit ("TRY") is not repeated as the currency.
+    tail = " ".join(p for p in dict.fromkeys((unit_text, currency)) if p)
     number = format_number(value, language)
     return f"{metric_label(metric, language)} ({period}): {number}" + (f" {tail}" if tail else "")
 
@@ -116,6 +122,7 @@ def _query(
             cite_id=f"f:{r.id}",
             text=render_fact(r.metric, r.period, r.value, r.unit, r.currency, language),
             value=r.value,
+            scale=UNIT_SCALES.get(r.unit, Decimal(1)),
             source={
                 "kind": "fact",
                 "document_id": r.source_document_id,

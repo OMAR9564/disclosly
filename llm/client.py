@@ -56,8 +56,12 @@ class InvalidResponse(ProviderError):
     """200 with no content and no tool calls, or unparsable tool arguments."""
 
 
+class RequestTooLarge(ProviderError):
+    """413: this request exceeds the provider's token limit; smaller ones still fit."""
+
+
 class ProviderConfigRejected(ProviderError):
-    """400/401/403: the request or the credentials are wrong; a config error."""
+    """400/401/403/404: the request, the credentials or the model id are wrong; a config error."""
 
     def __init__(self, provider: str, status: int) -> None:
         super().__init__(provider, f"HTTP {status}")
@@ -259,7 +263,9 @@ async def chat_completion(
         raise RateLimited(name, _retry_after(response))
     if status >= 500:
         raise Unavailable(name, f"HTTP {status}")
-    if status in (400, 401, 403):
+    if status == 413:
+        raise RequestTooLarge(name, "HTTP 413")
+    if status in (400, 401, 403, 404):
         raise ProviderConfigRejected(name, status)
     if status != 200:
         raise Unavailable(name, f"HTTP {status}")

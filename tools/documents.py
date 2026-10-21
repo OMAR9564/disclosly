@@ -4,8 +4,13 @@
 `list_documents` returns document metadata, which is not citable.
 """
 
+import re
+from decimal import Decimal
 from typing import Any, Protocol
 
+from sqlalchemy import Engine, select
+
+from ingestion import schema
 from ingestion.models import DocType
 from retrieval.types import DocumentMeta, SearchFilters, SearchHit
 from tools.types import SeenItem
@@ -44,6 +49,44 @@ def chunk_item(hit: SearchHit) -> SeenItem:
             "source_url": source.source_url,
         },
     )
+
+
+# KAP financial reports state the unit of every table once: "Sunum Para Birimi: 1.000.000 TL".
+_PRESENTATION = re.compile(r"Sunum Para Birimi:\s*((?:\d{1,3}(?:\.\d{3})*\s*)?[A-Z]{2,3})")
+
+
+def presentation_unit(text: str) -> tuple[Decimal, str] | None:
+    """`(scale, note)` from a "Sunum Para Birimi" line: "1.000.000 TL" is (10^6, "1.000.000 TL")."""
+    match = _PRESENTATION.search(text)
+    if match is None:
+        return None
+    note = " ".join(match.group(1).split())
+    digits = note.split(" ")[0].replace(".", "") if note[0].isdigit() else "1"
+    return Decimal(digits), note
+
+
+def with_presentation_units(engine: Engine, items: list[SeenItem]) -> list[SeenItem]:
+    """Attach each chunk's report unit, read from the first chunk of its document that states it."""
+    ids = {item.source.get("document_id") for item in items} - {None}
+    if not ids:
+        return items
+    chunks = schema.chunks
+    query = (
+        select(chunks.c.document_id, chunks.c.text)
+        .where(chunks.c.document_id.in_(ids), chunks.c.text.contains("Sunum Para Birimi"))
+        .order_by(chunks.c.document_id, chunks.c.ordinal)
+    )
+    units: dict[int, tuple[Decimal, str]] = {}
+    with engine.connect() as conn:
+        for document_id, text in conn.execute(query):
+            if document_id not in units and (unit := presentation_unit(text)) is not None:
+                units[document_id] = unit
+    return [
+        item.model_copy(update={"scale": unit[0], "unit_note": unit[1]})
+        if (unit := units.get(item.source.get("document_id"))) is not None  # type: ignore[arg-type]
+        else item
+        for item in items
+    ]
 
 
 async def search_documents(

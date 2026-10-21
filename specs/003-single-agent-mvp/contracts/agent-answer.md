@@ -31,10 +31,16 @@ Validation (in code, after schema check):
 1. Every `cite_id` was returned by a tool in this run.
 2. Every number in `summary`/`points` appears in a cited chunk text or fact value
    (thousand/decimal separators for TR and EN normalised; percentages may be derived from two
-   cited facts or two numbers in cited chunk text and must match within 0.1 pp). Financial
-   tables state amounts in thousands or millions, so a number also matches a source number
-   multiplied by 10^3, 10^6 or 10^9 (`551928` in a "million TL" table supports
-   `551.928.000.000 TL`).
+   cited facts or two numbers in cited chunk text and must match within 0.1 pp).
+   Units are checked too (changed 2026-10-22: production answered "56016 bin TL" from a
+   million-TL table). A source amount is its number times its scale: a scale word after it
+   ("23,1 milyar TL", "$391,035 million"), the table header ("(In millions)"), the KAP
+   report's presentation unit ("Sunum Para Birimi: 1.000.000 TL", sent to the model as
+   `amounts_in` on the chunk) or a fact's unit. An answer figure with a scale word or a
+   currency must equal a source amount, rounded to the figure's own precision
+   (`31,778` in millions supports "$31.8 billion"). A bare figure must equal a number as
+   written in the source or a source amount. When a table's unit is unknown, only its bare
+   numbers are accepted. Day numbers in dates ("March 31", "31 Mart") are not figures.
 3. `disclaimer` equals the fixed string (the server overwrites it regardless).
 4. `language` matches the detected question language.
 
