@@ -33,6 +33,8 @@ COPY llm ./llm
 COPY tools ./tools
 COPY retrieval ./retrieval
 COPY ingestion ./ingestion
+# The sandbox service (Phase 4) runs from this image with its own command.
+COPY sandbox ./sandbox
 USER app
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
