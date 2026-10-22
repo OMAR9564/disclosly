@@ -13,6 +13,12 @@ a chunk whose unit is known also carries `amounts_in="…"` (see rule 2 below). 
 worker does not answer, `search_documents` and `list_documents` return a tool error ("document
 search is temporarily unavailable") and the run goes on.
 
+A fact's text names its table column and, when it differs from the fact's period, the report it
+came from: "Net dönem kârı (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu)".
+Turkish reports restate the prior period (IAS 29 inflation adjustment), so one period can have
+two values; the figure as first reported is listed first. Found in the T046 test (2026-10-22):
+BIMAS 2024 net profit 18.6 bn TL as reported vs 24.4 bn TL restated in the 2025 report.
+
 ## Answer (final model output, validated)
 
 ```json
