@@ -67,7 +67,8 @@ if ! "${compose[@]}" pull api; then
   exit 1
 fi
 
-# 3. Migrate. On failure the old container keeps running untouched.
+# 3. Migrate: Alembic, then the graph checkpoint tables (the `migrate` service command).
+#    On failure the old container keeps running untouched.
 if ! "${compose[@]}" --profile migrate run --rm migrate; then
   set_tag "$previous_tag"
   log "migration failed; still running $previous_tag"

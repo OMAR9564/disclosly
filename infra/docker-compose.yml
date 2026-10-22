@@ -160,12 +160,13 @@ services:
         condition: service_healthy
 
   # One-off: `docker compose --profile migrate run --rm migrate` (infra/scripts/deploy.sh).
+  # Alembic owns schema `public`; the graph checkpoint tables go to `agent_graph` (agent/checkpoint.py).
   migrate:
     image: ghcr.io/omar9564/disclosly-api:${API_IMAGE_TAG:?API_IMAGE_TAG is required}
     profiles: ["migrate"]
     mem_limit: 256m
     environment: *api-environment
-    command: ["alembic", "upgrade", "head"]
+    command: ["sh", "-c", "alembic upgrade head && python -m agent.checkpoint setup"]
     depends_on:
       postgres:
         condition: service_healthy

@@ -1,15 +1,17 @@
 """Tests for api.runtime and the app lifespan (T019 wiring)."""
 
 import logging
-from collections.abc import Iterator
+from collections.abc import AsyncIterator, Iterator
+from contextlib import asynccontextmanager
 from typing import Any
 
 import pytest
 from fastapi.testclient import TestClient
+from langgraph.checkpoint.memory import InMemorySaver
 
 from api.config import Settings
 from api.main import create_app
-from api.runtime import budget_from, build_guards, build_run_service
+from api.runtime import budget_from, build_guards, build_run_service, graph_deps, graph_runtime
 from tools.registry import ToolRegistry
 
 SETTINGS = Settings(
@@ -94,3 +96,79 @@ async def test_build_guards_without_connecting() -> None:
     assert len(resources) == 2
     for resource in resources:
         await resource.aclose()
+
+
+async def test_build_run_service_takes_the_engine_settings() -> None:
+    settings = SETTINGS.model_copy(update={"agent_engine": "graph", "agent_max_concurrent_runs": 2})
+    service, resources = build_run_service(settings)
+    assert service.agent_engine == "graph"
+    assert service.graph is None  # attached by graph_runtime in the lifespan
+    for resource in resources:
+        close = getattr(resource, "aclose", None)
+        if close is not None:
+            await close()
+        else:
+            resource.dispose()
+
+
+async def test_graph_deps_from_settings() -> None:
+    settings = SETTINGS.model_copy(
+        update={"agent_deep_max_model_calls": 15, "agent_plan_max_steps": 6}
+    )
+    service, resources = build_run_service(settings)
+    deps = graph_deps(service, settings)
+    assert deps.budgets["simple"].max_model_calls == 3
+    assert deps.budgets["deep"].max_model_calls == 15
+    assert deps.plan_max_steps == 6
+    assert deps.emit == service.emit_event
+    for resource in resources:
+        close = getattr(resource, "aclose", None)
+        if close is not None:
+            await close()
+        else:
+            resource.dispose()
+
+
+async def test_graph_runtime_attaches_and_detaches(monkeypatch: Any) -> None:
+    opened: list[str] = []
+
+    @asynccontextmanager
+    async def fake_checkpointer(url: str) -> AsyncIterator[InMemorySaver]:
+        opened.append(url)
+        yield InMemorySaver()
+
+    monkeypatch.setattr("api.runtime.open_checkpointer", fake_checkpointer)
+    service, resources = build_run_service(SETTINGS)
+    async with graph_runtime(service, SETTINGS):
+        assert service.graph is not None
+    assert service.graph is None
+    assert opened == ["postgresql://u:p@localhost:5432/db"]
+    for resource in resources:
+        close = getattr(resource, "aclose", None)
+        if close is not None:
+            await close()
+        else:
+            resource.dispose()
+
+
+def test_lifespan_builds_the_runtime_and_the_graph(monkeypatch: Any) -> None:
+    stub = StubService()
+    entered: list[str] = []
+
+    def build(settings: Settings) -> tuple[Any, list[Any]]:
+        return stub, []
+
+    @asynccontextmanager
+    async def runtime(service: Any, settings: Settings) -> AsyncIterator[None]:
+        entered.append("open")
+        yield
+        entered.append("close")
+
+    monkeypatch.setattr("api.runtime.build_run_service", build)
+    monkeypatch.setattr("api.runtime.graph_runtime", runtime)
+    monkeypatch.setattr("api.main.mark_interrupted", lambda engine: 0)
+    app = create_app(SETTINGS, guards=object())  # type: ignore[arg-type]
+    with TestClient(app):
+        assert entered == ["open"]
+    assert entered == ["open", "close"]
+    assert stub.idle

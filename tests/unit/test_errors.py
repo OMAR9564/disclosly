@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from starlette.types import ASGIApp, Receive, Scope, Send
 
-from api.errors import ERROR_CODES, register_exception_handlers
+from api.errors import ERROR_CODES, ApiError, localized_message, register_exception_handlers
 
 LEAKY_TEXT = "boom: password=hunter2 at /srv/app/secret.py"
 
@@ -34,6 +34,21 @@ def _app(with_request_id: bool = False) -> FastAPI:
     @app.get("/boom")
     def boom() -> None:
         raise RuntimeError(LEAKY_TEXT)
+
+    @app.get("/plan")
+    def plan() -> None:
+        reasons = [{"step": "s2", "field": "goal", "reason": "asks for investment advice"}]
+        raise ApiError("plan_invalid", details={"reasons": reasons})
+
+    @app.get("/decided")
+    def decided() -> None:
+        raise ApiError("already_decided")
+
+    @app.get("/teapot")
+    def teapot() -> None:
+        from fastapi import HTTPException
+
+        raise HTTPException(status_code=422)
 
     if with_request_id:
         app.add_middleware(_FixedRequestId)
@@ -69,6 +84,14 @@ def test_catalogue_matches_data_model() -> None:
         "quota_exhausted": 429,
         "rate_limited": 429,
         "providers_unavailable": 503,
+        "already_decided": 409,
+        "not_awaiting_decision": 409,
+        "plan_expired": 410,
+        "plan_invalid": 422,
+        "watchlist_full": 422,
+        "company_not_covered": 422,
+        "sandbox_unavailable": 503,
+        "interrupted_limit": 500,
     }
 
 
@@ -138,3 +161,51 @@ def test_request_id_comes_from_request_state(path: str) -> None:
 
     assert response.json()["error"]["request_id"] == "fixed-id-123"
     assert response.headers["X-Request-ID"] == "fixed-id-123"
+
+
+PHASE4_CODES = [
+    "already_decided",
+    "not_awaiting_decision",
+    "plan_expired",
+    "plan_invalid",
+    "watchlist_full",
+    "company_not_covered",
+    "sandbox_unavailable",
+    "interrupted_limit",
+]
+
+
+@pytest.mark.parametrize("code", PHASE4_CODES)
+def test_phase4_codes_have_both_languages(code: str) -> None:
+    en = localized_message(code, "en")  # type: ignore[arg-type]
+    tr = localized_message(code, "tr")  # type: ignore[arg-type]
+    assert en
+    assert tr
+    assert en != tr
+
+
+def test_envelope_carries_details(client: TestClient) -> None:
+    response = client.get("/plan", headers={"Accept-Language": "en"})
+
+    assert response.status_code == 422
+    error = _assert_envelope(response.json(), "plan_invalid")
+    assert error["details"] == {
+        "reasons": [{"step": "s2", "field": "goal", "reason": "asks for investment advice"}]
+    }
+    assert error["message"] == "The edited plan is not valid. Please fix the marked steps."
+
+
+def test_named_code_status_and_message(client: TestClient) -> None:
+    response = client.get("/decided")
+
+    assert response.status_code == 409
+    error = _assert_envelope(response.json(), "already_decided")
+    assert error["message"] == "Bu plan için zaten bir karar verildi."
+    assert error["details"] is None
+
+
+def test_bare_status_keeps_the_generic_code(client: TestClient) -> None:
+    # A bare 422 is still a validation error, not one of the Phase 4 codes sharing the status.
+    response = client.get("/teapot")
+    assert response.status_code == 422
+    _assert_envelope(response.json(), "validation_error")

@@ -24,8 +24,56 @@ from tools.facts import Language
 from tools.types import SeenItem
 
 TOOL_SCHEMA_VERSION = "1"
+# Graph nodes see a per-node tool set (specs/004-multi-agent-graph/contracts/agent-graph.md);
+# the version is part of the cache key, so `single` engine cassettes stay valid.
+GRAPH_TOOL_SCHEMA_VERSION = "2"
 
-ToolName = Literal["search_documents", "get_financial_facts", "list_documents"]
+ToolName = Literal["search_documents", "get_financial_facts", "list_documents", "run_python"]
+GraphNode = Literal[
+    "router",
+    "memory",
+    "quota_gate",
+    "planner",
+    "decision",
+    "retriever",
+    "retriever_simple",
+    "analyst",
+    "verifier",
+    "writer",
+    "writer_simple",
+    "finalize_partial",
+]
+
+_RETRIEVAL_TOOLS: tuple[ToolName, ...] = (
+    "search_documents",
+    "get_financial_facts",
+    "list_documents",
+)
+# What each node may call; `run_python` is called by the analyst and verifier code (sandbox).
+NODE_TOOLS: dict[GraphNode, tuple[ToolName, ...]] = {
+    "router": (),
+    "memory": (),
+    "quota_gate": (),
+    "planner": (),
+    "decision": (),
+    "retriever": _RETRIEVAL_TOOLS,
+    "retriever_simple": _RETRIEVAL_TOOLS,
+    "analyst": ("run_python",),
+    "verifier": ("run_python",),
+    "writer": (),
+    "writer_simple": (),
+    "finalize_partial": (),
+}
+
+
+class ToolNotAllowed(Exception):
+    """A node asked for a tool outside its row in contracts/agent-graph.md."""
+
+    def __init__(self, node: str, tool: str) -> None:
+        super().__init__(f"node {node!r} may not call tool {tool!r}")
+        self.node = node
+        self.tool = tool
+
 
 _PERIOD = {"type": "string", "description": 'Period like "2025-Q3" or "2025-FY"'}
 
@@ -136,6 +184,13 @@ class ToolRegistry:
     def schemas(self) -> list[ToolSchema]:
         return SCHEMAS
 
+    @property
+    def tool_schema_version(self) -> str:
+        return TOOL_SCHEMA_VERSION
+
+    def for_node(self, node: GraphNode) -> "NodeTools":
+        return NodeTools(self, node)
+
     async def dispatch(self, call: ToolCall, language: Language = "tr") -> ToolResult:
         args = call.arguments
         summary = _summary(call.name, args)
@@ -164,3 +219,25 @@ class ToolRegistry:
     @staticmethod
     def _error(name: str, summary: str, message: str) -> ToolResult:
         return ToolResult(name, f"Tool error: {message}"[:500], summary, error=message)
+
+
+class NodeTools:
+    """One graph node's view of the registry: only the tools in its row, schema version 2."""
+
+    def __init__(self, registry: ToolRegistry, node: GraphNode) -> None:
+        self._registry = registry
+        self.node = node
+        self.names: frozenset[str] = frozenset(NODE_TOOLS[node])
+
+    @property
+    def schemas(self) -> list[ToolSchema]:
+        return [schema for schema in SCHEMAS if schema.name in self.names]
+
+    @property
+    def tool_schema_version(self) -> str:
+        return GRAPH_TOOL_SCHEMA_VERSION
+
+    async def dispatch(self, call: ToolCall, language: Language = "tr") -> ToolResult:
+        if call.name not in self.names:
+            raise ToolNotAllowed(self.node, call.name)
+        return await self._registry.dispatch(call, language)
