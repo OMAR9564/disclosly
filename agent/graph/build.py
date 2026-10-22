@@ -32,8 +32,14 @@ from langgraph.types import Durability, RetryPolicy
 
 from agent.budget import LimitReached, Usage
 from agent.graph.context import GraphDeps, NodeContext, NodeFn
+from agent.graph.nodes.analyst import analyst_node
+from agent.graph.nodes.decision import decision_node
 from agent.graph.nodes.finalize_partial import finalize_partial_node
+from agent.graph.nodes.planner import planner_node
+from agent.graph.nodes.quota_gate import quota_gate_node
+from agent.graph.nodes.retriever import retriever_node
 from agent.graph.nodes.router import router_node
+from agent.graph.nodes.writer import writer_node
 from agent.graph.state import ResearchState
 from agent.telemetry import node_span
 from retrieval.types import SearchUnavailable
@@ -53,6 +59,13 @@ DURABILITY: Durability = "sync"
 
 DEFAULT_NODES: dict[GraphNode, NodeFn] = {
     "router": router_node,
+    # Deep path (US1).
+    "quota_gate": quota_gate_node,
+    "planner": planner_node,
+    "decision": decision_node,
+    "retriever": retriever_node,
+    "analyst": analyst_node,
+    "writer": writer_node,
     "finalize_partial": finalize_partial_node,
 }
 

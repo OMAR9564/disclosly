@@ -13,7 +13,7 @@ from api.auth.allowlist import mask_email
 from api.auth.session import CurrentUser
 from api.errors import ApiError
 from api.guards import get_guards, ip_rate_limit
-from api.guards.quota import QuotaStatus
+from api.guards.quota import Quotas
 
 router = APIRouter(prefix="/v1/me", tags=["me"], dependencies=[Depends(ip_rate_limit)])
 
@@ -24,7 +24,7 @@ class Me(BaseModel):
     display_name: str
     email_masked: str
     language: Language
-    quota: QuotaStatus
+    quota: Quotas
 
 
 class MeUpdate(BaseModel):
@@ -59,7 +59,7 @@ async def _me(request: Request, user_id: uuid.UUID) -> Me:
         display_name=name,
         email_masked=mask_email(email),
         language=language,
-        quota=await guards.quota.status(user_id),
+        quota=await guards.quota.statuses(user_id),
     )
 
 

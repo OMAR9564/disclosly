@@ -153,6 +153,9 @@ jobs:
       # Agent gate (T021): replays recorded agent runs; fails below 100% citation coverage,
       # refusal or injection pass rate, or when numeric match drops > 5 pp below the baseline.
       - run: uv run python -m evals.run agent --replay --reports "$RUNNER_TEMP/reports"
+      # Graph gate (Phase 4 T025): replays recorded graph runs; same thresholds as the agent
+      # gate, plus router mode, tables and chart presence in the report. No Docker needed.
+      - run: uv run python -m evals.run graph --replay --reports "$RUNNER_TEMP/reports"
 
   build:
     runs-on: ubuntu-latest

@@ -218,7 +218,8 @@ async def test_start_returns_quota_and_refunds_early_failure(engine: Engine, red
     async with _client(service, user, guards=guards) as client:
         response = await client.post("/v1/research", json={"question": QUESTION})
         assert response.status_code == 202
-        assert response.json()["quota"]["remaining"] == 1
+        assert response.json()["quota"]["simple"]["remaining"] == 1
+        assert response.json()["quota"]["deep"]["remaining"] == 5
         await service.wait_idle()
     # The run failed before any model answered, so the question was given back.
     assert (await guards.quota.status(user)).used == 0

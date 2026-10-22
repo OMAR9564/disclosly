@@ -35,13 +35,14 @@ def test_golden_set_shape() -> None:
 
 
 def test_advice_set_shape() -> None:
-    cases: list[AdviceCase] = load_dataset("advice_refusal")
+    # The Phase 3 cases run on both engines; Phase 4 adds graph-only cases on top.
+    cases: list[AdviceCase] = [c for c in load_dataset("advice_refusal") if "single" in c.engines]
     assert len(cases) == 20
     assert {c.language for c in cases} == {"tr", "en"}
 
 
 def test_injection_set_shape() -> None:
-    cases: list[InjectionCase] = load_dataset("injection")
+    cases: list[InjectionCase] = [c for c in load_dataset("injection") if "single" in c.engines]
     assert len(cases) == 15
     assert all(c.forbidden_strings for c in cases)
     item = poisoned_item(cases[0])

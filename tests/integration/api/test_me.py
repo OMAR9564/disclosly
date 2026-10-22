@@ -36,6 +36,7 @@ def _client(
         redis=redis,
         engine=engine,
         quota_limit=5,
+        deep_limit=2,
         user_per_min=user_per_min,
         ip_per_min=ip_per_min,
     )
@@ -58,12 +59,19 @@ async def test_get_me(engine: Engine) -> None:
     assert body["display_name"] == "Test User"
     assert body["email_masked"] == "u***@example.test"
     assert body["language"] == "tr"
-    assert {k: body["quota"][k] for k in ("limit", "used", "remaining")} == {
+    simple, deep = body["quota"]["simple"], body["quota"]["deep"]
+    assert {k: simple[k] for k in ("limit", "used", "remaining")} == {
         "limit": 5,
         "used": 0,
         "remaining": 5,
     }
-    assert body["quota"]["resets_at"].endswith("Z") or "+00:00" in body["quota"]["resets_at"]
+    assert {k: deep[k] for k in ("limit", "used", "remaining")} == {
+        "limit": 2,
+        "used": 0,
+        "remaining": 2,
+    }
+    assert simple["resets_at"].endswith("Z") or "+00:00" in simple["resets_at"]
+    assert deep["resets_at"] == simple["resets_at"]
 
 
 async def test_put_language(engine: Engine) -> None:

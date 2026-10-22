@@ -7,7 +7,7 @@ from sqlalchemy import Engine
 
 from api.auth.allowlist import Allowlist, email_hash
 from api.guards import Guards
-from api.guards.quota import _REFUND, _TAKE, Quota
+from api.guards.quota import _REFUND, _SWAP, _TAKE, Quota
 from api.guards.ratelimit import RateLimiter
 
 
@@ -55,6 +55,14 @@ class FakeRedis:
         if script == _REFUND:
             self.values[key] = str(max(used - 1, 0))
             return int(self.values[key])
+        if script == _SWAP:
+            if used >= int(args[2]):
+                return -1
+            self.values[key] = str(used + 1)
+            self.ttls.setdefault(key, int(args[3]))
+            simple = str(args[1])
+            self.values[simple] = str(max(int(self.values.get(simple, "0")) - 1, 0))
+            return used + 1
         raise NotImplementedError(script)
 
     def expire_all(self) -> None:
@@ -70,6 +78,7 @@ def fake_guards(
     engine: Engine | None = None,
     http: httpx.AsyncClient | None = None,
     quota_limit: int = 20,
+    deep_limit: int = 5,
     user_per_min: int = 30,
     ip_per_min: int = 60,
 ) -> Guards:
@@ -82,6 +91,6 @@ def fake_guards(
         http=http
         or httpx.AsyncClient(transport=httpx.MockTransport(lambda r: httpx.Response(500))),
         allowlist=Allowlist(store, lambda hashed: hashed in hashes),
-        quota=Quota(store, quota_limit),
+        quota=Quota(store, quota_limit, deep_limit=deep_limit),
         ratelimit=RateLimiter(store, user_per_min=user_per_min, ip_per_min=ip_per_min),
     )
