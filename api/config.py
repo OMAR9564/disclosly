@@ -2,6 +2,8 @@
 
 import ipaddress
 import logging
+import os
+from collections.abc import Mapping
 from functools import lru_cache
 from typing import Annotated, Literal
 from urllib.parse import urlsplit
@@ -12,6 +14,7 @@ from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 logger = logging.getLogger(__name__)
 
 AppEnv = Literal["development", "test", "production"]
+AgentEngine = Literal["graph", "single"]
 LogLevel = Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
 
 JWT_SECRET_MIN_LENGTH = 32
@@ -60,6 +63,22 @@ class Settings(BaseSettings):
     agent_max_model_calls: int = Field(default=4, ge=1)
     agent_deadline_seconds: int = Field(default=90, ge=1)
     agent_max_tool_calls: int = Field(default=6, ge=0)
+
+    # Multi-agent research (specs/004-multi-agent-graph/contracts/agent-graph.md).
+    agent_engine: AgentEngine = "single"
+    agent_deep_max_model_calls: int = Field(default=20, ge=1)
+    agent_deep_deadline_seconds: int = Field(default=300, ge=1)
+    agent_deep_max_steps: int = Field(default=12, ge=1)
+    agent_deep_max_tool_calls: int = Field(default=24, ge=1)
+    agent_deep_max_sandbox_runs: int = Field(default=4, ge=1)
+    agent_plan_max_steps: int = Field(default=8, ge=1)
+    agent_plan_ttl_hours: int = Field(default=24, ge=1)
+    agent_verify_max_rounds: int = Field(default=2, ge=1)
+    agent_max_concurrent_runs: int = Field(default=3, ge=1)
+    quota_daily_deep: int = Field(default=5, ge=1)
+    sandbox_url: str = "http://sandbox:8100"
+    sandbox_image_tag: str = "main"
+    checkpoint_retention_days: int = Field(default=7, ge=1)
 
     otel_exporter_otlp_endpoint: str | None = None
 
@@ -160,8 +179,25 @@ def _is_allowed_origin(origin: str, app_env: object) -> bool:
     return parts.scheme == "http" and parts.hostname == "localhost" and app_env == "development"
 
 
+# LangSmith tracing would send run data to a third party (research §R1).
+FORBIDDEN_TRACING_VARS = ("LANGSMITH_TRACING", "LANGCHAIN_TRACING_V2")
+_FALSY = frozenset({"", "0", "false", "no", "off"})
+
+
+def tracing_enabled(environ: Mapping[str, str]) -> list[str]:
+    """Names of the LangSmith tracing variables that are set to a truthy value."""
+    return [
+        name
+        for name in FORBIDDEN_TRACING_VARS
+        if environ.get(name, "").strip().lower() not in _FALSY
+    ]
+
+
 def load_settings() -> Settings:
     """Build Settings or exit non-zero, logging variable names but never values."""
+    if enabled := tracing_enabled(os.environ):
+        logger.error("invalid configuration: %s must stay unset", ", ".join(enabled))
+        raise SystemExit(1)
     try:
         return Settings()
     except ValidationError as exc:

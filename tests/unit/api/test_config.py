@@ -5,7 +5,7 @@ import logging
 import pytest
 from pydantic import ValidationError
 
-from api.config import Settings, load_settings
+from api.config import Settings, load_settings, tracing_enabled
 
 STRONG_SECRET = "jwt-secret-value-that-is-long-enough-123"  # noqa: S105
 PROVIDER_KEY = "provider-key-value-xyz"
@@ -34,10 +34,29 @@ PHASE3_VARS = (
     "OTEL_EXPORTER_OTLP_ENDPOINT",
 )
 
+PHASE4_VARS = (
+    "AGENT_ENGINE",
+    "AGENT_DEEP_MAX_MODEL_CALLS",
+    "AGENT_DEEP_DEADLINE_SECONDS",
+    "AGENT_DEEP_MAX_STEPS",
+    "AGENT_DEEP_MAX_TOOL_CALLS",
+    "AGENT_DEEP_MAX_SANDBOX_RUNS",
+    "AGENT_PLAN_MAX_STEPS",
+    "AGENT_PLAN_TTL_HOURS",
+    "AGENT_VERIFY_MAX_ROUNDS",
+    "AGENT_MAX_CONCURRENT_RUNS",
+    "QUOTA_DAILY_DEEP",
+    "SANDBOX_URL",
+    "SANDBOX_IMAGE_TAG",
+    "CHECKPOINT_RETENTION_DAYS",
+    "LANGSMITH_TRACING",
+    "LANGCHAIN_TRACING_V2",
+)
+
 
 @pytest.fixture
 def env(monkeypatch: pytest.MonkeyPatch) -> pytest.MonkeyPatch:
-    for name in PHASE3_VARS:
+    for name in (*PHASE3_VARS, *PHASE4_VARS):
         monkeypatch.delenv(name, raising=False)
     monkeypatch.setenv("APP_ENV", "production")
     monkeypatch.setenv("DATABASE_URL", "postgresql://u:p@postgres:5432/d")
@@ -155,3 +174,91 @@ def test_load_settings_error_names_variable_not_value(
         load_settings()
     assert "JWT_SECRET" in caplog.text
     assert "too-short-secret-value" not in caplog.text
+
+
+def test_phase4_defaults(env: pytest.MonkeyPatch) -> None:
+    settings = Settings()
+
+    assert settings.agent_engine == "single"
+    assert settings.agent_deep_max_model_calls == 20
+    assert settings.agent_deep_deadline_seconds == 300
+    assert settings.agent_deep_max_steps == 12
+    assert settings.agent_deep_max_tool_calls == 24
+    assert settings.agent_deep_max_sandbox_runs == 4
+    assert settings.agent_plan_max_steps == 8
+    assert settings.agent_plan_ttl_hours == 24
+    assert settings.agent_verify_max_rounds == 2
+    assert settings.agent_max_concurrent_runs == 3
+    assert settings.quota_daily_deep == 5
+    assert settings.sandbox_url == "http://sandbox:8100"
+    assert settings.sandbox_image_tag == "main"
+    assert settings.checkpoint_retention_days == 7
+
+
+@pytest.mark.parametrize("engine", ["graph", "single"])
+def test_agent_engine_accepts_both_engines(env: pytest.MonkeyPatch, engine: str) -> None:
+    env.setenv("AGENT_ENGINE", engine)
+    assert Settings().agent_engine == engine
+
+
+def test_agent_engine_rejects_unknown(env: pytest.MonkeyPatch) -> None:
+    env.setenv("AGENT_ENGINE", "swarm")
+    with pytest.raises(ValidationError):
+        Settings()
+
+
+@pytest.mark.parametrize(
+    "name",
+    [
+        "AGENT_DEEP_MAX_MODEL_CALLS",
+        "AGENT_DEEP_DEADLINE_SECONDS",
+        "AGENT_DEEP_MAX_STEPS",
+        "AGENT_DEEP_MAX_TOOL_CALLS",
+        "AGENT_DEEP_MAX_SANDBOX_RUNS",
+        "AGENT_PLAN_MAX_STEPS",
+        "AGENT_PLAN_TTL_HOURS",
+        "AGENT_VERIFY_MAX_ROUNDS",
+        "AGENT_MAX_CONCURRENT_RUNS",
+        "QUOTA_DAILY_DEEP",
+        "CHECKPOINT_RETENTION_DAYS",
+    ],
+)
+def test_phase4_limits_must_be_positive(env: pytest.MonkeyPatch, name: str) -> None:
+    env.setenv(name, "0")
+    with pytest.raises(ValidationError):
+        Settings()
+
+
+def test_plan_steps_and_verify_rounds_are_configurable(env: pytest.MonkeyPatch) -> None:
+    env.setenv("AGENT_PLAN_MAX_STEPS", "10")
+    env.setenv("AGENT_VERIFY_MAX_ROUNDS", "3")
+    settings = Settings()
+    assert settings.agent_plan_max_steps == 10
+    assert settings.agent_verify_max_rounds == 3
+
+
+@pytest.mark.parametrize("name", ["LANGSMITH_TRACING", "LANGCHAIN_TRACING_V2"])
+@pytest.mark.parametrize("value", ["true", "1", "TRUE", "yes"])
+def test_langsmith_tracing_refused(
+    env: pytest.MonkeyPatch, caplog: pytest.LogCaptureFixture, name: str, value: str
+) -> None:
+    env.setenv(name, value)
+    with caplog.at_level(logging.ERROR), pytest.raises(SystemExit) as excinfo:
+        load_settings()
+    assert excinfo.value.code == 1
+    assert name in caplog.text
+    assert f"={value}" not in caplog.text
+
+
+@pytest.mark.parametrize("value", ["", "false", "0", "off", "no"])
+def test_langsmith_tracing_off_values_allowed(env: pytest.MonkeyPatch, value: str) -> None:
+    env.setenv("LANGSMITH_TRACING", value)
+    env.setenv("LANGCHAIN_TRACING_V2", value)
+    assert load_settings().agent_engine == "single"
+
+
+def test_tracing_enabled_lists_only_truthy_names() -> None:
+    assert tracing_enabled({"LANGSMITH_TRACING": "true", "LANGCHAIN_TRACING_V2": "false"}) == [
+        "LANGSMITH_TRACING"
+    ]
+    assert tracing_enabled({}) == []
