@@ -156,6 +156,7 @@ export const tr = {
   calcFormula: "Formül",
   calcInputs: "Girdiler",
   calcOutput: "Sonuç",
+  calcShowCode: "Hesaplama kodunu göster",
   planReasonAdvice:
     "Bu adım yatırım tavsiyesi istiyor; Disclosly tavsiye vermez. Amacı belgelerdeki bilgilere göre yaz.",
   planReasonGoal: "Amaç 1 ile 300 karakter arasında olmalı.",
