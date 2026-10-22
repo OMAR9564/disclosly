@@ -7,11 +7,14 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import pytest
+import yaml
 
 pytestmark = pytest.mark.integration
 
 BASH = shutil.which("bash") or "/bin/bash"
-SCRIPT = Path(__file__).resolve().parents[2] / "infra" / "scripts" / "deploy.sh"
+ROOT = Path(__file__).resolve().parents[2]
+SCRIPT = ROOT / "infra" / "scripts" / "deploy.sh"
+COMPOSE = ROOT / "infra" / "docker-compose.yml"
 OLD_SHA = "1111111"
 NEW_SHA = "2222222"
 
@@ -152,3 +155,12 @@ def test_requires_one_argument(sandbox: Sandbox) -> None:
 
     assert result.returncode != 0
     assert "usage" in result.stderr.lower()
+
+
+def test_migrate_service_sets_up_graph_checkpoints_after_alembic() -> None:
+    # deploy.sh runs the `migrate` service; a failure in either step fails the deploy.
+    services = yaml.safe_load(COMPOSE.read_text())["services"]
+    command = services["migrate"]["command"]
+
+    assert command[:2] == ["sh", "-c"]
+    assert command[2] == "alembic upgrade head && python -m agent.checkpoint setup"

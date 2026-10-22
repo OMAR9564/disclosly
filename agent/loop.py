@@ -10,7 +10,7 @@ validated points only.
 import asyncio
 import re
 import time
-from collections.abc import Awaitable, Callable
+from collections.abc import Awaitable, Callable, Mapping
 from dataclasses import dataclass, field
 from typing import Any, Protocol
 
@@ -131,6 +131,112 @@ def _citations(answer: Answer, seen: dict[str, SeenItem]) -> list[dict[str, Any]
     ]
 
 
+ModelCall = Callable[[TaskClass, ChatRequest], Awaitable[ChatResponse]]
+RunTools = Callable[[list[ToolCall]], Awaitable[None]]
+
+
+@dataclass
+class Turns:
+    """The conversation the research and answer helpers share, with its accounting.
+
+    `call` makes one model call within the run's limits (raising when none is left), and
+    `run_tools` executes tool calls and appends their results to `messages`.
+    """
+
+    call: ModelCall
+    calls_left: Callable[[], int]
+    run_tools: RunTools
+    messages: list[ChatMessage]
+    language: Language
+
+
+@dataclass
+class AnswerResult:
+    answer: Answer | None = None  # a validated answer
+    last: tuple[Answer, Validation] | None = None  # the last answer that failed validation
+
+
+async def research_turns(
+    turns: Turns,
+    schemas: list[ToolSchema],
+    *,
+    reserve: int = 1,
+    max_turns: int | None = None,
+    tool_schema_version: str = "1",
+) -> str | None:
+    """Cheap tool-calling turns while more than `reserve` calls are left.
+
+    Returns the content of a turn that answered without tools (an answer candidate), or None
+    when the turns ran out.
+    """
+    taken = 0
+    while turns.calls_left() > reserve and (max_turns is None or taken < max_turns):
+        taken += 1
+        response = await turns.call(
+            "cheap",
+            ChatRequest(
+                messages=turns.messages, tools=schemas, tool_schema_version=tool_schema_version
+            ),
+        )
+        if not response.tool_calls:
+            return response.content
+        turns.messages.append(
+            ChatMessage(role="assistant", content=response.content, tool_calls=response.tool_calls)
+        )
+        await turns.run_tools(response.tool_calls)
+    return None
+
+
+async def answer_turn(
+    turns: Turns,
+    seen: Mapping[str, SeenItem],
+    candidate: str | None = None,
+    result: AnswerResult | None = None,
+) -> AnswerResult:
+    """The forced `strong` Answer call, validated, with one re-ask while a call is left.
+
+    `result` is filled as the turn goes, so a caller that catches a deadline mid-turn still
+    has the last answer that failed validation.
+    """
+    language = turns.language
+    result = result if result is not None else AnswerResult()
+    reasked = False
+    while True:
+        if candidate is None:
+            if turns.calls_left() < 1:
+                break
+            # A re-ask already ends with the errors; a first attempt gets the instruction.
+            final = (
+                [] if reasked else [ChatMessage(role="user", content=_FINAL_INSTRUCTION[language])]
+            )
+            response = await turns.call(
+                "strong",
+                ChatRequest(
+                    messages=[*turns.messages, *final],
+                    response_schema=answer_json_schema(),
+                    max_tokens=2048,
+                ),
+            )
+            candidate = response.content
+        answer, errors = parse_answer(candidate)
+        if answer is not None:
+            validation = validate_answer(answer, seen, language)
+            if validation.ok:
+                result.answer = answer
+                return result
+            result.last = (answer, validation)
+            errors = validation.errors
+        if reasked or turns.calls_left() < 1:
+            break
+        turns.messages.append(ChatMessage(role="assistant", content=candidate or ""))
+        turns.messages.append(
+            ChatMessage(role="user", content=_REASK[language] + "\n".join(errors))
+        )
+        candidate = None
+        reasked = True
+    return result
+
+
 async def run_agent(
     question: str,
     router: Router,
@@ -188,59 +294,20 @@ async def run_agent(
                 content = result.content
             messages.append(ChatMessage(role="tool", content=content, tool_call_id=tool_call.id))
 
-    candidate: str | None = None
-    last: tuple[Answer, Validation] | None = None
+    turns = Turns(call, state.calls_left, run_tools, messages, language)
+    result = AnswerResult()
     deadline_hit = False
     try:
         # Research: cheap calls with tools, keeping one call for the final answer.
-        while state.calls_left() > 1:
-            response = await call("cheap", ChatRequest(messages=messages, tools=tools.schemas))
-            if not response.tool_calls:
-                candidate = response.content
-                break
-            messages.append(
-                ChatMessage(
-                    role="assistant", content=response.content, tool_calls=response.tool_calls
-                )
-            )
-            await run_tools(response.tool_calls)
-
+        candidate = await research_turns(turns, tools.schemas)
         # Answer: validate, re-ask at most once while a model call is left.
-        reasked = False
-        while True:
-            if candidate is None:
-                if state.calls_left() < 1:
-                    break
-                # A re-ask already ends with the errors; a first attempt gets the instruction.
-                final = (
-                    []
-                    if reasked
-                    else [ChatMessage(role="user", content=_FINAL_INSTRUCTION[language])]
-                )
-                response = await call(
-                    "strong",
-                    ChatRequest(
-                        messages=[*messages, *final],
-                        response_schema=answer_json_schema(),
-                        max_tokens=2048,
-                    ),
-                )
-                candidate = response.content
-            answer, errors = parse_answer(candidate)
-            if answer is not None:
-                validation = validate_answer(answer, state.seen, language)
-                if validation.ok:
-                    return _outcome(answer, state, language, advice)
-                last = (answer, validation)
-                errors = validation.errors
-            if reasked or state.calls_left() < 1:
-                break
-            messages.append(ChatMessage(role="assistant", content=candidate or ""))
-            messages.append(ChatMessage(role="user", content=_REASK[language] + "\n".join(errors)))
-            candidate = None
-            reasked = True
+        await answer_turn(turns, state.seen, candidate, result)
+        if result.answer is not None:
+            return _outcome(result.answer, state, language, advice)
     except DeadlineExceeded:
         deadline_hit = True
+
+    last = result.last
 
     if last is not None:
         partial = to_partial(last[0], last[1], language)

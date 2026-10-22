@@ -46,7 +46,7 @@ def test_upgrade_head_then_downgrade_base(database_url: str) -> None:
     config = Config("alembic.ini")
 
     command.upgrade(config, "head")
-    assert _current_revision(database_url) == "0003"
+    assert _current_revision(database_url) == "0004"
 
     command.downgrade(config, "base")
     assert _current_revision(database_url) is None
@@ -311,3 +311,191 @@ def test_llm_cache_defaults(migrated: psycopg.Connection[tuple[object, ...]]) ->
     assert row is not None
     assert row[0] == 0
     assert row[1] is not None
+
+
+def test_existing_runs_backfilled_single_new_runs_default_graph(database_url: str) -> None:
+    config = Config("alembic.ini")
+    command.downgrade(config, "base")
+    command.upgrade(config, "0003")
+    with psycopg.connect(database_url, autocommit=True) as conn:
+        user_id = _seed_user(conn)
+        conn.execute(
+            "INSERT INTO runs (user_id, question, language) VALUES (%s, 'old run', 'tr')",
+            (user_id,),
+        )
+    command.upgrade(config, "head")
+    with psycopg.connect(database_url, autocommit=True) as conn:
+        conn.execute(
+            "INSERT INTO runs (user_id, question, language) VALUES (%s, 'new run', 'tr')",
+            (user_id,),
+        )
+        rows = conn.execute(
+            "SELECT question, engine, mode, resume_count FROM runs ORDER BY question"
+        ).fetchall()
+    assert rows == [("new run", "graph", None, 0), ("old run", "single", None, 0)]
+    command.downgrade(config, "base")
+
+
+def _seed_run(conn: psycopg.Connection[tuple[object, ...]], user_id: str) -> str:
+    row = conn.execute(
+        "INSERT INTO runs (user_id, question, language) VALUES (%s, 'deep question', 'en')"
+        " RETURNING id",
+        (user_id,),
+    ).fetchone()
+    assert row is not None
+    return str(row[0])
+
+
+def test_awaiting_approval_needs_plan_expiry(
+    migrated: psycopg.Connection[tuple[object, ...]],
+) -> None:
+    run_id = _seed_run(migrated, _seed_user(migrated))
+    with pytest.raises(psycopg.errors.CheckViolation):
+        migrated.execute("UPDATE runs SET status = 'awaiting_approval' WHERE id = %s", (run_id,))
+    migrated.execute(
+        "UPDATE runs SET status = 'awaiting_approval', plan = '{\"steps\": []}',"
+        " plan_expires_at = now() + interval '24 hours', mode = 'deep' WHERE id = %s",
+        (run_id,),
+    )
+    for status in ("cancelled", "expired"):
+        migrated.execute("UPDATE runs SET status = %s WHERE id = %s", (status, run_id))
+    migrated.execute(
+        "UPDATE runs SET decision = 'edit', decided_at = now(), deadline_at = now(),"
+        " resume_count = 2 WHERE id = %s",
+        (run_id,),
+    )
+    for statement in (
+        "UPDATE runs SET mode = 'fast' WHERE id = %s",
+        "UPDATE runs SET decision = 'maybe' WHERE id = %s",
+        "UPDATE runs SET engine = 'swarm' WHERE id = %s",
+    ):
+        with pytest.raises(psycopg.errors.InvalidTextRepresentation):
+            migrated.execute(statement, (run_id,))
+
+
+def test_run_citations_accept_calculation_ids(
+    migrated: psycopg.Connection[tuple[object, ...]],
+) -> None:
+    run_id = _seed_run(migrated, _seed_user(migrated))
+    insert = (
+        "INSERT INTO run_citations (run_id, cite_id, excerpt, source) VALUES (%s, %s, 'x', '{}')"
+    )
+    for cite_id in ("c:abc", "f:12", "k:1"):
+        migrated.execute(insert, (run_id, cite_id))
+    with pytest.raises(psycopg.errors.CheckViolation):
+        migrated.execute(insert, (run_id, "z:1"))
+
+
+def _seed_company(conn: psycopg.Connection[tuple[object, ...]]) -> int:
+    row = conn.execute(
+        "INSERT INTO companies (ticker, name, market, kap_member_id)"
+        " VALUES ('THYAO', 'Türk Hava Yolları', 'bist', '1') RETURNING id"
+    ).fetchone()
+    assert row is not None
+    return int(str(row[0]))
+
+
+def test_watchlist_items_constraints(migrated: psycopg.Connection[tuple[object, ...]]) -> None:
+    user_id = _seed_user(migrated)
+    company_id = _seed_company(migrated)
+    insert = "INSERT INTO watchlist_items (user_id, company_id) VALUES (%s, %s)"
+    migrated.execute(insert, (user_id, company_id))
+    with pytest.raises(psycopg.errors.UniqueViolation):
+        migrated.execute(insert, (user_id, company_id))
+    with pytest.raises(psycopg.errors.ForeignKeyViolation):
+        migrated.execute(insert, (user_id, company_id + 1000))
+    added = migrated.execute("SELECT added_at FROM watchlist_items").fetchone()
+    assert added is not None
+    assert added[0] is not None
+    migrated.execute("DELETE FROM companies WHERE id = %s", (company_id,))
+    assert migrated.execute("SELECT count(*) FROM watchlist_items").fetchone() == (0,)
+    migrated.execute(insert, (user_id, _seed_company(migrated)))
+    migrated.execute("DELETE FROM users WHERE id = %s", (user_id,))
+    assert migrated.execute("SELECT count(*) FROM watchlist_items").fetchone() == (0,)
+
+
+def test_user_preferences_constraints(migrated: psycopg.Connection[tuple[object, ...]]) -> None:
+    user_id = _seed_user(migrated)
+    row = migrated.execute(
+        "INSERT INTO user_preferences (user_id) VALUES (%s)"
+        " RETURNING answer_language, default_period_range, updated_at",
+        (user_id,),
+    ).fetchone()
+    assert row is not None
+    assert row[:2] == (None, None)
+    assert row[2] is not None
+    migrated.execute(
+        "UPDATE user_preferences SET answer_language = 'en', default_period_range = 'last_8q'"
+    )
+    with pytest.raises(psycopg.errors.UniqueViolation):
+        migrated.execute("INSERT INTO user_preferences (user_id) VALUES (%s)", (user_id,))
+    for statement in (
+        "UPDATE user_preferences SET answer_language = 'de'",
+        "UPDATE user_preferences SET default_period_range = 'last_5y'",
+    ):
+        with pytest.raises(psycopg.errors.InvalidTextRepresentation):
+            migrated.execute(statement)
+    migrated.execute("DELETE FROM users WHERE id = %s", (user_id,))
+    assert migrated.execute("SELECT count(*) FROM user_preferences").fetchone() == (0,)
+
+
+def test_downgrade_0004_round_trip(database_url: str) -> None:
+    config = Config("alembic.ini")
+    command.downgrade(config, "base")
+    command.upgrade(config, "head")
+    with psycopg.connect(database_url, autocommit=True) as conn:
+        user_id = _seed_user(conn)
+        run_id = _seed_run(conn, user_id)
+        conn.execute(
+            "UPDATE runs SET status = 'awaiting_approval', plan_expires_at = now() WHERE id = %s",
+            (run_id,),
+        )
+        for cite_id in ("f:1", "k:1"):
+            conn.execute(
+                "INSERT INTO run_citations (run_id, cite_id, excerpt, source)"
+                " VALUES (%s, %s, 'x', '{}')",
+                (run_id, cite_id),
+            )
+        conn.execute(
+            "INSERT INTO watchlist_items (user_id, company_id) VALUES (%s, %s)",
+            (user_id, _seed_company(conn)),
+        )
+
+    command.downgrade(config, "0003")
+    assert _current_revision(database_url) == "0003"
+    with psycopg.connect(database_url) as conn:
+        tables = {
+            str(row[0])
+            for row in conn.execute(
+                "SELECT tablename FROM pg_tables WHERE schemaname = 'public'"
+            ).fetchall()
+        }
+        types = {
+            str(row[0])
+            for row in conn.execute(
+                "SELECT typname FROM pg_type WHERE typname IN"
+                " ('run_mode', 'run_engine', 'plan_decision', 'period_range')"
+            ).fetchall()
+        }
+        statuses = [
+            str(row[0])
+            for row in conn.execute("SELECT unnest(enum_range(NULL::run_status))::text").fetchall()
+        ]
+        run = conn.execute("SELECT status, error_code FROM runs").fetchone()
+        cites = conn.execute("SELECT cite_id FROM run_citations").fetchall()
+        columns = {
+            str(row[0])
+            for row in conn.execute(
+                "SELECT column_name FROM information_schema.columns WHERE table_name = 'runs'"
+            ).fetchall()
+        }
+    assert tables.isdisjoint({"watchlist_items", "user_preferences"})
+    assert types == set()
+    assert statuses == ["running", "completed", "partial", "refused", "no_evidence", "failed"]
+    assert run == ("failed", "interrupted")
+    assert cites == [("f:1",)]
+    assert columns.isdisjoint({"engine", "mode", "plan", "plan_expires_at", "resume_count"})
+
+    command.upgrade(config, "head")
+    assert _current_revision(database_url) == "0004"
+    command.downgrade(config, "base")

@@ -3,7 +3,7 @@
 import asyncio
 import logging
 from collections.abc import AsyncIterator
-from contextlib import asynccontextmanager
+from contextlib import AsyncExitStack, asynccontextmanager
 from typing import Any
 
 from fastapi import FastAPI
@@ -29,10 +29,12 @@ logger = logging.getLogger(__name__)
 async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
     """Build the research runtime unless a test injected `app.state.run_service`."""
     resources: list[Any] = []
+    stack = AsyncExitStack()
     if getattr(app.state, "run_service", None) is None:
-        from api.runtime import build_run_service
+        from api.runtime import build_run_service, graph_runtime
 
         app.state.run_service, resources = build_run_service(app.state.settings)
+        await stack.enter_async_context(graph_runtime(app.state.run_service, app.state.settings))
     service: RunService = app.state.run_service
     if getattr(app.state, "guards", None) is None:
         from api.runtime import build_guards
@@ -49,6 +51,7 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
         yield
     finally:
         await service.wait_idle()
+        await stack.aclose()
         for resource in resources:
             close = getattr(resource, "aclose", None)
             if close is not None:

@@ -1,12 +1,18 @@
-"""Production wiring for the research runtime: DB engine, Redis, model router, tools."""
+"""Production wiring for the research runtime: DB engine, Redis, model router, tools, graph."""
 
 import os
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 from typing import Any, cast
 
 import httpx
 import redis.asyncio
 from sqlalchemy import Engine
 
+from agent.budget import ModeBudget
+from agent.checkpoint import open_checkpointer
+from agent.graph.build import build_graph
+from agent.graph.context import GraphDeps
 from agent.loop import Budget
 from agent.runs import RunService, StreamRedis
 from api.auth.allowlist import Allowlist, AllowRedis, db_lookup
@@ -70,5 +76,37 @@ def build_run_service(settings: Settings) -> tuple[RunService, list[Any]]:
         router,
         ToolRegistry(search, engine),
         budget_from(settings),
+        agent_engine=settings.agent_engine,
+        max_concurrent_runs=settings.agent_max_concurrent_runs,
     )
     return service, [engine, client, http, search]
+
+
+def graph_deps(service: RunService, settings: Settings) -> GraphDeps:
+    tools = service.tools
+    assert isinstance(tools, ToolRegistry)  # noqa: S101  (built by build_run_service)
+    return GraphDeps(
+        router=service.router,
+        tools=tools,
+        budgets={"simple": ModeBudget.simple(settings), "deep": ModeBudget.deep(settings)},
+        emit=service.emit_event,
+        attempts=service.attempt,
+        plan_max_steps=settings.agent_plan_max_steps,
+        plan_ttl_hours=settings.agent_plan_ttl_hours,
+        verify_max_rounds=settings.agent_verify_max_rounds,
+    )
+
+
+@asynccontextmanager
+async def graph_runtime(service: RunService, settings: Settings) -> AsyncIterator[None]:
+    """Open the checkpointer and attach the compiled graph for the app's lifetime.
+
+    The graph is built whatever `AGENT_ENGINE` says, so runs started by the graph engine can
+    still be decided and resumed after a switch back to `single`.
+    """
+    async with open_checkpointer(settings.database_url.get_secret_value()) as saver:
+        service.attach_graph(build_graph(graph_deps(service, settings), saver))
+        try:
+            yield
+        finally:
+            service.attach_graph(None)

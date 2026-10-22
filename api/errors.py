@@ -1,11 +1,13 @@
 """Error envelope and exception handlers (data-model.md, ErrorEnvelope).
 
 Phase 3 codes and localized messages: specs/003-single-agent-mvp/contracts/http-api.md.
+Phase 4 codes: specs/004-multi-agent-graph/contracts/http-api.md. `sandbox_unavailable` and
+`interrupted_limit` are run-level: they appear in `error` events and `Run.error_code`.
 """
 
 import logging
 import uuid
-from typing import Literal
+from typing import Any, Literal
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
@@ -27,6 +29,14 @@ ErrorCode = Literal[
     "quota_exhausted",
     "rate_limited",
     "providers_unavailable",
+    "already_decided",
+    "not_awaiting_decision",
+    "plan_expired",
+    "plan_invalid",
+    "watchlist_full",
+    "company_not_covered",
+    "sandbox_unavailable",
+    "interrupted_limit",
 ]
 
 MessageLanguage = Literal["tr", "en"]
@@ -44,7 +54,28 @@ ERROR_CODES: dict[ErrorCode, int] = {
     "quota_exhausted": 429,
     "rate_limited": 429,
     "providers_unavailable": 503,
+    "already_decided": 409,
+    "not_awaiting_decision": 409,
+    "plan_expired": 410,
+    "plan_invalid": 422,
+    "watchlist_full": 422,
+    "company_not_covered": 422,
+    "sandbox_unavailable": 503,
+    "interrupted_limit": 500,
 }
+# Codes only raised by name; a bare HTTP status never maps to them.
+_NAMED_ONLY: frozenset[ErrorCode] = frozenset(
+    {
+        "already_decided",
+        "not_awaiting_decision",
+        "plan_expired",
+        "plan_invalid",
+        "watchlist_full",
+        "company_not_covered",
+        "sandbox_unavailable",
+        "interrupted_limit",
+    }
+)
 
 # `{resets_at}` is filled from ApiError params; every code has both languages.
 _MESSAGES: dict[MessageLanguage, dict[ErrorCode, str]] = {
@@ -60,6 +91,14 @@ _MESSAGES: dict[MessageLanguage, dict[ErrorCode, str]] = {
         "quota_exhausted": "You have used today's questions. The quota resets at {resets_at}.",
         "rate_limited": "Too many requests. Please wait and try again.",
         "providers_unavailable": "Answering is temporarily unavailable. Please try again later.",
+        "already_decided": "A decision on this plan was already made.",
+        "not_awaiting_decision": "This research is not waiting for that decision.",
+        "plan_expired": "This plan has expired. Please ask the question again.",
+        "plan_invalid": "The edited plan is not valid. Please fix the marked steps.",
+        "watchlist_full": "Your watchlist is full. Remove a company before adding another.",
+        "company_not_covered": "This company is not in Disclosly's coverage.",
+        "sandbox_unavailable": "Calculations are temporarily unavailable. Please try again later.",
+        "interrupted_limit": "This research was interrupted too many times and was stopped.",
     },
     "tr": {
         "not_found": "Kaynak bulunamadı.",
@@ -73,10 +112,20 @@ _MESSAGES: dict[MessageLanguage, dict[ErrorCode, str]] = {
         "quota_exhausted": "Bugünkü soru hakkınız doldu. Kota {resets_at} saatinde yenilenir.",
         "rate_limited": "Çok fazla istek gönderildi. Lütfen biraz bekleyip tekrar deneyin.",
         "providers_unavailable": "Yanıt verme geçici olarak kullanılamıyor. Lütfen sonra deneyin.",
+        "already_decided": "Bu plan için zaten bir karar verildi.",
+        "not_awaiting_decision": "Bu araştırma bu kararı beklemiyor.",
+        "plan_expired": "Bu planın süresi doldu. Lütfen soruyu yeniden sorun.",
+        "plan_invalid": "Düzenlenen plan geçerli değil. Lütfen işaretli adımları düzeltin.",
+        "watchlist_full": "Takip listeniz dolu. Yeni şirket eklemeden önce birini çıkarın.",
+        "company_not_covered": "Bu şirket Disclosly kapsamında değil.",
+        "sandbox_unavailable": "Hesaplamalar geçici olarak kullanılamıyor. Lütfen sonra deneyin.",
+        "interrupted_limit": "Bu araştırma çok kez kesintiye uğradığı için durduruldu.",
     },
 }
 
-_CODE_BY_STATUS: dict[int, ErrorCode] = {status: code for code, status in ERROR_CODES.items()}
+_CODE_BY_STATUS: dict[int, ErrorCode] = {
+    status: code for code, status in ERROR_CODES.items() if code not in _NAMED_ONLY
+}
 
 REQUEST_ID_HEADER = "X-Request-ID"
 
@@ -90,11 +139,14 @@ class ApiError(Exception):
         *,
         headers: dict[str, str] | None = None,
         params: dict[str, str] | None = None,
+        details: dict[str, Any] | None = None,
     ) -> None:
         super().__init__(code)
         self.code: ErrorCode = code
         self.headers = headers
         self.params = params or {}
+        # Structured details, e.g. `plan_invalid` `{"reasons": [...]}`; never user secrets.
+        self.details = details
 
 
 def message_language(accept_language: str | None) -> MessageLanguage:
@@ -133,7 +185,7 @@ class ErrorBody(BaseModel):
     code: ErrorCode
     message: str
     request_id: str
-    details: list[ErrorDetail] | None = None
+    details: list[ErrorDetail] | dict[str, Any] | None = None
 
 
 class ErrorEnvelope(BaseModel):
@@ -152,7 +204,7 @@ def get_request_id(request: Request) -> str:
 def error_response(
     request: Request,
     code: ErrorCode,
-    details: list[ErrorDetail] | None = None,
+    details: list[ErrorDetail] | dict[str, Any] | None = None,
     headers: dict[str, str] | None = None,
     params: dict[str, str] | None = None,
 ) -> JSONResponse:
@@ -172,7 +224,9 @@ def error_response(
 def register_exception_handlers(app: FastAPI) -> None:
     @app.exception_handler(ApiError)
     async def _api_error(request: Request, exc: ApiError) -> JSONResponse:
-        return error_response(request, exc.code, headers=exc.headers, params=exc.params)
+        return error_response(
+            request, exc.code, details=exc.details, headers=exc.headers, params=exc.params
+        )
 
     @app.exception_handler(StarletteHTTPException)
     async def _http_exception(request: Request, exc: StarletteHTTPException) -> JSONResponse:

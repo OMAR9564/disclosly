@@ -23,3 +23,7 @@ class SeenItem(BaseModel):
     value: Decimal | None = None
     scale: Decimal | None = None
     unit_note: str | None = None
+
+
+class SandboxUnavailable(Exception):
+    """The calculation sandbox service could not be reached or has no Docker (transient)."""

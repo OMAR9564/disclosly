@@ -5,7 +5,8 @@ Rules checked after the schema:
 2. every number in `summary`/`points` appears in a cited chunk text or fact value (TR
    `1.234,5` and EN `1,234.5` both normalised), or is such a number times 10^3, 10^6 or 10^9
    (tables state amounts in thousands or millions); a percentage may instead be derived from
-   two cited facts or chunk numbers and must match within 0.1 pp;
+   two cited facts or chunk numbers and must match within 0.1 pp; a number citing a verified
+   calculation (`k:` item, Phase 4) must equal its output at the precision shown;
 3. the disclaimer is the fixed string (the server overwrites it);
 4. `language` matches the detected question language.
 """
@@ -204,15 +205,24 @@ def figures(text: str, language: Language) -> list[Figure]:
     return found
 
 
+CALCULATION_PREFIX = "k:"
+
+
 @dataclass
 class _Sources:
     raw: set[Decimal] = field(default_factory=set)  # every number as written
     amounts: set[Decimal] = field(default_factory=set)  # with its scale applied
+    # Verified calculation outputs (`k:` items, Phase 4): matched at the precision shown.
+    calculated: set[Decimal] = field(default_factory=set)
 
 
 def _sources(items: Iterable[SeenItem]) -> _Sources:
     found = _Sources()
     for item in items:
+        if item.cite_id.startswith(CALCULATION_PREFIX):
+            if item.value is not None:
+                found.calculated.add(item.value)
+            continue
         declared: set[Decimal] = set()
         if item.value is not None:
             # A fact's text renders its unit ("1.234,5 milyon TRY"), so it is parsed below too.
@@ -245,7 +255,15 @@ def _rounds_to(amount: Decimal, figure: Figure) -> bool:
         return False
 
 
+def _calculated(figure: Figure, outputs: set[Decimal]) -> bool:
+    """A calculation output written at the figure's precision; a ratio may be shown as a %."""
+    candidates = [*outputs, *(o * 100 for o in outputs)] if figure.percent else outputs
+    return any(_rounds_to(output, figure) for output in candidates)
+
+
 def _supported(figure: Figure, sources: _Sources) -> bool:
+    if sources.calculated and _calculated(figure, sources.calculated):
+        return True
     if figure.unit:
         # A stated unit must match the source amount, so "56016 bin TL" fails against a
         # million-TL table and against a table whose unit is unknown.
@@ -255,6 +273,7 @@ def _supported(figure: Figure, sources: _Sources) -> bool:
 
 
 def _derived_percents(items: Iterable[SeenItem]) -> list[Decimal]:
+    items = [i for i in items if not i.cite_id.startswith(CALCULATION_PREFIX)]
     values = [i.value for i in items if i.value is not None and i.value != 0]
     seen = set(values)
     for item in items:
