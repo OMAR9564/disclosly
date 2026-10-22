@@ -68,7 +68,7 @@ def test_defaults(env: pytest.MonkeyPatch) -> None:
     [
         "GEMINI_API_KEY",
         "GROQ_API_KEY",
-            "OPENROUTER_API_KEY",
+        "OPENROUTER_API_KEY",
         "CLOUDFLARE_AI_TOKEN",
         "GOOGLE_CLIENT_SECRET",
         "GITHUB_CLIENT_SECRET",
