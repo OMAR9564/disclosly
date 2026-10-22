@@ -1,9 +1,11 @@
-"""analyst: one call that turns the gathered evidence into cited findings (research §R9).
+"""analyst: one call that turns the gathered evidence into cited findings and calculations.
 
 Evidence reaches the model wrapped as untrusted documents. The reply must match
 `AnalystOutput`; an invalid reply is re-asked once while a call is left. Findings citing an id
-that is not in the evidence are dropped. The task class is `strong` when the plan has a
-`calculate` step (the calculations themselves arrive with T035).
+that is not in the evidence are dropped. Calculations (research §R9) get their input values in
+code (agent/graph/calculations.py) and run together in one sandbox execution; each becomes a
+`Calculation` with a `k:<n>` id and a `calculation` event. The task class is `strong` when the
+plan has a `calculate` step.
 """
 
 import json
@@ -13,13 +15,24 @@ from typing import Any
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from agent.answer import Language
+from agent.graph.calculations import (
+    MAX_CALCULATIONS,
+    CalculationSpec,
+    Resolved,
+    batch,
+    batch_errors,
+    fits,
+    resolve,
+    to_calculation,
+)
 from agent.graph.context import NodeContext
-from agent.graph.state import Finding, ResearchState
+from agent.graph.state import Calculation, Finding, ResearchState
 from agent.plan import Plan
 from agent.prompts import node_prompt, with_schema
 from llm.types import ChatMessage, ChatRequest, TaskClass
+from tools.python import SandboxRejected, run_python
 from tools.registry import wrap
-from tools.types import SeenItem
+from tools.types import SandboxUnavailable, SeenItem
 
 MAX_FINDINGS = 30
 MAX_EVIDENCE_ITEMS = 60
@@ -36,6 +49,7 @@ class AnalystOutput(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     findings: list[Finding] = Field(max_length=MAX_FINDINGS)
+    calculations: list[CalculationSpec] = Field(default_factory=list, max_length=MAX_CALCULATIONS)
 
 
 def task_class(plan: Plan | None) -> TaskClass:
@@ -102,4 +116,69 @@ async def analyst_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]
     findings = [
         f for f in (output.findings if output else []) if all(c in known for c in f.cite_ids)
     ]
-    return {"findings": findings}
+    specs = output.calculations if output else []
+    calculations = await run_calculations(state, ctx, specs) if specs else []
+    return {"findings": findings, "calculations": calculations}
+
+
+def _runnable(resolved: list[Resolved]) -> tuple[list[Resolved], dict[str, str]]:
+    """The calculations that fit one batch; the rest fail with a reason."""
+    kept: list[Resolved] = []
+    dropped: dict[str, str] = {}
+    for item in resolved:
+        if item.error is not None:
+            continue
+        code, _ = batch([(r.spec.name, r.spec.code, r.inputs) for r in [*kept, item]])
+        if fits(code):
+            kept.append(item)
+        else:
+            dropped[item.spec.name] = "the calculations of one round exceed 16 KiB of code"
+    return kept, dropped
+
+
+async def run_calculations(
+    state: ResearchState, ctx: NodeContext, specs: list[CalculationSpec]
+) -> list[Calculation]:
+    """Resolve inputs, run every runnable calculation in one sandbox call, record each one."""
+    evidence = {item.cite_id: item for item in state.get("evidence") or []}
+    resolved = resolve(specs, evidence)
+    runnable, errors = _runnable(resolved)
+    outputs = {}
+    run_error: str | None = None
+    if runnable:
+        if ctx.deps.sandbox is None:
+            raise SandboxUnavailable("no calculation sandbox is configured")
+        code, values = batch([(r.spec.name, r.spec.code, r.inputs) for r in runnable])
+        try:
+            result = await run_python(
+                ctx.deps.sandbox,
+                code,
+                values,
+                usage=ctx.usage,
+                budget=ctx.budget,
+                deadline_at=ctx.deadline_at,
+                clock=ctx.deps.clock,
+            )
+        except SandboxRejected as exc:
+            run_error = str(exc)
+        else:
+            outputs = result.outputs
+            errors = {**batch_errors(result.stdout), **errors}
+            if not result.ok:
+                run_error = result.error or "the sandbox run failed"
+    first = len(state.get("calculations") or []) + 1
+    calculations = [
+        to_calculation(item, f"k:{first + index}", outputs, errors, run_error)
+        for index, item in enumerate(resolved)
+    ]
+    for calc in calculations:
+        await ctx.emit(
+            "calculation",
+            {
+                "cite_id": calc.cite_id,
+                "name": calc.name,
+                "description": calc.description,
+                "status": "ok" if calc.error is None else "error",
+            },
+        )
+    return calculations

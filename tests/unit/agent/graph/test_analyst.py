@@ -99,7 +99,7 @@ async def test_invalid_reply_is_reasked_once() -> None:
 async def test_two_invalid_replies_leave_no_findings() -> None:
     bad = ChatResponse(content="nope", provider="g", model="m")
     router = ScriptedRouter([bad, bad])
-    assert await _run(router) == {"findings": []}
+    assert await _run(router) == {"findings": [], "calculations": []}
 
 
 def test_strong_when_the_plan_calculates() -> None:

@@ -15,6 +15,7 @@ from agent.budget import Clock, Mode, ModeBudget, Usage, guarded_call, utcnow
 from agent.graph.state import ResearchState
 from llm.router import Router
 from llm.types import ChatRequest, ChatResponse, TaskClass
+from tools.python import Sandbox
 from tools.registry import GraphNode, NodeTools
 
 EmitEvent = Callable[[str, str, dict[str, Any]], Awaitable[None]]
@@ -65,6 +66,8 @@ class GraphDeps:
     verify_max_rounds: int = 2
     quota: DeepQuota | None = None
     runs: RunStore | None = None
+    # The calculation sandbox (analyst and verifier); None where no calculation can run.
+    sandbox: Sandbox | None = None
 
 
 @dataclass

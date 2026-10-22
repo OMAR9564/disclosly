@@ -246,6 +246,12 @@ def _sources(items: Iterable[SeenItem]) -> _Sources:
     return found
 
 
+def states_amount(item: SeenItem, value: Decimal) -> bool:
+    """`value` (with its scale applied, e.g. 41200000000 for "41,2 milyar") is a number the item
+    states: the Phase 3 matcher, used for calculation inputs read from a chunk (research §R9)."""
+    return value.normalize() in _sources([item]).amounts
+
+
 def _rounds_to(amount: Decimal, figure: Figure) -> bool:
     """`amount` written in the figure's scale and precision: 31,778 million is "31.8 billion"."""
     scaled = amount / figure.multiplier

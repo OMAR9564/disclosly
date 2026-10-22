@@ -24,7 +24,8 @@ if [[ "$*" == *"run --rm migrate"* && "${FAKE_MIGRATE_FAIL:-0}" == "1" ]]; then
   echo "migration failed" >&2
   exit 1
 fi
-if [[ "$*" == "pull ghcr.io/omar9564/disclosly-sandbox:"* && "${FAKE_SANDBOX_PULL_FAIL:-0}" == "1" ]]; then
+if [[ "$*" == "pull ghcr.io/omar9564/disclosly-sandbox:"* \
+  && "${FAKE_SANDBOX_PULL_FAIL:-0}" == "1" ]]; then
   exit 1
 fi
 if [[ "$*" == *"up -d --no-deps api"* ]]; then
