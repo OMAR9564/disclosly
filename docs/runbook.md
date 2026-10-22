@@ -211,7 +211,7 @@ Settings → Rules → Rulesets → New branch ruleset:
 - Restrict deletions; block force pushes.
 - Require a pull request before merging, with allowed merge method **Squash** only.
 - Require status checks to pass, with the branch up to date: `lint`, `typecheck`,
-  `test-backend`, `test-web`, `evals`, `build`, `security` and `CodeQL`.
+  `test-backend`, `test-web`, `evals`, `sandbox`, `build`, `security` and `CodeQL`.
 
 The same ruleset from the command line:
 
@@ -238,8 +238,8 @@ gh api -X POST repos/OMAR9564/disclosly/rulesets --input - <<'JSON'   # laptop
       "strict_required_status_checks_policy": true,
       "required_status_checks": [
         {"context": "lint"}, {"context": "typecheck"}, {"context": "test-backend"},
-        {"context": "test-web"}, {"context": "evals"}, {"context": "build"},
-        {"context": "security"}, {"context": "CodeQL"}
+        {"context": "test-web"}, {"context": "evals"}, {"context": "sandbox"},
+        {"context": "build"}, {"context": "security"}, {"context": "CodeQL"}
       ]
     }}
   ]
