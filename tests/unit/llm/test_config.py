@@ -11,7 +11,6 @@ REPO_FILE = Path("llm/providers.yaml")
 ALL_KEYS = {
     "GEMINI_API_KEY": "g",
     "GROQ_API_KEY": "q",
-    "GITHUB_MODELS_TOKEN": "h",
     "OPENROUTER_API_KEY": "o",
     "CLOUDFLARE_AI_TOKEN": "c",
     "CLOUDFLARE_ACCOUNT_ID": "acct123",
@@ -45,7 +44,6 @@ def test_repo_file_has_every_provider_and_both_classes() -> None:
         "groq-llama",
         "groq-qwen",
         "openrouter-free",
-        "github-mini",
         "cloudflare",
     ]
     assert strong == [
@@ -53,7 +51,6 @@ def test_repo_file_has_every_provider_and_both_classes() -> None:
         "gemini-flash",
         "openrouter-large",
         "groq-large",
-        "github-large",
     ]
     assert config.skipped == []
     cloudflare = config.providers_for("cheap")[-1]
@@ -64,7 +61,7 @@ def test_repo_file_has_every_provider_and_both_classes() -> None:
 def test_repo_file_with_no_keys_skips_everything() -> None:
     config = load_providers(REPO_FILE, {})
     assert config.providers_for("cheap") == []
-    assert len(config.skipped) == 11
+    assert len(config.skipped) == 9
 
 
 def test_provider_with_unset_key_is_skipped() -> None:

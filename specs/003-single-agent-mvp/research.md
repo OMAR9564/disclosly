@@ -4,6 +4,8 @@
 
 - **Decision**: Talk to every provider through the OpenAI-compatible chat completions API with
   `httpx` (Gemini's OpenAI endpoint, Groq, GitHub Models, OpenRouter, Cloudflare Workers AI).
+  Amended 2026-10-22: GitHub Models was retired on 2026-07-30 and was removed from the
+  provider list.
   Base URL, model id, key env var, daily request quota and per-token reference price per
   provider live in `llm/providers.yaml`.
 - **Rationale**: One request/response shape, native tool calling on all five, no SDK

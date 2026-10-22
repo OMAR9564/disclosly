@@ -75,4 +75,5 @@ database read.
   and their quota is not refunded.
 - Fallback quality varies by provider; the eval gate (citation coverage 100%) runs against
   recorded cassettes, not live providers.
-- The worker image is still built by hand; until CI builds it, the runbook covers the steps.
+- The deploy workflow builds the worker image when worker code changes (amended 2026-10-22).
+- GitHub Models was retired on 2026-07-30 and left the provider list (amended 2026-10-22).

@@ -34,7 +34,6 @@ class Settings(BaseSettings):
     # An unset key means the provider is skipped.
     gemini_api_key: SecretStr | None = None
     groq_api_key: SecretStr | None = None
-    github_models_token: SecretStr | None = None
     openrouter_api_key: SecretStr | None = None
     cloudflare_account_id: str | None = None
     cloudflare_ai_token: SecretStr | None = None
@@ -87,7 +86,6 @@ class Settings(BaseSettings):
     @field_validator(
         "gemini_api_key",
         "groq_api_key",
-        "github_models_token",
         "openrouter_api_key",
         "cloudflare_account_id",
         "cloudflare_ai_token",

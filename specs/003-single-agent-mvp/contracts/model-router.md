@@ -16,8 +16,8 @@ class ModelRouter(Protocol):
 
 ```yaml
 classes:
-  cheap: [gemini-flash-lite, groq-llama, github-mini, openrouter-free, cloudflare]
-  strong: [gemini-flash, groq-large, github-large, openrouter-free]
+  cheap: [gemini-flash-lite, groq-llama, groq-qwen, openrouter-free, cloudflare]
+  strong: [gemini-flash-stable, gemini-flash, openrouter-large, groq-large]
 providers:
   gemini-flash:
     base_url: https://generativelanguage.googleapis.com/v1beta/openai

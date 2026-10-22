@@ -28,7 +28,7 @@ Hukuki sebep, istediğin hizmetin sunulması ve hizmetin güvenliğini sağlamad
 
 ## Üçüncü taraf model sağlayıcıları
 
-Yanıtları üçüncü taraf dil modeli sağlayıcılarının ücretsiz katmanları yazar (örneğin Google Gemini, Groq, GitHub Models, OpenRouter ve Cloudflare Workers AI). Bu sağlayıcılara sorun ve kamuya açık şirket açıklamalarından (KAP ve SEC EDGAR) parçalar gönderilir. E-posta adresin ve görünen adın hiçbir zaman gönderilmez.
+Yanıtları üçüncü taraf dil modeli sağlayıcılarının ücretsiz katmanları yazar (örneğin Google Gemini, Groq, OpenRouter ve Cloudflare Workers AI). Bu sağlayıcılara sorun ve kamuya açık şirket açıklamalarından (KAP ve SEC EDGAR) parçalar gönderilir. E-posta adresin ve görünen adın hiçbir zaman gönderilmez.
 
 Bazı ücretsiz katmanlar aldıkları metni modellerini eğitmek için kullanabilir. Sorularına kişisel veya gizli bilgi yazma.
 
