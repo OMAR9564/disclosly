@@ -69,6 +69,16 @@ def format_number(value: Decimal, language: Language) -> str:
     return sign + grouped + (decimal + fraction if fraction else "")
 
 
+REPORT_LABEL: dict[Language, str] = {"tr": "{period} raporu", "en": "{period} report"}
+
+
+def source_column(source_ref: str | None) -> str | None:
+    """The KAP table column of a fact, e.g. "Önceki Dönem 3 Aylık 01.04.2025 - 30.06.2025"."""
+    if not source_ref or " / " not in source_ref:
+        return None  # SEC refs are concept names, not table columns
+    return source_ref.rsplit(" / ", 1)[1].strip() or None
+
+
 def render_fact(
     metric: str,
     period: str,
@@ -76,13 +86,26 @@ def render_fact(
     unit: str,
     currency: str | None,
     language: Language,
+    *,
+    column: str | None = None,
+    report_period: str | None = None,
 ) -> str:
-    """Readable citation excerpt, e.g. "Net dönem kârı (2025-Q3): 1.234,5 milyon TRY"."""
+    """Readable citation excerpt, e.g. "Net dönem kârı (2025-Q3): 1.234,5 milyon TRY".
+
+    A figure taken from a later report's prior-period column names that column and report, so
+    a restated amount (e.g. inflation-adjusted under IAS 29) is not mistaken for the original.
+    """
     unit_text = UNIT_LABELS.get(unit, {}).get(language, unit)
     # A currency unit ("TRY") is not repeated as the currency.
     tail = " ".join(p for p in dict.fromkeys((unit_text, currency)) if p)
     number = format_number(value, language)
-    return f"{metric_label(metric, language)} ({period}): {number}" + (f" {tail}" if tail else "")
+    label = [period]
+    if column:
+        label.append(column)
+    if report_period and report_period != period:
+        label.append(REPORT_LABEL[language].format(period=report_period))
+    head = f"{metric_label(metric, language)} ({'; '.join(label)})"
+    return f"{head}: {number}" + (f" {tail}" if tail else "")
 
 
 def _query(
@@ -102,6 +125,7 @@ def _query(
             companies.c.ticker,
             docs.c.doc_type,
             docs.c.source_url,
+            docs.c.period.label("report_period"),
         )
         .select_from(
             facts.join(companies, companies.c.id == facts.c.company_id).join(
@@ -113,14 +137,24 @@ def _query(
             facts.c.metric.in_(metrics),
             facts.c.period.in_(periods),
         )
-        .order_by(facts.c.metric, facts.c.period, facts.c.id)
+        # The figure as first reported comes before restatements in later reports.
+        .order_by(facts.c.metric, facts.c.period, docs.c.period != facts.c.period, facts.c.id)
     )
     with engine.connect() as conn:
         rows = list(conn.execute(query))
     return [
         SeenItem(
             cite_id=f"f:{r.id}",
-            text=render_fact(r.metric, r.period, r.value, r.unit, r.currency, language),
+            text=render_fact(
+                r.metric,
+                r.period,
+                r.value,
+                r.unit,
+                r.currency,
+                language,
+                column=source_column(r.source_ref),
+                report_period=r.report_period,
+            ),
             value=r.value,
             scale=UNIT_SCALES.get(r.unit, Decimal(1)),
             source={

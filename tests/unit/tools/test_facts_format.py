@@ -40,3 +40,29 @@ def test_unknown_metric_and_unit_stay_readable() -> None:
 def test_rendered_value_is_found_by_the_validator(language: str) -> None:
     text = render_fact("revenue", "2025-Q3", Decimal("9876.5"), "million", "TRY", language)  # type: ignore[arg-type]
     assert Decimal("9876.5") in {f.value for f in figures(text, language)}  # type: ignore[arg-type]
+
+
+def test_restated_prior_period_names_its_column_and_report() -> None:
+    from tools.facts import source_column
+
+    ref = (
+        "Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / DÖNEM KARI (ZARARI) / "
+        "Önceki Dönem 01.01.2024 - 31.12.2024"
+    )
+    column = source_column(ref)
+    assert column == "Önceki Dönem 01.01.2024 - 31.12.2024"
+    text = render_fact(
+        "net_income",
+        "2024-FY",
+        Decimal("24362918000"),
+        "TRY",
+        "TRY",
+        "tr",
+        column=column,
+        report_period="2025-FY",
+    )
+    assert text == (
+        "Net dönem kârı (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): "
+        "24.362.918.000 TRY"
+    )
+    assert source_column("us-gaap:NetIncomeLoss 0000320193-25-000079") is None

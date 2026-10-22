@@ -32,7 +32,8 @@ async def test_excerpt_follows_the_run_language(facts_corpus: Corpus) -> None:
         periods=["2025-Q3"],
         language="en",
     )
-    assert items[0].text == "Net income (2025-Q3): 23.4 billion USD"
+    # The fixture fact sits in a 2025-Q1 document, so the excerpt names that report.
+    assert items[0].text == "Net income (2025-Q3; 2025-Q1 report): 23.4 billion USD"
 
 
 async def test_filters_by_ticker(facts_corpus: Corpus) -> None:
