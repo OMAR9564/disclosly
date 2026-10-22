@@ -1121,6 +1121,11 @@ select.plan-field__input option {
   justify-self: start;
 }
 
+.plan-step__reason {
+  display: block;
+  margin-top: 0.25rem;
+}
+
 .plan-step__reason,
 .plan__hint {
   margin: 0;
@@ -1314,20 +1319,11 @@ select.plan-field__input option {
   margin: 0;
 }
 
-.chart__head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem 0.875rem;
-}
-
-.chart__head .row__label {
-  margin: 0;
-}
-
 .chart__title {
   font-size: 1.0625rem;
   font-weight: 600;
+  line-height: 1.35;
+  text-wrap: balance;
 }
 
 .chart__readout {
@@ -1439,6 +1435,17 @@ select.plan-field__input option {
 }
 
 @media (max-width: 36rem) {
+  .report-table__grid {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .report-table__grid th,
+  .report-table__grid td {
+    padding-inline: 0.375rem;
+    font-size: 0.875rem;
+  }
+
   .chart__readout {
     grid-template-columns: minmax(0, 11rem);
   }

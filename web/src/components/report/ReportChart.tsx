@@ -268,9 +268,8 @@ export function ReportChart({
 
   const n = data.labels.length;
   const shown = focus ?? n - 1;
-  const title = t.chartOf
-    .replace("{series}", data.series.map((s) => s.name).join(", "))
-    .replace("{x}", data.xColumn);
+  // The chart draws its source table, so it carries that table's title.
+  const title = tables[chart.table]?.title ?? data.xColumn;
 
   const pick = (clientX: number, box: DOMRect) => {
     const plotW = box.width - PAD.left - PAD.right;
@@ -281,9 +280,9 @@ export function ReportChart({
   const onKey = (event: KeyboardEvent<HTMLDivElement>) => {
     const moves: Record<string, number> = {
       ArrowRight: 1,
-      ArrowDown: 1,
+      ArrowUp: 1,
       ArrowLeft: -1,
-      ArrowUp: -1,
+      ArrowDown: -1,
     };
     if (event.key === "Home" || event.key === "End") {
       event.preventDefault();
@@ -296,10 +295,7 @@ export function ReportChart({
 
   return (
     <figure className="chart" data-testid="report-chart" data-kind={data.kind}>
-      <figcaption className="chart__head">
-        <span className="row__label">{t.chartLabel}</span>
-        <span className="chart__title">{title}</span>
-      </figcaption>
+      <figcaption className="chart__title">{title}</figcaption>
 
       <div className="chart__readout">
         <span className="chart__at">
@@ -348,7 +344,8 @@ export function ReportChart({
         onPointerDown={(e) =>
           pick(e.clientX, e.currentTarget.getBoundingClientRect())
         }
-        onPointerLeave={() => setFocus(null)}
+        // Touch fires pointerleave right after the tap; only a mouse leaving clears it.
+        onPointerLeave={(e) => e.pointerType === "mouse" && setFocus(null)}
         onBlur={() => setFocus(null)}
       >
         <Plot data={data} width={width} focus={focus} locale={t.locale} />

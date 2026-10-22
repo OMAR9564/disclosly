@@ -208,3 +208,82 @@ describe("PlanDialog", () => {
     );
   });
 });
+
+describe("PlanDialog focus and field errors", () => {
+  it("names the decision word for screen readers", () => {
+    setup();
+    expect(
+      screen.getByRole("heading", { name: "Araştırma planı: Kararın" }),
+    ).toBeTruthy();
+  });
+
+  it("keeps keyboard focus on a live control while editing", () => {
+    setup();
+    fireEvent.click(key("Planı düzenle"));
+    expect(document.activeElement).toBe(
+      screen.getAllByRole("combobox", { name: "Tür" })[0],
+    );
+
+    // Moving step 2 to the top disables its up arrow: focus goes to its down arrow.
+    fireEvent.click(key("Yukarı taşı: Adım 2"));
+    expect(document.activeElement).toBe(key("Aşağı taşı: Adım 1"));
+    // Back down to the bottom edge: focus goes to its up arrow.
+    fireEvent.click(key("Aşağı taşı: Adım 1"));
+    expect(document.activeElement).toBe(key("Yukarı taşı: Adım 2"));
+
+    fireEvent.click(key("Adım ekle"));
+    expect(document.activeElement).toBe(
+      screen.getAllByRole("textbox", { name: "Amaç" })[2],
+    );
+    fireEvent.click(key("Adımı kaldır: Adım 2"));
+    expect(document.activeElement).toBe(key("Adımı kaldır: Adım 2"));
+    fireEvent.click(key("Adımı kaldır: Adım 2"));
+    expect(document.activeElement).toBe(key("Adım ekle"));
+
+    fireEvent.click(key("Düzenlemeyi bırak"));
+    expect(document.activeElement).toBe(key("Planı düzenle"));
+  });
+
+  it("marks an empty goal on its own field and focuses it", () => {
+    setup();
+    fireEvent.click(key("Planı düzenle"));
+    const goal = screen.getAllByRole("textbox", { name: "Amaç" })[1]!;
+    fireEvent.change(goal, { target: { value: " " } });
+    fireEvent.click(key("Düzenlenmiş planı başlat"));
+    expect(goal.getAttribute("aria-invalid")).toBe("true");
+    expect(
+      document.getElementById(goal.getAttribute("aria-describedby")!)
+        ?.textContent,
+    ).toBe(tr.planGoalRequired);
+    expect(document.activeElement).toBe(goal);
+  });
+
+  it("puts each reason under its own field and others under the step", async () => {
+    const decide = vi.fn(async () => {
+      throw new ApiError("plan_invalid", "x", 422, null, {
+        reasons: [
+          { step: "s1", field: "periods", reason: "bad" },
+          { step: "s1", field: "periods", reason: "too many" },
+          { step: "s1", field: "kind", reason: "bad kind" },
+        ],
+      });
+    });
+    setup(PENDING, decide);
+    fireEvent.click(key("Planı düzenle"));
+    fireEvent.click(key("Düzenlenmiş planı başlat"));
+    await waitFor(() =>
+      expect(screen.getAllByTestId("plan-reason")).toHaveLength(3),
+    );
+    const periods = screen.getAllByRole("textbox", { name: "Dönemler" })[0]!;
+    const ids = periods.getAttribute("aria-describedby")!.split(" ");
+    expect(ids).toHaveLength(2);
+    expect(new Set(ids).size).toBe(2);
+    for (const id of ids)
+      expect(periods.parentElement!.contains(document.getElementById(id))).toBe(
+        true,
+      );
+    expect(screen.getAllByTestId("plan-reason")[2]!.textContent).toBe(
+      tr.planInvalid,
+    );
+  });
+});

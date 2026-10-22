@@ -49,6 +49,9 @@ describe("ReportChart", () => {
   it("plots line points equal to the table's values", () => {
     render(<ReportChart chart={LINE} tables={TABLES} t={tr} />);
     expect(screen.getByTestId("report-chart").dataset.kind).toBe("line");
+    expect(
+      screen.getByRole("figure").querySelector("figcaption")?.textContent,
+    ).toBe("THYAO toplam borç ve nakit, 2025 çeyrekleri");
     expect(plotted("Toplam borç")).toEqual([35.1e9, 36.4e9, 38.5e9, 41.2e9]);
     expect(plotted("Nakit")).toEqual([12.8e9, 11.9e9, 14.2e9, 15.6e9]);
     const fallback = screen.getByRole("table", { hidden: true });
@@ -112,6 +115,10 @@ describe("ReportChart", () => {
     fireEvent.keyDown(slider, { key: "ArrowLeft" });
     fireEvent.keyDown(slider, { key: "ArrowLeft" });
     expect(slider.getAttribute("aria-valuenow")).toBe("1");
+    fireEvent.keyDown(slider, { key: "ArrowUp" });
+    expect(slider.getAttribute("aria-valuenow")).toBe("2");
+    fireEvent.keyDown(slider, { key: "ArrowDown" });
+    expect(slider.getAttribute("aria-valuenow")).toBe("1");
     fireEvent.keyDown(slider, { key: "End" });
     expect(slider.getAttribute("aria-valuenow")).toBe("4");
     fireEvent.keyDown(slider, { key: "a" });
@@ -128,7 +135,11 @@ describe("ReportChart", () => {
     expect(slider.getAttribute("aria-valuenow")).toBe("1");
     fireEvent.pointerDown(slider, { clientX: 600 });
     expect(slider.getAttribute("aria-valuenow")).toBe("4");
-    fireEvent.pointerLeave(slider);
+    fireEvent.pointerMove(slider, { clientX: 120 });
+    // A finger lifting fires pointerleave: the reading stays.
+    fireEvent.pointerLeave(slider, { pointerType: "touch" });
+    expect(slider.getAttribute("aria-valuenow")).toBe("1");
+    fireEvent.pointerLeave(slider, { pointerType: "mouse" });
     expect(slider.getAttribute("aria-valuenow")).toBe("4");
   });
 });

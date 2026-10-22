@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 import type { Dictionary } from "@/i18n";
 import {
@@ -70,11 +70,17 @@ export function fromDraft(steps: DraftStep[], base: Plan): Plan {
   };
 }
 
+/** Fields whose reasons sit right under their own input. */
+const FIELDS = ["goal", "tickers", "periods"] as const;
+const GOAL_REQUIRED = "required";
+
 function reasonText(reason: PlanReason, t: Dictionary): string {
-  if (reason.field === "goal")
+  if (reason.field === "goal") {
+    if (reason.reason === GOAL_REQUIRED) return t.planGoalRequired;
     return /advice/i.test(reason.reason)
       ? t.planReasonAdvice
       : t.planReasonGoal;
+  }
   if (reason.field === "tickers") return t.planReasonTickers;
   if (reason.field === "periods") return t.planReasonPeriods;
   if (reason.field === "estimate") return t.planReasonEstimate;
@@ -164,6 +170,18 @@ export function PlanDialog({
   const [reasons, setReasons] = useState<PlanReason[]>([]);
   const offer = pending.kind === "deep_quota_offer" || !shown;
   const editing = draft !== null;
+  // Focus follows a step that moved or a key that vanished: handlers name the next target
+  // (`data-focus` on keys and fields), and the effect after that render moves focus there.
+  const section = useRef<HTMLElement>(null);
+  const focusNext = useRef<string | null>(null);
+  useEffect(() => {
+    const target = focusNext.current;
+    if (target === null) return;
+    focusNext.current = null;
+    section.current
+      ?.querySelector<HTMLElement>(`[data-focus="${target}"]`)
+      ?.focus();
+  });
 
   const send = async (decision: Decision) => {
     setBusy(true);
@@ -190,19 +208,61 @@ export function PlanDialog({
         ) ?? null,
     );
 
-  const move = (index: number, by: number) =>
-    setDraft((steps) => {
-      if (!steps) return steps;
-      const next = [...steps];
-      const [step] = next.splice(index, 1);
-      next.splice(index + by, 0, step!);
-      return next;
-    });
+  const move = (index: number, by: number) => {
+    if (!draft) return;
+    const next = [...draft];
+    const [step] = next.splice(index, 1);
+    next.splice(index + by, 0, step!);
+    const to = index + by;
+    // At an edge the pressed arrow is disabled: hand focus to the other one.
+    const edge = by < 0 ? to === 0 : to === next.length - 1;
+    focusNext.current = `${step!.key}-${by < 0 !== edge ? "up" : "down"}`;
+    setDraft(next);
+  };
+
+  const remove = (index: number) => {
+    if (!draft) return;
+    const next = draft.filter((_, i) => i !== index);
+    const after = next[index];
+    focusNext.current = after ? `${after.key}-remove` : "add";
+    setDraft(next);
+  };
+
+  const add = () => {
+    if (!draft) return;
+    const key = Math.max(-1, ...draft.map((s) => s.key)) + 1;
+    focusNext.current = `${key}-goal`;
+    setDraft([
+      ...draft,
+      { key, kind: "facts", goal: "", tickers: "", periods: "", metrics: [] },
+    ]);
+  };
+
+  const startEditing = () => {
+    if (!shown) return;
+    const steps = toDraft(shown);
+    focusNext.current = `${steps[0]!.key}-kind`;
+    setDraft(steps);
+  };
+
+  const discard = () => {
+    focusNext.current = "edit";
+    setDraft(null);
+    setReasons([]);
+    setError(null);
+  };
 
   const submitEdit = () => {
     if (!draft || !shown) return;
-    if (draft.some((step) => !step.goal.trim())) {
+    const empty = draft.flatMap((step, i) =>
+      step.goal.trim()
+        ? []
+        : [{ step: `s${i + 1}`, field: "goal", reason: GOAL_REQUIRED }],
+    );
+    if (empty.length > 0) {
+      setReasons(empty);
       setError(t.planGoalRequired);
+      focusNext.current = `${draft[Number(empty[0]!.step.slice(1)) - 1]!.key}-goal`;
       return;
     }
     void send({ action: "edit", plan: fromDraft(draft, shown) });
@@ -214,6 +274,7 @@ export function PlanDialog({
 
   return (
     <section
+      ref={section}
       className="plan"
       aria-labelledby={`${uid}-label`}
       aria-describedby={`${uid}-intro`}
@@ -223,6 +284,9 @@ export function PlanDialog({
       <div className="plan__head">
         <h2 id={`${uid}-label`} className="row__label">
           {t.planLabel}
+          <span className="sr-only">
+            : {offer ? t.offerBoard : t.planBoard}
+          </span>
         </h2>
         <span className="plan__board">
           <FlapRow
@@ -298,8 +362,33 @@ export function PlanDialog({
           {draft.map((step, index) => {
             const id = `s${index + 1}`;
             const own = stepReasons(id);
-            const field = (name: string) => own.some((r) => r.field === name);
             const base = `${uid}-${step.key}`;
+            const ofField = (name: string) =>
+              own.flatMap((r, i) =>
+                r.field === name
+                  ? [{ reason: r, id: `${base}-${name}-${i}` }]
+                  : [],
+              );
+            const invalid = (name: string) =>
+              ofField(name).length > 0 || undefined;
+            const describedBy = (name: string) =>
+              ofField(name)
+                .map((r) => r.id)
+                .join(" ") || undefined;
+            const notes = (name: string) =>
+              ofField(name).map(({ reason, id: noteId }) => (
+                <span
+                  key={noteId}
+                  id={noteId}
+                  className="plan-step__reason"
+                  data-testid="plan-reason"
+                >
+                  {reasonText(reason, t)}
+                </span>
+              ));
+            const other = own.filter(
+              (r) => !(FIELDS as readonly string[]).includes(r.field),
+            );
             return (
               <li
                 key={step.key}
@@ -317,6 +406,7 @@ export function PlanDialog({
                     <label className="plan-field plan-field--kind">
                       <span className="plan-field__label">{t.planKind}</span>
                       <select
+                        data-focus={`${step.key}-kind`}
                         className="plan-field__input"
                         value={step.kind}
                         onChange={(e) =>
@@ -335,6 +425,7 @@ export function PlanDialog({
                         type="button"
                         className="key key--icon"
                         aria-label={`${t.planMoveUp}: ${t.planStep} ${index + 1}`}
+                        data-focus={`${step.key}-up`}
                         disabled={index === 0 || busy}
                         onClick={() => move(index, -1)}
                       >
@@ -344,6 +435,7 @@ export function PlanDialog({
                         type="button"
                         className="key key--icon"
                         aria-label={`${t.planMoveDown}: ${t.planStep} ${index + 1}`}
+                        data-focus={`${step.key}-down`}
                         disabled={index === draft.length - 1 || busy}
                         onClick={() => move(index, 1)}
                       >
@@ -353,74 +445,85 @@ export function PlanDialog({
                         type="button"
                         className="key key--icon"
                         aria-label={`${t.planRemove}: ${t.planStep} ${index + 1}`}
+                        data-focus={`${step.key}-remove`}
                         disabled={draft.length === 1 || busy}
-                        onClick={() =>
-                          setDraft(
-                            (steps) =>
-                              steps?.filter((s) => s.key !== step.key) ?? null,
-                          )
-                        }
+                        onClick={() => remove(index)}
                       >
                         <Cross />
                       </button>
                     </span>
                   </div>
-                  <label className="plan-field">
-                    <span className="plan-field__label">{t.planGoal}</span>
+                  <div className="plan-field">
+                    <label
+                      className="plan-field__label"
+                      htmlFor={`${base}-goal`}
+                    >
+                      {t.planGoal}
+                    </label>
                     <textarea
+                      id={`${base}-goal`}
+                      data-focus={`${step.key}-goal`}
                       className="plan-field__input plan-field__input--goal"
                       value={step.goal}
                       maxLength={300}
                       rows={2}
-                      aria-invalid={field("goal") || undefined}
-                      aria-describedby={
-                        field("goal") ? `${base}-goal` : undefined
-                      }
+                      aria-invalid={invalid("goal")}
+                      aria-describedby={describedBy("goal")}
                       onChange={(e) =>
                         update(step.key, { goal: e.target.value })
                       }
                     />
-                  </label>
+                    {notes("goal")}
+                  </div>
                   <div className="plan-step__pair">
-                    <label className="plan-field">
-                      <span className="plan-field__label">{t.planTickers}</span>
+                    <div className="plan-field">
+                      <label
+                        className="plan-field__label"
+                        htmlFor={`${base}-tickers`}
+                      >
+                        {t.planTickers}
+                      </label>
                       <input
+                        id={`${base}-tickers`}
                         className="plan-field__input"
                         value={step.tickers}
                         autoCapitalize="characters"
                         spellCheck={false}
                         placeholder={t.planTickersHint}
-                        aria-invalid={field("tickers") || undefined}
-                        aria-describedby={
-                          field("tickers") ? `${base}-tickers` : undefined
-                        }
+                        aria-invalid={invalid("tickers")}
+                        aria-describedby={describedBy("tickers")}
                         onChange={(e) =>
                           update(step.key, { tickers: e.target.value })
                         }
                       />
-                    </label>
-                    <label className="plan-field">
-                      <span className="plan-field__label">{t.planPeriods}</span>
+                      {notes("tickers")}
+                    </div>
+                    <div className="plan-field">
+                      <label
+                        className="plan-field__label"
+                        htmlFor={`${base}-periods`}
+                      >
+                        {t.planPeriods}
+                      </label>
                       <input
+                        id={`${base}-periods`}
                         className="plan-field__input"
                         value={step.periods}
                         autoCapitalize="characters"
                         spellCheck={false}
                         placeholder={t.planPeriodsHint}
-                        aria-invalid={field("periods") || undefined}
-                        aria-describedby={
-                          field("periods") ? `${base}-periods` : undefined
-                        }
+                        aria-invalid={invalid("periods")}
+                        aria-describedby={describedBy("periods")}
                         onChange={(e) =>
                           update(step.key, { periods: e.target.value })
                         }
                       />
-                    </label>
+                      {notes("periods")}
+                    </div>
                   </div>
-                  {own.map((reason, i) => (
+                  {other.map((reason, i) => (
                     <p
                       key={i}
-                      id={`${base}-${reason.field}`}
                       className="plan-step__reason"
                       data-testid="plan-reason"
                     >
@@ -437,25 +540,10 @@ export function PlanDialog({
       {editing && (
         <button
           type="button"
+          data-focus="add"
           className="key key--add"
           disabled={draft.length >= PLAN_MAX_STEPS || busy}
-          onClick={() =>
-            setDraft((steps) =>
-              steps
-                ? [
-                    ...steps,
-                    {
-                      key: Math.max(-1, ...steps.map((s) => s.key)) + 1,
-                      kind: "facts",
-                      goal: "",
-                      tickers: "",
-                      periods: "",
-                      metrics: [],
-                    },
-                  ]
-                : steps,
-            )
-          }
+          onClick={add}
         >
           {t.planAddStep}
         </button>
@@ -488,6 +576,7 @@ export function PlanDialog({
         ) : editing ? (
           <>
             <button
+              key="send-edit"
               type="button"
               className="key key--primary"
               disabled={busy}
@@ -496,14 +585,11 @@ export function PlanDialog({
               {busy ? t.planSending : t.planSendEdit}
             </button>
             <button
+              key="discard"
               type="button"
               className="key"
               disabled={busy}
-              onClick={() => {
-                setDraft(null);
-                setReasons([]);
-                setError(null);
-              }}
+              onClick={discard}
             >
               {t.planDiscard}
             </button>
@@ -511,6 +597,7 @@ export function PlanDialog({
         ) : (
           <>
             <button
+              key="approve"
               type="button"
               className="key key--primary"
               disabled={busy}
@@ -519,10 +606,12 @@ export function PlanDialog({
               {busy ? t.planSending : t.planApprove}
             </button>
             <button
+              key="edit"
+              data-focus="edit"
               type="button"
               className="key"
               disabled={busy || !shown}
-              onClick={() => shown && setDraft(toDraft(shown))}
+              onClick={startEditing}
             >
               {t.planEdit}
             </button>
