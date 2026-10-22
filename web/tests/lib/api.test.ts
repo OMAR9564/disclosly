@@ -2,6 +2,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   ApiError,
+  approveRun,
+  asReport,
   getMe,
   navigation,
   startResearch,
@@ -184,5 +186,75 @@ describe("language", () => {
     expect(init.body).toBe(JSON.stringify({ language: "en" }));
     expect(new Headers(init.headers).get("Accept-Language")).toBe("en");
     expect(assign).not.toHaveBeenCalled();
+  });
+});
+
+describe("approveRun", () => {
+  it("posts the decision and returns both quotas", async () => {
+    const quota = { simple: QUOTA, deep: { ...QUOTA, limit: 5, remaining: 4 } };
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValue(json(202, { run_id: "r1", status: "running", quota }));
+    vi.stubGlobal("fetch", fetchMock);
+
+    const accepted = await approveRun(
+      "r 1",
+      { action: "approve" },
+      "tr",
+      "https://api",
+    );
+
+    expect(accepted.quota.deep.remaining).toBe(4);
+    expect(fetchMock.mock.calls[0][0]).toBe(
+      "https://api/v1/research/r%201/approve",
+    );
+    expect(fetchMock.mock.calls[0][1]).toMatchObject({
+      method: "POST",
+      body: JSON.stringify({ action: "approve" }),
+    });
+  });
+
+  it("exposes plan_invalid reasons from the error details", async () => {
+    const reasons = [{ step: "s2", field: "periods", reason: "bad" }];
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        json(422, {
+          error: {
+            code: "plan_invalid",
+            message: "x",
+            request_id: "r",
+            details: { reasons },
+          },
+        }),
+      ),
+    );
+    const error = await approveRun(
+      "r1",
+      { action: "edit", plan: { steps: [] } },
+      "en",
+      "https://api",
+    ).catch((e: unknown) => e);
+    expect(error).toBeInstanceOf(ApiError);
+    expect((error as ApiError).code).toBe("plan_invalid");
+    expect((error as ApiError).reasons).toEqual(reasons);
+    expect(new ApiError("not_found", "x", 404).reasons).toEqual([]);
+  });
+
+  it("reads old answers as reports", () => {
+    const report = asReport({
+      language: "tr",
+      status: "completed",
+      summary: "s",
+      points: [],
+      citations: [],
+      disclaimer: "d",
+    });
+    expect(report).toMatchObject({
+      tables: [],
+      chart: null,
+      confidence: null,
+      unverified: [],
+    });
   });
 });

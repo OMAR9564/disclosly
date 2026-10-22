@@ -1,7 +1,12 @@
 import { describe, expect, it, vi } from "vitest";
 
 import { ApiError, getRun, startResearch, streamUrl } from "@/lib/api";
-import { MAX_RECONNECTS, type RunEvent, subscribeRun } from "@/lib/stream";
+import {
+  MAX_RECONNECTS,
+  type RunEvent,
+  compareEventIds,
+  subscribeRun,
+} from "@/lib/stream";
 
 class MockEventSource {
   static last: MockEventSource | null = null;
@@ -67,6 +72,39 @@ describe("subscribeRun", () => {
     source.emit("final", { status: "completed", answer: {}, citations: [] });
     expect(events[0]?.type).toBe("final");
     expect(source.closed).toBe(true);
+  });
+
+  it.each(["awaiting_decision", "run_cancelled", "run_expired"])(
+    "closes after %s",
+    (type) => {
+      const { events, source } = open();
+      source.emit(type, { node: "decision", attempt: 1 });
+      expect(events[0]?.type).toBe(type);
+      expect(source.closed).toBe(true);
+    },
+  );
+
+  it("skips events up to `after` when following a run again", () => {
+    const events: RunEvent[] = [];
+    subscribeRun(
+      "http://api.test/v1/research/r1/stream",
+      { after: "6-0", onEvent: (e) => events.push(e) },
+      (url, init) => new MockEventSource(url, init) as unknown as EventSource,
+    );
+    const source = MockEventSource.last!;
+    source.emit("plan_proposed", { plan: {}, revision: 0 }, "5-0");
+    source.emit("awaiting_decision", { kind: "plan" }, "6-0");
+    source.emit("decision_made", { action: "approve" }, "7-0");
+    source.emit("step_started", { step_id: "s1", summary: "x" }, "10-0");
+    expect(events.map((e) => e.id)).toEqual(["7-0", "10-0"]);
+    expect(source.closed).toBe(false);
+  });
+
+  it("orders stream ids numerically", () => {
+    expect(compareEventIds("10-0", "9-5")).toBeGreaterThan(0);
+    expect(compareEventIds("9-1", "9-0")).toBeGreaterThan(0);
+    expect(compareEventIds("9-0", "9-0")).toBe(0);
+    expect(compareEventIds("x", "0-1")).toBeLessThan(0);
   });
 
   it("closes after error", () => {

@@ -8,6 +8,8 @@ const CELL_TILES = 4;
 
 function checkWord(state: RunState, t: Dictionary): string {
   if (state.phase === "error") return t.boardError;
+  if (state.phase === "cancelled") return t.checkCancelled;
+  if (state.phase === "expired") return t.checkExpired;
   switch (state.status) {
     case "completed":
       return t.checkCompleted;
@@ -41,9 +43,15 @@ export function Timeline({ state, t }: { state: RunState; t: Dictionary }) {
       ? t.runConnecting
       : state.phase === "running"
         ? t.runRunning
-        : state.phase === "done"
-          ? t.runDone
-          : null;
+        : state.phase === "awaiting"
+          ? t.runAwaiting
+          : state.phase === "cancelled"
+            ? t.runCancelled
+            : state.phase === "expired"
+              ? t.runExpired
+              : state.phase === "done"
+                ? t.runDone
+                : null;
 
   return (
     <section
@@ -82,7 +90,10 @@ export function Timeline({ state, t }: { state: RunState; t: Dictionary }) {
         })}
       </ol>
       {state.steps.length > 0 && (
-        <details className="steps-box" open={state.phase !== "done"}>
+        <details
+          className="steps-box"
+          open={state.phase === "running" || state.phase === "connecting"}
+        >
           <summary className="key key--steps">
             {state.steps.length} {t.stepsCount}
           </summary>
@@ -95,6 +106,17 @@ export function Timeline({ state, t }: { state: RunState; t: Dictionary }) {
                     isLanguage(t.locale) ? t.locale : "tr",
                   )}
                 </span>
+                {step.status && step.status !== "pending" && (
+                  <span className="steps__count" data-status={step.status}>
+                    {
+                      {
+                        done: t.stepDone,
+                        not_covered: t.stepNotCovered,
+                        failed: t.stepFailed,
+                      }[step.status]
+                    }
+                  </span>
+                )}
                 {step.count !== null && (
                   <span className="steps__count">
                     {step.count} {t.stepResults}

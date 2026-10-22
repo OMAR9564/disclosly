@@ -1,6 +1,6 @@
 import { FlapRow } from "@/components/FlapRow";
 import type { Dictionary } from "@/i18n";
-import type { QuotaStatus } from "@/lib/api";
+import type { QuotaStatus, Quotas } from "@/lib/api";
 
 /** "00:00 (TSİ)": the reset time in Istanbul, where the quota day turns. */
 export function resetLabel(resetsAt: string, t: Dictionary): string {
@@ -20,19 +20,22 @@ export function quotaExhaustedMessage(
   return t.quotaExhausted.replace("{time}", resetLabel(quota.resets_at, t));
 }
 
-/** Questions left today, as two flap tiles in the top strip. */
-export function QuotaBadge({
+function Counter({
   quota,
-  t,
+  label,
+  left,
+  testId,
 }: {
   quota: QuotaStatus;
-  t: Dictionary;
+  label: string;
+  left: string;
+  testId: string;
 }) {
   const remaining = Math.max(0, Math.min(quota.remaining, 99));
   return (
-    <p className="quota" data-testid="quota-badge">
+    <p className="quota" data-testid={testId}>
       <span className="quota__label" aria-hidden="true">
-        {t.quotaLabel}
+        {label}
       </span>
       <span className="quota__tiles">
         <FlapRow
@@ -45,8 +48,28 @@ export function QuotaBadge({
         /{quota.limit}
       </span>
       <span className="sr-only">
-        {remaining} / {quota.limit} {t.quotaLeft}
+        {remaining} / {quota.limit} {left}
       </span>
     </p>
+  );
+}
+
+/** Questions and deep research runs left today, as flap tiles in the top strip. */
+export function QuotaBadge({ quota, t }: { quota: Quotas; t: Dictionary }) {
+  return (
+    <div className="quotas">
+      <Counter
+        quota={quota.simple}
+        label={t.quotaLabel}
+        left={t.quotaLeft}
+        testId="quota-badge"
+      />
+      <Counter
+        quota={quota.deep}
+        label={t.quotaDeepLabel}
+        left={t.quotaDeepLeft}
+        testId="quota-deep"
+      />
+    </div>
   );
 }

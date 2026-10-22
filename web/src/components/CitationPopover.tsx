@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 import { type Dictionary, isLanguage } from "@/i18n";
 import { docTypeLabel, metricLabel } from "@/i18n/labels";
-import type { Citation } from "@/lib/api";
+import { type Citation, isCalculation } from "@/lib/api";
 import { sourceCode } from "@/lib/runState";
 
 /** The source plate: an enamel plate that opens in place under the row that cites it. */
@@ -20,7 +20,6 @@ export function CitationPopover({
   onClose: () => void;
 }) {
   const ref = useRef<HTMLElement>(null);
-  const { source } = citation;
   const language = isLanguage(t.locale) ? t.locale : "tr";
 
   useEffect(() => {
@@ -47,6 +46,47 @@ export function CitationPopover({
           {t.sourceClose}
         </button>
       </div>
+      {isCalculation(citation) ? (
+        <>
+          <dl className="source__meta">
+            <div>
+              <dt>{t.calcFormula}</dt>
+              <dd>{citation.excerpt}</dd>
+            </div>
+            <div>
+              <dt>{t.calcOutput}</dt>
+              <dd>{citation.source.output}</dd>
+            </div>
+          </dl>
+          <dl className="source__meta" aria-label={t.calcInputs}>
+            {citation.source.inputs.map((input) => (
+              <div key={input.name}>
+                <dt>{input.name}</dt>
+                <dd>{input.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </>
+      ) : (
+        <DocumentDetails citation={citation} t={t} language={language} />
+      )}
+    </aside>
+  );
+}
+
+function DocumentDetails({
+  citation,
+  t,
+  language,
+}: {
+  citation: Citation;
+  t: Dictionary;
+  language: "tr" | "en";
+}) {
+  const source = citation.source;
+  if (source.kind === "calculation") return null;
+  return (
+    <>
       <dl className="source__meta">
         <div>
           <dt>{t.sourcePeriod}</dt>
@@ -80,6 +120,6 @@ export function CitationPopover({
       >
         {t.sourceLink}
       </a>
-    </aside>
+    </>
   );
 }

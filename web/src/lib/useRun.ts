@@ -1,13 +1,17 @@
 "use client";
 
-import { useEffect, useReducer, useState } from "react";
+import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 
 import type { Language } from "@/i18n";
 import { ApiError, type Run, getRun, streamUrl } from "@/lib/api";
 import { type RunState, initialRunState, reduceRun } from "@/lib/runState";
 import { type RunEvent, subscribeRun } from "@/lib/stream";
 
-/** Loads a run and follows its event stream; replays the full history on reload. */
+/**
+ * Loads a run and follows its event stream; replays the full history on reload. The server
+ * closes the stream when the run pauses for a decision; `follow()` opens it again after the
+ * decision and skips the events already shown.
+ */
 export function useRun(
   runId: string,
   language: Language,
@@ -16,6 +20,7 @@ export function useRun(
   state: RunState;
   lost: boolean;
   loadError: string | null;
+  follow: () => void;
 } {
   const [state, dispatch] = useReducer(
     (current: RunState, event: RunEvent | "reset") =>
@@ -25,10 +30,29 @@ export function useRun(
   const [run, setRun] = useState<Run | null>(null);
   const [lost, setLost] = useState(false);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const lastId = useRef<string | null>(null);
+  const close = useRef<(() => void) | null>(null);
+
+  useEffect(() => {
+    lastId.current = state.lastId;
+  }, [state.lastId]);
+
+  const subscribe = useCallback(
+    (after: string | null) => {
+      close.current?.();
+      close.current = subscribeRun(streamUrl(runId), {
+        after,
+        onEvent: (event) => dispatch(event),
+        onDisconnect: () => setLost(true),
+      });
+    },
+    [runId],
+  );
 
   useEffect(() => {
     let active = true;
     dispatch("reset");
+    lastId.current = null;
     getRun(runId, language)
       .then((loaded) => {
         if (active) setRun(loaded);
@@ -39,17 +63,20 @@ export function useRun(
             error instanceof ApiError ? error.code : "internal_error",
           );
       });
-    const close = subscribeRun(streamUrl(runId), {
-      onEvent: (event) => dispatch(event),
-      onDisconnect: () => setLost(true),
-    });
+    subscribe(null);
     return () => {
       active = false;
-      close();
+      close.current?.();
+      close.current = null;
     };
     // Language changes only re-label the board; they must not restart the run.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [runId]);
 
-  return { run, state, lost, loadError };
+  const follow = useCallback(() => {
+    setLost(false);
+    subscribe(lastId.current);
+  }, [subscribe]);
+
+  return { run, state, lost, loadError, follow };
 }
