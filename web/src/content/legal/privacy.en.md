@@ -28,7 +28,7 @@ The legal basis is the performance of the service you asked for and our legitima
 
 ## Third-party model providers
 
-Answers are written by free tiers of third-party language model providers (for example Google Gemini, Groq, GitHub Models, OpenRouter and Cloudflare Workers AI). They receive your question and passages from public company disclosures (KAP and SEC EDGAR). They never receive your email address or display name.
+Answers are written by free tiers of third-party language model providers (for example Google Gemini, Groq, OpenRouter and Cloudflare Workers AI). They receive your question and passages from public company disclosures (KAP and SEC EDGAR). They never receive your email address or display name.
 
 Some free tiers may use the text they receive to train their models. Do not put personal or confidential information in your questions.
 

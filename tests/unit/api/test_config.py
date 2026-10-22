@@ -13,7 +13,6 @@ PROVIDER_KEY = "provider-key-value-xyz"
 PHASE3_VARS = (
     "GEMINI_API_KEY",
     "GROQ_API_KEY",
-    "GITHUB_MODELS_TOKEN",
     "OPENROUTER_API_KEY",
     "CLOUDFLARE_ACCOUNT_ID",
     "CLOUDFLARE_AI_TOKEN",
@@ -69,7 +68,6 @@ def test_defaults(env: pytest.MonkeyPatch) -> None:
     [
         "GEMINI_API_KEY",
         "GROQ_API_KEY",
-        "GITHUB_MODELS_TOKEN",
         "OPENROUTER_API_KEY",
         "CLOUDFLARE_AI_TOKEN",
         "GOOGLE_CLIENT_SECRET",

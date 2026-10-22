@@ -6,9 +6,10 @@
 # list endpoints, OpenRouter's free models with tool support; each answered a tool call.
 # Groq allows 8,000 tokens per minute per model on the free tier, so a large final request
 # gets 413 there and moves on to the next provider without a cooldown.
+# GitHub Models was retired on 2026-07-30 (its endpoint answers "OK" as plain text), so it is gone.
 classes:
-  cheap: [gemini-flash-lite, groq-llama, groq-qwen, openrouter-free, github-mini, cloudflare]
-  strong: [gemini-flash-stable, gemini-flash, openrouter-large, groq-large, github-large]
+  cheap: [gemini-flash-lite, groq-llama, groq-qwen, openrouter-free, cloudflare]
+  strong: [gemini-flash-stable, gemini-flash, openrouter-large, groq-large]
 providers:
   gemini-flash-lite:
     base_url: https://generativelanguage.googleapis.com/v1beta/openai
@@ -54,20 +55,6 @@ providers:
     daily_requests: 1000
     native_tools: true
     price_per_mtok: {input: 0.15, output: 0.60}
-  github-mini:
-    base_url: https://models.github.ai/inference
-    model: openai/gpt-4.1-mini
-    api_key_env: GITHUB_MODELS_TOKEN
-    daily_requests: 150
-    native_tools: true
-    price_per_mtok: {input: 0.40, output: 1.60}
-  github-large:
-    base_url: https://models.github.ai/inference
-    model: openai/gpt-4.1
-    api_key_env: GITHUB_MODELS_TOKEN
-    daily_requests: 50
-    native_tools: true
-    price_per_mtok: {input: 2.00, output: 8.00}
   # OpenRouter free models share 50 requests per day per account (without credits).
   openrouter-free:
     base_url: https://openrouter.ai/api/v1

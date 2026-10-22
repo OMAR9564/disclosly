@@ -662,7 +662,6 @@ two are needed for fallback (FR-028):
 ```bash
 GEMINI_API_KEY=...          # Google AI Studio
 GROQ_API_KEY=...            # console.groq.com
-GITHUB_MODELS_TOKEN=...     # fine-grained PAT with the "Models" read permission
 OPENROUTER_API_KEY=...      # openrouter.ai, free models only
 CLOUDFLARE_ACCOUNT_ID=...   # Workers AI
 CLOUDFLARE_AI_TOKEN=...
