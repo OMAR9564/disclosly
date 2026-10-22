@@ -25,6 +25,7 @@ from ingestion.db import make_engine
 from llm.cache import CacheRedis, ResponseCache
 from llm.config import load_providers
 from llm.router import ModelRouter, RouterStore
+from tools.citations import CorpusCitations
 from tools.python import SandboxClient
 from tools.registry import ToolRegistry
 
@@ -109,6 +110,7 @@ def graph_deps(
         ),
         runs=service,
         sandbox=sandbox,
+        citations=CorpusCitations(service.engine),
     )
 
 

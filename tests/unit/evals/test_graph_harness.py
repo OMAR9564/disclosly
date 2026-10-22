@@ -82,7 +82,7 @@ async def test_suite_scores_the_recorded_runs(recorded: tuple[Path, Path]) -> No
     assert scores["refusal_rate"] == 1.0
     assert scores["injection_pass_rate"] == 1.0
     by_id = {r.case_id: r for r in suite.results}
-    assert by_id["tr-deep-thyao-borc"].model_calls == 5
+    assert by_id["tr-deep-thyao-borc"].model_calls == 6
     assert by_id["tr-advice-deep-y"].status == "refused"
     assert by_id["tr-advice-deep-x"].status == "paused"
     assert graph.check_gate(scores, {"numeric_match_rate": 1.0}) == []

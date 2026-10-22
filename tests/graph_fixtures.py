@@ -46,6 +46,12 @@ REPLIES: dict[str, dict[str, Any]] = {
             for i, (p, v, f) in enumerate(zip(PERIODS, VALUES, FACTS, strict=True))
         ]
     },
+    "verifier": {
+        "claims": [
+            {"finding_id": f"F{i + 1}", "supported": True, "reason": "kanıtta var"}
+            for i in range(len(PERIODS))
+        ]
+    },
     "writer": {
         "language": "tr",
         "status": "completed",
@@ -72,6 +78,7 @@ PROMPT_MARKERS = {
     "planner": "planlayıcısısın",
     "retriever": "Bir araştırma planının her adımı",
     "analyst": "analistisin",
+    "verifier": "doğrulayıcısısın",
     "writer": "yazarısın",
 }
 
