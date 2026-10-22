@@ -27,6 +27,23 @@ services:
   migrate:
     image: disclosly-api:dev
 
+  # The service runs from the API image; the calculation image is built locally and chosen by
+  # SANDBOX_IMAGE instead of the ghcr tag.
+  sandbox:
+    image: disclosly-api:dev
+    # Local socket groups differ between machines; root avoids a per-machine DOCKER_GID.
+    user: "0"
+    environment:
+      SANDBOX_IMAGE: disclosly-sandbox:dev
+
+  # Build-only: `docker compose build sandbox-image` produces disclosly-sandbox:dev.
+  sandbox-image:
+    image: disclosly-sandbox:dev
+    build:
+      context: ..
+      dockerfile: sandbox/Dockerfile
+    profiles: ["build"]
+
   postgres:
     ports:
       - "127.0.0.1:5432:5432"

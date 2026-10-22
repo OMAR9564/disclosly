@@ -32,6 +32,20 @@ x-api-environment: &api-environment
   QUOTA_DAILY_QUESTIONS: ${QUOTA_DAILY_QUESTIONS:-20}
   RATE_LIMIT_USER_PER_MIN: ${RATE_LIMIT_USER_PER_MIN:-30}
   RATE_LIMIT_IP_PER_MIN: ${RATE_LIMIT_IP_PER_MIN:-60}
+  # Multi-agent research (Phase 4); `single` keeps the Phase 3 loop until the graph is switched on.
+  AGENT_ENGINE: ${AGENT_ENGINE:-single}
+  AGENT_DEEP_MAX_MODEL_CALLS: ${AGENT_DEEP_MAX_MODEL_CALLS:-20}
+  AGENT_DEEP_DEADLINE_SECONDS: ${AGENT_DEEP_DEADLINE_SECONDS:-300}
+  AGENT_DEEP_MAX_STEPS: ${AGENT_DEEP_MAX_STEPS:-12}
+  AGENT_DEEP_MAX_TOOL_CALLS: ${AGENT_DEEP_MAX_TOOL_CALLS:-24}
+  AGENT_DEEP_MAX_SANDBOX_RUNS: ${AGENT_DEEP_MAX_SANDBOX_RUNS:-4}
+  AGENT_PLAN_MAX_STEPS: ${AGENT_PLAN_MAX_STEPS:-8}
+  AGENT_PLAN_TTL_HOURS: ${AGENT_PLAN_TTL_HOURS:-24}
+  AGENT_VERIFY_MAX_ROUNDS: ${AGENT_VERIFY_MAX_ROUNDS:-2}
+  AGENT_MAX_CONCURRENT_RUNS: ${AGENT_MAX_CONCURRENT_RUNS:-3}
+  QUOTA_DAILY_DEEP: ${QUOTA_DAILY_DEEP:-5}
+  CHECKPOINT_RETENTION_DAYS: ${CHECKPOINT_RETENTION_DAYS:-7}
+  SANDBOX_URL: ${SANDBOX_URL:-http://sandbox:8100}
 
 services:
   caddy:
@@ -62,6 +76,7 @@ services:
     networks:
       - default
       - edge
+      - sandbox_net
     tmpfs:
       - /tmp/prometheus
     depends_on:
@@ -69,6 +84,31 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+
+  # Calculation sandbox (contracts/sandbox.md, research §R8): the only container with the Docker
+  # socket. It never runs user code itself; each batch runs in a fresh container from the
+  # sandbox image with no network. Reachable only from `api` on the internal `sandbox_net`.
+  sandbox:
+    image: ghcr.io/omar9564/disclosly-api:${API_IMAGE_TAG:?API_IMAGE_TAG is required}
+    restart: unless-stopped
+    mem_limit: 128m
+    # Not the API entrypoint: that one validates the API's own settings.
+    entrypoint: ["uvicorn", "sandbox.service:app", "--host", "0.0.0.0", "--port", "8100"]
+    # The socket's group on the host (`stat -c %g /var/run/docker.sock`).
+    group_add:
+      - "${DOCKER_GID:-988}"
+    environment:
+      SANDBOX_IMAGE_TAG: ${SANDBOX_IMAGE_TAG:-main}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - sandbox_net
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8100/healthz', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
 
   postgres:
     image: pgvector/pgvector:pg16
@@ -177,6 +217,9 @@ networks:
     ipam:
       config:
         - subnet: 172.30.0.0/24
+  # `api` → `sandbox` only; internal, so nothing on it reaches the internet.
+  sandbox_net:
+    internal: true
 
 volumes:
   caddy_data:

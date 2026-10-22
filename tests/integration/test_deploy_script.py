@@ -24,6 +24,9 @@ if [[ "$*" == *"run --rm migrate"* && "${FAKE_MIGRATE_FAIL:-0}" == "1" ]]; then
   echo "migration failed" >&2
   exit 1
 fi
+if [[ "$*" == "pull ghcr.io/omar9564/disclosly-sandbox:"* && "${FAKE_SANDBOX_PULL_FAIL:-0}" == "1" ]]; then
+  exit 1
+fi
 if [[ "$*" == *"up -d --no-deps api"* ]]; then
   grep '^API_IMAGE_TAG=' "$FAKE_ENV_FILE" | cut -d= -f2- > "$FAKE_RUNNING"
 fi
@@ -108,9 +111,24 @@ def test_success_switches_to_new_version(sandbox: Sandbox) -> None:
     docker_calls = [c for c in calls if c.startswith("docker")]
     assert "pull api" in docker_calls[0]
     assert "--profile migrate run --rm migrate" in docker_calls[1]
-    assert "up -d --no-deps api" in docker_calls[2]
-    assert len(docker_calls) == 3
+    assert docker_calls[2] == "docker pull ghcr.io/omar9564/disclosly-sandbox:main"
+    assert docker_calls[3].endswith("up -d --no-deps api sandbox")
+    assert len(docker_calls) == 4
     assert any("https://api.example.test/healthz" in c for c in calls if c.startswith("curl"))
+
+
+def test_sandbox_image_tag_comes_from_env(sandbox: Sandbox) -> None:
+    sandbox.env_file.write_text(sandbox.env_file.read_text() + "SANDBOX_IMAGE_TAG=abc1234\n")
+    assert sandbox.run(NEW_SHA).returncode == 0
+    assert "docker pull ghcr.io/omar9564/disclosly-sandbox:abc1234" in sandbox.calls()
+
+
+def test_failed_sandbox_pull_still_deploys(sandbox: Sandbox) -> None:
+    result = sandbox.run(NEW_SHA, FAKE_SANDBOX_PULL_FAIL="1")
+
+    assert result.returncode == 0, result.stderr
+    assert "sandbox image pull failed" in result.stderr
+    assert sandbox.tag() == NEW_SHA
 
 
 def test_migrate_failure_keeps_old_version(sandbox: Sandbox) -> None:
@@ -164,3 +182,21 @@ def test_migrate_service_sets_up_graph_checkpoints_after_alembic() -> None:
 
     assert command[:2] == ["sh", "-c"]
     assert command[2] == "alembic upgrade head && python -m agent.checkpoint setup"
+
+
+def test_only_the_sandbox_service_holds_the_docker_socket() -> None:
+    config = yaml.safe_load(COMPOSE.read_text())
+    services = config["services"]
+    with_socket = [
+        name
+        for name, service in services.items()
+        if any("docker.sock" in str(v) for v in service.get("volumes", []))
+    ]
+    assert with_socket == ["sandbox"]
+    assert config["networks"]["sandbox_net"]["internal"] is True
+    assert services["sandbox"]["networks"] == ["sandbox_net"]
+    assert "sandbox_net" in services["api"]["networks"]
+    joined = [n for n, s in services.items() if "sandbox_net" in s.get("networks", [])]
+    assert sorted(joined) == ["api", "sandbox"]
+    assert "ports" not in services["sandbox"]
+    assert services["sandbox"]["entrypoint"][:2] == ["uvicorn", "sandbox.service:app"]

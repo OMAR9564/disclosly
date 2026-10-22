@@ -17,6 +17,7 @@ READY_URL := http://localhost:8000/readyz
 READY_TIMEOUT_S := 120
 
 up: check-compose
+	$(COMPOSE) --profile build build sandbox-image
 	$(COMPOSE) up -d --build --wait
 	@echo "waiting for $(READY_URL) (up to $(READY_TIMEOUT_S)s)"
 	@deadline=$$(( $$(date +%s) + $(READY_TIMEOUT_S) )); \

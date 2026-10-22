@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Deploy one API image to the server, with health-checked rollback (research.md R7).
+# Deploy one API image to the server, with health-checked rollback (research.md R7). The
+# sandbox service runs from the same image and is switched with it (Phase 4 research §R8).
 #
 # Usage: deploy.sh <git-sha>
 #
@@ -75,10 +76,18 @@ if ! "${compose[@]}" --profile migrate run --rm migrate; then
   exit 1
 fi
 
-# 4. Switch the API container.
-"${compose[@]}" up -d --no-deps api
+# 4. Pull the calculation image the sandbox service starts per batch (contracts/sandbox.md).
+#    A failed pull keeps the image already on the host; calculations report the sandbox as
+#    unavailable until an image is there, the rest of the API is unaffected.
+sandbox_tag="$(read_env SANDBOX_IMAGE_TAG)"
+if ! docker pull "ghcr.io/omar9564/disclosly-sandbox:${sandbox_tag:-main}" > /dev/null; then
+  log "warning: sandbox image pull failed; keeping the local one"
+fi
 
-# 5. Wait until the public endpoint reports the new version.
+# 5. Switch the API and sandbox service containers (same image).
+"${compose[@]}" up -d --no-deps api sandbox
+
+# 6. Wait until the public endpoint reports the new version.
 deadline=$((SECONDS + ${HEALTH_TIMEOUT_S%.*}))
 while ((SECONDS < deadline)); do
   if [[ "$(healthy_version || true)" == "$new_tag" ]]; then
@@ -88,9 +97,9 @@ while ((SECONDS < deadline)); do
   sleep "$POLL_INTERVAL_S"
 done
 
-# 6. Roll back.
+# 7. Roll back.
 log "health check did not report $new_tag within ${HEALTH_TIMEOUT_S}s; rolling back"
 set_tag "$previous_tag"
-"${compose[@]}" up -d --no-deps api
+"${compose[@]}" up -d --no-deps api sandbox
 log "rolled back to $previous_tag"
 exit 2
