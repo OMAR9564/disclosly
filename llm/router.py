@@ -21,6 +21,7 @@ from llm.client import (
     ProviderConfigRejected,
     ProviderError,
     RateLimited,
+    RequestTooLarge,
     Unavailable,
     chat_completion,
 )
@@ -72,6 +73,8 @@ def cooldown_seconds(exc: ProviderError) -> int:
         return CONFIG_ERROR_COOLDOWN
     if isinstance(exc, Unavailable):
         return UNAVAILABLE_COOLDOWN
+    if isinstance(exc, RequestTooLarge):
+        return 0
     return UNAVAILABLE_COOLDOWN
 
 

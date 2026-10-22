@@ -167,8 +167,12 @@ TABLE = {
         "Hasılat | ifrs-full_Revenue | 19 | 551928 | 358781\n"
         "Net Dönem Karı | ifrs-full_ProfitLoss | | 88831 | 70212",
         source={},
+        scale=Decimal(10) ** 6,
+        unit_note="1.000.000 TL",
     )
 }
+# The same table when the report's presentation unit is not known.
+UNSCALED = {"c:t": TABLE["c:t"].model_copy(update={"scale": None, "unit_note": None})}
 
 
 def test_unit_scaled_numbers_and_chunk_derived_percent_are_supported() -> None:
@@ -191,6 +195,56 @@ def test_unit_scaled_numbers_and_chunk_derived_percent_are_supported() -> None:
 def test_scaling_does_not_admit_other_numbers(text: str) -> None:
     answer = _answer("Özet.", points=[(text, ["c:t"])])
     assert not validate_answer(answer, TABLE, "tr").ok
+
+
+@pytest.mark.parametrize(
+    ("text", "ok"),
+    [
+        ("Net kâr 88831 milyon TL.", True),
+        ("Net kâr 88,8 milyar TL.", True),  # rounded to the stated precision
+        ("Net kâr 88.831.000.000 TL.", True),
+        ("Net kâr 88831.", True),  # the bare table number
+        ("Net kâr 88831 bin TL.", False),  # production case: wrong unit
+        ("Net kâr 88831 TL.", False),  # a currency without the table's scale
+        ("Net kâr 88,9 milyar TL.", False),
+    ],
+)
+def test_stated_units_must_match_the_report_unit(text: str, ok: bool) -> None:
+    answer = _answer("Özet.", points=[(text, ["c:t"])])
+    assert validate_answer(answer, TABLE, "tr").ok is ok
+
+
+@pytest.mark.parametrize(
+    ("text", "ok"),
+    [
+        ("Net kâr 88831.", True),
+        ("Net kâr 88831 bin TL.", False),
+        ("Net kâr 88.831.000.000 TL.", False),  # the scale cannot be known
+    ],
+)
+def test_unknown_report_unit_admits_only_the_bare_number(text: str, ok: bool) -> None:
+    answer = _answer("Özet.", points=[(text, ["c:t"])])
+    assert validate_answer(answer, UNSCALED, "tr").ok is ok
+
+
+def test_table_header_declares_the_scale() -> None:
+    seen = {
+        "c:m": SeenItem(
+            cite_id="c:m",
+            text="(In millions) | Three Months Ended March 31, | 2026 | 2025\n"
+            "Net income | 31,778 | 25,824",
+            source={},
+        )
+    }
+    for text, ok in [
+        ("Net income was $31,778 million.", True),
+        ("Net income was $31.8 billion.", True),
+        ("Net income was $31,778,000,000.", True),
+        ("Net income was $31,778.", False),
+        ("Quarter ended March 31, 2026: 31,778.", True),  # the date's day is not a figure
+    ]:
+        answer = _answer("Summary.", points=[(text, ["c:m"])], language="en")
+        assert validate_answer(answer, seen, "en").ok is ok, text
 
 
 def test_empty_partial_gets_the_no_verified_answer_notice() -> None:
@@ -223,3 +277,34 @@ def test_inline_cite_ids_become_markers() -> None:
         (3, "f:9"),
     ]
     assert normalize_markers(fixed) == fixed
+
+
+def test_bare_chunk_ids_become_markers() -> None:
+    from agent.answer import normalize_markers
+
+    chunk = "9c" * 32
+    answer = Answer(
+        language="en", status="completed", summary=f"Sales were $416,161 million [{chunk}]."
+    )
+    fixed = normalize_markers(answer)
+    assert fixed.summary == "Sales were $416,161 million [1]."
+    assert [(c.marker, c.cite_id) for c in fixed.citations] == [(1, f"c:{chunk}")]
+
+
+def test_bare_chunk_ids_get_their_prefix_everywhere() -> None:
+    from agent.answer import normalize_markers
+
+    chunk = "04" * 32
+    answer = Answer.model_validate(
+        {
+            "language": "tr",
+            "status": "completed",
+            "summary": f"Payın %48,88'i satışa çıkarıldı [{chunk}].",
+            "points": [{"text": "Pay %48,88.", "cite_ids": [chunk]}],
+            "citations": [{"marker": 1, "cite_id": chunk}],
+        }
+    )
+    fixed = normalize_markers(answer)
+    assert fixed.summary == "Payın %48,88'i satışa çıkarıldı [1]."
+    assert [(c.marker, c.cite_id) for c in fixed.citations] == [(1, f"c:{chunk}")]
+    assert fixed.points[0].cite_ids == [f"c:{chunk}"]

@@ -126,6 +126,25 @@ async def test_expired_stream_replays_stored_result(
         assert events[0]["data"]["status"] == "completed"
 
 
+async def test_cancelled_stream_read_ends_without_an_error(
+    engine: Engine, service: RunService, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from redis.exceptions import TimeoutError as RedisTimeoutError
+
+    user = add_user(engine)
+    async with _client(service, user) as client:
+        run_id = await _start(client, service)
+
+        async def cancelled(*args: Any, **kwargs: Any) -> AsyncIterator[None]:
+            raise RedisTimeoutError("Timeout reading from redis:6379")
+            yield None
+
+        monkeypatch.setattr(service, "events", cancelled)
+        response = await client.get(f"/v1/research/{run_id}/stream")
+    assert response.status_code == 200
+    assert response.text == ""
+
+
 async def test_other_user_gets_404(engine: Engine, service: RunService) -> None:
     owner, other = add_user(engine, "a@example.test"), add_user(engine, "b@example.test")
     async with _client(service, owner, "a@example.test") as client:

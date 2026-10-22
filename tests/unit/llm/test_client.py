@@ -12,6 +12,7 @@ from llm.client import (
     InvalidResponse,
     ProviderConfigRejected,
     RateLimited,
+    RequestTooLarge,
     Unavailable,
     build_payload,
     chat_completion,
@@ -224,17 +225,22 @@ async def test_429_without_numeric_retry_after(header: str | None) -> None:
     assert excinfo.value.retry_after is None
 
 
-@pytest.mark.parametrize("status", [500, 502, 503, 404])
+@pytest.mark.parametrize("status", [500, 502, 503, 418])
 async def test_server_errors_are_unavailable(status: int) -> None:
     with pytest.raises(Unavailable):
         await _call(lambda _: httpx.Response(status))
 
 
-@pytest.mark.parametrize("status", [400, 401, 403])
+@pytest.mark.parametrize("status", [400, 401, 403, 404])
 async def test_client_errors_are_config_errors(status: int) -> None:
     with pytest.raises(ProviderConfigRejected) as excinfo:
         await _call(lambda _: httpx.Response(status))
     assert excinfo.value.status == status
+
+
+async def test_413_is_request_too_large() -> None:
+    with pytest.raises(RequestTooLarge):
+        await _call(lambda _: httpx.Response(413))
 
 
 @pytest.mark.parametrize("error", [httpx.ReadTimeout("slow"), httpx.ConnectError("refused")])
@@ -319,6 +325,28 @@ def test_gemini_thought_signature_round_trips() -> None:
     )
     sent = build_payload(_provider(name="gemini-flash"), request)["messages"][1]["tool_calls"][0]
     assert sent["extra_content"] == extra
+
+
+def test_call_from_another_provider_gets_geminis_skip_signature() -> None:
+    """After a fallback, a Groq tool call replayed to Gemini 3 would be rejected with 400."""
+    from llm.client import GEMINI_SKIP_SIGNATURE
+    from llm.types import ToolCall
+
+    call = ToolCall(id="call_1", name="search_documents", arguments={"query": "x"})
+    request = ChatRequest(
+        messages=[
+            ChatMessage(role="user", content="q"),
+            ChatMessage(role="assistant", tool_calls=[call]),
+            ChatMessage(role="tool", content="r", tool_call_id="call_1"),
+        ]
+    )
+    gemini = _provider(name="gemini-flash-lite").model_copy(
+        update={"base_url": "https://generativelanguage.googleapis.com/v1beta/openai"}
+    )
+    sent = build_payload(gemini, request)["messages"][1]["tool_calls"][0]
+    assert sent["extra_content"] == GEMINI_SKIP_SIGNATURE
+    other = build_payload(_provider(), request)["messages"][1]["tool_calls"][0]
+    assert "extra_content" not in other
 
 
 def test_extra_content_is_not_part_of_the_cache_key() -> None:

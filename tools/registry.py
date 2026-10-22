@@ -5,15 +5,19 @@ Every citable result goes to the model inside
 escaped so a chunk cannot close its own wrapper and pose as instructions.
 """
 
+import asyncio
 import json
 import re
+from collections.abc import Callable
 from dataclasses import dataclass, field
+from functools import partial
 from typing import Any, Literal
 
 from pydantic import ValidationError
 from sqlalchemy import Engine
 
 from llm.types import ToolCall, ToolSchema
+from retrieval.types import SearchUnavailable
 from tools import documents, facts
 from tools.documents import SearchBackend
 from tools.facts import Language
@@ -86,8 +90,10 @@ def escape_delimiters(text: str) -> str:
 
 
 def wrap(item: SeenItem) -> str:
+    # The report unit tells the model what bare table amounts are counted in.
+    unit = f' amounts_in="{item.unit_note.replace(chr(34), "")}"' if item.unit_note else ""
     return (
-        f'<untrusted_document cite_id="{item.cite_id}">'
+        f'<untrusted_document cite_id="{item.cite_id}"{unit}>'
         f"{escape_delimiters(item.text)}</untrusted_document>"
     )
 
@@ -115,9 +121,16 @@ def _summary(name: str, args: dict[str, Any]) -> str:
 
 
 class ToolRegistry:
-    def __init__(self, search: SearchBackend, engine: Engine) -> None:
+    def __init__(
+        self,
+        search: SearchBackend,
+        engine: Engine,
+        units: Callable[[list[SeenItem]], list[SeenItem]] | None = None,
+    ) -> None:
         self._search = search
         self._engine = engine
+        # Attaches report units to chunk items; tests without a database pass their own.
+        self._units = units or partial(documents.with_presentation_units, engine)
 
     @property
     def schemas(self) -> list[ToolSchema]:
@@ -129,6 +142,7 @@ class ToolRegistry:
         try:
             if call.name == "search_documents":
                 items = await documents.search_documents(self._search, **args)
+                items = await asyncio.to_thread(self._units, items)
             elif call.name == "get_financial_facts":
                 items = await facts.get_financial_facts(self._engine, **args, language=language)
             elif call.name == "list_documents":
@@ -139,6 +153,9 @@ class ToolRegistry:
                 return self._error(call.name, summary, f"unknown tool {call.name!r}")
         except (TypeError, ValueError, ValidationError) as exc:
             return self._error(call.name, summary, f"invalid arguments: {exc}")
+        except SearchUnavailable:
+            # The model can still answer from financial facts, or say there is no evidence.
+            return self._error(call.name, summary, "document search is temporarily unavailable")
         if not items:
             return ToolResult(call.name, "No results.", summary)
         content = "\n".join(wrap(item) for item in items)

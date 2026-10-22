@@ -56,8 +56,12 @@ class InvalidResponse(ProviderError):
     """200 with no content and no tool calls, or unparsable tool arguments."""
 
 
+class RequestTooLarge(ProviderError):
+    """413: this request exceeds the provider's token limit; smaller ones still fit."""
+
+
 class ProviderConfigRejected(ProviderError):
-    """400/401/403: the request or the credentials are wrong; a config error."""
+    """400/401/403/404: the request, the credentials or the model id are wrong; a config error."""
 
     def __init__(self, provider: str, status: int) -> None:
         super().__init__(provider, f"HTTP {status}")
@@ -74,7 +78,22 @@ def _retry_after(response: httpx.Response) -> float | None:
         return None
 
 
-def _message_payload(message: ChatMessage, native_tools: bool) -> dict[str, Any]:
+# Gemini 3 models reject a replayed tool call without its `thought_signature` (400). A call
+# made by another provider after a fallback has none, so it gets the placeholder Google
+# documents for calls it did not generate.
+GEMINI_HOST = "generativelanguage.googleapis.com"
+GEMINI_SKIP_SIGNATURE = {"google": {"thought_signature": "skip_thought_signature_validator"}}
+
+
+def _call_extra(call: ToolCall, gemini: bool) -> dict[str, Any] | None:
+    if call.extra:
+        return call.extra
+    return GEMINI_SKIP_SIGNATURE if gemini else None
+
+
+def _message_payload(
+    message: ChatMessage, native_tools: bool, gemini: bool = False
+) -> dict[str, Any]:
     if not native_tools and message.role == "tool":
         return {
             "role": "user",
@@ -90,7 +109,7 @@ def _message_payload(message: ChatMessage, native_tools: bool) -> dict[str, Any]
                 "id": call.id,
                 "type": "function",
                 "function": {"name": call.name, "arguments": json.dumps(call.arguments)},
-                **({"extra_content": call.extra} if call.extra else {}),
+                **({"extra_content": extra} if (extra := _call_extra(call, gemini)) else {}),
             }
             for call in message.tool_calls
         ]
@@ -112,7 +131,8 @@ def _tools_instruction(request: ChatRequest) -> str:
 def build_payload(provider: Provider, request: ChatRequest) -> dict[str, Any]:
     """The JSON body for `POST {base_url}/chat/completions`."""
     native = provider.native_tools
-    messages = [_message_payload(message, native) for message in request.messages]
+    gemini = GEMINI_HOST in provider.base_url
+    messages = [_message_payload(message, native, gemini) for message in request.messages]
     payload: dict[str, Any] = {
         "model": provider.model,
         "messages": messages,
@@ -259,7 +279,9 @@ async def chat_completion(
         raise RateLimited(name, _retry_after(response))
     if status >= 500:
         raise Unavailable(name, f"HTTP {status}")
-    if status in (400, 401, 403):
+    if status == 413:
+        raise RequestTooLarge(name, "HTTP 413")
+    if status in (400, 401, 403, 404):
         raise ProviderConfigRejected(name, status)
     if status != 200:
         raise Unavailable(name, f"HTTP {status}")

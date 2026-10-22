@@ -5,9 +5,9 @@ from typing import Any
 
 import pytest
 
-from api.search_client import SEARCH_QUEUE, RemoteSearch, SearchUnavailable
+from api.search_client import SEARCH_QUEUE, RemoteSearch
 from ingestion.models import DocType
-from retrieval.types import SearchFilters
+from retrieval.types import SearchFilters, SearchUnavailable
 
 HIT = {
     "chunk_id": "c1",
