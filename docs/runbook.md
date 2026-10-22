@@ -545,8 +545,8 @@ embeds in bulk. Commands are in `specs/002-data-retrieval/contracts/cli.md`.
 
 ### 1. Worker image and `.env`
 
-The deploy workflow pushes only the API image. Build and push the worker image by hand until CI
-publishes it:
+The deploy workflow builds the worker image when worker code changes (see
+[Search worker](#6-search-worker)). For the first image, or to build by hand:
 
 ```bash
 SHA=$(git rev-parse HEAD)                                                              # laptop
@@ -740,9 +740,11 @@ dc exec redis redis-cli --scan --pattern 'quota:<user-id>:*' | xargs -r dc exec 
 ### 6. Search worker
 
 The API image has no ML models. Searches run in the `search` service (queue `arq:search`, 1.5 GB
-limit, about 1.1 GiB idle) built from the worker image. The deploy workflow does not build that
-image yet, so after a change under `workers/`, `retrieval/` or `ingestion/`, build and push it as
-in [Corpus ingestion](#1-worker-image-and-env), set `WORKER_IMAGE_TAG`, then:
+limit, about 1.1 GiB idle) built from the worker image. The deploy workflow's `worker` job
+rebuilds that image when a pushed commit changes `workers/`, `retrieval/`, `ingestion/`,
+`api/search_client.py`, `pyproject.toml` or `uv.lock`; it sets `WORKER_IMAGE_TAG` in the server
+`.env` and restarts `worker` and `search`. To do the same by hand (build and push as in
+[Corpus ingestion](#1-worker-image-and-env), set `WORKER_IMAGE_TAG`), then:
 
 ```bash
 dc pull worker search && dc up -d worker search                                            # server
