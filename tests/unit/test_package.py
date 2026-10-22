@@ -30,3 +30,16 @@ def test_runtime_dependencies_import(name: str) -> None:
 @pytest.mark.parametrize("name", ["llm", "agent", "tools", "api.auth", "api.guards", "api.routes"])
 def test_phase3_packages_import(name: str) -> None:
     assert importlib.import_module(name) is not None
+
+
+def test_phase4_graph_dependencies_import() -> None:
+    from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
+    from langgraph.graph import StateGraph
+    from langgraph.types import Command, interrupt
+
+    assert all(item is not None for item in (StateGraph, interrupt, Command, AsyncPostgresSaver))
+
+
+@pytest.mark.parametrize("name", ["agent.graph", "agent.graph.nodes", "sandbox", "sandbox.runner"])
+def test_phase4_packages_import(name: str) -> None:
+    assert importlib.import_module(name) is not None
