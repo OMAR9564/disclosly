@@ -72,6 +72,12 @@ export function RunView() {
         />
       )}
 
+      {state.resumes > 0 && state.phase !== "error" && (
+        <p className="row__note" data-testid="run-resumed">
+          {t.runResumed}
+        </p>
+      )}
+
       {lost && state.phase !== "done" && (
         <p className="row__note" role="alert">
           {t.runLost}
