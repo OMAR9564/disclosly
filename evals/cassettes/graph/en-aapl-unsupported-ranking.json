@@ -1,0 +1,42 @@
+{
+ "case_id": "en-aapl-unsupported-ranking",
+ "dataset": "verifier_seeded",
+ "interactions": [
+  {
+   "key": "d5f96d0123ee3dc752f54652c90687bbe97cbe3f8d8a3bef87d549477a0a4297",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":true},{\"finding_id\":\"F2\",\"supported\":false,\"reason\":\"No evidence provided that the EBITDA is the highest in its industry\"}]}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 994,
+    "tokens_out": 287,
+    "latency_ms": 1060.439,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash",
+     "openrouter-large"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "sandbox": [
+  {
+   "key": "9d2db46ca3fca5a27fb0904c79daa2ed06e4da8015624ff6be9d34ca8ef997b9",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_debt_to_ebitda": "0.49545896733278383"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  }
+ ],
+ "decision": null
+}

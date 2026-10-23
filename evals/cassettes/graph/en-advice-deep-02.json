@@ -6,13 +6,13 @@
    "key": "3232128d511f06ecb6c584f48164c8272239aed47b9f8de8115d8205645b7176",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"AAPL\",\n    \"MSFT\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\"mode\":\"deep\",\"tickers\":[\"AAPL\",\"MSFT\"],\"periods\":[\"2025-FY\"],\"metrics\":[\"revenue\"],\"uses_watchlist\":false,\"memory_intent\":null}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 926,
-    "tokens_out": 81,
-    "latency_ms": 875.669,
+    "tokens_out": 37,
+    "latency_ms": 1145.162,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,13 @@
    "key": "2fb0714e06c37c4bd923e938dea39e8b3c4f10483b16bf397cb98364635f421d",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\":[{\"id\":\"s1\",\"kind\":\"facts\",\"goal\":\"Obtain revenue for Apple and Microsoft for fiscal 2025\",\"tickers\":[\"AAPL\",\"MSFT\"],\"periods\":[\"2025-FY\"],\"metrics\":[\"revenue\"]},{\"id\":\"s2\",\"kind\":\"calculate\",\"goal\":\"Calculate the revenue difference between Apple and Microsoft for fiscal 2025\",\"tickers\":[\"AAPL\",\"MSFT\"],\"periods\":[\"2025-FY\"]}]}",
+    "content": "{\"steps\":[{\"id\":\"s1\",\"kind\":\"facts\",\"goal\":\"Obtain Apple (AAPL) revenue for fiscal year 2025\",\"tickers\":[\"AAPL\"],\"periods\":[\"2025-FY\"],\"metrics\":[\"revenue\"]},{\"id\":\"s2\",\"kind\":\"facts\",\"goal\":\"Obtain Microsoft (MSFT) revenue for fiscal year 2025\",\"tickers\":[\"MSFT\"],\"periods\":[\"2025-FY\"],\"metrics\":[\"revenue\"]},{\"id\":\"s3\",\"kind\":\"calculate\",\"goal\":\"Compute the difference and percentage difference between Apple and Microsoft FY 2025 revenues\",\"tickers\":[\"AAPL\",\"MSFT\"],\"periods\":[\"2025-FY\"]}]}",
     "tool_calls": [],
     "provider": "groq-large",
     "model": "openai/gpt-oss-120b",
     "tokens_in": 1408,
-    "tokens_out": 392,
-    "latency_ms": 1235.701,
+    "tokens_out": 493,
+    "latency_ms": 1437.096,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",

@@ -6,28 +6,28 @@
    "key": "7335a55675d7c8e72395e5b38fa731d2ac4503e04cf2eba15caf76c37c0af94a",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"FROTO\"\n  ],\n  \"periods\": [\n    \"2025-Q1\",\n    \"2025-Q2\",\n    \"2025-Q3\",\n    \"2025-Q4\"\n  ],\n  \"metrics\": [\n    \"net_income\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\"mode\": \"deep\", \"tickers\": [\"FROTO\"], \"periods\": [], \"metrics\": [\"net_income\"], \"uses_watchlist\": false, \"memory_intent\": null}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 1019,
-    "tokens_out": 113,
-    "latency_ms": 945.403,
+    "tokens_out": 40,
+    "latency_ms": 879.828,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "f45fe0f3fbc92bf6b522ee59f6fae5395f055d3942ece872f0908bdff36804ae",
+   "key": "d380472ef4d2b45819b7ef83f63981beb29253a41ef7318a62a8165cbe84b1f4",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Ford Otosan (FROTO) 2025 yılı dört çeyreğin net kâr (net_income) rakamlarını getir\",\n      \"tickers\": [\"FROTO\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q2\", \"2025-Q3\", \"2025-Q4\"],\n      \"metrics\": [\"net_income\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"2025 çeyrekler arası net kâr değişimlerini (QoQ) hesapla: Q2/Q1, Q3/Q2, Q4/Q3 fark ve büyüme oranları\",\n      \"tickers\": [\"FROTO\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q2\", \"2025-Q3\", \"2025-Q4\"],\n      \"metrics\": [\"net_income\"]\n    }\n  ]\n}",
+    "content": "{\"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Ford Otosan (FROTO) 2025 yılı çeyreklik net kâr verilerini getir\",\n      \"tickers\": [\"FROTO\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q2\", \"2025-Q3\", \"2025-Q4\"],\n      \"metrics\": [\"net_income\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Çeyreklik net kârın çeyrekten çeyreğe değişim oranlarını hesapla\",\n      \"tickers\": [\"FROTO\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q2\", \"2025-Q3\", \"2025-Q4\"],\n      \"metrics\": []\n    }\n  ]}",
     "tool_calls": [],
     "provider": "openrouter-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 1218,
-    "tokens_out": 416,
-    "latency_ms": 6618.276,
+    "tokens_in": 1188,
+    "tokens_out": 639,
+    "latency_ms": 20763.367,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -36,31 +36,31 @@
    }
   },
   {
-   "key": "3bba17b23295ddab7a7c9922a8c096455fa80277d62abf09d55df52932b6d88d",
+   "key": "1f9f9ade269f426e51c03f983c1dc818143c9a74e4f6a6b96687c1bce004238a",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Ford Otosan 2025 net kar 3 aylik 6 aylik 9 aylik 12 aylik bilanco\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"Ford Otosan FROTO 2025 net kar ceyreklik bilanco\"}, {\"step_id\": \"s2\", \"sufficient\": true, \"rewritten_query\": null}]}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 918,
-    "tokens_out": 108,
-    "latency_ms": 908.122,
+    "tokens_in": 887,
+    "tokens_out": 65,
+    "latency_ms": 1148.933,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "c66e1facad89785ccf132f76850699372165001cc9a1158a5de2e5c356fd8246",
+   "key": "d3974d2b92899c585f06618e6eb70b64ecf4d949bc3deb09ce3952bd8843e0ea",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Ford Otosan 2025-Q1 net dönem kârı (Cari Dönem raporu): 6.487.096.000 TRY\",\n      \"cite_ids\": [\"f:2855\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Ford Otosan 2025-Q2 net dönem kârı (Cari Dönem raporu): 6.110.784.000 TRY\",\n      \"cite_ids\": [\"f:2869\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Ford Otosan 2025-Q3 net dönem kârı (Cari Dönem raporu): 8.401.456.000 TRY\",\n      \"cite_ids\": [\"f:2879\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"2025-Q2 vs 2025-Q1 net kâr değişimi (Cari Dönem rakamları): -376.312.000 TRY azalış, -5,8% çeyrekten çeyreğe düşüş\",\n      \"cite_ids\": [\"f:2855\", \"f:2869\"],\n      \"calcs\": [\"6.110.784.000 - 6.487.096.000 = -376.312.000\", \"-376.312.000 / 6.487.096.000 = -5,8%\"]\n    },\n    {\n      \"id\": \"F5\",\n      \"text\": \"2025-Q3 vs 2025-Q2 net kâr değişimi (Cari Dönem rakamları): +2.290.672.000 TRY artış, +37,5% çeyrekten çeyreğe büyüme\",\n      \"cite_ids\": [\"f:2869\", \"f:2879\"],\n      \"calcs\": [\"8.401.456.000 - 6.110.784.000 = 2.290.672.000\", \"2.290.672.000 / 6.110.784.000 = 37,5%\"]\n    },\n    {\n      \"id\": \"F6\",\n      \"text\": \"2025-Q4 net kâr verisi mevcut kanıtlarda bulunmamaktadır; bu nedenle Q4/Q3 karşılaştırması yapılamamıştır.\",\n      \"cite_ids\": [\"f:2855\", \"f:2869\", \"f:2879\"]\n    },\n    {\n      \"id\": \"F7\",\n      \"text\": \"Not: 2026 raporlarında yeniden ifade edilen (restated) rakamlar farklıdır: 2025-Q1 = 8.489.338.000 TRY, 2025-Q2 = 8.072.957.000 TRY. Bu rakamlara göre Q2/Q1 = -4,9%, Q3/Q2 = +4,1% olur. Analizde orijinal çeyreklik raporlardaki 'Cari Dönem' rakamları tutarlılık sağlamak adına kullanılmıştır.\",\n      \"cite_ids\": [\"f:2904\", \"f:2918\", \"f:2879\"]\n    }\n  ]\n}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Ford Otosan 2025-Q1 net dönem kârı 6.487.096.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2855\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Ford Otosan 2025-Q2 net dönem kârı 6.110.784.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2869\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Ford Otosan 2025-Q3 net dönem kârı 8.401.456.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2879\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"2025-Q2 net kârı, 2025-Q1'e kıyasla %5,8 azalmıştır (6.487,1 mn TL'den 6.110,8 mn TL'ye).\",\n      \"cite_ids\": [\"f:2855\", \"f:2869\"],\n      \"calcs\": [\"qoq_q2_vs_q1\"]\n    },\n    {\n      \"id\": \"F5\",\n      \"text\": \"2025-Q3 net kârı, 2025-Q2'ye kıyasla %37,5 artmıştır (6.110,8 mn TL'den 8.401,5 mn TL'ye).\",\n      \"cite_ids\": [\"f:2869\", \"f:2879\"],\n      \"calcs\": [\"qoq_q3_vs_q2\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"qoq_q2_vs_q1\",\n      \"description\": \"2025-Q2 net kârının 2025-Q1'e göre çeyrekten çeyreğe değişim oranı (oran cinsinden)\",\n      \"inputs\": [\n        {\n          \"name\": \"net_profit_q1\",\n          \"cite_id\": \"f:2855\",\n          \"value\": 6487096000\n        },\n        {\n          \"name\": \"net_profit_q2\",\n          \"cite_id\": \"f:2869\",\n          \"value\": 6110784000\n        }\n      ],\n      \"code\": \"result = (inputs['net_profit_q2'] - inputs['net_profit_q1']) / inputs['net_profit_q1']\"\n    },\n    {\n      \"name\": \"qoq_q3_vs_q2\",\n      \"description\": \"2025-Q3 net kârının 2025-Q2'ye göre çeyrekten çeyreğe değişim oranı (oran cinsinden)\",\n      \"inputs\": [\n        {\n          \"name\": \"net_profit_q2\",\n          \"cite_id\": \"f:2869\",\n          \"value\": 6110784000\n        },\n        {\n          \"name\": \"net_profit_q3\",\n          \"cite_id\": \"f:2879\",\n          \"value\": 8401456000\n        }\n      ],\n      \"code\": \"result = (inputs['net_profit_q3'] - inputs['net_profit_q2']) / inputs['net_profit_q2']\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "openrouter-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 1385,
-    "tokens_out": 1980,
-    "latency_ms": 53698.806,
+    "tokens_in": 2318,
+    "tokens_out": 1422,
+    "latency_ms": 63067.671,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -69,16 +69,16 @@
    }
   },
   {
-   "key": "344026a9db6ce27d33e6617ebb8bcf0a5033f2c91801d91a9ecc72ad8d375b6c",
+   "key": "91a5e0bb0e27cc0fefc217b0aa2f056be0068ed71be7c67652a426dccd9a5adb",
    "task_class": "strong",
    "response": {
-    "content": "{\n {\"language\": \"tr\", \"status\": \"partial\", \"summary\": \"Ford Otosan'ın 2025 yılı ilk üç çeyreğindeki net kâr, Q1'de 6,49 milyar TRY'den Q2'de 6,11 milyar TRY'ye (%5,8 düşüş) gerilemiş, Q3'te ise 8,40 milyar TRY'ye (%37,5 artış) yükselmiştir [1][2][3]. 2025-Q4 net kâr verisi henüz mevcut olmadığından Q4/Q3 karşılaştırması yapılamamıştır [4].\", \"points\": [{\"text\": \"20",
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Kanıt f:2855'te 2025-Q1 net dönem kârı 6.487.096.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Kanıt f:2869'da 2025-Q2 net dönem kârı 6.110.784.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Kanıt f:2879'da 2025-Q3 net dönem kârı 8.401.456.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F4\", \"supported\": true, \"reason\": \"Hesaplama qoq_q2_vs_q1 (-0.0580) %5,8 azalmaya tekabül ediyor; kanıtlar f:2855 ve f:2869 rakamlarıyla uyuşuyor.\"}, {\"finding_id\": \"F5\", \"supported\": true, \"reason\": \"Hesaplama qoq_q3_vs_q2 (0.3749) %37,5 artışa tekabül ediyor; kanıtlar f:2869 ve f:2879 rakamlarıyla uyuşuyor.\"}]}",
     "tool_calls": [],
     "provider": "openrouter-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 3414,
-    "tokens_out": 3000,
-    "latency_ms": 41382.155,
+    "tokens_in": 1401,
+    "tokens_out": 1283,
+    "latency_ms": 20012.639,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -87,16 +87,16 @@
    }
   },
   {
-   "key": "59f53ac83a81b37de64ab8ae9b8a8c915805d1e7105d2d1c7c8e9bef0a69d4d0",
+   "key": "d932a1119c8a0d3a114d64efb32132914df6dc22941edc4fbb3b7274e487dfd8",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"partial\",\n  \"summary\": \"Ford Otosan'ın 2025 yılı ilk üç çeyreğindeki net kâr, Q1'de 6,49 milyar TRY'den Q2'de 6,11 milyar TRY'ye (%5,8 düşüş) gerilemiş, Q3'te ise 8,40 milyar TRY'ye (%37,5 artış) yükselmiştir [1][2][3]. 2025-Q4 net kâr verisi henüz mevcut olmadığından Q4/Q3 karşılaştırması yapılamamıştır [4].\",\n  \"points\": [\n    {\n      \"text\": \"2025-Q1 net dönem kârı 6.487.096.000 TRY olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2855\"]\n    },\n    {\n      \"text\": \"2025-Q2 net dönem kârı 6.110.784.000 TRY olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2869\"]\n    },\n    {\n      \"text\": \"2025-Q3 net dönem kârı 8.401.456.000 TRY olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2879\"]\n    },\n    {\n      \"text\": \"Q2/Q1 çeyrekten çeyreğe değişim: -376.312.000 TRY (%‑5,8).\",\n      \"cite_ids\": [\"f:2855\", \"f:2869\"]\n    },\n    {\n      \"text\": \"Q3/Q2 çeyrekten çeyreğe değişim: +2.290.672.000 TRY (%+37,5).\",\n      \"cite_ids\": [\"f:2869\", \"f:2879\"]\n    },\n    {\n      \"text\": \"2025-Q4 net kâr verisi henüz yayınlanmamış, bu nedenle Q4/Q3 karşılaştırması yapılamamıştır.\",\n      \"cite_ids\": [\"f:2855\", \"f:2869\", \"f:2879\"]\n    },\n    {\n      \"text\": \"Not: 2026 raporlarında yeniden ifade edilen (restated) rakamlar farklıdır (Q1=8.489.338.000 TRY, Q2=8.072.957.000 TRY); analizde orijinal çeyreklik raporlardaki 'Cari Dönem' rakamları tutarlılık sağlamak adına kullanılmıştır.\",\n      \"cite_ids\": [\"f:2904\", \"f:2918\", \"f:2879\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Ford Otosan 2025 Çeyreklik Net Kâr ve Çeyrekten Çeyreğe Değişim\",\n      \"columns\": [\n        \"Çeyrek\",\n        \"Net Kâr (TRY)\",\n        \"Çeyrekten Çeyreğe Değişim (TRY)\",\n        \"Çeyrekten Çeyreğe Büyüme (%)\"\n      ],\n      \"rows\": [\n        [\n          { \"text\": \"2025-Q1\", \"cite_id\": \"f:2855\" },\n          { \"text\": \"6.487.096.000\", \"cite_id\": \"f:2855\" },\n          { \"text\": \"—\", \"cite_id\": null },\n          { \"text\": \"—\", \"cite_id\": null }\n        ],\n        [\n          { \"text\": \"2025-Q2\", \"cite_id\": \"f:2869\" },\n          { \"text\": \"6.110.784.000\", \"cite_id\": \"f:2869\" },\n          { \"text\": \"-376.312.000\", \"cite_id\": \"f:2869\" },\n          { \"text\": \"-5,8%\", \"cite_id\": \"f:2869\" }\n        ],\n        [\n          { \"text\": \"2025-Q3\", \"cite_id\": \"f:2879\" },\n          { \"text\": \"8.401.456.000\", \"cite_id\": \"f:2879\" },\n          { \"text\": \"+2.290.672.000\", \"cite_id\": \"f:2879\" },\n          { \"text\": \"+37,5%\", \"cite_id\": \"f:2879\" }\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"line\",\n    \"table\": 0,\n    \"x_column\": \"Çeyrek\",\n    \"series\": [\"Net Kâr (TRY)\"]\n  },\n  \"confidence\": {\n    \"level\": \"medium\",\n    \"note\": \"2025-Q4 net kâr verisi henüz yayınlanmadığı için son çeyrek karşılaştırması eksiktir.\"\n  },\n  \"unverified\": [\n    \"2025-Q4 net kâr verisi henüz mevcut değil\"\n  ],\n  \"citations\": [\n    { \"marker\": 1, \"cite_id\": \"f:2855\" },\n    { \"marker\": 2, \"cite_id\": \"f:2869\" },\n    { \"marker\": 3, \"cite_id\": \"f:2879\" },\n    { \"marker\": 4, \"cite_id\": \"f:2904\" },\n    { \"marker\": 5, \"cite_id\": \"f:2918\" }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Ford Otosan'ın 2025 yılı çeyreklik net kârı Q1'de 6,49 milyar TL'den Q2'de 6,11 milyar TL'ye %5,8 azalmış, Q3'te ise 8,40 milyar TL'ye yükselerek Q2'ye göre %37,5 artış göstermiştir [1][2]. Üç çeyrek boyunca net kâr önce düşüş sonra güçlü bir toparlanış izlemiştir [3][4].\",\n  \"points\": [\n    {\n      \"text\": \"2025-Q1 net dönem kârı 6.487.096.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2855\"]\n    },\n    {\n      \"text\": \"2025-Q2 net dönem kârı 6.110.784.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2869\"]\n    },\n    {\n      \"text\": \"2025-Q3 net dönem kârı 8.401.456.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2879\"]\n    },\n    {\n      \"text\": \"Q2 net kârı Q1'e kıyasla %5,8 azalmıştır (6.487,1 mn TL'den 6.110,8 mn TL'ye).\",\n      \"cite_ids\": [\"f:2855\", \"f:2869\", \"k:1\"]\n    },\n    {\n      \"text\": \"Q3 net kârı Q2'ye kıyasla %37,5 artmıştır (6.110,8 mn TL'den 8.401,5 mn TL'ye).\",\n      \"cite_ids\": [\"f:2869\", \"f:2879\", \"k:2\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Ford Otosan 2025 Çeyreklik Net Kâr ve Çeyrekten Çeyreğe Değişim\",\n      \"columns\": [\"Dönem\", \"Net Dönem Kârı (TL)\", \"Çeyrekten Çeyreğe Değişim (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"2025-Q1\", \"cite_id\": \"f:2855\"},\n          {\"text\": \"6.487.096.000\", \"cite_id\": \"f:2855\"},\n          {\"text\": \"—\", \"cite_id\": null}\n        ],\n        [\n          {\"text\": \"2025-Q2\", \"cite_id\": \"f:2869\"},\n          {\"text\": \"6.110.784.000\", \"cite_id\": \"f:2869\"},\n          {\"text\": \"-5,8%\", \"cite_id\": \"k:1\"}\n        ],\n        [\n          {\"text\": \"2025-Q3\", \"cite_id\": \"f:2879\"},\n          {\"text\": \"8.401.456.000\", \"cite_id\": \"f:2879\"},\n          {\"text\": \"+37,5%\", \"cite_id\": \"k:2\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"line\",\n    \"table\": 0,\n    \"x_column\": \"Dönem\",\n    \"series\": [\"Net Dönem Kârı (TL)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"2025 yılının üç çeyreği (Q1, Q2, Q3) için net kâr verileri ve çeyrekten çeyreğe değişim oranları tam olarak mevcuttur.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:2855\"},\n    {\"marker\": 2, \"cite_id\": \"f:2869\"},\n    {\"marker\": 3, \"cite_id\": \"f:2879\"},\n    {\"marker\": 4, \"cite_id\": \"k:1\"},\n    {\"marker\": 5, \"cite_id\": \"k:2\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "openrouter-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 3619,
-    "tokens_out": 2997,
-    "latency_ms": 99142.695,
+    "tokens_in": 2929,
+    "tokens_out": 1288,
+    "latency_ms": 58721.268,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -221,6 +221,35 @@
    "error": null
   }
  ],
- "sandbox": [],
+ "sandbox": [
+  {
+   "key": "bcf307b51d9b7a1315eff40d3f7e573d85b8850d2c72dbf49bf65ff549a73e6e",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "qoq_q2_vs_q1": "-0.05800931572463241",
+     "qoq_q3_vs_q2": "0.374857301452645"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "bcf307b51d9b7a1315eff40d3f7e573d85b8850d2c72dbf49bf65ff549a73e6e",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "qoq_q2_vs_q1": "-0.05800931572463241",
+     "qoq_q3_vs_q2": "0.374857301452645"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  }
+ ],
  "decision": "approve"
 }
