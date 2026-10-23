@@ -10,6 +10,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from agent.runs import RunService, mark_interrupted
+from agent.supervisor import RunSupervisor
 from api.config import Settings, get_settings
 from api.errors import register_exception_handlers
 from api.guards import Guards
@@ -47,9 +48,24 @@ async def _lifespan(app: FastAPI) -> AsyncIterator[None]:
         # The API must start even when the database is unreachable or not yet migrated;
         # /readyz reports the dependency, and the next startup retries the recovery.
         logger.warning("could not mark interrupted runs at startup", exc_info=True)
+    # Graph runs are resumed instead (research §R7): the supervisor sweeps at once, then
+    # every 15 s; its own loop survives an unreachable database.
+    supervisor: RunSupervisor | None = None
+    if service.graph is not None:
+        supervisor = RunSupervisor(
+            service,
+            service.leases,
+            retention_days=app.state.settings.checkpoint_retention_days,
+        )
+        supervisor.start()
     try:
         yield
     finally:
+        if supervisor is not None:
+            await supervisor.stop()
+        # Graph runs stop and drop their leases, so the next container resumes them at its
+        # first sweep; single-engine runs finish here as before.
+        await service.cancel_graph_runs()
         await service.wait_idle()
         await stack.aclose()
         for resource in resources:

@@ -56,7 +56,11 @@ async def test_build_run_service_without_connecting() -> None:
 class StubService:
     def __init__(self) -> None:
         self.engine = object()
+        self.graph = None
         self.idle = False
+
+    async def cancel_graph_runs(self) -> None:
+        pass
 
     async def wait_idle(self) -> None:
         self.idle = True
