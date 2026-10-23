@@ -3,9 +3,17 @@ import type { Language } from "@/i18n";
 /** Types and calls for the research API (contracts/http-api.md, agent-answer.md). */
 
 export type RunStatus =
-  "running" | "completed" | "partial" | "refused" | "no_evidence" | "failed";
+  | "running"
+  | "awaiting_approval"
+  | "completed"
+  | "partial"
+  | "refused"
+  | "no_evidence"
+  | "failed"
+  | "cancelled"
+  | "expired";
 
-export type AnswerStatus = Exclude<RunStatus, "running" | "failed">;
+export type AnswerStatus = "completed" | "partial" | "refused" | "no_evidence";
 
 export type ErrorCode =
   | "not_found"
@@ -18,7 +26,15 @@ export type ErrorCode =
   | "bot_check_failed"
   | "quota_exhausted"
   | "rate_limited"
-  | "providers_unavailable";
+  | "providers_unavailable"
+  | "already_decided"
+  | "not_awaiting_decision"
+  | "plan_expired"
+  | "plan_invalid"
+  | "watchlist_full"
+  | "company_not_covered"
+  | "sandbox_unavailable"
+  | "interrupted_limit";
 
 export interface Point {
   text: string;
@@ -30,16 +46,48 @@ export interface CitationRef {
   cite_id: string;
 }
 
-export interface Answer {
+export interface Cell {
+  text: string;
+  cite_id?: string | null;
+}
+
+export interface Table {
+  title: string;
+  columns: string[];
+  rows: Cell[][];
+}
+
+export interface Chart {
+  kind: "line" | "bar";
+  table: number;
+  x_column: string;
+  series: string[];
+}
+
+export interface Confidence {
+  level: "high" | "medium" | "low";
+  note: string;
+}
+
+/** The final output of both modes (contracts/report.md); a Phase 3 answer is a Report with
+ * the new fields missing, so they are optional here and read through `asReport`. */
+export interface Report {
   language: Language;
   status: AnswerStatus;
   summary: string;
   points: Point[];
+  tables?: Table[];
+  chart?: Chart | null;
+  confidence?: Confidence | null;
+  unverified?: string[];
   citations: CitationRef[];
   disclaimer: string;
 }
 
-export interface CitationSource {
+/** Kept for the Phase 3 components and runs stored before Phase 4. */
+export type Answer = Report;
+
+export interface DocumentSource {
   kind: "chunk" | "fact";
   document_id: number;
   ticker: string;
@@ -51,10 +99,72 @@ export interface CitationSource {
   source_url: string;
 }
 
+export interface CalculationInput {
+  name: string;
+  cite_id: string;
+  value: string;
+}
+
+export interface CalculationSource {
+  kind: "calculation";
+  name: string;
+  inputs: CalculationInput[];
+  code: string;
+  output: string;
+}
+
+export type CitationSource = DocumentSource | CalculationSource;
+
 export interface Citation {
   cite_id: string;
   excerpt: string;
   source: CitationSource;
+}
+
+export function isCalculation(
+  citation: Citation,
+): citation is Citation & { source: CalculationSource } {
+  return citation.source.kind === "calculation";
+}
+
+export type StepKind = "facts" | "search" | "calculate";
+export type StepStatus = "pending" | "done" | "not_covered" | "failed";
+
+export interface PlanStep {
+  id: string;
+  kind: StepKind;
+  goal: string;
+  tickers: string[];
+  periods: string[];
+  metrics: string[];
+  status?: StepStatus;
+}
+
+export interface Estimate {
+  typical: number;
+  max: number;
+}
+
+export interface Plan {
+  steps: PlanStep[];
+  estimate?: Estimate | null;
+  edited?: boolean;
+  revision?: number;
+}
+
+export type DecisionAction = "approve" | "edit" | "cancel" | "simple";
+export type DecisionKind = "plan" | "deep_quota_offer";
+
+export interface Decision {
+  action: DecisionAction;
+  plan?: Plan;
+}
+
+/** One `plan_invalid` reason; `step` is null for plan-level problems. */
+export interface PlanReason {
+  step: string | null;
+  field: string;
+  reason: string;
 }
 
 export interface Run {
@@ -62,12 +172,17 @@ export interface Run {
   status: RunStatus;
   question: string;
   language: Language;
-  answer: Answer | null;
+  answer: Report | null;
   citations: Citation[];
   usage: Record<string, unknown>;
   error_code: string | null;
   created_at: string;
   finished_at: string | null;
+  engine?: "graph" | "single";
+  mode?: "simple" | "deep" | null;
+  plan?: Plan | null;
+  plan_expires_at?: string | null;
+  decision?: DecisionAction | null;
 }
 
 export interface QuotaStatus {
@@ -77,9 +192,20 @@ export interface QuotaStatus {
   resets_at: string;
 }
 
+export interface Quotas {
+  simple: QuotaStatus;
+  deep: QuotaStatus;
+}
+
 export interface ResearchStarted {
   run_id: string;
-  quota?: QuotaStatus;
+  quota?: Quotas;
+}
+
+export interface DecisionAccepted {
+  run_id: string;
+  status: "running" | "cancelled";
+  quota: Quotas;
 }
 
 export class ApiError extends Error {
@@ -88,10 +214,28 @@ export class ApiError extends Error {
     message: string,
     readonly status: number,
     readonly retryAfter: number | null = null,
+    readonly details: Record<string, unknown> | null = null,
   ) {
     super(message);
     this.name = "ApiError";
   }
+
+  /** The per-step reasons of a `plan_invalid` error, or [] for any other error. */
+  get reasons(): PlanReason[] {
+    const reasons = this.details?.reasons;
+    return Array.isArray(reasons) ? (reasons as PlanReason[]) : [];
+  }
+}
+
+/** A report with every Phase 4 field filled, for runs stored before Phase 4 too. */
+export function asReport(answer: Report): Required<Report> {
+  return {
+    ...answer,
+    tables: answer.tables ?? [],
+    chart: answer.chart ?? null,
+    confidence: answer.confidence ?? null,
+    unverified: answer.unverified ?? [],
+  };
 }
 
 export function apiBase(): string {
@@ -157,12 +301,18 @@ async function send(
 async function toError(response: Response): Promise<ApiError> {
   let code: ErrorCode = "internal_error";
   let message = response.statusText;
+  let details: Record<string, unknown> | null = null;
   try {
     const body = (await response.json()) as {
-      error?: { code?: ErrorCode; message?: string };
+      error?: {
+        code?: ErrorCode;
+        message?: string;
+        details?: Record<string, unknown>;
+      };
     };
     code = body.error?.code ?? code;
     message = body.error?.message ?? message;
+    details = body.error?.details ?? null;
   } catch {
     // Not the error envelope (proxy page, empty body): keep the generic code.
   }
@@ -172,6 +322,7 @@ async function toError(response: Response): Promise<ApiError> {
     message,
     response.status,
     Number.isFinite(retry) && retry > 0 ? retry : null,
+    details,
   );
 }
 
@@ -201,7 +352,7 @@ export interface Me {
   display_name: string;
   email_masked: string;
   language: Language;
-  quota: QuotaStatus;
+  quota: Quotas;
 }
 
 export function getMe(
@@ -277,4 +428,19 @@ export function getRun(
 
 export function streamUrl(runId: string, baseUrl: string = apiBase()): string {
   return `${baseUrl}/v1/research/${encodeURIComponent(runId)}/stream`;
+}
+
+/** Decide a run waiting on a plan or a deep quota offer (contracts/http-api.md). */
+export function approveRun(
+  runId: string,
+  decision: Decision,
+  language: Language,
+  baseUrl: string = apiBase(),
+): Promise<DecisionAccepted> {
+  return request<DecisionAccepted>(
+    `/v1/research/${encodeURIComponent(runId)}/approve`,
+    { method: "POST", body: JSON.stringify(decision) },
+    language,
+    baseUrl,
+  );
 }

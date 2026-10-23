@@ -1,8 +1,13 @@
-"""Daily question quota (FR-020, SC-007, research §R6).
+"""Daily question quotas (FR-020, SC-007; Phase 4 FR-023, FR-027, research §R6).
 
 `quota:{user_id}:{yyyymmdd}` counts questions per Europe/Istanbul day and lives for 48 h. The
 check and the increment run in one Lua script, so concurrent tabs cannot both take the last
 question. A run that fails before its first model call gets its question back (`refund`).
+
+Deep questions have their own counter, `quota:deep:{user_id}:{yyyymmdd}`. Every question takes
+a simple unit at submission; when its research plan is approved, one script takes a deep unit
+and gives the simple unit back on the submission day's key (never below zero). With no deep
+unit left the script changes nothing and approval fails with `quota_exhausted`.
 """
 
 import uuid
@@ -41,6 +46,25 @@ return 0
 """
 
 
+# KEYS[1] today's deep key, KEYS[2] the submission day's simple key. Returns the new deep
+# count, or -1 when no deep unit is left (nothing changes).
+_SWAP = """
+local used = tonumber(redis.call('GET', KEYS[1]) or '0')
+if used >= tonumber(ARGV[1]) then
+  return -1
+end
+used = redis.call('INCR', KEYS[1])
+if used == 1 then
+  redis.call('EXPIRE', KEYS[1], tonumber(ARGV[2]))
+end
+local simple = tonumber(redis.call('GET', KEYS[2]) or '0')
+if simple > 0 then
+  redis.call('DECR', KEYS[2])
+end
+return used
+"""
+
+
 class QuotaRedis(Protocol):
     async def get(self, name: str) -> Any: ...
 
@@ -54,12 +78,23 @@ class QuotaStatus(BaseModel):
     resets_at: datetime
 
 
+class Quotas(BaseModel):
+    """Both quotas, as `GET /v1/me` and `POST /v1/research` return them."""
+
+    simple: QuotaStatus
+    deep: QuotaStatus
+
+
 def quota_day(now: datetime) -> str:
     return f"{now.astimezone(QUOTA_TZ):%Y%m%d}"
 
 
 def quota_key(user_id: uuid.UUID, now: datetime) -> str:
     return f"quota:{user_id}:{quota_day(now)}"
+
+
+def deep_quota_key(user_id: uuid.UUID, now: datetime) -> str:
+    return f"quota:deep:{user_id}:{quota_day(now)}"
 
 
 def resets_at(now: datetime) -> datetime:
@@ -80,20 +115,60 @@ class Quota:
         redis: QuotaRedis,
         limit: int,
         now: Callable[[], datetime] = lambda: datetime.now(UTC),
+        *,
+        deep_limit: int = 5,
     ) -> None:
         self._redis = redis
         self._limit = limit
+        self._deep_limit = deep_limit
         self._now = now
 
+    @staticmethod
+    def _make_status(limit: int, used: int, now: datetime) -> QuotaStatus:
+        used = min(max(used, 0), limit)
+        return QuotaStatus(limit=limit, used=used, remaining=limit - used, resets_at=resets_at(now))
+
     def _status(self, used: int, now: datetime) -> QuotaStatus:
-        used = min(max(used, 0), self._limit)
-        return QuotaStatus(
-            limit=self._limit, used=used, remaining=self._limit - used, resets_at=resets_at(now)
-        )
+        return self._make_status(self._limit, used, now)
 
     async def status(self, user_id: uuid.UUID) -> QuotaStatus:
         now = self._now()
         return self._status(int(await self._redis.get(quota_key(user_id, now)) or 0), now)
+
+    async def deep_status(self, user_id: uuid.UUID) -> QuotaStatus:
+        now = self._now()
+        used = int(await self._redis.get(deep_quota_key(user_id, now)) or 0)
+        return self._make_status(self._deep_limit, used, now)
+
+    async def statuses(self, user_id: uuid.UUID) -> Quotas:
+        return Quotas(simple=await self.status(user_id), deep=await self.deep_status(user_id))
+
+    async def deep_remaining(self, user_id: str) -> int:
+        """Deep units left today, read without taking one (the graph's quota gate)."""
+        return (await self.deep_status(uuid.UUID(user_id))).remaining
+
+    async def swap_to_deep(
+        self, user_id: uuid.UUID, submission_day: datetime, language: str = "tr"
+    ) -> QuotaStatus:
+        """Take a deep unit and give back the simple unit taken at submission, atomically.
+
+        Raises `quota_exhausted` (nothing changed) when no deep unit is left today.
+        """
+        now = self._now()
+        used = int(
+            await self._redis.eval(
+                _SWAP,
+                2,
+                deep_quota_key(user_id, now),
+                quota_key(user_id, submission_day),
+                self._deep_limit,
+                QUOTA_TTL_SECONDS,
+            )
+        )
+        if used < 0:
+            at = resets_at(now)
+            raise ApiError("quota_exhausted", params={"resets_at": reset_label(at, language)})
+        return self._make_status(self._deep_limit, used, now)
 
     async def take(self, user_id: uuid.UUID, language: str = "tr") -> QuotaStatus:
         """Uses one question or raises `quota_exhausted` with the reset time."""

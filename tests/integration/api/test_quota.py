@@ -9,7 +9,13 @@ from typing import Any
 import pytest
 
 from api.errors import ApiError
-from api.guards.quota import QUOTA_TTL_SECONDS, Quota, quota_day, quota_key, resets_at
+from api.guards.quota import (
+    QUOTA_TTL_SECONDS,
+    Quota,
+    quota_day,
+    quota_key,
+    resets_at,
+)
 from tests.integration.agent.helpers import redis_client
 
 

@@ -48,7 +48,11 @@ def build_guards(settings: Settings, engine: Engine) -> tuple[Guards, list[Any]]
         redis=client,
         http=http,
         allowlist=Allowlist(cast(AllowRedis, client), db_lookup(engine)),
-        quota=Quota(cast(QuotaRedis, client), settings.quota_daily_questions),
+        quota=Quota(
+            cast(QuotaRedis, client),
+            settings.quota_daily_questions,
+            deep_limit=settings.quota_daily_deep,
+        ),
         ratelimit=RateLimiter(
             cast(CounterRedis, client),
             user_per_min=settings.rate_limit_user_per_min,
@@ -78,6 +82,7 @@ def build_run_service(settings: Settings) -> tuple[RunService, list[Any]]:
         budget_from(settings),
         agent_engine=settings.agent_engine,
         max_concurrent_runs=settings.agent_max_concurrent_runs,
+        plan_ttl_hours=settings.agent_plan_ttl_hours,
     )
     return service, [engine, client, http, search]
 
@@ -94,6 +99,12 @@ def graph_deps(service: RunService, settings: Settings) -> GraphDeps:
         plan_max_steps=settings.agent_plan_max_steps,
         plan_ttl_hours=settings.agent_plan_ttl_hours,
         verify_max_rounds=settings.agent_verify_max_rounds,
+        quota=Quota(
+            cast(QuotaRedis, service.redis),
+            settings.quota_daily_questions,
+            deep_limit=settings.quota_daily_deep,
+        ),
+        runs=service,
     )
 
 

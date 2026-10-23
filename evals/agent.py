@@ -160,6 +160,8 @@ async def run_suite(
     suite = Suite()
     for name in DATASETS:
         for case in load_dataset(name, datasets_dir):
+            if "single" not in case.engines:
+                continue  # a graph-only case (evals/graph.py)
             path = cassette_path(case.id, cassettes_dir)
             if not path.is_file():
                 suite.failures.append(f"{name}/{case.id}: no recorded cassette")

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-19T00:00:00Z",
+  "generatedAt": "2026-10-22T00:00:00Z",
   "title": "Design System: Disclosly",
   "extensions": {
     "colorMeta": {
@@ -193,11 +193,23 @@
       },
       "button": {
         "displayName": "Key",
-        "purpose": "Language key."
+        "purpose": "Language key and board keys (board keys uppercase)."
       },
       "mono": {
         "displayName": "Hash",
         "purpose": "Commit hashes in running text."
+      },
+      "label-small": {
+        "displayName": "Small Label",
+        "purpose": "Table column heads, plan field labels, step kind, chart series names."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Title of a report table or chart."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Tabular-numeral figures in tables, counters, plan meta and chart readout."
       }
     },
     "shadows": [
@@ -214,7 +226,22 @@
       {
         "name": "plate-ring-lg",
         "value": "inset 0 0 0 5px var(--plate), inset 0 0 0 7px var(--plate-ink)",
-        "purpose": "Printed border ring on the legal plate."
+        "purpose": "Printed border ring on the legal plate and source plates."
+      },
+      {
+        "name": "plate-ring-ticker",
+        "value": "inset 0 0 0 2px var(--plate), inset 0 0 0 3px var(--plate-ink)",
+        "purpose": "Printed ring on ticker plates in a plan step."
+      },
+      {
+        "name": "push-plate",
+        "value": "inset 0 0 0 3px var(--plate), inset 0 0 0 4px var(--plate-ink), inset 0 -2px 0 var(--letter-muted)",
+        "purpose": "The one action to take: small plate ring plus a faded-letter lip; removed on press."
+      },
+      {
+        "name": "field-lip",
+        "value": "inset 0 -2px 0 var(--hinge)",
+        "purpose": "Bottom lip of blank-flap fields; invalid adds inset 0 0 0 1px var(--letter)."
       }
     ],
     "motion": [
@@ -237,12 +264,21 @@
         "name": "reduced-motion",
         "value": "prefers-reduced-motion: reduce -> set text at once",
         "purpose": "No spin under reduced motion."
+      },
+      {
+        "name": "readout-spin",
+        "value": "flap spin on focus change",
+        "purpose": "The chart readout flap row re-spins to the focused x value."
       }
     ],
     "breakpoints": [
       {
         "name": "stack-status",
         "value": "30rem"
+      },
+      {
+        "name": "phone",
+        "value": "36rem"
       },
       {
         "name": "board-max",
@@ -306,18 +342,68 @@
       "description": "Row label, 12-tile state plus 7-tile version, plain sentence beneath.",
       "html": "<section class=\"ds-row\"><h2 class=\"ds-row__label\">Service status</h2><div class=\"ds-row__board\"><span class=\"ds-flaps ds-flaps--live\" style=\"--n:12\"><span class=\"ds-flap\">A</span><span class=\"ds-flap\">V</span><span class=\"ds-flap\">A</span><span class=\"ds-flap\">I</span><span class=\"ds-flap\">L</span><span class=\"ds-flap\">A</span><span class=\"ds-flap\">B</span><span class=\"ds-flap\">L</span><span class=\"ds-flap\">E</span><span class=\"ds-flap ds-flap--blank\"> </span><span class=\"ds-flap ds-flap--blank\"> </span><span class=\"ds-flap ds-flap--blank\"> </span></span><span class=\"ds-flaps\" style=\"--n:7\"><span class=\"ds-flap\">6</span><span class=\"ds-flap\">E</span><span class=\"ds-flap\">F</span><span class=\"ds-flap\">5</span><span class=\"ds-flap\">C</span><span class=\"ds-flap\">1</span><span class=\"ds-flap\">F</span></span></div><p class=\"ds-row__note\">The service is running (version <code class=\"ds-sha\">6ef5c1f</code>)</p></section>",
       "css": ":host, :root { --housing:#181817; --flap:#2b2b29; --flap-low:#1e1e1d; --hinge:#0b0b0a; --letter:#efe9dc; --letter-muted:#b9b3a7; --amber:#f2a51f; --plate:#efe9dc; --plate-ink:#16181b; --rule:#383835; } .ds-flaps { container-type: inline-size; display: grid; grid-template-columns: repeat(var(--n), minmax(0,1fr)); gap: clamp(2px,0.6cqi,6px); width: 100%; max-width: 32rem; } .ds-flap { position: relative; isolation: isolate; display: grid; place-items: center; aspect-ratio: 3/4; border-radius: clamp(2px,0.5cqi,5px); background: var(--flap); color: var(--letter); font-family: Archivo, system-ui, sans-serif; font-size: calc(100cqi / var(--n) * 1.1); font-weight: 700; font-variation-settings: \"wdth\" 68; line-height: 1; overflow: hidden; } .ds-flap::before, .ds-flap::after { content: \"\"; position: absolute; left: 0; right: 0; top: 50%; } .ds-flap::before { bottom: 0; background: var(--flap-low); z-index: -1; } .ds-flap::after { height: max(2px,0.35cqi); background: var(--hinge); } .ds-flap--blank { color: transparent; } .ds-flaps { max-width: none; } .ds-flaps--live .ds-flap { color: var(--amber); } .ds-row { display: grid; gap: 0.75rem; padding: 1rem; background: var(--housing); font-family: Archivo, system-ui, sans-serif; } .ds-row__label { margin: 0; font-size: 0.875rem; font-weight: 600; font-variation-settings: \"wdth\" 80; letter-spacing: 0.08em; text-transform: uppercase; color: var(--letter-muted); } .ds-row__board { display: grid; grid-template-columns: 12fr 7fr; gap: clamp(0.5rem,2vw,1.5rem); max-width: 52rem; } .ds-row__note { margin: 0; max-width: 60ch; font-size: 1rem; line-height: 1.5; color: var(--letter-muted); } .ds-sha { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9375em; color: var(--letter); }"
+    },
+    {
+      "name": "Push Plate",
+      "kind": "button",
+      "refersTo": "button-key-primary",
+      "description": "The one action to take in a decision band: the only plate that moves.",
+      "html": "<div class=\"ds-keys\"><button type=\"button\" class=\"ds-key ds-key--primary\">Approve plan</button><button type=\"button\" class=\"ds-key\">Edit</button><button type=\"button\" class=\"ds-key ds-key--quiet\">Cancel</button></div>",
+      "css": ":host, :root { --housing:#181817; --flap:#2b2b29; --flap-hover:#343432; --flap-low:#1e1e1d; --hinge:#0b0b0a; --letter:#efe9dc; --letter-muted:#b9b3a7; --amber:#f2a51f; --plate:#efe9dc; --plate-ink:#16181b; --rule:#383835; } .ds-keys { display:flex; flex-wrap:wrap; gap:0.75rem; padding:1rem; background: var(--housing); } .ds-key { display:inline-flex; align-items:center; justify-content:center; font-family: Archivo, system-ui, sans-serif; font-size: 0.9375rem; font-weight: 700; font-variation-settings: \"wdth\" 80; letter-spacing: 0.04em; text-transform: uppercase; color: var(--letter); background: var(--flap); border: 0; border-radius: 3px; box-shadow: inset 0 -2px 0 var(--hinge); padding: 0.5rem 1.25rem; min-height: 2.75rem; cursor: pointer; } .ds-key:hover { background: var(--flap-hover); } .ds-key:focus-visible { outline: 2px solid var(--letter); outline-offset: 3px; } .ds-key:active { box-shadow: none; transform: translateY(1px); } .ds-key--primary { color: var(--plate-ink); background: var(--plate); box-shadow: inset 0 0 0 3px var(--plate), inset 0 0 0 4px var(--plate-ink), inset 0 -2px 0 var(--letter-muted); } .ds-key--primary:hover { background: var(--plate); } .ds-key--quiet { background: none; box-shadow: none; text-decoration: underline; text-underline-offset: 0.25em; text-decoration-thickness: 1px; } .ds-key--quiet:hover { background: var(--flap); } "
+    },
+    {
+      "name": "Quiet Key",
+      "kind": "button",
+      "refersTo": "button-key-quiet",
+      "description": "Dismissal: no face, underlined; a flap face appears on hover.",
+      "html": "<div class=\"ds-keys\"><button type=\"button\" class=\"ds-key ds-key--quiet\">Cancel</button></div>",
+      "css": ":host, :root { --housing:#181817; --flap:#2b2b29; --flap-hover:#343432; --flap-low:#1e1e1d; --hinge:#0b0b0a; --letter:#efe9dc; --letter-muted:#b9b3a7; --amber:#f2a51f; --plate:#efe9dc; --plate-ink:#16181b; --rule:#383835; } .ds-keys { padding:1rem; background: var(--housing); } .ds-key { display:inline-flex; align-items:center; justify-content:center; font-family: Archivo, system-ui, sans-serif; font-size: 0.9375rem; font-weight: 700; font-variation-settings: \"wdth\" 80; letter-spacing: 0.04em; text-transform: uppercase; color: var(--letter); background: var(--flap); border: 0; border-radius: 3px; box-shadow: inset 0 -2px 0 var(--hinge); padding: 0.5rem 1.25rem; min-height: 2.75rem; cursor: pointer; } .ds-key:hover { background: var(--flap-hover); } .ds-key:focus-visible { outline: 2px solid var(--letter); outline-offset: 3px; } .ds-key:active { box-shadow: none; transform: translateY(1px); } .ds-key--quiet { background: none; box-shadow: none; text-decoration: underline; text-underline-offset: 0.25em; text-decoration-thickness: 1px; } .ds-key--quiet:hover { background: var(--flap); } "
+    },
+    {
+      "name": "Blank Flap Field",
+      "kind": "input",
+      "refersTo": "plan-field",
+      "description": "A field is a blank two-leaf flap with a hinge lip; reasons sit under it behind a letter rule.",
+      "html": "<div class=\"ds-wrap\"><label class=\"ds-field\"><span class=\"ds-field__label\">Tickers</span><input class=\"ds-field__input\" value=\"FROTO, TOASO\" aria-invalid=\"true\"><span class=\"ds-reason\">Use board codes like THYAO or AAPL.</span></label></div>",
+      "css": ":host, :root { --housing:#181817; --flap:#2b2b29; --flap-hover:#343432; --flap-low:#1e1e1d; --hinge:#0b0b0a; --letter:#efe9dc; --letter-muted:#b9b3a7; --amber:#f2a51f; --plate:#efe9dc; --plate-ink:#16181b; --rule:#383835; } .ds-wrap { padding:1rem; background: var(--housing); max-width: 24rem; } .ds-field { display:grid; gap:0.25rem; font-family: Archivo, system-ui, sans-serif; } .ds-field__label { font-family: Archivo, system-ui, sans-serif; font-size: 0.75rem; font-weight: 600; font-variation-settings: \"wdth\" 80; letter-spacing: 0.08em; text-transform: uppercase; color: var(--letter-muted); } .ds-field__input { box-sizing:border-box; width:100%; min-height:2.75rem; font:inherit; font-size:1rem; color: var(--letter); background: linear-gradient(var(--flap), var(--flap)) top / 100% 50% no-repeat, var(--flap-low); border:0; border-radius:3px; box-shadow: inset 0 -2px 0 var(--hinge); padding:0.5rem 0.75rem; } .ds-field__input:focus-visible { outline: 2px solid var(--letter); outline-offset: 3px; } .ds-field__input[aria-invalid=\"true\"] { box-shadow: inset 0 -2px 0 var(--hinge), inset 0 0 0 1px var(--letter); } .ds-reason { margin-top:0.25rem; padding-left:0.75rem; border-left:1px solid var(--letter); font-size:0.9375rem; color: var(--letter); }"
+    },
+    {
+      "name": "Plan Step",
+      "kind": "custom",
+      "refersTo": "plan-step",
+      "description": "One step of the proposed plan: single-tile number, goal, kind, ticker plates, periods.",
+      "html": "<ol class=\"ds-steps\"><li class=\"ds-step\"><span class=\"ds-step__no\"><span class=\"ds-flaps\" style=\"--n:1\"><span class=\"ds-flap\">1</span></span></span><div class=\"ds-step__body\"><p class=\"ds-step__goal\">Compare net income of Ford Otosan and Tofaş over the last three years.</p><p class=\"ds-step__tags\"><span class=\"ds-step__kind\">Facts</span><span class=\"ds-ticker\">FROTO</span><span class=\"ds-ticker\">TOASO</span><span class=\"ds-step__periods\">2022 · 2023 · 2024</span></p></div></li></ol>",
+      "css": ":host, :root { --housing:#181817; --flap:#2b2b29; --flap-hover:#343432; --flap-low:#1e1e1d; --hinge:#0b0b0a; --letter:#efe9dc; --letter-muted:#b9b3a7; --amber:#f2a51f; --plate:#efe9dc; --plate-ink:#16181b; --rule:#383835; } .ds-flaps { container-type: inline-size; display: grid; grid-template-columns: repeat(var(--n), minmax(0,1fr)); gap: clamp(2px,0.6cqi,6px); width: 100%; } .ds-flap { position: relative; isolation: isolate; display: grid; place-items: center; aspect-ratio: 3/4; border-radius: clamp(2px,0.5cqi,5px); background: var(--flap); color: var(--letter); font-family: Archivo, system-ui, sans-serif; font-size: calc(100cqi / var(--n) * 1.1); font-weight: 700; font-variation-settings: \"wdth\" 68; line-height: 1; overflow: hidden; } .ds-flap::before, .ds-flap::after { content: \"\"; position: absolute; left: 0; right: 0; top: 50%; } .ds-flap::before { bottom: 0; background: var(--flap-low); z-index: -1; } .ds-flap::after { height: max(2px,0.35cqi); background: var(--hinge); } .ds-flap--blank { color: transparent; } .ds-flaps--live .ds-flap { color: var(--amber); } .ds-steps { list-style:none; margin:0; padding:1rem; background: var(--housing); font-family: Archivo, system-ui, sans-serif; color: var(--letter); } .ds-step { display:grid; grid-template-columns: 1.75rem minmax(0,1fr); gap: clamp(0.75rem,2.5vw,1.5rem); align-items:start; padding:0.875rem 0; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); } .ds-step__no { display:block; } .ds-step__body { display:grid; gap:0.5rem; } .ds-step__goal { margin:0; font-size:1.0625rem; line-height:1.4; } .ds-step__tags { margin:0; display:flex; flex-wrap:wrap; align-items:center; gap:0.375rem 0.625rem; } .ds-step__kind { font-family: Archivo, system-ui, sans-serif; font-size: 0.75rem; font-weight: 600; font-variation-settings: \"wdth\" 80; letter-spacing: 0.08em; text-transform: uppercase; color: var(--letter-muted); } .ds-ticker { font-size:0.75rem; font-weight:700; font-variation-settings: \"wdth\" 80; letter-spacing:0.06em; color: var(--plate-ink); background: var(--plate); padding:0.2rem 0.5rem; border-radius:6px; box-shadow: inset 0 0 0 2px var(--plate), inset 0 0 0 3px var(--plate-ink); } .ds-step__periods { font-size:0.875rem; font-variant-numeric: tabular-nums; color: var(--letter-muted); }"
+    },
+    {
+      "name": "Report Table",
+      "kind": "custom",
+      "refersTo": "report-table",
+      "description": "Quote-board table: label heads, tabular figures right-aligned, marker keys on cited cells, own scroll frame.",
+      "html": "<section class=\"ds-table\"><h3 class=\"ds-table__title\">Net income (TRY million)</h3><div class=\"ds-table__frame\"><table class=\"ds-table__grid\"><thead><tr><th>Company</th><th data-numeric>2023</th><th data-numeric>2024</th></tr></thead><tbody><tr><th>FROTO</th><td data-numeric>20,371<button type=\"button\" class=\"ds-marker\">1</button></td><td data-numeric>15,404<button type=\"button\" class=\"ds-marker\">2</button></td></tr><tr><th>TOASO</th><td data-numeric>11,027</td><td data-numeric>4,671</td></tr></tbody></table></div></section>",
+      "css": ":host, :root { --housing:#181817; --flap:#2b2b29; --flap-hover:#343432; --flap-low:#1e1e1d; --hinge:#0b0b0a; --letter:#efe9dc; --letter-muted:#b9b3a7; --amber:#f2a51f; --plate:#efe9dc; --plate-ink:#16181b; --rule:#383835; } .ds-table { display:grid; gap:0.75rem; padding:1rem; background: var(--housing); color: var(--letter); font-family: Archivo, system-ui, sans-serif; } .ds-table__title { margin:0; font-size:1.0625rem; font-weight:600; line-height:1.35; } .ds-table__frame { overflow-x:auto; } .ds-table__grid { min-width: min(100%,36rem); border-collapse: collapse; font-variant-numeric: tabular-nums; } .ds-table__grid th, .ds-table__grid td { padding:0.625rem 0.75rem; border-bottom:1px solid var(--rule); text-align:left; white-space:nowrap; } .ds-table__grid th:first-child, .ds-table__grid td:first-child { padding-left:0; } .ds-table__grid thead th { border-top:1px solid var(--rule); font-family: Archivo, system-ui, sans-serif; font-size: 0.75rem; font-weight: 600; font-variation-settings: \"wdth\" 80; letter-spacing: 0.08em; text-transform: uppercase; color: var(--letter-muted); vertical-align: bottom; } .ds-table__grid tbody th { font-weight:600; } .ds-table__grid [data-numeric] { text-align:right; } .ds-marker { display:inline-grid; place-items:center; min-width:1.75em; height:1.5em; margin-left:0.25em; padding:0 0.3em; font: inherit; font-size:0.6875rem; font-weight:700; color: var(--letter); background: var(--flap); border:0; border-radius:3px; box-shadow: inset 0 -2px 0 var(--hinge); cursor:pointer; } .ds-marker:hover { background: var(--flap-hover); } .ds-marker:focus-visible { outline: 2px solid var(--letter); outline-offset: 3px; }"
+    },
+    {
+      "name": "Report Chart",
+      "kind": "custom",
+      "refersTo": "chart",
+      "description": "Hand-drawn SVG in the board's inks: rule grid, muted zero line, series by dash and marker shape; flap readout above.",
+      "html": "<figure class=\"ds-chart\"><figcaption class=\"ds-chart__title\">Revenue (USD billion)</figcaption><div class=\"ds-chart__readout\"><span><span class=\"ds-flaps\" style=\"--n:8\"><span class=\"ds-flap\">2</span><span class=\"ds-flap\">0</span><span class=\"ds-flap\">2</span><span class=\"ds-flap\">4</span><span class=\"ds-flap ds-flap--blank\"> </span><span class=\"ds-flap ds-flap--blank\"> </span><span class=\"ds-flap ds-flap--blank\"> </span><span class=\"ds-flap ds-flap--blank\"> </span></span></span><dl class=\"ds-chart__values\"><div><dt>AAPL</dt><dd>391.0</dd></div><div><dt>MSFT</dt><dd>245.1</dd></div></dl></div><svg width=\"360\" height=\"180\" viewBox=\"0 0 360 180\" class=\"ds-chart__svg\"><g class=\"ds-grid\"><line x1=\"48\" x2=\"350\" y1=\"20\" y2=\"20\"/><line x1=\"48\" x2=\"350\" y1=\"80\" y2=\"80\"/><line x1=\"48\" x2=\"350\" y1=\"140\" y2=\"140\" data-zero/></g><text x=\"40\" y=\"24\" text-anchor=\"end\">400</text><text x=\"40\" y=\"84\" text-anchor=\"end\">200</text><text x=\"40\" y=\"144\" text-anchor=\"end\">0</text><rect class=\"ds-focus\" x=\"250\" y=\"12\" width=\"100\" height=\"128\"/><g class=\"ds-line\"><path d=\"M100 32L200 30L300 25\"/><rect x=\"95.5\" y=\"27.5\" width=\"9\" height=\"9\" rx=\"1\"/><rect x=\"195.5\" y=\"25.5\" width=\"9\" height=\"9\" rx=\"1\"/><rect class=\"ds-on\" x=\"295.5\" y=\"20.5\" width=\"9\" height=\"9\" rx=\"1\"/></g><g class=\"ds-line ds-line--muted\"><path d=\"M100 77L200 72L300 67\" stroke-dasharray=\"7 5\"/><circle cx=\"100\" cy=\"77\" r=\"4.5\"/><circle cx=\"200\" cy=\"72\" r=\"4.5\"/><circle class=\"ds-on\" cx=\"300\" cy=\"67\" r=\"4.5\"/></g><text x=\"100\" y=\"162\" text-anchor=\"middle\">2022</text><text x=\"200\" y=\"162\" text-anchor=\"middle\">2023</text><text x=\"300\" y=\"162\" text-anchor=\"middle\" class=\"ds-x-on\">2024</text></svg></figure>",
+      "css": ":host, :root { --housing:#181817; --flap:#2b2b29; --flap-hover:#343432; --flap-low:#1e1e1d; --hinge:#0b0b0a; --letter:#efe9dc; --letter-muted:#b9b3a7; --amber:#f2a51f; --plate:#efe9dc; --plate-ink:#16181b; --rule:#383835; } .ds-flaps { container-type: inline-size; display: grid; grid-template-columns: repeat(var(--n), minmax(0,1fr)); gap: clamp(2px,0.6cqi,6px); width: 100%; } .ds-flap { position: relative; isolation: isolate; display: grid; place-items: center; aspect-ratio: 3/4; border-radius: clamp(2px,0.5cqi,5px); background: var(--flap); color: var(--letter); font-family: Archivo, system-ui, sans-serif; font-size: calc(100cqi / var(--n) * 1.1); font-weight: 700; font-variation-settings: \"wdth\" 68; line-height: 1; overflow: hidden; } .ds-flap::before, .ds-flap::after { content: \"\"; position: absolute; left: 0; right: 0; top: 50%; } .ds-flap::before { bottom: 0; background: var(--flap-low); z-index: -1; } .ds-flap::after { height: max(2px,0.35cqi); background: var(--hinge); } .ds-flap--blank { color: transparent; } .ds-flaps--live .ds-flap { color: var(--amber); } .ds-chart { display:grid; gap:0.875rem; margin:0; padding:1rem; background: var(--housing); color: var(--letter); font-family: Archivo, system-ui, sans-serif; } .ds-chart__title { font-size:1.0625rem; font-weight:600; line-height:1.35; } .ds-chart__readout { display:grid; grid-template-columns: minmax(8rem,15rem) minmax(0,1fr); align-items:center; gap:1rem; } .ds-chart__values { margin:0; display:flex; gap:0.375rem 1.5rem; } .ds-chart__values dt { font-family: Archivo, system-ui, sans-serif; font-size: 0.75rem; font-weight: 600; font-variation-settings: \"wdth\" 80; letter-spacing: 0.08em; text-transform: uppercase; color: var(--letter-muted); letter-spacing:0.06em; } .ds-chart__values dd { margin:0; font-size:1.0625rem; font-weight:600; font-variant-numeric: tabular-nums; } .ds-chart__svg { display:block; max-width:100%; height:auto; } .ds-grid line { stroke: var(--rule); stroke-width:1; } .ds-grid line[data-zero] { stroke: var(--letter-muted); } .ds-chart__svg text { fill: var(--letter-muted); font-size:12px; font-variant-numeric: tabular-nums; font-variation-settings: \"wdth\" 80; } .ds-chart__svg text.ds-x-on { fill: var(--letter); font-weight:700; } .ds-focus { fill: var(--flap); } .ds-line path { fill:none; stroke: var(--letter); stroke-width:2; stroke-linejoin: round; } .ds-line rect, .ds-line circle { fill: var(--housing); stroke: var(--letter); stroke-width:2; } .ds-line .ds-on { fill: var(--letter); } .ds-line--muted path, .ds-line--muted rect, .ds-line--muted circle { stroke: var(--letter-muted); } .ds-line--muted .ds-on { fill: var(--letter-muted); }"
     }
   ],
   "narrative": {
     "northStar": "The Trading-Hall Board",
-    "overview": "The whole viewport is the housing of a departures-style quote board in a dim trading hall. Words that matter are set on split-flap tiles: graphite leaves a step lighter than the housing, each cut across the middle by a black hinge, carrying warm off-white condensed capitals. Fixed information that a real board would carry as printed signage (the sources, the legal notice) sits on cream enamel plates with an inked border ring. Everything else is plain lettering on the housing, divided by thin rules.\n\nThe board is a physical object, so it is flat paint only: no glow, no gradient, no soft drop shadow, no floating card. Depth comes from the two-tone flap leaves, the hinge line and inset enamel rings, never from light. It keeps one dark palette regardless of the visitor's color scheme. The one moving part is the flap: when a value changes, the tiles spin through characters and settle left to right; under reduced motion they set at once.\n\nDensity is low and the scale is large. The name row spans the full content width, and each flap row sizes its tiles from its own width, so the board reads the same at 360 px and at 1440 px.",
+    "overview": "The whole viewport is the housing of a departures-style quote board in a dim trading hall. Words that matter are set on split-flap tiles: graphite leaves a step lighter than the housing, each cut across the middle by a black hinge, carrying warm off-white condensed capitals. Fixed information that a real board would carry as printed signage (the sources, the legal notice) sits on cream enamel plates with an inked border ring. Everything else is plain lettering on the housing, divided by thin rules. Figures read like a quote board: label-style column heads, tabular numerals set right, rules between rows.\n\nThe board is a physical object, so it is flat paint only: no glow, no gradient, no soft drop shadow, no floating card. Depth comes from the two-tone flap leaves, the hinge line and inset enamel rings, never from light. It keeps one dark palette regardless of the visitor's color scheme. The one moving part is the flap: when a value changes, the tiles spin through characters and settle left to right; under reduced motion they set at once. When the board needs a decision, the decision sits on the board as a band under the row it pauses, never in a modal, and the one action to take is the only enamel plate that moves.\n\nDensity is low and the scale is large. The name row spans the full content width, and each flap row sizes its tiles from its own width, so the board reads the same at 360 px and at 1440 px.",
     "keyCharacteristics": [
       "Matte graphite housing, flap tiles a step lighter, a hinge across every tile.",
       "Warm off-white condensed caps (Archivo, width axis 68 to 85).",
       "One enamel amber, reserved for the live row.",
       "Cream enamel plates with inset ink rings for fixed signage.",
       "Flat paint; depth is built from leaves, hinges and inset rings.",
-      "Flaps spin and settle left to right on change; reduced motion sets them at once."
+      "Flaps spin and settle left to right on change; reduced motion sets them at once.",
+      "Charts drawn in the board's own inks: series differ by dash and marker shape, never by hue.",
+      "One cream push plate per decision: the single action to take."
     ],
     "rules": [
       {
@@ -331,18 +417,38 @@
         "section": "colors"
       },
       {
+        "name": "The Ink, Not Hue Rule",
+        "body": "Charts use the board's inks and nothing else. Line series are told apart by dash pattern (solid, 7 5, 2 4, 10 4 2 4) and marker shape (square, circle, diamond, triangle), alternating Warm Letter White and Faded Letter ink. Bar series fill Warm Letter White, Faded Letter, a 45° letter hatch on flap, then Pressed Flap. A fifth series repeats the cycle; it never gets a new color.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Alarm Rule",
+        "body": "Errors and reasons are not red. An error or a per-field reason is Warm Letter White text beside a 1px Warm Letter White rule on its left; an invalid field adds a 1px letter ring inside its hinge lip.",
+        "section": "colors"
+      },
+      {
         "name": "The Width Axis Rule",
         "body": "Condensing is done with Archivo's `wdth` axis (68 flaps, 80 labels and keys, 85 plate titles), never with a second condensed family or with negative tracking.",
         "section": "typography"
       },
       {
         "name": "The Same-Text Rule",
-        "body": "Flap rows are decorative (`aria-hidden`); the same value always exists as real text nearby (a screen-reader name or the plain sentence under the row).",
+        "body": "Flap rows are decorative (`aria-hidden`); the same value always exists as real text nearby (a screen-reader name or the plain sentence under the row). A chart is the same: the plot is hidden, a screen-reader table carries every value, and the plot's slider value text names the focused point.",
         "section": "typography"
       },
       {
+        "name": "The Quote Board Figures Rule",
+        "body": "Every figure is set in tabular numerals; in a table, numeric columns align right and the heads read like a board's column labels. Figures never get a display size of their own; a figure that matters goes on a flap row.",
+        "section": "typography"
+      },
+      {
+        "name": "The Own Frame Rule",
+        "body": "Wide content scrolls inside its own frame; the page never scrolls sideways at 375 px.",
+        "section": "layout"
+      },
+      {
         "name": "The Flat Paint Rule",
-        "body": "Every shadow is inset and describes a physical edge (a lip, a printed ring). No outer shadows, no blur, no glow, no gradients.",
+        "body": "Every shadow is inset and describes a physical edge (a lip, a printed ring). No outer shadows, no blur, no glow, no gradients. The two-leaf field paint is a hard stop between two flat colors, not a gradient.",
         "section": "elevation"
       }
     ],
@@ -352,14 +458,22 @@
       "**Do** put fixed signage (sources, legal notice) on enamel plates with the inset ink ring.",
       "**Do** condense with Archivo's width axis (68 / 80 / 85).",
       "**Do** size flap tiles from their row's container width, so rows hold at 360 px.",
-      "**Do** honor `prefers-reduced-motion` by setting flaps without the spin."
+      "**Do** honor `prefers-reduced-motion` by setting flaps without the spin.",
+      "**Do** give each decision exactly one push plate, a flap key for the alternative, and a quiet key to cancel.",
+      "**Do** set figures in tabular numerals, right-aligned in tables, with label-style column heads.",
+      "**Do** tell chart series apart by dash pattern, marker shape and the two letter inks.",
+      "**Do** put a reason directly under the field it is about, behind a 1px letter rule."
     ],
     "donts": [
       "**Don't** put content on a centered card over a background, and don't use soft drop shadows or hairline form boxes; the board itself is the surface.",
       "**Don't** add glow, gradients or any outer shadow; depth is leaves, hinges and inset rings.",
       "**Don't** use amber for controls, links, borders or fills.",
       "**Don't** switch to a light palette for light-mode visitors.",
-      "**Don't** put a small uppercase label above a headline as a kicker; the uppercase label style only names a flap row."
+      "**Don't** put a small uppercase label above a headline as a kicker; the uppercase label style only names a flap row, a field, a column or a series.",
+      "**Don't** put a decision in a modal or floating dialog; it is a band on the board under the row it pauses.",
+      "**Don't** use cream enamel for a second action in the same group, or for anything that is not the one action to take or fixed signage.",
+      "**Don't** add a color for a chart series or for an error.",
+      "**Don't** let a wide table or chart push the page sideways."
     ]
   }
 }

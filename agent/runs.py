@@ -24,6 +24,7 @@ from decimal import Decimal
 from typing import TYPE_CHECKING, Any, Literal, Protocol, cast
 
 from langchain_core.runnables import RunnableConfig
+from langgraph.types import Command
 from sqlalchemy import Engine, insert, select, update
 
 from agent.advice import detect_language
@@ -33,7 +34,7 @@ from agent.loop import Budget, RunOutcome, Tools, run_agent
 from agent.report import Report, finalize_report
 from agent.telemetry import run_span
 from api import schema
-from api.errors import ErrorCode, localized_message
+from api.errors import ApiError, ErrorCode, localized_message
 from llm.router import Router
 from llm.types import ProvidersUnavailable
 from tools.types import SandboxUnavailable, SeenItem
@@ -46,7 +47,9 @@ AgentEngine = Literal["graph", "single"]
 logger = logging.getLogger(__name__)
 
 STREAM_TTL_SECONDS = 24 * 3600
-TERMINAL_EVENTS = frozenset({"final", "error"})
+TERMINAL_EVENTS = frozenset({"final", "error", "run_cancelled", "run_expired"})
+# Ends a stream only while it is the newest event: the run is paused for a decision.
+PAUSE_EVENTS = frozenset({"awaiting_decision"})
 ATTEMPT_TTL_SECONDS = 48 * 3600
 EXCERPT_MAX_CHARS = 1500
 CODE_MAX_CHARS = 4000
@@ -79,6 +82,22 @@ def graph_config(run_id: uuid.UUID | str) -> RunnableConfig:
 
 
 @dataclass(frozen=True)
+class PendingRun:
+    """A run row as the approve route checks it before deciding."""
+
+    user_id: uuid.UUID
+    status: str
+    language: str
+    plan: dict[str, Any] | None
+    plan_expires_at: datetime | None
+    decided_at: datetime | None
+    created_at: datetime
+
+
+DecisionStatus = Literal["running", "cancelled"]
+
+
+@dataclass(frozen=True)
 class StreamEvent:
     id: str
     event: str
@@ -101,6 +120,7 @@ class RunService:
         clock: Callable[[], float] = time.monotonic,
         agent_engine: AgentEngine = "single",
         max_concurrent_runs: int = 3,
+        plan_ttl_hours: int = 24,
         now: Callable[[], datetime] = utcnow,
     ) -> None:
         self._engine = engine
@@ -114,6 +134,8 @@ class RunService:
         self.agent_engine: AgentEngine = agent_engine
         self._graph: Graph | None = None
         self._slots = asyncio.Semaphore(max_concurrent_runs)
+        # A paused run's stream must outlive the plan's wait plus the usual 24 h.
+        self._pause_ttl_seconds = plan_ttl_hours * 3600 + STREAM_TTL_SECONDS
         self._model_called: set[str] = set()
 
     @property
@@ -129,12 +151,134 @@ class RunService:
         return self._tools
 
     @property
+    def redis(self) -> StreamRedis:
+        return self._redis
+
+    @property
     def graph(self) -> "Graph | None":
         return self._graph
 
     def attach_graph(self, graph: "Graph | None") -> None:
         """The compiled graph; built after the service because its nodes emit through it."""
         self._graph = graph
+
+    async def graph_values(self, run_id: uuid.UUID) -> dict[str, Any]:
+        """The run's latest checkpointed graph state (empty without a graph or checkpoint)."""
+        if self._graph is None:
+            return {}
+        snapshot = await self._graph.aget_state(graph_config(run_id))
+        return dict(snapshot.values or {})
+
+    async def pending(self, run_id: uuid.UUID, user_id: uuid.UUID) -> PendingRun | None:
+        return await asyncio.to_thread(self._pending, run_id, user_id)
+
+    def _pending(self, run_id: uuid.UUID, user_id: uuid.UUID) -> PendingRun | None:
+        runs = schema.runs
+        with self._engine.connect() as conn:
+            row = conn.execute(
+                select(
+                    runs.c.user_id,
+                    runs.c.status,
+                    runs.c.language,
+                    runs.c.plan,
+                    runs.c.plan_expires_at,
+                    runs.c.decided_at,
+                    runs.c.created_at,
+                ).where(runs.c.id == run_id, runs.c.user_id == user_id)
+            ).first()
+        return None if row is None else PendingRun(**row._mapping)
+
+    async def decide(
+        self,
+        run_id: uuid.UUID,
+        user_id: uuid.UUID,
+        action: str,
+        decided_at: datetime,
+        *,
+        plan: dict[str, Any] | None = None,
+        before_commit: Callable[[datetime], Awaitable[Any]] | None = None,
+    ) -> DecisionStatus:
+        """Accept the first decision on a waiting run, in one conditional update (§R5).
+
+        `before_commit` (the deep quota swap) runs inside the transaction: if it raises, the
+        update is rolled back and the run keeps waiting. A lost race raises
+        `already_decided`; a past expiry `plan_expired`.
+        """
+        status: DecisionStatus = "cancelled" if action == "cancel" else "running"
+        conn = await asyncio.to_thread(self._engine.connect)
+        try:
+            transaction = await asyncio.to_thread(conn.begin)
+            row = await asyncio.to_thread(
+                self._claim_decision, conn, run_id, user_id, action, decided_at, status, plan
+            )
+            if row is None:
+                await asyncio.to_thread(transaction.rollback)
+                raise ApiError(await asyncio.to_thread(self._decision_error, run_id, decided_at))
+            if before_commit is not None:
+                try:
+                    await before_commit(row)
+                except BaseException:
+                    await asyncio.to_thread(transaction.rollback)
+                    raise
+            await asyncio.to_thread(transaction.commit)
+        finally:
+            await asyncio.to_thread(conn.close)
+        return status
+
+    @staticmethod
+    def _claim_decision(
+        conn: Any,
+        run_id: uuid.UUID,
+        user_id: uuid.UUID,
+        action: str,
+        decided_at: datetime,
+        status: DecisionStatus,
+        plan: dict[str, Any] | None,
+    ) -> datetime | None:
+        runs = schema.runs
+        values: dict[str, Any] = {"status": status, "decided_at": decided_at, "decision": action}
+        if plan is not None:
+            values["plan"] = plan
+        if status == "cancelled":
+            values["finished_at"] = decided_at
+        created_at = conn.execute(
+            update(runs)
+            .where(
+                runs.c.id == run_id,
+                runs.c.user_id == user_id,
+                runs.c.status == "awaiting_approval",
+                runs.c.plan_expires_at > decided_at,
+            )
+            .values(**values)
+            .returning(runs.c.created_at)
+        ).scalar_one_or_none()
+        return created_at if isinstance(created_at, datetime) else None
+
+    def _decision_error(self, run_id: uuid.UUID, now: datetime) -> ErrorCode:
+        runs = schema.runs
+        with self._engine.connect() as conn:
+            row = conn.execute(
+                select(runs.c.status, runs.c.decided_at, runs.c.plan_expires_at).where(
+                    runs.c.id == run_id
+                )
+            ).first()
+        if row is None:
+            return "not_found"
+        if row.decided_at is not None:
+            return "already_decided"
+        if row.status == "expired" or (
+            row.status == "awaiting_approval"
+            and row.plan_expires_at is not None
+            and row.plan_expires_at <= now
+        ):
+            return "plan_expired"
+        return "not_awaiting_decision"
+
+    def resume(
+        self, run_id: uuid.UUID, user_id: uuid.UUID, language: str, decision: dict[str, Any]
+    ) -> None:
+        """Continue a paused graph run with an accepted decision, in the background."""
+        self._spawn(self._drive(run_id, user_id, language, Command(resume=decision)))
 
     def _engine_for_new_runs(self) -> AgentEngine:
         return "graph" if self.agent_engine == "graph" and self._graph is not None else "single"
@@ -270,6 +414,27 @@ class RunService:
         await self._redis.expire(key, ATTEMPT_TTL_SECONDS)
         return value
 
+    async def mark_awaiting(
+        self, run_id: str, plan: dict[str, Any] | None, expires_at: datetime
+    ) -> bool:
+        """The decision node's row update; False when the run was already decided."""
+        return await asyncio.to_thread(self._mark_awaiting, uuid.UUID(run_id), plan, expires_at)
+
+    def _mark_awaiting(
+        self, run_id: uuid.UUID, plan: dict[str, Any] | None, expires_at: datetime
+    ) -> bool:
+        runs = schema.runs
+        with self._engine.begin() as conn:
+            row = conn.execute(
+                update(runs)
+                .where(runs.c.id == run_id, runs.c.status == "running", runs.c.decided_at.is_(None))
+                .values(
+                    status="awaiting_approval", plan=plan, plan_expires_at=expires_at, mode="deep"
+                )
+                .returning(runs.c.id)
+            ).first()
+        return row is not None
+
     async def _emit_service(self, run_id: uuid.UUID, event: str, data: dict[str, Any]) -> None:
         """Events the service itself emits for a graph run (no node)."""
         await self._emit(run_id, event, {**data, "node": None, "attempt": 1})
@@ -315,6 +480,7 @@ class RunService:
         assert graph is not None  # noqa: S101  (graph runs exist only with a graph)
         started = self._clock()
         config = graph_config(run_id)
+        paused = False
         with run_span(run_id=str(run_id), user_id=str(user_id), language=language) as span:
             try:
                 async with self._slots:
@@ -325,6 +491,7 @@ class RunService:
                     # Paused at a decision: the decision node marked the row and emitted
                     # `awaiting_decision`; the stream outlives the plan's wait.
                     span.set_attribute("disclosly.status", "awaiting_approval")
+                    paused = True
                     return
                 values = cast(ResearchState, snapshot.values)
                 if values.get("cancelled"):
@@ -362,7 +529,8 @@ class RunService:
                         logger.exception("early-failure hook failed", extra={"run_id": str(run_id)})
             finally:
                 self._model_called.discard(str(run_id))
-                await self._redis.expire(stream_key(run_id), STREAM_TTL_SECONDS)
+                ttl = self._pause_ttl_seconds if paused else STREAM_TTL_SECONDS
+                await self._redis.expire(stream_key(run_id), ttl)
 
     def _graph_outcome(
         self, values: ResearchState, draft: Report, total_ms: float
@@ -500,6 +668,11 @@ class RunService:
                     event = StreamEvent(cursor, decoded["event"], json.loads(decoded["data"]))
                     yield event
                     if event.event in TERMINAL_EVENTS:
+                        return
+                    if event.event in PAUSE_EVENTS and not await self._redis.xread(
+                        {key: cursor}, count=1
+                    ):
+                        # Paused for a decision; the client reconnects with Last-Event-ID.
                         return
 
 

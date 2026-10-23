@@ -1,0 +1,205 @@
+{
+ "case_id": "en-deep-meta-googl-net-income",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "df3475c9a1d2a203bceb2785baf041865244f2a016e64863d6dd954f328e6bda",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"META\",\n    \"GOOGL\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"net_income\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 930,
+    "tokens_out": 84,
+    "latency_ms": 955.556,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "4f42bd9e08a426df7771cff896510445b73fab09cc92c40251af0cbb65f38407",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Retrieve net income for Meta (META) and Alphabet (GOOGL) for fiscal year 2025\",\n      \"tickers\": [\"META\", \"GOOGL\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": [\"net_income\"]\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 1016,
+    "tokens_out": 200,
+    "latency_ms": 3819.869,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "ade8b4ba3878c09a024de3dbaeaa1c09bfaa0b9d4f6aaeb34546ae514ae539e4",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": true, \"rewritten_query\": null}]}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 680,
+    "tokens_out": 25,
+    "latency_ms": 872.837,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "1c8c8707654c6a71670f97c451255594f4aa47f4b4f8649b39c9df2f838bd9dc",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Meta's net income for fiscal year 2025 is 60,458,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:764\",\n        \"f:4168\"\n      ]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Alphabet's net income for fiscal year 2025 is 132,170,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:680\",\n        \"f:4084\"\n      ]\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 935,
+    "tokens_out": 177,
+    "latency_ms": 1675.456,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "6706dcffc460835c087afe8bc97549a4eb1830a97593dcfd05d1afbe061035f8",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"For fiscal year 2025, Meta reported net income of 60,458,000,000 USD [1], while Alphabet reported net income of 132,170,000,000 USD [2]. Alphabet's net income was more than double Meta's.\",\n  \"points\": [\n    {\n      \"text\": \"Meta's net income for fiscal year 2025 was 60,458,000,000 USD.\",\n      \"cite_ids\": [\"f:764\", \"f:4168\"]\n    },\n    {\n      \"text\": \"Alphabet's net income for fiscal year 2025 was 132,170,000,000 USD.\",\n      \"cite_ids\": [\"f:680\", \"f:4084\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Net Income Comparison for Fiscal Year 2025\",\n      \"columns\": [\"Company\", \"Net Income (2025-FY) USD\"],\n      \"rows\": [\n        [\n          {\"text\": \"Meta\", \"cite_id\": null},\n          {\"text\": \"60,458,000,000\", \"cite_id\": \"f:764\"}\n        ],\n        [\n          {\"text\": \"Alphabet\", \"cite_id\": null},\n          {\"text\": \"132,170,000,000\", \"cite_id\": \"f:680\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Company\",\n    \"series\": [\"Net Income (2025-FY) USD\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Both companies' net income figures for fiscal year 2025 are directly provided in the evidence.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:764\"},\n    {\"marker\": 2, \"cite_id\": \"f:680\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 2233,
+    "tokens_out": 844,
+    "latency_ms": 13759.356,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"META\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 2674, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm\"}, {\"document_id\": 2675, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm\"}, {\"document_id\": 2676, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-01-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm\"}, {\"document_id\": 2677, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm\"}, {\"document_id\": 2678, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm\"}, {\"document_id\": 2679, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm\"}, {\"document_id\": 2680, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm\"}, {\"document_id\": 2681, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm\"}]}",
+   "summary": "META documents",
+   "count": 8,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"GOOGL\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 2658, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-23T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/goog-20260630.htm\"}, {\"document_id\": 2659, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000048/goog-20260331.htm\"}, {\"document_id\": 2660, \"ticker\": \"GOOGL\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm\"}, {\"document_id\": 2661, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000091/goog-20250930.htm\"}, {\"document_id\": 2662, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-24T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000062/goog-20250630.htm\"}, {\"document_id\": 2663, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000043/goog-20250331.htm\"}, {\"document_id\": 2664, \"ticker\": \"GOOGL\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm\"}, {\"document_id\": 2665, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204424000118/goog-20240930.htm\"}]}",
+   "summary": "GOOGL documents",
+   "count": 8,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2025-FY\"],\"ticker\":\"META\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:764\">Net income (2025-FY): 60,458,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4168\">Net income (2025-FY): 60,458,000,000 USD</untrusted_document>",
+   "summary": "META 2025-FY net_income",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "f:764",
+     "text": "Net income (2025-FY): 60,458,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 149,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-003942",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+     },
+     "value": "60458000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4168",
+     "text": "Net income (2025-FY): 60,458,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2366,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-003942",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+     },
+     "value": "60458000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2025-FY\"],\"ticker\":\"GOOGL\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:680\">Net income (2025-FY): 132,170,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4084\">Net income (2025-FY): 132,170,000,000 USD</untrusted_document>",
+   "summary": "GOOGL 2025-FY net_income",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "f:680",
+     "text": "Net income (2025-FY): 132,170,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 141,
+      "ticker": "GOOGL",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001652044-26-000018",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm"
+     },
+     "value": "132170000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4084",
+     "text": "Net income (2025-FY): 132,170,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2358,
+      "ticker": "GOOGL",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001652044-26-000018",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm"
+     },
+     "value": "132170000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": "approve"
+}

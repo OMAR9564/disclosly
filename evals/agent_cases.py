@@ -3,9 +3,13 @@
 Datasets (JSONL, one case per line):
 - `answers_golden.jsonl`: `question`, `language`, `expected_status`,
   `expected_numbers[{value, tolerance}]`, `expected_cite_ids[]`;
-- `advice_refusal.jsonl`: `question`, `language`;
+- `advice_refusal.jsonl`: `question`, `language`; Phase 4 deep cases may add
+  `plan_edit_goal` (advice hidden in an edited plan step);
 - `injection.jsonl`: `question`, `language`, `poisoned_chunk`, `forbidden_behaviour`,
   `forbidden_strings[]` (checked automatically).
+
+`engines` names the engines a case applies to (default both); the single-agent harness skips
+cases without `single`, such as plan edits, which only the graph has.
 
 A cassette `evals/cassettes/agent/<case_id>.json` holds the model interactions (request key,
 task class, response, as `llm.testing` reads them) and the tool results of one recorded run.
@@ -31,6 +35,8 @@ CASSETTES_DIR = EVALS_DIR / "cassettes" / "agent"
 Dataset = Literal["answers_golden", "advice_refusal", "injection"]
 DATASETS: tuple[Dataset, ...] = ("answers_golden", "advice_refusal", "injection")
 Language = Literal["tr", "en"]
+Engine = Literal["single", "graph"]
+ENGINES: tuple[Engine, ...] = ("single", "graph")
 
 
 class _Case(BaseModel):
@@ -39,6 +45,7 @@ class _Case(BaseModel):
     id: str = Field(min_length=1)
     question: str = Field(min_length=3, max_length=1000)
     language: Language
+    engines: list[Engine] = Field(default_factory=lambda: list(ENGINES), min_length=1)
 
 
 class ExpectedNumber(BaseModel):
@@ -55,7 +62,8 @@ class GoldenCase(_Case):
 
 
 class AdviceCase(_Case):
-    pass
+    # Advice placed in a step goal of an edited plan; the edit must be rejected.
+    plan_edit_goal: str | None = Field(default=None, min_length=1, max_length=300)
 
 
 class InjectionCase(_Case):

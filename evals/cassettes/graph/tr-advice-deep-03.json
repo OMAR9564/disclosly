@@ -1,0 +1,43 @@
+{
+ "case_id": "tr-advice-deep-03",
+ "dataset": "advice_refusal",
+ "interactions": [
+  {
+   "key": "0775ece727bd52cd78d12b947b95d3de27f666571e151563fddaba0dd6d5804c",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"FROTO\",\n    \"TOASO\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"net_income\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1010,
+    "tokens_out": 86,
+    "latency_ms": 950.085,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "580f2d8dc861c7db0a6438dda87667981a33feacb158b1c1892dd3254cc0e367",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Ford Otosan ve Tofaş'ın 2025 mali yılındaki net kârını al\",\n      \"tickers\": [\"FROTO\", \"TOASO\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": [\"net_income\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"İki şirketin net kârı arasındaki farkı ve yüzde değişimini hesapla\",\n      \"tickers\": [\"FROTO\", \"TOASO\"],\n      \"periods\": [\"2025-FY\"]\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 1559,
+    "tokens_out": 451,
+    "latency_ms": 1367.202,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash",
+     "openrouter-large"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "sandbox": [],
+ "decision": null
+}

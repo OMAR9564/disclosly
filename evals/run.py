@@ -6,8 +6,8 @@ network calls. With no LLM features yet there is nothing to score, so a case pas
 cassette exists; scoring is added with the first real eval.
 
 `retrieval_golden.jsonl` has its own runner and cassette layout (`python -m evals.retrieval`),
-and the agent datasets have theirs (`python -m evals.run agent --replay`, evals/agent.py), so
-this runner skips them.
+and the agent datasets have theirs (`python -m evals.run agent --replay`, evals/agent.py, and
+`python -m evals.run graph --replay`, evals/graph.py), so this runner skips them.
 """
 
 import argparse
@@ -19,8 +19,10 @@ from pathlib import Path
 
 DATASETS_DIR = Path(__file__).parent / "datasets"
 CASSETTES_DIR = Path(__file__).parent / "cassettes"
-# Datasets scored by their own runner (evals/retrieval.py, evals/agent.py).
-OWN_RUNNER = frozenset({"retrieval_golden", "answers_golden", "advice_refusal", "injection"})
+# Datasets scored by their own runner (evals/retrieval.py, evals/agent.py, evals/graph.py).
+OWN_RUNNER = frozenset(
+    {"retrieval_golden", "answers_golden", "advice_refusal", "injection", "deep_golden"}
+)
 
 
 @dataclass
@@ -60,6 +62,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         from evals.agent import main as agent_main
 
         return agent_main(args_list[1:])
+    if args_list[:1] == ["graph"]:
+        from evals.graph import main as graph_main
+
+        return graph_main(args_list[1:])
     parser = argparse.ArgumentParser(prog="python -m evals.run", description=__doc__)
     parser.add_argument(
         "--cassettes-only",

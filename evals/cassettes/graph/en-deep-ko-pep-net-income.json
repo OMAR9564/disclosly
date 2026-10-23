@@ -1,0 +1,375 @@
+{
+ "case_id": "en-deep-ko-pep-net-income",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "e1b9d89eae641b467b8beaf73c17e71083e6976bdca6aa920ed19cba28ce2b91",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\"mode\": \"deep\", \"tickers\": [\"KO\", \"PEP\"], \"periods\": [\"2024-FY\", \"2025-FY\"], \"metrics\": [\"net_income\"], \"uses_watchlist\": false, \"memory_intent\": null}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 935,
+    "tokens_out": 56,
+    "latency_ms": 1053.543,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "9c122bb58e4ff793b00f47f193e5c00278beec44d6d9af89ce4a9a281884e3a0",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Retrieve net income for Coca-Cola (KO) and PepsiCo (PEP) for fiscal years 2024 and 2025\",\n      \"tickers\": [\"KO\", \"PEP\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": [\"net_income\"]\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 1028,
+    "tokens_out": 286,
+    "latency_ms": 5334.688,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "19431902c8874a363366f7b245a5ad9c95d86185da0bab27c543d258d93487a9",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 703,
+    "tokens_out": 45,
+    "latency_ms": 1049.981,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "cb08b08d81077cb60d389475686e8c5a54429edaafd40c11f70c850f641b5d6d",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Coca-Cola reported net income of 10,631,000,000 USD for fiscal year 2024.\",\n      \"cite_ids\": [\n        \"f:1575\"\n      ]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Coca-Cola reported net income of 13,107,000,000 USD for fiscal year 2025.\",\n      \"cite_ids\": [\n        \"f:1581\"\n      ]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"PepsiCo reported net income of 9,578,000,000 USD for fiscal year 2024.\",\n      \"cite_ids\": [\n        \"f:1677\"\n      ]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"PepsiCo reported net income of 8,240,000,000 USD for fiscal year 2025.\",\n      \"cite_ids\": [\n        \"f:1685\"\n      ]\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1375,
+    "tokens_out": 306,
+    "latency_ms": 2007.176,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "88afa9a3ef6494f9c51204d7a84fee59c9f25e619db858c7210b5f9cde5c53c7",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In 2024, Coca-Cola reported net income of $10.63 billion, while PepsiCo reported $9.58 billion [1][2]. In 2025, Coca-Cola's net income increased to $13.11 billion, whereas PepsiCo's decreased to $8.24 billion [3][4]. Coca-Cola's net income grew by approximately 23% year-over-year, while PepsiCo's fell by about 14%.\",\n  \"points\": [\n    {\n      \"text\": \"Coca-Cola net income for fiscal year 2024 was $10,631,000,000.\",\n      \"cite_ids\": [\"f:1575\"]\n    },\n    {\n      \"text\": \"Coca-Cola net income for fiscal year 2025 was $13,107,000,000.\",\n      \"cite_ids\": [\"f:1581\"]\n    },\n    {\n      \"text\": \"PepsiCo net income for fiscal year 2024 was $9,578,000,000.\",\n      \"cite_ids\": [\"f:1677\"]\n    },\n    {\n      \"text\": \"PepsiCo net income for fiscal year 2025 was $8,240,000,000.\",\n      \"cite_ids\": [\"f:1685\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Net Income Comparison (USD)\",\n      \"columns\": [\n        \"Year\",\n        \"Coca-Cola (KO)\",\n        \"PepsiCo (PEP)\"\n      ],\n      \"rows\": [\n        [\n          { \"text\": \"2024\" },\n          { \"text\": \"10,631,000,000\", \"cite_id\": \"f:1575\" },\n          { \"text\": \"9,578,000,000\", \"cite_id\": \"f:1677\" }\n        ],\n        [\n          { \"text\": \"2025\" },\n          { \"text\": \"13,107,000,000\", \"cite_id\": \"f:1581\" },\n          { \"text\": \"8,240,000,000\", \"cite_id\": \"f:1685\" }\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Year\",\n    \"series\": [\n      \"Coca-Cola (KO)\",\n      \"PepsiCo (PEP)\"\n    ]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Net income figures for both companies for both fiscal years 2024 and 2025 are available from the evidence.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    { \"marker\": 1, \"cite_id\": \"f:1575\" },\n    { \"marker\": 2, \"cite_id\": \"f:1677\" },\n    { \"marker\": 3, \"cite_id\": \"f:1581\" },\n    { \"marker\": 4, \"cite_id\": \"f:1685\" }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 2351,
+    "tokens_out": 1921,
+    "latency_ms": 24126.577,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "ac746c4958ca05b47205fad7b968495ae889713a2b880ec416af7c78d24397db",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In 2024, Coca-Cola reported net income of $10.63 billion, while PepsiCo reported $9.58 billion [1][2]. In 2025, Coca-Cola's net income was $13.11 billion, whereas PepsiCo's was $8.24 billion [3][4].\",\n  \"points\": [\n    {\n      \"text\": \"Coca-Cola net income for fiscal year 2024 was $10,631,000,000.\",\n      \"cite_ids\": [\"f:1575\"]\n    },\n    {\n      \"text\": \"Coca-Cola net income for fiscal year 2025 was $13,107,000,000.\",\n      \"cite_ids\": [\"f:1581\"]\n    },\n    {\n      \"text\": \"PepsiCo net income for fiscal year 2024 was $9,578,000,000.\",\n      \"cite_ids\": [\"f:1677\"]\n    },\n    {\n      \"text\": \"PepsiCo net income for fiscal year 2025 was $8,240,000,000.\",\n      \"cite_ids\": [\"f:1685\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Net Income Comparison (USD)\",\n      \"columns\": [\n        \"Year\",\n        \"Coca-Cola (KO)\",\n        \"PepsiCo (PEP)\"\n      ],\n      \"rows\": [\n        [\n          { \"text\": \"2024\" },\n          { \"text\": \"10,631,000,000\", \"cite_id\": \"f:1575\" },\n          { \"text\": \"9,578,000,000\", \"cite_id\": \"f:1677\" }\n        ],\n        [\n          { \"text\": \"2025\" },\n          { \"text\": \"13,107,000,000\", \"cite_id\": \"f:1581\" },\n          { \"text\": \"8,240,000,000\", \"cite_id\": \"f:1685\" }\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Year\",\n    \"series\": [\n      \"Coca-Cola (KO)\",\n      \"PepsiCo (PEP)\"\n    ]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Net income figures for both companies for both fiscal years 2024 and 2025 are available from the evidence.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    { \"marker\": 1, \"cite_id\": \"f:1575\" },\n    { \"marker\": 2, \"cite_id\": \"f:1677\" },\n    { \"marker\": 3, \"cite_id\": \"f:1581\" },\n    { \"marker\": 4, \"cite_id\": \"f:1685\" }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 3171,
+    "tokens_out": 1021,
+    "latency_ms": 21974.259,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"KO\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 2747, \"ticker\": \"KO\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/21344/000162828026050503/ko-20260703.htm\"}, {\"document_id\": 2748, \"ticker\": \"KO\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/21344/000162828026028802/ko-20260403.htm\"}, {\"document_id\": 2749, \"ticker\": \"KO\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm\"}, {\"document_id\": 2750, \"ticker\": \"KO\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-23T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/21344/000162828025046054/ko-20250926.htm\"}, {\"document_id\": 2751, \"ticker\": \"KO\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-24T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000061/ko-20250627.htm\"}, {\"document_id\": 2752, \"ticker\": \"KO\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000029/ko-20250328.htm\"}, {\"document_id\": 2753, \"ticker\": \"KO\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\"}, {\"document_id\": 2754, \"ticker\": \"KO\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-24T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134424000060/ko-20240927.htm\"}]}",
+   "summary": "KO documents",
+   "count": 8,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"PEP\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 2755, \"ticker\": \"PEP\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-08T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747626000048/pep-20260905.htm\"}, {\"document_id\": 2756, \"ticker\": \"PEP\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-09T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747626000035/pep-20260613.htm\"}, {\"document_id\": 2757, \"ticker\": \"PEP\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-16T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747626000017/pep-20260321.htm\"}, {\"document_id\": 2758, \"ticker\": \"PEP\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-03T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747626000007/pep-20251227.htm\"}, {\"document_id\": 2759, \"ticker\": \"PEP\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-09T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000053/pep-20250906.htm\"}, {\"document_id\": 2760, \"ticker\": \"PEP\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-17T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000044/pep-20250614.htm\"}, {\"document_id\": 2761, \"ticker\": \"PEP\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-24T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000019/pep-20250322.htm\"}, {\"document_id\": 2762, \"ticker\": \"PEP\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-04T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\"}]}",
+   "summary": "PEP documents",
+   "count": 8,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2024-FY\",\"2025-FY\"],\"ticker\":\"KO\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:1575\">Net income (2024-FY): 10,631,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4979\">Net income (2024-FY): 10,631,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1576\">Net income (2024-FY; 2025-FY report): 10,631,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4980\">Net income (2024-FY; 2025-FY report): 10,631,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1581\">Net income (2025-FY): 13,107,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4985\">Net income (2025-FY): 13,107,000,000 USD</untrusted_document>",
+   "summary": "KO 2024-FY to 2025-FY net_income",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "f:1575",
+     "text": "Net income (2024-FY): 10,631,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 221,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000021344-25-000011",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm"
+     },
+     "value": "10631000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4979",
+     "text": "Net income (2024-FY): 10,631,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2438,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000021344-25-000011",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm"
+     },
+     "value": "10631000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1576",
+     "text": "Net income (2024-FY; 2025-FY report): 10,631,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 217,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "10631000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4980",
+     "text": "Net income (2024-FY; 2025-FY report): 10,631,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2434,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "10631000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1581",
+     "text": "Net income (2025-FY): 13,107,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 217,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "13107000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4985",
+     "text": "Net income (2025-FY): 13,107,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2434,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "13107000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2024-FY\",\"2025-FY\"],\"ticker\":\"PEP\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:1677\">Net income (2024-FY): 9,578,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:5081\">Net income (2024-FY): 9,578,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1678\">Net income (2024-FY; 2025-FY report): 9,578,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:5082\">Net income (2024-FY; 2025-FY report): 9,578,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1685\">Net income (2025-FY): 8,240,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:5089\">Net income (2025-FY): 8,240,000,000 USD</untrusted_document>",
+   "summary": "PEP 2024-FY to 2025-FY net_income",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "f:1677",
+     "text": "Net income (2024-FY): 9,578,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 230,
+      "ticker": "PEP",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000077476-25-000007",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm"
+     },
+     "value": "9578000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:5081",
+     "text": "Net income (2024-FY): 9,578,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2447,
+      "ticker": "PEP",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000077476-25-000007",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm"
+     },
+     "value": "9578000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1678",
+     "text": "Net income (2024-FY; 2025-FY report): 9,578,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 226,
+      "ticker": "PEP",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000077476-26-000007",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747626000007/pep-20251227.htm"
+     },
+     "value": "9578000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:5082",
+     "text": "Net income (2024-FY; 2025-FY report): 9,578,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2443,
+      "ticker": "PEP",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000077476-26-000007",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747626000007/pep-20251227.htm"
+     },
+     "value": "9578000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1685",
+     "text": "Net income (2025-FY): 8,240,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 226,
+      "ticker": "PEP",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000077476-26-000007",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747626000007/pep-20251227.htm"
+     },
+     "value": "8240000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:5089",
+     "text": "Net income (2025-FY): 8,240,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2443,
+      "ticker": "PEP",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000077476-26-000007",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/77476/000007747626000007/pep-20251227.htm"
+     },
+     "value": "8240000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": "approve"
+}

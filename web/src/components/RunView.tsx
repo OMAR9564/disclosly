@@ -4,14 +4,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { useLanguage } from "@/i18n/useLanguage";
+import { approveRun } from "@/lib/api";
 import { errorMessage } from "@/lib/messages";
 import { useRun } from "@/lib/useRun";
 
-import { AnswerView } from "./AnswerView";
+import { PlanDialog } from "./PlanDialog";
 import { SiteFooter } from "./SiteFooter";
 import { FlapRow } from "./FlapRow";
 import { LanguageToggle } from "./LanguageToggle";
 import { Timeline } from "./Timeline";
+import { ReportView } from "./report/ReportView";
 
 /** The run id from `/runs/<id>`. Read from the URL, not `useParams`: on Vercel the cached
  * prerender shell can hand the client a placeholder param, and the API then answers 422. */
@@ -28,7 +30,7 @@ export function runIdFromPath(pathname: string | null): string {
 export function RunView() {
   const id = runIdFromPath(usePathname());
   const { language, t, toggle } = useLanguage();
-  const { run, state, lost, loadError } = useRun(id, language);
+  const { run, state, lost, loadError, follow } = useRun(id, language);
   const failure =
     loadError ?? (state.phase === "error" ? state.errorCode : null);
 
@@ -59,6 +61,17 @@ export function RunView() {
         </section>
       )}
 
+      {state.pending && (
+        <PlanDialog
+          key={state.pending.expiresAt}
+          pending={state.pending}
+          plan={state.plan}
+          decide={(decision) => approveRun(id, decision, language)}
+          onDecided={follow}
+          t={t}
+        />
+      )}
+
       {lost && state.phase !== "done" && (
         <p className="row__note" role="alert">
           {t.runLost}
@@ -66,7 +79,7 @@ export function RunView() {
       )}
 
       {state.answer && (
-        <AnswerView answer={state.answer} citations={state.citations} t={t} />
+        <ReportView answer={state.answer} citations={state.citations} t={t} />
       )}
 
       <p className="board__next">
