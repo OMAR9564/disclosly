@@ -101,6 +101,19 @@ async def test_fake_router_unknown_request_raises() -> None:
         await fake.chat(other, task_class="cheap")
 
 
+async def test_fake_router_replays_repeated_requests_in_order() -> None:
+    fake = FakeRouter()
+    first = ChatResponse(content="first", provider="a", model="m")
+    second = ChatResponse(content="second", provider="a", model="m")
+    fake.load_interactions(
+        [interaction(REQUEST, "strong", first), interaction(REQUEST, "strong", second)]
+    )
+
+    replies = [await fake.chat(REQUEST, task_class="strong") for _ in range(3)]
+
+    assert [r.content for r in replies] == ["first", "second", "second"]
+
+
 async def test_fake_router_loads_cassette(tmp_path: Path) -> None:
     response = ChatResponse(content="hi", provider="groq-llama", model="m", tokens_in=3)
     path = tmp_path / "case.json"

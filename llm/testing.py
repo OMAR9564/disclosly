@@ -2,7 +2,8 @@
 
 A cassette is a JSON file `{"interactions": [{"key", "task_class", "response"}]}`. The key is
 `cassette_key(request, task_class)`, i.e. `llm.cache_key.cache_key` with the task class in
-place of the model id (the recorded provider is in `response`). An unknown key raises
+place of the model id (the recorded provider is in `response`). Entries that share a key are
+replayed in recorded order, and the last one repeats once they run out. An unknown key raises
 `CassetteMiss` so a test can never fall through to a live call.
 """
 
@@ -24,12 +25,12 @@ def cassette_key(request: ChatRequest, task_class: TaskClass) -> str:
 
 class FakeRouter:
     def __init__(self) -> None:
-        self._responses: dict[str, ChatResponse] = {}
+        self._responses: dict[str, list[ChatResponse]] = {}
         self.calls: list[tuple[TaskClass, ChatRequest]] = []
 
     def add(self, request: ChatRequest, task_class: TaskClass, response: ChatResponse) -> str:
         key = cassette_key(request, task_class)
-        self._responses[key] = response
+        self._responses.setdefault(key, []).append(response)
         return key
 
     def load(self, path: str | Path) -> "FakeRouter":
@@ -38,7 +39,8 @@ class FakeRouter:
 
     def load_interactions(self, interactions: list[dict[str, Any]]) -> "FakeRouter":
         for entry in interactions:
-            self._responses[entry["key"]] = ChatResponse.model_validate(entry["response"])
+            response = ChatResponse.model_validate(entry["response"])
+            self._responses.setdefault(entry["key"], []).append(response)
         return self
 
     @classmethod
@@ -48,10 +50,11 @@ class FakeRouter:
     async def chat(self, request: ChatRequest, *, task_class: TaskClass) -> ChatResponse:
         self.calls.append((task_class, request))
         key = cassette_key(request, task_class)
-        try:
-            return self._responses[key].model_copy()
-        except KeyError:
-            raise CassetteMiss(f"no cassette entry for {task_class} request {key}") from None
+        responses = self._responses.get(key)
+        if not responses:
+            raise CassetteMiss(f"no cassette entry for {task_class} request {key}")
+        response = responses.pop(0) if len(responses) > 1 else responses[0]
+        return response.model_copy()
 
 
 def interaction(
