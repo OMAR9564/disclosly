@@ -60,6 +60,8 @@ export interface RunState {
   answer: Report | null;
   citations: Citation[];
   errorCode: string | null;
+  /** Times the server resumed this run after a restart (`run_resumed`). */
+  resumes: number;
   /** Id of the newest event handled; a reconnect skips events up to it. */
   lastId: string | null;
 }
@@ -78,6 +80,7 @@ export const initialRunState: RunState = {
   answer: null,
   citations: [],
   errorCode: null,
+  resumes: 0,
   lastId: null,
 };
 
@@ -135,13 +138,19 @@ function apply(state: RunState, event: RunEvent): RunState {
     case "run_started":
       return { ...state, phase: "running" };
     case "run_resumed":
+      // The re-run node's events arrive with a higher attempt and replace the earlier ones.
+      return {
+        ...state,
+        phase: "running",
+        pending: null,
+        resumes: event.data.resume_count,
+      };
     case "decision_made":
       return {
         ...state,
         phase: "running",
         pending: null,
-        decision:
-          event.type === "decision_made" ? event.data.action : state.decision,
+        decision: event.data.action,
       };
     case "mode_selected":
       return { ...state, phase: "running", mode: event.data.mode };

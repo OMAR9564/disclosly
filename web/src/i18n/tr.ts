@@ -32,7 +32,9 @@ export const tr = {
   runConnecting: "Bağlanılıyor…",
   runRunning: "Yanıt hazırlanıyor.",
   runDone: "Yanıt hazır.",
-  runLost: "Bağlantı koptu. Sayfayı yenileyerek kaldığı yerden devam edin.",
+  runLost: "Bağlantı koptu. Yeniden bağlanılıyor; araştırma sunucuda sürüyor.",
+  runResumed:
+    "Sunucu yeniden başladıktan sonra kaldığı yerden devam etti; biten adımlar korundu.",
   answerLabel: "Yanıt",
   figuresLabel: "Rakamlar ve kaynaklar",
   checkCompleted: "Tamam",

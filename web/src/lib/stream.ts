@@ -126,6 +126,12 @@ export function compareEventIds(a: string, b: string): number {
 
 export const MAX_RECONNECTS = 5;
 
+/** Wait before the n-th (0-based) new connection after the stream was lost: 1 s doubling to
+ * 30 s, so the page follows the run again soon after the API is back from a restart. */
+export function reconnectDelay(attempt: number): number {
+  return Math.min(30_000, 1000 * 2 ** Math.max(0, attempt));
+}
+
 export interface StreamHandlers {
   /** Events up to this id were already handled (a reconnect after a decision replays the
    * stream from its start, since a new EventSource cannot send `Last-Event-ID`). */
