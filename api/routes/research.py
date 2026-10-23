@@ -129,16 +129,25 @@ async def approve_research(
     async def swap(submitted_at: datetime) -> None:
         await quota.swap_to_deep(user.id, submitted_at, language)
 
-    status = await service.decide(
-        run_id,
-        user.id,
-        body.action,
-        now,
-        plan=plan.model_dump(mode="json") if plan is not None else None,
-        before_commit=swap if body.action in ("approve", "edit") else None,
-    )
+    # The lease comes first: once the row says `running`, the supervisor (research §R7) must
+    # see it held, or it would resume the run a second time.
+    lease = await service.claim(run_id)
+    if lease is None:
+        raise ApiError("already_decided")
+    try:
+        status = await service.decide(
+            run_id,
+            user.id,
+            body.action,
+            now,
+            plan=plan.model_dump(mode="json") if plan is not None else None,
+            before_commit=swap if body.action in ("approve", "edit") else None,
+        )
+    except BaseException:
+        await lease.release()
+        raise
     decision = Decision(action=body.action, plan=plan, decided_at=now)
-    service.resume(run_id, user.id, pending.language, decision.model_dump(mode="json"))
+    service.resume(run_id, user.id, pending.language, decision.model_dump(mode="json"), lease)
     return DecisionAccepted(run_id=run_id, status=status, quota=await quota.statuses(user.id))
 
 

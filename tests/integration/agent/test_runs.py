@@ -128,8 +128,19 @@ async def test_failure_is_recorded_and_streamed(engine: Engine, redis: Any) -> N
 def test_mark_interrupted(engine: Engine) -> None:
     user = add_user(engine)
     with engine.begin() as conn:
-        conn.execute(insert(schema.runs).values(user_id=user, question=QUESTION, language="tr"))
+        for run_engine in ("single", "graph"):
+            conn.execute(
+                insert(schema.runs).values(
+                    user_id=user, question=QUESTION, language="tr", engine=run_engine
+                )
+            )
+    # Graph runs are left to the supervisor (research §R7).
     assert mark_interrupted(engine) == 1
     with engine.connect() as conn:
-        row = conn.execute(select(schema.runs.c.status, schema.runs.c.error_code)).one()
-    assert tuple(row) == ("failed", "interrupted")
+        rows = conn.execute(
+            select(schema.runs.c.engine, schema.runs.c.status, schema.runs.c.error_code)
+        ).all()
+    assert sorted(tuple(r) for r in rows) == [
+        ("graph", "running", None),
+        ("single", "failed", "interrupted"),
+    ]
