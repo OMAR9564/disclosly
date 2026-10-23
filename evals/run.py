@@ -21,7 +21,14 @@ DATASETS_DIR = Path(__file__).parent / "datasets"
 CASSETTES_DIR = Path(__file__).parent / "cassettes"
 # Datasets scored by their own runner (evals/retrieval.py, evals/agent.py, evals/graph.py).
 OWN_RUNNER = frozenset(
-    {"retrieval_golden", "answers_golden", "advice_refusal", "injection", "deep_golden"}
+    {
+        "retrieval_golden",
+        "answers_golden",
+        "advice_refusal",
+        "injection",
+        "deep_golden",
+        "verifier_seeded",
+    }
 )
 
 
