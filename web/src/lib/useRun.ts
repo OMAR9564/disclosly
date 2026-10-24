@@ -5,12 +5,13 @@ import { useCallback, useEffect, useReducer, useRef, useState } from "react";
 import type { Language } from "@/i18n";
 import { ApiError, type Run, getRun, streamUrl } from "@/lib/api";
 import { type RunState, initialRunState, reduceRun } from "@/lib/runState";
-import { type RunEvent, subscribeRun } from "@/lib/stream";
+import { type RunEvent, reconnectDelay, subscribeRun } from "@/lib/stream";
 
 /**
  * Loads a run and follows its event stream; replays the full history on reload. The server
  * closes the stream when the run pauses for a decision; `follow()` opens it again after the
- * decision and skips the events already shown.
+ * decision and skips the events already shown. A lost stream (the API restarting during a
+ * deploy) is opened again with growing waits until events arrive.
  */
 export function useRun(
   runId: string,
@@ -32,18 +33,31 @@ export function useRun(
   const [loadError, setLoadError] = useState<string | null>(null);
   const lastId = useRef<string | null>(null);
   const close = useRef<(() => void) | null>(null);
+  const retries = useRef(0);
+  const retryTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     lastId.current = state.lastId;
   }, [state.lastId]);
 
   const subscribe = useCallback(
-    (after: string | null) => {
+    function open(after: string | null) {
       close.current?.();
+      if (retryTimer.current) clearTimeout(retryTimer.current);
       close.current = subscribeRun(streamUrl(runId), {
         after,
-        onEvent: (event) => dispatch(event),
-        onDisconnect: () => setLost(true),
+        onEvent: (event) => {
+          retries.current = 0;
+          setLost(false);
+          dispatch(event);
+        },
+        onDisconnect: () => {
+          setLost(true);
+          retryTimer.current = setTimeout(
+            () => open(lastId.current),
+            reconnectDelay(retries.current++),
+          );
+        },
       });
     },
     [runId],
@@ -63,9 +77,11 @@ export function useRun(
             error instanceof ApiError ? error.code : "internal_error",
           );
       });
+    retries.current = 0;
     subscribe(null);
     return () => {
       active = false;
+      if (retryTimer.current) clearTimeout(retryTimer.current);
       close.current?.();
       close.current = null;
     };

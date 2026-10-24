@@ -1,8 +1,10 @@
 """Run lifecycle: `runs` row, background agent task, Redis event stream, persistence.
 
 Events go to the stream `run:{id}:events` (contracts/sse-events.md) and expire 24 h after the
-run finishes. Runs are hosted in the API process (research §R6); a run left `running` by a
-restart is marked `failed` with `error_code = "interrupted"` on startup.
+run finishes. Runs are hosted in the API process (research §R6). A single-engine run left
+`running` by a restart is marked `failed` with `error_code = "interrupted"` on startup; a graph
+run executes under a Redis lease and is resumed by the supervisor (`agent/supervisor.py`,
+research §R7).
 
 `AGENT_ENGINE` picks the engine for new runs (Phase 4, research §R15): `single` runs the
 Phase 3 loop unchanged; `graph` runs the LangGraph research graph, checkpointed with the run
@@ -29,9 +31,11 @@ from sqlalchemy import Engine, insert, select, update
 
 from agent.advice import detect_language
 from agent.budget import Usage, utcnow
+from agent.graph.nodes.decision import Decision
 from agent.graph.state import Calculation, ResearchState
 from agent.loop import Budget, RunOutcome, Tools, run_agent
 from agent.report import Report, finalize_report
+from agent.supervisor import Lease, Leases
 from agent.telemetry import run_span
 from api import schema
 from api.errors import ApiError, ErrorCode, localized_message
@@ -98,6 +102,18 @@ DecisionStatus = Literal["running", "cancelled"]
 
 
 @dataclass(frozen=True)
+class InterruptedRun:
+    """A `running` graph run row, as the supervisor resumes it."""
+
+    id: uuid.UUID
+    user_id: uuid.UUID
+    language: str
+    decision: str | None
+    plan: dict[str, Any] | None
+    decided_at: datetime | None
+
+
+@dataclass(frozen=True)
 class StreamEvent:
     id: str
     event: str
@@ -122,6 +138,7 @@ class RunService:
         max_concurrent_runs: int = 3,
         plan_ttl_hours: int = 24,
         now: Callable[[], datetime] = utcnow,
+        leases: Leases | None = None,
     ) -> None:
         self._engine = engine
         self._redis = redis
@@ -131,6 +148,8 @@ class RunService:
         self._clock = clock
         self._now = now
         self._tasks: set[asyncio.Task[None]] = set()
+        self._graph_tasks: set[asyncio.Task[None]] = set()
+        self.leases = leases or Leases(None)
         self.agent_engine: AgentEngine = agent_engine
         self._graph: Graph | None = None
         self._slots = asyncio.Semaphore(max_concurrent_runs)
@@ -274,11 +293,128 @@ class RunService:
             return "plan_expired"
         return "not_awaiting_decision"
 
+    async def claim(self, run_id: uuid.UUID) -> Lease | None:
+        """The run's lease for this process, or None while another process holds it."""
+        return await self.leases.claim(run_id)
+
     def resume(
-        self, run_id: uuid.UUID, user_id: uuid.UUID, language: str, decision: dict[str, Any]
+        self,
+        run_id: uuid.UUID,
+        user_id: uuid.UUID,
+        language: str,
+        decision: dict[str, Any],
+        lease: Lease | None = None,
     ) -> None:
-        """Continue a paused graph run with an accepted decision, in the background."""
-        self._spawn(self._drive(run_id, user_id, language, Command(resume=decision)))
+        """Continue a paused graph run with an accepted decision, in the background.
+
+        The approve route claims `lease` before it records the decision, so the supervisor
+        never sees the run `running` without a lease.
+        """
+        lease = lease or self.leases.lease(run_id)
+        self._spawn_graph(self._drive(run_id, user_id, language, Command(resume=decision), lease))
+
+    async def resume_interrupted(
+        self, run: InterruptedRun, lease: Lease, resume_count: int
+    ) -> None:
+        """Continue a run a restart interrupted, from its last checkpoint (supervisor)."""
+        graph = self._graph
+        assert graph is not None  # noqa: S101  (the supervisor runs only with a graph)
+        snapshot = await graph.aget_state(graph_config(run.id))
+        graph_input: Any = None
+        if snapshot.interrupts and run.decision is not None and run.decided_at is not None:
+            # Decided, but the process stopped before it resumed the graph with the decision.
+            decision = Decision.model_validate(
+                {"action": run.decision, "plan": run.plan, "decided_at": run.decided_at}
+            )
+            graph_input = Command(resume=decision.model_dump(mode="json"))
+        from_node = snapshot.next[0] if snapshot.next else None
+        await self._emit_service(
+            run.id, "run_resumed", {"from_node": from_node, "resume_count": resume_count}
+        )
+        self._spawn_graph(
+            self._drive(run.id, run.user_id, run.language, graph_input, lease, resume_count)
+        )
+
+    async def fail_interrupted(self, run: InterruptedRun, lease: Lease) -> None:
+        """A run interrupted more than the limit allows ends `failed`/`interrupted_limit`."""
+        try:
+            await asyncio.to_thread(self._fail, run.id, "interrupted_limit")
+            message = localized_message("interrupted_limit", "en" if run.language == "en" else "tr")
+            await self._emit_service(
+                run.id, "error", {"code": "interrupted_limit", "message": message}
+            )
+            await self._redis.expire(stream_key(run.id), STREAM_TTL_SECONDS)
+        finally:
+            await lease.release()
+
+    async def running_graph_runs(self) -> list[InterruptedRun]:
+        return await asyncio.to_thread(self._running_graph_runs)
+
+    def _running_graph_runs(self) -> list[InterruptedRun]:
+        runs = schema.runs
+        with self._engine.connect() as conn:
+            rows = conn.execute(
+                select(
+                    runs.c.id,
+                    runs.c.user_id,
+                    runs.c.language,
+                    runs.c.decision,
+                    runs.c.plan,
+                    runs.c.decided_at,
+                )
+                .where(runs.c.status == "running", runs.c.engine == "graph")
+                .order_by(runs.c.created_at)
+            ).all()
+        return [InterruptedRun(**row._mapping) for row in rows]
+
+    async def bump_resume_count(self, run_id: uuid.UUID) -> int:
+        return await asyncio.to_thread(self._bump_resume_count, run_id)
+
+    def _bump_resume_count(self, run_id: uuid.UUID) -> int:
+        runs = schema.runs
+        with self._engine.begin() as conn:
+            count = conn.execute(
+                update(runs)
+                .where(runs.c.id == run_id)
+                .values(resume_count=runs.c.resume_count + 1)
+                .returning(runs.c.resume_count)
+            ).scalar_one()
+        return int(count)
+
+    async def expire_plans(self, now: datetime) -> list[uuid.UUID]:
+        """Plans past `plan_expires_at` end `expired`, with `run_expired` on their stream."""
+        expired = await asyncio.to_thread(self._expire_plans, now)
+        for run_id in expired:
+            await self._emit_service(run_id, "run_expired", {})
+            await self._redis.expire(stream_key(run_id), STREAM_TTL_SECONDS)
+        return expired
+
+    def _expire_plans(self, now: datetime) -> list[uuid.UUID]:
+        runs = schema.runs
+        with self._engine.begin() as conn:
+            rows = conn.execute(
+                update(runs)
+                .where(runs.c.status == "awaiting_approval", runs.c.plan_expires_at <= now)
+                .values(status="expired", finished_at=now)
+                .returning(runs.c.id)
+            ).all()
+        return [row.id for row in rows]
+
+    async def finished_graph_runs(self, before: datetime) -> list[uuid.UUID]:
+        return await asyncio.to_thread(self._finished_graph_runs, before)
+
+    def _finished_graph_runs(self, before: datetime) -> list[uuid.UUID]:
+        runs = schema.runs
+        with self._engine.connect() as conn:
+            rows = conn.execute(
+                select(runs.c.id).where(runs.c.engine == "graph", runs.c.finished_at < before)
+            ).all()
+        return [row.id for row in rows]
+
+    async def delete_checkpoint(self, run_id: uuid.UUID) -> None:
+        graph = self._graph
+        if graph is not None and graph.checkpointer is not None:
+            await graph.checkpointer.adelete_thread(str(run_id))  # type: ignore[union-attr]
 
     def _engine_for_new_runs(self) -> AgentEngine:
         return "graph" if self.agent_engine == "graph" and self._graph is not None else "single"
@@ -296,9 +432,11 @@ class RunService:
         engine = self._engine_for_new_runs()
         run_id = await asyncio.to_thread(self._insert, user_id, question, language, engine)
         if engine == "graph":
-            self._spawn(
+            lease = self.leases.lease(run_id)
+            await lease.acquire()  # a new run id: nobody else can hold it
+            self._spawn_graph(
                 self._execute_graph(
-                    run_id, user_id, question, language, self._now(), on_early_failure
+                    run_id, user_id, question, language, self._now(), lease, on_early_failure
                 )
             )
         else:
@@ -309,6 +447,20 @@ class RunService:
         task: asyncio.Task[None] = asyncio.ensure_future(coroutine)
         self._tasks.add(task)
         task.add_done_callback(self._tasks.discard)
+
+    def _spawn_graph(self, coroutine: Awaitable[None]) -> None:
+        task: asyncio.Task[None] = asyncio.ensure_future(coroutine)
+        self._tasks.add(task)
+        self._graph_tasks.add(task)
+        task.add_done_callback(self._tasks.discard)
+        task.add_done_callback(self._graph_tasks.discard)
+
+    async def cancel_graph_runs(self) -> None:
+        """Shutdown: stop graph runs; each releases its lease so the next process resumes it."""
+        tasks = list(self._graph_tasks)
+        for task in tasks:
+            task.cancel()
+        await asyncio.gather(*tasks, return_exceptions=True)
 
     async def wait_idle(self) -> None:
         """Wait for every background run (tests and shutdown)."""
@@ -446,6 +598,7 @@ class RunService:
         question: str,
         language: str,
         submitted_at: datetime,
+        lease: Lease,
         on_early_failure: Callable[[], Awaitable[None]] | None = None,
     ) -> None:
         initial: ResearchState = {
@@ -465,7 +618,7 @@ class RunService:
         await self._emit_service(
             run_id, "run_started", {"run_id": str(run_id), "language": language}
         )
-        await self._drive(run_id, user_id, language, initial, on_early_failure)
+        await self._drive(run_id, user_id, language, initial, lease, 0, on_early_failure)
 
     async def _drive(
         self,
@@ -473,19 +626,31 @@ class RunService:
         user_id: uuid.UUID,
         language: str,
         graph_input: Any,
+        lease: Lease,
+        resume_count: int = 0,
         on_early_failure: Callable[[], Awaitable[None]] | None = None,
     ) -> None:
-        """Run (or resume) the graph until it ends or pauses, then persist the outcome."""
+        """Run (or resume) the graph until it ends or pauses, then persist the outcome.
+
+        The lease is renewed alongside; once it is lost the run stops at the next node
+        boundary and leaves the row to the process that holds it now.
+        """
         graph = self._graph
         assert graph is not None  # noqa: S101  (graph runs exist only with a graph)
         started = self._clock()
         config = graph_config(run_id)
         paused = False
+        keeper = asyncio.ensure_future(lease.keep())
         with run_span(run_id=str(run_id), user_id=str(user_id), language=language) as span:
             try:
                 async with self._slots:
                     async for _ in graph.astream(graph_input, config, durability="sync"):
-                        pass
+                        if lease.lost:
+                            break
+                if lease.lost:
+                    span.set_attribute("disclosly.status", "lease_lost")
+                    logger.warning("run lease lost", extra={"run_id": str(run_id)})
+                    return
                 snapshot = await graph.aget_state(config)
                 if snapshot.next:
                     # Paused at a decision: the decision node marked the row and emitted
@@ -501,7 +666,9 @@ class RunService:
                 if draft is None:
                     raise RuntimeError("graph ended without a report")
                 total_ms = round((self._clock() - started) * 1000, 1)
-                report, citations, usage = self._graph_outcome(values, draft, total_ms)
+                report, citations, usage = self._graph_outcome(
+                    values, draft, total_ms, resume_count
+                )
                 span.set_attribute("disclosly.status", report.status)
                 await asyncio.to_thread(
                     self._finish_graph, run_id, report, citations, usage, values.get("mode")
@@ -528,12 +695,15 @@ class RunService:
                     except Exception:
                         logger.exception("early-failure hook failed", extra={"run_id": str(run_id)})
             finally:
+                keeper.cancel()
                 self._model_called.discard(str(run_id))
-                ttl = self._pause_ttl_seconds if paused else STREAM_TTL_SECONDS
-                await self._redis.expire(stream_key(run_id), ttl)
+                if not lease.lost:
+                    ttl = self._pause_ttl_seconds if paused else STREAM_TTL_SECONDS
+                    await self._redis.expire(stream_key(run_id), ttl)
+                    await lease.release()
 
     def _graph_outcome(
-        self, values: ResearchState, draft: Report, total_ms: float
+        self, values: ResearchState, draft: Report, total_ms: float, resumes: int = 0
     ) -> tuple[Report, list[dict[str, Any]], dict[str, Any]]:
         report = finalize_report(draft)
         evidence = {item.cite_id: item for item in values.get("evidence") or []}
@@ -544,6 +714,7 @@ class RunService:
             **usage_model.model_dump(mode="json"),
             "limit_hit": values.get("limit_hit"),
             "verify_rounds": values.get("verify_rounds", 0),
+            "resumes": resumes,
             "total_ms": total_ms,
         }
         return report, citations, usage
@@ -677,11 +848,12 @@ class RunService:
 
 
 def mark_interrupted(engine: Engine) -> int:
-    """Startup hook: runs left `running` by a restart become `failed`/`interrupted`."""
+    """Startup hook: single-engine runs left `running` by a restart become
+    `failed`/`interrupted` (graph runs are resumed by the supervisor instead)."""
     with engine.begin() as conn:
         result = conn.execute(
             update(schema.runs)
-            .where(schema.runs.c.status == "running")
+            .where(schema.runs.c.status == "running", schema.runs.c.engine == "single")
             .values(status="failed", error_code="interrupted", finished_at=datetime.now(UTC))
         )
     return result.rowcount

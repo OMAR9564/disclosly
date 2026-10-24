@@ -15,6 +15,7 @@ from agent.graph.build import build_graph
 from agent.graph.context import GraphDeps
 from agent.loop import Budget
 from agent.runs import RunService, StreamRedis
+from agent.supervisor import LeaseRedis, Leases
 from api.auth.allowlist import Allowlist, AllowRedis, db_lookup
 from api.config import Settings
 from api.guards import Guards
@@ -85,6 +86,7 @@ def build_run_service(settings: Settings) -> tuple[RunService, list[Any]]:
         agent_engine=settings.agent_engine,
         max_concurrent_runs=settings.agent_max_concurrent_runs,
         plan_ttl_hours=settings.agent_plan_ttl_hours,
+        leases=Leases(cast(LeaseRedis, client)),
     )
     return service, [engine, client, http, search]
 
