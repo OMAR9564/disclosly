@@ -99,13 +99,14 @@ async def test_approved_plan_ends_with_a_report_replayed_from_cassettes(
         "strong",  # planner
         "cheap",  # retriever sufficiency
         "cheap",  # analyst (no calculate step)
+        "strong",  # verifier (claim support)
         "strong",  # writer
     ]
 
     replay = FakeRouter().load_interactions(recorder.interactions)
     service, run_id, user = await _deep_run(engine, redis, saver, replay, "approve")
 
-    assert len(replay.calls) == 5
+    assert len(replay.calls) == 6
     run = await service.get(run_id, user)
     assert run is not None
     assert (run["status"], run["mode"], run["engine"], run["decision"]) == (
@@ -130,8 +131,15 @@ async def test_approved_plan_ends_with_a_report_replayed_from_cassettes(
     assert report["confidence"]["level"] == "high"
     assert report["disclaimer"] == "Yatırım tavsiyesi değildir / Not investment advice"
     assert {c["cite_id"] for c in run["citations"]} == {"f:80", "f:81", "f:82", "f:83"}
-    assert run["usage"]["model_calls"] == 5
-    assert set(run["usage"]["nodes"]) >= {"router", "planner", "retriever", "analyst", "writer"}
+    assert run["usage"]["model_calls"] == 6
+    assert set(run["usage"]["nodes"]) >= {
+        "router",
+        "planner",
+        "retriever",
+        "analyst",
+        "verifier",
+        "writer",
+    }
 
     events = await _events(service, run_id)
     names = [e for e, _ in events]

@@ -12,7 +12,7 @@
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 1019,
     "tokens_out": 109,
-    "latency_ms": 1696.436,
+    "latency_ms": 1108.774,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,13 @@
    "key": "1ee42277cb128914e6b58a78e8f41acddcfded9ae94e4b556e48ed59850948d1",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Ford Otosan (FROTO) ve Tofaş (TOASO) 2025-Q1, 2025-Q2, 2025-Q3 dönemleri için net kâr (net_income) verilerini getir\",\n      \"tickers\": [\"FROTO\", \"TOASO\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q2\", \"2025-Q3\"],\n      \"metrics\": [\"net_income\"]\n    }\n  ]}",
+    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Ford Otosan (FROTO) ve Tofaş (TOASO) 2025-Q1, 2025-Q2, 2025-Q3 dönemleri için raporlanan net kâr (net_income) verilerini getir.\", \"tickers\": [\"FROTO\", \"TOASO\"], \"periods\": [\"2025-Q1\", \"2025-Q2\", \"2025-Q3\"], \"metrics\": [\"net_income\"]}]}",
     "tool_calls": [],
     "provider": "openrouter-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
     "tokens_in": 1212,
-    "tokens_out": 433,
-    "latency_ms": 7842.858,
+    "tokens_out": 319,
+    "latency_ms": 14518.226,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -36,46 +36,63 @@
    }
   },
   {
-   "key": "3e7d07e7a2d4fa49a5198d85d8a0c53799659a383092bf542a4f75101bbe4913",
+   "key": "4320e237c442a15f5468ebc2332680d3ca41c5276275c51e1e5c5ac24d972070",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Ford Otosan ve Tofaş 2025 ilk üç çeyrek net kar\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 872,
-    "tokens_out": 45,
-    "latency_ms": 888.377,
+    "tokens_in": 874,
+    "tokens_out": 65,
+    "latency_ms": 827.378,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "21e164f26f724de1f98b5b501d9e978922dfce1ee605ff56fe361de0cd284a33",
+   "key": "8e1c87ee26101af7ae7fd2c956175a9f7e035993a0c7498ed36b7cf8ab94aaa4",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Ford Otosan'ın 2025-Q1 net dönem kârı 6.487.096.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\n        \"f:2855\"\n      ]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Ford Otosan'ın 2025-Q2 net dönem kârı 6.110.784.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\n        \"f:2869\"\n      ]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Ford Otosan'ın 2025-Q3 net dönem kârı 8.401.456.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\n        \"f:2879\"\n      ]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"Tofaş'ın 2025-Q1 net dönem kârı -140.454.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\n        \"f:3541\"\n      ]\n    },\n    {\n      \"id\": \"F5\",\n      \"text\": \"Tofaş'ın 2025-Q2 net dönem kârı 1.751.065.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\n        \"f:3555\"\n      ]\n    },\n    {\n      \"id\": \"F6\",\n      \"text\": \"Tofaş'ın 2025-Q3 net dönem kârı 1.208.344.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\n        \"f:3565\"\n      ]\n    }\n  ]\n}",
+    "content": "{\"findings\":[{\"id\":\"F1\",\"text\":\"Ford Otosan net kârı 2025-Q1 6.487.096.000 TRY, Tofaş net kârı -140.454.000 TRY.\",\"cite_ids\":[\"f:2855\",\"f:3541\"]},{\"id\":\"F2\",\"text\":\"Ford Otosan net kârı 2025-Q2 6.110.784.000 TRY, Tofaş net kârı 1.751.065.000 TRY.\",\"cite_ids\":[\"f:2869\",\"f:3555\"]},{\"id\":\"F3\",\"text\":\"Ford Otosan net kârı 2025-Q3 8.401.456.000 TRY, Tofaş net kârı 1.208.344.000 TRY.\",\"cite_ids\":[\"f:2879\",\"f:3565\"]}]}",
     "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1733,
-    "tokens_out": 490,
-    "latency_ms": 2079.818,
+    "provider": "groq-llama",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 2939,
+    "tokens_out": 915,
+    "latency_ms": 1600.396,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-lite"
+    ]
    }
   },
   {
-   "key": "484aa1ac2cb276acac0b8e604ba98499d101d2f6a1274879ad6c41dc10fbb5e0",
+   "key": "70676e38b55b5c9edce8526ef4520d736d13c2157766bfb07fb5e77638325f00",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"2025 yılının ilk üç çeyreğinde Ford Otosan her dönemde karlı bir performans sergilemiş, net kârı 6,49 milyar TRY'den 8,40 milyar TRY'ye yükselmiştir [1][2][3]. Tofaş ise ilk çeyrekte 140,5 milyon TRY zarar etmiş, ikinci ve üçüncü çeyreklerde sırasıyla 1,75 milyar TRY ve 1,21 milyar TRY net kâr gerçekleştirmiştir [4][5][6].\",\n  \"points\": [\n    {\n      \"text\": \"Ford Otosan 2025-Q1 net kârı 6.487.096.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:2855\"]\n    },\n    {\n      \"text\": \"Ford Otosan 2025-Q2 net kârı 6.110.784.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:2869\"]\n    },\n    {\n      \"text\": \"Ford Otosan 2025-Q3 net kârı 8.401.456.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:2879\"]\n    },\n    {\n      \"text\": \"Tofaş 2025-Q1 net kârı -140.454.000 TRY (zarar) olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:3541\"]\n    },\n    {\n      \"text\": \"Tofaş 2025-Q2 net kârı 1.751.065.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:3555\"]\n    },\n    {\n      \"text\": \"Tofaş 2025-Q3 net kârı 1.208.344.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:3565\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Ford Otosan ve Tofaş 2025 İlk Üç Çeyrek Net Kâr Karşılaştırması (TRY)\",\n      \"columns\": [\n        \"Dönem\",\n        \"Ford Otosan Net Kâr (TRY)\",\n        \"Tofaş Net Kâr (TRY)\"\n      ],\n      \"rows\": [\n        [\n          {\n            \"text\": \"2025-Q1\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"6.487.096.000\",\n            \"cite_id\": \"f:2855\"\n          },\n          {\n            \"text\": \"-140.454.000\",\n            \"cite_id\": \"f:3541\"\n          }\n        ],\n        [\n          {\n            \"text\": \"2025-Q2\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"6.110.784.000\",\n            \"cite_id\": \"f:2869\"\n          },\n          {\n            \"text\": \"1.751.065.000\",\n            \"cite_id\": \"f:3555\"\n          }\n        ],\n        [\n          {\n            \"text\": \"2025-Q3\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"8.401.456.000\",\n            \"cite_id\": \"f:2879\"\n          },\n          {\n            \"text\": \"1.208.344.000\",\n            \"cite_id\": \"f:3565\"\n          }\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"line\",\n    \"table\": 0,\n    \"x_column\": \"Dönem\",\n    \"series\": [\n      \"Ford Otosan Net Kâr (TRY)\",\n      \"Tofaş Net Kâr (TRY)\"\n    ]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Her iki şirketin 2025 yılı ilk üç çeyreği için net kâr verileri KAP açıklamalarından elde edilmiş ve tam olarak karşılanmıştır.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2855\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2869\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:2879\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:3541\"\n    },\n    {\n      \"marker\": 5,\n      \"cite_id\": \"f:3555\"\n    },\n    {\n      \"marker\": 6,\n      \"cite_id\": \"f:3565\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"\"}]}",
+    "tool_calls": [],
+    "provider": "gemini-flash-stable",
+    "model": "gemini-2.5-flash",
+    "tokens_in": 1367,
+    "tokens_out": 60,
+    "latency_ms": 3555.611,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "77c71a28ba80a3eef1ca379094a8879ee486aa341efdf5c6b6f2ac44de0d0046",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"2025'in ilk üç çeyreğinde Ford Otosan, Tofaş'tan belirgin şekilde daha yüksek net kârlar bildirmiştir. Ford Otosan her üç çeyrekte de pozitif net kâr elde ederken, Tofaş ilk çeyrekte zarar, ikinci ve üçüncü çeyreklerde ise daha düşük kârlılık göstermiştir [1][2][3][4][5][6].\",\n  \"points\": [\n    {\n      \"text\": \"2025-Q1: Ford Otosan net kâr 6.487.096.000 TRY, Tofaş net kâr -140.454.000 TRY (zarar).\",\n      \"cite_ids\": [\"f:2855\", \"f:3541\"]\n    },\n    {\n      \"text\": \"2025-Q2: Ford Otosan net kâr 6.110.784.000 TRY, Tofaş net kâr 1.751.065.000 TRY.\",\n      \"cite_ids\": [\"f:2869\", \"f:3555\"]\n    },\n    {\n      \"text\": \"2025-Q3: Ford Otosan net kâr 8.401.456.000 TRY, Tofaş net kâr 1.208.344.000 TRY.\",\n      \"cite_ids\": [\"f:2879\", \"f:3565\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"2025 İlk Üç Çeyrek Net Kâr Karşılaştırması (TRY)\",\n      \"columns\": [\"Dönem\", \"Ford Otosan Net Kâr (TRY)\", \"Tofaş Net Kâr (TRY)\"],\n      \"rows\": [\n        [\n          {\"text\": \"2025-Q1\", \"cite_id\": null},\n          {\"text\": \"6.487.096.000\", \"cite_id\": \"f:2855\"},\n          {\"text\": \"-140.454.000\", \"cite_id\": \"f:3541\"}\n        ],\n        [\n          {\"text\": \"2025-Q2\", \"cite_id\": null},\n          {\"text\": \"6.110.784.000\", \"cite_id\": \"f:2869\"},\n          {\"text\": \"1.751.065.000\", \"cite_id\": \"f:3555\"}\n        ],\n        [\n          {\"text\": \"2025-Q3\", \"cite_id\": null},\n          {\"text\": \"8.401.456.000\", \"cite_id\": \"f:2879\"},\n          {\"text\": \"1.208.344.000\", \"cite_id\": \"f:3565\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"line\",\n    \"table\": 0,\n    \"x_column\": \"Dönem\",\n    \"series\": [\"Ford Otosan Net Kâr (TRY)\", \"Tofaş Net Kâr (TRY)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Her iki şirketin 2025-Q1, Q2, Q3 net kâr verileri resmi açıklamalardan elde edilmiş ve tam olarak kanıtlanmıştır.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:2855\"},\n    {\"marker\": 2, \"cite_id\": \"f:3541\"},\n    {\"marker\": 3, \"cite_id\": \"f:2869\"},\n    {\"marker\": 4, \"cite_id\": \"f:3555\"},\n    {\"marker\": 5, \"cite_id\": \"f:2879\"},\n    {\"marker\": 6, \"cite_id\": \"f:3565\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "openrouter-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2983,
-    "tokens_out": 1577,
-    "latency_ms": 21745.331,
+    "tokens_in": 2869,
+    "tokens_out": 1433,
+    "latency_ms": 37098.523,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",

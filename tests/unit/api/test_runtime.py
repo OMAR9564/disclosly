@@ -121,6 +121,9 @@ async def test_graph_deps_from_settings() -> None:
     assert deps.budgets["deep"].max_model_calls == 15
     assert deps.plan_max_steps == 6
     assert deps.emit == service.emit_event
+    assert deps.sandbox is None
+    marker: Any = object()
+    assert graph_deps(service, settings, marker).sandbox is marker
     for resource in resources:
         close = getattr(resource, "aclose", None)
         if close is not None:

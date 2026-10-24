@@ -1,0 +1,215 @@
+{
+ "case_id": "tr-deep-tuprs-hasilat-artisi",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "31f48fd786258782481aebc13db0e1ca9999e7e355528cce5a9e16da163f67d2",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"TUPRS\"\n  ],\n  \"periods\": [\n    \"2025-Q1\",\n    \"2025-Q3\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1021,
+    "tokens_out": 89,
+    "latency_ms": 957.05,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "f3afd3bd255085292ae6e56d185fddb9ca9a69fe91be796c49be440ba8a87a17",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Tüpraş'ın 2025-Q1 ve 2025-Q3 hasılat (revenue) rakamlarını getir\",\n      \"tickers\": [\"TUPRS\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [\"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"2025-Q1'den 2025-Q3'e hasılat yüzde değişimini hesapla\",\n      \"tickers\": [\"TUPRS\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"]\n    }\n  ]}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 1201,
+    "tokens_out": 409,
+    "latency_ms": 6498.634,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "15cf7764deadc1db7569c6359044e6d56f2562815f132c07ea49c9634d45c0c1",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 904,
+    "tokens_out": 78,
+    "latency_ms": 1412.283,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "33e6cd7beeef7ad6f3d2aced76bd667fcc3ce4f6cf55fde653f25a0c80a22dcb",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"findings\": [{\"id\": \"F1\", \"text\": \"Tüpraş'ın 2025 yılı ilk çeyreğinde (01.01.2025-31.03.2025) hasılatı 158.623.387.000 TL olarak raporlanmıştır.\", \"cite_ids\": [\"f:2131\"]}, {\"id\": \"F2\", \"text\": \"Tüpraş'ın 2025 yılı üçüncü çeyreğinde (01.07.2025-30.09.2025) hasılatı 220.665.829.000 TL olarak raporlanmıştır.\", \"cite_ids\": [\"f:2155\"]}, {\"id\": \"F3\", \"text\": \"Tüpraş'ın hasılatı 2025-Q1'den 2025-Q3'e yaklaşık %39,1 artmıştır.\", \"cite_ids\": [\"f:2131\", \"f:2155\"], \"calcs\": [\"revenue_q1_to_q3_pct_change\"]}], \"calculations\": [{\"name\": \"revenue_q1_to_q3_pct_change\", \"description\": \"2025-Q1'den 2025-Q3'e hasılat yüzde değişimi ((Q3 - Q1) / Q1 * 100)\", \"inputs\": [{\"name\": \"revenue_q1\", \"cite_id\": \"f:2131\", \"value\": 158623387000}, {\"name\": \"revenue_q3\", \"cite_id\": \"f:2155\", \"value\": 220665829000}], \"code\": \"result = (inputs['revenue_q3'] - inputs['revenue_q1']) / inputs['revenue_q1'] * 100\"}]}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 2109,
+    "tokens_out": 1003,
+    "latency_ms": 12061.292,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "507ee2726352afd3d92d7cfb77f7a60cd6fab6b0f1248f767f60901774b15fc4",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Kanıt f:2131'de 2025-Q1 hasılatı 158.623.387.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Kanıt f:2155'te 2025-Q3 hasılatı 220.665.829.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"İki kanıtın rakamlarıyla hesaplanan yüzde değişim ((220.665.829.000-158.623.387.000)/158.623.387.000*100) ≈ %39,1; bulgu ve hesaplama uyuşuyor.\"}]}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 1119,
+    "tokens_out": 744,
+    "latency_ms": 14277.666,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "067b74d42ee2c9bfd9219b942b6220651cade7f60ec00b358bd963b02fb08bdc",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Tüpraş'ın 2025 yılı ilk çeyreğindeki hasılatı 158,6 milyar TL, üçüncü çeyreğindeki hasılatı ise 220,7 milyar TL olarak raporlanmıştır [1][2]. Bu iki dönem arasında hasılat yaklaşık %39,1 artmıştır [3].\",\n  \"points\": [\n    {\n      \"text\": \"2025-Q1 (01.01.2025-31.03.2025) hasılatı 158.623.387.000 TL'dir.\",\n      \"cite_ids\": [\"f:2131\"]\n    },\n    {\n      \"text\": \"2025-Q3 (01.07.2025-30.09.2025) hasılatı 220.665.829.000 TL'dir.\",\n      \"cite_ids\": [\"f:2155\"]\n    },\n    {\n      \"text\": \"2025-Q1'den 2025-Q3'e hasılat yüzde değişimi %39,1'dir.\",\n      \"cite_ids\": [\"f:2131\", \"f:2155\", \"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Tüpraş 2025 Q1 ve Q3 Hasılat Karşılaştırması\",\n      \"columns\": [\n        \"Dönem\",\n        \"Hasılat (TL)\",\n        \"Değişim (%)\"\n      ],\n      \"rows\": [\n        [\n          {\n            \"text\": \"2025-Q1\",\n            \"cite_id\": \"f:2131\"\n          },\n          {\n            \"text\": \"158.623.387.000\",\n            \"cite_id\": \"f:2131\"\n          },\n          {\n            \"text\": \"—\",\n            \"cite_id\": null\n          }\n        ],\n        [\n          {\n            \"text\": \"2025-Q3\",\n            \"cite_id\": \"f:2155\"\n          },\n          {\n            \"text\": \"220.665.829.000\",\n            \"cite_id\": \"f:2155\"\n          },\n          {\n            \"text\": \"39,1\",\n            \"cite_id\": \"k:1\"\n          }\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Dönem\",\n    \"series\": [\n      \"Hasılat (TL)\"\n    ]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Her iki çeyrek hasılat rakamı ve yüzde değişim hesaplaması kanıtlanmış belgelerden elde edilmiştir.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2131\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2155\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"k:1\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 2641,
+    "tokens_out": 1462,
+    "latency_ms": 15376.671,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"TUPRS\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 449, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-02T09:14:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1671264\"}, {\"document_id\": 448, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-02T06:24:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1671102\"}, {\"document_id\": 447, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-09T15:23:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1661253\"}, {\"document_id\": 446, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-07T16:00:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1659787\"}, {\"document_id\": 445, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-02T09:47:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1657177\"}, {\"document_id\": 444, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-02T08:41:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1657157\"}, {\"document_id\": 443, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-02T07:43:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1657090\"}, {\"document_id\": 442, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-01T17:05:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1656968\"}, {\"document_id\": 441, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-01T15:44:56Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1656945\"}, {\"document_id\": 440, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-04T16:22:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643171\"}, {\"document_id\": 439, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-04T15:25:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643118\"}, {\"document_id\": 438, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-04T15:24:45Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643117\"}, {\"document_id\": 437, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-04T15:24:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643116\"}, {\"document_id\": 436, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-29T06:53:25Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1638082\"}, {\"document_id\": 435, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-15T15:16:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1617405\"}, {\"document_id\": 434, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-08T15:15:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1603560\"}, {\"document_id\": 433, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-06T16:27:01Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1602109\"}, {\"document_id\": 432, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-06T15:18:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1602030\"}, {\"document_id\": 431, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-06T15:18:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1602029\"}, {\"document_id\": 430, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-03T18:00:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1584102\"}, {\"document_id\": 429, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-31T15:15:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1580840\"}, {\"document_id\": 428, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-26T06:55:40Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1576079\"}, {\"document_id\": 427, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-25T21:16:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1575944\"}, {\"document_id\": 426, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-25T16:00:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1575866\"}, {\"document_id\": 425, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-25T15:22:10Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1575803\"}, {\"document_id\": 424, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-24T15:19:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1575233\"}, {\"document_id\": 423, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-18T15:16:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1574152\"}, {\"document_id\": 422, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-11T16:02:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1570803\"}, {\"document_id\": 421, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-27T15:15:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1562851\"}, {\"document_id\": 420, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-16T21:48:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1557178\"}, {\"document_id\": 419, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-13T15:16:07Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1556613\"}, {\"document_id\": 418, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-12T06:20:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1555987\"}, {\"document_id\": 417, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-06T16:24:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1554178\"}, {\"document_id\": 416, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-06T15:34:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1554109\"}, {\"document_id\": 415, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-06T15:34:29Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1554106\"}, {\"document_id\": 414, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-30T06:39:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1549131\"}, {\"document_id\": 413, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-22T15:14:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1545944\"}, {\"document_id\": 412, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-26T15:18:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1530365\"}, {\"document_id\": 411, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-26T15:15:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1530350\"}, {\"document_id\": 410, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-31T16:21:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1510258\"}, {\"document_id\": 409, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-31T15:20:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1510167\"}, {\"document_id\": 408, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-31T15:19:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1510165\"}, {\"document_id\": 407, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-31T15:19:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1510162\"}, {\"document_id\": 406, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-02T08:49:53Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1495110\"}, {\"document_id\": 405, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-02T06:15:41Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1495027\"}, {\"document_id\": 404, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-15T15:30:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1490049\"}, {\"document_id\": 403, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-14T05:32:47Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1478038\"}, {\"document_id\": 402, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-31T11:22:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1469685\"}, {\"document_id\": 401, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-29T16:37:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1467963\"}, {\"document_id\": 400, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-29T16:28:53Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1467958\"}, {\"document_id\": 399, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-29T15:35:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1467924\"}, {\"document_id\": 398, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-29T15:33:39Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1467923\"}, {\"document_id\": 397, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-13T15:22:43Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1448816\"}, {\"document_id\": 396, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-13T15:22:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1448815\"}, {\"document_id\": 395, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-15T06:25:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1439169\"}, {\"document_id\": 394, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-07T06:42:42Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1434450\"}, {\"document_id\": 393, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-29T19:00:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431267\"}, {\"document_id\": 392, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-29T16:19:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431180\"}, {\"document_id\": 391, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-29T15:22:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431090\"}, {\"document_id\": 390, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-29T15:21:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431089\"}, {\"document_id\": 389, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-21T15:44:07Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1428274\"}, {\"document_id\": 388, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-11T15:45:47Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1424563\"}, {\"document_id\": 387, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-27T12:48:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1413111\"}, {\"document_id\": 386, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-27T12:37:59Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1413098\"}, {\"document_id\": 385, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-27T12:12:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1413056\"}, {\"document_id\": 384, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-26T06:27:55Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1411860\"}, {\"document_id\": 383, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-03-05T23:54:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1401146\"}, {\"document_id\": 382, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-03T15:21:48Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1398845\"}, {\"document_id\": 381, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-17T16:31:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393478\"}, {\"document_id\": 380, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-17T15:29:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393453\"}, {\"document_id\": 379, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-17T15:27:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393449\"}, {\"document_id\": 378, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-17T15:26:35Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393446\"}, {\"document_id\": 377, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-14T05:54:29Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1392740\"}, {\"document_id\": 376, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-31T06:05:30Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1386935\"}, {\"document_id\": 375, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-26T15:22:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1368930\"}, {\"document_id\": 374, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-26T15:16:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1368921\"}, {\"document_id\": 373, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-26T06:20:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1360378\"}, {\"document_id\": 372, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-12T15:15:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1357325\"}, {\"document_id\": 371, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-05T16:22:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353858\"}, {\"document_id\": 370, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-05T15:22:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353830\"}, {\"document_id\": 369, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-05T15:21:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353828\"}, {\"document_id\": 368, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-05T12:01:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353547\"}, {\"document_id\": 367, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-10-28T05:30:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1351132\"}]}",
+   "summary": "TUPRS documents",
+   "count": 83,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2025-Q1\",\"2025-Q3\"],\"ticker\":\"TUPRS\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2131\">Hasılat (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 158.623.387.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2180\">Hasılat (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 207.582.495.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2155\">Hasılat (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 220.665.829.000 TRY</untrusted_document>",
+   "summary": "TUPRS 2025-Q1 to 2025-Q3 revenue",
+   "count": 3,
+   "items": [
+    {
+     "cite_id": "f:2131",
+     "text": "Hasılat (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 158.623.387.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 390,
+      "ticker": "TUPRS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Cari Dönem 01.01.2025 - 31.03.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1431089"
+     },
+     "value": "158623387000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2180",
+     "text": "Hasılat (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 207.582.495.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 431,
+      "ticker": "TUPRS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Önceki Dönem 01.01.2025 - 31.03.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1602029"
+     },
+     "value": "207582495000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2155",
+     "text": "Hasılat (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 220.665.829.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 407,
+      "ticker": "TUPRS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1510162"
+     },
+     "value": "220665829000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [
+  {
+   "key": "59168085f347b0594fa1de7c1775eb0d82b125104f3347e4422c93b4e4f32d84",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "revenue_q1_to_q3_pct_change": "39.11304831739597"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "59168085f347b0594fa1de7c1775eb0d82b125104f3347e4422c93b4e4f32d84",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "revenue_q1_to_q3_pct_change": "39.11304831739597"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  }
+ ],
+ "decision": "approve"
+}

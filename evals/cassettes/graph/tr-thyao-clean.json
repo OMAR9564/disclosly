@@ -1,0 +1,42 @@
+{
+ "case_id": "tr-thyao-clean",
+ "dataset": "verifier_seeded",
+ "interactions": [
+  {
+   "key": "40b035932f62c63eddb272b0a112b47c47fbbb460bd7884d0e4c74ad50eec915",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":true,\"reason\":\"Values match cited figures and calculation\"}]}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 1049,
+    "tokens_out": 285,
+    "latency_ms": 1023.248,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash",
+     "openrouter-large"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "sandbox": [
+  {
+   "key": "91e1d992887404aafacf6da85c794efdfd960df58779aa249f504f8dc583b226",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_debt_to_ebitda": "2.5798924681890516"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  }
+ ],
+ "decision": null
+}

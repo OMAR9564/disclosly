@@ -81,6 +81,7 @@ export function ReportView({
         marker={open.marker}
         t={t}
         onClose={() => setOpen(null)}
+        byId={byId}
       />
     ) : null;
   };

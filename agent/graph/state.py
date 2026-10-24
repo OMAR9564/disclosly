@@ -92,6 +92,8 @@ class Calculation(BaseModel):
     output: Decimal | None = None
     error: str | None = None
     verified: bool = False
+    # Set by the verifier once it has looked at the calculation (passed or not).
+    checked: bool = False
 
 
 class VerificationFailure(BaseModel):
@@ -108,6 +110,21 @@ class VerificationResult(BaseModel):
     round: int = Field(ge=1)
     passed: bool
     failures: list[VerificationFailure] = Field(default_factory=list)
+
+
+def merge_calculations(
+    current: list[Calculation] | None, new: list[Calculation] | None
+) -> list[Calculation]:
+    """Reducer: a calculation with a known `cite_id` replaces the old one; others append."""
+    merged = list(current or [])
+    index = {calc.cite_id: i for i, calc in enumerate(merged)}
+    for calc in new or []:
+        if calc.cite_id in index:
+            merged[index[calc.cite_id]] = calc
+        else:
+            index[calc.cite_id] = len(merged)
+            merged.append(calc)
+    return merged
 
 
 def add_evidence(current: list[SeenItem] | None, new: list[SeenItem] | None) -> list[SeenItem]:
@@ -141,9 +158,11 @@ class ResearchState(TypedDict, total=False):
     cancelled: bool
     evidence: Annotated[list[SeenItem], add_evidence]
     findings: list[Finding]
-    calculations: Annotated[list[Calculation], operator.add]
+    calculations: Annotated[list[Calculation], merge_calculations]
     verification: VerificationResult | None
     verify_rounds: int
+    # What the last verification round dropped; the writer reports it and marks the run partial.
+    unverified: list[str]
     draft: Report | None
     budget: ModeBudget
     deadline_at: datetime | None

@@ -157,6 +157,21 @@ jobs:
       # gate, plus router mode, tables and chart presence in the report. No Docker needed.
       - run: uv run python -m evals.run graph --replay --reports "$RUNNER_TEMP/reports"
 
+  # Calculation sandbox (Phase 4 T032): builds the sandbox image and runs the escape suite
+  # against the real Docker daemon through sandbox.service (contracts/sandbox.md).
+  sandbox:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+      - run: uv sync
+      - name: Build sandbox image (no push)
+        run: docker build -f sandbox/Dockerfile -t disclosly-sandbox:ci .
+      - name: Escape suite
+        env:
+          SANDBOX_IMAGE: disclosly-sandbox:ci
+        run: uv run pytest -m sandbox --no-cov tests/integration/sandbox
+
   build:
     runs-on: ubuntu-latest
     steps:

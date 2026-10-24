@@ -53,6 +53,8 @@ class ExpectedNumber(BaseModel):
 
     value: float
     tolerance: float = Field(default=0.0, ge=0)
+    # A derived number (ratio, growth, margin): it must come from a verified calculation.
+    derived: bool = False
 
 
 class GoldenCase(_Case):

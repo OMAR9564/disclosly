@@ -7,17 +7,22 @@ import { docTypeLabel, metricLabel } from "@/i18n/labels";
 import { type Citation, isCalculation } from "@/lib/api";
 import { sourceCode } from "@/lib/runState";
 
+import { CalculationPopover } from "./report/CalculationPopover";
+
 /** The source plate: an enamel plate that opens in place under the row that cites it. */
 export function CitationPopover({
   citation,
   marker,
   t,
   onClose,
+  byId = new Map(),
 }: {
   citation: Citation;
   marker: number | null;
   t: Dictionary;
   onClose: () => void;
+  /** Every citation of the run, so a calculation's inputs can open their own sources. */
+  byId?: ReadonlyMap<string, Citation>;
 }) {
   const ref = useRef<HTMLElement>(null);
   const language = isLanguage(t.locale) ? t.locale : "tr";
@@ -47,26 +52,12 @@ export function CitationPopover({
         </button>
       </div>
       {isCalculation(citation) ? (
-        <>
-          <dl className="source__meta">
-            <div>
-              <dt>{t.calcFormula}</dt>
-              <dd>{citation.excerpt}</dd>
-            </div>
-            <div>
-              <dt>{t.calcOutput}</dt>
-              <dd>{citation.source.output}</dd>
-            </div>
-          </dl>
-          <dl className="source__meta" aria-label={t.calcInputs}>
-            {citation.source.inputs.map((input) => (
-              <div key={input.name}>
-                <dt>{input.name}</dt>
-                <dd>{input.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </>
+        <CalculationPopover
+          citation={citation}
+          source={citation.source}
+          byId={byId}
+          t={t}
+        />
       ) : (
         <DocumentDetails citation={citation} t={t} language={language} />
       )}

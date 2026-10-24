@@ -19,6 +19,9 @@ from agent.graph.context import NodeContext
 from agent.graph.state import Calculation, Finding, ResearchState
 from agent.prompts import node_prompt, with_schema
 from agent.report import (
+    MAX_UNVERIFIED,
+    NOTE_MAX_CHARS,
+    Confidence,
     Report,
     ReportValidation,
     finalize_report,
@@ -42,6 +45,26 @@ NO_EVIDENCE: dict[Language, str] = {
     "en": "No relevant information was found in the sources for the plan's companies and periods.",
 }
 CONFIDENCE_REQUIRED = "confidence: set level and note"
+UNVERIFIED_NOTE: dict[Language, str] = {
+    "tr": "Bazı bulgular ve hesaplamalar doğrulanamadı ve rapordan çıkarıldı.",
+    "en": "Some findings and calculations could not be verified and were left out.",
+}
+
+
+def with_unverified(report: Report, unverified: list[str], language: Language) -> Report:
+    """After the last failed verification round: a partial report with low confidence that
+    lists what the verifier dropped (contracts/report.md rule 5)."""
+    if not unverified or report.status in ("refused", "no_evidence"):
+        return report
+    note = report.confidence.note if report.confidence and report.confidence.note else ""
+    note = f"{UNVERIFIED_NOTE[language]} {note}".strip()[:NOTE_MAX_CHARS]
+    return report.model_copy(
+        update={
+            "status": "partial",
+            "confidence": Confidence(level="low", note=note),
+            "unverified": list(dict.fromkeys([*report.unverified, *unverified]))[:MAX_UNVERIFIED],
+        }
+    )
 
 
 def parse_report(content: str | None) -> tuple[Report | None, list[str]]:
@@ -95,6 +118,7 @@ async def writer_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
         return {"draft": finalize_report(empty)}
 
     outputs = verified_outputs(calculations)
+    dropped = state.get("unverified") or []
     plan = state.get("plan")
     plan_steps = (
         [s.model_dump(include={"id", "goal", "status"}) for s in plan.steps] if plan else []
@@ -125,7 +149,7 @@ async def writer_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
             if report.confidence is None and report.status != "refused":
                 validation.errors.append(CONFIDENCE_REQUIRED)
             if validation.ok:
-                return {"draft": finalize_report(report)}
+                return {"draft": finalize_report(with_unverified(report, dropped, language))}
             last = (report, validation)
             errors = validation.errors
         messages = [
@@ -136,4 +160,5 @@ async def writer_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
 
     if last is None:
         return {"draft": None}
-    return {"draft": finalize_report(to_partial(last[0], last[1], language))}
+    partial = to_partial(last[0], last[1], language)
+    return {"draft": finalize_report(with_unverified(partial, dropped, language))}

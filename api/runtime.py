@@ -25,6 +25,8 @@ from ingestion.db import make_engine
 from llm.cache import CacheRedis, ResponseCache
 from llm.config import load_providers
 from llm.router import ModelRouter, RouterStore
+from tools.citations import CorpusCitations
+from tools.python import SandboxClient
 from tools.registry import ToolRegistry
 
 ROUTER_TIMEOUT_SECONDS = 15.0
@@ -87,7 +89,9 @@ def build_run_service(settings: Settings) -> tuple[RunService, list[Any]]:
     return service, [engine, client, http, search]
 
 
-def graph_deps(service: RunService, settings: Settings) -> GraphDeps:
+def graph_deps(
+    service: RunService, settings: Settings, sandbox: SandboxClient | None = None
+) -> GraphDeps:
     tools = service.tools
     assert isinstance(tools, ToolRegistry)  # noqa: S101  (built by build_run_service)
     return GraphDeps(
@@ -105,6 +109,8 @@ def graph_deps(service: RunService, settings: Settings) -> GraphDeps:
             deep_limit=settings.quota_daily_deep,
         ),
         runs=service,
+        sandbox=sandbox,
+        citations=CorpusCitations(service.engine),
     )
 
 
@@ -115,9 +121,11 @@ async def graph_runtime(service: RunService, settings: Settings) -> AsyncIterato
     The graph is built whatever `AGENT_ENGINE` says, so runs started by the graph engine can
     still be decided and resumed after a switch back to `single`.
     """
+    sandbox = SandboxClient(settings.sandbox_url)
     async with open_checkpointer(settings.database_url.get_secret_value()) as saver:
-        service.attach_graph(build_graph(graph_deps(service, settings), saver))
+        service.attach_graph(build_graph(graph_deps(service, settings, sandbox), saver))
         try:
             yield
         finally:
             service.attach_graph(None)
+            await sandbox.aclose()

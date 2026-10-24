@@ -264,6 +264,19 @@ def test_to_partial_keeps_chart_of_untouched_table() -> None:
     assert partial.unverified == ["Net borç 50 milyar TL"]
 
 
+def test_to_partial_drops_the_chart_of_an_emptied_table() -> None:
+    report = _report()
+    validation = validate_report(report, SEEN, CALCS, "tr")
+    assert report.chart is not None
+    table = report.chart.table
+    validation.bad_rows = {(table, r) for r in range(len(report.tables[table].rows))}
+
+    partial = to_partial(report, validation, "tr")
+
+    assert len(partial.tables) == len(report.tables) - 1
+    assert partial.chart is None
+
+
 def test_to_partial_with_nothing_left() -> None:
     report = _report(
         summary="Oran 7 [1].",
