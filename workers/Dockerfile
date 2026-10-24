@@ -3,7 +3,7 @@
 # Build from the repository root: docker build -f workers/Dockerfile .
 # workers/Dockerfile.dockerignore limits the build context.
 
-FROM ghcr.io/astral-sh/uv:0.13.1 AS uv
+FROM ghcr.io/astral-sh/uv:0.13.5 AS uv
 
 FROM python:3.12-slim AS builder
 COPY --from=uv /uv /bin/uv
