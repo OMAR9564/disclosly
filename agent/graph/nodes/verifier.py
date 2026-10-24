@@ -246,7 +246,7 @@ async def _check_findings(
         if len(cited) < len(finding.cite_ids):
             checks.finding(finding, "cites evidence that is not in the run")
             continue
-        missing = unsupported_figures(finding.text, language, cited)
+        missing = unsupported_figures(finding.text, language, cited, derived_ok=False)
         if missing:
             checks.finding(finding, f"numbers not in the cited sources: {missing}")
             continue

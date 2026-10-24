@@ -262,8 +262,11 @@ def _rounds_to(amount: Decimal, figure: Figure) -> bool:
 
 
 def _calculated(figure: Figure, outputs: set[Decimal]) -> bool:
-    """A calculation output written at the figure's precision; a ratio may be shown as a %."""
-    candidates = [*outputs, *(o * 100 for o in outputs)] if figure.percent else outputs
+    """A calculation output written at the figure's precision; a ratio may be shown as a %.
+
+    The magnitude counts: "fell by 34.05 points" states an output of -34.05 in words."""
+    magnitudes = {abs(o) for o in outputs}
+    candidates = [*magnitudes, *(o * 100 for o in magnitudes)] if figure.percent else magnitudes
     return any(_rounds_to(output, figure) for output in candidates)
 
 
@@ -296,14 +299,19 @@ def _derived_percents(items: Iterable[SeenItem]) -> list[Decimal]:
     return derived
 
 
-def unsupported_figures(text: str, language: Language, cited: list[SeenItem]) -> list[str]:
+def unsupported_figures(
+    text: str, language: Language, cited: list[SeenItem], *, derived_ok: bool = True
+) -> list[str]:
+    """Figures in `text` not found in `cited`. With `derived_ok`, a percentage the cited
+    figures imply (a ratio or a change) also counts; deep mode turns it off, since there a
+    derived number must come from a calculation (FR-008)."""
     sources = _sources(cited)
     derived: list[Decimal] | None = None
     missing = []
     for figure in figures(text, language):
         if figure.value >= 0 and _supported(figure, sources):
             continue
-        if figure.percent and figure.value >= 0:
+        if derived_ok and figure.percent and figure.value >= 0:
             if derived is None:
                 derived = _derived_percents(cited)
             if any(abs(abs(d) - figure.value) <= PERCENT_TOLERANCE for d in derived):

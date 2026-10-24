@@ -145,7 +145,9 @@ async def writer_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
         )
         report, errors = parse_report(response.content)
         if report is not None:
-            validation = validate_report(report, evidence, outputs, language, limit_hit=limit_hit)
+            validation = validate_report(
+                report, evidence, outputs, language, limit_hit=limit_hit, derived_ok=False
+            )
             if report.confidence is None and report.status != "refused":
                 validation.errors.append(CONFIDENCE_REQUIRED)
             if validation.ok:

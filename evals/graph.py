@@ -113,7 +113,8 @@ def coverage(report: Report, seen: Mapping[str, SeenItem]) -> tuple[int, int]:
                 item = seen.get(cell.cite_id) if cell.cite_id is not None else None
                 parts.append((cell.text, [item] if item is not None else []))
     for text, items in parts:
-        found = len([f for f in figures(text, report.language) if f.value >= 0])
+        # Malformed numbers count too: unsupported_figures reports them as unsupported.
+        found = len(figures(text, report.language))
         total += found
         supported += found - len(unsupported_figures(text, report.language, items))
     return total, supported
