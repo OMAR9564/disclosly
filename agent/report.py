@@ -287,7 +287,10 @@ def to_partial(report: Report, validation: ReportValidation, language: Language)
     if chart is not None:
         kept = chart.table in index_map and validation.chart_ok
         source = report.tables[chart.table] if chart.table < len(report.tables) else None
-        unchanged = source is not None and tables[index_map[chart.table]].rows == source.rows
+        # A table emptied by dropped rows is gone from `index_map`: the chart goes with it.
+        unchanged = (
+            kept and source is not None and tables[index_map[chart.table]].rows == source.rows
+        )
         chart = (
             chart.model_copy(update={"table": index_map[chart.table]})
             if kept and unchanged
