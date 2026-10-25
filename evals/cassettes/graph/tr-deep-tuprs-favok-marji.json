@@ -6,19 +6,308 @@
    "key": "c8880e838547b12869a9427353430d2eed3dc820dd5f8b620cda8766418c6bde",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"TUPRS\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"ebitda\",\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\"mode\": \"simple\", \"tickers\": [\"TUPRS\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"ebitda\"], \"uses_watchlist\": false, \"memory_intent\": null}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 1010,
-    "tokens_out": 84,
-    "latency_ms": 1071.478,
+    "tokens_out": 48,
+    "latency_ms": 1037.849,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "9c6ca8891d9dff5455e71062fd982189ef022c8b0fd5ee000e41237a005bfea2",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1629684",
+      "name": "get_financial_facts",
+      "arguments": {
+       "periods": [
+        "2025-FY"
+       ],
+       "ticker": "TUPRS",
+       "metrics": [
+        "revenue",
+        "ebitda",
+        "operating_income"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TWR3CM8zD82Mu90jK7e0wIHe4DnZLhms3GADdI0CvITLovZn7p346EivV3PbLDBKh1WzONB7EPyzQXanbaCtDYJZYZyMPSXBlNdIQWADahc8xBQxaImWVdbg="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1696,
+    "tokens_out": 49,
+    "latency_ms": 792.447,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "075299aa30ecc078f66d8d57e35c039a23bcd59bb3d261dc6327c544c7b2873f",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1917934",
+      "name": "search_documents",
+      "arguments": {
+       "query": "FAVÖK marjı 2025",
+       "ticker": "TUPRS"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0ToK0qcMShYF/+N0qPTAds8nIP2SFLouNWlcHfhiHHbca/0rYUuIdu/UkyHFotUThOwtNAzOLVibbKNCVVsIUZ/RhTwJEk6u078fJHUC/BfN1CjA+cbZYu7K0="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1995,
+    "tokens_out": 35,
+    "latency_ms": 1008.704,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "b26244cfa08b954f2268144b0213815089495444949af44807981186ded5f145",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Tüpraş'ın 2025 yılı FAVÖK marjı, 2025 yılı FAVÖK tutarı (56.272.759.000 TL) ve hasılat tutarı (830.356.131.000 TL) oranı olarak hesaplandığında yaklaşık %6,78'dir.\",\n  \"points\": [\n    {\n      \"text\": \"2025 yılı FAVÖK: 56.272.759.000 TL; 2025 yılı hasılat: 830.356.131.000 TL; FAVÖK marjı ≈ %6,78\",\n      \"cite_ids\": [\n        \"f:2175\",\n        \"f:2165\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2175\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2165\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 6662,
+    "tokens_out": 741,
+    "latency_ms": 39482.637,
     "cache_hit": false,
     "fallback_from": []
    }
   }
  ],
- "tools": [],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"ebitda\"],\"periods\":[\"2025-FY\"],\"ticker\":\"TUPRS\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2175\">FAVÖK (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 56.272.759.000 TRY</untrusted_document>",
+   "summary": "TUPRS 2025-FY ebitda",
+   "count": 1,
+   "items": [
+    {
+     "cite_id": "f:2175",
+     "text": "FAVÖK (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 56.272.759.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 415,
+      "ticker": "TUPRS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "ebitda",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 2 (Kar veya Zarar Tablosu) / ESAS FAALİYET KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.12.2025 + Tablo 4 (Nakit Akış Tablosu (Dolaylı Yöntem)) / Amortisman ve İtfa Gideri İle İlgili Düzeltmeler / Cari Dönem 01.01.2025 - 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1554106"
+     },
+     "value": "56272759000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\",\"ebitda\",\"operating_income\"],\"periods\":[\"2025-FY\"],\"ticker\":\"TUPRS\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2175\">FAVÖK (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 56.272.759.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2167\">Esas faaliyet kârı (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 41.646.897.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2165\">Hasılat (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 830.356.131.000 TRY</untrusted_document>",
+   "summary": "TUPRS 2025-FY revenue, ebitda, operating_income",
+   "count": 3,
+   "items": [
+    {
+     "cite_id": "f:2175",
+     "text": "FAVÖK (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 56.272.759.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 415,
+      "ticker": "TUPRS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "ebitda",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 2 (Kar veya Zarar Tablosu) / ESAS FAALİYET KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.12.2025 + Tablo 4 (Nakit Akış Tablosu (Dolaylı Yöntem)) / Amortisman ve İtfa Gideri İle İlgili Düzeltmeler / Cari Dönem 01.01.2025 - 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1554106"
+     },
+     "value": "56272759000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2167",
+     "text": "Esas faaliyet kârı (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 41.646.897.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 415,
+      "ticker": "TUPRS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "operating_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / ESAS FAALİYET KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1554106"
+     },
+     "value": "41646897000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2165",
+     "text": "Hasılat (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 830.356.131.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 415,
+      "ticker": "TUPRS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Cari Dönem 01.01.2025 - 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1554106"
+     },
+     "value": "830356131000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"FAVÖK marjı 2025\",\"ticker\":\"TUPRS\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:70aa959d03f80e89992ee63cb1fa734f852342099065d942026d6b5215d8442a\">2025-2035 döneminde bu alanda 120,01 milyar TL* (2,8 milyar ABD doları) yatırım öngörülmekte, FAVÖK katkısı 85,72 milyar TL* (2 milyar ABD doları) olarak öngörülmektedir. Yeşil Hidrojen: 2025-2035 döneminde yeşil hidrojen üretimi için 32,15 milyar TL* (750 milyon ABD doları) yatırım yapılması planlanmakta, FAVÖK katkısının 12,86 milyar TL* (300 milyon ABD doları) olması beklenmektedir. Tüpraş 2025 Entegre Faaliyet Raporu 483 Genel Kurul Tüpraş Hakkında Tüpraş’ta Sür dürülebilirlik İle Değer Tüpraş’ta Çalışanlara D eğer Tüpraş’ta Ür etime Değer Tüpraş’ta Ge leceğe Değer Tüpraş’ta P aydaşlar ve T oplum İçin D eğer Tüpraş’ta Ç evreye Değer Tüpraş’ta K urumsal Y önetim Açıklamaları Finansal Bilgiler Ekler T üpraş’ta Y önetişim İle D eğer Tüpraş’ta Finansal D eğer Stratejik Dönüşüm Planı (2025 - 2035) Yatırım ve FAVÖK Katkısı Alan Yatırım** (milyar TL) Yatırım (milyar ABD Doları) FAVÖK Katkısı** (milyar TL) FAVÖK Katkısı (milyar ABD Doları) Sürdürülebilir Rafinaj 167,16 3,9 557,21 13 Sürdürülebilir Havacılık Yakıtı 34,29 0,8 81,44 1,9 Sıfır Karbonlu Elektrik 120,01 2,8 85,72 2 Yeşil Hidrojen 32,15 0,75 12,86 0,3 Toplam 353,61 8,25 737,23 17,2 **: TL cinsinden sunulan tutarlar, ABD doları cinsinden belirlenen tutarların T.C. Merkez Bankası tarafından yayımlanan 31.12.2025 tarihli merkez bankası kuru (1 ABD doları=42,8623 TL) esas alınarak TL’ye çevrilmiştir. TSRS Uyumlu Sürdürülebilirlik Raporu 2023 yılı itibarıyla, AB Taksonomisi raporlaması kapsamında İklim Değişikliğini Azaltma ve İklim Değişikliğine Uyum çevresel hedefleriyle uyumlu yatırım harcamaları ayrı olarak takip edilmekte ve raporlanmaktadır. Bu kapsamda, düşük karbonlu teknolojilere geçişi destekleyen veya fiziksel iklim risklerine karşı dayanıklılığı artıran yatırımlar teknik kriterlere göre sınıflandırılmakta; böylece sermaye dağılımının iklim stratejileri ile uyumu şeffaf biçimde ortaya konmaktadır. Tüpraş’ın Ar - Ge harcamaları 2025 yılında 235,5 milyon TL ’ye ulaşarak, şirketin yenilikçi ve düşük karbonlu çözümler geliştirme kapasitesini önemli ölçüde güçlendirmiştir. Bu harcamalar;</untrusted_document>\n<untrusted_document cite_id=\"c:052edca6c0c0ba926bb404ba4ccb3830dcf3740f1962791db5d1ec09017f5d9f\">782.914.080,88 TL tutarın 366.674.300,00 TL ’si Vehbi Koç Vakfı’na, 213.820.500,00 TL ’si Şirket’in ilgili mevzuata uygun olması şartıyla, 2025-2029 yılları arasında her yıl 5 milyon ABD Doları bağış yapılmasına ve 2030 yılında yönetim kurulu tarafından yapılacak değerlendirmede aksi kararlaştırılmadığı sürece söz konusu bağışın aynı koşullarla 2030-2034 yıllarında da devam etmesine yönelik kararı çerçevesinde Koç Üniversitesi’ne, 21.492.403,33 TL ’si Türk Eğitim Vakfı’na, 12.326.367,26 TL ’si Diğer Eğitim Kurumlarına, 135.268.704,00 TL ’si Rahmi Koç Müzesi’ne, 7.000.000,00 TL ’si Orman Genel Müdürlüğü’ne ve 5.697.585,00 TL ’si İstanbul Kültür Sanat Vakfı’na bağışlanmış olup; bakiye tutar ise her biri 5 milyon TL ’nin altındaki muhtelif kurum ve kuruluşlara yapılan ve yatırımcılar açısından önemli bilgi niteliği taşımayan çeşitli kurum ve kuruluşlara yapılan bağışlardan oluşmaktadır. Ayrıca 2026 yılında yapılacak bağışlar için üst sınır genel kurul tarafından belirlenecektir. Tüpraş 2025 Entegre Faaliyet Raporu 401 Genel Kurul Tüpraş Hakkında Tüpraş’ta Sür dürülebilirlik İle Değer Tüpraş’ta Çalışanlara D eğer Tüpraş’ta Ür etime Değer Tüpraş’ta Ge leceğe Değer Tüpraş’ta P aydaşlar ve T oplum İçin D eğer Tüpraş’ta Ç evreye Değer Tüpraş’ta K urumsal Y önetim Açıklamaları Finansal Bilgiler Ekler T üpraş’ta Y önetişim İle D eğer Tüpraş’ta Finansal D eğer Olağan Genel Kurul Toplantısına İlişkin Bilgile ndirme Notu 12. Sermaye Piyasası Kurulu düzenlemeleri gereğince, Şirket’in ve bağlı ortaklıklarının 2025 yılında üçüncü kişiler lehine verdiği teminat, rehin, ipotek ve kefaletler ile elde edilen gelir veya menfaatler hakkında pay sahiplerine bilgi verilmesi, Sermaye Piyasası Kurulu’nun II-17.1. sayılı Kurumsal Yönetim Tebliği’nin 12’nci maddesi uyarınca Şirketimiz ve bağlı ortaklıkları tarafından üçüncü kişiler lehine verilen teminat, rehin, ipotek ve kefaletler ile elde edilen gelir veya menfaatlere olağan genel kurul toplantısı gündeminde ayrı bir madde olarak yer verilmesi gerekmekte olup, 31.12.2025 tarihli finansal tablolarımızın 18 numaralı dipnot maddesinde bu hususa yer verilmiştir. 31 Aralık 2025 31 Aralık 2024 A. K endi tüzel kişiliği adına vermiş olduğu TRİK’lerin toplam tutarı 64.386.894 48.943.457 B.</untrusted_document>\n<untrusted_document cite_id=\"c:75cef6274d7322262a3c595c887910992f5541a4a777729ae8d9a8f8b7e9a80f\">2025 güncellemesi kapsamında, Türkiye’nin ulaşım amaçlı enerji talebine ilişkin öngörüler yeniden ele alınmıştır. Güncellenmiş analizler ise fosil yakıt talebinin 2035 yılında zirve noktasına ulaşacağını, motorinin kısmen hidrojen ile yer değiştireceğini ancak rafineri ürünlerine olan ihtiyacın devam edeceğini, hidrojenin 2040 itibarıyla büyüme sürecine gireceğini, sürdürülebilir havacılık yakıtının (SAF) 2035 yılına kadar havacılık yakıt talebinin yaklaşık %10’unu oluşturacağını ortaya koymuştur. Bu çerçevede, mevcut rafinaj altyapısının korunması ve dönüştürülmesi, stratejik bir gereklilik olarak değerlendirilmiştir. 2025 güncellemesi kapsamında Sıfır Karbonlu Elektrik, stratejik dirençliliği artıran önemli bir unsur olarak ölçeklendirilmiştir. Elektrifikasyon talebindeki artış, ekipman maliyetlerindeki yükseliş ve regülasyonlardaki değişimler doğrultusunda yatırımların zamanlaması ve Tüpraş 2025 Entegre Faaliyet Raporu 448 büyüklüğü yeniden planlanmıştır. 2030 ve 2035 hedefleri güncellenerek, Tüpraş’ın hem kendi operasyonlarını destekleyen hem de şebekeye satış yoluyla nakit akışı yaratan bir üretim portföyü oluşturması hedeflenmiştir. Bu yaklaşım, Şirket’in finansal dayanıklılığını güçlendiren bir unsur olarak değerlendirilmektedir. Sürdürülebilir Havacılık Yakıtı (SAF) alanında ise küresel talep artışı ve regülasyonlardaki hızlanma dikkate alınarak, İzmir Rafinerisi’nde kurulması planlanan ünite ile SAF üretimi stratejik öncelik hâline getirilmiştir. Hammadde tedarik güvenliğini sağlamak amacıyla uzun vadeli anlaşmalar yapılmış; farklı üretim teknolojileri değerlendirilerek kapasite esnekliği hedeflenmiştir. Yeşil hidrojen alanında, talep görünümündeki belirsizlikler ve yatırım maliyetlerindeki artış dikkate alınarak daha kademeli ve temkinli bir yaklaşım benimsenmiştir. Elektrolizör yatırım maliyetlerindeki artış doğrultusunda projelerin zamanlaması uzun vadeye yayılmış; yeşil hidrojenin öncelikle SAF üretim süreçlerinde kullanılması hedeflenmiştir. Tüpraş, dünyanın önde gelen çevresel risk trendleri arasında yer alan biyoçeşitlilik kaybı konusunu 2025 yılı itibariyle stratejik öncelikleri arasına almış olup, bu kapsamda küresel standartlarla uyumlu bir risk yönetimi yaklaşımı benimsemektedir. Şirket, biyoçeşitlilikle ilgili mevcut durumu nesnel biçimde değerlendirmek amacıyla WWF Risk Filter metodolojisini kullanarak tüm tesislerinde kapsamlı analizler gerçekleştirmektedir. Bu çalışma; TNFD ve SBTN prensipleriyle uyumlu şekilde ekosistem bağımlılıkları, faaliyet kaynaklı etkiler, coğrafi hassasiyetler ve doğal sermaye risklerini bütüncül bir bakış açısıyla incelemekte olup toplam 33 gösterge ve 56 metrik üzerinden risk skorlaması yapmaktadır.</untrusted_document>\n<untrusted_document cite_id=\"c:f76fdb8eb788634c2a5de45e12eba19b7f02b9cc594d98bb8e56960458f4adca\">2025 yılında, demo ölçekte üretimi sağlayacak sistemler birleştirilerek bir bütün olarak çalışabilir hâle getirilerek proje tamamlanmıştır. Tüpraş’ta Geleceğe Değer Tüpraş 2025 Entegre Faaliyet Raporu 178 Tüpraş’ın karbon nötr enerji ve yeşil dönüşüm hedefleri doğrultusunda, rafinerilerde çevreci havacılık (SAF) ve denizcilik yakıtlarının geliştirilmesi sağlanmaktadır. 2025 yılında, gıda dışı yenilenebilir kaynaklar, atık yağlar, biyokütle ve CO2 bazlı hammaddelerden elde edilen alternatif yakıt çözümleri için ar-ge pilot ölçekli üretim çalışmaları gerçekleştirilmiştir. Bu çalışmalar Türkiye’nin enerji dönüşümüne ve Tüpraş’ın sürdürülebilirlik vizyonuna değer katmaktadır. Yenilenebilir Yakıtlar6 Yenilenebilir Yakıtlar Odaklı Ar-Ge Projeleri FUEL-UP - Ufuk A vrupa 2026 yılı başında reaktör sisteminin kurulumunun tamamlanarak yaklaşık 1.000 L kapasiteli stabilize piroliz yağı (SDPO) işlenmesi ve çalışmaların daha yüksek ölçeğe taşınması planlanmaktadır. 2023’te Ufuk Avrupa kapsamında desteklenen FUEL-UP projesi, lignoselülozik biyokütleden sürdürülebilir havacılık ve denizcilik yakıtları üretmeyi hedeflemektedir. Bu kapsamda SDPO’nun karakterizasyonu ve hydroprocessing optimizasyonu tamamlanmış, benzin, gazyağı ve dizel elde edilmiştir. Ürün fraksiyonlarının sertifikasyon ve motor testleri için demo distilasyon kolonu kurulmuş, TRL-6 reaktör tasarımı ve ekipman tedariki gerçekleştirilmiştir. SUNFUSION - Ufuk Avrupa Ocak 2025’te başlayan dört yıllık SUNFUSION projesi, biyokütle üretiminde sürdürülebilir çözümler geliştirerek karbon nötr enerji hedeflerine katkı sağlamayı amaçlamaktadır. Mikroalgler ve yağlı mayaların hidrotermal sıvılaştırma (HTL) yöntemiyle biyoyakıta dönüştürülmesi hedeflenmektedir. Seçilen mikroalg türlerinin üretimi tamamlanmış, HTL çevrimleri başlatılmış ve ilk yağ fazı elde edilmiştir. Ayrıca proses koşulları ürün özelliklerine göre belirlenmiştir. Tüpraş, HTL sonrası hydroprocessing görmüş yağların kerosene dönüştürülmesi, şarj ve ürün analizleri ve nihai ürünün standartlara uygunluğunu değerlendirmekten sorumludur. Syn to Jet Projesi - KÜTEM Tüpraş Ar-Ge Merkezi ve KÜTEM iş birliğinde geliştirilen katalizörler CO2’nin e-yakıta dönüştürülmesini hedeflenmektedir. 2025 yılı içerisinde katalizörlerin karakterizasyon çalışmaları tamamlanmış, laboratuvar ölçekli deneyler KÜTEM bünyesinde gerçekleştirilmiştir. Ürün analizleri, Tüpraş Ar-Ge Merkezi tarafından yürütülmüştür.</untrusted_document>\n<untrusted_document cite_id=\"c:851f7580264a0bb81e851193aeb58ef4c19aafe0d22a3c764d83965fa025f527\">ve bağlı ortaklıklarını kapsamakta olup, finansal raporlama dönemiyle uyumlu şekilde 1 Ocak 2025 - 31 Aralık 2025 dönemine ilişkin bilgileri içermektedir. Rapor, Entegre Faaliyet Raporu ile eş zamanlı olarak yayımlanmakta ve kamuya açıklanmaktadır. Rapor içerisinde yer alan tüm finansal bilgiler, konsolide finansal tablolarla tutarlı olacak şekilde Türk Lirası (TL) cinsinden sunulmuştur. Raporun temel amacı; sürdürülebilirlik ve iklimle ilgili risk ve fırsatlara ilişkin etkileri şeffaf, karşılaştırılabilir ve finansal önemlilik ilkesi çerçevesinde ortaya koymaktır. Bu kapsamda finansal önemlilik değerlendirmesinde FAVÖK büyüklüğü referans alınmış, FAVÖK’ün %5’i finansal önemlilik eşiği olarak belirlenmiştir. Rapor kapsamında TSRS 1 Ek E- Yürürlük Tarihi ve Geçiş ile TSRS 2 Ek C- Yürürlük Tarihi ve Geçiş bölümlerinde yer alan muafiyetlerden yararlanılmamıştır. Açıklamalar; gerçeğe uygun, tutarlı, doğrulanabilir, eksiksiz ve karşılaştırılabilir bilgi sunumu ilkeleri esas alınarak hazırlanmıştır. TSRS gereklilikleri doğrultusunda, 2024 yılına ait karşılaştırmalı bilgiler de raporda yer almaktadır. Tüpraş Ortaklık Yapısı Tüpraş 2025 Entegre Faaliyet Raporu 432 Bu raporda; sürdürülebilirlik ve iklimle ilgili yönetişim yapısı, strateji, risk yönetimi süreçleri ile metrikler ve hedeflere ilişkin ilerleme detaylı şekilde açıklanmıştır. Rapor kapsamı, şirketin bütünlüğünü doğru biçimde yansıtmak amacıyla; Tüpraş’ın bağlı ortaklıkları ve iştiraklerini içerecek şekilde konsolide düzeyde ele alınmış, değer zincirinin tamamı dikkate alınmıştır. Sürdürülebilirlik bilgileri, TSRS 1 Sürdürülebilirlikle İlgili Finansal Bilgilerin Açıklanmasına İlişkin Genel Hükümler ve TSRS 2 İklimle İlgili Açıklamalar dikkate alınarak sunulmuştur. İklim ve sürdürülebilirlik açıklamalarında ayrıca TSRS 2’nin sektör bazlı uygulanmasına ilişkin rehber ile SASB sektör standartları kullanılmış; Tüpraş, Tupraş Trading Ltd ve Opet için Petrol ve Gaz - Rafineri ve Pazarlama, Ditaş için Deniz Taşımacılığı, Körfez Ulaştırma A.Ş. için Demiryolu Taşımacılığı, Entek için Elektrik Tesisleri ve Güç Jeneratörleri ve Tüpraş Enerji Girişimleri A.Ş. için Mühendislik ve İnşaat Hizmetleri ciltleri referans alınmıştır. Raporlama sürecinde; düzenleyici gereklilikler, paydaş beklentileri, şirket stratejisi ve sektörel dinamikler birlikte değerlendirilmiş; sürdürülebilirlik ve iklimle ilgili risk ve fırsatlar finansal etkileriyle birlikte TSRS gerekliliklerine uygun olarak belirlenmiştir.</untrusted_document>\n<untrusted_document cite_id=\"c:149aba40995312ba5120f1349798985e00352c9d09a431e913483e88034ec7d9\">* Tüpraş ve Entek Konsolide Tüpraş 2025 Entegre Faaliyet Raporu 220 Tüpraş, enerji dönüşümündeki öncü rolünü güçlendirmek amacıyla 2022 yılında portföyüne kattığı Entek ile sıfır karbonlu elektrik üretiminde büyüme hedefini kararlılıkla sürdürmektedir. Bu stratejik adım, yalnızca Tüpraş’ın üretim yapısına yenilenebilir ve düşük emisyonlu enerji kapasitesi kazandırmakla kalmayıp, Türkiye’nin karbon nötr hedeflerine de önemli bir ivme sağlamaktadır. Entek’in entegrasyonu ile Şirket, enerji arz güvenliğini güçlendirirken sürdürülebilirlik hedefleriyle uyumlu yatırımlarını hızlandırmakta; uluslararası regülasyonlara uyum sağlayarak paydaş beklentilerini karşılayan uzun vadeli değer yaratmaktadır. Bu dönüşüm sürecinde, Körfez Ulaştırma A.Ş.’nin demiryolu taşımacılığına yönelik yatırımları da düşük karbonlu ekonomi hedeflerine önemli katkı sunmaktadır. Karayolu yerine demiryolu kullanımının artırılması, emisyonların azaltılmasına, lojistik süreçlerde karbon ayak izinin düşürülmesine ve enerji verimliliğinin artırılmasına imkân tanımaktadır. Benzer şekilde, Ditaş’ın yeni nesil enerji verimli gemileri ve filo modernizasyonuna yönelik çalışmaları, deniz taşımacılığında emisyonların düşürülmesine ve yakıt verimliliğinin iyileştirilmesine katkı sağlamaktadır. Tüpraş, Stratejik Dönüşüm Planı çerçevesinde hem üretim hem de lojistik alanlarında düşük karbonlu ekonomiye geçişte liderlik iddiasını somut projeler ve yatırımlarla desteklemeyi sürdürecektir. Stratejik Dönüşüm Planı kapsamında bağlı ortaklıklarla birlikte Tüpraş’ın tüm operasyonlarını kapsayan konsolide Kapsam 1 ve Kapsam 2 emisyonlarının kademeli olarak azaltılması ve 2050 yılında karbon nötr bir enerji şirketine dönüşüm hedeflenmektedir. Söz konu sera gazı emisyonları hedefi 2017 yılı baz yıl olacak şekilde ilgili faaliyet yılı ile 2050 arasındaki dönemi kapsayacaktır. Sera gazı emisyon azaltımında alt hedef yıllarındaki kırılımları ise şu şekildedir:</untrusted_document>",
+   "summary": "TUPRS FAVÖK marjı 2025",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:70aa959d03f80e89992ee63cb1fa734f852342099065d942026d6b5215d8442a",
+     "text": "2025-2035 döneminde bu alanda 120,01 milyar TL* (2,8 milyar ABD doları) yatırım öngörülmekte, FAVÖK katkısı 85,72 milyar TL* (2 milyar ABD doları) olarak öngörülmektedir. Yeşil Hidrojen: 2025-2035 döneminde yeşil hidrojen üretimi için 32,15 milyar TL* (750 milyon ABD doları) yatırım yapılması planlanmakta, FAVÖK katkısının 12,86 milyar TL* (300 milyon ABD doları) olması beklenmektedir. Tüpraş 2025 Entegre Faaliyet Raporu 483 Genel Kurul Tüpraş Hakkında Tüpraş’ta Sür dürülebilirlik İle Değer Tüpraş’ta Çalışanlara D eğer Tüpraş’ta Ür etime Değer Tüpraş’ta Ge leceğe Değer Tüpraş’ta P aydaşlar ve T oplum İçin D eğer Tüpraş’ta Ç evreye Değer Tüpraş’ta K urumsal Y önetim Açıklamaları Finansal Bilgiler Ekler T üpraş’ta Y önetişim İle D eğer Tüpraş’ta Finansal D eğer Stratejik Dönüşüm Planı (2025 - 2035) Yatırım ve FAVÖK Katkısı Alan Yatırım** (milyar TL) Yatırım (milyar ABD Doları) FAVÖK Katkısı** (milyar TL) FAVÖK Katkısı (milyar ABD Doları) Sürdürülebilir Rafinaj 167,16 3,9 557,21 13 Sürdürülebilir Havacılık Yakıtı 34,29 0,8 81,44 1,9 Sıfır Karbonlu Elektrik 120,01 2,8 85,72 2 Yeşil Hidrojen 32,15 0,75 12,86 0,3 Toplam 353,61 8,25 737,23 17,2 **: TL cinsinden sunulan tutarlar, ABD doları cinsinden belirlenen tutarların T.C. Merkez Bankası tarafından yayımlanan 31.12.2025 tarihli merkez bankası kuru (1 ABD doları=42,8623 TL) esas alınarak TL’ye çevrilmiştir. TSRS Uyumlu Sürdürülebilirlik Raporu 2023 yılı itibarıyla, AB Taksonomisi raporlaması kapsamında İklim Değişikliğini Azaltma ve İklim Değişikliğine Uyum çevresel hedefleriyle uyumlu yatırım harcamaları ayrı olarak takip edilmekte ve raporlanmaktadır. Bu kapsamda, düşük karbonlu teknolojilere geçişi destekleyen veya fiziksel iklim risklerine karşı dayanıklılığı artıran yatırımlar teknik kriterlere göre sınıflandırılmakta; böylece sermaye dağılımının iklim stratejileri ile uyumu şeffaf biçimde ortaya konmaktadır. Tüpraş’ın Ar - Ge harcamaları 2025 yılında 235,5 milyon TL ’ye ulaşarak, şirketin yenilikçi ve düşük karbonlu çözümler geliştirme kapasitesini önemli ölçüde güçlendirmiştir. Bu harcamalar;",
+     "source": {
+      "kind": "chunk",
+      "document_id": 420,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 485,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1557178"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:052edca6c0c0ba926bb404ba4ccb3830dcf3740f1962791db5d1ec09017f5d9f",
+     "text": "782.914.080,88 TL tutarın 366.674.300,00 TL ’si Vehbi Koç Vakfı’na, 213.820.500,00 TL ’si Şirket’in ilgili mevzuata uygun olması şartıyla, 2025-2029 yılları arasında her yıl 5 milyon ABD Doları bağış yapılmasına ve 2030 yılında yönetim kurulu tarafından yapılacak değerlendirmede aksi kararlaştırılmadığı sürece söz konusu bağışın aynı koşullarla 2030-2034 yıllarında da devam etmesine yönelik kararı çerçevesinde Koç Üniversitesi’ne, 21.492.403,33 TL ’si Türk Eğitim Vakfı’na, 12.326.367,26 TL ’si Diğer Eğitim Kurumlarına, 135.268.704,00 TL ’si Rahmi Koç Müzesi’ne, 7.000.000,00 TL ’si Orman Genel Müdürlüğü’ne ve 5.697.585,00 TL ’si İstanbul Kültür Sanat Vakfı’na bağışlanmış olup; bakiye tutar ise her biri 5 milyon TL ’nin altındaki muhtelif kurum ve kuruluşlara yapılan ve yatırımcılar açısından önemli bilgi niteliği taşımayan çeşitli kurum ve kuruluşlara yapılan bağışlardan oluşmaktadır. Ayrıca 2026 yılında yapılacak bağışlar için üst sınır genel kurul tarafından belirlenecektir. Tüpraş 2025 Entegre Faaliyet Raporu 401 Genel Kurul Tüpraş Hakkında Tüpraş’ta Sür dürülebilirlik İle Değer Tüpraş’ta Çalışanlara D eğer Tüpraş’ta Ür etime Değer Tüpraş’ta Ge leceğe Değer Tüpraş’ta P aydaşlar ve T oplum İçin D eğer Tüpraş’ta Ç evreye Değer Tüpraş’ta K urumsal Y önetim Açıklamaları Finansal Bilgiler Ekler T üpraş’ta Y önetişim İle D eğer Tüpraş’ta Finansal D eğer Olağan Genel Kurul Toplantısına İlişkin Bilgile ndirme Notu 12. Sermaye Piyasası Kurulu düzenlemeleri gereğince, Şirket’in ve bağlı ortaklıklarının 2025 yılında üçüncü kişiler lehine verdiği teminat, rehin, ipotek ve kefaletler ile elde edilen gelir veya menfaatler hakkında pay sahiplerine bilgi verilmesi, Sermaye Piyasası Kurulu’nun II-17.1. sayılı Kurumsal Yönetim Tebliği’nin 12’nci maddesi uyarınca Şirketimiz ve bağlı ortaklıkları tarafından üçüncü kişiler lehine verilen teminat, rehin, ipotek ve kefaletler ile elde edilen gelir veya menfaatlere olağan genel kurul toplantısı gündeminde ayrı bir madde olarak yer verilmesi gerekmekte olup, 31.12.2025 tarihli finansal tablolarımızın 18 numaralı dipnot maddesinde bu hususa yer verilmiştir. 31 Aralık 2025 31 Aralık 2024 A. K endi tüzel kişiliği adına vermiş olduğu TRİK’lerin toplam tutarı 64.386.894 48.943.457 B.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 420,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 403,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1557178"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:75cef6274d7322262a3c595c887910992f5541a4a777729ae8d9a8f8b7e9a80f",
+     "text": "2025 güncellemesi kapsamında, Türkiye’nin ulaşım amaçlı enerji talebine ilişkin öngörüler yeniden ele alınmıştır. Güncellenmiş analizler ise fosil yakıt talebinin 2035 yılında zirve noktasına ulaşacağını, motorinin kısmen hidrojen ile yer değiştireceğini ancak rafineri ürünlerine olan ihtiyacın devam edeceğini, hidrojenin 2040 itibarıyla büyüme sürecine gireceğini, sürdürülebilir havacılık yakıtının (SAF) 2035 yılına kadar havacılık yakıt talebinin yaklaşık %10’unu oluşturacağını ortaya koymuştur. Bu çerçevede, mevcut rafinaj altyapısının korunması ve dönüştürülmesi, stratejik bir gereklilik olarak değerlendirilmiştir. 2025 güncellemesi kapsamında Sıfır Karbonlu Elektrik, stratejik dirençliliği artıran önemli bir unsur olarak ölçeklendirilmiştir. Elektrifikasyon talebindeki artış, ekipman maliyetlerindeki yükseliş ve regülasyonlardaki değişimler doğrultusunda yatırımların zamanlaması ve Tüpraş 2025 Entegre Faaliyet Raporu 448 büyüklüğü yeniden planlanmıştır. 2030 ve 2035 hedefleri güncellenerek, Tüpraş’ın hem kendi operasyonlarını destekleyen hem de şebekeye satış yoluyla nakit akışı yaratan bir üretim portföyü oluşturması hedeflenmiştir. Bu yaklaşım, Şirket’in finansal dayanıklılığını güçlendiren bir unsur olarak değerlendirilmektedir. Sürdürülebilir Havacılık Yakıtı (SAF) alanında ise küresel talep artışı ve regülasyonlardaki hızlanma dikkate alınarak, İzmir Rafinerisi’nde kurulması planlanan ünite ile SAF üretimi stratejik öncelik hâline getirilmiştir. Hammadde tedarik güvenliğini sağlamak amacıyla uzun vadeli anlaşmalar yapılmış; farklı üretim teknolojileri değerlendirilerek kapasite esnekliği hedeflenmiştir. Yeşil hidrojen alanında, talep görünümündeki belirsizlikler ve yatırım maliyetlerindeki artış dikkate alınarak daha kademeli ve temkinli bir yaklaşım benimsenmiştir. Elektrolizör yatırım maliyetlerindeki artış doğrultusunda projelerin zamanlaması uzun vadeye yayılmış; yeşil hidrojenin öncelikle SAF üretim süreçlerinde kullanılması hedeflenmiştir. Tüpraş, dünyanın önde gelen çevresel risk trendleri arasında yer alan biyoçeşitlilik kaybı konusunu 2025 yılı itibariyle stratejik öncelikleri arasına almış olup, bu kapsamda küresel standartlarla uyumlu bir risk yönetimi yaklaşımı benimsemektedir. Şirket, biyoçeşitlilikle ilgili mevcut durumu nesnel biçimde değerlendirmek amacıyla WWF Risk Filter metodolojisini kullanarak tüm tesislerinde kapsamlı analizler gerçekleştirmektedir. Bu çalışma; TNFD ve SBTN prensipleriyle uyumlu şekilde ekosistem bağımlılıkları, faaliyet kaynaklı etkiler, coğrafi hassasiyetler ve doğal sermaye risklerini bütüncül bir bakış açısıyla incelemekte olup toplam 33 gösterge ve 56 metrik üzerinden risk skorlaması yapmaktadır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 420,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 450,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1557178"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:f76fdb8eb788634c2a5de45e12eba19b7f02b9cc594d98bb8e56960458f4adca",
+     "text": "2025 yılında, demo ölçekte üretimi sağlayacak sistemler birleştirilerek bir bütün olarak çalışabilir hâle getirilerek proje tamamlanmıştır. Tüpraş’ta Geleceğe Değer Tüpraş 2025 Entegre Faaliyet Raporu 178 Tüpraş’ın karbon nötr enerji ve yeşil dönüşüm hedefleri doğrultusunda, rafinerilerde çevreci havacılık (SAF) ve denizcilik yakıtlarının geliştirilmesi sağlanmaktadır. 2025 yılında, gıda dışı yenilenebilir kaynaklar, atık yağlar, biyokütle ve CO2 bazlı hammaddelerden elde edilen alternatif yakıt çözümleri için ar-ge pilot ölçekli üretim çalışmaları gerçekleştirilmiştir. Bu çalışmalar Türkiye’nin enerji dönüşümüne ve Tüpraş’ın sürdürülebilirlik vizyonuna değer katmaktadır. Yenilenebilir Yakıtlar6 Yenilenebilir Yakıtlar Odaklı Ar-Ge Projeleri FUEL-UP - Ufuk A vrupa 2026 yılı başında reaktör sisteminin kurulumunun tamamlanarak yaklaşık 1.000 L kapasiteli stabilize piroliz yağı (SDPO) işlenmesi ve çalışmaların daha yüksek ölçeğe taşınması planlanmaktadır. 2023’te Ufuk Avrupa kapsamında desteklenen FUEL-UP projesi, lignoselülozik biyokütleden sürdürülebilir havacılık ve denizcilik yakıtları üretmeyi hedeflemektedir. Bu kapsamda SDPO’nun karakterizasyonu ve hydroprocessing optimizasyonu tamamlanmış, benzin, gazyağı ve dizel elde edilmiştir. Ürün fraksiyonlarının sertifikasyon ve motor testleri için demo distilasyon kolonu kurulmuş, TRL-6 reaktör tasarımı ve ekipman tedariki gerçekleştirilmiştir. SUNFUSION - Ufuk Avrupa Ocak 2025’te başlayan dört yıllık SUNFUSION projesi, biyokütle üretiminde sürdürülebilir çözümler geliştirerek karbon nötr enerji hedeflerine katkı sağlamayı amaçlamaktadır. Mikroalgler ve yağlı mayaların hidrotermal sıvılaştırma (HTL) yöntemiyle biyoyakıta dönüştürülmesi hedeflenmektedir. Seçilen mikroalg türlerinin üretimi tamamlanmış, HTL çevrimleri başlatılmış ve ilk yağ fazı elde edilmiştir. Ayrıca proses koşulları ürün özelliklerine göre belirlenmiştir. Tüpraş, HTL sonrası hydroprocessing görmüş yağların kerosene dönüştürülmesi, şarj ve ürün analizleri ve nihai ürünün standartlara uygunluğunu değerlendirmekten sorumludur. Syn to Jet Projesi - KÜTEM Tüpraş Ar-Ge Merkezi ve KÜTEM iş birliğinde geliştirilen katalizörler CO2’nin e-yakıta dönüştürülmesini hedeflenmektedir. 2025 yılı içerisinde katalizörlerin karakterizasyon çalışmaları tamamlanmış, laboratuvar ölçekli deneyler KÜTEM bünyesinde gerçekleştirilmiştir. Ürün analizleri, Tüpraş Ar-Ge Merkezi tarafından yürütülmüştür.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 420,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 180,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1557178"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:851f7580264a0bb81e851193aeb58ef4c19aafe0d22a3c764d83965fa025f527",
+     "text": "ve bağlı ortaklıklarını kapsamakta olup, finansal raporlama dönemiyle uyumlu şekilde 1 Ocak 2025 - 31 Aralık 2025 dönemine ilişkin bilgileri içermektedir. Rapor, Entegre Faaliyet Raporu ile eş zamanlı olarak yayımlanmakta ve kamuya açıklanmaktadır. Rapor içerisinde yer alan tüm finansal bilgiler, konsolide finansal tablolarla tutarlı olacak şekilde Türk Lirası (TL) cinsinden sunulmuştur. Raporun temel amacı; sürdürülebilirlik ve iklimle ilgili risk ve fırsatlara ilişkin etkileri şeffaf, karşılaştırılabilir ve finansal önemlilik ilkesi çerçevesinde ortaya koymaktır. Bu kapsamda finansal önemlilik değerlendirmesinde FAVÖK büyüklüğü referans alınmış, FAVÖK’ün %5’i finansal önemlilik eşiği olarak belirlenmiştir. Rapor kapsamında TSRS 1 Ek E- Yürürlük Tarihi ve Geçiş ile TSRS 2 Ek C- Yürürlük Tarihi ve Geçiş bölümlerinde yer alan muafiyetlerden yararlanılmamıştır. Açıklamalar; gerçeğe uygun, tutarlı, doğrulanabilir, eksiksiz ve karşılaştırılabilir bilgi sunumu ilkeleri esas alınarak hazırlanmıştır. TSRS gereklilikleri doğrultusunda, 2024 yılına ait karşılaştırmalı bilgiler de raporda yer almaktadır. Tüpraş Ortaklık Yapısı Tüpraş 2025 Entegre Faaliyet Raporu 432 Bu raporda; sürdürülebilirlik ve iklimle ilgili yönetişim yapısı, strateji, risk yönetimi süreçleri ile metrikler ve hedeflere ilişkin ilerleme detaylı şekilde açıklanmıştır. Rapor kapsamı, şirketin bütünlüğünü doğru biçimde yansıtmak amacıyla; Tüpraş’ın bağlı ortaklıkları ve iştiraklerini içerecek şekilde konsolide düzeyde ele alınmış, değer zincirinin tamamı dikkate alınmıştır. Sürdürülebilirlik bilgileri, TSRS 1 Sürdürülebilirlikle İlgili Finansal Bilgilerin Açıklanmasına İlişkin Genel Hükümler ve TSRS 2 İklimle İlgili Açıklamalar dikkate alınarak sunulmuştur. İklim ve sürdürülebilirlik açıklamalarında ayrıca TSRS 2’nin sektör bazlı uygulanmasına ilişkin rehber ile SASB sektör standartları kullanılmış; Tüpraş, Tupraş Trading Ltd ve Opet için Petrol ve Gaz - Rafineri ve Pazarlama, Ditaş için Deniz Taşımacılığı, Körfez Ulaştırma A.Ş. için Demiryolu Taşımacılığı, Entek için Elektrik Tesisleri ve Güç Jeneratörleri ve Tüpraş Enerji Girişimleri A.Ş. için Mühendislik ve İnşaat Hizmetleri ciltleri referans alınmıştır. Raporlama sürecinde; düzenleyici gereklilikler, paydaş beklentileri, şirket stratejisi ve sektörel dinamikler birlikte değerlendirilmiş; sürdürülebilirlik ve iklimle ilgili risk ve fırsatlar finansal etkileriyle birlikte TSRS gerekliliklerine uygun olarak belirlenmiştir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 420,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 434,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1557178"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:149aba40995312ba5120f1349798985e00352c9d09a431e913483e88034ec7d9",
+     "text": "* Tüpraş ve Entek Konsolide Tüpraş 2025 Entegre Faaliyet Raporu 220 Tüpraş, enerji dönüşümündeki öncü rolünü güçlendirmek amacıyla 2022 yılında portföyüne kattığı Entek ile sıfır karbonlu elektrik üretiminde büyüme hedefini kararlılıkla sürdürmektedir. Bu stratejik adım, yalnızca Tüpraş’ın üretim yapısına yenilenebilir ve düşük emisyonlu enerji kapasitesi kazandırmakla kalmayıp, Türkiye’nin karbon nötr hedeflerine de önemli bir ivme sağlamaktadır. Entek’in entegrasyonu ile Şirket, enerji arz güvenliğini güçlendirirken sürdürülebilirlik hedefleriyle uyumlu yatırımlarını hızlandırmakta; uluslararası regülasyonlara uyum sağlayarak paydaş beklentilerini karşılayan uzun vadeli değer yaratmaktadır. Bu dönüşüm sürecinde, Körfez Ulaştırma A.Ş.’nin demiryolu taşımacılığına yönelik yatırımları da düşük karbonlu ekonomi hedeflerine önemli katkı sunmaktadır. Karayolu yerine demiryolu kullanımının artırılması, emisyonların azaltılmasına, lojistik süreçlerde karbon ayak izinin düşürülmesine ve enerji verimliliğinin artırılmasına imkân tanımaktadır. Benzer şekilde, Ditaş’ın yeni nesil enerji verimli gemileri ve filo modernizasyonuna yönelik çalışmaları, deniz taşımacılığında emisyonların düşürülmesine ve yakıt verimliliğinin iyileştirilmesine katkı sağlamaktadır. Tüpraş, Stratejik Dönüşüm Planı çerçevesinde hem üretim hem de lojistik alanlarında düşük karbonlu ekonomiye geçişte liderlik iddiasını somut projeler ve yatırımlarla desteklemeyi sürdürecektir. Stratejik Dönüşüm Planı kapsamında bağlı ortaklıklarla birlikte Tüpraş’ın tüm operasyonlarını kapsayan konsolide Kapsam 1 ve Kapsam 2 emisyonlarının kademeli olarak azaltılması ve 2050 yılında karbon nötr bir enerji şirketine dönüşüm hedeflenmektedir. Söz konu sera gazı emisyonları hedefi 2017 yılı baz yıl olacak şekilde ilgili faaliyet yılı ile 2050 arasındaki dönemi kapsayacaktır. Sera gazı emisyon azaltımında alt hedef yıllarındaki kırılımları ise şu şekildedir:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 420,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 222,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1557178"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
  "sandbox": [],
  "decision": null
 }

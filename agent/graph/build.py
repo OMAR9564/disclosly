@@ -38,9 +38,11 @@ from agent.graph.nodes.finalize_partial import finalize_partial_node
 from agent.graph.nodes.planner import planner_node
 from agent.graph.nodes.quota_gate import quota_gate_node
 from agent.graph.nodes.retriever import retriever_node
+from agent.graph.nodes.retriever_simple import retriever_simple_node
 from agent.graph.nodes.router import router_node
 from agent.graph.nodes.verifier import verifier_node
 from agent.graph.nodes.writer import writer_node
+from agent.graph.nodes.writer_simple import writer_simple_node
 from agent.graph.state import ResearchState
 from agent.telemetry import node_span
 from retrieval.types import SearchUnavailable
@@ -60,6 +62,9 @@ DURABILITY: Durability = "sync"
 
 DEFAULT_NODES: dict[GraphNode, NodeFn] = {
     "router": router_node,
+    # Simple and refused path (US4).
+    "retriever_simple": retriever_simple_node,
+    "writer_simple": writer_simple_node,
     # Deep path (US1).
     "quota_gate": quota_gate_node,
     "planner": planner_node,

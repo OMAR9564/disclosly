@@ -12,6 +12,7 @@ from agent.graph.state import Calculation
 from agent.report import Report
 from evals import graph
 from evals.graph_cases import (
+    GRAPH_DATASETS,
     SEEDED,
     DeepCase,
     GraphCassette,
@@ -102,7 +103,7 @@ async def _record(case: SeededCase, directory: Path) -> None:
 async def test_suite_scores_seeded_drafts_from_cassettes(tmp_path: Path) -> None:
     datasets, cassettes = tmp_path / "datasets", tmp_path / "cassettes"
     datasets.mkdir()
-    for name in ("deep_golden", "advice_refusal", "injection"):
+    for name in GRAPH_DATASETS:
         (datasets / f"{name}.jsonl").write_text("", encoding="utf-8")
     picked = [c for c in CASES if c.defect in (None, "wrong_output", "unsupported_claim")][:6]
     (datasets / f"{SEEDED}.jsonl").write_text(

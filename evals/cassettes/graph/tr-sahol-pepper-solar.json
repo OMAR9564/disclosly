@@ -1,0 +1,205 @@
+{
+ "case_id": "tr-sahol-pepper-solar",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "07f55f0c86aa2bff9511af01b4811039b4e88925394dd0bef5d8d70e76311ceb",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\"SAHOL\"],\n  \"periods\": [],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1007,
+    "tokens_out": 49,
+    "latency_ms": 1279.393,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "5be13f57bbc2f85dda8007f5e880ce5aa44df519c393007f926a678a8286a9fe",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1195830",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "SAHOL",
+       "query": "Sabancı Teksas güneş santrali MW"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TOlTItdr5m3eVIrqYjlEg9BfC/YJpvbh1JXCRuVKd3T866FBLrbxC3ND/R55kpBlBVDzLYNbpOEwlNnrXkbvLF19VezUPIWfaJ95uJBeTvdM1/D+wuCDz6YA="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1615,
+    "tokens_out": 31,
+    "latency_ms": 648.909,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "9e6216965473cfa8c7617b063a5e6f179219fc1b9f8ebcf670ebab108458ad22",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Sabancı Holding'in bağlı ortaklığı Sabancı Renewables Inc., ABD'nin Teksas eyaletinde 156 MW kapasiteli Pepper Solar Farm LLC ve 130 MWdc kapasiteli Lucky 7 Solar Farm LLC projelerinin hisselerini satın almıştır.\",\n  \"points\": [\n    {\n      \"text\": \"Sabancı Renewables Inc. tarafından, ABD'nin Teksas eyaletinde 156 MW kapasiteli güneş enerjisi santralinin lisans hakkına sahip olan Pepper Solar Farm LLC'nin %100 hissesi satın alınmıştır.\",\n      \"cite_ids\": [\n        \"c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa\"\n      ]\n    },\n    {\n      \"text\": \"Sabancı Renewables Inc. tarafından, ABD'nin Teksas eyaletinde 130 MWdc kapasiteli güneş enerjisi santrali geliştirme hakkına sahip olan Lucky 7 Solar Farm LLC'nin %100 hissesi satın alınmıştır.\",\n      \"cite_ids\": [\n        \"c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 4824,
+    "tokens_out": 562,
+    "latency_ms": 1749.64,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "3cafa71ca740f8fc413797f25567f6c89652c82e1e9df44f0a314ed4adf35160",
+   "task_class": "strong",
+   "response": {
+    "content": "The user asks: \"Sabancı Holding Teksas'ta kaç MW kapasiteli güneş santrali satın aldı?\" (How many MW capacity solar power plant did Sabancı Holding buy in Texas?)\n\nWe have several untrusted documents. Let's examine them.\n\nDocument c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa: \"Sermayesinin tamamı Şirketimize ait olan Sabancı İklim Teknolojileri A.Ş.'nin %100 oranında bağlı ortaklığı olan Sabancı Renewables Inc. tarafından, ABD'nin Teksas eyaletinde 156 MW kapasiteli güneş enerjisi santralinin lisans hakkına sahip olan Pepper Solar Farm LLC'nin %100 hissesi ilişkili olmayan bir üçüncü taraftan satın alınmıştır.\"\n\nSo that says 156 MW capacity solar power plant (Pepper Solar Farm) in Texas.\n\nDocument c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d: mentions 130 MWdc capacity Lucky 7 Solar Farm LLC.\n\nDocument c:97afb15cc51aa3e6f3b13bc7ba5854837dddfe863e5801d55e2b35a4197fe06b: also mentions 130 MWdc Lucky 7 Solar Farm.\n\nDocument c:af5848cab51d868646dfaf733fdb6d37a4ab2d17093f7549a0548e82fd281d23: mentions 232 MWdc Oriana Solar.\n\nDocument c:36422b5aaba7b0e53e39470aacc143cf0d148f4ad7ecb0cd414acfa64a1e265c: mentions 14.2 MWp in Eskişehir, not Texas.\n\nThus the question: \"Sabancı Holding Teksas'ta kaç MW kapasiteli güneş santrali satın aldı?\" Could be ambiguous: maybe they want the total MW capacity of solar plants purchased in Texas. There are multiple purchases: Pepper Solar Farm (156 MW), Lucky 7 Solar Farm (130 MWdc), Oriana (232 MWdc). However, the question says \"kaç MW kapasiteli güneş santrali satın aldı?\" singular \"güneş santrali\" maybe referring to a specific purchase. The first document mentions 156 MW capacity Pepper Solar Farm. The second and third mention 130 MWdc Lucky 7. The fourth mentions 232 MWdc Oriana. The question may be referencing the most recent announcement? The user didn't specify which. Could be they want the capacity of the solar plant purchased in Texas as per the latest disclosure. The first document is about Pepper Solar Farm (156 MW). The second and third are about Lucky 7 (130 MWdc). The fourth is about Oriana (232 MWdc). The question: \"Sabancı Holding Teksas'ta kaç MW kapasiteli güneş santrali satın aldı?\" Could be answered with the 156 MW figure from the first document. But we need to verify if there are multiple purchases. The user may be expecting a single number. The first document explicitly says \"156 MW kapasiteli güneş enerjisi santralinin lisans hakkına sahip olan Pepper Solar Farm LLC'nin %100 hissesi ... satın alınmıştır.\" That is a purchase of a 156 MW solar plant.\n\nThe other documents also mention purchases: Lucky 7 (130 MWdc) and Oriana (232 MWdc). However, the question may be ambiguous. We need to answer based on the documents. We could answer that there are multiple purchases: 156 MW (Pepper Solar), 130 MWdc (Lucky 7), 232 MWdc (Oriana). But the question: \"kaç MW kapasiteli güneş santrali satın aldı?\" Could be interpreted as \"what is the capacity of the solar plant purchased in Texas?\" Might be singular. The first document is the only one that says \"156 MW kapasiteli güneş enerjisi santralinin lisans hakkına sahip olan Pepper Solar Farm LLC'nin %100 hissesi ... satın alınmıştır.\" The other documents also mention purchases but they are also in Texas. The question may be from a user who saw a news about Sabancı Holding buying a solar plant in Texas, maybe the Pepper Solar Farm. The user didn't specify which. We could answer with the 156 MW figure, citing the first document. But we should also note other purchases if relevant. However, the instruction: \"Yanıtlamadan önce araçları kullan. Sorunun gerektirdiğinden fazla çağrı yapma.\" We have already used search_documents? Actually we have not called any tool; we have the documents already provided in the conversation. The system gave us the untrusted documents. We can answer based on those.\n\nWe need to produce a JSON answer with language \"tr\", status \"completed\" (or \"partial\" if multiple?), summary, points, citations.\n\nWe must include citations for each claim. For each number we cite the cite_id.\n\nWe need to decide on the answer. The user asked: \"Sabancı Holding Teksas'ta kaç MW kapasiteli güneş santrali satın aldı?\" Could be answered: \"Sabancı Holding, Texas'ta 156 MW kapasiteli Pepper Solar Farm güneş santralini satın almıştır.\" Also there are other purchases: 130 MWdc Lucky 7, 232 MWdc Oriana. But the question is singular. Might be they want the capacity of the solar plant purchased (maybe the latest). The latest document (c:af5848cab51d868646dfaf733fdb6d37a4ab2d17093f7549a0548e82fd281d23) mentions Oriana 232 MWdc, but that is a project completed, not necessarily a purchase. It says \"Oriana Güneş Enerjisi Santrali projesi planlandığı şekilde tamamlanarak tam kapasiteyle devreye alınmıştır.\" That is not a purchase but a project completion. The purchase of Oriana might have been earlier. The document c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d mentions Lucky 7 purchase. The document c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa mentions Pepper Solar purchase.\n\nThus there are at least two purchases: Pepper Solar (156 MW) and Lucky 7 (130 MWdc). The question may be ambiguous. We could answer: \"Sabancı Holding Texas'ta 156 MW kapasiteli Pepper Solar Farm ve 130 MWdc kapasiteli Lucky 7 Solar Farm güneş santrallerini satın almıştır.\" But the question: \"kaç MW kapasiteli güneş santrali satın aldı?\" Could be answered with both.\n\nBut the instruction: \"Yanıtlamadan önce araçları kullan. Sorunun gerektirdiğinden fazla çağrı yapma.\" We have not used any tool; we have the documents. We can answer.\n\nWe need to produce JSON with summary and points. The summary should be a short answer. Points can be multiple bullet points.\n\nWe must include citations for each number.\n\nWe need to ensure we don't fabricate cite_ids. Use the ones from the documents.\n\nCite IDs:\n\n- c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa (156 MW Pepper Solar)\n- c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d (130 MWdc Lucky 7)\n- c:97afb15cc51aa3e6f3b13bc7ba5854837dddfe863e5801d55e2b35a4197fe06b (130 MWdc Lucky 7 again)\n- c:af5",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 4690,
+    "tokens_out": 2048,
+    "latency_ms": 56485.713,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"Sabancı Holding Teksas'ta kaç MW kapasiteli güneş santrali satın aldı?\",\"ticker\":\"SAHOL\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "Tool error: document search is temporarily unavailable",
+   "summary": "SAHOL Sabancı Holding Teksas'ta kaç MW kapasiteli güneş santrali satın aldı?",
+   "count": 0,
+   "items": [],
+   "error": "document search is temporarily unavailable"
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"Sabancı Teksas güneş santrali MW\",\"ticker\":\"SAHOL\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa\">Sermayesinin tamamı Şirketimize ait olan Sabancı İklim Teknolojileri A.Ş.'nin %100 oranında bağlı ortaklığı olan Sabancı Renewables Inc. tarafından, ABD'nin Teksas eyaletinde 156 MW kapasiteli güneş enerjisi santralinin lisans hakkına sahip olan Pepper Solar Farm LLC'nin %100 hissesi ilişkili olmayan bir üçüncü taraftan satın alınmıştır. Söz konusu güneş enerjisi santrali yatırımının tamamlanmasıyla birlikte ilgili tesisin 2027 yılının üçüncü çeyreğinde devreye alınması hedeflenmektedir. Halihazırda faaliyette olan Cutlass II güneş enerjisi santrali ile Temmuz ayı içerisinde devreye alınması planlanan Oriana güneş enerjisi santraline ek olarak gerçekleştirilecek bu yeni kapasite yatırımının devreye alınması sonrasında, Sabancı Renewables Inc.'in ABD'deki toplam yenilenebilir enerji portföyü 660 MW'a ulaşacaktır. Sabancı Renewables Inc., Sabancı Topluluğu'nun yeni ekonomiye odaklı büyüme stratejisi, küresel ayak izini güçlendirme ve sürdürülebilirlik hedefleri doğrultusunda ABD'de yenilenebilir enerji yatırımlarını sürdürmektedir.</untrusted_document>\n<untrusted_document cite_id=\"c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d\">tarafından, ABD’nin Teksas eyaletinde 130 MWdc kapasiteli güneş enerjisi santrali g eliştirme hakkına sahip olan Lucky 7 Solar Farm LLC’nin %100 hissesi, ilişkili olmayan üçüncü bir taraftan satın alınmıştır. Söz konusu güneş enerjisi santrali yatırımının tamamlanmasıyla birlikte ilgili tesisin 2027 yılının üçüncü çeyreğinde de vreye alınması hedeflenmektedir. Halihazırda faaliyette olan Cutlass II güneş enerjisi santrali ile Temmuz ayı içerisinde devreye alma faaliyetleri başlayan Oriana güneş enerjisi santrali ve kısa süre önce satın alınan Pepper Solar yatırımlarına ek olarak gerçekleştirilecek bu yeni kapasite yatırımının da devreye alınması sonrasında, Sabancı Renewables Inc.’in ABD’deki toplam yenilenebilir enerji portföyü 790 MW’a ulaşacaktır. Sabancı Renewables Inc., Sabancı Topluluğu’nun yeni ekonomiye odaklı büyüme stratejisi, küresel ayak izini güçlendirme ve sürdürülebilirlik hedefleri doğrultusunda ABD’de yenilenebilir enerji yatırımlarını sürdürmektedir. 11 4. Faaliyetler ve Faaliyetlere İlişkin Önemli Gelişmeler (Devamı) c) Dönem İçi Gerçekleşen Önemli Gelişmeler(devamı) 12 Eylül 2025 tarihli açıklamaya göre; Kordsa Yönetim Kurulu, 500.000.000 TL kayıtlı sermaye tavanı içinde çıkarılmış sermayenin tamamen nakden artırılmasıyla 194.529.076 TL’den 484.305.475 TL’ye (%148,96 oranında) çıkarılmasına, artırılan 289.776.399 TL nominal değerli sermayeyi temsil eden 28.977.639.900 adet nama yazılı, borsada işlem gören ve imtiyazsız pay oluşturulmasına, yeni pay alma hakkı kullanım fiyatının 1 TL nominal değerli 100 adet pay için 10 TL olarak belirlenmesine, yeni pay alma hakkı kull anım süresinin 15 gün olmasına ve sürenin son gününün tatile denk gelmesi halinde izleyen iş günü sona ermesine, satılamayan payların 2 iş günü süreyle 10 TL’den düşük olmamak kaydıyla Borsa İstanbul Birincil Piyasa’da satışa sunulmasına, pay ihracı için i zahnamenin Sermaye Piyasası Kurulu’na sunulmasına ve ihraç edilecek payların kaydi olarak dağıtılmasına karar vermiştir. Sermaye artışından elde edilecek fonun finansal borçların azaltılmasında kullanılması planlanmaktadır.</untrusted_document>\n<untrusted_document cite_id=\"c:97afb15cc51aa3e6f3b13bc7ba5854837dddfe863e5801d55e2b35a4197fe06b\">Sermayesinin tamamı Şirketimize ait olan Sabancı İklim Teknolojileri A.Ş.'nin %100 oranında bağlı ortaklığı olan Sabancı Renewables Inc. tarafından, ABD'nin Teksas eyaletinde 130 MWdc kapasiteli güneş enerjisi santrali geliştirme hakkına sahip olan Lucky 7 Solar Farm LLC'nin %100 hissesi, ilişkili olmayan üçüncü bir taraftan satın alınmıştır. Söz konusu güneş enerjisi santrali yatırımının tamamlanmasıyla birlikte ilgili tesisin 2027 yılının üçüncü çeyreğinde devreye alınması hedeflenmektedir. Halihazırda faaliyette olan Cutlass II güneş enerjisi santrali ile Temmuz ayı içerisinde devreye alma faaliyetleri başlayan Oriana güneş enerjisi santrali ve kısa süre önce satın alınan Pepper Solar yatırımlarına ek olarak gerçekleştirilecek bu yeni kapasite yatırımının da devreye alınması sonrasında, Sabancı Renewables Inc.'in ABD'deki toplam yenilenebilir enerji portföyü 790 MW'a ulaşacaktır. Sabancı Renewables Inc., Sabancı Topluluğu'nun yeni ekonomiye odaklı büyüme stratejisi, küresel ayak izini güçlendirme ve sürdürülebilirlik hedefleri doğrultusunda ABD'de yenilenebilir enerji yatırımlarını sürdürmektedir.</untrusted_document>\n<untrusted_document cite_id=\"c:af5848cab51d868646dfaf733fdb6d37a4ab2d17093f7549a0548e82fd281d23\">tarafından, ABD'nin Teksas eyaletinde 232 MWdc kurulu güce sahip Oriana Güneş Enerjisi Santrali projesi planlandığı şekilde tamamlanarak tam kapasiteyle devreye alınmıştır. 12 Eylül 2024 tarihinde imzalanan tax equity (vergi avantajlı sermaye) sözleşmesi kapsamında toplam 138 milyon ABD Doları tutarındaki yatırımın fonlaması başarıyla tamamlanmış; 28 Mart 2024 tarihinde imzalanan finansman sözleşmeleri çerçevesinde mevcut inşaat kredileri uzun vadeli proje finansman kredisine dönüştürülmüştür. Halihazırda faaliyette olan Cutlass II Güneş Enerjisi Santrali ve kısa süre önce satın alınan Pepper Solar ve Lucky 7 Solar projeleri ile birlikte Sabancı Renewables Inc., ABD'deki toplam yenilenebilir enerji portföyü 790 MW seviyesine ulaşacaktır. Yeni gelişmeler olması halinde kamu ile paylaşılacaktır.</untrusted_document>\n<untrusted_document cite_id=\"c:36422b5aaba7b0e53e39470aacc143cf0d148f4ad7ecb0cd414acfa64a1e265c\">Bu çerçevede Çimsa, güneş enerjisi yatırımları, atık ısı geri kazanım sistemleri ve yüksek enerji öz yeterliliğiyle enerji stratejisini farklılaştırdı; Nisan ayında Eskişehir fabrikasında 14,2 MWp kapasiteli yeni güneş 103102 Sabancı Holding Hakkında Stratejimiz 2029 StratejimizGiriş Yönetişimimiz2025 Performansıve Öngörüler İnsan Kaynağımız Stratejik İş Kollarında Performans ve Öngörüler SABANCI HOLDİNG 2025 ENTEGRE FAALİYET RAPORUFinansal Performans ve Öngörüler Sürdürülebilirlik Performansıve Öngörüler Konsolide Finansal Tablolar Değer Yaratımımız enerjisi santralini devreye aldı. Akçansa, operasyonları genelinde verimlilik odaklı enerji optimizasyonu ve alternatif yakıt kullanımını ilerletti. Brisa ise İzmit tesisinde 4,8 MW kapasiteli ikinci ısı pompası projesini hayata geçirerek üretimde yenilenebilir enerji kullanımını önceliklendirdi. Bu platform altındaki tüm şirketler, CDP İklim Değişikliği ve/veya Su Güvenliği kategorilerinde CDP Global A Listesi’ne girdi. Bu başarı, Sabancı Holding’in sürdürülebilirlik performansının gücünü ve bu alandaki liderliğini ortaya koydu. Dijitalleşme, Malzeme Teknolojileri genelinde yaygın bir kolaylaştırıcı olarak kullanıldı. Yapay zekâ destekli planlama, kestirimci bakım, dijital ikiz uygulamaları ve ERP sistemlerinin uyumlaştırılması; operasyonel verimliliği, enerji yönetimini ve karar alma süreçlerini güçlendirdi. İnsan kaynağı, entelektüel birikim ve sermaye yapısı; Akçansa, Çimsa, Kordsa ve Brisa’yı kapsayan küresel Ar-Ge ekosisteminin desteğiyle yıl boyunca performansın temelini oluşturdu. 2026 ÖNGÖRÜLERİ Malzeme Teknolojileri, 2026 yılında devam eden yeniden inşa faaliyetleri, ürün karmasındaki iyileşme ve premium ile katma değerli segmentlerin ölçeklenmesiyle desteklenen kademeli bir piyasa normalleşmesi öngörüyor. Yapı malzemelerinde sınırlı hacim artışı öngörülürken, karlılığın fiyatlama disiplini, düşük karbonlu ürünler ve maliyet verimliliğiyle desteklenmesi bekleniyor. İleri malzemelerde büyümenin; lastik güçlendirme alanındaki süregelen talep, mobilite ve havacılık uygulamalarına yönelik kompozit teknolojilerinin ölçek kazanması ile hafifletme ve elektrifikasyona artan odak sayesinde desteklenmesi bekleniyor. Mobilite bağlantılı faaliyetlerde premiumlaşma, dijital hizmetler ve elektrikli araçlarla uyumlu çözümler temel büyüme unsurları olmaya devam edecek. Bu dinamikler, Malzeme Teknolojileri’nin Sabancı Holding portföy dönüşümündeki rolünü daha da güçlendirecek.</untrusted_document>\n<untrusted_document cite_id=\"c:c1d7ac67b8e2bc71c2ad4349bb984391f53eca3146703ec9f9a8748580b157e5\">18 Mart 2025 tarihli açıklamaya göre; Çimsa’nın 15 Nisan 2024 tarihli özel durum açıklamasında belirtilen, Eskişehir fabrikasında 14,2 MWp DC kurulu güce sahip ve yıllık yaklaşık 19 milyon kwh elektrik üretecek Güneş Enerji Santrali (GES) Tesisi yatırımı tamamlanarak devreye alınmıştır. Devreye alınan GES santrali Eskişehir fabrikasının enerji maliyetlerinin düşürülmesinin yanında Bilim Temelli Hedefler Girişimi’ne (SBTi) verilen karbon emisyonu azaltımı hedeflerine de olumlu katkısı olacaktır.Devreye alınan yeni Güneş Enerji Santrali ile birlikte elde edilecek elektriğin Eskişehir Fabrikası’nın toplam yıllık elektrik tüketiminin %14’ünü karşılaması beklenmektedir. 25 Mart 2025 tarihli açıklamaya göre; 2004 yılında, Sakıp Sabancı’dan sonra Sabancı Holding Yönetim Kurulu Başkanlığı’na seçilen Sn. Güler Sabancı, Şirket ’in 27 Mart 2025 tarihinde yapılacak Olağan Genel Kurulu (Genel Kurul) ile birlikte görevi bırakarak Yönetim Kurulu’ndan ayrılmıştır. Sabancı Holding Yönetim Kurulu Başkanlığı ve Murahhas Üyeliği’ne, Genel Kurul’da yapılan Yönetim Kurulu seçimi ve görev dağılımını takiben, Bağımsız Yönetim Kurulu üyesi olarak görev yapmakta olan Sn. Hayri Çulhacı gelm iştir. Sn. Hayri Çulhacı yaklaşık 35 yıldır Sabancı Topluluğu’nda bulunmakta olup, Sabancı Holding’te Yürütme Kurulu Üyeliği, Akbank Yönetim Kurulu Başkan Vekilliği ile Sabancı Holding ve iştiraklerinde Yönetim Kurulu üyesi olarak görev almıştır. 26 Mart 2025 tarihli açıklamaya göre; Agesa Yönetim Kurulu’nun 26 Mart 2025 tarihli kararıyla, Şirket’in bireysel emeklilik, hayat sigortası ve ferdi kaza sigortası alanlarındaki faaliyetlerine ek olarak sağlık alanında faaliyet gösterebilmesi amacıyla Sigortacılık ve Özel Emeklilik Düzenleme ve Denetleme Kurumu’na hastalık/sağlık branşı ruhsat başvurusund a bulunulmasına karar verilmiştir. Bu çerçevede, Sigortacılık ve Özel Emeklilik Düzenleme ve Denetleme Kurumu’na hastalık/sağlık branşında ruhsat başvurusu yapılacak ve ilgili ruhsatın teminine bağlı olarak Agesa hastalık/sağlık branşında faaliyetlerine başlayacaktır. 10 5. Finansal Durum a) Finansal Göstergeler Sabancı Holding’in konsolide finansal göstergeleri aşağıdaki gibidir:</untrusted_document>",
+   "summary": "SAHOL Sabancı Teksas güneş santrali MW",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:6dbe46b0a001a3abe70e58af9bee1a0aa7aedc94ff9c545deae0117b5a87efaa",
+     "text": "Sermayesinin tamamı Şirketimize ait olan Sabancı İklim Teknolojileri A.Ş.'nin %100 oranında bağlı ortaklığı olan Sabancı Renewables Inc. tarafından, ABD'nin Teksas eyaletinde 156 MW kapasiteli güneş enerjisi santralinin lisans hakkına sahip olan Pepper Solar Farm LLC'nin %100 hissesi ilişkili olmayan bir üçüncü taraftan satın alınmıştır. Söz konusu güneş enerjisi santrali yatırımının tamamlanmasıyla birlikte ilgili tesisin 2027 yılının üçüncü çeyreğinde devreye alınması hedeflenmektedir. Halihazırda faaliyette olan Cutlass II güneş enerjisi santrali ile Temmuz ayı içerisinde devreye alınması planlanan Oriana güneş enerjisi santraline ek olarak gerçekleştirilecek bu yeni kapasite yatırımının devreye alınması sonrasında, Sabancı Renewables Inc.'in ABD'deki toplam yenilenebilir enerji portföyü 660 MW'a ulaşacaktır. Sabancı Renewables Inc., Sabancı Topluluğu'nun yeni ekonomiye odaklı büyüme stratejisi, küresel ayak izini güçlendirme ve sürdürülebilirlik hedefleri doğrultusunda ABD'de yenilenebilir enerji yatırımlarını sürdürmektedir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1750,
+      "ticker": "SAHOL",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1458753"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:7e72552799b31547d93dc6911bace5c127d3447dc5d4e9152c1229dda857d27d",
+     "text": "tarafından, ABD’nin Teksas eyaletinde 130 MWdc kapasiteli güneş enerjisi santrali g eliştirme hakkına sahip olan Lucky 7 Solar Farm LLC’nin %100 hissesi, ilişkili olmayan üçüncü bir taraftan satın alınmıştır. Söz konusu güneş enerjisi santrali yatırımının tamamlanmasıyla birlikte ilgili tesisin 2027 yılının üçüncü çeyreğinde de vreye alınması hedeflenmektedir. Halihazırda faaliyette olan Cutlass II güneş enerjisi santrali ile Temmuz ayı içerisinde devreye alma faaliyetleri başlayan Oriana güneş enerjisi santrali ve kısa süre önce satın alınan Pepper Solar yatırımlarına ek olarak gerçekleştirilecek bu yeni kapasite yatırımının da devreye alınması sonrasında, Sabancı Renewables Inc.’in ABD’deki toplam yenilenebilir enerji portföyü 790 MW’a ulaşacaktır. Sabancı Renewables Inc., Sabancı Topluluğu’nun yeni ekonomiye odaklı büyüme stratejisi, küresel ayak izini güçlendirme ve sürdürülebilirlik hedefleri doğrultusunda ABD’de yenilenebilir enerji yatırımlarını sürdürmektedir. 11 4. Faaliyetler ve Faaliyetlere İlişkin Önemli Gelişmeler (Devamı) c) Dönem İçi Gerçekleşen Önemli Gelişmeler(devamı) 12 Eylül 2025 tarihli açıklamaya göre; Kordsa Yönetim Kurulu, 500.000.000 TL kayıtlı sermaye tavanı içinde çıkarılmış sermayenin tamamen nakden artırılmasıyla 194.529.076 TL’den 484.305.475 TL’ye (%148,96 oranında) çıkarılmasına, artırılan 289.776.399 TL nominal değerli sermayeyi temsil eden 28.977.639.900 adet nama yazılı, borsada işlem gören ve imtiyazsız pay oluşturulmasına, yeni pay alma hakkı kullanım fiyatının 1 TL nominal değerli 100 adet pay için 10 TL olarak belirlenmesine, yeni pay alma hakkı kull anım süresinin 15 gün olmasına ve sürenin son gününün tatile denk gelmesi halinde izleyen iş günü sona ermesine, satılamayan payların 2 iş günü süreyle 10 TL’den düşük olmamak kaydıyla Borsa İstanbul Birincil Piyasa’da satışa sunulmasına, pay ihracı için i zahnamenin Sermaye Piyasası Kurulu’na sunulmasına ve ihraç edilecek payların kaydi olarak dağıtılmasına karar vermiştir. Sermaye artışından elde edilecek fonun finansal borçların azaltılmasında kullanılması planlanmaktadır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1759,
+      "ticker": "SAHOL",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": 11,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511259"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:97afb15cc51aa3e6f3b13bc7ba5854837dddfe863e5801d55e2b35a4197fe06b",
+     "text": "Sermayesinin tamamı Şirketimize ait olan Sabancı İklim Teknolojileri A.Ş.'nin %100 oranında bağlı ortaklığı olan Sabancı Renewables Inc. tarafından, ABD'nin Teksas eyaletinde 130 MWdc kapasiteli güneş enerjisi santrali geliştirme hakkına sahip olan Lucky 7 Solar Farm LLC'nin %100 hissesi, ilişkili olmayan üçüncü bir taraftan satın alınmıştır. Söz konusu güneş enerjisi santrali yatırımının tamamlanmasıyla birlikte ilgili tesisin 2027 yılının üçüncü çeyreğinde devreye alınması hedeflenmektedir. Halihazırda faaliyette olan Cutlass II güneş enerjisi santrali ile Temmuz ayı içerisinde devreye alma faaliyetleri başlayan Oriana güneş enerjisi santrali ve kısa süre önce satın alınan Pepper Solar yatırımlarına ek olarak gerçekleştirilecek bu yeni kapasite yatırımının da devreye alınması sonrasında, Sabancı Renewables Inc.'in ABD'deki toplam yenilenebilir enerji portföyü 790 MW'a ulaşacaktır. Sabancı Renewables Inc., Sabancı Topluluğu'nun yeni ekonomiye odaklı büyüme stratejisi, küresel ayak izini güçlendirme ve sürdürülebilirlik hedefleri doğrultusunda ABD'de yenilenebilir enerji yatırımlarını sürdürmektedir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1754,
+      "ticker": "SAHOL",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1478902"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:af5848cab51d868646dfaf733fdb6d37a4ab2d17093f7549a0548e82fd281d23",
+     "text": "tarafından, ABD'nin Teksas eyaletinde 232 MWdc kurulu güce sahip Oriana Güneş Enerjisi Santrali projesi planlandığı şekilde tamamlanarak tam kapasiteyle devreye alınmıştır. 12 Eylül 2024 tarihinde imzalanan tax equity (vergi avantajlı sermaye) sözleşmesi kapsamında toplam 138 milyon ABD Doları tutarındaki yatırımın fonlaması başarıyla tamamlanmış; 28 Mart 2024 tarihinde imzalanan finansman sözleşmeleri çerçevesinde mevcut inşaat kredileri uzun vadeli proje finansman kredisine dönüştürülmüştür. Halihazırda faaliyette olan Cutlass II Güneş Enerjisi Santrali ve kısa süre önce satın alınan Pepper Solar ve Lucky 7 Solar projeleri ile birlikte Sabancı Renewables Inc., ABD'deki toplam yenilenebilir enerji portföyü 790 MW seviyesine ulaşacaktır. Yeni gelişmeler olması halinde kamu ile paylaşılacaktır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1757,
+      "ticker": "SAHOL",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1508786"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:36422b5aaba7b0e53e39470aacc143cf0d148f4ad7ecb0cd414acfa64a1e265c",
+     "text": "Bu çerçevede Çimsa, güneş enerjisi yatırımları, atık ısı geri kazanım sistemleri ve yüksek enerji öz yeterliliğiyle enerji stratejisini farklılaştırdı; Nisan ayında Eskişehir fabrikasında 14,2 MWp kapasiteli yeni güneş 103102 Sabancı Holding Hakkında Stratejimiz 2029 StratejimizGiriş Yönetişimimiz2025 Performansıve Öngörüler İnsan Kaynağımız Stratejik İş Kollarında Performans ve Öngörüler SABANCI HOLDİNG 2025 ENTEGRE FAALİYET RAPORUFinansal Performans ve Öngörüler Sürdürülebilirlik Performansıve Öngörüler Konsolide Finansal Tablolar Değer Yaratımımız enerjisi santralini devreye aldı. Akçansa, operasyonları genelinde verimlilik odaklı enerji optimizasyonu ve alternatif yakıt kullanımını ilerletti. Brisa ise İzmit tesisinde 4,8 MW kapasiteli ikinci ısı pompası projesini hayata geçirerek üretimde yenilenebilir enerji kullanımını önceliklendirdi. Bu platform altındaki tüm şirketler, CDP İklim Değişikliği ve/veya Su Güvenliği kategorilerinde CDP Global A Listesi’ne girdi. Bu başarı, Sabancı Holding’in sürdürülebilirlik performansının gücünü ve bu alandaki liderliğini ortaya koydu. Dijitalleşme, Malzeme Teknolojileri genelinde yaygın bir kolaylaştırıcı olarak kullanıldı. Yapay zekâ destekli planlama, kestirimci bakım, dijital ikiz uygulamaları ve ERP sistemlerinin uyumlaştırılması; operasyonel verimliliği, enerji yönetimini ve karar alma süreçlerini güçlendirdi. İnsan kaynağı, entelektüel birikim ve sermaye yapısı; Akçansa, Çimsa, Kordsa ve Brisa’yı kapsayan küresel Ar-Ge ekosisteminin desteğiyle yıl boyunca performansın temelini oluşturdu. 2026 ÖNGÖRÜLERİ Malzeme Teknolojileri, 2026 yılında devam eden yeniden inşa faaliyetleri, ürün karmasındaki iyileşme ve premium ile katma değerli segmentlerin ölçeklenmesiyle desteklenen kademeli bir piyasa normalleşmesi öngörüyor. Yapı malzemelerinde sınırlı hacim artışı öngörülürken, karlılığın fiyatlama disiplini, düşük karbonlu ürünler ve maliyet verimliliğiyle desteklenmesi bekleniyor. İleri malzemelerde büyümenin; lastik güçlendirme alanındaki süregelen talep, mobilite ve havacılık uygulamalarına yönelik kompozit teknolojilerinin ölçek kazanması ile hafifletme ve elektrifikasyona artan odak sayesinde desteklenmesi bekleniyor. Mobilite bağlantılı faaliyetlerde premiumlaşma, dijital hizmetler ve elektrikli araçlarla uyumlu çözümler temel büyüme unsurları olmaya devam edecek. Bu dinamikler, Malzeme Teknolojileri’nin Sabancı Holding portföy dönüşümündeki rolünü daha da güçlendirecek.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1769,
+      "ticker": "SAHOL",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 53,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1566012"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:c1d7ac67b8e2bc71c2ad4349bb984391f53eca3146703ec9f9a8748580b157e5",
+     "text": "18 Mart 2025 tarihli açıklamaya göre; Çimsa’nın 15 Nisan 2024 tarihli özel durum açıklamasında belirtilen, Eskişehir fabrikasında 14,2 MWp DC kurulu güce sahip ve yıllık yaklaşık 19 milyon kwh elektrik üretecek Güneş Enerji Santrali (GES) Tesisi yatırımı tamamlanarak devreye alınmıştır. Devreye alınan GES santrali Eskişehir fabrikasının enerji maliyetlerinin düşürülmesinin yanında Bilim Temelli Hedefler Girişimi’ne (SBTi) verilen karbon emisyonu azaltımı hedeflerine de olumlu katkısı olacaktır.Devreye alınan yeni Güneş Enerji Santrali ile birlikte elde edilecek elektriğin Eskişehir Fabrikası’nın toplam yıllık elektrik tüketiminin %14’ünü karşılaması beklenmektedir. 25 Mart 2025 tarihli açıklamaya göre; 2004 yılında, Sakıp Sabancı’dan sonra Sabancı Holding Yönetim Kurulu Başkanlığı’na seçilen Sn. Güler Sabancı, Şirket ’in 27 Mart 2025 tarihinde yapılacak Olağan Genel Kurulu (Genel Kurul) ile birlikte görevi bırakarak Yönetim Kurulu’ndan ayrılmıştır. Sabancı Holding Yönetim Kurulu Başkanlığı ve Murahhas Üyeliği’ne, Genel Kurul’da yapılan Yönetim Kurulu seçimi ve görev dağılımını takiben, Bağımsız Yönetim Kurulu üyesi olarak görev yapmakta olan Sn. Hayri Çulhacı gelm iştir. Sn. Hayri Çulhacı yaklaşık 35 yıldır Sabancı Topluluğu’nda bulunmakta olup, Sabancı Holding’te Yürütme Kurulu Üyeliği, Akbank Yönetim Kurulu Başkan Vekilliği ile Sabancı Holding ve iştiraklerinde Yönetim Kurulu üyesi olarak görev almıştır. 26 Mart 2025 tarihli açıklamaya göre; Agesa Yönetim Kurulu’nun 26 Mart 2025 tarihli kararıyla, Şirket’in bireysel emeklilik, hayat sigortası ve ferdi kaza sigortası alanlarındaki faaliyetlerine ek olarak sağlık alanında faaliyet gösterebilmesi amacıyla Sigortacılık ve Özel Emeklilik Düzenleme ve Denetleme Kurumu’na hastalık/sağlık branşı ruhsat başvurusund a bulunulmasına karar verilmiştir. Bu çerçevede, Sigortacılık ve Özel Emeklilik Düzenleme ve Denetleme Kurumu’na hastalık/sağlık branşında ruhsat başvurusu yapılacak ve ilgili ruhsatın teminine bağlı olarak Agesa hastalık/sağlık branşında faaliyetlerine başlayacaktır. 10 5. Finansal Durum a) Finansal Göstergeler Sabancı Holding’in konsolide finansal göstergeleri aşağıdaki gibidir:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1743,
+      "ticker": "SAHOL",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q1",
+      "section": "body",
+      "page": 10,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1434986"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

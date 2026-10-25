@@ -6,19 +6,217 @@
    "key": "688f18a38af4e5aafb6fde2edabbcaac4012f365e6deecf51a415c8c49886147",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"AMZN\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"AMZN\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"operating_income\",\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 927,
-    "tokens_out": 68,
-    "latency_ms": 900.353,
+    "tokens_out": 83,
+    "latency_ms": 1355.175,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "442d8809a877239dce705d004029eb63d209253869614b4289b1f0d5d81d3882",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"steps\": [\n    {\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Get Amazon's operating income and revenue for fiscal year 2025\", \"tickers\": [\"AMZN\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"operating_income\", \"revenue\"]},\n    {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"Calculate Amazon's operating margin for 2025 as operating income divided by revenue\", \"tickers\": [\"AMZN\"], \"periods\": [\"2025-FY\"]}\n  ]}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1012,
+    "tokens_out": 256,
+    "latency_ms": 4658.594,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "dc1ae1b2d2db542b88d43b0307766c8f36aa30d1ccbb5ad2531999fefc07c91e",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": true, \"rewritten_query\": null}, {\"step_id\": \"s2\", \"sufficient\": true, \"rewritten_query\": null}]}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 714,
+    "tokens_out": 48,
+    "latency_ms": 1755.616,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "db375f5ebb3f31b70d73cf1e764a0411dbb8faa4326f99f052f94dd463123739",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Amazon's operating margin in fiscal year 2025 was calculated as operating income divided by revenue.\",\n      \"cite_ids\": [\"f:564\", \"f:516\"],\n      \"calcs\": [\"operating_margin_2025\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"operating_margin_2025\",\n      \"description\": \"Operating margin for 2025 as operating income divided by revenue, expressed as a ratio.\",\n      \"inputs\": [\n        {\n          \"name\": \"operating_income\",\n          \"cite_id\": \"f:564\"\n        },\n        {\n          \"name\": \"revenue\",\n          \"cite_id\": \"f:516\"\n        }\n      ],\n      \"code\": \"result = inputs['operating_income'] / inputs['revenue']\"\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1858,
+    "tokens_out": 515,
+    "latency_ms": 10558.9,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "b1d79f437df1410f818aeb5ca80b0e11650af62c30920fff6fd991ccb2611eae",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Operating income and revenue from cited sources; division yields 0.11155.\"}]}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 719,
+    "tokens_out": 719,
+    "latency_ms": 66220.06,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "8b9e5212e7e1726da90b1844251aa89a5b5fbb4b8280f04d81671b454b2567a5",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Amazon's operating margin in fiscal year 2025 was 11.16%, calculated from operating income of $79.975 billion and revenue of $716.924 billion [1][2][3].\",\n  \"points\": [\n    {\n      \"text\": \"Amazon reported operating income of $79.975 billion for fiscal year 2025.\",\n      \"cite_ids\": [\"f:564\"]\n    },\n    {\n      \"text\": \"Amazon reported revenue of $716.924 billion for fiscal year 2025.\",\n      \"cite_ids\": [\"f:516\"]\n    },\n    {\n      \"text\": \"Operating margin for 2025 was 11.16% (operating income divided by revenue).\",\n      \"cite_ids\": [\"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Amazon Operating Margin FY 2025\",\n      \"columns\": [\n        \"Period\",\n        \"Operating Income (USD)\",\n        \"Revenue (USD)\",\n        \"Operating Margin (%)\"\n      ],\n      \"rows\": [\n        [\n          {\n            \"text\": \"2025-FY\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"79,975,000,000\",\n            \"cite_id\": \"f:564\"\n          },\n          {\n            \"text\": \"716,924,000,000\",\n            \"cite_id\": \"f:516\"\n          },\n          {\n            \"text\": \"11.16%\",\n            \"cite_id\": \"k:1\"\n          }\n        ]\n      ]\n    }\n  ],\n  \"chart\": null,\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"All required figures and the calculated margin are directly sourced from company disclosures and a verified calculation.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:564\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:516\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"k:1\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2264,
+    "tokens_out": 977,
+    "latency_ms": 15210.128,
     "cache_hit": false,
     "fallback_from": []
    }
   }
  ],
- "tools": [],
- "sandbox": [],
- "decision": null
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"AMZN\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 3132, \"ticker\": \"AMZN\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872426000026/amzn-20260630.htm\"}, {\"document_id\": 3133, \"ticker\": \"AMZN\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872426000014/amzn-20260331.htm\"}, {\"document_id\": 3134, \"ticker\": \"AMZN\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-06T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm\"}, {\"document_id\": 3135, \"ticker\": \"AMZN\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872425000123/amzn-20250930.htm\"}, {\"document_id\": 3136, \"ticker\": \"AMZN\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872425000086/amzn-20250630.htm\"}, {\"document_id\": 3137, \"ticker\": \"AMZN\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-02T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872425000036/amzn-20250331.htm\"}, {\"document_id\": 3138, \"ticker\": \"AMZN\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-07T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm\"}, {\"document_id\": 3139, \"ticker\": \"AMZN\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872424000161/amzn-20240930.htm\"}]}",
+   "summary": "AMZN documents",
+   "count": 8,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"operating_income\",\"revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"AMZN\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:564\">Operating income (2025-FY): 79,975,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3968\">Operating income (2025-FY): 79,975,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:516\">Revenue (2025-FY): 716,924,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3920\">Revenue (2025-FY): 716,924,000,000 USD</untrusted_document>",
+   "summary": "AMZN 2025-FY operating_income, revenue",
+   "count": 4,
+   "items": [
+    {
+     "cite_id": "f:564",
+     "text": "Operating income (2025-FY): 79,975,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 133,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0001018724-26-000004",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": "79975000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3968",
+     "text": "Operating income (2025-FY): 79,975,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2350,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0001018724-26-000004",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": "79975000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:516",
+     "text": "Revenue (2025-FY): 716,924,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 133,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001018724-26-000004",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": "716924000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3920",
+     "text": "Revenue (2025-FY): 716,924,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2350,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001018724-26-000004",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": "716924000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [
+  {
+   "key": "a93267f20061938840fdc1a643dfbc741fd77a0d9f6961180eed10a489453371",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "operating_margin_2025": "0.11155296795755199"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "a93267f20061938840fdc1a643dfbc741fd77a0d9f6961180eed10a489453371",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "operating_margin_2025": "0.11155296795755199"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  }
+ ],
+ "decision": "approve"
 }

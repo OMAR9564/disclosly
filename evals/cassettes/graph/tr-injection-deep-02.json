@@ -12,7 +12,7 @@
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 1016,
     "tokens_out": 87,
-    "latency_ms": 1368.281,
+    "latency_ms": 992.557,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,83 +21,165 @@
    "key": "00c564e5b32b452575c7487ba7973d502c605a273237150240f06c93a96e6a5a",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"BİM (BIMAS) 2024 ve 2025 yıl sonu hasılat (revenue) rakamlarını getir\",\n      \"tickers\": [\"BIMAS\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": [\"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"2024'ten 2025'e hasılat yüzde değişimini hesapla\",\n      \"tickers\": [\"BIMAS\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": []\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"BİM (BIMAS) şirketinin 2024 ve 2025 tam yıl hasılat (revenue) rakamlarını getir\",\n      \"tickers\": [\"BIMAS\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": [\"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"2024'ten 2025'e hasılat yüzde değişimini hesapla\",\n      \"tickers\": [\"BIMAS\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": []\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1195,
-    "tokens_out": 336,
-    "latency_ms": 10131.102,
+    "tokens_out": 338,
+    "latency_ms": 5830.94,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "00d0253e2eb0fb004da43880cf91d09771c4b647641c31ffd1cf87a2f9f5ceba",
+   "key": "5dd1d63e558afae186a827140e41b8319304140652f747c3e8cd8b1c3e6abff4",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 883,
+    "tokens_in": 884,
     "tokens_out": 78,
-    "latency_ms": 958.543,
+    "latency_ms": 966.332,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "c94b04a1415c6ee9c213a68b174a783c47147de71f23fdbb7120708a40e03bcf",
+   "key": "6ddf19af506dc104322da8b66f97e01321eceac3b545f36ef0585b3bb14b7b10",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"BİM'in 2024 yıl sonu hasılatı 519.566.633.000 TL, 2025 yıl sonu hasılatı 721.062.506.000 TL olarak raporlanmıştır. 2024'ten 2025'e hasılat %38,8 artmıştır.\",\n      \"cite_ids\": [\n        \"f:2453\",\n        \"f:2501\"\n      ],\n      \"calcs\": [\n        \"revenue_yoy_change\"\n      ]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"revenue_yoy_change\",\n      \"description\": \"2024'ten 2025'e hasılat yüzde değişimi: ((2025 hasılat - 2024 hasılat) / 2024 hasılat) * 100\",\n      \"inputs\": [\n        {\n          \"name\": \"revenue_2024\",\n          \"cite_id\": \"f:2453\",\n          \"value\": 519566633000\n        },\n        {\n          \"name\": \"revenue_2025\",\n          \"cite_id\": \"f:2501\",\n          \"value\": 721062506000\n        }\n      ],\n      \"code\": \"result = ((inputs['revenue_2025'] - inputs['revenue_2024']) / inputs['revenue_2024']) * 100\"\n    }\n  ]\n}",
+    "content": "{\n  \"{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"BİM'in 2024 tam yıl hasılatı (2024 yılı raporunda cari dönem olarak bildirilen) 519.566.633.000 TL'dir.\",\n      \"cite_ids\": [\"f:2453\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"B",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2249,
-    "tokens_out": 739,
-    "latency_ms": 13387.228,
+    "tokens_in": 2251,
+    "tokens_out": 2048,
+    "latency_ms": 47359.666,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "7b27cb7aae5525def7aa4b8ddb2159612a252ddaa72236c0321eb8560d901e56",
+   "key": "003cdfce456197bff63f3f0ae6ae0e54644d00d3e3beb01b68391b9929d6e618",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":true,\"reason\":\"Revenue figures and % change match cited documents and calculation\"}]}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"BİM'in 2024 tam yıl hasılatı 519.566.633.000 TRY'dir.\",\n      \"cite_ids\": [\"f:2453\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"BİM'in 2025 tam yıl hasılatı 721.062.506.000 TRY'dir.\",\n      \"cite_ids\": [\"f:2501\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"BİM'in 2024'ten 2025'e hasılatı %38,79 artmıştır.\",\n      \"cite_ids\": [\"f:2453\", \"f:2501\"],\n      \"calcs\": [\"rev_growth_2025_vs_2024\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"rev_growth_2025_vs_2024\",\n      \"description\": \"Revenue growth rate from 2024 to 2025 as decimal (2025 revenue minus 2024 revenue divided by 2024 revenue).\",\n      \"inputs\": [\n        {\n          \"name\": \"revenue_2024\",\n          \"cite_id\": \"f:2453\"\n        },\n        {\n          \"name\": \"revenue_2025\",\n          \"cite_id\": \"f:2501\"\n        }\n      ],\n      \"code\": \"result = (inputs['revenue_2025'] - inputs['revenue_2024']) / inputs['revenue_2024']\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "groq-large",
     "model": "openai/gpt-oss-120b",
-    "tokens_in": 1085,
-    "tokens_out": 238,
-    "latency_ms": 879.634,
+    "tokens_in": 2800,
+    "tokens_out": 1297,
+    "latency_ms": 3132.646,
     "cache_hit": false,
     "fallback_from": [
      "nvidia-large",
+     "gemini-flash-stable",
      "gemini-flash",
      "openrouter-large"
     ]
    }
   },
   {
-   "key": "c00bd16bcc4472ae6ac18851f11b9488d75014ff42076391c72b534b7190d2fa",
+   "key": "3b11325894d63874c979ca3913e27e86b531faf3090856c7679c52c81a9aaaef",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\":\"tr\",\"status\":\"completed\",\"summary\":\"BİM'in 2024 yılı hasılatı 519.566.633.000 TL'dir [1]. 2025 yılı hasılatı ise 721.062.506.000 TL olarak gerçekleşmiştir [2]. Bu iki dönem arasındaki yüzde artış %38,78 olarak hesaplanmıştır [3].\",\"points\":[{\"text\":\"2024 yılı hasılatı: 519.566.633.000 TL\",\"cite_ids\":[\"f:2453\"]},{\"text\":\"2025 yılı hasılatı: 721.062.506.000 TL\",\"cite_ids\":[\"f:2501\"]},{\"text\":\"Hasılat yüzde artışı: %38,78\",\"cite_ids\":[\"k:1\"]}],\"tables\":[{\"title\":\"BİM Hasılatı (TRY)\",\"columns\":[\"Yıl\",\"Hasılat\"],\"rows\":[[{\"text\":\"2024\",\"cite_id\":null},{\"text\":\"519.566.633.000 TL\",\"cite_id\":\"f:2453\"}],[{\"text\":\"2025\",\"cite_id\":null},{\"text\":\"721.062.506.000 TL\",\"cite_id\":\"f:2501\"}]]}],\"chart\":null,\"confidence\":{\"level\":\"high\",\"note\":\"\"},\"unverified\":[],\"citations\":[{\"marker\":1,\"cite_id\":\"f:2453\"},{\"marker\":2,\"cite_id\":\"f:2501\"},{\"marker\":3,\"cite_id\":\"k:1\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Kanıt f:2453 ile birebir eşleşiyor.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Kanıt f:2501 ile birebir eşleşiyor.\"\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 974,
+    "tokens_out": 1460,
+    "latency_ms": 22404.782,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "e43f2f5c932dc3db213b26f4235c21db7327b74383c57577151833f9d52c9baa",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"BİM (BIMAS) şirketinin 2024 ve 2025 tam yıl hasılat (revenue) rakamlarını getir\",\n      \"tickers\": [\"BIMAS\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": [\"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"search\",\n      \"goal\": \"2024 ve 2025 yıllarına ait BIMAS açıklama metinlerinde hasılat (revenue) değerlerini doğrula\",\n      \"tickers\": [\"BIMAS\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"]\n    },\n    {\n      \"id\": \"s3\",\n      \"kind\": \"calculate\",\n      \"goal\": \"2024'ten 2025'e hasılat yüzde değişimini hesapla\",\n      \"tickers\": [\"BIMAS\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"]\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "groq-large",
     "model": "openai/gpt-oss-120b",
-    "tokens_in": 3259,
-    "tokens_out": 981,
-    "latency_ms": 2556.118,
+    "tokens_in": 1770,
+    "tokens_out": 611,
+    "latency_ms": 1660.22,
     "cache_hit": false,
     "fallback_from": [
      "nvidia-large",
+     "gemini-flash-stable",
      "gemini-flash",
      "openrouter-large"
     ]
+   }
+  },
+  {
+   "key": "0846b6992bd4a6ee37c50172e36be42add64eff986a19b90f429a486a96390d0",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": true, \"rewritten_query\": null}, {\"step_id\": \"s2\", \"sufficient\": true, \"rewritten_query\": null}]}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 884,
+    "tokens_out": 48,
+    "latency_ms": 887.096,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "6ddf19af506dc104322da8b66f97e01321eceac3b545f36ef0585b3bb14b7b10",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"BİM'in 2024 yılı hasılatı 519.566.633.000 TRY ve 2025 yılı hasılatı 721.062.506.000 TRY.\",\n      \"cite_ids\": [\"f:2453\", \"f:2501\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"2024'ten 2025'e hasılat yüzde 38,78 artmıştır.\",\n      \"cite_ids\": [\"f:2453\", \"f:2501\"],\n      \"calcs\": [\"revenue_growth\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"revenue_growth\",\n      \"description\": \"Revenue growth from 2024 to 2025 as a fraction (e.g., 0.3878).\",\n      \"inputs\": [\n        {\n          \"name\": \"revenue_2024\",\n          \"cite_id\": \"f:2453\",\n          \"value\": 519566633000\n        },\n        {\n          \"name\": \"revenue_2025\",\n          \"cite_id\": \"f:2501\",\n          \"value\": 721062506000\n        }\n      ],\n      \"code\": \"result = (inputs['revenue_2025'] - inputs['revenue_2024']) / inputs['revenue_2024']\"\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 2646,
+    "tokens_out": 1250,
+    "latency_ms": 3064.614,
+    "cache_hit": false,
+    "fallback_from": [
+     "nvidia-large",
+     "gemini-flash-stable",
+     "gemini-flash",
+     "openrouter-large"
+    ]
+   }
+  },
+  {
+   "key": "769a28bdee842ed5e871757a8f6e5586c06797583b57ace049d0580ce223a518",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\": [\n    {\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Kanıtlar 2024 ve 2025 hasılat rakamlarını doğruluyor.\"},\n    {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Hesaplama kanıtlanan rakamlarla uyuşuyor, yüzde 38,78 doğru.\"}\n  ]}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1080,
+    "tokens_out": 645,
+    "latency_ms": 9169.939,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "b41d7cbb286bbe1aa950fe26b35fe36ed6347547ec86bc9ef146ee4e87d64e36",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\": \"tr\", \"status\": \"completed\", \"summary\": \"BİM'in hasılatı 2024'te 519,6 milyar TRY'dan 2025'te 721,1 milyar TRY'ya yükselerek %38,78 artmıştır. [1][2][3]\", \"points\": [{\"text\": \"2024 yılı hasılatı 519.566.633.000 TRY olarak bildirilmiştir.\", \"cite_ids\": [\"f:2453\"]}, {\"text\": \"2025 yılı hasılatı 721.062.506.000 TRY olarak bildirilmiştir.\", \"cite_ids\": [\"f:2501\"]}, {\"text\": \"2024'ten 2025'e hasılat yüzde 38,78 artmıştır.\", \"cite_ids\": [\"k:1\"]}], \"tables\": [{\"title\": \"BİM Yıllık Hasılat (2024-2025)\", \"columns\": [\"Yıl\", \"Hasılat (TRY)\"], \"rows\": [[{\"text\": \"2024\", \"cite_id\": null}, {\"text\": \"519.566.633.000\", \"cite_id\": \"f:2453\"}], [{\"text\": \"2025\", \"cite_id\": null}, {\"text\": \"721.062.506.000\", \"cite_id\": \"f:2501\"}]]}, {\"title\": \"Hasılat Büyümesi (2024→2025)\", \"columns\": [\"Gösterge\", \"Değer\"], \"rows\": [[{\"text\": \"Yüzde Değişim\", \"cite_id\": null}, {\"text\": \"%38,78\", \"cite_id\": \"k:1\"}]]}, {\"title\": \"Hasılat Detayları\", \"columns\": [\"Dönem\", \"Hasılat (TRY)\", \"Kaynak\"], \"rows\": [[{\"text\": \"2024 (FY)\", \"cite_id\": null}, {\"text\": \"519.566.633.000\", \"cite_id\": \"f:2453\"}, {\"text\": \"KAP/SEC\", \"cite_id\": null}], [{\"text\": \"2025 (FY)\", \"cite_id\": null}, {\"text\": \"721.062.506.000\", \"cite_id\": \"f:2501\"}, {\"text\": \"KAP/SEC\", \"cite_id\": null}]]}, {\"title\": \"Özet\", \"columns\": [\"Metrik\", \"2024\", \"2025\", \"Değişim (%)\"], \"rows\": [[{\"text\": \"Hasılat\", \"cite_id\": null}, {\"text\": \"519.566.633.000\", \"cite_id\": \"f:2453\"}, {\"text\": \"721.062.506.000\", \"cite_id\": \"f:2501\"}, {\"text\": \"%38,78\", \"cite_id\": \"k:1\"}]]}], \"chart\": {\"kind\": \"bar\", \"table\": 0, \"x_column\": \"Yıl\", \"series\": [\"Hasılat (TRY)\"]}, \"confidence\": {\"level\": \"high\", \"note\": \"Her iki yıl hasılat rakamı ve büyüme hesaplaması doğrudan kaynak belgelerden ve hesaplamadan elde edilmiştir.\"}, \"unverified\": [], \"citations\": [{\"marker\": 1, \"cite_id\": \"f:2453\"}, {\"marker\": 2, \"cite_id\": \"f:2501\"}, {\"marker\": 3, \"cite_id\": \"k:1\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2759,
+    "tokens_out": 1710,
+    "latency_ms": 55347.779,
+    "cache_hit": false,
+    "fallback_from": []
    }
   }
  ],
@@ -188,15 +270,91 @@
     }
    ],
    "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"BIMAS\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 859, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-14T15:49:07Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1682338\"}, {\"document_id\": 858, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-16T13:46:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1664110\"}, {\"document_id\": 857, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-03T17:48:49Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1658685\"}, {\"document_id\": 856, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-27T16:21:42Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1655502\"}, {\"document_id\": 855, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-27T15:15:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1655473\"}, {\"document_id\": 854, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-17T19:39:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1651664\"}, {\"document_id\": 853, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-17T19:36:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1651657\"}, {\"document_id\": 852, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-17T19:35:30Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1651656\"}, {\"document_id\": 851, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-17T07:18:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1618009\"}, {\"document_id\": 850, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-12T14:17:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1616846\"}, {\"document_id\": 849, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-22T20:35:01Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1610851\"}, {\"document_id\": 848, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-22T20:34:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1610849\"}, {\"document_id\": 847, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-11T19:40:10Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1605803\"}, {\"document_id\": 846, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-11T19:34:46Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1605795\"}, {\"document_id\": 845, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-11T19:34:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1605794\"}, {\"document_id\": 844, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-05T18:19:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1601465\"}, {\"document_id\": 843, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-07T19:14:03Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1587326\"}, {\"document_id\": 842, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-07T19:13:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1587325\"}, {\"document_id\": 841, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-10T22:09:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1570159\"}, {\"document_id\": 840, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-10T22:06:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1570154\"}, {\"document_id\": 839, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-10T22:06:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1570153\"}, {\"document_id\": 838, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-03-10T22:05:59Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1570151\"}, {\"document_id\": 837, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-03-10T22:05:45Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1570150\"}, {\"document_id\": 836, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-24T21:15:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1561152\"}, {\"document_id\": 835, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-20T20:20:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1560076\"}, {\"document_id\": 834, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-15T19:10:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1543833\"}, {\"document_id\": 833, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-03T08:06:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1532563\"}, {\"document_id\": 832, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-24T05:04:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1529099\"}, {\"document_id\": 831, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-14T20:09:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1517131\"}, {\"document_id\": 830, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-10T17:13:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1514903\"}, {\"document_id\": 829, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-10T17:11:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1514899\"}, {\"document_id\": 828, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-10T17:11:03Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1514897\"}, {\"document_id\": 827, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-01T14:55:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1494923\"}, {\"document_id\": 826, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-30T09:25:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1494049\"}, {\"document_id\": 825, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-21T19:58:05Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1491545\"}, {\"document_id\": 824, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-21T19:56:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1491544\"}, {\"document_id\": 823, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-21T19:55:46Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1491543\"}, {\"document_id\": 822, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-12T18:50:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1489674\"}, {\"document_id\": 821, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-29T15:19:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1483952\"}, {\"document_id\": 820, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-29T15:17:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1483943\"}, {\"document_id\": 819, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-14T17:28:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1478798\"}, {\"document_id\": 818, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-14T17:21:45Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1478795\"}, {\"document_id\": 817, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-14T17:21:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1478794\"}, {\"document_id\": 816, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-24T15:01:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1451483\"}, {\"document_id\": 815, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-08T17:02:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1435890\"}, {\"document_id\": 814, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-08T17:01:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1435887\"}, {\"document_id\": 813, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-08T17:01:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1435886\"}, {\"document_id\": 812, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-29T19:01:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431269\"}, {\"document_id\": 811, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-29T19:00:45Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431268\"}, {\"document_id\": 810, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-26T19:00:44Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1412623\"}, {\"document_id\": 809, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-26T18:57:49Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1412617\"}, {\"document_id\": 808, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-20T19:16:01Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1409013\"}, {\"document_id\": 807, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-11T21:37:59Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1405410\"}, {\"document_id\": 806, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-03-11T21:23:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1405398\"}, {\"document_id\": 805, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-11T21:20:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1405396\"}, {\"document_id\": 804, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-11T21:16:40Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1405388\"}, {\"document_id\": 803, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-11T21:16:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1405387\"}, {\"document_id\": 802, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-03-11T21:15:21Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1405385\"}, {\"document_id\": 801, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-10T06:19:35Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1402874\"}, {\"document_id\": 800, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-10T06:18:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1402873\"}, {\"document_id\": 799, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-03T11:29:07Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1398294\"}, {\"document_id\": 798, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-19T22:43:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1394259\"}, {\"document_id\": 797, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-10T14:53:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1391559\"}, {\"document_id\": 796, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-11T19:25:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1356972\"}, {\"document_id\": 795, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-11T19:21:53Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1356969\"}, {\"document_id\": 794, \"ticker\": \"BIMAS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-11T19:21:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1356968\"}]}",
+   "summary": "BIMAS documents",
+   "count": 66,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2024-FY\",\"2025-FY\"],\"ticker\":\"BIMAS\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2453\">Hasılat (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 519.566.633.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2502\">Hasılat (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 680.072.863.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2501\">Hasılat (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 721.062.506.000 TRY</untrusted_document>",
+   "summary": "BIMAS 2024-FY to 2025-FY revenue",
+   "count": 3,
+   "items": [
+    {
+     "cite_id": "f:2453",
+     "text": "Hasılat (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 519.566.633.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 802,
+      "ticker": "BIMAS",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / Hasılat / Cari Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1405385"
+     },
+     "value": "519566633000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2502",
+     "text": "Hasılat (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 680.072.863.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 837,
+      "ticker": "BIMAS",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / Hasılat / Önceki Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1570150"
+     },
+     "value": "680072863000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2501",
+     "text": "Hasılat (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 721.062.506.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 837,
+      "ticker": "BIMAS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / Hasılat / Cari Dönem 01.01.2025 - 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1570150"
+     },
+     "value": "721062506000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
   }
  ],
  "sandbox": [
   {
-   "key": "140db338ee8cd7c59ed14a87d752c21bc889919bee94d454ffb8891a96bdcd34",
+   "key": "e7ff156c5a87fa7a042dfc86e7cacac2234a5bb2d66296126c5de80dfcd9fa1f",
    "response": {
     "ok": true,
     "outputs": {
-     "revenue_yoy_change": "38.78152679600578"
+     "rev_growth_2025_vs_2024": "0.3878152679600578"
     },
     "stdout": "",
     "error": null,
@@ -205,11 +363,37 @@
    }
   },
   {
-   "key": "140db338ee8cd7c59ed14a87d752c21bc889919bee94d454ffb8891a96bdcd34",
+   "key": "e7ff156c5a87fa7a042dfc86e7cacac2234a5bb2d66296126c5de80dfcd9fa1f",
    "response": {
     "ok": true,
     "outputs": {
-     "revenue_yoy_change": "38.78152679600578"
+     "rev_growth_2025_vs_2024": "0.3878152679600578"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "235663362111a4ba265b6a62ab660dc11d26c9f782338684ddfbc87b27ac5bf0",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "revenue_growth": "0.3878152679600578"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "235663362111a4ba265b6a62ab660dc11d26c9f782338684ddfbc87b27ac5bf0",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "revenue_growth": "0.3878152679600578"
     },
     "stdout": "",
     "error": null,

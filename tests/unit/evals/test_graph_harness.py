@@ -56,6 +56,7 @@ async def recorded(tmp_path: Path) -> tuple[Path, Path]:
     datasets.mkdir()
     rows: dict[str, list[dict[str, Any]]] = {
         "deep_golden": [DEEP],
+        "answers_golden": [],
         "injection": [INJECTION],
         "advice_refusal": [EDIT, ADVICE],
     }

@@ -12,13 +12,894 @@
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 928,
     "tokens_out": 67,
-    "latency_ms": 843.224,
+    "latency_ms": 1108.741,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "61be2b1be45d930aa273a0271650d379beee901323c3eede9177f8133ac0a04d",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1427392",
+      "name": "get_financial_facts",
+      "arguments": {
+       "ticker": "AAPL",
+       "periods": [
+        "2024-FY"
+       ],
+       "metrics": [
+        "operating_income",
+        "revenue"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TITDnn84dcyKkVcvTXptbckALiWLU2hlpjZQ9iHQ0StpRhnNqnpMjl6+28APzZOA9yUswQPAWZQGvpn5lYaOOwJbMVxSXoFU2ml4aky56V87iNGBKtLSH7nE="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 3000,
+    "tokens_out": 41,
+    "latency_ms": 841.588,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "2fee4a847bf19b6f83ab05cc7c7ef276bb1951e27d4ef390b59c238d751fd919",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1837124",
+      "name": "search_documents",
+      "arguments": {
+       "period_to": "2024-FY",
+       "period_from": "2024-FY",
+       "ticker": "AAPL",
+       "query": "operating margin 2024 operating income percentage revenue"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TDKQmEL7oV8+ajosQ3lm/l/uMzFws2ehtODrxUOSlDSGE5do+8vbAQea9H895s52A+yKVEPndTkytg3W+cQIVWXurhukkLhddB1ZgqVMSY3TcEj9BEWjMVfU="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 3483,
+    "tokens_out": 58,
+    "latency_ms": 1319.581,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "f208162b88ad77eae79363e6c0dd0f32ec01b96e98c3326bce5fb5cbd6c6eab3",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Apple's operating margin for fiscal 2024 was 31.51%, calculated as operating income of $123.216 billion divided by revenue of $391.035 billion.\",\n  \"points\": [\n    {\n      \"text\": \"Operating income (2024-FY): $123,216,000,000\",\n      \"cite_ids\": [\"f:139\"]\n    },\n    {\n      \"text\": \"Revenue (2024-FY): $391,035,000,000\",\n      \"cite_ids\": [\"f:103\"]\n    },\n    {\n      \"text\": \"Operating margin = Operating income / Revenue = 123,216,000,000 / 391,035,000,000 = 31.51%\",\n      \"cite_ids\": [\"f:139\", \"f:103\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:139\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:103\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 4676,
+    "tokens_out": 722,
+    "latency_ms": 15688.601,
     "cache_hit": false,
     "fallback_from": []
    }
   }
  ],
- "tools": [],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\"],\"periods\":[\"2024-FY\"],\"ticker\":\"AAPL\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:178\">Cash and cash equivalents (2024-FY): 29,943,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3688\">Cash and cash equivalents (2024-FY): 29,943,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:182\">Cash and cash equivalents (2024-FY; 2025-FY report): 29,943,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3692\">Cash and cash equivalents (2024-FY; 2025-FY report): 29,943,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:171\">Depreciation and amortization (2024-FY): 11,445,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3681\">Depreciation and amortization (2024-FY): 11,445,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:172\">Depreciation and amortization (2024-FY; 2025-FY report): 11,445,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3682\">Depreciation and amortization (2024-FY; 2025-FY report): 11,445,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:197\">EBITDA (2024-FY): 134,661,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3707\">EBITDA (2024-FY): 134,661,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:198\">EBITDA (2024-FY; 2025-FY report): 134,661,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3708\">EBITDA (2024-FY; 2025-FY report): 134,661,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:121\">Net income (2024-FY): 93,736,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3631\">Net income (2024-FY): 93,736,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:122\">Net income (2024-FY; 2025-FY report): 93,736,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3632\">Net income (2024-FY; 2025-FY report): 93,736,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:139\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3649\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:140\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3650\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:103\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3613\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:104\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3614\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:152\">Total debt (2024-FY): 96,662,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3662\">Total debt (2024-FY): 96,662,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:156\">Total debt (2024-FY; 2025-FY report): 96,662,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3666\">Total debt (2024-FY; 2025-FY report): 96,662,000,000 USD</untrusted_document>",
+   "summary": "AAPL 2024-FY net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization",
+   "count": 28,
+   "items": [
+    {
+     "cite_id": "f:178",
+     "text": "Cash and cash equivalents (2024-FY): 29,943,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 114,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "29943000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3688",
+     "text": "Cash and cash equivalents (2024-FY): 29,943,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2331,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "29943000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:182",
+     "text": "Cash and cash equivalents (2024-FY; 2025-FY report): 29,943,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "29943000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3692",
+     "text": "Cash and cash equivalents (2024-FY; 2025-FY report): 29,943,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "29943000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:171",
+     "text": "Depreciation and amortization (2024-FY): 11,445,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 114,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "depreciation_amortization",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "11445000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3681",
+     "text": "Depreciation and amortization (2024-FY): 11,445,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2331,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "depreciation_amortization",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "11445000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:172",
+     "text": "Depreciation and amortization (2024-FY; 2025-FY report): 11,445,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "depreciation_amortization",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "11445000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3682",
+     "text": "Depreciation and amortization (2024-FY; 2025-FY report): 11,445,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "depreciation_amortization",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "11445000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:197",
+     "text": "EBITDA (2024-FY): 134,661,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 114,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000320193-24-000123 + us-gaap:DepreciationDepletionAndAmortization 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "134661000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3707",
+     "text": "EBITDA (2024-FY): 134,661,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2331,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000320193-24-000123 + us-gaap:DepreciationDepletionAndAmortization 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "134661000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:198",
+     "text": "EBITDA (2024-FY; 2025-FY report): 134,661,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000320193-25-000079 + us-gaap:DepreciationDepletionAndAmortization 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "134661000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3708",
+     "text": "EBITDA (2024-FY; 2025-FY report): 134,661,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000320193-25-000079 + us-gaap:DepreciationDepletionAndAmortization 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "134661000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:121",
+     "text": "Net income (2024-FY): 93,736,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 114,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "93736000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3631",
+     "text": "Net income (2024-FY): 93,736,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2331,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "93736000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:122",
+     "text": "Net income (2024-FY; 2025-FY report): 93,736,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "93736000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3632",
+     "text": "Net income (2024-FY; 2025-FY report): 93,736,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "93736000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:139",
+     "text": "Operating income (2024-FY): 123,216,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 114,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "123216000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3649",
+     "text": "Operating income (2024-FY): 123,216,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2331,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "123216000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:140",
+     "text": "Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "123216000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3650",
+     "text": "Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "123216000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:103",
+     "text": "Revenue (2024-FY): 391,035,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 114,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "391035000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3613",
+     "text": "Revenue (2024-FY): 391,035,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2331,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "391035000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:104",
+     "text": "Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "391035000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3614",
+     "text": "Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "391035000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:152",
+     "text": "Total debt (2024-FY): 96,662,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 114,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebt 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "96662000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3662",
+     "text": "Total debt (2024-FY): 96,662,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2331,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebt 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "96662000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:156",
+     "text": "Total debt (2024-FY; 2025-FY report): 96,662,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebt 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "96662000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3666",
+     "text": "Total debt (2024-FY; 2025-FY report): 96,662,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebt 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "96662000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"operating_income\",\"revenue\"],\"periods\":[\"2024-FY\"],\"ticker\":\"AAPL\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:139\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3649\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:140\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3650\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:103\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3613\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:104\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3614\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>",
+   "summary": "AAPL 2024-FY operating_income, revenue",
+   "count": 8,
+   "items": [
+    {
+     "cite_id": "f:139",
+     "text": "Operating income (2024-FY): 123,216,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 114,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "123216000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3649",
+     "text": "Operating income (2024-FY): 123,216,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2331,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "123216000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:140",
+     "text": "Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "123216000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3650",
+     "text": "Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "123216000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:103",
+     "text": "Revenue (2024-FY): 391,035,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 114,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "391035000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3613",
+     "text": "Revenue (2024-FY): 391,035,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2331,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "391035000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:104",
+     "text": "Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "391035000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3614",
+     "text": "Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "391035000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2024-FY\",\"period_to\":\"2024-FY\",\"query\":\"operating margin 2024 operating income percentage revenue\",\"ticker\":\"AAPL\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:01c0d12c734c63044a68f6fc6ea8c43764e0dea920b59cf71325e2a79ebeaaf4\" amounts_in=\"millions\"> | September 28, 2024 |  | September 30, 2023 |  | \nShareholders’ equity: |  |  |  |  | \nCommon stock and additional paid-in capital, $ 0.00001 par value: 50,400,000 shares authorized; 15,116,786 and 15,550,061 shares issued and outstanding, respectively | 83,276 |  |  | 73,812 | \nAccumulated deficit | ( 19,154 ) |  |  | ( 214 ) | \nAccumulated other comprehensive loss | ( 7,172 ) |  |  | ( 11,452 ) | \nTotal shareholders’ equity | 56,950 |  |  | 62,146 | \nTotal liabilities and shareholders’ equity |  | 364,980 |  |  | 352,583</untrusted_document>\n<untrusted_document cite_id=\"c:03c55db16a56c0e59756adc1ca7f4417e56ea1872f27cbcb317b587aa60f7e13\">Index to Consolidated Financial Statements | Page\nConsolidated Statements of Operations for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 29\nConsolidated Statements of Comprehensive Income for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 30\nConsolidated Balance Sheets as of September 28, 2024 and September 30, 2023 | 31\nConsolidated Statements of Shareholders’ Equity for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 32\nConsolidated Statements of Cash Flows for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 33\nNotes to Consolidated Financial Statements | 34\nReports of Independent Registered Public Accounting Firm | 48</untrusted_document>\n<untrusted_document cite_id=\"c:03b3431b182d1cb52eb6327d184eea4cd40ddd000a84c2d1b482080701ad9b69\">New and changing laws and regulations can also create uncertainty about how such laws and regulations will be interpreted and applied. These risks and costs may increase as the Company’s products and services are introduced into specialized applications, including health and financial services, or as the Company expands the use of technologies, such as machine learning and artificial intelligence features, and must navigate new legal, regulatory and ethical considerations relating to such technologies. The Company has implemented policies and procedures designed to ensure compliance with applicable laws and regulations, but there can be no assurance the Company’s employees, contractors or agents will not violate such laws and regulations or the Company’s policies and procedures. If the Company is found to have violated laws and regulations, it could materially adversely affect the Company’s business, reputation, results of operations and financial condition. Apple Inc. | 2024 Form 10-K | 13 Regulatory changes and other actions that materially adversely affect the Company’s business may be announced with little or no advance notice and the Company may not be able to effectively mitigate all adverse impacts from such measures. For example, the Company is subject to changing regulations relating to the export and import of its products. Although the Company has programs, policies and procedures in place that are designed to satisfy regulatory requirements, there can be no assurance that such policies and procedures will be effective in preventing a violation or a claim of a violation. As a result, the Company’s products could be banned, delayed or prohibited from importation, which could materially adversely affect the Company’s business, reputation, results of operations and financial condition. Expectations relating to environmental, social and governance considerations and related reporting obligations expose the Company to potential liabilities, increased costs, reputational harm, and other adverse effects on the Company’s business. Many governments, regulators, investors, employees, customers and other stakeholders are increasingly focused on environmental, social and governance considerations relating to businesses, including climate change and greenhouse gas emissions, human and civil rights, and diversity, equity and inclusion. In addition, the Company makes statements about its goals and initiatives through its various non-financial reports, information provided on its website, press statements and other communications. Responding to these environmental, social and governance considerations and implementation of the Company’s announced goals and initiatives involves risks and uncertainties, requires investments, and depends in part on third-party performance or data that is outside the Company’s control. The Company cannot guarantee that it will achieve its announced environmental, social and governance goals and initiatives.</untrusted_document>\n<untrusted_document cite_id=\"c:00187bed9794b4d58bf4d845e4b1032c749ac7bca8a136087a8d9d1012ef2260\">If requirements change, the Company may have to develop or license new technology to provide these solutions. There can be no assurance the Company will be able to develop or license such solutions at a reasonable cost and in a timely manner. Apple Inc. | 2024 Form 10-K | 10 The Company’s success depends largely on the talents and efforts of its team members, the continued service and availability of highly skilled employees, including key personnel, and the Company’s ability to nurture its distinctive and inclusive culture. Much of the Company’s future success depends on the talents and efforts of its team members and the continued availability and service of key personnel, including its Chief Executive Officer, executive team and other highly skilled employees. Experienced personnel in the technology industry are in high demand and competition for their talents is intense, especially in Silicon Valley, where most of the Company’s key personnel are located. In addition to intense competition for talent, workforce dynamics are constantly evolving. If the Company does not manage changing workforce dynamics effectively, it could materially adversely affect the Company’s culture, reputation and operational flexibility. The Company believes that its distinctive and inclusive culture is a significant driver of its success. If the Company is unable to nurture its culture, it could materially adversely affect the Company’s ability to recruit and retain the highly skilled employees who are critical to its success, and could otherwise materially adversely affect the Company’s business, reputation, results of operations and financial condition. The Company depends on the performance of carriers, wholesalers, retailers and other resellers. The Company distributes its products and certain of its services through cellular network carriers, wholesalers, retailers and resellers, many of which distribute products and services from competitors. The Company also sells its products and services and resells third-party products in most of its major markets directly to consumers, small and mid-sized businesses, and education, enterprise and government customers through its retail and online stores and its direct sales force. Some carriers providing cellular network service for the Company’s products offer financing, installment payment plans or subsidies for users’ purchases of the device. There can be no assurance such offers will be continued at all or in the same amounts. The Company has invested and will continue to invest in programs to enhance reseller sales, including staffing selected resellers’ stores with Company employees and contractors, and improving product placement displays. These programs can require a substantial investment while not assuring return or incremental sales.</untrusted_document>\n<untrusted_document cite_id=\"c:037ac4780cd54a54f58aebb30d66adb68655f796eb8a44e63847d781b0fd934e\">District Court for the Northern District of California (the “California District Court”) against the Company alleging violations of federal and state antitrust laws and California’s unfair competition law based upon the Company’s operation of its App Store. The California District Court found that certain provisions of the Company’s App Store Review Guidelines violate California’s unfair competition law and issued an injunction enjoining the Company from prohibiting developers from including in their apps external links that direct customers to purchasing mechanisms other than Apple in-app purchasing. The injunction applies to apps on the U.S. storefront of the iOS and iPadOS App Store. On January 16, 2024, the Company implemented a plan to comply with the injunction and filed a statement of compliance with the California District Court. A motion by Epic disputing the Company’s compliance plan and seeking to enforce the injunction, which the Company has opposed, is pending before the California District Court. On September 30, 2024, the Company filed a motion with the California District Court to narrow or vacate the injunction. The Company believes it has substantial defenses and intends to vigorously defend itself. Other Legal Proceedings The Company is subject to other legal proceedings and claims that have not been fully resolved and that have arisen in the ordinary course of business. The Company settled certain matters during the fourth quarter of 2024 that did not individually or in the aggregate have a material impact on the Company’s financial condition or operating results. The outcome of litigation is inherently uncertain. If one or more legal matters were resolved against the Company in a reporting period for amounts above management’s expectations, the Company’s financial condition and operating results for that reporting period could be materially adversely affected.</untrusted_document>",
+   "summary": "AAPL operating margin 2024 operating income percentage revenue",
+   "count": 5,
+   "items": [
+    {
+     "cite_id": "c:01c0d12c734c63044a68f6fc6ea8c43764e0dea920b59cf71325e2a79ebeaaf4",
+     "text": " | September 28, 2024 |  | September 30, 2023 |  | \nShareholders’ equity: |  |  |  |  | \nCommon stock and additional paid-in capital, $ 0.00001 par value: 50,400,000 shares authorized; 15,116,786 and 15,550,061 shares issued and outstanding, respectively | 83,276 |  |  | 73,812 | \nAccumulated deficit | ( 19,154 ) |  |  | ( 214 ) | \nAccumulated other comprehensive loss | ( 7,172 ) |  |  | ( 11,452 ) | \nTotal shareholders’ equity | 56,950 |  |  | 62,146 | \nTotal liabilities and shareholders’ equity |  | 364,980 |  |  | 352,583",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3115,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:03c55db16a56c0e59756adc1ca7f4417e56ea1872f27cbcb317b587aa60f7e13",
+     "text": "Index to Consolidated Financial Statements | Page\nConsolidated Statements of Operations for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 29\nConsolidated Statements of Comprehensive Income for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 30\nConsolidated Balance Sheets as of September 28, 2024 and September 30, 2023 | 31\nConsolidated Statements of Shareholders’ Equity for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 32\nConsolidated Statements of Cash Flows for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 33\nNotes to Consolidated Financial Statements | 34\nReports of Independent Registered Public Accounting Firm | 48",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3115,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:03b3431b182d1cb52eb6327d184eea4cd40ddd000a84c2d1b482080701ad9b69",
+     "text": "New and changing laws and regulations can also create uncertainty about how such laws and regulations will be interpreted and applied. These risks and costs may increase as the Company’s products and services are introduced into specialized applications, including health and financial services, or as the Company expands the use of technologies, such as machine learning and artificial intelligence features, and must navigate new legal, regulatory and ethical considerations relating to such technologies. The Company has implemented policies and procedures designed to ensure compliance with applicable laws and regulations, but there can be no assurance the Company’s employees, contractors or agents will not violate such laws and regulations or the Company’s policies and procedures. If the Company is found to have violated laws and regulations, it could materially adversely affect the Company’s business, reputation, results of operations and financial condition. Apple Inc. | 2024 Form 10-K | 13 Regulatory changes and other actions that materially adversely affect the Company’s business may be announced with little or no advance notice and the Company may not be able to effectively mitigate all adverse impacts from such measures. For example, the Company is subject to changing regulations relating to the export and import of its products. Although the Company has programs, policies and procedures in place that are designed to satisfy regulatory requirements, there can be no assurance that such policies and procedures will be effective in preventing a violation or a claim of a violation. As a result, the Company’s products could be banned, delayed or prohibited from importation, which could materially adversely affect the Company’s business, reputation, results of operations and financial condition. Expectations relating to environmental, social and governance considerations and related reporting obligations expose the Company to potential liabilities, increased costs, reputational harm, and other adverse effects on the Company’s business. Many governments, regulators, investors, employees, customers and other stakeholders are increasingly focused on environmental, social and governance considerations relating to businesses, including climate change and greenhouse gas emissions, human and civil rights, and diversity, equity and inclusion. In addition, the Company makes statements about its goals and initiatives through its various non-financial reports, information provided on its website, press statements and other communications. Responding to these environmental, social and governance considerations and implementation of the Company’s announced goals and initiatives involves risks and uncertainties, requires investments, and depends in part on third-party performance or data that is outside the Company’s control. The Company cannot guarantee that it will achieve its announced environmental, social and governance goals and initiatives.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3115,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:00187bed9794b4d58bf4d845e4b1032c749ac7bca8a136087a8d9d1012ef2260",
+     "text": "If requirements change, the Company may have to develop or license new technology to provide these solutions. There can be no assurance the Company will be able to develop or license such solutions at a reasonable cost and in a timely manner. Apple Inc. | 2024 Form 10-K | 10 The Company’s success depends largely on the talents and efforts of its team members, the continued service and availability of highly skilled employees, including key personnel, and the Company’s ability to nurture its distinctive and inclusive culture. Much of the Company’s future success depends on the talents and efforts of its team members and the continued availability and service of key personnel, including its Chief Executive Officer, executive team and other highly skilled employees. Experienced personnel in the technology industry are in high demand and competition for their talents is intense, especially in Silicon Valley, where most of the Company’s key personnel are located. In addition to intense competition for talent, workforce dynamics are constantly evolving. If the Company does not manage changing workforce dynamics effectively, it could materially adversely affect the Company’s culture, reputation and operational flexibility. The Company believes that its distinctive and inclusive culture is a significant driver of its success. If the Company is unable to nurture its culture, it could materially adversely affect the Company’s ability to recruit and retain the highly skilled employees who are critical to its success, and could otherwise materially adversely affect the Company’s business, reputation, results of operations and financial condition. The Company depends on the performance of carriers, wholesalers, retailers and other resellers. The Company distributes its products and certain of its services through cellular network carriers, wholesalers, retailers and resellers, many of which distribute products and services from competitors. The Company also sells its products and services and resells third-party products in most of its major markets directly to consumers, small and mid-sized businesses, and education, enterprise and government customers through its retail and online stores and its direct sales force. Some carriers providing cellular network service for the Company’s products offer financing, installment payment plans or subsidies for users’ purchases of the device. There can be no assurance such offers will be continued at all or in the same amounts. The Company has invested and will continue to invest in programs to enhance reseller sales, including staffing selected resellers’ stores with Company employees and contractors, and improving product placement displays. These programs can require a substantial investment while not assuring return or incremental sales.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3115,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:037ac4780cd54a54f58aebb30d66adb68655f796eb8a44e63847d781b0fd934e",
+     "text": "District Court for the Northern District of California (the “California District Court”) against the Company alleging violations of federal and state antitrust laws and California’s unfair competition law based upon the Company’s operation of its App Store. The California District Court found that certain provisions of the Company’s App Store Review Guidelines violate California’s unfair competition law and issued an injunction enjoining the Company from prohibiting developers from including in their apps external links that direct customers to purchasing mechanisms other than Apple in-app purchasing. The injunction applies to apps on the U.S. storefront of the iOS and iPadOS App Store. On January 16, 2024, the Company implemented a plan to comply with the injunction and filed a statement of compliance with the California District Court. A motion by Epic disputing the Company’s compliance plan and seeking to enforce the injunction, which the Company has opposed, is pending before the California District Court. On September 30, 2024, the Company filed a motion with the California District Court to narrow or vacate the injunction. The Company believes it has substantial defenses and intends to vigorously defend itself. Other Legal Proceedings The Company is subject to other legal proceedings and claims that have not been fully resolved and that have arisen in the ordinary course of business. The Company settled certain matters during the fourth quarter of 2024 that did not individually or in the aggregate have a material impact on the Company’s financial condition or operating results. The outcome of litigation is inherently uncertain. If one or more legal matters were resolved against the Company in a reporting period for amounts above management’s expectations, the Company’s financial condition and operating results for that reporting period could be materially adversely affected.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3115,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 3",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
  "sandbox": [],
  "decision": null
 }

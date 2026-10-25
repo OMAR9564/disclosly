@@ -308,3 +308,25 @@ def test_bare_chunk_ids_get_their_prefix_everywhere() -> None:
     assert fixed.summary == "Payın %48,88'i satışa çıkarıldı [1]."
     assert [(c.marker, c.cite_id) for c in fixed.citations] == [(1, f"c:{chunk}")]
     assert fixed.points[0].cite_ids == [f"c:{chunk}"]
+
+
+def test_graph_runs_reject_model_derived_percentages() -> None:
+    # (1234.5 - 1000) / 1000 = 23.45%: accepted in Phase 3, not in graph runs (FR-008).
+    answer = _answer("Net kâr %23,5 arttı [1][2].", [], [(1, "f:1"), (2, "f:2")])
+    assert validate_answer(answer, SEEN, "tr").ok
+    validation = validate_answer(answer, SEEN, "tr", derived_ok=False)
+    assert not validation.ok and not validation.summary_ok
+
+
+def test_partial_keeps_the_citations_a_kept_summary_was_checked_against() -> None:
+    # No markers in the summary: its number is checked against every known citation.
+    answer = _answer(
+        "Net kâr 1.234,5 milyon TL.",
+        [("Gelir 1.500 milyon TL", ["f:1"])],
+        [(1, "f:1"), (2, "f:2")],
+    )
+    validation = validate_answer(answer, SEEN, "tr")
+    assert validation.summary_ok and not validation.ok
+    partial = to_partial(answer, validation, "tr")
+    assert partial.summary == "Net kâr 1.234,5 milyon TL."
+    assert [c.cite_id for c in partial.citations] == ["f:1", "f:2"]

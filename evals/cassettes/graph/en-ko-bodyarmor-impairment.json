@@ -1,0 +1,434 @@
+{
+ "case_id": "en-ko-bodyarmor-impairment",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "bff1a9dd51411b9f38f834bad92e598e589bc2a94c56d5fa8ee34d1b61755c1b",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"KO\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 932,
+    "tokens_out": 67,
+    "latency_ms": 1207.393,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "c761dfe10b3153142ed0c70427af630c45dee3881880b41a418ed73ddecd507c",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1944942",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "KO",
+       "query": "BodyArmor trademark impairment"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TjOWYxNfgBLswKuYFQWjOtKuDdmbRfqT8gvfZq3/e5Ybq0XxS2ImyM6X+la3Mu5ip93FqZLDCseqX9jYLZmAwp/LpsuVa7UaGNLCFSR8icah3oYyQy224ghk="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2086,
+    "tokens_out": 25,
+    "latency_ms": 1206.643,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "d456c273d26aa72fd0982c43a2922c891dbf640322a56f218bb20045df2af535",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In 2025, Coca-Cola recorded $960 million related to the impairment of its BodyArmor trademark [1].\",\n  \"points\": [\n    {\n      \"text\": \"In 2025, the impairment of the BodyArmor trademark was $960 million.\",\n      \"cite_ids\": [\n        \"c:a2bb744ee97e6b6b2006c8f7b7d8bd32947409af39cc5b52b933e4e1a9d7e6f7\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:a2bb744ee97e6b6b2006c8f7b7d8bd32947409af39cc5b52b933e4e1a9d7e6f7\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 5066,
+    "tokens_out": 289,
+    "latency_ms": 1277.343,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "46910cb2fec292816a6b856c1482197bc305fc9a342fa0cf391babbcefba12d7",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Coca-Cola recorded a BodyArmor trademark impairment of $960 million in 2025.\",\n  \"points\": [\n    {\n      \"text\": \"The impairment charge for the BodyArmor trademark in 2025 was $960 million.\",\n      \"cite_ids\": [\"c:a2bb744ee97e6b6b2006c8f7b7d8bd32947409af39cc5b52b933e4e1a9d7e6f7\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:a2bb744ee97e6b6b2006c8f7b7d8bd32947409af39cc5b52b933e4e1a9d7e6f7\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 4531,
+    "tokens_out": 515,
+    "latency_ms": 25891.943,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\"],\"periods\":[\"2025-FY\"],\"ticker\":\"KO\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:1636\">Cash and cash equivalents (2025-FY): 10,270,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:5040\">Cash and cash equivalents (2025-FY): 10,270,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1611\">Depreciation and amortization (2025-FY): 1,050,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:5015\">Depreciation and amortization (2025-FY): 1,050,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1651\">EBITDA (2025-FY): 14,812,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:5055\">EBITDA (2025-FY): 14,812,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1581\">Net income (2025-FY): 13,107,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4985\">Net income (2025-FY): 13,107,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1597\">Operating income (2025-FY): 13,762,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:5001\">Operating income (2025-FY): 13,762,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1565\">Revenue (2025-FY): 47,941,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4969\">Revenue (2025-FY): 47,941,000,000 USD</untrusted_document>",
+   "summary": "KO 2025-FY net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization",
+   "count": 12,
+   "items": [
+    {
+     "cite_id": "f:1636",
+     "text": "Cash and cash equivalents (2025-FY): 10,270,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 217,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "10270000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:5040",
+     "text": "Cash and cash equivalents (2025-FY): 10,270,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2434,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "10270000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1611",
+     "text": "Depreciation and amortization (2025-FY): 1,050,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 217,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "depreciation_amortization",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "1050000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:5015",
+     "text": "Depreciation and amortization (2025-FY): 1,050,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2434,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "depreciation_amortization",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "1050000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1651",
+     "text": "EBITDA (2025-FY): 14,812,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 217,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0001628280-26-010047 + us-gaap:DepreciationDepletionAndAmortization 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "14812000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:5055",
+     "text": "EBITDA (2025-FY): 14,812,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2434,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0001628280-26-010047 + us-gaap:DepreciationDepletionAndAmortization 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "14812000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1581",
+     "text": "Net income (2025-FY): 13,107,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 217,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "13107000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4985",
+     "text": "Net income (2025-FY): 13,107,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2434,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "13107000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1597",
+     "text": "Operating income (2025-FY): 13,762,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 217,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "13762000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:5001",
+     "text": "Operating income (2025-FY): 13,762,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2434,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "13762000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1565",
+     "text": "Revenue (2025-FY): 47,941,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 217,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "47941000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4969",
+     "text": "Revenue (2025-FY): 47,941,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2434,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0001628280-26-010047",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": "47941000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"BodyArmor trademark impairment\",\"ticker\":\"KO\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:a2bb744ee97e6b6b2006c8f7b7d8bd32947409af39cc5b52b933e4e1a9d7e6f7\" amounts_in=\"millions\">In 2025, the Company recorded other operating charges of $1,261 million. These charges consisted of $960 million related to the impairment of our BodyArmor trademark, $97 million related to the Company’s productivity and reinvestment program, and $47 million related to the remeasurement of our contingent consideration liability to fair value in conjunction with our acquisition of fairlife in 2020, which brought the total liability to $6,173 million and was paid in March 2025. Additionally, other operating charges included $44 million related to the impairment of a trademark in Latin America, $41 million related to the impairment of a trademark and property, plant and equipment in Asia Pacific and $35 million related to an indemnification 47 agreement entered into as a part of the refranchising of certain of our bottling operations. In addition, other operating charges included $15 million for the amortization of noncompete agreements related to the BodyArmor acquisition in 2021, $12 million of transaction costs related to our divestiture activities and $10 million related to tax litigation expense. In 2024, the Company recorded other operating charges of $4,163 million. These charges consisted of $3,109 million related to the remeasurement of our contingent consideration liability to fair value in conjunction with the fairlife acquisition, $760 million related to the impairment of our BodyArmor trademark, $133 million related to the Company’s productivity and reinvestment program and $126 million related to the impairment of a trademark in Latin America. In addition, other operating charges included $15 million for the amortization of noncompete agreements related to the BodyArmor acquisition, $13 million related to an indemnification agreement entered into as a part of the refranchising of certain of our bottling operations and $9 million of transaction costs related to our divestiture activities. These charges were partially offset by a net benefit of $2 million related to a revision of management’s estimates for tax litigation expense. Refer to Note 2 of Notes to Consolidated Financial Statements for additional information on our divestiture activities. Refer to Note 12 of Notes to Consolidated Financial Statements for additional information related to the tax litigation. Refer to Note 17 of Notes to Consolidated Financial Statements for additional information on the fairlife contingent consideration and the impairment charges. Refer to Note 18 of Notes to Consolidated Financial Statements for the impact these charges had on our operating segments and Corporate. Refer to Note 19 of Notes to Consolidated Financial Statements for additional information on the Company’s restructuring initiatives.</untrusted_document>\n<untrusted_document cite_id=\"c:02192053e6220d6b53509bee869caa07ccd9588552ed70f444f2eb5ab40fa5c3\">Not applicable. Part III</untrusted_document>\n<untrusted_document cite_id=\"c:8560096bf04e6be51743ed40c6a65986b649fd7e9c6545675c68677add191bd5\">These items were partially offset by an increase in concentrate sales volume of 1% and favorable pricing initiatives. Fluctuations in foreign currency exchange rates unfavorably impacted consolidated operating income by 12% due to a stronger U.S. dollar compared to certain foreign currencies, including the Argentine peso, Zimbabwean dollar and Turkish lira, which had an unfavorable impact on our Latin America; Europe, Middle East and Africa; and Bottling Investments operating segments. The unfavorable impact of a stronger U.S. dollar compared to the currencies listed above was partially offset by the impact of a weaker U.S. dollar compared to certain other foreign currencies, including the Mexican peso and British pound, which had a favorable impact on our Latin America, Global Ventures and Europe, Middle East and Africa operating segments. Refer to the heading “Liquidity, Capital Resources and Financial Position — Foreign Exchange” below. The Europe, Middle East and Africa operating segment reported operating income of $3,309 million and $3,404 million for the nine months ended September 27, 2024 and September 29, 2023, respectively. The decrease in operating income was primarily driven by a decrease in concentrate sales volume of 3%, higher commodity costs, increased marketing spending, higher operating expenses and an unfavorable foreign currency exchange rate impact of 16%, partially offset by favorable pricing initiatives. Latin America reported operating income of $2,795 million and $2,635 million for the nine months ended September 27, 2024 and September 29, 2023, respectively. The increase in operating income was primarily driven by concentrate sales volume growth of 4% and favorable pricing initiatives, partially offset by higher commodity costs, increased marketing spending, higher operating expenses, higher other operating charges and an unfavorable foreign currency exchange rate impact of 16%. Operating income for North America for the nine months ended September 27, 2024 and September 29, 2023 was $3,162 million and $3,525 million, respectively. The decrease in operating income was primarily driven by higher commodity costs, increased marketing spending, higher operating expenses and higher other operating charges due to the impairment of our BodyArmor trademark, partially offset by favorable pricing initiatives. Refer to Note 16 of Notes to Consolidated Financial Statements for additional information on the impairment of our BodyArmor trademark. Asia Pacific’s operating income for the nine months ended September 27, 2024 and September 29, 2023 was $1,760 million and $1,727 million, respectively. The increase in operating income was primarily driven by concentrate sales volume growth of 44</untrusted_document>\n<untrusted_document cite_id=\"c:6a153d584b9eccfbf5fd442d9386edeead8992178afc3d20b742727efca73d9a\" amounts_in=\"millions\">During the three months ended September 27, 2024, the Company recorded other operating charges of $1,044 million. These charges consisted of $919 million related to the remeasurement of our contingent consideration liability to fair value in conjunction with our acquisition of fairlife, LLC (“fairlife”) in 2020, $87 million related to the impairment of a trademark in Latin America and $34 million related to the Company’s productivity and reinvestment program. In addition, other operating charges included $4 million for the amortization of noncompete agreements related to the BodyArmor acquisition and $2 million of transaction costs related to the sale of a portion of our interest in Coca-Cola Consolidated, Inc. (“Coke Consolidated”). These charges were partially offset by a net benefit of $2 million related to a revision of management’s estimates for tax litigation expense. During the nine months ended September 27, 2024, the Company recorded other operating charges of $3,987 million. These charges consisted of $3,021 million related to the remeasurement of our contingent consideration liability to fair value in conjunction with our acquisition of fairlife, $760 million related to the impairment of our BodyArmor trademark, $102 million related to the Company’s productivity and reinvestment program and $87 million related to the impairment of a trademark in Latin America. In addition, other operating charges included $11 million for the amortization of noncompete agreements related to the BodyArmor acquisition, $7 million of transaction costs related to the refranchising of our bottling operations in certain territories in India and $2 million of transaction costs related to the sale of a portion of our interest in Coke Consolidated. These charges were partially offset by a net benefit of $3 million related to a revision of management’s estimates for tax litigation expense. During the three months ended September 29, 2023, the Company recorded other operating charges of $359 million. These charges consisted of $296 million related to the remeasurement of our contingent consideration liability to fair value in conjunction with the fairlife acquisition, $58 million related to the Company’s productivity and reinvestment program, $4 million for the amortization of noncompete agreements related to the BodyArmor acquisition and $1 million related to tax litigation expense. During the nine months ended September 29, 2023, the Company recorded other operating charges of $1,808 million.</untrusted_document>\n<untrusted_document cite_id=\"c:0295e8830629ef4a8f1e502744cafdfc3075ce475577318813bbce8b57e2b15a\">Because information systems are critical to many of the Company’s operating activities, our business may be impacted by system shutdowns, service disruptions or cybersecurity incidents. These incidents may be caused by failures during routine operations, such as system upgrades, or by user errors, as well as network or hardware failures, malicious or disruptive software, unintentional or malicious actions of employees or contractors, cyberattacks by hackers, criminal groups, nation-state organizations or other threat actors (which may include deepfake or social engineering schemes, worms, phishing, spyware, ransomware and other forms of malware, business email compromise, cyber extortion, denial of service, or attempts to exploit vulnerabilities or gain unauthorized access), geopolitical events, natural disasters, failures or impairments of telecommunications networks, or other catastrophic events. Despite our efforts to protect the security of our information systems, cybercriminals have increasingly demonstrated advanced capabilities, such as use of zero-day vulnerabilities and rapid integration of new technology such as generative artificial intelligence. In addition, cybersecurity incidents could result in unauthorized or accidental access to or disclosure of material confidential information or regulated personal data. If our information systems or third-party information systems on which we rely suffer severe damage, disruption or shutdown and our business continuity plans do not effectively resolve the issues in a timely manner, we could experience delays in reporting our financial results, and we may lose revenue and profits as a result of our inability to timely manufacture, distribute, invoice and collect payments for concentrates or finished products. Unauthorized or accidental access to, or destruction, loss, alteration, disclosure, falsification or unavailability of, information or unauthorized access to machines and equipment could result in violations of data protection laws and regulations, misuse or malfunction of machines and equipment, damage to the reputation and credibility of the Company, loss of opportunities to acquire or divest of businesses or brands, and loss of ability to commercialize products developed through research and development efforts and, therefore, could have a negative impact on net operating revenues. In addition, we may suffer financial and reputational damage because of lost or misappropriated confidential information belonging to us, our current or former employees, our bottling partners, other customers or suppliers, or consumers or other data subjects, and we may become exposed to legal action and increased regulatory oversight, including governmental investigations, enforcement actions and regulatory fines.</untrusted_document>\n<untrusted_document cite_id=\"c:02dd043cbe98218a029cfe18291f7fe342774076162e6192579fd2b202857ccb\" amounts_in=\"millions\"> | Pension Plans |  | Other Postretirement Benefit Plans |  |  |  |  |  | \n | Three Months Ended |  |  |  |  |  |  |  | \n | April 3, 2026 | March 28, 2025 |  | April 3, 2026 | March 28, 2025 |  |  |  | \nService cost |  | 26 |  |  | 26 |  |  | 1 | 1\nInterest cost | 76 |  | 75 |  |  | 2 | 3 |  | \nExpected return on plan assets 1 | ( 98 ) |  | ( 104 ) |  |  | ( 1 ) | ( 1 ) |  | \nAmortization of prior service cost (credit) | 1 |  | — |  |  | ( 1 ) | ( 1 ) |  | \nAmortization of net actuarial loss (gain) | 21 |  | 25 |  |  | — | — |  | \nCurtailment loss (gain) 2 | — |  | 11 |  |  | — | — |  | \nSpecial termination benefits 2 | — |  | 25 |  |  | — | — |  | \nNet periodic benefit cost (income) |  | 26 |  |  | 58 |  |  | 1 | 2</untrusted_document>",
+   "summary": "KO BodyArmor trademark impairment",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:a2bb744ee97e6b6b2006c8f7b7d8bd32947409af39cc5b52b933e4e1a9d7e6f7",
+     "text": "In 2025, the Company recorded other operating charges of $1,261 million. These charges consisted of $960 million related to the impairment of our BodyArmor trademark, $97 million related to the Company’s productivity and reinvestment program, and $47 million related to the remeasurement of our contingent consideration liability to fair value in conjunction with our acquisition of fairlife in 2020, which brought the total liability to $6,173 million and was paid in March 2025. Additionally, other operating charges included $44 million related to the impairment of a trademark in Latin America, $41 million related to the impairment of a trademark and property, plant and equipment in Asia Pacific and $35 million related to an indemnification 47 agreement entered into as a part of the refranchising of certain of our bottling operations. In addition, other operating charges included $15 million for the amortization of noncompete agreements related to the BodyArmor acquisition in 2021, $12 million of transaction costs related to our divestiture activities and $10 million related to tax litigation expense. In 2024, the Company recorded other operating charges of $4,163 million. These charges consisted of $3,109 million related to the remeasurement of our contingent consideration liability to fair value in conjunction with the fairlife acquisition, $760 million related to the impairment of our BodyArmor trademark, $133 million related to the Company’s productivity and reinvestment program and $126 million related to the impairment of a trademark in Latin America. In addition, other operating charges included $15 million for the amortization of noncompete agreements related to the BodyArmor acquisition, $13 million related to an indemnification agreement entered into as a part of the refranchising of certain of our bottling operations and $9 million of transaction costs related to our divestiture activities. These charges were partially offset by a net benefit of $2 million related to a revision of management’s estimates for tax litigation expense. Refer to Note 2 of Notes to Consolidated Financial Statements for additional information on our divestiture activities. Refer to Note 12 of Notes to Consolidated Financial Statements for additional information related to the tax litigation. Refer to Note 17 of Notes to Consolidated Financial Statements for additional information on the fairlife contingent consideration and the impairment charges. Refer to Note 18 of Notes to Consolidated Financial Statements for the impact these charges had on our operating segments and Corporate. Refer to Note 19 of Notes to Consolidated Financial Statements for additional information on the Company’s restructuring initiatives.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3224,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:02192053e6220d6b53509bee869caa07ccd9588552ed70f444f2eb5ab40fa5c3",
+     "text": "Not applicable. Part III",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3228,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 9C",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:8560096bf04e6be51743ed40c6a65986b649fd7e9c6545675c68677add191bd5",
+     "text": "These items were partially offset by an increase in concentrate sales volume of 1% and favorable pricing initiatives. Fluctuations in foreign currency exchange rates unfavorably impacted consolidated operating income by 12% due to a stronger U.S. dollar compared to certain foreign currencies, including the Argentine peso, Zimbabwean dollar and Turkish lira, which had an unfavorable impact on our Latin America; Europe, Middle East and Africa; and Bottling Investments operating segments. The unfavorable impact of a stronger U.S. dollar compared to the currencies listed above was partially offset by the impact of a weaker U.S. dollar compared to certain other foreign currencies, including the Mexican peso and British pound, which had a favorable impact on our Latin America, Global Ventures and Europe, Middle East and Africa operating segments. Refer to the heading “Liquidity, Capital Resources and Financial Position — Foreign Exchange” below. The Europe, Middle East and Africa operating segment reported operating income of $3,309 million and $3,404 million for the nine months ended September 27, 2024 and September 29, 2023, respectively. The decrease in operating income was primarily driven by a decrease in concentrate sales volume of 3%, higher commodity costs, increased marketing spending, higher operating expenses and an unfavorable foreign currency exchange rate impact of 16%, partially offset by favorable pricing initiatives. Latin America reported operating income of $2,795 million and $2,635 million for the nine months ended September 27, 2024 and September 29, 2023, respectively. The increase in operating income was primarily driven by concentrate sales volume growth of 4% and favorable pricing initiatives, partially offset by higher commodity costs, increased marketing spending, higher operating expenses, higher other operating charges and an unfavorable foreign currency exchange rate impact of 16%. Operating income for North America for the nine months ended September 27, 2024 and September 29, 2023 was $3,162 million and $3,525 million, respectively. The decrease in operating income was primarily driven by higher commodity costs, increased marketing spending, higher operating expenses and higher other operating charges due to the impairment of our BodyArmor trademark, partially offset by favorable pricing initiatives. Refer to Note 16 of Notes to Consolidated Financial Statements for additional information on the impairment of our BodyArmor trademark. Asia Pacific’s operating income for the nine months ended September 27, 2024 and September 29, 2023 was $1,760 million and $1,727 million, respectively. The increase in operating income was primarily driven by concentrate sales volume growth of 44",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2916,
+      "ticker": "KO",
+      "doc_type": "10-Q",
+      "period": "2024-Q3",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134424000060/ko-20240927.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:6a153d584b9eccfbf5fd442d9386edeead8992178afc3d20b742727efca73d9a",
+     "text": "During the three months ended September 27, 2024, the Company recorded other operating charges of $1,044 million. These charges consisted of $919 million related to the remeasurement of our contingent consideration liability to fair value in conjunction with our acquisition of fairlife, LLC (“fairlife”) in 2020, $87 million related to the impairment of a trademark in Latin America and $34 million related to the Company’s productivity and reinvestment program. In addition, other operating charges included $4 million for the amortization of noncompete agreements related to the BodyArmor acquisition and $2 million of transaction costs related to the sale of a portion of our interest in Coca-Cola Consolidated, Inc. (“Coke Consolidated”). These charges were partially offset by a net benefit of $2 million related to a revision of management’s estimates for tax litigation expense. During the nine months ended September 27, 2024, the Company recorded other operating charges of $3,987 million. These charges consisted of $3,021 million related to the remeasurement of our contingent consideration liability to fair value in conjunction with our acquisition of fairlife, $760 million related to the impairment of our BodyArmor trademark, $102 million related to the Company’s productivity and reinvestment program and $87 million related to the impairment of a trademark in Latin America. In addition, other operating charges included $11 million for the amortization of noncompete agreements related to the BodyArmor acquisition, $7 million of transaction costs related to the refranchising of our bottling operations in certain territories in India and $2 million of transaction costs related to the sale of a portion of our interest in Coke Consolidated. These charges were partially offset by a net benefit of $3 million related to a revision of management’s estimates for tax litigation expense. During the three months ended September 29, 2023, the Company recorded other operating charges of $359 million. These charges consisted of $296 million related to the remeasurement of our contingent consideration liability to fair value in conjunction with the fairlife acquisition, $58 million related to the Company’s productivity and reinvestment program, $4 million for the amortization of noncompete agreements related to the BodyArmor acquisition and $1 million related to tax litigation expense. During the nine months ended September 29, 2023, the Company recorded other operating charges of $1,808 million.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2916,
+      "ticker": "KO",
+      "doc_type": "10-Q",
+      "period": "2024-Q3",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000002134424000060/ko-20240927.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:0295e8830629ef4a8f1e502744cafdfc3075ce475577318813bbce8b57e2b15a",
+     "text": "Because information systems are critical to many of the Company’s operating activities, our business may be impacted by system shutdowns, service disruptions or cybersecurity incidents. These incidents may be caused by failures during routine operations, such as system upgrades, or by user errors, as well as network or hardware failures, malicious or disruptive software, unintentional or malicious actions of employees or contractors, cyberattacks by hackers, criminal groups, nation-state organizations or other threat actors (which may include deepfake or social engineering schemes, worms, phishing, spyware, ransomware and other forms of malware, business email compromise, cyber extortion, denial of service, or attempts to exploit vulnerabilities or gain unauthorized access), geopolitical events, natural disasters, failures or impairments of telecommunications networks, or other catastrophic events. Despite our efforts to protect the security of our information systems, cybercriminals have increasingly demonstrated advanced capabilities, such as use of zero-day vulnerabilities and rapid integration of new technology such as generative artificial intelligence. In addition, cybersecurity incidents could result in unauthorized or accidental access to or disclosure of material confidential information or regulated personal data. If our information systems or third-party information systems on which we rely suffer severe damage, disruption or shutdown and our business continuity plans do not effectively resolve the issues in a timely manner, we could experience delays in reporting our financial results, and we may lose revenue and profits as a result of our inability to timely manufacture, distribute, invoice and collect payments for concentrates or finished products. Unauthorized or accidental access to, or destruction, loss, alteration, disclosure, falsification or unavailability of, information or unauthorized access to machines and equipment could result in violations of data protection laws and regulations, misuse or malfunction of machines and equipment, damage to the reputation and credibility of the Company, loss of opportunities to acquire or divest of businesses or brands, and loss of ability to commercialize products developed through research and development efforts and, therefore, could have a negative impact on net operating revenues. In addition, we may suffer financial and reputational damage because of lost or misappropriated confidential information belonging to us, our current or former employees, our bottling partners, other customers or suppliers, or consumers or other data subjects, and we may become exposed to legal action and increased regulatory oversight, including governmental investigations, enforcement actions and regulatory fines.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3224,
+      "ticker": "KO",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026010047/ko-20251231.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:02dd043cbe98218a029cfe18291f7fe342774076162e6192579fd2b202857ccb",
+     "text": " | Pension Plans |  | Other Postretirement Benefit Plans |  |  |  |  |  | \n | Three Months Ended |  |  |  |  |  |  |  | \n | April 3, 2026 | March 28, 2025 |  | April 3, 2026 | March 28, 2025 |  |  |  | \nService cost |  | 26 |  |  | 26 |  |  | 1 | 1\nInterest cost | 76 |  | 75 |  |  | 2 | 3 |  | \nExpected return on plan assets 1 | ( 98 ) |  | ( 104 ) |  |  | ( 1 ) | ( 1 ) |  | \nAmortization of prior service cost (credit) | 1 |  | — |  |  | ( 1 ) | ( 1 ) |  | \nAmortization of net actuarial loss (gain) | 21 |  | 25 |  |  | — | — |  | \nCurtailment loss (gain) 2 | — |  | 11 |  |  | — | — |  | \nSpecial termination benefits 2 | — |  | 25 |  |  | — | — |  | \nNet periodic benefit cost (income) |  | 26 |  |  | 58 |  |  | 1 | 2",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3223,
+      "ticker": "KO",
+      "doc_type": "10-Q",
+      "period": "2026-Q2",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026028802/ko-20260403.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

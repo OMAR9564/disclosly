@@ -1,0 +1,185 @@
+{
+ "case_id": "en-meta-q2-2026-net-income",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "d95c5e75a4af4397a3f41704c04070b166e20d98169f047c748df84a30886f07",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"META\"\n  ],\n  \"periods\": [\n    \"2026-Q2\"\n  ],\n  \"metrics\": [\n    \"net_income\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 935,
+    "tokens_out": 78,
+    "latency_ms": 1121.569,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "a8c2d19c69692b7f59ba513ea9da8a674a0f4100fcdce1349882caf95ec93325",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2167877",
+      "name": "get_financial_facts",
+      "arguments": {
+       "metrics": [
+        "net_income"
+       ],
+       "periods": [
+        "2026-Q2"
+       ],
+       "ticker": "META"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T0umOVBdVj0VKxZezuvtmQ8lVueGO9QP+a9UpAtT5bLgPjvWuJ0tqbALr8uO+7q7YKgc273PG4C+8KpV/xRdmHaRgvSoIyRqSjeUcPVSeBQPKIgoNU8BZpCg="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1594,
+    "tokens_out": 38,
+    "latency_ms": 743.689,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "b806e68c71350adb94cf54dd6a96c3cc222faf024310f992d51ca99279f1caa0",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Meta's net income for the quarter ended June 30, 2026 (2026-Q2) was 15,848,000,000 USD [1].\",\n  \"points\": [\n    {\n      \"text\": \"Meta's net income for the quarter ended June 30, 2026 was 15,848,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:766\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:766\"\n    }\n  ]\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1745,
+    "tokens_out": 194,
+    "latency_ms": 997.12,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "eb2724f1a661f7c0dcabf4f1f3c2f359483cfa1b8f3bbffccdd14aa6a6a826fc",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Meta's net income for the quarter ended June 30, 2026 (2026-Q2) was $15,848,000,000 USD.\",\n  \"points\": [\n    {\n      \"text\": \"Net income for 2026-Q2 (quarter ended June 30, 2026) was $15,848,000,000 USD.\",\n      \"cite_ids\": [\"f:766\", \"f:4170\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:766\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:4170\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1056,
+    "tokens_out": 359,
+    "latency_ms": 11457.159,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2026-Q2\"],\"ticker\":\"META\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:766\">Net income (2026-Q2): 15,848,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4170\">Net income (2026-Q2): 15,848,000,000 USD</untrusted_document>",
+   "summary": "META 2026-Q2 net_income",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "f:766",
+     "text": "Net income (2026-Q2): 15,848,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 147,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2026-Q2",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-050705",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm"
+     },
+     "value": "15848000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4170",
+     "text": "Net income (2026-Q2): 15,848,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2364,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2026-Q2",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-050705",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm"
+     },
+     "value": "15848000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2026-Q2\"],\"ticker\":\"META\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:766\">Net income (2026-Q2): 15,848,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4170\">Net income (2026-Q2): 15,848,000,000 USD</untrusted_document>",
+   "summary": "META 2026-Q2 net_income",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "f:766",
+     "text": "Net income (2026-Q2): 15,848,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 147,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2026-Q2",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-050705",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm"
+     },
+     "value": "15848000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4170",
+     "text": "Net income (2026-Q2): 15,848,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2364,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2026-Q2",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-050705",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm"
+     },
+     "value": "15848000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

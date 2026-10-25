@@ -1,0 +1,118 @@
+{
+ "case_id": "en-none-samsung",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "5b57f7ad6c5de4dbaba11d2bdf5e217b4ff93bfa594e0c60a3609714e3357716",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"005930.KS\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 930,
+    "tokens_out": 74,
+    "latency_ms": 1216.148,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "c05fcc0d68fb0038c44b4c5e828a8d764b920046f42b274a3c4f26cf461f91a1",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1313796",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "SSNLF"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0Ttnd347wOiXSRNhOuRZ5g9GADsEUv6FP3hgAK+qDTQXYcUdB10M9keu6ZF7Um9/s6xaR/WFaS01+OcCAPUszudUjPlQzac0YWXau1y3NCvGbNMMHhX4KXA9E="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1490,
+    "tokens_out": 18,
+    "latency_ms": 480.939,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "1479c16fcf8541aa909607ad254d0546ca589c7e60a342b8477fe39111b7303b",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1998392",
+      "name": "search_documents",
+      "arguments": {
+       "query": "R&D research and development expense Samsung Electronics 2025",
+       "ticker": "SSNLF"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T0y7RGrnwlKsrpwFapkLWi8N8GmTgeFM4Uvxa9PJ8Xfdz723MGO1ixCRImZB550Opk/I6AGC/ozyN7J6gNUhyBF2LmV8TTReVW0y/03W3Xqdk0AHvfaxIZwc="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1526,
+    "tokens_out": 37,
+    "latency_ms": 575.164,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\"],\"periods\":[\"2025-FY\"],\"ticker\":\"005930.KS\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "No results.",
+   "summary": "005930.KS 2025-FY net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"How much did Samsung Electronics spend on R&D in 2025?\",\"ticker\":\"005930.KS\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "005930.KS How much did Samsung Electronics spend on R&D in 2025?",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"SSNLF\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": []}",
+   "summary": "SSNLF documents",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"R&D research and development expense Samsung Electronics 2025\",\"ticker\":\"SSNLF\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "Tool error: document search is temporarily unavailable",
+   "summary": "SSNLF R&D research and development expense Samsung Electronics 2025",
+   "count": 0,
+   "items": [],
+   "error": "document search is temporarily unavailable"
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

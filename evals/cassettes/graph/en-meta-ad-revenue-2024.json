@@ -1,0 +1,408 @@
+{
+ "case_id": "en-meta-ad-revenue-2024",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "54cb5a5a950e66462e6f34aae9731510cca65b3f9d5630d2bd23ff8c55e9cbda",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"META\"\n  ],\n  \"periods\": [\n    \"2024-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 929,
+    "tokens_out": 75,
+    "latency_ms": 1213.186,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "7fec69e3a3aa9c44134b3dd9a10e9f12f0f277cf3a2522cd4b345226963d8322",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1168750",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "META",
+       "query": "advertising revenue 2024"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TzCTdGvVJ3BBKC9I1j9H9jsnUpiN6V5StEH72agtTPDgxn2jZMDGF7MKchYDsVEqRTHWN5PMr/y3SD4b/d4NuH3D9NJyrBC9rBIOYQrrTb1+fmxAvGr9OgrA="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1701,
+    "tokens_out": 28,
+    "latency_ms": 599.844,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "975ebbfc37956c5c06cc46ed504970777580c657ecf26c905ffce5f0b833971c",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1646777",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "META",
+       "query": "Advertising revenue in 2024 increased"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TmklCsl1FDrVts4C27AIcQ9yMHgnYgK4RFujppG+mV/55qff5yyjB3y1zoxAPgHGTBPYfOK+G4/Mo5ML38ZKkA0yv4s2FioVENJus5hckMRQ0kgj9gwUdSYw="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 5979,
+    "tokens_out": 30,
+    "latency_ms": 830.391,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "f13298089930939bbf407e4e0a2643c761f02a99eced389c3414c2960d530b53",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Meta's advertising revenue grew by $28.68 billion, or 22%, in 2024 compared to 2023.\",\n  \"points\": [\n    {\n      \"text\": \"Advertising revenue in 2024 increased $28.68 billion, or 22%, compared to 2023.\",\n      \"cite_ids\": [\"c:0b954abd4f5707b0e41ec9731111c706e174d5f4891942d5800ba2261a2405b1\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:0b954abd4f5707b0e41ec9731111c706e174d5f4891942d5800ba2261a2405b1\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 6132,
+    "tokens_out": 697,
+    "latency_ms": 14595.29,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2024-FY\"],\"ticker\":\"META\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:739\">Revenue (2024-FY): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4143\">Revenue (2024-FY): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:740\">Revenue (2024-FY; 2025-FY report): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4144\">Revenue (2024-FY; 2025-FY report): 164,501,000,000 USD</untrusted_document>",
+   "summary": "META 2024-FY revenue",
+   "count": 4,
+   "items": [
+    {
+     "cite_id": "f:739",
+     "text": "Revenue (2024-FY): 164,501,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 153,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001326801-25-000017",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": "164501000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4143",
+     "text": "Revenue (2024-FY): 164,501,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2370,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001326801-25-000017",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": "164501000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:740",
+     "text": "Revenue (2024-FY; 2025-FY report): 164,501,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 149,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-003942",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+     },
+     "value": "164501000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4144",
+     "text": "Revenue (2024-FY; 2025-FY report): 164,501,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2366,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-003942",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+     },
+     "value": "164501000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"advertising revenue 2024\",\"ticker\":\"META\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:0b954abd4f5707b0e41ec9731111c706e174d5f4891942d5800ba2261a2405b1\" amounts_in=\"millions\">Family of Apps FoA revenue in 2024 increased $29.35 billion, or 22%, compared to 2023. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in 2024 increased $28.68 billion, or 22%, compared to 2023 due to increases in ad impressions delivered and average price per ad. In 2024, ad impressions delivered increased by 11%, as compared with a 28% increase in 2023, year-over-year. Ad impressions delivered during 2024 grew in all regions, especially in Asia-Pacific and Rest of World, which was mostly driven by increases in users and their engagement on our products. In 2024, the average price per ad increased by 10%, as compared with a decrease of 9% in 2023, year-over-year. The increase in average price per ad in 2024 was driven by an increase in advertising demand, which we believe is mainly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Full Year 2024 Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in 2024 compared to 2023. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in 2024 increased $664 million, or 63%, compared to 2023. The increase was primarily driven by WhatsApp Business Platform revenue. Reality Labs RL revenue in 2024 increased $250 million, or 13%, compared to 2023. The increase was mostly due to an increase in RL consumer hardware products sold. Revenue Seasonality Revenue is traditionally seasonally strong in the fourth quarter of each year due in part to seasonal holiday demand. We believe that this seasonality in both advertising revenue and RL consumer hardware sales affects our quarterly results, which generally reflect significant growth in revenue between the third and fourth quarters and a decline between the fourth and subsequent first quarters. For instance, our total revenue increased 19%, 17%, and 16% between the third and fourth quarters of 2024, 2023, and 2022, respectively, while total revenue for the first quarters of 2024, 2023, and 2022 declined 9%, 11%, and 17% compared to the fourth quarters of 2023, 2022, and 2021, respectively. 72 Table of Contents Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the full year 2024 compared to the same period in 2023.</untrusted_document>\n<untrusted_document cite_id=\"c:4c794280f23d0d3a5220cf300e9d9b6b95eff36ce3a9115810284b3fbf32e7d8\" amounts_in=\"millions\">Family of Apps FoA revenue in 2025 increased $36.40 billion, or 22%, compared to 2024. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in 2025 increased $35.54 billion, or 22%, compared to 2024 due to increases in ad impressions delivered and average price per ad. In 2025, ad impressions delivered increased by 12%, as compared with an increase of 11% in 2024, year-over-year. Ad impressions delivered during 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. In 2025, the average price per ad increased by 9%, as compared with an increase of 10% in 2024, year-over-year. The increase in average price per ad in 2025 was driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Full Year 2025 Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in 2025 compared to 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in 2025 increased $862 million, or 50%, compared to 2024. The increase was mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in 2025 increased $61 million, or 3%, compared to 2024. The increase was driven by an increase in sales of AI glasses, partially offset by a decrease in Meta Quest sales. Revenue Seasonality Revenue is traditionally seasonally strong in the fourth quarter of each year due in part to seasonal holiday demand. We believe that this seasonality in both advertising revenue and RL consumer hardware sales affects our quarterly results, which generally reflect significant growth in revenue between the third and fourth quarters and a decline between the fourth and subsequent first quarters. For instance, our total revenue increased 17%, 19%, and 17% between the third and fourth quarters of 2025, 2024, and 2023, respectively, while total revenue for the first quarters of 2025, 2024, and 2023 declined 13%, 9%, and 11% compared to the fourth quarters of 2024, 2023, and 2022, respectively. 73 Table of Contents Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the full year 2025 compared to the same period in 2024.</untrusted_document>\n<untrusted_document cite_id=\"c:a9128a83cf5805c154d8e145fd00a086bacde73fc572a24bc84e3e12db5f4025\" amounts_in=\"millions\">Family of Apps FoA revenue in the three months ended March 31, 2025 increased $5.89 billion, or 16%, compared to the same period in 2024. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in the three months ended March 31, 2025 increased $5.76 billion, or 16%, compared to the same period in 2024, due to increases in ad impressions delivered and average price per ad. During the three months ended March 31, 2025, ad impressions delivered increased by 5%, year-over-year, as compared with a 20% increase in the same period in 2024. Ad impressions delivered during the three months ended March 31, 2025 grew in all regions, especially in Asia-Pacific, which was primarily driven by increases in users and their engagement on our products. During the three months ended March 31, 2025, the average price per ad increased by 10%, year-over-year, as compared with an increase of 6% in the same period in 2024. The increase in average price per ad during the three months ended March 31, 2025 was driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of First Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three months ended March 31, 2025 compared to the same period in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three months ended March 31, 2025 increased $130 million, or 34%, compared to the same period in 2024. The increase was mostly driven by revenue from WhatsApp Business Platform and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended March 31, 2025 decreased $28 million, or 6%, compared to the same period in 2024. The decrease in RL revenue was driven by a net decrease in Meta Quest sales, partially offset by an increase in sales of Ray-Ban Meta AI glasses. Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the three months ended March 31, 2025 compared to the same period in 2024. To calculate revenue on a constant currency basis, we translated revenue using the prior year's monthly exchange rates for our settlement or billing currencies other than the U.S. dollar.</untrusted_document>\n<untrusted_document cite_id=\"c:13195d9433b832278c92b4539de6827af2868b0ec2aed9a81579fb54d7e7f42f\">These trends adversely affected advertising revenue in 2024, and we expect will continue to affect our advertising revenue in the foreseeable future. 61 Table of Contents Although we regularly evaluate a variety of sources to understand trends in our advertising revenue, we do not have perfect visibility into the factors driving advertiser spending decisions and our assessments involve complex judgments about what is driving advertising decisions across a large and diversified advertiser base across the globe. Trends impacting advertising spend are also dynamic and interrelated. As a result, it is difficult to identify with precision which advertiser spending decisions are attributable to which trends, and we are unable to quantify the exact impact that each trend had on our advertising revenue during the periods presented. Investment Philosophy We expect to continue to build on the discipline and habits that we developed in 2022 when we initiated several efforts to increase our operating efficiency, while still remaining focused on investing in significant opportunities. In 2024, 79% of our total costs and expenses were recognized in FoA and 21% were recognized in RL. Our FoA investments include expenses relating to headcount, data centers, and technical infrastructure as part of our efforts to develop our apps and our advertising services. These efforts include significant investments in AI initiatives, including to recommend relevant content across our products, enhance our advertising tools, develop new products, and develop new features for existing products using generative AI. In particular, we expect our AI initiatives will require increased investment in infrastructure and headcount. We are also making significant investments in our metaverse and wearables efforts, including developing virtual, augmented, and mixed reality devices, software for social platforms, neural interfaces, and other foundational technologies. Our RL investments include expenses relating to technology development across these efforts. Many of our RL investments are directed toward long-term, cutting-edge research and development for products that may only be fully realized in the next decade. In 2024, our RL segment reduced our overall operating profit by approximately $17.73 billion, and we continue to expect our RL operating losses to increase in 2025. We expect this will be a complex, evolving, and long-term initiative, and our ability to support our RL efforts is dependent on generating sufficient profits from other areas of our business. We are investing now because we believe this is the next chapter of the internet and will unlock monetization opportunities for businesses, developers, and creators, including around advertising, hardware, and digital goods. 62 Table of Contents Trends in Our Revenue by User Geography</untrusted_document>\n<untrusted_document cite_id=\"c:c57cf6cb0f850db2fd2a2df5c2ac490a21647cdfbc98ea1a78b04043992f9d2a\" amounts_in=\"millions\">Family of Apps FoA revenue in the three and six months ended June 30, 2025 increased $8.43 billion, or 22%, and $14.31 billion, or 19%, respectively, compared to the same periods in 2024. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and six months ended June 30, 2025 increased $8.23 billion, or 21%, and $13.99 billion, or 19%, respectively, compared to the same periods in 2024, due to increases in ad impressions delivered and average price per ad. During the three and six months ended June 30, 2025, ad impressions delivered increased by 11% and 8%, respectively, year-over-year, as compared with increases of 10% and 15%, respectively in the same periods in 2024. Ad impressions delivered during the three and six months ended June 30, 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. During the three and six months ended June 30, 2025, the average price per ad increased by 9% and 10%, respectively, year-over-year, as compared with increases of 10% and 8%, respectively, in the same periods in 2024. The increases in average price per ad were driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Second Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three and six months ended June 30, 2025 compared to the same periods in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and six months ended June 30, 2025 increased $194 million, or 50%, and $324 million, or 42%, respectively, compared to the same periods in 2024. The increases were mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended June 30, 2025 increased $17 million, or 5%, compared to the same period in 2024, driven by an increase in sales of Ray-Ban Meta AI glasses, partially offset by a net decrease in Meta Quest sales. RL revenue in the six months ended June 30, 2025 decreased $11 million, or 1%, compared to the same period in 2024. Foreign Exchange Impact on Revenue</untrusted_document>\n<untrusted_document cite_id=\"c:2281cf2045d7d20592be0f737380b8fea0a9a61a836bc741ca10b5014076e9d7\" amounts_in=\"millions\">Family of Apps FoA revenue in the three and nine months ended September 30, 2025 increased $10.45 billion, or 26%, and $24.77 billion, or 22%, respectively, compared to the same periods in 2024. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and nine months ended September 30, 2025 increased $10.20 billion, or 26%, and $24.19 billion, or 21%, respectively, compared to the same periods in 2024, due to increases in ad impressions delivered and average price per ad. During the three and nine months ended September 30, 2025, ad impressions delivered increased by 14% and 10%, respectively, year-over-year, as compared with increases of 7% and 12%, respectively in the same periods in 2024. Ad impressions delivered during the three and nine months ended September 30, 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. During the three and nine months ended September 30, 2025, the average price per ad increased by 10% and 10%, respectively, year-over-year, as compared with increases of 11% and 9%, respectively, in the same periods in 2024. The increases in average price per ad were driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Third Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three and nine months ended September 30, 2025 compared to the same periods in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and nine months ended September 30, 2025 increased $256 million, or 59%, and $581 million, or 48%, respectively, compared to the same periods in 2024. The increases were mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended September 30, 2025 increased $200 million, or 74%, compared to the same period in 2024, mostly due to increases in sales of Meta Quest and AI glasses.</untrusted_document>",
+   "summary": "META advertising revenue 2024",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:0b954abd4f5707b0e41ec9731111c706e174d5f4891942d5800ba2261a2405b1",
+     "text": "Family of Apps FoA revenue in 2024 increased $29.35 billion, or 22%, compared to 2023. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in 2024 increased $28.68 billion, or 22%, compared to 2023 due to increases in ad impressions delivered and average price per ad. In 2024, ad impressions delivered increased by 11%, as compared with a 28% increase in 2023, year-over-year. Ad impressions delivered during 2024 grew in all regions, especially in Asia-Pacific and Rest of World, which was mostly driven by increases in users and their engagement on our products. In 2024, the average price per ad increased by 10%, as compared with a decrease of 9% in 2023, year-over-year. The increase in average price per ad in 2024 was driven by an increase in advertising demand, which we believe is mainly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Full Year 2024 Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in 2024 compared to 2023. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in 2024 increased $664 million, or 63%, compared to 2023. The increase was primarily driven by WhatsApp Business Platform revenue. Reality Labs RL revenue in 2024 increased $250 million, or 13%, compared to 2023. The increase was mostly due to an increase in RL consumer hardware products sold. Revenue Seasonality Revenue is traditionally seasonally strong in the fourth quarter of each year due in part to seasonal holiday demand. We believe that this seasonality in both advertising revenue and RL consumer hardware sales affects our quarterly results, which generally reflect significant growth in revenue between the third and fourth quarters and a decline between the fourth and subsequent first quarters. For instance, our total revenue increased 19%, 17%, and 16% between the third and fourth quarters of 2024, 2023, and 2022, respectively, while total revenue for the first quarters of 2024, 2023, and 2022 declined 9%, 11%, and 17% compared to the fourth quarters of 2023, 2022, and 2021, respectively. 72 Table of Contents Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the full year 2024 compared to the same period in 2023.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3147,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:4c794280f23d0d3a5220cf300e9d9b6b95eff36ce3a9115810284b3fbf32e7d8",
+     "text": "Family of Apps FoA revenue in 2025 increased $36.40 billion, or 22%, compared to 2024. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in 2025 increased $35.54 billion, or 22%, compared to 2024 due to increases in ad impressions delivered and average price per ad. In 2025, ad impressions delivered increased by 12%, as compared with an increase of 11% in 2024, year-over-year. Ad impressions delivered during 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. In 2025, the average price per ad increased by 9%, as compared with an increase of 10% in 2024, year-over-year. The increase in average price per ad in 2025 was driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Full Year 2025 Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in 2025 compared to 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in 2025 increased $862 million, or 50%, compared to 2024. The increase was mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in 2025 increased $61 million, or 3%, compared to 2024. The increase was driven by an increase in sales of AI glasses, partially offset by a decrease in Meta Quest sales. Revenue Seasonality Revenue is traditionally seasonally strong in the fourth quarter of each year due in part to seasonal holiday demand. We believe that this seasonality in both advertising revenue and RL consumer hardware sales affects our quarterly results, which generally reflect significant growth in revenue between the third and fourth quarters and a decline between the fourth and subsequent first quarters. For instance, our total revenue increased 17%, 19%, and 17% between the third and fourth quarters of 2025, 2024, and 2023, respectively, while total revenue for the first quarters of 2025, 2024, and 2023 declined 13%, 9%, and 11% compared to the fourth quarters of 2024, 2023, and 2022, respectively. 73 Table of Contents Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the full year 2025 compared to the same period in 2024.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3143,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:a9128a83cf5805c154d8e145fd00a086bacde73fc572a24bc84e3e12db5f4025",
+     "text": "Family of Apps FoA revenue in the three months ended March 31, 2025 increased $5.89 billion, or 16%, compared to the same period in 2024. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in the three months ended March 31, 2025 increased $5.76 billion, or 16%, compared to the same period in 2024, due to increases in ad impressions delivered and average price per ad. During the three months ended March 31, 2025, ad impressions delivered increased by 5%, year-over-year, as compared with a 20% increase in the same period in 2024. Ad impressions delivered during the three months ended March 31, 2025 grew in all regions, especially in Asia-Pacific, which was primarily driven by increases in users and their engagement on our products. During the three months ended March 31, 2025, the average price per ad increased by 10%, year-over-year, as compared with an increase of 6% in the same period in 2024. The increase in average price per ad during the three months ended March 31, 2025 was driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of First Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three months ended March 31, 2025 compared to the same period in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three months ended March 31, 2025 increased $130 million, or 34%, compared to the same period in 2024. The increase was mostly driven by revenue from WhatsApp Business Platform and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended March 31, 2025 decreased $28 million, or 6%, compared to the same period in 2024. The decrease in RL revenue was driven by a net decrease in Meta Quest sales, partially offset by an increase in sales of Ray-Ban Meta AI glasses. Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the three months ended March 31, 2025 compared to the same period in 2024. To calculate revenue on a constant currency basis, we translated revenue using the prior year's monthly exchange rates for our settlement or billing currencies other than the U.S. dollar.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3146,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:13195d9433b832278c92b4539de6827af2868b0ec2aed9a81579fb54d7e7f42f",
+     "text": "These trends adversely affected advertising revenue in 2024, and we expect will continue to affect our advertising revenue in the foreseeable future. 61 Table of Contents Although we regularly evaluate a variety of sources to understand trends in our advertising revenue, we do not have perfect visibility into the factors driving advertiser spending decisions and our assessments involve complex judgments about what is driving advertising decisions across a large and diversified advertiser base across the globe. Trends impacting advertising spend are also dynamic and interrelated. As a result, it is difficult to identify with precision which advertiser spending decisions are attributable to which trends, and we are unable to quantify the exact impact that each trend had on our advertising revenue during the periods presented. Investment Philosophy We expect to continue to build on the discipline and habits that we developed in 2022 when we initiated several efforts to increase our operating efficiency, while still remaining focused on investing in significant opportunities. In 2024, 79% of our total costs and expenses were recognized in FoA and 21% were recognized in RL. Our FoA investments include expenses relating to headcount, data centers, and technical infrastructure as part of our efforts to develop our apps and our advertising services. These efforts include significant investments in AI initiatives, including to recommend relevant content across our products, enhance our advertising tools, develop new products, and develop new features for existing products using generative AI. In particular, we expect our AI initiatives will require increased investment in infrastructure and headcount. We are also making significant investments in our metaverse and wearables efforts, including developing virtual, augmented, and mixed reality devices, software for social platforms, neural interfaces, and other foundational technologies. Our RL investments include expenses relating to technology development across these efforts. Many of our RL investments are directed toward long-term, cutting-edge research and development for products that may only be fully realized in the next decade. In 2024, our RL segment reduced our overall operating profit by approximately $17.73 billion, and we continue to expect our RL operating losses to increase in 2025. We expect this will be a complex, evolving, and long-term initiative, and our ability to support our RL efforts is dependent on generating sufficient profits from other areas of our business. We are investing now because we believe this is the next chapter of the internet and will unlock monetization opportunities for businesses, developers, and creators, including around advertising, hardware, and digital goods. 62 Table of Contents Trends in Our Revenue by User Geography",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3147,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:c57cf6cb0f850db2fd2a2df5c2ac490a21647cdfbc98ea1a78b04043992f9d2a",
+     "text": "Family of Apps FoA revenue in the three and six months ended June 30, 2025 increased $8.43 billion, or 22%, and $14.31 billion, or 19%, respectively, compared to the same periods in 2024. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and six months ended June 30, 2025 increased $8.23 billion, or 21%, and $13.99 billion, or 19%, respectively, compared to the same periods in 2024, due to increases in ad impressions delivered and average price per ad. During the three and six months ended June 30, 2025, ad impressions delivered increased by 11% and 8%, respectively, year-over-year, as compared with increases of 10% and 15%, respectively in the same periods in 2024. Ad impressions delivered during the three and six months ended June 30, 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. During the three and six months ended June 30, 2025, the average price per ad increased by 9% and 10%, respectively, year-over-year, as compared with increases of 10% and 8%, respectively, in the same periods in 2024. The increases in average price per ad were driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Second Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three and six months ended June 30, 2025 compared to the same periods in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and six months ended June 30, 2025 increased $194 million, or 50%, and $324 million, or 42%, respectively, compared to the same periods in 2024. The increases were mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended June 30, 2025 increased $17 million, or 5%, compared to the same period in 2024, driven by an increase in sales of Ray-Ban Meta AI glasses, partially offset by a net decrease in Meta Quest sales. RL revenue in the six months ended June 30, 2025 decreased $11 million, or 1%, compared to the same period in 2024. Foreign Exchange Impact on Revenue",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3145,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q2",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:2281cf2045d7d20592be0f737380b8fea0a9a61a836bc741ca10b5014076e9d7",
+     "text": "Family of Apps FoA revenue in the three and nine months ended September 30, 2025 increased $10.45 billion, or 26%, and $24.77 billion, or 22%, respectively, compared to the same periods in 2024. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and nine months ended September 30, 2025 increased $10.20 billion, or 26%, and $24.19 billion, or 21%, respectively, compared to the same periods in 2024, due to increases in ad impressions delivered and average price per ad. During the three and nine months ended September 30, 2025, ad impressions delivered increased by 14% and 10%, respectively, year-over-year, as compared with increases of 7% and 12%, respectively in the same periods in 2024. Ad impressions delivered during the three and nine months ended September 30, 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. During the three and nine months ended September 30, 2025, the average price per ad increased by 10% and 10%, respectively, year-over-year, as compared with increases of 11% and 9%, respectively, in the same periods in 2024. The increases in average price per ad were driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Third Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three and nine months ended September 30, 2025 compared to the same periods in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and nine months ended September 30, 2025 increased $256 million, or 59%, and $581 million, or 48%, respectively, compared to the same periods in 2024. The increases were mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended September 30, 2025 increased $200 million, or 74%, compared to the same period in 2024, mostly due to increases in sales of Meta Quest and AI glasses.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3144,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"Advertising revenue in 2024 increased\",\"ticker\":\"META\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:0b954abd4f5707b0e41ec9731111c706e174d5f4891942d5800ba2261a2405b1\" amounts_in=\"millions\">Family of Apps FoA revenue in 2024 increased $29.35 billion, or 22%, compared to 2023. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in 2024 increased $28.68 billion, or 22%, compared to 2023 due to increases in ad impressions delivered and average price per ad. In 2024, ad impressions delivered increased by 11%, as compared with a 28% increase in 2023, year-over-year. Ad impressions delivered during 2024 grew in all regions, especially in Asia-Pacific and Rest of World, which was mostly driven by increases in users and their engagement on our products. In 2024, the average price per ad increased by 10%, as compared with a decrease of 9% in 2023, year-over-year. The increase in average price per ad in 2024 was driven by an increase in advertising demand, which we believe is mainly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Full Year 2024 Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in 2024 compared to 2023. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in 2024 increased $664 million, or 63%, compared to 2023. The increase was primarily driven by WhatsApp Business Platform revenue. Reality Labs RL revenue in 2024 increased $250 million, or 13%, compared to 2023. The increase was mostly due to an increase in RL consumer hardware products sold. Revenue Seasonality Revenue is traditionally seasonally strong in the fourth quarter of each year due in part to seasonal holiday demand. We believe that this seasonality in both advertising revenue and RL consumer hardware sales affects our quarterly results, which generally reflect significant growth in revenue between the third and fourth quarters and a decline between the fourth and subsequent first quarters. For instance, our total revenue increased 19%, 17%, and 16% between the third and fourth quarters of 2024, 2023, and 2022, respectively, while total revenue for the first quarters of 2024, 2023, and 2022 declined 9%, 11%, and 17% compared to the fourth quarters of 2023, 2022, and 2021, respectively. 72 Table of Contents Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the full year 2024 compared to the same period in 2023.</untrusted_document>\n<untrusted_document cite_id=\"c:4c794280f23d0d3a5220cf300e9d9b6b95eff36ce3a9115810284b3fbf32e7d8\" amounts_in=\"millions\">Family of Apps FoA revenue in 2025 increased $36.40 billion, or 22%, compared to 2024. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in 2025 increased $35.54 billion, or 22%, compared to 2024 due to increases in ad impressions delivered and average price per ad. In 2025, ad impressions delivered increased by 12%, as compared with an increase of 11% in 2024, year-over-year. Ad impressions delivered during 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. In 2025, the average price per ad increased by 9%, as compared with an increase of 10% in 2024, year-over-year. The increase in average price per ad in 2025 was driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Full Year 2025 Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in 2025 compared to 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in 2025 increased $862 million, or 50%, compared to 2024. The increase was mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in 2025 increased $61 million, or 3%, compared to 2024. The increase was driven by an increase in sales of AI glasses, partially offset by a decrease in Meta Quest sales. Revenue Seasonality Revenue is traditionally seasonally strong in the fourth quarter of each year due in part to seasonal holiday demand. We believe that this seasonality in both advertising revenue and RL consumer hardware sales affects our quarterly results, which generally reflect significant growth in revenue between the third and fourth quarters and a decline between the fourth and subsequent first quarters. For instance, our total revenue increased 17%, 19%, and 17% between the third and fourth quarters of 2025, 2024, and 2023, respectively, while total revenue for the first quarters of 2025, 2024, and 2023 declined 13%, 9%, and 11% compared to the fourth quarters of 2024, 2023, and 2022, respectively. 73 Table of Contents Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the full year 2025 compared to the same period in 2024.</untrusted_document>\n<untrusted_document cite_id=\"c:a9128a83cf5805c154d8e145fd00a086bacde73fc572a24bc84e3e12db5f4025\" amounts_in=\"millions\">Family of Apps FoA revenue in the three months ended March 31, 2025 increased $5.89 billion, or 16%, compared to the same period in 2024. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in the three months ended March 31, 2025 increased $5.76 billion, or 16%, compared to the same period in 2024, due to increases in ad impressions delivered and average price per ad. During the three months ended March 31, 2025, ad impressions delivered increased by 5%, year-over-year, as compared with a 20% increase in the same period in 2024. Ad impressions delivered during the three months ended March 31, 2025 grew in all regions, especially in Asia-Pacific, which was primarily driven by increases in users and their engagement on our products. During the three months ended March 31, 2025, the average price per ad increased by 10%, year-over-year, as compared with an increase of 6% in the same period in 2024. The increase in average price per ad during the three months ended March 31, 2025 was driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of First Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three months ended March 31, 2025 compared to the same period in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three months ended March 31, 2025 increased $130 million, or 34%, compared to the same period in 2024. The increase was mostly driven by revenue from WhatsApp Business Platform and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended March 31, 2025 decreased $28 million, or 6%, compared to the same period in 2024. The decrease in RL revenue was driven by a net decrease in Meta Quest sales, partially offset by an increase in sales of Ray-Ban Meta AI glasses. Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the three months ended March 31, 2025 compared to the same period in 2024. To calculate revenue on a constant currency basis, we translated revenue using the prior year's monthly exchange rates for our settlement or billing currencies other than the U.S. dollar.</untrusted_document>\n<untrusted_document cite_id=\"c:652082d5d43eded836c0411f29d65b237ddb3e96325fc92c4861311b28a9b930\" amounts_in=\"millions\">Family of Apps FoA revenue in the three and nine months ended September 30, 2024 increased $6.38 billion, or 19%, and $21.09 billion, or 22%, respectively, compared to the same periods in 2023. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and nine months ended September 30, 2024 increased $6.24 billion, or 19%, and $20.61 billion, or 22%, respectively, compared to the same periods in 2023 due to increases in ad impressions delivered and average price per ad. During the three and nine months ended September 30, 2024, ad impressions delivered increased by 7% and 12%, respectively, year-over-year, as compared with increases of 31% and 30%, respectively, in the same periods in 2023 as ad impressions grew in all regions, especially in Asia-Pacific and Rest of World. The increases in ad impressions delivered were mostly driven by an increase in users and their engagement on our products. During the three and nine months ended September 30, 2024, the average price per ad increased by 11% and 9%, respectively, year-over-year, as compared with decreases of 6% and 13%, respectively, in the same periods in 2023. The increases in average price per ad were driven by an increase in advertising demand which we believe is primarily due to ongoing improvements to our ad performance from our ad targeting and measurement tools. These increases were partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Third Quarter Results.\" In addition, year-over-year advertising revenue growth during the nine months ended September 30, 2024 was mainly driven by increases in marketer spending in online commerce, entertainment and media, and consumer packaged goods. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and nine months ended September 30, 2024 increased $141 million, or 48%, and $479 million, or 66%, respectively, compared to the same periods in 2023. The increases were primarily driven by WhatsApp Business Platform revenue. Reality Labs RL revenue in the three and nine months ended September 30, 2024 increased $60 million and $238 million, respectively, or 29% in both periods, compared to the same periods in 2023. The increases in RL revenue were mostly due to increases in our consumer hardware products sold. Foreign Exchange Impact on Revenue</untrusted_document>\n<untrusted_document cite_id=\"c:c57cf6cb0f850db2fd2a2df5c2ac490a21647cdfbc98ea1a78b04043992f9d2a\" amounts_in=\"millions\">Family of Apps FoA revenue in the three and six months ended June 30, 2025 increased $8.43 billion, or 22%, and $14.31 billion, or 19%, respectively, compared to the same periods in 2024. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and six months ended June 30, 2025 increased $8.23 billion, or 21%, and $13.99 billion, or 19%, respectively, compared to the same periods in 2024, due to increases in ad impressions delivered and average price per ad. During the three and six months ended June 30, 2025, ad impressions delivered increased by 11% and 8%, respectively, year-over-year, as compared with increases of 10% and 15%, respectively in the same periods in 2024. Ad impressions delivered during the three and six months ended June 30, 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. During the three and six months ended June 30, 2025, the average price per ad increased by 9% and 10%, respectively, year-over-year, as compared with increases of 10% and 8%, respectively, in the same periods in 2024. The increases in average price per ad were driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Second Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three and six months ended June 30, 2025 compared to the same periods in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and six months ended June 30, 2025 increased $194 million, or 50%, and $324 million, or 42%, respectively, compared to the same periods in 2024. The increases were mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended June 30, 2025 increased $17 million, or 5%, compared to the same period in 2024, driven by an increase in sales of Ray-Ban Meta AI glasses, partially offset by a net decrease in Meta Quest sales. RL revenue in the six months ended June 30, 2025 decreased $11 million, or 1%, compared to the same period in 2024. Foreign Exchange Impact on Revenue</untrusted_document>\n<untrusted_document cite_id=\"c:2281cf2045d7d20592be0f737380b8fea0a9a61a836bc741ca10b5014076e9d7\" amounts_in=\"millions\">Family of Apps FoA revenue in the three and nine months ended September 30, 2025 increased $10.45 billion, or 26%, and $24.77 billion, or 22%, respectively, compared to the same periods in 2024. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and nine months ended September 30, 2025 increased $10.20 billion, or 26%, and $24.19 billion, or 21%, respectively, compared to the same periods in 2024, due to increases in ad impressions delivered and average price per ad. During the three and nine months ended September 30, 2025, ad impressions delivered increased by 14% and 10%, respectively, year-over-year, as compared with increases of 7% and 12%, respectively in the same periods in 2024. Ad impressions delivered during the three and nine months ended September 30, 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. During the three and nine months ended September 30, 2025, the average price per ad increased by 10% and 10%, respectively, year-over-year, as compared with increases of 11% and 9%, respectively, in the same periods in 2024. The increases in average price per ad were driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Third Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three and nine months ended September 30, 2025 compared to the same periods in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and nine months ended September 30, 2025 increased $256 million, or 59%, and $581 million, or 48%, respectively, compared to the same periods in 2024. The increases were mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended September 30, 2025 increased $200 million, or 74%, compared to the same period in 2024, mostly due to increases in sales of Meta Quest and AI glasses.</untrusted_document>",
+   "summary": "META Advertising revenue in 2024 increased",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:0b954abd4f5707b0e41ec9731111c706e174d5f4891942d5800ba2261a2405b1",
+     "text": "Family of Apps FoA revenue in 2024 increased $29.35 billion, or 22%, compared to 2023. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in 2024 increased $28.68 billion, or 22%, compared to 2023 due to increases in ad impressions delivered and average price per ad. In 2024, ad impressions delivered increased by 11%, as compared with a 28% increase in 2023, year-over-year. Ad impressions delivered during 2024 grew in all regions, especially in Asia-Pacific and Rest of World, which was mostly driven by increases in users and their engagement on our products. In 2024, the average price per ad increased by 10%, as compared with a decrease of 9% in 2023, year-over-year. The increase in average price per ad in 2024 was driven by an increase in advertising demand, which we believe is mainly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Full Year 2024 Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in 2024 compared to 2023. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in 2024 increased $664 million, or 63%, compared to 2023. The increase was primarily driven by WhatsApp Business Platform revenue. Reality Labs RL revenue in 2024 increased $250 million, or 13%, compared to 2023. The increase was mostly due to an increase in RL consumer hardware products sold. Revenue Seasonality Revenue is traditionally seasonally strong in the fourth quarter of each year due in part to seasonal holiday demand. We believe that this seasonality in both advertising revenue and RL consumer hardware sales affects our quarterly results, which generally reflect significant growth in revenue between the third and fourth quarters and a decline between the fourth and subsequent first quarters. For instance, our total revenue increased 19%, 17%, and 16% between the third and fourth quarters of 2024, 2023, and 2022, respectively, while total revenue for the first quarters of 2024, 2023, and 2022 declined 9%, 11%, and 17% compared to the fourth quarters of 2023, 2022, and 2021, respectively. 72 Table of Contents Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the full year 2024 compared to the same period in 2023.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3147,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:4c794280f23d0d3a5220cf300e9d9b6b95eff36ce3a9115810284b3fbf32e7d8",
+     "text": "Family of Apps FoA revenue in 2025 increased $36.40 billion, or 22%, compared to 2024. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in 2025 increased $35.54 billion, or 22%, compared to 2024 due to increases in ad impressions delivered and average price per ad. In 2025, ad impressions delivered increased by 12%, as compared with an increase of 11% in 2024, year-over-year. Ad impressions delivered during 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. In 2025, the average price per ad increased by 9%, as compared with an increase of 10% in 2024, year-over-year. The increase in average price per ad in 2025 was driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Full Year 2025 Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in 2025 compared to 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in 2025 increased $862 million, or 50%, compared to 2024. The increase was mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in 2025 increased $61 million, or 3%, compared to 2024. The increase was driven by an increase in sales of AI glasses, partially offset by a decrease in Meta Quest sales. Revenue Seasonality Revenue is traditionally seasonally strong in the fourth quarter of each year due in part to seasonal holiday demand. We believe that this seasonality in both advertising revenue and RL consumer hardware sales affects our quarterly results, which generally reflect significant growth in revenue between the third and fourth quarters and a decline between the fourth and subsequent first quarters. For instance, our total revenue increased 17%, 19%, and 17% between the third and fourth quarters of 2025, 2024, and 2023, respectively, while total revenue for the first quarters of 2025, 2024, and 2023 declined 13%, 9%, and 11% compared to the fourth quarters of 2024, 2023, and 2022, respectively. 73 Table of Contents Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the full year 2025 compared to the same period in 2024.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3143,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:a9128a83cf5805c154d8e145fd00a086bacde73fc572a24bc84e3e12db5f4025",
+     "text": "Family of Apps FoA revenue in the three months ended March 31, 2025 increased $5.89 billion, or 16%, compared to the same period in 2024. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in the three months ended March 31, 2025 increased $5.76 billion, or 16%, compared to the same period in 2024, due to increases in ad impressions delivered and average price per ad. During the three months ended March 31, 2025, ad impressions delivered increased by 5%, year-over-year, as compared with a 20% increase in the same period in 2024. Ad impressions delivered during the three months ended March 31, 2025 grew in all regions, especially in Asia-Pacific, which was primarily driven by increases in users and their engagement on our products. During the three months ended March 31, 2025, the average price per ad increased by 10%, year-over-year, as compared with an increase of 6% in the same period in 2024. The increase in average price per ad during the three months ended March 31, 2025 was driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of First Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three months ended March 31, 2025 compared to the same period in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three months ended March 31, 2025 increased $130 million, or 34%, compared to the same period in 2024. The increase was mostly driven by revenue from WhatsApp Business Platform and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended March 31, 2025 decreased $28 million, or 6%, compared to the same period in 2024. The decrease in RL revenue was driven by a net decrease in Meta Quest sales, partially offset by an increase in sales of Ray-Ban Meta AI glasses. Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the three months ended March 31, 2025 compared to the same period in 2024. To calculate revenue on a constant currency basis, we translated revenue using the prior year's monthly exchange rates for our settlement or billing currencies other than the U.S. dollar.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3146,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:652082d5d43eded836c0411f29d65b237ddb3e96325fc92c4861311b28a9b930",
+     "text": "Family of Apps FoA revenue in the three and nine months ended September 30, 2024 increased $6.38 billion, or 19%, and $21.09 billion, or 22%, respectively, compared to the same periods in 2023. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and nine months ended September 30, 2024 increased $6.24 billion, or 19%, and $20.61 billion, or 22%, respectively, compared to the same periods in 2023 due to increases in ad impressions delivered and average price per ad. During the three and nine months ended September 30, 2024, ad impressions delivered increased by 7% and 12%, respectively, year-over-year, as compared with increases of 31% and 30%, respectively, in the same periods in 2023 as ad impressions grew in all regions, especially in Asia-Pacific and Rest of World. The increases in ad impressions delivered were mostly driven by an increase in users and their engagement on our products. During the three and nine months ended September 30, 2024, the average price per ad increased by 11% and 9%, respectively, year-over-year, as compared with decreases of 6% and 13%, respectively, in the same periods in 2023. The increases in average price per ad were driven by an increase in advertising demand which we believe is primarily due to ongoing improvements to our ad performance from our ad targeting and measurement tools. These increases were partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Third Quarter Results.\" In addition, year-over-year advertising revenue growth during the nine months ended September 30, 2024 was mainly driven by increases in marketer spending in online commerce, entertainment and media, and consumer packaged goods. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and nine months ended September 30, 2024 increased $141 million, or 48%, and $479 million, or 66%, respectively, compared to the same periods in 2023. The increases were primarily driven by WhatsApp Business Platform revenue. Reality Labs RL revenue in the three and nine months ended September 30, 2024 increased $60 million and $238 million, respectively, or 29% in both periods, compared to the same periods in 2023. The increases in RL revenue were mostly due to increases in our consumer hardware products sold. Foreign Exchange Impact on Revenue",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3148,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2024-Q3",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:c57cf6cb0f850db2fd2a2df5c2ac490a21647cdfbc98ea1a78b04043992f9d2a",
+     "text": "Family of Apps FoA revenue in the three and six months ended June 30, 2025 increased $8.43 billion, or 22%, and $14.31 billion, or 19%, respectively, compared to the same periods in 2024. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and six months ended June 30, 2025 increased $8.23 billion, or 21%, and $13.99 billion, or 19%, respectively, compared to the same periods in 2024, due to increases in ad impressions delivered and average price per ad. During the three and six months ended June 30, 2025, ad impressions delivered increased by 11% and 8%, respectively, year-over-year, as compared with increases of 10% and 15%, respectively in the same periods in 2024. Ad impressions delivered during the three and six months ended June 30, 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. During the three and six months ended June 30, 2025, the average price per ad increased by 9% and 10%, respectively, year-over-year, as compared with increases of 10% and 8%, respectively, in the same periods in 2024. The increases in average price per ad were driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Second Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three and six months ended June 30, 2025 compared to the same periods in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and six months ended June 30, 2025 increased $194 million, or 50%, and $324 million, or 42%, respectively, compared to the same periods in 2024. The increases were mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended June 30, 2025 increased $17 million, or 5%, compared to the same period in 2024, driven by an increase in sales of Ray-Ban Meta AI glasses, partially offset by a net decrease in Meta Quest sales. RL revenue in the six months ended June 30, 2025 decreased $11 million, or 1%, compared to the same period in 2024. Foreign Exchange Impact on Revenue",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3145,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q2",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:2281cf2045d7d20592be0f737380b8fea0a9a61a836bc741ca10b5014076e9d7",
+     "text": "Family of Apps FoA revenue in the three and nine months ended September 30, 2025 increased $10.45 billion, or 26%, and $24.77 billion, or 22%, respectively, compared to the same periods in 2024. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and nine months ended September 30, 2025 increased $10.20 billion, or 26%, and $24.19 billion, or 21%, respectively, compared to the same periods in 2024, due to increases in ad impressions delivered and average price per ad. During the three and nine months ended September 30, 2025, ad impressions delivered increased by 14% and 10%, respectively, year-over-year, as compared with increases of 7% and 12%, respectively in the same periods in 2024. Ad impressions delivered during the three and nine months ended September 30, 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. During the three and nine months ended September 30, 2025, the average price per ad increased by 10% and 10%, respectively, year-over-year, as compared with increases of 11% and 9%, respectively, in the same periods in 2024. The increases in average price per ad were driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Third Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three and nine months ended September 30, 2025 compared to the same periods in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and nine months ended September 30, 2025 increased $256 million, or 59%, and $581 million, or 48%, respectively, compared to the same periods in 2024. The increases were mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended September 30, 2025 increased $200 million, or 74%, compared to the same period in 2024, mostly due to increases in sales of Meta Quest and AI glasses.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3144,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

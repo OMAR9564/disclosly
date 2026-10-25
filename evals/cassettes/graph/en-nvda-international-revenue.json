@@ -1,0 +1,319 @@
+{
+ "case_id": "en-nvda-international-revenue",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "bed51fe6126d15084adabff2fae95970eb4f584a55f1a79f4a92c68bc111eac9",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"NVDA\"\n  ],\n  \"periods\": [\n    \"2026-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 935,
+    "tokens_out": 76,
+    "latency_ms": 1205.584,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "373744d30b59edb9143020c28585c6623a85fd98dcacef14dcb16bf15304c703",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"steps\": [\n    {\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Get Nvidia's total revenue for fiscal year 2026\", \"tickers\": [\"NVDA\"], \"periods\": [\"2026-FY\"], \"metrics\": [\"revenue\"]},\n    {\"id\": \"s2\", \"kind\": \"search\", \"goal\": \"Find geographic revenue breakdown showing revenue from customers outside the United States for fiscal 2026\", \"tickers\": [\"NVDA\"], \"periods\": [\"2026-FY\"]},\n    {\"id\": \"s3\", \"kind\": \"calculate\", \"goal\": \"Calculate the percentage of fiscal 2026 revenue from non-US customers\", \"tickers\": [\"NVDA\"], \"periods\": [\"2026-FY\"]}\n  ]}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1018,
+    "tokens_out": 361,
+    "latency_ms": 4992.902,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "baf684f010fcd243a7e0024f933649547ffcbef46a40a24d5f3714d2993b0304",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Nvidia geographic revenue United States long-lived assets revenue by country fiscal 2026\"\n    },\n    {\n      \"step_id\": \"s3\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1102,
+    "tokens_out": 131,
+    "latency_ms": 1266.713,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "4eb3bd57951809c34a50a6bf01f0f5339950ff8d18d3527ad968a5d357c6ba17",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Nvidia geographic revenue United States Taiwan China 2026\"\n    },\n    {\n      \"step_id\": \"s3\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1306,
+    "tokens_out": 125,
+    "latency_ms": 805.41,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "ea18fe14d23814ebf5b3ce8caaecf9c94ccf588c18c4ff590490b8b762ed132a",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Nvidia's total revenue for fiscal year 2026 (year ended January 25, 2026) was 215,938,000,000 USD.\",\n      \"cite_ids\": [\"f:410\", \"f:3814\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"The provided evidence does not contain a geographic revenue breakdown showing revenue from customers headquartered outside the United States for fiscal 2026.\",\n      \"cite_ids\": [\"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\", \"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\"]\n    }\n  ],\n  \"calculations\": []\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2755,
+    "tokens_out": 1229,
+    "latency_ms": 30352.749,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "01843514ca5f1b503b2c69153547a3a90c7d3200e88bf2cadd74fb2a457baf87",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\": [\n    {\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Revenue figure matches cited documents f:410 and f:3814.\"},\n    {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Cited documents (c:00e96dab... and c:0121aae4...) do not contain geographic revenue breakdown.\"}\n  ]}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1776,
+    "tokens_out": 1014,
+    "latency_ms": 32450.432,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "6fe9a059891927025225cf904341e9946d28563f495976591b610fc107b7f0b4",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"partial\",\n  \"summary\": \"Nvidia's total revenue for fiscal year 2026 (year ended January 25, 2026) was 215,938,000,000 USD. However, the available evidence does not include a geographic revenue breakdown showing revenue from customers headquartered outside the United States, so the share of revenue from non-US customers cannot be determined.\",\n  \"points\": [\n    {\n      \"text\": \"Nvidia's total revenue for fiscal year 2026 was 215,938,000,000 USD.\",\n      \"cite_ids\": [\"f:410\", \"f:3814\"]\n    },\n    {\n      \"text\": \"No geographic revenue breakdown for fiscal 2026 is available in the provided evidence to determine revenue from customers outside the United States.\",\n      \"cite_ids\": [\"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\", \"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Nvidia Fiscal 2026 Revenue and Missing Geographic Breakdown\",\n      \"columns\": [\"Period\", \"Total Revenue (USD)\", \"Non-US Revenue (USD)\", \"Non-US Share (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"FY2026 (ended Jan 25, 2026)\", \"cite_id\": null},\n          {\"text\": \"215,938,000,000\", \"cite_id\": \"f:410\"},\n          {\"text\": \"Not available\", \"cite_id\": null},\n          {\"text\": \"Cannot be calculated\", \"cite_id\": null}\n        ]\n      ]\n    }\n  ],\n  \"chart\": null,\n  \"confidence\": {\n    \"level\": \"low\",\n    \"note\": \"Total revenue for fiscal 2026 is known, but the geographic breakdown required to compute the non-US share is missing from the evidence.\"\n  },\n  \"unverified\": [\n    \"Revenue from customers headquartered outside the United States for fiscal 2026\",\n    \"Percentage share of fiscal 2026 revenue from non-US customers\"\n  ],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:410\"},\n    {\"marker\": 2, \"cite_id\": \"f:3814\"},\n    {\"marker\": 3, \"cite_id\": \"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\"},\n    {\"marker\": 4, \"cite_id\": \"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 3326,
+    "tokens_out": 1363,
+    "latency_ms": 38225.852,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "c920eeeb5aed7b5ebf5cbd6197ae7f0717a2d55b427aef272e7d450646fc7717",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"partial\",\n  \"summary\": \"Nvidia's total revenue for fiscal year 2026 (year ended January 25, 2026) was 215,938,000,000 USD. However, the available evidence does not include a geographic revenue breakdown showing revenue from customers headquartered outside the United States, so the share of revenue from non-US customers cannot be determined.\",\n  \"points\": [\n    {\n      \"text\": \"Nvidia's total revenue for fiscal year 2026 was 215,938,000,000 USD.\",\n      \"cite_ids\": [\"f:410\", \"f:3814\"]\n    },\n    {\n      \"text\": \"No geographic revenue breakdown for fiscal 2026 is available in the provided evidence to determine revenue from customers outside the United States.\",\n      \"cite_ids\": [\"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\", \"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Nvidia Fiscal 2026 Revenue and Missing Geographic Breakdown\",\n      \"columns\": [\"Period\", \"Total Revenue (USD)\", \"Non-US Revenue (USD)\", \"Non-US Share (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"FY2026 (ended Jan 25, 2026)\", \"cite_id\": \"f:410\"},\n          {\"text\": \"215,938,000,000\", \"cite_id\": \"f:410\"},\n          {\"text\": \"Not available\", \"cite_id\": null},\n          {\"text\": \"Cannot be calculated\", \"cite_id\": null}\n        ]\n      ]\n    }\n  ],\n  \"chart\": null,\n  \"confidence\": {\n    \"level\": \"low\",\n    \"note\": \"Total revenue for fiscal 2026 is known, but the geographic breakdown required to compute the non-US share is missing from the evidence.\"\n  },\n  \"unverified\": [\n    \"Revenue from customers headquartered outside the United States for fiscal 2026\",\n    \"Percentage share of fiscal 2026 revenue from non-US customers\"\n  ],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:410\"},\n    {\"marker\": 2, \"cite_id\": \"f:3814\"},\n    {\"marker\": 3, \"cite_id\": \"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\"},\n    {\"marker\": 4, \"cite_id\": \"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 4171,
+    "tokens_out": 1451,
+    "latency_ms": 45691.513,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"NVDA\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 3124, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm\"}, {\"document_id\": 3125, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm\"}, {\"document_id\": 3126, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-02-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm\"}, {\"document_id\": 3127, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-19T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm\"}, {\"document_id\": 3128, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-27T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm\"}, {\"document_id\": 3129, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm\"}, {\"document_id\": 3130, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-02-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm\"}, {\"document_id\": 3131, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm\"}]}",
+   "summary": "NVDA documents",
+   "count": 8,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2026-FY\"],\"ticker\":\"NVDA\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:410\">Revenue (2026-FY): 215,938,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3814\">Revenue (2026-FY): 215,938,000,000 USD</untrusted_document>",
+   "summary": "NVDA 2026-FY revenue",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "f:410",
+     "text": "Revenue (2026-FY): 215,938,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 125,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0001045810-26-000021",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": "215938000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3814",
+     "text": "Revenue (2026-FY): 215,938,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2342,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0001045810-26-000021",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": "215938000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2026-FY\",\"period_to\":\"2026-FY\",\"query\":\"Find geographic revenue breakdown showing revenue from customers outside the United States for fiscal 2026\",\"ticker\":\"NVDA\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\" amounts_in=\"millions\"> | Year Ended |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 | Jan 28, 2024 |  | \n | (In millions) |  |  |  |  | \nSupplemental cash flows information |  |  |  |  |  | \nOperating cash flow used for operating leases |  | 428 |  |  | 313 | 286\nOperating lease assets obtained in exchange for lease obligations |  | 1,439 |  |  | 877 | 531</untrusted_document>\n<untrusted_document cite_id=\"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\" amounts_in=\"millions\"> | Common Stock Outstanding | Additional Paid-in |  | Accumulated Other Comprehensive | Retained | Total Shareholders' |  |  |  |  |  | \n | Shares | Amount |  | Capital | Income (Loss) | Earnings |  | Equity |  |  |  | \n(In millions, except per share data) |  |  |  |  |  |  |  |  |  |  |  | \nBalances as of Jan 29, 2023 | 24,661 |  |  | 25 |  | 11,948 |  |  | ( 43 ) |  | 10,171 | 22,101\nNet income | — |  | — |  | — |  | — |  | 29,760 | 29,760 |  | \nOther comprehensive income | — |  | — |  | — |  | 70 |  | — | 70 |  | \nIssuance of common stock | 265 |  | — |  | 403 |  | — |  | — | 403 |  | \nTax withholding related to common stock | ( 72 ) |  | — |  | ( 2,783 ) |  | — |  | — | ( 2,783 ) |  | \nShares repurchased | ( 211 ) |  | — |  | ( 27 ) |  | — |  | ( 9,719 ) | ( 9,746 ) |  | \nCash dividends declared and paid ($ 0.016 per common share) | — |  | — |  | — |  | — |  | ( 395 ) | ( 395 ) |  | \nStock-based compensation | — |  | — |  | 3,568 |  | — |  | — | 3,568 |  | \nBalances as of Jan 28, 2024 | 24,643 |  | 25 |  | 13,109 |  | 27 |  | 29,817 | 42,978 |  | \nNet income | — |  | — |  | — |  | — |  | 72,880 | 72,880 |  | \nOther comprehensive income | — |  | — |  | — |  | 1 |  | — | 1 |  | </untrusted_document>",
+   "summary": "NVDA Find geographic revenue breakdown showing revenue from customers outside the United States for fiscal 2026",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd",
+     "text": " | Year Ended |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 | Jan 28, 2024 |  | \n | (In millions) |  |  |  |  | \nSupplemental cash flows information |  |  |  |  |  | \nOperating cash flow used for operating leases |  | 428 |  |  | 313 | 286\nOperating lease assets obtained in exchange for lease obligations |  | 1,439 |  |  | 877 | 531",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3126,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847",
+     "text": " | Common Stock Outstanding | Additional Paid-in |  | Accumulated Other Comprehensive | Retained | Total Shareholders' |  |  |  |  |  | \n | Shares | Amount |  | Capital | Income (Loss) | Earnings |  | Equity |  |  |  | \n(In millions, except per share data) |  |  |  |  |  |  |  |  |  |  |  | \nBalances as of Jan 29, 2023 | 24,661 |  |  | 25 |  | 11,948 |  |  | ( 43 ) |  | 10,171 | 22,101\nNet income | — |  | — |  | — |  | — |  | 29,760 | 29,760 |  | \nOther comprehensive income | — |  | — |  | — |  | 70 |  | — | 70 |  | \nIssuance of common stock | 265 |  | — |  | 403 |  | — |  | — | 403 |  | \nTax withholding related to common stock | ( 72 ) |  | — |  | ( 2,783 ) |  | — |  | — | ( 2,783 ) |  | \nShares repurchased | ( 211 ) |  | — |  | ( 27 ) |  | — |  | ( 9,719 ) | ( 9,746 ) |  | \nCash dividends declared and paid ($ 0.016 per common share) | — |  | — |  | — |  | — |  | ( 395 ) | ( 395 ) |  | \nStock-based compensation | — |  | — |  | 3,568 |  | — |  | — | 3,568 |  | \nBalances as of Jan 28, 2024 | 24,643 |  | 25 |  | 13,109 |  | 27 |  | 29,817 | 42,978 |  | \nNet income | — |  | — |  | — |  | — |  | 72,880 | 72,880 |  | \nOther comprehensive income | — |  | — |  | — |  | 1 |  | — | 1 |  | ",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3126,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2026-FY\",\"period_to\":\"2026-FY\",\"query\":\"Nvidia geographic revenue United States long-lived assets revenue by country fiscal 2026\",\"ticker\":\"NVDA\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\" amounts_in=\"millions\"> | Year Ended |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 | Jan 28, 2024 |  | \n | (In millions) |  |  |  |  | \nSupplemental cash flows information |  |  |  |  |  | \nOperating cash flow used for operating leases |  | 428 |  |  | 313 | 286\nOperating lease assets obtained in exchange for lease obligations |  | 1,439 |  |  | 877 | 531</untrusted_document>\n<untrusted_document cite_id=\"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\" amounts_in=\"millions\"> | Common Stock Outstanding | Additional Paid-in |  | Accumulated Other Comprehensive | Retained | Total Shareholders' |  |  |  |  |  | \n | Shares | Amount |  | Capital | Income (Loss) | Earnings |  | Equity |  |  |  | \n(In millions, except per share data) |  |  |  |  |  |  |  |  |  |  |  | \nBalances as of Jan 29, 2023 | 24,661 |  |  | 25 |  | 11,948 |  |  | ( 43 ) |  | 10,171 | 22,101\nNet income | — |  | — |  | — |  | — |  | 29,760 | 29,760 |  | \nOther comprehensive income | — |  | — |  | — |  | 70 |  | — | 70 |  | \nIssuance of common stock | 265 |  | — |  | 403 |  | — |  | — | 403 |  | \nTax withholding related to common stock | ( 72 ) |  | — |  | ( 2,783 ) |  | — |  | — | ( 2,783 ) |  | \nShares repurchased | ( 211 ) |  | — |  | ( 27 ) |  | — |  | ( 9,719 ) | ( 9,746 ) |  | \nCash dividends declared and paid ($ 0.016 per common share) | — |  | — |  | — |  | — |  | ( 395 ) | ( 395 ) |  | \nStock-based compensation | — |  | — |  | 3,568 |  | — |  | — | 3,568 |  | \nBalances as of Jan 28, 2024 | 24,643 |  | 25 |  | 13,109 |  | 27 |  | 29,817 | 42,978 |  | \nNet income | — |  | — |  | — |  | — |  | 72,880 | 72,880 |  | \nOther comprehensive income | — |  | — |  | — |  | 1 |  | — | 1 |  | </untrusted_document>",
+   "summary": "NVDA Nvidia geographic revenue United States long-lived assets revenue by country fiscal 2026",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd",
+     "text": " | Year Ended |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 | Jan 28, 2024 |  | \n | (In millions) |  |  |  |  | \nSupplemental cash flows information |  |  |  |  |  | \nOperating cash flow used for operating leases |  | 428 |  |  | 313 | 286\nOperating lease assets obtained in exchange for lease obligations |  | 1,439 |  |  | 877 | 531",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3126,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847",
+     "text": " | Common Stock Outstanding | Additional Paid-in |  | Accumulated Other Comprehensive | Retained | Total Shareholders' |  |  |  |  |  | \n | Shares | Amount |  | Capital | Income (Loss) | Earnings |  | Equity |  |  |  | \n(In millions, except per share data) |  |  |  |  |  |  |  |  |  |  |  | \nBalances as of Jan 29, 2023 | 24,661 |  |  | 25 |  | 11,948 |  |  | ( 43 ) |  | 10,171 | 22,101\nNet income | — |  | — |  | — |  | — |  | 29,760 | 29,760 |  | \nOther comprehensive income | — |  | — |  | — |  | 70 |  | — | 70 |  | \nIssuance of common stock | 265 |  | — |  | 403 |  | — |  | — | 403 |  | \nTax withholding related to common stock | ( 72 ) |  | — |  | ( 2,783 ) |  | — |  | — | ( 2,783 ) |  | \nShares repurchased | ( 211 ) |  | — |  | ( 27 ) |  | — |  | ( 9,719 ) | ( 9,746 ) |  | \nCash dividends declared and paid ($ 0.016 per common share) | — |  | — |  | — |  | — |  | ( 395 ) | ( 395 ) |  | \nStock-based compensation | — |  | — |  | 3,568 |  | — |  | — | 3,568 |  | \nBalances as of Jan 28, 2024 | 24,643 |  | 25 |  | 13,109 |  | 27 |  | 29,817 | 42,978 |  | \nNet income | — |  | — |  | — |  | — |  | 72,880 | 72,880 |  | \nOther comprehensive income | — |  | — |  | — |  | 1 |  | — | 1 |  | ",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3126,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2026-FY\",\"period_to\":\"2026-FY\",\"query\":\"Nvidia geographic revenue United States Taiwan China 2026\",\"ticker\":\"NVDA\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\" amounts_in=\"millions\"> | Year Ended |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 | Jan 28, 2024 |  | \n | (In millions) |  |  |  |  | \nSupplemental cash flows information |  |  |  |  |  | \nOperating cash flow used for operating leases |  | 428 |  |  | 313 | 286\nOperating lease assets obtained in exchange for lease obligations |  | 1,439 |  |  | 877 | 531</untrusted_document>\n<untrusted_document cite_id=\"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\" amounts_in=\"millions\"> | Common Stock Outstanding | Additional Paid-in |  | Accumulated Other Comprehensive | Retained | Total Shareholders' |  |  |  |  |  | \n | Shares | Amount |  | Capital | Income (Loss) | Earnings |  | Equity |  |  |  | \n(In millions, except per share data) |  |  |  |  |  |  |  |  |  |  |  | \nBalances as of Jan 29, 2023 | 24,661 |  |  | 25 |  | 11,948 |  |  | ( 43 ) |  | 10,171 | 22,101\nNet income | — |  | — |  | — |  | — |  | 29,760 | 29,760 |  | \nOther comprehensive income | — |  | — |  | — |  | 70 |  | — | 70 |  | \nIssuance of common stock | 265 |  | — |  | 403 |  | — |  | — | 403 |  | \nTax withholding related to common stock | ( 72 ) |  | — |  | ( 2,783 ) |  | — |  | — | ( 2,783 ) |  | \nShares repurchased | ( 211 ) |  | — |  | ( 27 ) |  | — |  | ( 9,719 ) | ( 9,746 ) |  | \nCash dividends declared and paid ($ 0.016 per common share) | — |  | — |  | — |  | — |  | ( 395 ) | ( 395 ) |  | \nStock-based compensation | — |  | — |  | 3,568 |  | — |  | — | 3,568 |  | \nBalances as of Jan 28, 2024 | 24,643 |  | 25 |  | 13,109 |  | 27 |  | 29,817 | 42,978 |  | \nNet income | — |  | — |  | — |  | — |  | 72,880 | 72,880 |  | \nOther comprehensive income | — |  | — |  | — |  | 1 |  | — | 1 |  | </untrusted_document>",
+   "summary": "NVDA Nvidia geographic revenue United States Taiwan China 2026",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd",
+     "text": " | Year Ended |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 | Jan 28, 2024 |  | \n | (In millions) |  |  |  |  | \nSupplemental cash flows information |  |  |  |  |  | \nOperating cash flow used for operating leases |  | 428 |  |  | 313 | 286\nOperating lease assets obtained in exchange for lease obligations |  | 1,439 |  |  | 877 | 531",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3126,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847",
+     "text": " | Common Stock Outstanding | Additional Paid-in |  | Accumulated Other Comprehensive | Retained | Total Shareholders' |  |  |  |  |  | \n | Shares | Amount |  | Capital | Income (Loss) | Earnings |  | Equity |  |  |  | \n(In millions, except per share data) |  |  |  |  |  |  |  |  |  |  |  | \nBalances as of Jan 29, 2023 | 24,661 |  |  | 25 |  | 11,948 |  |  | ( 43 ) |  | 10,171 | 22,101\nNet income | — |  | — |  | — |  | — |  | 29,760 | 29,760 |  | \nOther comprehensive income | — |  | — |  | — |  | 70 |  | — | 70 |  | \nIssuance of common stock | 265 |  | — |  | 403 |  | — |  | — | 403 |  | \nTax withholding related to common stock | ( 72 ) |  | — |  | ( 2,783 ) |  | — |  | — | ( 2,783 ) |  | \nShares repurchased | ( 211 ) |  | — |  | ( 27 ) |  | — |  | ( 9,719 ) | ( 9,746 ) |  | \nCash dividends declared and paid ($ 0.016 per common share) | — |  | — |  | — |  | — |  | ( 395 ) | ( 395 ) |  | \nStock-based compensation | — |  | — |  | 3,568 |  | — |  | — | 3,568 |  | \nBalances as of Jan 28, 2024 | 24,643 |  | 25 |  | 13,109 |  | 27 |  | 29,817 | 42,978 |  | \nNet income | — |  | — |  | — |  | — |  | 72,880 | 72,880 |  | \nOther comprehensive income | — |  | — |  | — |  | 1 |  | — | 1 |  | ",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3126,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": "approve"
+}

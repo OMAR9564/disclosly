@@ -1,0 +1,374 @@
+{
+ "case_id": "tr-garan-takipteki-kredi-satisi",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "c1989c7452bea11b8e6df37c8eb708cfba67531a09042f0c64db15c7e56e239c",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"GARAN\"\n  ],\n  \"periods\": [\n    \"2025-Q2\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1019,
+    "tokens_out": 69,
+    "latency_ms": 1396.338,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "751a8d513bccff841af99395963abc02f1e05144c25a24b504f7ef6880b34a46",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2016833",
+      "name": "search_documents",
+      "arguments": {
+       "query": "takipteki kredi portföyü satış",
+       "period_from": "2025-Q2",
+       "period_to": "2025-Q2",
+       "ticker": "GARAN"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TiVvhpsxRYYintBaVk7b3UyaHgC3tR2mRwe7TTIyEVwbRMQPuWO7LOXUQhOwGTanTgk7L6BgSR0+BZlSp5hhHM9KsbiaeBzxXKmDq3F4B9AEEf9cotnrE3AA="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1769,
+    "tokens_out": 59,
+    "latency_ms": 2148.017,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "f452c7b082cee73866a0cfeead41cd0e766a9288a195b06ae3cdf4c637f2c9db",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2211092",
+      "name": "search_documents",
+      "arguments": {
+       "query": "12.06.2025 toplam bedel satış",
+       "period_to": "2025-Q2",
+       "ticker": "GARAN",
+       "period_from": "2025-Q2"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TnUX9nkbp3E1pgs+5R8vXPr8OvZnPOZkfW/BhFgRRkKwTdjn76rAU4eXKxz1YaL177yMwR0RW6ycs+v6WTxvbNQT2xzd5eC85GkJ6faY24DbVqCQIGQvUWkw="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 3360,
+    "tokens_out": 64,
+    "latency_ms": 960.278,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "54e85690edcec56473e7abc8ef3a2e5347382a2f658f343e42a182d701488939",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Garanti BBVA (Türkiye Garanti Bankası A.Ş.) 2025 yılı ikinci çeyreğinde (Nisan-Haziran) takipteki kredi portföyünden toplam 318.630.000 TL bedelle satış gerçekleştirmiştir. Bu tutar; 28 Nisan 2025'te 113.500.000 TL, 7 Mayıs 2025'te 103.000.000 TL ve 8 Mayıs 2025'te 102.130.000 TL olmak üzere üç ayrı satıştan oluşmaktadır.\",\n  \"points\": [\n    {\n      \"text\": \"28 Nisan 2025 tarihinde toplam anapara ve akdi faiz bakiyesi 456.303.421,91 TL olan takipteki kredi portföyü 113.500.000 TL'ye Sümer Varlık Yönetim A.Ş.'ye satılmıştır.\",\n      \"cite_ids\": [\"c:d52561d9a5f13abf071adf95c82e42470b2c4b0dbf4a53aa3b1b48e25a83bf9b\"]\n    },\n    {\n      \"text\": \"7 Mayıs 2025 tarihinde toplam anapara ve akdi faiz bakiyesi 512.690.008,28 TL olan bireysel kredi portföyü 103.000.000 TL'ye Sümer Varlık Yönetim A.Ş.'ye satılmıştır.\",\n      \"cite_ids\": [\"c:dbbbc9547ca3c1b57d39b78e284aee38407569fadeb55ed9dde186a8b0b886a0\"]\n    },\n    {\n      \"text\": \"8 Mayıs 2025 tarihinde toplam anapara ve akdi faiz bakiyesi 510.639.573,82 TL olan bireysel kredi portföyü 102.130.000 TL'ye Gelecek Varlık Yönetimi A.Ş.'ye satılmıştır.\",\n      \"cite_ids\": [\"c:dbbbc9547ca3c1b57d39b78e284aee38407569fadeb55ed9dde186a8b0b886a0\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:d52561d9a5f13abf071adf95c82e42470b2c4b0dbf4a53aa3b1b48e25a83bf9b\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:dbbbc9547ca3c1b57d39b78e284aee38407569fadeb55ed9dde186a8b0b886a0\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 3699,
+    "tokens_out": 1580,
+    "latency_ms": 47657.289,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\"],\"periods\":[\"2025-Q2\"],\"ticker\":\"GARAN\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2221\">Nakit ve nakit benzerleri (2025-Q2; Cari Dönem 30.06.2025): 336.535.603.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2223\">Nakit ve nakit benzerleri (2025-Q2; Cari Dönem 30.06.2025): 314.302.843.000 TRY</untrusted_document>",
+   "summary": "GARAN 2025-Q2 net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "f:2221",
+     "text": "Nakit ve nakit benzerleri (2025-Q2; Cari Dönem 30.06.2025): 336.535.603.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 531,
+      "ticker": "GARAN",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q2",
+      "metric": "cash",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 1 (Bilanço (Finansal Durum Tablosu) (TFRS 9'a Göre Karşılık Ayrılmış)) / Nakit ve Nakit Benzerleri / Cari Dönem 30.06.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1468847"
+     },
+     "value": "336535603000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2223",
+     "text": "Nakit ve nakit benzerleri (2025-Q2; Cari Dönem 30.06.2025): 314.302.843.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 532,
+      "ticker": "GARAN",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q2",
+      "metric": "cash",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 1 (Bilanço (Finansal Durum Tablosu) (TFRS 9'a Göre Karşılık Ayrılmış)) / Nakit ve Nakit Benzerleri / Cari Dönem 30.06.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1468852"
+     },
+     "value": "314302843000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q2\",\"period_to\":\"2025-Q2\",\"query\":\"takipteki kredi portföyü satış\",\"ticker\":\"GARAN\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:dbbbc9547ca3c1b57d39b78e284aee38407569fadeb55ed9dde186a8b0b886a0\">Bankamızın takipteki krediler portföyünde yer alan; - 7 Mayıs 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 512.690.008,28 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 103.000.000,00-TL'ye Sümer Varlık Yönetim A.Ş.'ye, - 8 Mayıs 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 510.639.573,82 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 102.130.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, olmak üzere iki ayrı portföy halinde, toplam 205.130.000,00 TL bedele satılmıştır. Bilgilerinize sunarız. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:d52561d9a5f13abf071adf95c82e42470b2c4b0dbf4a53aa3b1b48e25a83bf9b\">Bankamızın takipteki krediler portföyünde yer alan ve 28 Nisan 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 456.303.421,91 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 113.500.000,00-TL'ye Sümer Varlık Yönetim A.Ş.'ye satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:12eacc5047be58f027b0a4f0b6cf1e68b3ded59260be240c9621b63249951c44\">Bankamızın takipteki krediler portföyünde yer alan ve 25 Mart 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 244.529.933,21 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 41.000.100,00-TL'ye Doğru Varlık Yönetim A.Ş.'ye satılmıştır. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:de8d6713f3c59fbf16716579cd392636d257ad83499d53497ef219668a929cb5\">Şirketimiz, Türkiye Garanti Bankası A.Ş.'nin 12.06.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 5 portföyden toplamda 510,6 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .</untrusted_document>\n<untrusted_document cite_id=\"c:fb78f389585987dcae7d96ef6c47c52e476689644de56db65d9c67a0ba43f54e\">Şirketimiz, 28.05.2025 tarihinde T. Garanti Bankası A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplam 457.051.042,00 TL anapara büyüklüğündeki 1 adet ticari portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 11.06.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:6ffb828e5a7c69e7d80730584780ade9fed8dec43501a0096b89b4cf910fad28\">Şirketimiz,T.Garanti Bankası A.Ş'nin 12.06.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak ihalesinde; 512.690.008,28 TL anapara büyüklüğündeki 1 adet bireysel portföye en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız.</untrusted_document>",
+   "summary": "GARAN takipteki kredi portföyü satış",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:dbbbc9547ca3c1b57d39b78e284aee38407569fadeb55ed9dde186a8b0b886a0",
+     "text": "Bankamızın takipteki krediler portföyünde yer alan; - 7 Mayıs 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 512.690.008,28 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 103.000.000,00-TL'ye Sümer Varlık Yönetim A.Ş.'ye, - 8 Mayıs 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 510.639.573,82 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 102.130.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, olmak üzere iki ayrı portföy halinde, toplam 205.130.000,00 TL bedele satılmıştır. Bilgilerinize sunarız. Saygılarımızla,",
+     "source": {
+      "kind": "chunk",
+      "document_id": 521,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1449219"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:d52561d9a5f13abf071adf95c82e42470b2c4b0dbf4a53aa3b1b48e25a83bf9b",
+     "text": "Bankamızın takipteki krediler portföyünde yer alan ve 28 Nisan 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 456.303.421,91 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 113.500.000,00-TL'ye Sümer Varlık Yönetim A.Ş.'ye satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,",
+     "source": {
+      "kind": "chunk",
+      "document_id": 514,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1443298"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:12eacc5047be58f027b0a4f0b6cf1e68b3ded59260be240c9621b63249951c44",
+     "text": "Bankamızın takipteki krediler portföyünde yer alan ve 25 Mart 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 244.529.933,21 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 41.000.100,00-TL'ye Doğru Varlık Yönetim A.Ş.'ye satılmıştır. Saygılarımızla,",
+     "source": {
+      "kind": "chunk",
+      "document_id": 511,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1439412"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:de8d6713f3c59fbf16716579cd392636d257ad83499d53497ef219668a929cb5",
+     "text": "Şirketimiz, Türkiye Garanti Bankası A.Ş.'nin 12.06.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 5 portföyden toplamda 510,6 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .",
+     "source": {
+      "kind": "chunk",
+      "document_id": 519,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1448385"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:fb78f389585987dcae7d96ef6c47c52e476689644de56db65d9c67a0ba43f54e",
+     "text": "Şirketimiz, 28.05.2025 tarihinde T. Garanti Bankası A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplam 457.051.042,00 TL anapara büyüklüğündeki 1 adet ticari portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 11.06.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 518,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1447726"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:6ffb828e5a7c69e7d80730584780ade9fed8dec43501a0096b89b4cf910fad28",
+     "text": "Şirketimiz,T.Garanti Bankası A.Ş'nin 12.06.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak ihalesinde; 512.690.008,28 TL anapara büyüklüğündeki 1 adet bireysel portföye en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 520,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1448389"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q2\",\"period_to\":\"2025-Q2\",\"query\":\"12.06.2025 toplam bedel satış\",\"ticker\":\"GARAN\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:2346fd7affced5e97512b4202e478b4c3b0c5fadfd3a5ebf94d9fa75d092a485\">13.06.2025 tarihinde yapmış olduğumuz Özel Durum Açıklamamızda, Türkiye Garanti Bankası A.Ş.'nin 12.06.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında, satışa çıkarılan 5 portföyden toplamda 510,6 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini şirketimizin kazandığı duyurulmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmıştır. Kamuoyunun bilgilerine sunarız.</untrusted_document>\n<untrusted_document cite_id=\"c:bf39d524cf764643a47b6a26091f34bd90e9c8eba0c461ba1fc49202541ab338\">Şirketimiz, 12.06.2025 tarihinde T. Garanti Bankası A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplam 512.690.008,28 TL anapara büyüklüğündeki 1 adet bireysel portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 25.06.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:de8d6713f3c59fbf16716579cd392636d257ad83499d53497ef219668a929cb5\">Şirketimiz, Türkiye Garanti Bankası A.Ş.'nin 12.06.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 5 portföyden toplamda 510,6 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .</untrusted_document>\n<untrusted_document cite_id=\"c:6ffb828e5a7c69e7d80730584780ade9fed8dec43501a0096b89b4cf910fad28\">Şirketimiz,T.Garanti Bankası A.Ş'nin 12.06.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak ihalesinde; 512.690.008,28 TL anapara büyüklüğündeki 1 adet bireysel portföye en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız.</untrusted_document>\n<untrusted_document cite_id=\"c:24bf248673f6d29d45429779f7767d847859a380ee2e7c63600764fe010d1382\">29 Nisan 2025 tarihinde yapmış olduğumuz Özel Durum Açıklamamızda; Türkiye Garanti Bankası A.Ş.'nin gerçekleştirdiği tahsili gecikmiş alacak satışında, 29/04/2025 tarihinde satışa çıkarılan toplam 202,1 milyon TL anaparaya sahip 1 adet bireysel nitelikli portföyün ihalesini şirketimizin kazandığı duyurulmuştu. 29 Nisan 2025 tarihinden satışa çıkarılan 202,1 milyon TL anapara büyüklüğüne sahip 1 adet bireysel portföye ilişkin alacakların satışı 21/05/2025 itibarıyla ihaleyi açan banka tarafından iptal edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:fb78f389585987dcae7d96ef6c47c52e476689644de56db65d9c67a0ba43f54e\">Şirketimiz, 28.05.2025 tarihinde T. Garanti Bankası A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplam 457.051.042,00 TL anapara büyüklüğündeki 1 adet ticari portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 11.06.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>",
+   "summary": "GARAN 12.06.2025 toplam bedel satış",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:2346fd7affced5e97512b4202e478b4c3b0c5fadfd3a5ebf94d9fa75d092a485",
+     "text": "13.06.2025 tarihinde yapmış olduğumuz Özel Durum Açıklamamızda, Türkiye Garanti Bankası A.Ş.'nin 12.06.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında, satışa çıkarılan 5 portföyden toplamda 510,6 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini şirketimizin kazandığı duyurulmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmıştır. Kamuoyunun bilgilerine sunarız.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 524,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1452976"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:bf39d524cf764643a47b6a26091f34bd90e9c8eba0c461ba1fc49202541ab338",
+     "text": "Şirketimiz, 12.06.2025 tarihinde T. Garanti Bankası A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplam 512.690.008,28 TL anapara büyüklüğündeki 1 adet bireysel portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 25.06.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 523,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1451877"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:de8d6713f3c59fbf16716579cd392636d257ad83499d53497ef219668a929cb5",
+     "text": "Şirketimiz, Türkiye Garanti Bankası A.Ş.'nin 12.06.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 5 portföyden toplamda 510,6 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .",
+     "source": {
+      "kind": "chunk",
+      "document_id": 519,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1448385"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:6ffb828e5a7c69e7d80730584780ade9fed8dec43501a0096b89b4cf910fad28",
+     "text": "Şirketimiz,T.Garanti Bankası A.Ş'nin 12.06.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak ihalesinde; 512.690.008,28 TL anapara büyüklüğündeki 1 adet bireysel portföye en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 520,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1448389"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:24bf248673f6d29d45429779f7767d847859a380ee2e7c63600764fe010d1382",
+     "text": "29 Nisan 2025 tarihinde yapmış olduğumuz Özel Durum Açıklamamızda; Türkiye Garanti Bankası A.Ş.'nin gerçekleştirdiği tahsili gecikmiş alacak satışında, 29/04/2025 tarihinde satışa çıkarılan toplam 202,1 milyon TL anaparaya sahip 1 adet bireysel nitelikli portföyün ihalesini şirketimizin kazandığı duyurulmuştu. 29 Nisan 2025 tarihinden satışa çıkarılan 202,1 milyon TL anapara büyüklüğüne sahip 1 adet bireysel portföye ilişkin alacakların satışı 21/05/2025 itibarıyla ihaleyi açan banka tarafından iptal edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 512,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1440716"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:fb78f389585987dcae7d96ef6c47c52e476689644de56db65d9c67a0ba43f54e",
+     "text": "Şirketimiz, 28.05.2025 tarihinde T. Garanti Bankası A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplam 457.051.042,00 TL anapara büyüklüğündeki 1 adet ticari portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 11.06.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 518,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1447726"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

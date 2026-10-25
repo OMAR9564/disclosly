@@ -325,6 +325,8 @@ class Validation:
     errors: list[str] = field(default_factory=list)
     valid_points: list[Point] = field(default_factory=list)
     summary_ok: bool = True
+    # The citations the summary's numbers were checked against (all known ones).
+    summary_cite_ids: set[str] = field(default_factory=set)
 
     @property
     def ok(self) -> bool:
@@ -332,8 +334,14 @@ class Validation:
 
 
 def validate_answer(
-    answer: Answer, seen_items: Mapping[str, SeenItem], language: Language
+    answer: Answer,
+    seen_items: Mapping[str, SeenItem],
+    language: Language,
+    *,
+    derived_ok: bool = True,
 ) -> Validation:
+    """`derived_ok=False` (graph runs, FR-008): a percentage the model derived from two cited
+    amounts is not accepted; derived numbers come from the calculation sandbox only."""
     result = Validation()
     if answer.language != language:
         result.errors.append(f"language must be {language!r}, got {answer.language!r}")
@@ -354,7 +362,8 @@ def validate_answer(
         result.summary_ok = False
 
     summary_items = [seen_items[c] for c in markers.values() if c in seen_items]
-    if bad := unsupported_figures(answer.summary, language, summary_items):
+    result.summary_cite_ids = {c for c in markers.values() if c in seen_items}
+    if bad := unsupported_figures(answer.summary, language, summary_items, derived_ok=derived_ok):
         result.errors.append(f"summary numbers not found in cited sources: {bad}")
         result.summary_ok = False
 
@@ -365,7 +374,7 @@ def validate_answer(
         if any(c not in seen_items for c in point.cite_ids):
             continue  # already reported as unknown
         cited = [seen_items[c] for c in point.cite_ids]
-        if bad := unsupported_figures(point.text, language, cited):
+        if bad := unsupported_figures(point.text, language, cited, derived_ok=derived_ok):
             result.errors.append(f"point {index} numbers not found in cited sources: {bad}")
             continue
         result.valid_points.append(point)
@@ -383,10 +392,11 @@ def to_partial(answer: Answer, validation: Validation, language: Language) -> An
     summary = answer.summary if validation.summary_ok and answer.language == language else ""
     keep_markers = {c.marker for c in answer.citations if c.cite_id in cited}
     if summary:
+        # The summary was checked against these citations, so a kept summary keeps them.
         keep_markers |= {
             c.marker
             for c in answer.citations
-            if f"[{c.marker}]" in summary and c.marker not in keep_markers
+            if c.cite_id in validation.summary_cite_ids or f"[{c.marker}]" in summary
         }
     if not summary and not validation.valid_points:
         summary = NO_VERIFIED_ANSWER[language]

@@ -1,0 +1,118 @@
+{
+ "case_id": "en-none-nestle",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "bb4dec4c03e630b895eaf125cc5f4d8ef643e2f52ce9f2dd3780ece65caf1726",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"NESN\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 927,
+    "tokens_out": 76,
+    "latency_ms": 1083.951,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "c11e60daacca5b655205b245d09b87233c5f122990ff67ac92de102425743486",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2097415",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "NESN.SW"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T0rQcJZCAfWkxItledoogIHfUauO7CkP0qOdPqqOjbwGBtGvF1BjgGmpfTMH+8/0vFV5DBNPNfzFYqtETTruMBkq3eqz0VAic3QBuoljb//OFQagvOatw5RQ="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1487,
+    "tokens_out": 19,
+    "latency_ms": 767.85,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "a757e4203f2ad3128d21575cc9511cebc731ff44b9ba1ccd5d1a698372f2f976",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1472362",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "NESN.SW",
+       "query": "Nestle revenue 2025"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TAxB4RlRZcR9myDBAPSk5caqbu37sDSlCz7ItXi8ylgTuZWv7I/4Ow6PwWhVv0AlmqkkV30kt700AqRvIGSYsZgRM74dNjHjwnVAC0SuFqa0GQl36qF58P3g="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1524,
+    "tokens_out": 32,
+    "latency_ms": 711.102,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"NESN\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "No results.",
+   "summary": "NESN 2025-FY revenue",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"What was Nestlé's revenue in 2025?\",\"ticker\":\"NESN\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "NESN What was Nestlé's revenue in 2025?",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"NESN.SW\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": []}",
+   "summary": "NESN.SW documents",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"Nestle revenue 2025\",\"ticker\":\"NESN.SW\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "NESN.SW Nestle revenue 2025",
+   "count": 0,
+   "items": [],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

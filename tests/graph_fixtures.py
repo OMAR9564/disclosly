@@ -71,6 +71,14 @@ REPLIES: dict[str, dict[str, Any]] = {
         "confidence": {"level": "high", "note": "Dört çeyreğin tamamı raporlanmış."},
         "citations": [{"marker": 1, "cite_id": "f:83"}],
     },
+    # The simple and refused path answers with the Phase 3 system prompt and `Answer` JSON.
+    "simple": {
+        "language": "tr",
+        "status": "refused",
+        "summary": "Disclosly yatırım tavsiyesi vermez.",
+        "points": [],
+        "citations": [],
+    },
 }
 # The start of each node's Turkish system prompt.
 PROMPT_MARKERS = {
@@ -80,6 +88,7 @@ PROMPT_MARKERS = {
     "analyst": "analistisin",
     "verifier": "doğrulayıcısısın",
     "writer": "yazarısın",
+    "simple": "Sen Disclosly'sin",
 }
 
 

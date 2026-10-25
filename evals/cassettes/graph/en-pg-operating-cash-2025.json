@@ -1,0 +1,664 @@
+{
+ "case_id": "en-pg-operating-cash-2025",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "f6e88958704f00d303516e12d348ae2da8b2a0ff770d90ec133cfdf8808ce36d",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"PG\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 931,
+    "tokens_out": 67,
+    "latency_ms": 1529.355,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "af9fa5d85469dbf9cc0381aed0d37a7e25227b9819742be7797dd52f322ac867",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1719769",
+      "name": "search_documents",
+      "arguments": {
+       "period_from": "2025-FY",
+       "query": "operating cash flow cash flow from operating activities",
+       "ticker": "PG",
+       "period_to": "2025-FY"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TOrMqv9V8mKlmYK7FZ+n29Th98LqBEFOfpoBvwQj8OU8vvaqppIAEro2wUpwvY0f78kfGswrT5+i2XVFXnh9oGiU/L8/MjJM+nB2zNMF/dx8yKY1TR5MPu14="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2779,
+    "tokens_out": 55,
+    "latency_ms": 820.666,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "4f8aa253ed4d599d3bfa8c51b0f31df498cd52df813df9a196d96f03753e4a46",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Procter & Gamble's net cash provided by operating activities (operating cash flow) was $17,817 million ($17.8 billion) in fiscal 2025 [c:a87cab52894f46efea62f43adde4e4cdb9f498d24707af39028b838050dbe668, c:cbb5287e450040346787b04cb32aa079aad2534845404c66c166b8be347d1e37].\",\n  \"points\": [\n    {\n      \"text\": \"Operating cash flow was $17.8 billion (specifically $17,817 million) in fiscal 2025, representing a 10% decrease compared to the prior year.\",\n      \"cite_ids\": [\n        \"c:a87cab52894f46efea62f43adde4e4cdb9f498d24707af39028b838050dbe668\",\n        \"c:cbb5287e450040346787b04cb32aa079aad2534845404c66c166b8be347d1e37\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:a87cab52894f46efea62f43adde4e4cdb9f498d24707af39028b838050dbe668\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:cbb5287e450040346787b04cb32aa079aad2534845404c66c166b8be347d1e37\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 5333,
+    "tokens_out": 578,
+    "latency_ms": 1815.08,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "f40772b1df797be59b3f26b3bb1b35cfaa6016df1c01159d711e1332c2528e52",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Procter & Gamble's operating cash flow in fiscal 2025 was $17.8 billion (or $17,817 million).\",\n  \"points\": [\n    {\n      \"text\": \"Operating cash flow was $17.8 billion in fiscal 2025.\",\n      \"cite_ids\": [\n        \"c:a87cab52894f46efea62f43adde4e4cdb9f498d24707af39028b838050dbe668\"\n      ]\n    },\n    {\n      \"text\": \"Net cash provided by operating activities was $17,817 million in fiscal 2025.\",\n      \"cite_ids\": [\n        \"c:cbb5287e450040346787b04cb32aa079aad2534845404c66c166b8be347d1e37\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:a87cab52894f46efea62f43adde4e4cdb9f498d24707af39028b838050dbe668\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:cbb5287e450040346787b04cb32aa079aad2534845404c66c166b8be347d1e37\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 4766,
+    "tokens_out": 1103,
+    "latency_ms": 40685.871,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\"],\"periods\":[\"2025-FY\"],\"ticker\":\"PG\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:1295\">Depreciation and amortization (2025-FY): 2,847,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4707\">Depreciation and amortization (2025-FY): 2,847,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1296\">Depreciation and amortization (2025-FY; 2026-FY report): 2,847,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4708\">Depreciation and amortization (2025-FY; 2026-FY report): 2,847,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1307\">EBITDA (2025-FY): 23,298,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4719\">EBITDA (2025-FY): 23,298,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1308\">EBITDA (2025-FY; 2026-FY report): 23,298,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4720\">EBITDA (2025-FY; 2026-FY report): 23,298,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1253\">Net income (2025-FY): 15,974,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4665\">Net income (2025-FY): 15,974,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1254\">Net income (2025-FY; 2026-FY report): 15,974,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4666\">Net income (2025-FY; 2026-FY report): 15,974,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1269\">Operating income (2025-FY): 20,451,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4681\">Operating income (2025-FY): 20,451,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1270\">Operating income (2025-FY; 2026-FY report): 20,451,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4682\">Operating income (2025-FY; 2026-FY report): 20,451,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1237\">Revenue (2025-FY): 84,284,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4649\">Revenue (2025-FY): 84,284,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1238\">Revenue (2025-FY; 2026-FY report): 84,284,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4650\">Revenue (2025-FY; 2026-FY report): 84,284,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1280\">Total debt (2025-FY): 24,995,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4692\">Total debt (2025-FY): 24,995,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1284\">Total debt (2025-FY; 2026-FY report): 24,995,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4696\">Total debt (2025-FY; 2026-FY report): 24,995,000,000 USD</untrusted_document>",
+   "summary": "PG 2025-FY net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization",
+   "count": 24,
+   "items": [
+    {
+     "cite_id": "f:1295",
+     "text": "Depreciation and amortization (2025-FY): 2,847,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 195,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "depreciation_amortization",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0000080424-25-000076",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": "2847000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4707",
+     "text": "Depreciation and amortization (2025-FY): 2,847,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2413,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "depreciation_amortization",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0000080424-25-000076",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": "2847000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1296",
+     "text": "Depreciation and amortization (2025-FY; 2026-FY report): 2,847,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 191,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "depreciation_amortization",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0000080424-26-000103",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm"
+     },
+     "value": "2847000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4708",
+     "text": "Depreciation and amortization (2025-FY; 2026-FY report): 2,847,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2409,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "depreciation_amortization",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0000080424-26-000103",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm"
+     },
+     "value": "2847000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1307",
+     "text": "EBITDA (2025-FY): 23,298,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 195,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000080424-25-000076 + us-gaap:DepreciationDepletionAndAmortization 0000080424-25-000076",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": "23298000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4719",
+     "text": "EBITDA (2025-FY): 23,298,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2413,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000080424-25-000076 + us-gaap:DepreciationDepletionAndAmortization 0000080424-25-000076",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": "23298000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1308",
+     "text": "EBITDA (2025-FY; 2026-FY report): 23,298,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 191,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000080424-26-000103 + us-gaap:DepreciationDepletionAndAmortization 0000080424-26-000103",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm"
+     },
+     "value": "23298000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4720",
+     "text": "EBITDA (2025-FY; 2026-FY report): 23,298,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2409,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000080424-26-000103 + us-gaap:DepreciationDepletionAndAmortization 0000080424-26-000103",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm"
+     },
+     "value": "23298000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1253",
+     "text": "Net income (2025-FY): 15,974,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 195,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000080424-25-000076",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": "15974000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4665",
+     "text": "Net income (2025-FY): 15,974,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2413,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000080424-25-000076",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": "15974000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1254",
+     "text": "Net income (2025-FY; 2026-FY report): 15,974,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 191,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000080424-26-000103",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm"
+     },
+     "value": "15974000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4666",
+     "text": "Net income (2025-FY; 2026-FY report): 15,974,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2409,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0000080424-26-000103",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm"
+     },
+     "value": "15974000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1269",
+     "text": "Operating income (2025-FY): 20,451,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 195,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000080424-25-000076",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": "20451000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4681",
+     "text": "Operating income (2025-FY): 20,451,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2413,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000080424-25-000076",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": "20451000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1270",
+     "text": "Operating income (2025-FY; 2026-FY report): 20,451,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 191,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000080424-26-000103",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm"
+     },
+     "value": "20451000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4682",
+     "text": "Operating income (2025-FY; 2026-FY report): 20,451,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2409,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000080424-26-000103",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm"
+     },
+     "value": "20451000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1237",
+     "text": "Revenue (2025-FY): 84,284,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 195,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000080424-25-000076",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": "84284000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4649",
+     "text": "Revenue (2025-FY): 84,284,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2413,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000080424-25-000076",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": "84284000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1238",
+     "text": "Revenue (2025-FY; 2026-FY report): 84,284,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 191,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000080424-26-000103",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm"
+     },
+     "value": "84284000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4650",
+     "text": "Revenue (2025-FY; 2026-FY report): 84,284,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2409,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000080424-26-000103",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm"
+     },
+     "value": "84284000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1280",
+     "text": "Total debt (2025-FY): 24,995,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 195,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebtNoncurrent 0000080424-25-000076",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": "24995000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4692",
+     "text": "Total debt (2025-FY): 24,995,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2413,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebtNoncurrent 0000080424-25-000076",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": "24995000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1284",
+     "text": "Total debt (2025-FY; 2026-FY report): 24,995,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 191,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebtNoncurrent 0000080424-26-000103",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm"
+     },
+     "value": "24995000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4696",
+     "text": "Total debt (2025-FY; 2026-FY report): 24,995,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2409,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebtNoncurrent 0000080424-26-000103",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042426000103/pg-20260630.htm"
+     },
+     "value": "24995000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-FY\",\"period_to\":\"2025-FY\",\"query\":\"operating cash flow cash flow from operating activities\",\"ticker\":\"PG\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:a87cab52894f46efea62f43adde4e4cdb9f498d24707af39028b838050dbe668\">Operating Cash Flow Operating cash flow was $17.8 billion in 2025, a 10% decrease versus the prior year. Net earnings, adjusted for certain non-cash items (depreciation and amortization, share-based compensation expense, deferred income taxes and loss on sale of assets) generated approximately $20.3 billion of operating cash flow. Working capital and other impacts consumed $2.5 billion of cash in the period. Accounts receivable decreased slightly resulting in $45 million of cash flow help. Days sales outstanding were flat. Total inventories increased, consuming $324 million of cash, driven primarily by increased safety stock levels and higher commodity costs. These increased input costs and higher inventory levels resulted in a four-day increase in days on hand . Accounts payable decreased, resulting in $542 million use of cash, primarily driven by marketing and overhead activities. Other impacts reduced cash by $1.7 billion primarily driven by postretirement benefit impacts of $806, the payment of the transitional tax related to the 2017 U.S. Tax Act of $562 and a reduction in compensation and marketing accruals. Adjusted Free Cash Flow. We view adjusted free cash flow as an important non-GAAP measure because it is a factor impacting the amount of cash available for dividends, share repurchases, acquisitions and other discretionary investments. It is defined as operating cash flow less capital expenditures and excluding payments for the transitional tax resulting from the 2017 U.S. Tax Act. Adjusted free cash flow is one of the measures used to evaluate senior management and determine their at-risk compensation. Adjusted free cash flow was $14.6 billion in 2025, a decrease of 14% versus the prior year. The decrease was primarily driven by the decrease in operating cash flows as discussed above. Adjusted free cash flow productivity, defined as the ratio of adjusted free cash flow to net earnings excluding the non-cash charge for accumulated foreign currency translation losses due to the divestiture of operations in Argentina, was 87% in 2025. Investing Cash Flow Net investing activities used $3.8 billion of cash in 2025, primarily due to capital expenditures. Financing Cash Flow Net financing activities used $14.0 billion of cash in 2025, mainly due to dividends to shareholders and treasury stock purchases, partially offset by the impact of stock options and other and a net debt increase. Liquidity</untrusted_document>\n<untrusted_document cite_id=\"c:cbb5287e450040346787b04cb32aa079aad2534845404c66c166b8be347d1e37\">($ millions) | 2025 |  | 2024 |  | \nNet cash provided by operating activities |  | 17,817 |  |  | 19,846\nNet cash used in investing activities | (3,818) |  |  | (3,504) | \nNet cash used in financing activities | (14,036) |  |  | (14,855) | \nAdjusted Free Cash Flow | 14,606 |  |  | 16,946 | \nAdjusted Free Cash Flow Productivity | 87 |  |  | 105 | </untrusted_document>\n<untrusted_document cite_id=\"c:2996af9f1a96603e7c9d4ea7f772aa4e6f00e107ea1f2ff8f63495b682c586a3\">Financing Cash Flow Net financing activities used $14.0 billion of cash in 2025, mainly due to dividends to shareholders and treasury stock purchases, partially offset by the impact of stock options and other and a net debt increase. Liquidity At June 30, 2025, our current liabilities exceeded current assets by $10.7 billion, largely due to accounts payable, short-term borrowings and debt due within one year. We anticipate being able to support our short-term liquidity and operating needs largely through cash generated from operations. The Company regularly assesses its cash needs and the available sources to fund these needs. As of June 30, 2025, the Company had $8.1 billion of cash and cash equivalents related to foreign subsidiaries, primarily in various European and Asian countries. We did not have material cash and cash equivalents related to any country subject to exchange controls that significantly restrict our ability to access or repatriate the funds. Under current law, we do not expect restrictions or taxes on repatriation of cash held outside of the U.S. to have a material effect on our overall liquidity, financial condition or the results of operations for the foreseeable future. We utilize short- and long-term debt to fund discretionary items, such as acquisitions and share repurchases. We have strong short- and long-term debt ratings, which have enabled and should continue to enable us to refinance our debt as it becomes due in commercial paper and bond markets. In addition, we have agreements with a diverse group of financial institutions that, if needed, should provide sufficient funding to meet short-term financing requirements. On June 30, 2025, our short-term credit ratings were P-1 (Moody's) and A-1+ (Standard & Poor's), while our long-term credit ratings were Aa3 (Moody's) and AA- (Standard & Poor's), all with a stable outlook. We maintain bank credit facilities to support our ongoing commercial paper program. The current facility is an $8.0 billion facility split between a $3.2 billion five-year facility and a $4.8 billion 364-day facility, which expire in October 2029 and October 2025, respectively. Both facilities can be extended for certain periods of time as specified in the terms of the credit agreement. These facilities are currently undrawn and we anticipate that they will remain undrawn. These credit facilities do not have cross-default or ratings triggers, nor do they have material adverse events clauses, except at the time of signing. In addition 26 The Procter & Gamble Company</untrusted_document>\n<untrusted_document cite_id=\"c:a38968fd16f8cd153c7ac719e26522c9c527515fa4f1f09593bf1913b2562d2d\">The costs and operational consequences of responding to the above items and implementing remediation measures could be significant and could adversely impact our results of operations and cash flows and generate negative publicity affecting Company reputation and relationships among consumers, customers and other business partners. We must successfully manage the demand, supply and operational challenges associated with the effects of any future disease outbreak, including epidemics, pandemics or similar widespread public health concerns. Our business may be negatively impacted by the fear of exposure to or actual effects of a disease outbreak, epidemic, pandemic or similar widespread public health concern. These impacts may include, but are not limited to: • Significant reductions in demand or significant volatility in demand for one or more of our products, which may be caused by, among other things: the temporary inability of consumers to purchase our products due to illness, quarantine or other travel restrictions or financial hardship, shifts in demand away from one or more of our more discretionary or higher priced products to lower priced products or stockpiling or similar pantry-loading activity. If prolonged, such impacts can further increase the difficulty of business or operations planning and may adversely impact our results of operations and cash flows; or • Significant changes in the political conditions in markets in which we manufacture, sell or distribute our products, including quarantines, import/export restrictions, tariffs, price controls, or governmental or regulatory actions, closures or other restrictions that limit or close our operating and manufacturing facilities, restrict our employees’ ability to travel or perform necessary business functions or otherwise prevent our third-party partners, suppliers or customers from sufficiently staffing operations. Despite efforts to manage and remedy these impacts, their ultimate impact also depends on factors beyond our knowledge or control, including the duration and severity of any such outbreak as well as third-party actions taken to contain its spread and mitigate its public health effects. BUSINESS STRATEGY & ORGANIZATIONAL RISKS Our ability to meet our growth targets depends on successful product, marketing and operations innovation and successful responses to competitive innovation, evolving digital marketing and selling platforms and changing consumer habits. We are a consumer products company that relies on continued global demand for our brands and products. Achieving our business results depends, in part, on successfully developing, introducing and marketing new products and on making significant improvements to our equipment and manufacturing processes.</untrusted_document>\n<untrusted_document cite_id=\"c:a6af8297db31d8b7024849502e2e068aeea9d4ec83e4c16205bf13f75f836844\">Consistent with our policies for restructuring-type activities, the resulting charges are funded by and included within Corporate for segment reporting. Savings generated from the Company's restructuring program are difficult to estimate, given the nature of the activities, the timing of the execution and the degree of reinvestment. In addition to our restructuring programs, we have additional ongoing savings efforts in our supply chain, marketing and overhead areas that yield additional benefits to our operating margins. Refer to Note 3 to the Consolidated Financial Statements for more details on the restructuring program. CASH FLOW, FINANCIAL CONDITION AND LIQUIDITY We believe our financial condition continues to be of high quality, as evidenced by our ability to generate substantial cash from operations and to readily access capital markets at competitive rates. Operating cash flow provides the primary source of cash to fund operating needs and capital expenditures. Excess operating cash is used first to fund shareholder dividends. Other discretionary uses include share repurchases and acquisitions to The Procter & Gamble Company 25 complement our portfolio of businesses, brands and geographies. As necessary, we may supplement operating cash flow with debt to fund these activities. The overall cash position of the Company reflects our strong business results and a global cash management strategy that takes into account liquidity management, economic factors and tax considerations. Cash Flow Analysis</untrusted_document>\n<untrusted_document cite_id=\"c:0357ba43c0026178425b97e2751dd74ad75d49826b56ba6f07f1dc1fbbc5579b\">(1) Other segment items for each reportable segment includes interest expense, interest income and certain other non-operating income/(expense). Corporate includes non-operating losses comprised primarily of a non-cash charge of $ 752 for accumulated foreign currency translation losses due to the substantial liquidation of operations in Argentina. See Note 3 for more information on the limited market portfolio restructuring program. Amounts in millions of dollars except per share amounts or as otherwise specified. 44 The Procter & Gamble Company</untrusted_document>",
+   "summary": "PG operating cash flow cash flow from operating activities",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:a87cab52894f46efea62f43adde4e4cdb9f498d24707af39028b838050dbe668",
+     "text": "Operating Cash Flow Operating cash flow was $17.8 billion in 2025, a 10% decrease versus the prior year. Net earnings, adjusted for certain non-cash items (depreciation and amortization, share-based compensation expense, deferred income taxes and loss on sale of assets) generated approximately $20.3 billion of operating cash flow. Working capital and other impacts consumed $2.5 billion of cash in the period. Accounts receivable decreased slightly resulting in $45 million of cash flow help. Days sales outstanding were flat. Total inventories increased, consuming $324 million of cash, driven primarily by increased safety stock levels and higher commodity costs. These increased input costs and higher inventory levels resulted in a four-day increase in days on hand . Accounts payable decreased, resulting in $542 million use of cash, primarily driven by marketing and overhead activities. Other impacts reduced cash by $1.7 billion primarily driven by postretirement benefit impacts of $806, the payment of the transitional tax related to the 2017 U.S. Tax Act of $562 and a reduction in compensation and marketing accruals. Adjusted Free Cash Flow. We view adjusted free cash flow as an important non-GAAP measure because it is a factor impacting the amount of cash available for dividends, share repurchases, acquisitions and other discretionary investments. It is defined as operating cash flow less capital expenditures and excluding payments for the transitional tax resulting from the 2017 U.S. Tax Act. Adjusted free cash flow is one of the measures used to evaluate senior management and determine their at-risk compensation. Adjusted free cash flow was $14.6 billion in 2025, a decrease of 14% versus the prior year. The decrease was primarily driven by the decrease in operating cash flows as discussed above. Adjusted free cash flow productivity, defined as the ratio of adjusted free cash flow to net earnings excluding the non-cash charge for accumulated foreign currency translation losses due to the divestiture of operations in Argentina, was 87% in 2025. Investing Cash Flow Net investing activities used $3.8 billion of cash in 2025, primarily due to capital expenditures. Financing Cash Flow Net financing activities used $14.0 billion of cash in 2025, mainly due to dividends to shareholders and treasury stock purchases, partially offset by the impact of stock options and other and a net debt increase. Liquidity",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3202,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:cbb5287e450040346787b04cb32aa079aad2534845404c66c166b8be347d1e37",
+     "text": "($ millions) | 2025 |  | 2024 |  | \nNet cash provided by operating activities |  | 17,817 |  |  | 19,846\nNet cash used in investing activities | (3,818) |  |  | (3,504) | \nNet cash used in financing activities | (14,036) |  |  | (14,855) | \nAdjusted Free Cash Flow | 14,606 |  |  | 16,946 | \nAdjusted Free Cash Flow Productivity | 87 |  |  | 105 | ",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3202,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:2996af9f1a96603e7c9d4ea7f772aa4e6f00e107ea1f2ff8f63495b682c586a3",
+     "text": "Financing Cash Flow Net financing activities used $14.0 billion of cash in 2025, mainly due to dividends to shareholders and treasury stock purchases, partially offset by the impact of stock options and other and a net debt increase. Liquidity At June 30, 2025, our current liabilities exceeded current assets by $10.7 billion, largely due to accounts payable, short-term borrowings and debt due within one year. We anticipate being able to support our short-term liquidity and operating needs largely through cash generated from operations. The Company regularly assesses its cash needs and the available sources to fund these needs. As of June 30, 2025, the Company had $8.1 billion of cash and cash equivalents related to foreign subsidiaries, primarily in various European and Asian countries. We did not have material cash and cash equivalents related to any country subject to exchange controls that significantly restrict our ability to access or repatriate the funds. Under current law, we do not expect restrictions or taxes on repatriation of cash held outside of the U.S. to have a material effect on our overall liquidity, financial condition or the results of operations for the foreseeable future. We utilize short- and long-term debt to fund discretionary items, such as acquisitions and share repurchases. We have strong short- and long-term debt ratings, which have enabled and should continue to enable us to refinance our debt as it becomes due in commercial paper and bond markets. In addition, we have agreements with a diverse group of financial institutions that, if needed, should provide sufficient funding to meet short-term financing requirements. On June 30, 2025, our short-term credit ratings were P-1 (Moody's) and A-1+ (Standard & Poor's), while our long-term credit ratings were Aa3 (Moody's) and AA- (Standard & Poor's), all with a stable outlook. We maintain bank credit facilities to support our ongoing commercial paper program. The current facility is an $8.0 billion facility split between a $3.2 billion five-year facility and a $4.8 billion 364-day facility, which expire in October 2029 and October 2025, respectively. Both facilities can be extended for certain periods of time as specified in the terms of the credit agreement. These facilities are currently undrawn and we anticipate that they will remain undrawn. These credit facilities do not have cross-default or ratings triggers, nor do they have material adverse events clauses, except at the time of signing. In addition 26 The Procter & Gamble Company",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3202,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:a38968fd16f8cd153c7ac719e26522c9c527515fa4f1f09593bf1913b2562d2d",
+     "text": "The costs and operational consequences of responding to the above items and implementing remediation measures could be significant and could adversely impact our results of operations and cash flows and generate negative publicity affecting Company reputation and relationships among consumers, customers and other business partners. We must successfully manage the demand, supply and operational challenges associated with the effects of any future disease outbreak, including epidemics, pandemics or similar widespread public health concerns. Our business may be negatively impacted by the fear of exposure to or actual effects of a disease outbreak, epidemic, pandemic or similar widespread public health concern. These impacts may include, but are not limited to: • Significant reductions in demand or significant volatility in demand for one or more of our products, which may be caused by, among other things: the temporary inability of consumers to purchase our products due to illness, quarantine or other travel restrictions or financial hardship, shifts in demand away from one or more of our more discretionary or higher priced products to lower priced products or stockpiling or similar pantry-loading activity. If prolonged, such impacts can further increase the difficulty of business or operations planning and may adversely impact our results of operations and cash flows; or • Significant changes in the political conditions in markets in which we manufacture, sell or distribute our products, including quarantines, import/export restrictions, tariffs, price controls, or governmental or regulatory actions, closures or other restrictions that limit or close our operating and manufacturing facilities, restrict our employees’ ability to travel or perform necessary business functions or otherwise prevent our third-party partners, suppliers or customers from sufficiently staffing operations. Despite efforts to manage and remedy these impacts, their ultimate impact also depends on factors beyond our knowledge or control, including the duration and severity of any such outbreak as well as third-party actions taken to contain its spread and mitigate its public health effects. BUSINESS STRATEGY & ORGANIZATIONAL RISKS Our ability to meet our growth targets depends on successful product, marketing and operations innovation and successful responses to competitive innovation, evolving digital marketing and selling platforms and changing consumer habits. We are a consumer products company that relies on continued global demand for our brands and products. Achieving our business results depends, in part, on successfully developing, introducing and marketing new products and on making significant improvements to our equipment and manufacturing processes.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3202,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:a6af8297db31d8b7024849502e2e068aeea9d4ec83e4c16205bf13f75f836844",
+     "text": "Consistent with our policies for restructuring-type activities, the resulting charges are funded by and included within Corporate for segment reporting. Savings generated from the Company's restructuring program are difficult to estimate, given the nature of the activities, the timing of the execution and the degree of reinvestment. In addition to our restructuring programs, we have additional ongoing savings efforts in our supply chain, marketing and overhead areas that yield additional benefits to our operating margins. Refer to Note 3 to the Consolidated Financial Statements for more details on the restructuring program. CASH FLOW, FINANCIAL CONDITION AND LIQUIDITY We believe our financial condition continues to be of high quality, as evidenced by our ability to generate substantial cash from operations and to readily access capital markets at competitive rates. Operating cash flow provides the primary source of cash to fund operating needs and capital expenditures. Excess operating cash is used first to fund shareholder dividends. Other discretionary uses include share repurchases and acquisitions to The Procter & Gamble Company 25 complement our portfolio of businesses, brands and geographies. As necessary, we may supplement operating cash flow with debt to fund these activities. The overall cash position of the Company reflects our strong business results and a global cash management strategy that takes into account liquidity management, economic factors and tax considerations. Cash Flow Analysis",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3202,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:0357ba43c0026178425b97e2751dd74ad75d49826b56ba6f07f1dc1fbbc5579b",
+     "text": "(1) Other segment items for each reportable segment includes interest expense, interest income and certain other non-operating income/(expense). Corporate includes non-operating losses comprised primarily of a non-cash charge of $ 752 for accumulated foreign currency translation losses due to the substantial liquidation of operations in Argentina. See Note 3 for more information on the limited market portfolio restructuring program. Amounts in millions of dollars except per share amounts or as otherwise specified. 44 The Procter & Gamble Company",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3202,
+      "ticker": "PG",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/80424/000008042425000076/pg-20250630.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

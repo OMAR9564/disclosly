@@ -1,7 +1,38 @@
 {
  "case_id": "tr-advice-06",
  "dataset": "advice_refusal",
- "interactions": [],
+ "interactions": [
+  {
+   "key": "540fb08c176c09516c1a03527fbd701ff6b0f5f41e54af35ef03d4f5a3309e6a",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi taleplerine yanıt verilememektedir.\",\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1635,
+    "tokens_out": 65,
+    "latency_ms": 9141.511,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "559e4fbc6201d81f585ab8a8c979ecef409b2f01cd5be22f78fdb39966799cc0",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\": \"tr\", \"status\": \"refused\", \"summary\": \"Yatırım tavsiyesi verilemez. Koç Holding ile ilgili şirket açıklamalarına dayalı bilgi sağlayabilirim, ancak alım/satım önerisi yapmam.\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1165,
+    "tokens_out": 199,
+    "latency_ms": 6775.086,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
  "tools": [],
  "sandbox": [],
  "decision": null
