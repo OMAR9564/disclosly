@@ -1,0 +1,27 @@
+{
+ "case_id": "tr-asels-unsupported-claim",
+ "dataset": "verifier_seeded",
+ "interactions": [
+  {
+   "key": "5eec12941a1125b5a80af4ba4ea6271ae7ec50ee8f9355d1cc52e15a95914dd3",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": false, \"reason\": \"Kanıt sadece toplam borç rakamını (32.562,3 milyon TRY) içeriyor; borç artışının nedeninin 'yeni yatırımların bankalardan düşük faizle finanse edilmesi' olduğu iddiası kanıtlanmamış.\"}]}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 722,
+    "tokens_out": 553,
+    "latency_ms": 8096.952,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "sandbox": [],
+ "decision": null
+}

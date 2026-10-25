@@ -171,6 +171,9 @@ def test_derived_numbers_must_come_from_cited_calculations() -> None:
     )
     values: dict[str, Any] = {"calculations": [calc]}
     assert graph.derived_numbers(_report("Oran 2,58 oldu", "k:1"), case, values) == (1, 1)
+    # A negative output stated as a magnitude ("fell by 2,58") still comes from k:1.
+    falling = {"calculations": [calc.model_copy(update={"output": Decimal("-2.5799")})]}
+    assert graph.derived_numbers(_report("Oran 2,58 düştü", "k:1"), case, falling) == (1, 1)
     # Stated but not from a cited verified calculation.
     assert graph.derived_numbers(_report("Oran 2,58 oldu", "f:1"), case, values) == (1, 0)
     unverified = {"calculations": [calc.model_copy(update={"verified": False})]}

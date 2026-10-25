@@ -138,8 +138,9 @@ def derived_numbers(report: Report, case: DeepCase, values: Mapping[str, Any]) -
     stated = from_calc = 0
     shown = _report_values(report)
     cited = report.cite_ids()
+    # Magnitudes: "fell by 34.05 points" states an output of -34.05 (as agent.answer does).
     outputs = [
-        c.output
+        abs(c.output)
         for c in values.get("calculations") or []
         if c.verified and c.output is not None and c.cite_id in cited
     ]

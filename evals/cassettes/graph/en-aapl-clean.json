@@ -1,0 +1,41 @@
+{
+ "case_id": "en-aapl-clean",
+ "dataset": "verifier_seeded",
+ "interactions": [
+  {
+   "key": "1f7c657bb0ad795fb36b8e62496b933d78663759595a1fa3dc70338436a1ae20",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"All figures match cited evidence and calculation is correct.\"}]}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 795,
+    "tokens_out": 552,
+    "latency_ms": 9644.739,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "sandbox": [
+  {
+   "key": "9d2db46ca3fca5a27fb0904c79daa2ed06e4da8015624ff6be9d34ca8ef997b9",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_debt_to_ebitda": "0.49545896733278383"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  }
+ ],
+ "decision": null
+}
