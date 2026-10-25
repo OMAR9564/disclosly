@@ -20,7 +20,9 @@ from api.logging import REQUEST_ID_HEADER, RequestContextMiddleware, configure_l
 from api.metrics import MetricsMiddleware
 from api.metrics import router as metrics_router
 from api.routes.auth import router as auth_router
+from api.routes.companies import router as companies_router
 from api.routes.me import router as me_router
+from api.routes.memory import router as memory_router
 from api.routes.research import router as research_router
 
 logger = logging.getLogger(__name__)
@@ -103,13 +105,15 @@ def create_app(
     app.include_router(auth_router)
     app.include_router(me_router)
     app.include_router(research_router)
+    app.include_router(memory_router)
+    app.include_router(companies_router)
 
     # Starlette runs the last added middleware first: request IDs wrap everything, CORS included.
     app.add_middleware(
         CORSMiddleware,
         allow_origins=sorted({*settings.cors_allowed_origins, settings.web_origin}),
         allow_credentials=True,
-        allow_methods=["GET", "POST", "PUT"],
+        allow_methods=["GET", "POST", "PUT", "DELETE"],
         allow_headers=[REQUEST_ID_HEADER, "Content-Type", "Last-Event-ID", "Accept-Language"],
         expose_headers=[REQUEST_ID_HEADER],
     )

@@ -35,6 +35,7 @@ from agent.graph.context import GraphDeps, NodeContext, NodeFn
 from agent.graph.nodes.analyst import analyst_node
 from agent.graph.nodes.decision import decision_node
 from agent.graph.nodes.finalize_partial import finalize_partial_node
+from agent.graph.nodes.memory import memory_node, watchlist_empty
 from agent.graph.nodes.planner import planner_node
 from agent.graph.nodes.quota_gate import quota_gate_node
 from agent.graph.nodes.retriever import retriever_node
@@ -62,6 +63,8 @@ DURABILITY: Durability = "sync"
 
 DEFAULT_NODES: dict[GraphNode, NodeFn] = {
     "router": router_node,
+    # Memory changes asked for in the question (US5).
+    "memory": memory_node,
     # Simple and refused path (US4).
     "retriever_simple": retriever_simple_node,
     "writer_simple": writer_simple_node,
@@ -130,7 +133,8 @@ class Routes:
         return name if name in self._nodes else FINALIZE
 
     def mode(self, state: ResearchState) -> str:
-        if state.get("limit_hit"):
+        if state.get("limit_hit") or watchlist_empty(state):
+            # An empty watchlist is said so instead of guessing companies.
             return FINALIZE
         if state.get("mode") == "deep" and not state.get("refused"):
             return self.go("quota_gate")

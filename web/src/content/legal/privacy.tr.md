@@ -2,7 +2,7 @@
 
 # Gizlilik politikası
 
-Son güncelleme: 21 Ekim 2026
+Son güncelleme: 25 Ekim 2026
 
 Bu politika Disclosly'nin hangi kişisel verileri sakladığını, neden sakladığını ve 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamındaki haklarını açıklar.
 
@@ -14,6 +14,7 @@ Disclosly, veri sorumlusu sıfatıyla sahibi tarafından işletilir. İletişim:
 
 - Giriş yaparken Google veya GitHub'dan alınan e-posta adresin ve görünen adın. Google veya GitHub hesabından başka bir şey saklamayız.
 - Geçmiş bir yanıtı yeniden açabilmen için sorduğun sorular ve ürettiğimiz yanıtlar.
+- Takip listen ve tercihlerin: takip listesine eklediğin şirketler (en çok 50), tercih ettiğin yanıt dili ve varsayılan dönem aralığı. Bunları yalnızca sen değiştirirsin: ayarlar sayfasından ya da sorunda açıkça isteyerek.
 - Günlük soru sayın ve kısa ömürlü hız sınırı sayaçları. Bunlar IP adresinin kendisini değil, hesap kimliğini veya IP adresinin tek yönlü özetini tutar.
 
 Parola saklamayız. Reklam veya takip çerezi kullanmayız. Tek çerezler giriş çerezleridir: `session` (15 dakika) ve `refresh` (7 gün).
@@ -22,6 +23,7 @@ Parola saklamayız. Reklam veya takip çerezi kullanmayız. Tek çerezler giriş
 
 - Giriş yapabilmen ve adresinin beta listesinde olduğunu kontrol etmek için.
 - Yanıtlarını göstermek ve günlük soru sınırını uygulamak için.
+- "Takip listem" diye sorduğun sorularda listendeki şirketleri, dönem belirtmediğin sorularda varsayılan dönemini kullanmak için. Takip listen ve tercihlerin başka kullanıcılara gösterilmez, model sağlayıcılarına profil olarak gönderilmez ve izleme kayıtlarında yalnızca listedeki şirket sayısı tutulur.
 - Hizmeti kötüye kullanıma karşı korumak için.
 
 Hukuki sebep, istediğin hizmetin sunulması ve hizmetin güvenliğini sağlamadaki meşru menfaatimizdir (KVKK madde 5/2-c ve 5/2-f).
@@ -36,7 +38,7 @@ Cloudflare Turnstile, girişi bir botun değil bir kişinin yaptığını kontro
 
 ## Ne kadar süre saklıyoruz
 
-Hesap verini, sorularını ve yanıtlarını hesabının silinmesini isteyene kadar saklarız. Giriş çerezlerinin süresi yukarıda yazdığı gibi dolar. Sayaçlar 48 saat içinde silinir.
+Hesap verini, sorularını ve yanıtlarını hesabının silinmesini isteyene kadar saklarız. Takip listeni ve tercihlerini istediğin an ayarlar sayfasındaki "Tüm hafızayı sil" ile kalıcı olarak silebilirsin; hesabın silindiğinde bunlar da silinir. Giriş çerezlerinin süresi yukarıda yazdığı gibi dolar. Sayaçlar 48 saat içinde silinir.
 
 <!-- OWNER: yukarıdaki saklama sürelerini onayla ve sunucu kayıtları için bir süre ekle. -->
 

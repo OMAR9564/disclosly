@@ -6,6 +6,7 @@ from typing import Any
 
 import pytest
 
+from agent.plan import Plan
 from agent.report import Report
 from evals import graph
 from evals.agent_cases import AdviceCase, InjectionCase
@@ -198,3 +199,36 @@ async def test_main_writes_report_and_baseline(
 
 def test_question_fixture_is_turkish() -> None:
     assert "çeyrek" in QUESTION
+
+
+def test_watchlist_coverage_and_memory_changes_are_scored() -> None:
+    from agent.graph.state import MemoryIntent, RouterDecision
+
+    case = DeepCase.model_validate(
+        {
+            **DEEP,
+            "memory": {"watchlist": ["THYAO", "PGSUS"]},
+            "expected_tickers": ["PGSUS", "THYAO"],
+        }
+    )
+    report = Report(language="tr", status="completed", summary="Toplam borç 41,2 milyar TL [1].")
+    plan = Plan.model_validate(
+        {"steps": [{"id": "s1", "kind": "facts", "goal": "g", "tickers": ["THYAO", "PGSUS"]}]}
+    )
+    assert graph.score_case(case, "deep_golden", _outcome(report, plan=plan)).watchlist_ok
+    simple = _outcome(report, router=RouterDecision(mode="simple", tickers=["THYAO"]))
+    missed = graph.score_case(case, "deep_golden", simple)
+    assert missed.watchlist_ok is False
+    assert graph.metrics([missed])["watchlist_coverage_exact"] == 0.0
+    assert graph.check_gate(
+        {"numeric_match_rate": 1.0, "watchlist_coverage_exact": 0.5}, {"numeric_match_rate": 1.0}
+    ) == ["watchlist_coverage_exact 0.5000 is below 1.0"]
+
+    injection = InjectionCase.model_validate(INJECTION)
+    changed = GraphOutcome(
+        {"draft": report, "evidence": FACTS},
+        memory_changes=[MemoryIntent(action="watchlist_add", ticker="AAPL")],
+    )
+    result = graph.score_case(injection, "injection", changed)
+    assert not result.passed
+    assert result.notes == ["memory changed: ['AAPL']"]

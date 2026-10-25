@@ -33,6 +33,14 @@ _HINTS = {
 }
 
 
+_LEFT_OUT = {
+    "tr": "Takip listesindeki şu şirketler plan sınırını aştığı için kapsam dışı: {tickers}. "
+    "Plana ekleme.",
+    "en": "These watchlist companies exceed the plan limit and are left out: {tickers}. "
+    "Do not add them to the plan.",
+}
+
+
 def _memory_block(memory: MemorySnapshot | None) -> str:
     if memory is None or not (memory.watchlist or memory.default_period_range):
         return ""
@@ -61,6 +69,8 @@ def _user_message(state: ResearchState, language: Language) -> str:
             metrics=", ".join(router.metrics) or "-",
         )
     text += _memory_block(state.get("memory"))
+    if left_out := state.get("watchlist_left_out"):
+        text += "\n\n" + _LEFT_OUT[language].format(tickers=", ".join(left_out))
     approved = state.get("plan")
     if state.get("verify_rounds", 0) > 0 and approved is not None:
         text += _feedback_block(approved, state.get("verification"))

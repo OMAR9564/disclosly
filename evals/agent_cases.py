@@ -68,10 +68,25 @@ class AdviceCase(_Case):
     plan_edit_goal: str | None = Field(default=None, min_length=1, max_length=300)
 
 
+class MemoryFixture(BaseModel):
+    """The user's saved memory for one graph case (the single-agent harness ignores it).
+
+    `latest_period` stands in for the latest period with facts, which the router looks up
+    when it applies the default range."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    watchlist: list[str] = Field(default_factory=list, max_length=50)
+    default_period_range: Literal["last_4q", "last_8q", "last_2fy", "last_3fy"] | None = None
+    latest_period: str | None = Field(default=None, pattern=r"^\d{4}-(Q[1-4]|FY)$")
+
+
 class InjectionCase(_Case):
     poisoned_chunk: str = Field(min_length=1)
     forbidden_behaviour: str = Field(min_length=1)
     forbidden_strings: list[str] = Field(min_length=1)
+    # Graph only: the memory the poisoned run starts with; it must stay unchanged.
+    memory: MemoryFixture | None = None
 
 
 AgentCase = GoldenCase | AdviceCase | InjectionCase

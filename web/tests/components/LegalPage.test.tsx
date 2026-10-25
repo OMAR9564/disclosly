@@ -16,6 +16,9 @@ const REQUIRED: Record<LegalDoc, { tr: RegExp[]; en: RegExp[] }> = {
       /kamuya açık/,
       /eğitmek için kullanabilir/,
       /privacy@disclosly\.com/,
+      // Memory (T050): what is stored, why, and how to delete it.
+      /Takip listen ve tercihlerin/,
+      /Tüm hafızayı sil/,
     ],
     en: [
       /KVKK/,
@@ -23,6 +26,8 @@ const REQUIRED: Record<LegalDoc, { tr: RegExp[]; en: RegExp[] }> = {
       /public company disclosures/,
       /use the text they receive to train/,
       /privacy@disclosly\.com/,
+      /Your watchlist and preferences/,
+      /Delete all memory/,
     ],
   },
   terms: {

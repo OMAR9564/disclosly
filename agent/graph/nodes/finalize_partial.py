@@ -12,6 +12,7 @@ from agent.advice import detect_language
 from agent.answer import NO_VERIFIED_ANSWER, Language, Point, unsupported_figures
 from agent.budget import LimitHit
 from agent.graph.context import NodeContext
+from agent.graph.nodes.memory import NOTES, watchlist_empty, with_memory_note
 from agent.graph.state import ResearchState, evidence_by_id
 from agent.report import MAX_UNVERIFIED, Confidence, Report, calculation_item
 
@@ -49,6 +50,8 @@ def partial_report(state: ResearchState) -> Report:
     language: Language = state.get("language") or detect_language(state.get("question", ""))
     if state.get("refused"):
         return Report(language=language, status="refused", summary=REFUSED[language])
+    if watchlist_empty(state):
+        return Report(language=language, status="no_evidence", summary=NOTES[language]["empty"])
 
     items = evidence_by_id(state.get("evidence") or [])
     for calc in state.get("calculations") or []:
@@ -84,4 +87,4 @@ def partial_report(state: ResearchState) -> Report:
 
 
 async def finalize_partial_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
-    return {"draft": partial_report(state)}
+    return {"draft": with_memory_note(partial_report(state), state)}
