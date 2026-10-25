@@ -12,7 +12,7 @@
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 935,
     "tokens_out": 92,
-    "latency_ms": 3970.645,
+    "latency_ms": 1095.836,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,46 +21,43 @@
    "key": "9c122bb58e4ff793b00f47f193e5c00278beec44d6d9af89ce4a9a281884e3a0",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Get net income for Coca-Cola (KO) and PepsiCo (PEP) for fiscal years 2024 and 2025\",\n      \"tickers\": [\"KO\", \"PEP\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": [\"net_income\"]\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Retrieve net income for Coca-Cola (KO) and PepsiCo (PEP) for fiscal years 2024 and 2025\",\n      \"tickers\": [\"KO\", \"PEP\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": [\"net_income\"]\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1028,
-    "tokens_out": 276,
-    "latency_ms": 6464.453,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "89cd3afbed770ec6b6f128c2f17d2458ca7903141b8b3480ddb3762873e8ce65",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": null}]}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 703,
-    "tokens_out": 25,
-    "latency_ms": 892.299,
+    "tokens_out": 274,
+    "latency_ms": 10974.279,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "b84ac6876ccebafa5e5d3a2573fe86a279973f39b16ab29ed5a28bffc2021b92",
+   "key": "b71b36709097be039b511110fb8eb553cf590a85ba0914141269d8a671efce66",
    "task_class": "cheap",
    "response": {
-    "content": "{\"findings\":[{\"id\":\"F1\",\"text\":\"Coca-Cola reported net income of 10,631,000,000 USD for FY 2024.\",\"cite_ids\":[\"f:1575\"]},{\"id\":\"F2\",\"text\":\"Coca-Cola reported net income of 13,107,000,000 USD for FY 2025.\",\"cite_ids\":[\"f:1581\"]},{\"id\":\"F3\",\"text\":\"PepsiCo reported net income of 9,578,000,000 USD for FY 2024.\",\"cite_ids\":[\"f:1677\"]},{\"id\":\"F4\",\"text\":\"PepsiCo reported net income of 8,240,000,000 USD for FY 2025.\",\"cite_ids\":[\"f:1685\"]},{\"id\":\"F5\",\"text\":\"In both FY 2024 and FY 2025, Coca-Cola's net income exceeded PepsiCo's net income.\",\"cite_ids\":[\"f:1575\",\"f:1581\",\"f:1677\",\"f:1685\"]}]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 703,
+    "tokens_out": 45,
+    "latency_ms": 1025.985,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "35ccfcec8e9fbbd4954865b3a4cd0ecfd44924892780aa8ddf944d72701a377b",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\"findings\":[{\"id\":\"F1\",\"text\":\"Coca-Cola net income for fiscal year 2024 was 10,631,000,000 USD.\",\"cite_ids\":[\"f:1575\"]},{\"id\":\"F2\",\"text\":\"Coca-Cola net income for fiscal year 2025 was 13,107,000,000 USD.\",\"cite_ids\":[\"f:1581\"]},{\"id\":\"F3\",\"text\":\"PepsiCo net income for fiscal year 2024 was 9,578,000,000 USD.\",\"cite_ids\":[\"f:1677\"]},{\"id\":\"F4\",\"text\":\"PepsiCo net income for fiscal year 2025 was 8,240,000,000 USD.\",\"cite_ids\":[\"f:1685\"]},{\"id\":\"F5\",\"text\":\"In 2024, Coca-Cola's net income exceeded PepsiCo's by 1,053,000,000 USD.\",\"cite_ids\":[\"f:1575\",\"f:1677\"],\"calcs\":[\"net_income_difference_2024\"]},{\"id\":\"F6\",\"text\":\"In 2025, Coca-Cola's net income exceeded PepsiCo's by 4,867,000,000 USD.\",\"cite_ids\":[\"f:1581\",\"f:1685\"],\"calcs\":[\"net_income_difference_2025\"]},{\"id\":\"F7\",\"text\":\"Coca-Cola had higher net income than PepsiCo in both 2024 and 2025.\",\"cite_ids\":[\"f:1575\",\"f:1581\",\"f:1677\",\"f:1685\"]}],\"calculations\":[{\"name\":\"net_income_difference_2024\",\"description\":\"Coca-Cola 2024 net income minus PepsiCo 2024 net income\",\"inputs\":[{\"name\":\"coca_cola_2024\",\"cite_id\":\"f:1575\"},{\"name\":\"pepsi_2024\",\"cite_id\":\"f:1677\"}],\"code\":\"result = inputs['coca_cola_2024'] - inputs['pepsi_2024']\"},{\"name\":\"net_income_difference_2025\",\"description\":\"Coca-Cola 2025 net income minus PepsiCo 2025 net income\",\"inputs\":[{\"name\":\"coca_cola_2025\",\"cite_id\":\"f:1581\"},{\"name\":\"pepsi_2025\",\"cite_id\":\"f:1685\"}],\"code\":\"result = inputs['coca_cola_2025'] - inputs['pepsi_2025']\"}]}",
     "tool_calls": [],
     "provider": "groq-llama",
     "model": "openai/gpt-oss-20b",
-    "tokens_in": 2595,
-    "tokens_out": 1110,
-    "latency_ms": 1561.9,
+    "tokens_in": 2647,
+    "tokens_out": 1981,
+    "latency_ms": 2592.217,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-lite"
@@ -68,40 +65,40 @@
    }
   },
   {
-   "key": "f4bd04551dd9b016bf6e9508f300437b49fb5e1f924e67e3ac806c6b935da814",
+   "key": "a23fad914c2ba5cea3406946a8a78f165ce7c948eaa82656012e02d0491ce6fa",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Evidence f:1575 shows Coca-Cola net income (2024-FY) of 10,631,000,000 USD, matching the claim.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Evidence f:1581 shows Coca-Cola net income (2025-FY) of 13,107,000,000 USD, matching the claim.\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Evidence f:1677 shows PepsiCo net income (2024-FY) of 9,578,000,000 USD, matching the claim.\"}, {\"finding_id\": \"F4\", \"supported\": true, \"reason\": \"Evidence f:1685 shows PepsiCo net income (2025-FY) of 8,240,000,000 USD, matching the claim.\"}, {\"finding_id\": \"F5\", \"supported\": true, \"reason\": \"2024: Coca-Cola 10,631M > PepsiCo 9,578M; 2025: Coca-Cola 13,107M > PepsiCo 8,240M, per cited evidence.\"}]}",
+    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":true},{\"finding_id\":\"F2\",\"supported\":true},{\"finding_id\":\"F3\",\"supported\":true},{\"finding_id\":\"F4\",\"supported\":true},{\"finding_id\":\"F5\",\"supported\":true},{\"finding_id\":\"F6\",\"supported\":true},{\"finding_id\":\"F7\",\"supported\":true}]}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 1012,
-    "tokens_out": 798,
-    "latency_ms": 11910.189,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 1334,
+    "tokens_out": 697,
+    "latency_ms": 1915.378,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
+     "nvidia-large",
      "gemini-flash",
-     "nvidia-large"
+     "openrouter-large"
     ]
    }
   },
   {
-   "key": "2b699adb4e691cbc79760672a7fdcf8743a876887f6a20d95cfafb0a2f9d7462",
+   "key": "c78800ee5a169f0ad89c226970a69e25fa80588fdca93800fc9285594964df84",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In FY 2024, Coca-Cola reported net income of $10.631 billion while PepsiCo reported $9.578 billion [1][2]. In FY 2025, Coca-Cola's net income increased to $13.107 billion, whereas PepsiCo's decreased to $8.240 billion [3][4]. Coca-Cola's net income exceeded PepsiCo's in both fiscal years.\",\n  \"points\": [\n    {\n      \"text\": \"Coca-Cola net income for FY 2024 was 10,631,000,000 USD.\",\n      \"cite_ids\": [\"f:1575\"]\n    },\n    {\n      \"text\": \"Coca-Cola net income for FY 2025 was 13,107,000,000 USD.\",\n      \"cite_ids\": [\"f:1581\"]\n    },\n    {\n      \"text\": \"PepsiCo net income for FY 2024 was 9,578,000,000 USD.\",\n      \"cite_ids\": [\"f:1677\"]\n    },\n    {\n      \"text\": \"PepsiCo net income for FY 2025 was 8,240,000,000 USD.\",\n      \"cite_ids\": [\"f:1685\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Net Income Comparison: Coca-Cola vs PepsiCo (FY 2024-2025)\",\n      \"columns\": [\n        \"Year\",\n        \"Coca-Cola Net Income (USD)\",\n        \"PepsiCo Net Income (USD)\"\n      ],\n      \"rows\": [\n        [\n          {\n            \"text\": \"2024\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"10,631,000,000 USD\",\n            \"cite_id\": \"f:1575\"\n          },\n          {\n            \"text\": \"9,578,000,000 USD\",\n            \"cite_id\": \"f:1677\"\n          }\n        ],\n        [\n          {\n            \"text\": \"2025\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"13,107,000,000 USD\",\n            \"cite_id\": \"f:1581\"\n          },\n          {\n            \"text\": \"8,240,000,000 USD\",\n            \"cite_id\": \"f:1685\"\n          }\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Year\",\n    \"series\": [\n      \"Coca-Cola Net Income (USD)\",\n      \"PepsiCo Net Income (USD)\"\n    ]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Net income figures for both companies for both fiscal years are directly sourced from SEC filings.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:1575\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:1677\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:1581\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:1685\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\":\"en\",\"status\":\"completed\",\"summary\":\"Coca‑Cola reported net income of 10,631,000,000 USD in 2024 and 13,107,000,000 USD in 2025, while PepsiCo reported 9,578,000,000 USD in 2024 and 8,240,000,000 USD in 2025[1][2][3][4]. In both years Coca‑Cola’s net income was higher, exceeding PepsiCo by 1,053,000,000 USD in 2024 and by 4,867,000,000 USD in 2025[5][6].\",\"points\":[{\"text\":\"Coca‑Cola net income 2024: 10,631,000,000 USD\",\"cite_ids\":[\"f:1575\"]},{\"text\":\"Coca‑Cola net income 2025: 13,107,000,000 USD\",\"cite_ids\":[\"f:1581\"]},{\"text\":\"PepsiCo net income 2024: 9,578,000,000 USD\",\"cite_ids\":[\"f:1677\"]},{\"text\":\"PepsiCo net income 2025: 8,240,000,000 USD\",\"cite_ids\":[\"f:1685\"]},{\"text\":\"Coca‑Cola exceeded PepsiCo by 1,053,000,000 USD in 2024\",\"cite_ids\":[\"k:1\"]},{\"text\":\"Coca‑Cola exceeded PepsiCo by 4,867,000,000 USD in 2025\",\"cite_ids\":[\"k:2\"]}],\"tables\":[{\"title\":\"Net Income Comparison (USD)\",\"columns\":[\"Year\",\"Coca‑Cola\",\"PepsiCo\"],\"rows\":[[{\"text\":\"2024\",\"cite_id\":null},{\"text\":\"10,631,000,000\",\"cite_id\":\"f:1575\"},{\"text\":\"9,578,000,000\",\"cite_id\":\"f:1677\"}],[{\"text\":\"2025\",\"cite_id\":null},{\"text\":\"13,107,000,000\",\"cite_id\":\"f:1581\"},{\"text\":\"8,240,000,000\",\"cite_id\":\"f:1685\"}]]}],\"chart\":{\"kind\":\"line\",\"table\":0,\"x_column\":\"Year\",\"series\":[\"Coca‑Cola\",\"PepsiCo\"]},\"confidence\":{\"level\":\"high\",\"note\":\"\"},\"unverified\":[],\"citations\":[{\"marker\":1,\"cite_id\":\"f:1575\"},{\"marker\":2,\"cite_id\":\"f:1581\"},{\"marker\":3,\"cite_id\":\"f:1677\"},{\"marker\":4,\"cite_id\":\"f:1685\"},{\"marker\":5,\"cite_id\":\"k:1\"},{\"marker\":6,\"cite_id\":\"k:2\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2428,
-    "tokens_out": 2018,
-    "latency_ms": 31802.491,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 3445,
+    "tokens_out": 1535,
+    "latency_ms": 3885.208,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
+     "nvidia-large",
      "gemini-flash",
-     "nvidia-large"
+     "openrouter-large"
     ]
    }
   }
@@ -385,6 +382,35 @@
    "error": null
   }
  ],
- "sandbox": [],
+ "sandbox": [
+  {
+   "key": "bd10debd060b2646c5ec1bfc0ae125df76ad25b577148d2d5eb086d8faf55b68",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_income_difference_2024": "1053000000.0",
+     "net_income_difference_2025": "4867000000.0"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "bd10debd060b2646c5ec1bfc0ae125df76ad25b577148d2d5eb086d8faf55b68",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_income_difference_2024": "1053000000.0",
+     "net_income_difference_2025": "4867000000.0"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  }
+ ],
  "decision": "approve"
 }

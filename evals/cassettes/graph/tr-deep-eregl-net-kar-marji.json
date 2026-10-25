@@ -12,7 +12,7 @@
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 1018,
     "tokens_out": 90,
-    "latency_ms": 4475.822,
+    "latency_ms": 1388.665,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,173 +21,82 @@
    "key": "6dd1b902074f72f50072b4e0c2b577e7cf8639d7001889563b2d558af2a19568",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Ereğli (EREGL) 2025-Q1 ve 2025-Q3 dönemleri için net kâr ve gelir verilerini getir\",\n      \"tickers\": [\"EREGL\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [\"net_income\", \"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Her çeyrek için net kâr marjını (net kâr / gelir) hesapla ve iki çeyreği karşılaştır\",\n      \"tickers\": [\"EREGL\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"]\n    }\n  ]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"EREGL için 2025-Q1 ve 2025-Q3 dönemlerinin net kâr ve gelir verilerini getir\",\n      \"tickers\": [\"EREGL\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [\"net_income\", \"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Her çeyrek için net kâr marjını (net_kâr / gelir) hesapla ve iki çeyreği karşılaştır\",\n      \"tickers\": [\"EREGL\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"]\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1199,
-    "tokens_out": 436,
-    "latency_ms": 6611.272,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "e200e02592f685c64932915a38a4ee5ed1d8afa6f3bd1246e77a36f9dd680a48",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Ereğli 2025 Q1 ve Q3 gelir ve net kar verileri\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 898,
-    "tokens_out": 99,
-    "latency_ms": 4498.523,
+    "tokens_out": 390,
+    "latency_ms": 13709.715,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "8c7621eb3d57ba37c7d7d6bcf796955f1ff51d24385a110dc3b7c88c5bdf16b8",
-   "task_class": "strong",
-   "response": {
-    "content": "{\"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Ereğli (EREGL) 2025-Q1 döneminde net dönem kârı 447.904.000 TL, hasılat 53.544.627.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2759\", \"f:2755\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Ereğli (EREGL) 2025-Q3 döneminde net dönem kârı 700.347.000 TL, hasılat 52.957.615.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2783\", \"f:2779\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"2025-Q1 net kâr marjı %0,84, 2025-Q3 net kâr marjı %1,32 olarak hesaplanmıştır. Q3 marjı Q1'e göre yaklaşık 0,48 puan (yaklaşık %57) daha yüksektir.\",\n      \"cite_ids\": [\"f:2759\", \"f:2755\", \"f:2783\", \"f:2779\"],\n      \"calcs\": [\"net_profit_margin_q1_2025\", \"net_profit_margin_q3_2025\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_profit_margin_q1_2025\",\n      \"description\": \"2025-Q1 net kâr marjı = Net dönem kârı / Hasılat\",\n      \"inputs\": [\n        {\"name\": \"net_profit\", \"cite_id\": \"f:2759\"},\n        {\"name\": \"revenue\", \"cite_id\": \"f:2755\"}\n      ],\n      \"code\": \"result = inputs['net_profit'] / inputs['revenue']\"\n    },\n    {\n      \"name\": \"net_profit_margin_q3_2025\",\n      \"description\": \"2025-Q3 net kâr marjı = Net dönem kârı / Hasılat\",\n      \"inputs\": [\n        {\"name\": \"net_profit\", \"cite_id\": \"f:2783\"},\n        {\"name\": \"revenue\", \"cite_id\": \"f:2779\"}\n      ],\n      \"code\": \"result = inputs['net_profit'] / inputs['revenue']\"\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2551,
-    "tokens_out": 1037,
-    "latency_ms": 19615.086,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "57b5e769e5af233022e717c80837e20d120a42f1b67b078d608b048e75880675",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Net dönem kârı 447.904.000 TL (f:2759) ve hasılat 53.544.627.000 TL (f:2755) kanıtlarla birebir eşleşiyor.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Net dönem kârı 700.347.000 TL (f:2783) ve hasılat 52.957.615.000 TL (f:2779) kanıtlarla birebir eşleşiyor.\"\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 1253,
-    "tokens_out": 830,
-    "latency_ms": 10242.934,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "a2a23a598649b0ef22a3f783801b46e09410f830c634684f39b33a3790c7a779",
-   "task_class": "strong",
-   "response": {
-    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Ereğli (EREGL) 2025-Q1 ve 2025-Q3 dönemleri için net kâr ve gelir verilerini getir\", \"tickers\": [\"EREGL\"], \"periods\": [\"2025-Q1\", \"2025-Q3\"], \"metrics\": [\"net_income\", \"revenue\"], \"status\": \"pending\"}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"Her çeyrek için net kâr marjını (net kâr / gelir) hesapla ve iki çeyreği karşılaştır\", \"tickers\": [\"EREGL\"], \"periods\": [\"2025-Q1\", \"2025-Q3\"], \"metrics\": [], \"status\": \"pending\"}]}",
-    "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 1452,
-    "tokens_out": 699,
-    "latency_ms": 6095.411,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "e200e02592f685c64932915a38a4ee5ed1d8afa6f3bd1246e77a36f9dd680a48",
+   "key": "6e6c5b36375c8226dfb546b13774c780a9baaa72619bc0e99546a0d590935516",
    "task_class": "cheap",
    "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"Ereğli 2025-Q1 ve 2025-Q3 net kar ve hasılat gelirleri\"}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"EREGL 2025 Q1 Q3 net kar ve hasilat gelir\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 898,
-    "tokens_out": 76,
-    "latency_ms": 3365.98,
+    "tokens_in": 893,
+    "tokens_out": 97,
+    "latency_ms": 1154.466,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "8c7621eb3d57ba37c7d7d6bcf796955f1ff51d24385a110dc3b7c88c5bdf16b8",
+   "key": "4f37b73c46cba1ef440786891660219b8f823e09f70c60ceeac9c94c7bab5a45",
    "task_class": "strong",
    "response": {
-    "content": "{\"findings\": [{\"id\": \"F1\", \"text\": \"Ereğli (EREGL) 2025-Q1 net dönem kârı 447.904.000 TL olarak raporlanmıştır.\", \"cite_ids\": [\"f:2759\", \"f:2808\"]}, {\"id\": \"F2\", \"text\": \"Ereğli (EREGL) 2025-Q1 hasılatı 53.544.627.000 TL olarak raporlanmıştır.\", \"cite_ids\": [\"f:2755\", \"f:2804\"]}, {\"id\": \"F3\", \"text\": \"Ereğli (EREGL) 2025-Q3 net dönem kârı 700.347.000 TL olarak raporlanmıştır.\", \"cite_ids\": [\"f:2783\", \"f:10937\"]}, {\"id\": \"F4\", \"text\": \"Ereğli (EREGL) 2025-Q3 hasılatı 52.957.615.000 TL olarak raporlanmıştır.\", \"cite_ids\": [\"f:2779\", \"f:10933\"]}, {\"id\": \"F5\", \"text\": \"2025-Q1 net kâr marjı %0,84, 2025-Q3 net kâr marjı %1,32 olarak hesaplanmıştır; Q3 marjı Q1'e göre 48 baz puan (yaklaşık %57) daha yüksektir.\", \"cite_ids\": [\"f:2759\", \"f:2808\", \"f:2755\", \"f:2804\", \"f:2783\", \"f:10937\", \"f:2779\", \"f:10933\"], \"calcs\": [\"net_profit_margin_q1\", \"net_profit_margin_q3\"]}], \"calculations\": [{\"name\": \"net_profit_margin_q1\", \"description\": \"2025-Q1 net kâr marjı (net kâr / hasılat)\", \"inputs\": [{\"name\": \"net_profit_q1\", \"cite_id\": \"f:2759\", \"value\": 447904000}, {\"name\": \"revenue_q1\", \"cite_id\": \"f:2755\", \"value\": 53544627000}], \"code\": \"result = inputs['net_profit_q1'] / inputs['revenue_q1']\"}, {\"name\": \"net_profit_margin_q3\", \"description\": \"2025-Q3 net kâr marjı (net kâr / hasılat)\", \"inputs\": [{\"name\": \"net_profit_q3\", \"cite_id\": \"f:2783\", \"value\": 700347000}, {\"name\": \"revenue_q3\", \"cite_id\": \"f:2779\", \"value\": 52957615000}], \"code\": \"result = inputs['net_profit_q3'] / inputs['revenue_q3']\"}]}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"2025 Q1 net kâr marjı hesaplandı.\",\n      \"cite_ids\": [\"f:2759\", \"f:2755\"],\n      \"calcs\": [\"net_margin_q1\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"2025 Q3 net kâr marjı hesaplandı.\",\n      \"cite_ids\": [\"f:2783\", \"f:2779\"],\n      \"calcs\": [\"net_margin_q3\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"2025 Q3 net kâr marjı Q1'e göre daha yüksek.\",\n      \"cite_ids\": [\"f:2759\", \"f:2755\", \"f:2783\", \"f:2779\"],\n      \"calcs\": [\"margin_diff_q3_q1\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_margin_q1\",\n      \"description\": \"Net profit margin for 2025 Q1 (net profit / revenue) as decimal.\",\n      \"inputs\": [\n        {\n          \"name\": \"net_profit_q1\",\n          \"cite_id\": \"f:2759\"\n        },\n        {\n          \"name\": \"revenue_q1\",\n          \"cite_id\": \"f:2755\"\n        }\n      ],\n      \"code\": \"result = inputs['net_profit_q1'] / inputs['revenue_q1']\"\n    },\n    {\n      \"name\": \"net_margin_q3\",\n      \"description\": \"Net profit margin for 2025 Q3 (net profit / revenue) as decimal.\",\n      \"inputs\": [\n        {\n          \"name\": \"net_profit_q3\",\n          \"cite_id\": \"f:2783\"\n        },\n        {\n          \"name\": \"revenue_q3\",\n          \"cite_id\": \"f:2779\"\n        }\n      ],\n      \"code\": \"result = inputs['net_profit_q3'] / inputs['revenue_q3']\"\n    },\n    {\n      \"name\": \"margin_diff_q3_q1\",\n      \"description\": \"Difference in net profit margin between 2025 Q3 and Q1 (Q3 - Q1) as decimal.\",\n      \"inputs\": [\n        {\n          \"name\": \"net_profit_q3\",\n          \"cite_id\": \"f:2783\"\n        },\n        {\n          \"name\": \"revenue_q3\",\n          \"cite_id\": \"f:2779\"\n        },\n        {\n          \"name\": \"net_profit_q1\",\n          \"cite_id\": \"f:2759\"\n        },\n        {\n          \"name\": \"revenue_q1\",\n          \"cite_id\": \"f:2755\"\n        }\n      ],\n      \"code\": \"result = (inputs['net_profit_q3'] / inputs['revenue_q3']) - (inputs['net_profit_q1'] / inputs['revenue_q1'])\"\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2551,
-    "tokens_out": 1195,
-    "latency_ms": 12205.543,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 2928,
+    "tokens_out": 1398,
+    "latency_ms": 3379.508,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
     ]
    }
   },
   {
-   "key": "347a6ca193791b9bb602a57535f28c2508a52ea36ba17abba6fd6f3ba1c702e1",
+   "key": "7272aebc5ea1f9bf706ddef2dc056c7b689d85aee1f52cc2d99723868f45f39b",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Her iki kanıt belgesi (f:2759, f:2808) da 2025-Q1 net dönem kârının 447.904.000 TRY olduğunu onaylar.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Her iki kanıt belgesi (f:2755, f:2804) de 2025-Q1 hasılatının 53.544.627.000 TRY olduğunu onaylar.\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Her iki kanıt belgesi (f:2783, f:10937) de 2025-Q3 net dönem kârının 700.347.000 TRY olduğunu onaylar.\"}, {\"finding_id\": \"F4\", \"supported\": true, \"reason\": \"Her iki kanıt belgesi (f:2779, f:10933) de 2025-Q3 hasılatının 52.957.615.000 TRY olduğunu onaylar.\"}]}",
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Q1 net kâr (447.904.000 TRY) ve hasılat (53.544.627.000 TRY) kanıtlarla eşleşiyor; marj hesaplaması (0.008365) doğru.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Q3 net kâr (700.347.000 TRY) ve hasılat (52.957.615.000 TRY) kanıtlarla eşleşiyor; marj hesaplaması (0.013225) doğru.\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"Q3 marjı (0.013225) Q1 marjından (0.008365) büyük; fark (0.004860) hesaplama ile uyuşuyor.\"\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 1860,
-    "tokens_out": 1415,
-    "latency_ms": 25537.936,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1298,
+    "tokens_out": 819,
+    "latency_ms": 10152.464,
     "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
+    "fallback_from": []
    }
   },
   {
-   "key": "d4259a11aebae5487def5fc0d7089e24cb4516c5e149a1010cacdf1dde559afd",
+   "key": "0465f3f28095906882dca3647f19c5b63249a2df0a1d7ad9b77fd188f8d54b70",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Ereğli'nin 2025 yılı ilk çeyreğindeki net kâr marjı %0,84, üçüncü çeyreğindeki ise %1,32 olarak gerçekleşmiştir. Üçüncü çeyrek marjı ilk çeyreğe göre yaklaşık 0,48 puan daha yüksektir.[1][2]\",\n  \"points\": [\n    {\n      \"text\": \"2025-Q1: Hasılat 53,54 Milyar TL, net dönem kârı 447,90 Milyon TL, net kâr marjı %0,84.\",\n      \"cite_ids\": [\"f:2755\", \"f:2759\", \"k:1\"]\n    },\n    {\n      \"text\": \"2025-Q3: Hasılat 52,96 Milyar TL, net dönem kârı 700,35 Milyon TL, net kâr marjı %1,32.\",\n      \"cite_ids\": [\"f:2779\", \"f:2783\", \"k:2\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Ereğli (EREGL) 2025 Q1 ve Q3 Net Kâr Marjı Karşılaştırması\",\n      \"columns\": [\"Dönem\", \"Hasılat (TL)\", \"Net Dönem Kârı (TL)\", \"Net Kâr Marjı (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"2025-Q1\", \"cite_id\": null},\n          {\"text\": \"53.544.627.000\", \"cite_id\": \"f:2755\"},\n          {\"text\": \"447.904.000\", \"cite_id\": \"f:2759\"},\n          {\"text\": \"0,84\", \"cite_id\": \"k:1\"}\n        ],\n        [\n          {\"text\": \"2025-Q3\", \"cite_id\": null},\n          {\"text\": \"52.957.615.000\", \"cite_id\": \"f:2779\"},\n          {\"text\": \"700.347.000\", \"cite_id\": \"f:2783\"},\n          {\"text\": \"1,32\", \"cite_id\": \"k:2\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Dönem\",\n    \"series\": [\"Net Kâr Marjı (%)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Her iki çeyrek için de hasılat ve net kâr verileri KAP açıklamalarından elde edilmiş, marj hesaplamaları bu veriler üzerinden yapılmıştır.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"k:1\"},\n    {\"marker\": 2, \"cite_id\": \"k:2\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\":\"tr\",\"status\":\"completed\",\"summary\":\"Ereğli'nin 2025 ilk çeyrek net kâr marjı %0,84 iken, üçüncü çeyrek %1,32'dir [1][2]. Üçüncü çeyrek marjı, ilk çeyrek marjından %0,49 daha yüksektir [3].\",\"points\":[{\"text\":\"2025 Q1 net kâr marjı %0,84.\",\"cite_ids\":[\"k:1\"]},{\"text\":\"2025 Q3 net kâr marjı %1,32.\",\"cite_ids\":[\"k:2\"]},{\"text\":\"Q3 marjı Q1'den %0,49 daha yüksektir.\",\"cite_ids\":[\"k:3\"]}],\"tables\":[{\"title\":\"2025 Net Kâr Marjları\",\"columns\":[\"Dönem\",\"Net Kâr Marjı\"],\"rows\":[[{\"text\":\"Q1\",\"cite_id\":null},{\"text\":\"%0,84\",\"cite_id\":\"k:1\"}],[{\"text\":\"Q3\",\"cite_id\":null},{\"text\":\"%1,32\",\"cite_id\":\"k:2\"}]]}],\"chart\":null,\"confidence\":{\"level\":\"high\",\"note\":\"\"},\"unverified\":[],\"citations\":[{\"marker\":1,\"cite_id\":\"k:1\"},{\"marker\":2,\"cite_id\":\"k:2\"},{\"marker\":3,\"cite_id\":\"k:3\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 3418,
-    "tokens_out": 1344,
-    "latency_ms": 14807.257,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 3589,
+    "tokens_out": 1243,
+    "latency_ms": 3157.327,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "39e0805dbc7cc3b305b2288fc2d70b4067281f683cc89c236839c1af61bee92d",
-   "task_class": "strong",
-   "response": {
-    "content": "The user says the report validation failed. Errors:\n\n- summary numbers not found in cited sources: ['0,48']\n- table 0 row 0 column 'Net Kâr Marjı (%)': numbers not found in the cited source: ['0,84']\n- table 0 row 1 column 'Net Kâr Marjı (%)': numbers not found in the cited source: ['1,32']\n\nThe issue: The summary mentions \"0,48 puan daha yüksektir\" (0.48 percentage points higher). That number is not directly cited; it's a derived difference. The table cells for net profit margin percentages (0,84 and 1,32) are not directly in the cited sources; they are calculated from the raw numbers. The citations for those cells are k:1 and k:2, which are calculation IDs. The validation expects numbers to be found in the cited source documents (the untrusted documents). The calculation outputs are numbers (0.008365... and 0.013224...). The table shows percentages with two decimals (0,84 and 1,32). The validation likely expects the exact numbers as they appear in the source documents. However, the source documents only have raw revenue and net profit, not the margin percentages. The calculations are derived. The schema allows cite_id to be a calculation cite_id (k:1). But the validation says numbers not found in the cited source. Perhaps the validation expects the numbers to be present in the untrusted_document text. Since the margin percentages are not explicitly in the untrusted documents, we need to either not include them in the table, or cite the raw numbers and show the calculation. But the table column is \"Net Kâr Marjı (%)\". The values are derived. The validation may require that the numbers in the table match the cited source exactly. Since the source doesn't contain \"0,84\", we cannot cite it. We could instead put the raw numbers and not include the margin column, but the user asked to compare net profit margins. We could present the margins as calculated but cite the raw numbers and the calculation. However the validation says numbers not found in the cited source. The cite_id for the margin cells is k:1 and k:2, which are calculations. The validation might not accept calculation cite_ids for numbers. It might only accept untrusted_document cite_ids. The error says \"numbers not found in the cited source\". The cited source for those cells is k:1 and k:2. The calculation output is a number (0.008365...). The table shows \"0,84\". That's a rounded percentage. The calculation output is 0.008365... which is 0.8365%. The table shows 0,84 (maybe 0.84%). The validation might compare the text \"0,84\" to the calculation output \"0.008365...\". They don't match. So we need to ensure the table cell text matches the calculation output exactly? But the calculation output is a decimal, not a percentage. The table expects percentage. Could we put the raw decimal? The user expects percentage. But validation is strict.\n\nWe have two options:\n1. Remove the margin column from the table, and only show raw numbers. But the user asked to compare net profit margins. We could still compare in summary and points, but not in table. However the table is required if multiple periods. The schema says tables: if multiple periods or companies, use table. We have two periods. So table is appropriate. But we can include raw numbers and maybe include margin as a calculated column but with cite_id null? But the schema requires cite_id for each cell? It's optional (cite_id can be null). The validation might still check numbers against cited source if cite_id provided. If we set cite_id null for margin cells, maybe validation passes. But the error says \"table 0 row 0 column 'Net Kâr Marjı (%)': numbers not found in the cited source: ['0,84']\". That suggests the validation checks the cell text against the cited source (the cite_id). If we set cite_id null, maybe it won't check. But the schema says cite_id is optional. However the validation might still check if a cite_id is present. In our previous table, we had cite_id \"k:1\" for the margin cell. That's a calculation cite_id. The validation might not recognize calculation cite_ids as sources for numbers. It might only accept untrusted_document cite_ids. So we should not cite the margin cells with k:1. Instead, we could cite the raw numbers (f:2755, f:2759) for the margin cell? But the margin is not in those documents. The validation might still fail.\n\nBetter: Provide the margin as a calculation in the points, not in the table. The table can show revenue and net profit only. Then the chart can be based on a table that includes margin? The chart requires a table with numeric series. Could create a separate table with margins and cite the calculations? But same issue.\n\nAlternatively, we can include the margin in the table but with the exact calculation output (0.00836505967256061) and cite k:1. But the validation expects the number to be found in the cited source. The calculation output is a number, but the cited source is a calculation object, not an untrusted_document. The validation might not look into calculations. The error says \"numbers not found in the cited source\". The cited source for the margin cell is k:1. The calculation output is 0.008365... The cell text is \"0,84\". They don't match. If we change cell text to \"0.00836505967256061\" (or \"0,00836505967256061\") it might match the calculation output. But the calculation output is a decimal, not a percentage. The user expects percentage. But we can show the decimal and note it's a ratio. However the table column is \"Net Kâr Marjı (%)\". Could change column to \"Net Kâr Marjı (Oran)\" and show decimal. But the validation might still compare the cell text to the calculation output. The calculation output is 0.00836505967256061. If we put that exact string, it might match. But the calculation output is a number, not a string. The validation might convert to string. Hard to know.\n\nSimpler: Remove the margin column from the table. Keep only revenue and net profit. Then in points, we can state the margins with cite_ids to calculations. The summary can mention the margins but not the difference (0.48). The summary numbers not found: \"0,48\" is the difference. We should not include that number in summary unless cited. We can say \"üçüncü çeyrek marjı ilk çeyreğe göre daha yüksektir\" without quantifying the difference. Or we can compute the difference and cite the calculations? But the difference is not a cited source. So avoid numeric difference.\n\nThus, adjust summary: \"Ereğli'nin 2025 yılı ilk çeyreğindeki net kâr marjı %0,84, üçüncü çeyreğindeki ise %1,32 olarak gerçekleşmiştir. Üçüncü çeyrek marjı ilk çeyreğe göre daha yüksektir.\" But the percentages are not in sources. However the summary numbers not found error only flagged '0,48'. The percentages might be okay if they are in the summary but not in citations? The summary includes numbers with citations [1][2] which are k:1 and k:2. The validation might check summary numbers against cited sources. The summary includes \"%0,84\" and \"%1,32\". Those numbers are not in the cited sources (k:1 and k:2 are calculations). The validation might also flag them. But the error only mentions '0,48'. Maybe the validation only checks numbers that are not in any source. The percentages might be considered okay because they are derived from calculations? But the error for table cells indicates they are not okay.\n\nThus, we need to ensure any numeric value in the report (summary, points, tables) must be directly present in an untrusted_document cite_id. Since the margins are not in untrusted_documents, we cannot include them as numbers. We can only include raw numbers (revenue, net profit) from untrusted_documents. We can still compare margins qualitatively.\n\nBut the user asked: \"Ereğli'nin 2025 ilk çeyrek ve üçüncü çeyrek net kâr marjlarını karşılaştır.\" They want a comparison of net profit margins. We can provide the raw data and let the user compute, but we can also compute and present as analysis, but must not present the computed numbers as if they are from sources. However the system expects us to use calculations (k:1, k:2) and cite them. The validation seems to reject numbers not found in cited sources. The cited sources for calculations are not untrusted_documents. The validation might only accept untrusted_document cite_ids. The schema allows cite_id to be any string, but the validation might check against the provided untrusted_documents and calculations. The error messages indicate that the numbers '0,84' and '1,32' are not found in the cited source (k:1 and k:2). The calculation outputs are 0.008365... and 0.013224... So the numbers don't match. If we change the table cell text to match the calculation output exactly (e.g., \"0.00836505967256061\"), it might pass. But the column is percentage. Could we output the ratio as a decimal? The user might expect percentage. But we can output the decimal and note it's a ratio. However the validation might still compare the string representation. The calculation output is a number, not a string. The validation might convert the number to string with default formatting. Hard to know.\n\nBetter approach: Use the raw numbers in the table, and add a column for net profit margin but leave it empty or with a formula? Not allowed.\n\nAlternatively, we can create a table with only raw numbers, and then in points, we can state the margins with cite_ids to calculations, but the validation might still check points numbers? The error only mentions summary and table. Points might not be validated for numbers. But the summary numbers not found includes '0,48' only. The percentages in summary might be okay because they are not explicitly numbers? They are numbers with % sign. The validation might parse numbers from summary. It flagged '0,48' but not '0,84' and '1,32'. Maybe because '0,48' is not cited at all, while '0,84' and '1,32' are cited with [1][2] which are calculations. The validation might allow numbers that are cited with calculation cite_ids? But the table cells are cited with k:1 and k:2, yet flagged. So maybe the validation for tables is stricter: it expects the cell text to exactly match the source text. For calculations, the source is a calculation object with output number. The cell text is a formatted percentage. They don't match.\n\nThus, to pass validation, we must ensure that any number in a table cell that has a cite_id must exactly match the text in the cited untrusted_document. Since the margin numbers are not in any untrusted_document, we should not include them in the table. We can omit the margin column. Then the table will have only raw numbers that are in the untrusted_documents. The chart can be based on a table that includes margin? But chart requires a table with numeric series. We could create a second table with margins and cite the calculations, but same issue. Maybe we can avoid chart altogether. The schema says chart only if the question asks how something changed over periods. The question: \"Ereğli'nin 2025 ilk çeyrek ve üçüncü çeyrek net kâr marjlarını karşılaştır.\" That is a comparison over periods, so chart is appropriate. But we can still provide a chart based on a table that has raw numbers? The chart series must be numeric columns. Could use net profit and revenue? But the user wants margin comparison. Could compute margin in the chart data but not show in table? The chart references a table index and column names. The table must have the series columns. If we create a table with margins, we face same issue.\n\nMaybe we can create a table with margins but cite the raw numbers (f:2755, f:2759) for the margin cell? That would be incorrect.\n\nGiven the validation errors, I think the intended solution is to not include the calculated margins in the table, but instead include the raw data and then in the summary and points, we can describe the margins qualitatively, or we can include the margins but with cite_ids pointing to the raw numbers and the calculations? But the validation will still check the number against the cited source text.\n\nLet's examine the untrusted_documents: They contain lines like \"Net dönem kârı (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 447.904.000 TRY\". The numbers are formatted with dots as thousand separators. The table cells used \"447.904.000\" which matches. The revenue \"53.544.627.000\" matches",
-    "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 4268,
-    "tokens_out": 3000,
-    "latency_ms": 41767.645,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
     ]
    }
   }
@@ -363,187 +272,17 @@
     }
    ],
    "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"ticker\":\"EREGL\"},\"name\":\"list_documents\"}",
-   "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 2790, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-22T16:01:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1686050\"}, {\"document_id\": 2789, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-22T16:01:11Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1686049\"}, {\"document_id\": 1566, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-06T15:16:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1644585\"}, {\"document_id\": 1565, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-06T15:16:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1644583\"}, {\"document_id\": 1564, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-24T06:30:21Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1636318\"}, {\"document_id\": 1563, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-21T18:30:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1635535\"}, {\"document_id\": 1562, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-08T15:12:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1614893\"}, {\"document_id\": 1561, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-22T12:30:29Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1610422\"}, {\"document_id\": 1560, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-19T16:42:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1608801\"}, {\"document_id\": 1559, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-28T19:37:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1598432\"}, {\"document_id\": 1558, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-28T17:12:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1598406\"}, {\"document_id\": 1557, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-28T17:12:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1598405\"}, {\"document_id\": 1556, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-09T15:13:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1590295\"}, {\"document_id\": 1555, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-09T15:12:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1590294\"}, {\"document_id\": 1554, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-26T17:41:03Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1576835\"}, {\"document_id\": 1553, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-26T17:40:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1576834\"}, {\"document_id\": 1552, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-23T15:12:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1574808\"}, {\"document_id\": 1551, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-23T15:12:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1574807\"}, {\"document_id\": 1550, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-16T15:11:55Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1573141\"}, {\"document_id\": 1549, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-02T15:12:46Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1563894\"}, {\"document_id\": 1548, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-25T15:13:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1561508\"}, {\"document_id\": 1547, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-24T15:11:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1561004\"}, {\"document_id\": 1546, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-17T15:19:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1557669\"}, {\"document_id\": 1545, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-17T15:18:42Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1557666\"}, {\"document_id\": 1544, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-17T15:18:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1557665\"}, {\"document_id\": 1543, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-04T15:11:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511242\"}, {\"document_id\": 1542, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-24T12:44:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1507787\"}, {\"document_id\": 1541, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-24T12:25:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1507771\"}, {\"document_id\": 1540, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-20T15:12:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1506135\"}, {\"document_id\": 1539, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-20T15:12:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1506134\"}, {\"document_id\": 1538, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-03T15:12:01Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1496018\"}, {\"document_id\": 1537, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-23T14:01:29Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1482165\"}, {\"document_id\": 1536, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-06T15:12:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1473204\"}, {\"document_id\": 1535, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-06T15:12:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1473202\"}, {\"document_id\": 1534, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-05T15:31:35Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1472576\"}, {\"document_id\": 1533, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-25T06:00:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1466397\"}, {\"document_id\": 1532, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-18T16:42:42Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1464825\"}, {\"document_id\": 1531, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-18T06:03:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1464502\"}, {\"document_id\": 1530, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-27T17:15:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1452961\"}, {\"document_id\": 1529, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-11T15:11:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1447725\"}, {\"document_id\": 1528, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-27T16:59:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1442589\"}, {\"document_id\": 1527, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-22T15:15:21Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1441185\"}, {\"document_id\": 1526, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-22T15:14:05Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1441180\"}, {\"document_id\": 1525, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-22T12:34:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1441060\"}, {\"document_id\": 1524, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-29T15:12:41Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431041\"}, {\"document_id\": 1523, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-29T15:12:29Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431038\"}, {\"document_id\": 1522, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-17T16:09:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1427276\"}, {\"document_id\": 1521, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-17T16:09:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1427275\"}, {\"document_id\": 1520, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-26T17:36:21Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1412522\"}, {\"document_id\": 1519, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-21T15:12:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1409891\"}, {\"document_id\": 1518, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-03T15:12:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1398733\"}, {\"document_id\": 1517, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-24T15:11:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1395221\"}, {\"document_id\": 1516, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-12T16:01:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1392336\"}, {\"document_id\": 1515, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-12T15:20:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1392295\"}, {\"document_id\": 1514, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-12T15:20:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1392293\"}, {\"document_id\": 1513, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-12T15:19:41Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1392292\"}, {\"document_id\": 1512, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-20T15:55:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1382804\"}, {\"document_id\": 1511, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-27T15:20:21Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1369322\"}, {\"document_id\": 1510, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-18T15:12:01Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1358654\"}, {\"document_id\": 1509, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-10-25T15:29:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1351034\"}, {\"document_id\": 1508, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-10-25T15:16:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1350994\"}, {\"document_id\": 1507, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-22T15:16:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1350041\"}, {\"document_id\": 1506, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-22T15:16:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1350040\"}]}",
-   "summary": "EREGL documents",
-   "count": 63,
-   "items": [],
-   "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\"],\"periods\":[\"2025-Q1\",\"2025-Q3\"],\"ticker\":\"EREGL\"},\"name\":\"get_financial_facts\"}",
-   "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:2759\">Net dönem kârı (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 447.904.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2808\">Net dönem kârı (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 447.904.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2783\">Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 700.347.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:10937\">Net dönem kârı (2025-Q3; Önceki Dönem 3 Aylık 01.07.2025 - 30.09.2025; 2026-Q3 raporu): 700.347.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2755\">Hasılat (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 53.544.627.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2804\">Hasılat (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 53.544.627.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2779\">Hasılat (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 52.957.615.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:10933\">Hasılat (2025-Q3; Önceki Dönem 3 Aylık 01.07.2025 - 30.09.2025; 2026-Q3 raporu): 52.957.615.000 TRY</untrusted_document>",
-   "summary": "EREGL 2025-Q1 to 2025-Q3 net_income, revenue",
-   "count": 8,
-   "items": [
-    {
-     "cite_id": "f:2759",
-     "text": "Net dönem kârı (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 447.904.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 1523,
-      "ticker": "EREGL",
-      "doc_type": "kap_financial_report",
-      "period": "2025-Q1",
-      "metric": "net_income",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.03.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1431038"
-     },
-     "value": "447904000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:2808",
-     "text": "Net dönem kârı (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 447.904.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 1557,
-      "ticker": "EREGL",
-      "doc_type": "kap_financial_report",
-      "period": "2025-Q1",
-      "metric": "net_income",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Önceki Dönem 01.01.2025 - 31.03.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1598405"
-     },
-     "value": "447904000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:2783",
-     "text": "Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 700.347.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 1539,
-      "ticker": "EREGL",
-      "doc_type": "kap_financial_report",
-      "period": "2025-Q3",
-      "metric": "net_income",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1506134"
-     },
-     "value": "700347000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:10937",
-     "text": "Net dönem kârı (2025-Q3; Önceki Dönem 3 Aylık 01.07.2025 - 30.09.2025; 2026-Q3 raporu): 700.347.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 2789,
-      "ticker": "EREGL",
-      "doc_type": "kap_financial_report",
-      "period": "2025-Q3",
-      "metric": "net_income",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Önceki Dönem 3 Aylık 01.07.2025 - 30.09.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1686049"
-     },
-     "value": "700347000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:2755",
-     "text": "Hasılat (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 53.544.627.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 1523,
-      "ticker": "EREGL",
-      "doc_type": "kap_financial_report",
-      "period": "2025-Q1",
-      "metric": "revenue",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Cari Dönem 01.01.2025 - 31.03.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1431038"
-     },
-     "value": "53544627000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:2804",
-     "text": "Hasılat (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 53.544.627.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 1557,
-      "ticker": "EREGL",
-      "doc_type": "kap_financial_report",
-      "period": "2025-Q1",
-      "metric": "revenue",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Önceki Dönem 01.01.2025 - 31.03.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1598405"
-     },
-     "value": "53544627000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:2779",
-     "text": "Hasılat (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 52.957.615.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 1539,
-      "ticker": "EREGL",
-      "doc_type": "kap_financial_report",
-      "period": "2025-Q3",
-      "metric": "revenue",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1506134"
-     },
-     "value": "52957615000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:10933",
-     "text": "Hasılat (2025-Q3; Önceki Dönem 3 Aylık 01.07.2025 - 30.09.2025; 2026-Q3 raporu): 52.957.615.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 2789,
-      "ticker": "EREGL",
-      "doc_type": "kap_financial_report",
-      "period": "2025-Q3",
-      "metric": "revenue",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Önceki Dönem 3 Aylık 01.07.2025 - 30.09.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1686049"
-     },
-     "value": "52957615000",
-     "scale": "1",
-     "unit_note": null
-    }
-   ],
-   "error": null
   }
  ],
  "sandbox": [
   {
-   "key": "897f1beba6f186ecae7980b63c2502bf1e1d93045990910ee1108edf5d74482f",
+   "key": "11ac47924451dfd24953733a8106a5214c6ed6bfa3c38c26b40bce3c63129b34",
    "response": {
     "ok": true,
     "outputs": {
-     "net_profit_margin_q1_2025": "0.00836505967256061",
-     "net_profit_margin_q3_2025": "0.013224670333057862"
+     "net_margin_q1": "0.00836505967256061",
+     "net_margin_q3": "0.013224670333057862",
+     "margin_diff_q3_q1": "0.004859610660497251"
     },
     "stdout": "",
     "error": null,
@@ -552,40 +291,13 @@
    }
   },
   {
-   "key": "897f1beba6f186ecae7980b63c2502bf1e1d93045990910ee1108edf5d74482f",
+   "key": "11ac47924451dfd24953733a8106a5214c6ed6bfa3c38c26b40bce3c63129b34",
    "response": {
     "ok": true,
     "outputs": {
-     "net_profit_margin_q1_2025": "0.00836505967256061",
-     "net_profit_margin_q3_2025": "0.013224670333057862"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  },
-  {
-   "key": "6f73e97ade26ffe1c3c92d29bfd992f9cdc8c1334263dc76c77bac661ba35a39",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "net_profit_margin_q1": "0.00836505967256061",
-     "net_profit_margin_q3": "0.013224670333057862"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  },
-  {
-   "key": "6f73e97ade26ffe1c3c92d29bfd992f9cdc8c1334263dc76c77bac661ba35a39",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "net_profit_margin_q1": "0.00836505967256061",
-     "net_profit_margin_q3": "0.013224670333057862"
+     "net_margin_q1": "0.00836505967256061",
+     "net_margin_q3": "0.013224670333057862",
+     "margin_diff_q3_q1": "0.004859610660497251"
     },
     "stdout": "",
     "error": null,

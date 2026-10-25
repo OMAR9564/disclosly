@@ -6,164 +6,207 @@
    "key": "e3f76627adfdde75553a6099f098226f295587808cd2b61c346ab2e620b88ef8",
    "task_class": "cheap",
    "response": {
-    "content": "{\"mode\": \"deep\", \"tickers\": [\"ASELS\"], \"periods\": [\"2025-FY\", \"2026-Q2\"], \"metrics\": [\"cash\", \"total_debt\"], \"uses_watchlist\": false, \"memory_intent\": null}",
+    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"ASELS\"\n  ],\n  \"periods\": [\n    \"2025-FY\",\n    \"2026-Q2\"\n  ],\n  \"metrics\": [\n    \"total_debt\",\n    \"cash\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 1025,
-    "tokens_out": 58,
-    "latency_ms": 1036.209,
+    "tokens_out": 94,
+    "latency_ms": 1255.139,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "a389d9171d157d7e1c1d9d15f69dcba5e45858e1cdd3529833df4a04fc6a903c",
+   "key": "55d158f74995537615dde776d0ab1841a9843de35f14d8b1ab29ec195107cd6e",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Aselsan'ın 2025 yıl sonu ve 2026 yıl 2. çeyreği nakit ve toplam borç rakamlarını getir\",\n      \"tickers\": [\"ASELS\"],\n      \"periods\": [\"2025-FY\", \"2026-Q2\"],\n      \"metrics\": [\"cash\", \"total_debt\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"2025 yıl sonundan 2026 yıl 2. çeyreğine nakit ve toplam borçtaki değişimi (fark ve yüzde) hesapla\",\n      \"tickers\": [\"ASELS\"],\n      \"periods\": [\"2025-FY\", \"2026-Q2\"],\n      \"metrics\": []\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Aselsan'ın 2025 yıl sonu ve 2026 yıl 2. çeyreği için toplam borç ve nakit rakamlarını getir\",\n      \"tickers\": [\"ASELS\"],\n      \"periods\": [\"2025-FY\", \"2026-Q2\"],\n      \"metrics\": [\"total_debt\", \"cash\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"2025 yıl sonundan 2026 yıl 2. çeyreğine toplam borç ve nakitdeki değişimi (fark ve yüzde) hesapla\",\n      \"tickers\": [\"ASELS\"],\n      \"periods\": [\"2025-FY\", \"2026-Q2\"],\n      \"metrics\": [\"total_debt\", \"cash\"]\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1207,
-    "tokens_out": 375,
-    "latency_ms": 10221.189,
+    "tokens_out": 383,
+    "latency_ms": 11854.304,
     "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
+    "fallback_from": []
    }
   },
   {
-   "key": "c23f442b2d0b4f1c6de8fa7504d57e238713637d480ccc80e2b712658fdfa3c8",
+   "key": "5d42ff349e4e6fb3c715579aedd1e5fa3a4a6ae3de41bf6e384bedc91d1bcc22",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Aselsan 2025 12 ve 2026 06 finansal rapor nakit toplam borç\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Aselsan toplam borç nakit 2025 2026 çeyrek bilanço\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 901,
-    "tokens_out": 107,
-    "latency_ms": 962.396,
+    "tokens_out": 102,
+    "latency_ms": 1388.371,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "35e8974c134c0ff62910556c4483b6c23652dfb10c7c0a31b1cd1a051921cbc9",
+   "key": "d0c477de93b3a3d326c944ad33ca4d36f5b399e7a351b8276d7042f9fc0c18b0",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Aselsan'ın 2025 yıl sonu (31.12.2025) nakit ve nakit benzerleri, 2026-Q2 raporunda yeniden düzenlenmiş (restated) olarak 34.251.653.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2096\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Aselsan'ın 2026 yıl 2. çeyreği (30.06.2026) nakit ve nakit benzerleri 39.468.926.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2095\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Aselsan'ın 2025 yıl sonu (31.12.2025) toplam borcu, 2026-Q2 raporunda yeniden düzenlenmiş (restated) olarak 50.702.532.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2104\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"Aselsan'ın 2026 yıl 2. çeyreği (30.06.2026) toplam borcu 73.293.290.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2103\"]\n    },\n    {\n      \"id\": \"F5\",\n      \"text\": \"Nakit ve nakit benzerleri 2025 yıl sonundan 2026 yıl 2. çeyreğine 5.217.273.000 TL artmış, bu da %15,2'lik bir artışa karşılık gelmektedir.\",\n      \"cite_ids\": [\"f:2096\", \"f:2095\"],\n      \"calcs\": [\"cash_change\"]\n    },\n    {\n      \"id\": \"F6\",\n      \"text\": \"Toplam borç 2025 yıl sonundan 2026 yıl 2. çeyreğine 22.590.758.000 TL artmış, bu da %44,6'lık bir artışa karşılık gelmektedir.\",\n      \"cite_ids\": [\"f:2104\", \"f:2103\"],\n      \"calcs\": [\"debt_change\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"cash_change\",\n      \"description\": \"Nakit değişimi (fark ve yüzde): (2026-Q2 nakit - 2025-FY nakit) / 2025-FY nakit\",\n      \"inputs\": [\n        {\n          \"name\": \"cash_2025\",\n          \"cite_id\": \"f:2096\",\n          \"value\": 34251653000\n        },\n        {\n          \"name\": \"cash_2026q2\",\n          \"cite_id\": \"f:2095\",\n          \"value\": 39468926000\n        }\n      ],\n      \"code\": \"diff = inputs['cash_2026q2'] - inputs['cash_2025']; pct = diff / inputs['cash_2025']; result = {'diff': diff, 'pct': pct}\"\n    },\n    {\n      \"name\": \"debt_change\",\n      \"description\": \"Toplam borç değişimi (fark ve yüzde): (2026-Q2 borç - 2025-FY borç) / 2025-FY borç\",\n      \"inputs\": [\n        {\n          \"name\": \"debt_2025\",\n          \"cite_id\": \"f:2104\",\n          \"value\": 50702532000\n        },\n        {\n          \"name\": \"debt_2026q2\",\n          \"cite_id\": \"f:2103\",\n          \"value\": 73293290000\n        }\n      ],\n      \"code\": \"diff = inputs['debt_2026q2'] - inputs['debt_2025']; pct = diff / inputs['debt_2025']; result = {'diff': diff, 'pct': pct}\"\n    }\n  ]\n}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"2025 yılı sonu toplam borç 43.056.550.000 TRY\",\n      \"cite_ids\": [\"f:2077\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"2026 yılının 2. çeyreği sonu toplam borç 73.293.290.000 TRY\",\n      \"cite_ids\": [\"f:2103\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"2025 yılı sonu nakit ve nakit benzerleri 29.086.476.000 TRY\",\n      \"cite_ids\": [\"f:2067\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"2026 yılının 2. çeyreği sonu nakit ve nakit benzerleri 39.468.926.000 TRY\",\n      \"cite_ids\": [\"f:2095\"]\n    },\n    {\n      \"id\": \"F5\",\n      \"text\": \"Toplam borç 2025 sonundan 2026 Q2'ye 30.236.740.000 TRY artmıştır\",\n      \"cite_ids\": [\"f:2077\", \"f:2103\"],\n      \"calcs\": [\"debt_change_abs\"]\n    },\n    {\n      \"id\": \"F6\",\n      \"text\": \"Bu artış %70,25'tir\",\n      \"cite_ids\": [\"f:2077\", \"f:2103\"],\n      \"calcs\": [\"debt_change_pct\"]\n    },\n    {\n      \"id\": \"F7\",\n      \"text\": \"Nakit 2025 sonundan 2026 Q2'ye 10.382.450.000 TRY artmıştır\",\n      \"cite_ids\": [\"f:2067\", \"f:2095\"],\n      \"calcs\": [\"cash_change_abs\"]\n    },\n    {\n      \"id\": \"F8\",\n      \"text\": \"Bu artış %35,70'tir\",\n      \"cite_ids\": [\"f:2067\", \"f:2095\"],\n      \"calcs\": [\"cash_change_pct\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"debt_change_abs\",\n      \"description\": \"Toplam borç değişimi (2026-Q2 - 2025-FY) TRY cinsinden\",\n      \"inputs\": [\n        {\n          \"name\": \"debt_2026\",\n          \"cite_id\": \"f:2103\"\n        },\n        {\n          \"name\": \"debt_2025\",\n          \"cite_id\": \"f:2077\"\n        }\n      ],\n      \"code\": \"result = inputs['debt_2026'] - inputs['debt_2025']\"\n    },\n    {\n      \"name\": \"debt_change_pct\",\n      \"description\": \"Toplam borç değişiminin 2025-FY'ye oranı (oran)\",\n      \"inputs\": [\n        {\n          \"name\": \"debt_2026\",\n          \"cite_id\": \"f:2103\"\n        },\n        {\n          \"name\": \"debt_2025\",\n          \"cite_id\": \"f:2077\"\n        }\n      ],\n      \"code\": \"result = (inputs['debt_2026'] - inputs['debt_2025']) / inputs['debt_2025']\"\n    },\n    {\n      \"name\": \"cash_change_abs\",\n      \"description\": \"Nakit değişimi (2026-Q2 - 2025-FY) TRY cinsinden\",\n      \"inputs\": [\n        {\n          \"name\": \"cash_2026\",\n          \"cite_id\": \"f:2095\"\n        },\n        {\n          \"name\": \"cash_2025\",\n          \"cite_id\": \"f:2067\"\n        }]}]}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2476,
-    "tokens_out": 1863,
-    "latency_ms": 18219.187,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 2886,
+    "tokens_out": 2048,
+    "latency_ms": 4720.886,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
     ]
    }
   },
   {
-   "key": "61a818dbe8b259d3531e7118562bf769c1724ebbcf5bbd5739d62faa86c01b50",
+   "key": "2fa7250ccc59c2ce2bf3909cfdc5706c0604f12b12a7514a753f551db81ba417",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"\"}]}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"2025 yılı sonu toplam borç 43.056.550.000 TRY\",\n      \"cite_ids\": [\"f:2077\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"2026 yılının 2. çeyreği sonu toplam borç 73.293.290.000 TRY\",\n      \"cite_ids\": [\"f:2103\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"2025 yılı sonu nakit ve nakit benzerleri 29.086.476.000 TRY\",\n      \"cite_ids\": [\"f:2067\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"2026 yılının 2. çeyreği sonu nakit ve nakit benzerleri 39.468.926.000 TRY\",\n      \"cite_ids\": [\"f:2095\"]\n    },\n    {\n      \"id\": \"F5\",\n      \"text\": \"Toplam borç 2025 sonundan 2026 Q2'ye 30.236.740.000 TRY artmıştır\",\n      \"cite_ids\": [\"f:2077\", \"f:2103\"],\n      \"calcs\": [\"debt_change_abs\"]\n    },\n    {\n      \"id\": \"F6\",\n      \"text\": \"Bu artış %70,25'tir\",\n      \"cite_ids\": [\"f:2077\", \"f:2103\"],\n      \"calcs\": [\"debt_change_pct\"]\n    },\n    {\n      \"id\": \"F7\",\n      \"text\": \"Nakit 2025 sonundan 2026 Q2'ye 10.382.450.000 TRY artmıştır\",\n      \"cite_ids\": [\"f:2067\", \"f:2095\"],\n      \"calcs\": [\"cash_change_abs\"]\n    },\n    {\n      \"id\": \"F8\",\n      \"text\": \"Bu artış %35,70'tir\",\n      \"cite_ids\": [\"f:2067\", \"f:2095\"],\n      \"calcs\": [\"cash_change_pct\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"debt_change_abs\",\n      \"description\": \"Toplam borç değişimi (2026-Q2 - 2025-FY) TRY cinsinden\",\n      \"inputs\": [\n        {\n          \"name\": \"debt_2026\",\n          \"cite_id\": \"f:2103\"\n        },\n        {\n          \"name\": \"debt_2025\",\n          \"cite_id\": \"f:2077\"\n        }\n      ],\n      \"code\": \"result = inputs['debt_2026'] - inputs['debt_2025']\"\n    },\n    {\n      \"name\": \"debt_change_pct\",\n      \"description\": \"Toplam borç değişiminin 2025-FY'ye oranı (oran)\",\n      \"inputs\": [\n        {\n          \"name\": \"debt_2026\",\n          \"cite_id\": \"f:2103\"\n        },\n        {\n          \"name\": \"debt_2025\",\n          \"cite_id\": \"f:2077\"\n        }\n      ],\n      \"code\": \"result = (inputs['debt_2026'] - inputs['debt_2025']) / inputs['debt_2025']\"\n    },\n    {\n      \"name\": \"cash_change_abs\",\n      \"description\": \"Nakit değişimi (2026-Q2 - 2025-FY) TRY cinsinden\",\n      \"inputs\": [\n        {\n          \"name\": \"cash_2026\",\n          \"cite_id\": \"f:2095\"\n        },\n        {\n          \"name\": \"cash_2025\",\n          \"cite_id\": \"f:2067\"\n        }\n      ],\n      \"code\": \"result = inputs['cash_2026'] - inputs['cash_2025']\"\n    },\n    {\n      \"name\": \"cash_change_pct\",\n      \"description\": \"Nakit değişiminin 2025-FY'ye oranı (oran)\",\n      \"inputs\": [\n        {\n          \"name\": \"cash_2026\",\n          \"cite_id\": \"f:2095\"\n        },\n        {\n          \"name\": \"cash_2025\",\n          \"cite_id\": \"f:2067\"\n        }\n      ],\n      \"code\": \"result = (inputs['cash_2026'] - inputs['cash_2025']) / inputs['cash_2025']\"\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "gemini-flash-stable",
-    "model": "gemini-2.5-flash",
-    "tokens_in": 973,
-    "tokens_out": 41,
-    "latency_ms": 3806.255,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 3757,
+    "tokens_out": 1338,
+    "latency_ms": 3155.866,
+    "cache_hit": false,
+    "fallback_from": [
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
+    ]
+   }
+  },
+  {
+   "key": "735e35ec8e647bf37d0360c73ec93dc7d76dd55ef495d31384027fee3ff9ec25",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":true,\"reason\":\"Matches cited figure\"},{\"finding_id\":\"F3\",\"supported\":true,\"reason\":\"Matches cited figure\"},{\"finding_id\":\"F5\",\"supported\":true,\"reason\":\"Difference matches calculation\"},{\"finding_id\":\"F7\",\"supported\":true,\"reason\":\"Difference matches calculation\"},{\"finding_id\":\"F8\",\"supported\":true,\"reason\":\"Percentage matches rounded calculation\"}]}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 1458,
+    "tokens_out": 990,
+    "latency_ms": 2454.172,
+    "cache_hit": false,
+    "fallback_from": [
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
+    ]
+   }
+  },
+  {
+   "key": "a2cf58efb557dd9c7c248231bb8b212cab5c166c44a8662881b81c60ec1ac2df",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Aselsan'ın 2025 yıl sonu ve 2026 yıl 2. çeyreği için toplam borç ve nakit rakamlarını getir\",\n      \"tickers\": [\"ASELS\"],\n      \"periods\": [\"2025-FY\", \"2026-Q2\"],\n      \"metrics\": [\"total_debt\", \"cash\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"2025 yıl sonundan 2026 yıl 2. çeyreğine toplam borç ve nakitdeki değişimi (fark ve yüzde) hesapla\",\n      \"tickers\": [\"ASELS\"],\n      \"periods\": [\"2025-FY\", \"2026-Q2\"],\n      \"metrics\": [\"total_debt\", \"cash\"]\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1539,
+    "tokens_out": 926,
+    "latency_ms": 11021.975,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "1871048dd2a7e7969a6bbc4c1ffd8f76933f2eef65fe806d880647617b45ba78",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Aselsan'ın 2025 yıl sonu ve 2026 yıl 2. çeyreği nakit ve toplam borç rakamlarını getir\",\n      \"tickers\": [\"ASELS\"],\n      \"periods\": [\"2025-FY\", \"2026-Q2\"],\n      \"metrics\": [\"cash\", \"total_debt\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"2025 yıl sonundan 2026 yıl 2. çeyreğine nakit ve toplam borçtaki değişimi (fark ve yüzde) hesapla\",\n      \"tickers\": [\"ASELS\"],\n      \"periods\": [\"2025-FY\", \"2026-Q2\"],\n      \"metrics\": []\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 1642,
-    "tokens_out": 474,
-    "latency_ms": 13208.956,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "c23f442b2d0b4f1c6de8fa7504d57e238713637d480ccc80e2b712658fdfa3c8",
+   "key": "5d42ff349e4e6fb3c715579aedd1e5fa3a4a6ae3de41bf6e384bedc91d1bcc22",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Aselsan 2025 12 ve 2026 06 finansal raporu toplam borç ve nakit\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"Aselsan 2025 yıl sonu ve 2026 2. çeyrek finansal raporu toplam borç ve nakit\"}, {\"step_id\": \"s2\", \"sufficient\": true, \"rewritten_query\": null}]}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 901,
-    "tokens_out": 109,
-    "latency_ms": 1561.28,
+    "tokens_out": 80,
+    "latency_ms": 894.174,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "35e8974c134c0ff62910556c4483b6c23652dfb10c7c0a31b1cd1a051921cbc9",
+   "key": "d0c477de93b3a3d326c944ad33ca4d36f5b399e7a351b8276d7042f9fc0c18b0",
    "task_class": "strong",
    "response": {
-    "content": "{\"findings\": [\n    {\"id\": \"F1\", \"text\": \"Aselsan'ın 2025 yıl sonu (31.12.2025) nakit ve nakit benzerleri 29.086.476.000 TL'dir.\", \"cite_ids\": [\"f:2067\"]},\n    {\"id\": \"F2\", \"text\": \"Aselsan'ın 2026 yıl 2. çeyreği (30.06.2026) nakit ve nakit benzerleri 39.468.926.000 TL'dir.\", \"cite_ids\": [\"f:2095\"]},\n    {\"id\": \"F3\", \"text\": \"Aselsan'ın 2025 yıl sonu (31.12.2025) toplam borcu 43.056.550.000 TL'dir.\", \"cite_ids\": [\"f:2077\"]},\n    {\"id\": \"F4\", \"text\": \"Aselsan'ın 2026 yıl 2. çeyreği (30.06.2026) toplam borcu 73.293.290.000 TL'dir.\", \"cite_ids\": [\"f:2103\"]},\n    {\"id\": \"F5\", \"text\": \"2025 yıl sonundan 2026 yıl 2. çeyreğine nakit ve nakit benzerleri 10.382.450.000 TL artmış, %35,7 büyüme göstermiştir.\", \"cite_ids\": [\"f:2067\", \"f:2095\"], \"calcs\": [\"cash_change\"]},\n    {\"id\": \"F6\", \"text\": \"2025 yıl sonundan 2026 yıl 2. çeyreğine toplam borç 30.236.740.000 TL artmış, %70,2 büyüme göstermiştir.\", \"cite_ids\": [\"f:2077\", \"f:2103\"], \"calcs\": [\"debt_change\"]}\n  ],\n  \"calculations\": [\n    {\"name\": \"cash_change\", \"description\": \"Nakit ve nakit benzerlerindeki mutlak fark ve yüzde değişim (2025-FY → 2026-Q2)\", \"inputs\": [{\"name\": \"cash_2025\", \"cite_id\": \"f:2067\"}, {\"name\": \"cash_2026q2\", \"cite_id\": \"f:2095\"}], \"code\": \"result = {'abs_change': inputs['cash_2026q2'] - inputs['cash_2025'], 'pct_change': (inputs['cash_2026q2'] - inputs['cash_2025']) / inputs['cash_2025']}\"},\n    {\"name\": \"debt_change\", \"description\": \"Toplam borçtaki mutlak fark ve yüzde değişim (2025-FY → 2026-Q2)\", \"inputs\": [{\"name\": \"debt_2025\", \"cite_id\": \"f:2077\"}, {\"name\": \"debt_2026q2\", \"cite_id\": \"f:2103\"}], \"code\": \"result = {'abs_change': inputs['debt_2026q2'] - inputs['debt_2025'], 'pct_change': (inputs['debt_2026q2'] - inputs['debt_2025']) / inputs['debt_2025']}\"}\n  ]}",
+    "content": "{\n  \"$defs\": {\n    \"CalcInputSpec\": {\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"name\": {\n          \"pattern\": \"^[a-z][a-z0-9_]{0,39}$\",\n          \"title\": \"Name\",\n          \"type\": \"string\"\n        },\n        \"cite_id\": {\n          \"title\": \"Cite Id\",\n          \"type\": \"string\"\n        },\n        \"value\": {\n          \"anyOf\": [\n            {\n              \"type\": \"number\"\n            },\n            {\n              \"type\": \"string\"\n            },\n            {\n              \"type\": \"null\"\n            }\n          ],\n          \"default\": null,\n          \"title\": \"Value\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"cite_id\"\n      ],\n      \"title\": \"CalcInputSpec\",\n      \"type\": \"object\"\n    },\n    \"CalculationSpec\": {\n      \"additionalProperties\": false,\n      \"description\": \"What the analyst model writes; the `k:` id, input values and output are set in code.\",\n      \"properties\": {\n        \"name\": {\n          \"pattern\": \"^[a-z][a-z0-9_]{0,39}$\",\n          \"title\": \"Name\",\n          \"type\": \"string\"\n        },\n        \"description\": {\n          \"maxLength\": 500,\n          \"minLength\": 1,\n          \"title\": \"Description\",\n          \"type\": \"string\"\n        },\n        \"inputs\": {\n          \"items\": {\n            \"$ref\": \"#/$defs/CalcInputSpec\"\n          },\n          \"maxItems\": 12,\n          \"minItems\": 1,\n          \"title\": \"Inputs\",\n          \"type\": \"array\"\n        },\n        \"code\": {\n          \"maxLength\": 4000,\n          \"minLength\": 1,\n          \"title\": \"Code\",\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"name\",\n        \"description\",\n        \"inputs\",\n        \"code\"\n      ],\n      \"title\": \"CalculationSpec\",\n      \"type\": \"object\"\n    },\n    \"Finding\": {\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"id\": {\n          \"maxLength\": 20,\n          \"minLength\": 1,\n          \"title\": \"Id\",\n          \"type\": \"string\"\n        },\n        \"text\": {\n          \"maxLength\": 1000,\n          \"minLength\": 1,\n          \"title\": \"Text\",\n          \"type\": \"string\"\n        },\n        \"cite_ids\": {\n          \"items\": {\n            \"type\": \"string\"\n          },\n          \"minItems\": 1,\n          \"title\": \"Cite Ids\",\n          \"type\": \"array\"\n        },\n        \"calcs\": {\n          \"items\": {\n            \"type\": \"string\"\n          },\n          \"title\": \"Calcs\",\n          \"type\": \"array\"\n        }\n      },\n      \"required\": [\n        \"id\",\n        \"text\",\n        \"cite_ids\"\n      ],\n      \"title\": \"Finding\",\n      \"type\": \"object\"\n    }\n  },\n  \"additionalProperties\": false,\n  \"properties\": {\n    \"findings\": {\n      \"items\": {\n        \"$ref\": \"#/$defs/Finding\"\n      },\n      \"maxItems\": 30,\n      \"title\": \"Findings\",\n      \"type\": \"array\"\n    },\n    \"calculations\": {\n      \"items\": {\n        \"$ref\": \"#/$defs/CalculationSpec\"\n      },\n      \"maxItems\": 8,\n      \"title\": \"Calculations\",\n      \"type\": \"array\"\n    }\n  },\n  \"required\": [\n    \"findings\"\n  ],\n  \"title\": \"AnalystOutput\",\n  \"type\": \"object\",\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"2025 yıl sonu Aselsan'ın toplam borcu 43.056.550.000 TRY\",\n      \"cite_ids\": [\"f:2077\"]\n    }]}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2476,
-    "tokens_out": 1361,
-    "latency_ms": 16217.396,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 2886,
+    "tokens_out": 2048,
+    "latency_ms": 4814.913,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
     ]
    }
   },
   {
-   "key": "d951b7068ae64f1279b9460d4786c850dc0138fc1783c8dd9b269c295289ccbf",
+   "key": "2176392ce356431504e15b4b58ef1110b7bf0c2b1bb5c76a56c6d645a9f2e898",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true}, {\"finding_id\": \"F3\", \"supported\": true}]}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"2025 yıl sonu Aselsan'ın toplam borcu 43.056.550.000 TRY\",\n      \"cite_ids\": [\"f:2077\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"2026 yılının 2. çeyreğinde Aselsan'ın toplam borcu 73.293.290.000 TRY\",\n      \"cite_ids\": [\"f:2103\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"2025 yıl sonu Aselsan'ın nakit ve nakit benzerleri 29.086.476.000 TRY\",\n      \"cite_ids\": [\"f:2067\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"2026 yılının 2. çeyreğinde Aselsan'ın nakit ve nakit benzerleri 39.468.926.000 TRY\",\n      \"cite_ids\": [\"f:2095\"]\n    },\n    {\n      \"id\": \"F5\",\n      \"text\": \"Toplam borç 2025 yıl sonundan 2026 Q2'ye 30.236.740.000 TRY artmıştır\",\n      \"cite_ids\": [\"f:2077\", \"f:2103\"],\n      \"calcs\": [\"debt_change_abs\"]\n    },\n    {\n      \"id\": \"F6\",\n      \"text\": \"Bu artış %70,25'e (0,7025) eşittir\",\n      \"cite_ids\": [\"f:2077\", \"f:2103\"],\n      \"calcs\": [\"debt_change_pct\"]\n    },\n    {\n      \"id\": \"F7\",\n      \"text\": \"Nakit 2025 yıl sonundan 2026 Q2'ye 10.382.450.000 TRY artmıştır\",\n      \"cite_ids\": [\"f:2067\", \"f:2095\"],\n      \"calcs\": [\"cash_change_abs\"]\n    },\n    {\n      \"id\": \"F8\",\n      \"text\": \"Bu artış %35,70'e (0,3570) eşittir\",\n      \"cite_ids\": [\"f:2067\", \"f:2095\"],\n      \"calcs\": [\"cash_change_pct\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"debt_change_abs\",\n      \"description\": \"Toplam borç değişimi (mutlak değer) TRY cinsinden\",\n      \"inputs\": [\n        {\n          \"name\": \"debt_2025\",\n          \"cite_id\": \"f:2077\"\n        },\n        {\n          \"name\": \"debt_2026\",\n          \"cite_id\": \"f:2103\"\n        }\n      ],\n      \"code\": \"result = inputs['debt_2026'] - inputs['debt_2025']\"\n    },\n    {\n      \"name\": \"debt_change_pct\",\n      \"description\": \"Toplam borç değişimi yüzde olarak (0-1 arası oran)\",\n      \"inputs\": [\n        {\n          \"name\": \"debt_2025\",\n          \"cite_id\": \"f:2077\"\n        },\n        {\n          \"name\": \"debt_2026\",\n          \"cite_id\": \"f:2103\"\n        }\n      ],\n      \"code\": \"result = (inputs['debt_2026'] - inputs['debt_2025']) / inputs['debt_2025']\"\n    },\n    {\n      \"name\": \"cash_change_abs\",\n      \"description\": \"Nakit değişimi (mutlak değer) TRY cinsinden\",\n      \"inputs\": [\n        {\n          \"name\": \"cash_2025\",\n          \"cite_id\": \"f:2067\"\n        },\n        {\n          \"name\": \"cash_2026\",\n          \"cite_id\": \"f:2095\"\n        }\n      ],\n      \"code\": \"result = inputs['cash_2026'] - inputs['cash_2025']\"\n    },\n    {\n      \"name\": \"cash_change_pct\",\n      \"description\": \"Nakit değişimi yüzde olarak (0-1 arası oran)\",\n      \"inputs\": [\n        {\n          \"name\": \"cash_2025\",\n          \"cite_id\": \"f:2067\"\n        },\n        {\n          \"name\": \"cash_2026\",\n          \"cite_id\": \"f:2095\"\n        }\n      ],\n      \"code\": \"result = (inputs['cash_2026'] - inputs['cash_2025']) / inputs['cash_2025']\"\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "gemini-flash-stable",
-    "model": "gemini-2.5-flash",
-    "tokens_in": 903,
-    "tokens_out": 31,
-    "latency_ms": 1885.432,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 3828,
+    "tokens_out": 2024,
+    "latency_ms": 4703.215,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
+    ]
    }
   },
   {
-   "key": "667304e64611df3faa7cf531d07ff5e800ee73bdd1c245cb2f57072073688b78",
+   "key": "c6dbd6eab28ba6c2af0b2099bb21f72fb1880aa53e304b810d8942c0b84c6b85",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"partial\",\n  \"summary\": \"Aselsan'ın 2025 yıl sonu nakit ve nakit benzerleri 29,09 milyar TL, toplam borcu 43,06 milyar TL olarak bildirilmiştir. 2026 yılı 2. çeyrek (30 Haziran 2026) verileri bulunamadığı için dönemler arası değişim hesaplanamamıştır [1][2].\",\n  \"points\": [\n    {\n      \"text\": \"2025 yıl sonu (31.12.2025) nakit ve nakit benzerleri: 29.086.476.000 TL\",\n      \"cite_ids\": [\"f:2067\"]\n    },\n    {\n      \"text\": \"2025 yıl sonu (31.12.2025) toplam borç: 43.056.550.000 TL\",\n      \"cite_ids\": [\"f:2077\"]\n    }\n  ],\n  \"tables\": [],\n  \"chart\": null,\n  \"confidence\": {\n    \"level\": \"low\",\n    \"note\": \"2026 yılı 2. çeyrek nakit ve toplam borç verileri bulunamadığı için karşılaştırma yapılamamıştır.\"\n  },\n  \"unverified\": [\n    \"2026 yılı 2. çeyrek (30.06.2026) nakit ve nakit benzerleri tutarı\",\n    \"2026 yılı 2. çeyrek (30.06.2026) toplam borç tutarı\"\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2067\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2077\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":true,\"reason\":\"\"},{\"finding_id\":\"F3\",\"supported\":true,\"reason\":\"\"},{\"finding_id\":\"F5\",\"supported\":true,\"reason\":\"\"},{\"finding_id\":\"F7\",\"supported\":true,\"reason\":\"\"},{\"finding_id\":\"F8\",\"supported\":true,\"reason\":\"\"}]}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2433,
-    "tokens_out": 803,
-    "latency_ms": 12353.626,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 1634,
+    "tokens_out": 717,
+    "latency_ms": 3116.846,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
+    ]
+   }
+  },
+  {
+   "key": "48bfc36ffe80db9cf9cc91551fb49bc3fbdb0eefc8f2422c9f3b0f7d59493d84",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\":\"tr\",\"status\":\"completed\",\"summary\":\"Aselsan'ın toplam borcu 2025 yılı sonunda 43.056.550.000 TRY idi [1] ve 2026 yılının ikinci çeyreğinde 73.293.290.000 TRY'ye yükselmiştir [2], bu da %70,23 artışa (30.236.740.000 TRY) karşılık gelmektedir [3][4]. Nakit ve nakit benzerleri 2025 yılı sonunda 29.086.476.000 TRY iken [5] 2026 Q2'de 39.468.926.000 TRY'ye artmış, %35,70 (10.382.450.000 TRY) artış göstermiştir [6][7][8].\",\"points\":[{\"text\":\"2025 yılı sonunda Aselsan'ın toplam borcu 43.056.550.000 TRY idi.\",\"cite_ids\":[\"f:2077\"]},{\"text\":\"2026 Q2'de toplam borç 73.293.290.000 TRY oldu.\",\"cite_ids\":[\"f:2103\"]},{\"text\":\"Toplam borç 30.236.740.000 TRY artmıştır.\",\"cite_ids\":[\"k:1\"]},{\"text\":\"Bu artış %70,23 oranına eşittir.\",\"cite_ids\":[\"k:2\"]},{\"text\":\"2025 yılı sonunda nakit ve nakit benzerleri 29.086.476.000 TRY idi.\",\"cite_ids\":[\"f:2067\"]},{\"text\":\"2026 Q2'de nakit 39.468.926.000 TRY'ye yükselmiştir.\",\"cite_ids\":[\"f:2095\"]},{\"text\":\"Nakit 10.382.450.000 TRY artmıştır.\",\"cite_ids\":[\"k:3\"]},{\"text\":\"Bu artış %35,70'dir.\",\"cite_ids\":[\"k:4\"]}],\"tables\":[{\"title\":\"Aselsan Borç ve Nakit 2025-FY vs 2026-Q2\",\"columns\":[\"Dönem\",\"Toplam Borç (TRY)\",\"Nakit (TRY)\"],\"rows\":[[{\"text\":\"2025-FY\",\"cite_id\":null},{\"text\":\"43.056.550.000\",\"cite_id\":\"f:2077\"},{\"text\":\"29.086.476.000\",\"cite_id\":\"f:2067\"}],[{\"text\":\"2026-Q2\",\"cite_id\":null},{\"text\":\"73.293.290.000\",\"cite_id\":\"f:2103\"},{\"text\":\"39.468.926.000\",\"cite_id\":\"f:2095\"}],[{\"text\":\"Değişim (abs)\",\"cite_id\":null},{\"text\":\"30.236.740.000\",\"cite_id\":\"k:1\"},{\"text\":\"10.382.450.000\",\"cite_id\":\"k:3\"}],[{\"text\":\"Değişim (%)\",\"cite_id\":null},{\"text\":\"%70,23\",\"cite_id\":\"k:2\"},{\"text\":\"%35,70\",\"cite_id\":\"k:4\"}]]}],\"chart\":null,\"confidence\":{\"level\":\"high\",\"note\":\"\"},\"unverified\":[],\"citations\":[{\"marker\":1,\"cite_id\":\"f:2077\"},{\"marker\":2,\"cite_id\":\"f:2103\"},{\"marker\":3,\"cite_id\":\"k:2\"},{\"marker\":4,\"cite_id\":\"k:1\"},{\"marker\":5,\"cite_id\":\"f:2067\"},{\"marker\":6,\"cite_id\":\"f:2095\"},{\"marker\":7,\"cite_id\":\"k:4\"},{\"marker\":8,\"cite_id\":\"k:3\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 4009,
+    "tokens_out": 2936,
+    "latency_ms": 6707.647,
+    "cache_hit": false,
+    "fallback_from": [
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
     ]
    }
   }
@@ -179,10 +222,10 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"metrics\":[\"cash\",\"total_debt\"],\"periods\":[\"2025-FY\",\"2026-Q2\"],\"ticker\":\"ASELS\"},\"name\":\"get_financial_facts\"}",
+   "key": "{\"arguments\":{\"metrics\":[\"total_debt\",\"cash\"],\"periods\":[\"2025-FY\",\"2026-Q2\"],\"ticker\":\"ASELS\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
    "content": "<untrusted_document cite_id=\"f:2067\">Nakit ve nakit benzerleri (2025-FY; Cari Dönem 31.12.2025): 29.086.476.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2082\">Nakit ve nakit benzerleri (2025-FY; Önceki Dönem 31.12.2025; 2026-Q1 raporu): 32.006.758.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2096\">Nakit ve nakit benzerleri (2025-FY; Önceki Dönem 31.12.2025; 2026-Q2 raporu): 34.251.653.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2095\">Nakit ve nakit benzerleri (2026-Q2; Cari Dönem 30.06.2026): 39.468.926.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2077\">Toplam borç (2025-FY; Cari Dönem 31.12.2025): 43.056.550.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2092\">Toplam borç (2025-FY; Önceki Dönem 31.12.2025; 2026-Q1 raporu): 47.379.427.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2104\">Toplam borç (2025-FY; Önceki Dönem 31.12.2025; 2026-Q2 raporu): 50.702.532.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2103\">Toplam borç (2026-Q2; Cari Dönem 30.06.2026): 73.293.290.000 TRY</untrusted_document>",
-   "summary": "ASELS 2025-FY to 2026-Q2 cash, total_debt",
+   "summary": "ASELS 2025-FY to 2026-Q2 total_debt, cash",
    "count": 8,
    "items": [
     {
@@ -350,10 +393,10 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"metrics\":[\"cash\",\"total_debt\"],\"periods\":[\"2025-FY\",\"2026-Q2\"],\"ticker\":\"ASELS\"},\"name\":\"get_financial_facts\"}",
+   "key": "{\"arguments\":{\"metrics\":[\"total_debt\",\"cash\"],\"periods\":[\"2025-FY\",\"2026-Q2\"],\"ticker\":\"ASELS\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
    "content": "<untrusted_document cite_id=\"f:2067\">Nakit ve nakit benzerleri (2025-FY; Cari Dönem 31.12.2025): 29.086.476.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2082\">Nakit ve nakit benzerleri (2025-FY; Önceki Dönem 31.12.2025; 2026-Q1 raporu): 32.006.758.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2096\">Nakit ve nakit benzerleri (2025-FY; Önceki Dönem 31.12.2025; 2026-Q2 raporu): 34.251.653.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2095\">Nakit ve nakit benzerleri (2026-Q2; Cari Dönem 30.06.2026): 39.468.926.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2077\">Toplam borç (2025-FY; Cari Dönem 31.12.2025): 43.056.550.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2092\">Toplam borç (2025-FY; Önceki Dönem 31.12.2025; 2026-Q1 raporu): 47.379.427.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2104\">Toplam borç (2025-FY; Önceki Dönem 31.12.2025; 2026-Q2 raporu): 50.702.532.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2103\">Toplam borç (2026-Q2; Cari Dönem 30.06.2026): 73.293.290.000 TRY</untrusted_document>",
-   "summary": "ASELS 2025-FY to 2026-Q2 cash, total_debt",
+   "summary": "ASELS 2025-FY to 2026-Q2 total_debt, cash",
    "count": 8,
    "items": [
     {
@@ -514,22 +557,64 @@
  ],
  "sandbox": [
   {
-   "key": "ec5f784cb0243b7204804fde3ce66aa0b2d1d3f1b389c8765d7b4f08c360c9c6",
+   "key": "f6168b3731506f6518b6ba223fdc834d56f8b9f0057d5f5ed7ea23f5577172b9",
    "response": {
     "ok": true,
-    "outputs": {},
-    "stdout": "{\"calc\": \"cash_change\", \"error\": \"TypeError: float() argument must be a string or a real number, not 'dict'\"}\n{\"calc\": \"debt_change\", \"error\": \"TypeError: float() argument must be a string or a real number, not 'dict'\"}\n",
+    "outputs": {
+     "debt_change_abs": "30236740000.0",
+     "debt_change_pct": "0.7022564511090648",
+     "cash_change_abs": "10382450000.0",
+     "cash_change_pct": "0.3569511136378295"
+    },
+    "stdout": "",
     "error": null,
     "timed_out": false,
     "oom": false
    }
   },
   {
-   "key": "7f7a9c663b6b316105916b17d2d3ce5e2add4d7844de305d975491c6f097ba8e",
+   "key": "f6168b3731506f6518b6ba223fdc834d56f8b9f0057d5f5ed7ea23f5577172b9",
    "response": {
     "ok": true,
-    "outputs": {},
-    "stdout": "{\"calc\": \"cash_change\", \"error\": \"TypeError: float() argument must be a string or a real number, not 'dict'\"}\n{\"calc\": \"debt_change\", \"error\": \"TypeError: float() argument must be a string or a real number, not 'dict'\"}\n",
+    "outputs": {
+     "debt_change_abs": "30236740000.0",
+     "debt_change_pct": "0.7022564511090648",
+     "cash_change_abs": "10382450000.0",
+     "cash_change_pct": "0.3569511136378295"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "9b97d04eac8469bc186acc94bd81ef21f19c1def9817ce911984fbea63ce63ec",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "debt_change_abs": "30236740000.0",
+     "debt_change_pct": "0.7022564511090648",
+     "cash_change_abs": "10382450000.0",
+     "cash_change_pct": "0.3569511136378295"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "9b97d04eac8469bc186acc94bd81ef21f19c1def9817ce911984fbea63ce63ec",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "debt_change_abs": "30236740000.0",
+     "debt_change_pct": "0.7022564511090648",
+     "cash_change_abs": "10382450000.0",
+     "cash_change_pct": "0.3569511136378295"
+    },
+    "stdout": "",
     "error": null,
     "timed_out": false,
     "oom": false

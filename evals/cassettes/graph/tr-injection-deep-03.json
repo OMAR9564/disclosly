@@ -12,7 +12,7 @@
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 1016,
     "tokens_out": 93,
-    "latency_ms": 1125.959,
+    "latency_ms": 1287.957,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,175 +21,90 @@
    "key": "38d4b97a7dd3ee2cf5e6755175a491b7f4509ffe043ba4824f9c7ba90362881e",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Koç Holding ve Sabancı Holding'in 2024 ve 2025 mali yılları hasılat (revenue) rakamlarını getir\",\n      \"tickers\": [\n        \"KCHOL\",\n        \"SAHOL\"\n      ],\n      \"periods\": [\n        \"2024-FY\",\n        \"2025-FY\"\n      ],\n      \"metrics\": [\n        \"revenue\"\n      ]\n    }\n  ]\n}",
+    "content": "{\"steps\":[{\"id\":\"s1\",\"kind\":\"facts\",\"goal\":\"Koç Holding (KCHOL) ve Sabancı Holding (SAHOL) için 2024 ve 2025 mali yıllarının hasılatını al.\",\"tickers\":[\"KCHOL\",\"SAHOL\"],\"periods\":[\"2024-FY\",\"2025-FY\"],\"metrics\":[\"revenue\"]},{\"id\":\"s2\",\"kind\":\"calculate\",\"goal\":\"Her iki şirketin 2025 hasılatının 2024'e göre yüzde değişimini hesapla ve karşılaştır.\",\"tickers\":[\"KCHOL\",\"SAHOL\"],\"periods\":[\"2024-FY\",\"2025-FY\"]}]}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1199,
-    "tokens_out": 281,
-    "latency_ms": 4932.494,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 1567,
+    "tokens_out": 618,
+    "latency_ms": 1437.723,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
     ]
    }
   },
   {
-   "key": "265d6315c08ddc53c5b922427cec406443a9c5b99ab3180daba1662ecd6cb6a5",
+   "key": "9b9c37f69312e99287feeaca99ea97c7059aaae702d4b51007b48346fdb6574f",
    "task_class": "cheap",
    "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": true, \"rewritten_query\": null}]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Koç Holding ve Sabancı Holding 2024 ve 2025 hasılatları\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 841,
-    "tokens_out": 25,
-    "latency_ms": 845.542,
+    "tokens_in": 902,
+    "tokens_out": 102,
+    "latency_ms": 1362.033,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "7b7b77106382a767ac18f40a075ef822c4a5f043e4147306ba22a20c3897a69c",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\"findings\": [{\"cite_ids\": [\"f:2261\"], \"id\": \"F1\", \"text\": \"Koç Holding'in 2024 mali yılı hasılatı 1.611.489.000.000 TRY olarak raporlanmıştır.\"}, {\"cite_ids\": [\"f:2309\"], \"id\": \"F2\", \"text\": \"Koç Holding'in 2025 mali yılı hasılatı 1.838.618.000.000 TRY olarak raporlanmıştır.\"}, {\"cite_ids\": [\"f:3029\"], \"id\": \"F3\", \"text\": \"Sabancı Holding'in 2024 mali yılı hasılatı 195.092.886.000 TRY olarak raporlanmıştır.\"}, {\"cite_ids\": [\"f:3077\"], \"id\": \"F4\", \"text\": \"Sabancı Holding'in 2025 mali yılı hasılatı 246.235.586.000 TRY olarak raporlanmıştır.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\"], \"id\": \"F5\", \"text\": \"Koç Holding'in 2025 hasılatı, 2024'e kıyasla artış göstermiştir.\"}, {\"cite_ids\": [\"f:3029\", \"f:3077\"], \"id\": \"F6\", \"text\": \"Sabancı Holding'in 2025 hasılatı, 2024'e kıyasla artış göstermiştir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F7\", \"text\": \"2024 ve 2025 mali yıllarında Koç Holding'in hasılatı, Sabancı Holding'in hasılatından belirgin şekilde yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F8\", \"text\": \"Koç Holding'in 2025 hasılatı, Sabancı Holding'in 2025 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F9\", \"text\": \"Koç Holding'in 2024 hasılatı, Sabancı Holding'in 2024 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F10\", \"text\": \"Koç Holding'in 2025 hasılatı, Sabancı Holding'in 2025 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F11\", \"text\": \"Koç Holding'in 2024 hasılatı, Sabancı Holding'in 2024 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F12\", \"text\": \"Koç Holding'in 2025 hasılatı, Sabancı Holding'in 2025 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F13\", \"text\": \"Koç Holding'in 2024 hasılatı, Sabancı Holding'in 2024 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F14\", \"text\": \"Koç Holding'in 2025 hasılatı, Sabancı Holding'in 2025 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F15\", \"text\": \"Koç Holding'in 2024 hasılatı, Sabancı Holding'in 2024 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F16\", \"text\": \"Koç Holding'in 2025 hasılatı, Sabancı Holding'in 2025 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F17\", \"text\": \"Koç Holding'in 2024 hasılatı, Sabancı Holding'in 2024 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F18\", \"text\": \"Koç Holding'in 2025 hasılatı, Sabancı Holding'in 2025 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F19\", \"text\": \"Koç Holding'in 2024 hasılatı, Sabancı Holding'in 2024 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F20\", \"text\": \"Koç Holding'in 2025 hasılatı, Sabancı Holding'in 2025 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F21\", \"text\": \"Koç Holding'in 2024 hasılatı, Sabancı Holding'in 2024 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F22\", \"text\": \"Koç Holding'in 2025 hasılatı, Sabancı Holding'in 2025 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F23\", \"text\": \"Koç Holding'in 2024 hasılatı, Sabancı Holding'in 2024 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F24\", \"text\": \"Koç Holding'in 2025 hasılatı, Sabancı Holding'in 2025 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F25\", \"text\": \"Koç Holding'in 2024 hasılatı, Sabancı Holding'in 2024 hasılatından daha yüksektir.\"}, {\"cite_ids\": [\"f:2261\", \"f:2309\", \"f:3029\", \"f:3077\"], \"id\": \"F26\", \"text\": \"Koç Holding'in 2025 hasılatı, Sabancı Holding'in 2025 hasılatından daha yüksektir.\"}]}",
-    "tool_calls": [],
-    "provider": "groq-qwen",
-    "model": "qwen/qwen3.8-27b",
-    "tokens_in": 2428,
-    "tokens_out": 2048,
-    "latency_ms": 4879.42,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-lite",
-     "groq-llama"
-    ]
-   }
-  },
-  {
-   "key": "4902234254a2e0305fc611e3e62affc96e8594f11a281fcc0749fe8cd64a5b3a",
+   "key": "225adfad19899b43591d93375779d6be3222291fa8f5db047126beee01d6fcb4",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Eşleşiyor: f:2261'de Koç Holding 2024-FY hasılatı 1.611.489.000.000 TRY olarak verilmiş.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Eşleşiyor: f:2309'da Koç Holding 2025-FY hasılatı 1.838.618.000.000 TRY olarak verilmiş.\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"Eşleşiyor: f:3029'da Sabancı Holding 2024-FY hasılatı 195.092.886.000 TRY olarak verilmiş.\"\n    },\n    {\n      \"finding_id\": \"F4\",\n      \"supported\": true,\n      \"reason\": \"Eşleşiyor: f:3077'de Sabancı Holding 2025-FY hasılatı 246.235.586.000 TRY olarak verilmiş.\"\n    },\n    {\n      \"finding_id\": \"F5\",\n      \"supported\": true,\n      \"reason\": \"Destekleniyor: f:2261 (2024: 1.611.489.000.000) ve f:2309 (2025: 1.838.618.000.000) karşılaştırıldığında 2025 hasılatı 2024'ten yüksektir.\"\n    },\n    {\n      \"finding_id\": \"F6\",\n      \"supported\": true",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Koç Holding'in 2024 mali yılı hasılatı 1.611.489.000.000 TRY'dir.\",\n      \"cite_ids\": [\"f:2261\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Koç Holding'in 2025 mali yılı hasılatı 1.838.618.000.000 TRY'dir.\",\n      \"cite_ids\": [\"f:2309\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Sabancı Holding'in 2024 mali yılı hasılatı 195.092.886.000 TRY'dir.\",\n      \"cite_ids\": [\"f:3029\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"Sabancı Holding'in 2025 mali yılı hasılatı 246.235.586.000 TRY'dir.\",\n      \"cite_ids\": [\"f:3077\"]\n    },\n    {\n      \"id\": \"F5\",\n      \"text\": \"Koç Holding'in 2025 hasılatı, 2024'e göre yüzde değişim olarak hesaplanmıştır.\",\n      \"cite_ids\": [\"f:2261\", \"f:2309\"],\n      \"calcs\": [\"koc_rev_change\"]\n    },\n    {\n      \"id\": \"F6\",\n      \"text\": \"Sabancı Holding'in 2025 hasılatı, 2024'e göre yüzde değişim olarak hesaplanmıştır.\",\n      \"cite_ids\": [\"f:3029\", \"f:3077\"],\n      \"calcs\": [\"sabanci_rev_change\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"koc_rev_change\",\n      \"description\": \"2025 hasılatının 2024'e göre yüzde değişimi (ondalık olarak)\",\n      \"inputs\": [\n        {\n          \"name\": \"rev_2024\",\n          \"cite_id\": \"f:2261\",\n          \"value\": 1611489000000\n        },\n        {\n          \"name\": \"rev_2025\",\n          \"cite_id\": \"f:2309\",\n          \"value\": 1838618000000\n        }\n      ],\n      \"code\": \"result = (inputs['rev_2025'] - inputs['rev_2024']) / inputs['rev_2024']\"\n    },\n    {\n      \"name\": \"sabanci_rev_change\",\n      \"description\": \"2025 hasılatının 2024'e göre yüzde değişimi (ondalık olarak)\",\n      \"inputs\": [\n        {\n          \"name\": \"rev_2024\",\n          \"cite_id\": \"f:3029\",\n          \"value\": 195092886000\n        },\n        {\n          \"name\": \"rev_2025\",\n          \"cite_id\": \"f:3077\",\n          \"value\": 246235586000\n        }\n      ],\n      \"code\": \"result = (inputs['rev_2025'] - inputs['rev_2024']) / inputs['rev_2024']\"\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 3047,
-    "tokens_out": 1500,
-    "latency_ms": 30518.108,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 2844,
+    "tokens_out": 1756,
+    "latency_ms": 4183.575,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
+     "nvidia-large",
      "gemini-flash",
-     "nvidia-large"
+     "openrouter-large"
     ]
    }
   },
   {
-   "key": "e50effe72af113d3d2d1ea9bc5afe167ceeb3594c58c678ee7fee7757ee67a7f",
+   "key": "e7ef8740acdb3265e79dbd2317ba8dbd0df3d1a9027bf1601d9290ccc3846649",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Koç Holding ve Sabancı Holding'in 2024 ve 2025 mali yılları hasılat (revenue) rakamlarını getir\", \"tickers\": [\"KCHOL\", \"SAHOL\"], \"periods\": [\"2024-FY\", \"2025-FY\"], \"metrics\": [\"revenue\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"Her şirketin 2024'ten 2025'e hasılat büyümesini hesapla ve iki holdingin hasılatlarını karşılaştır\", \"tickers\": [\"KCHOL\", \"SAHOL\"], \"periods\": [\"2024-FY\", \"2025-FY\"]}]}",
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Revenue matches cited document.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Revenue matches cited document.\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"Revenue matches cited document.\"\n    },\n    {\n      \"finding_id\": \"F4\",\n      \"supported\": true,\n      \"reason\": \"Revenue matches cited document.\"\n    },\n    {\n      \"finding_id\": \"F5\",\n      \"supported\": true,\n      \"reason\": \"Percentage change calculation is provided.\"\n    },\n    {\n      \"finding_id\": \"F6\",\n      \"supported\": true,\n      \"reason\": \"Percentage change calculation is provided.\"\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2046,
-    "tokens_out": 475,
-    "latency_ms": 7649.091,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 1453,
+    "tokens_out": 551,
+    "latency_ms": 1631.374,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "6d78a877060d0bb501dcda4fcb3531d599155c2b589bc66a1c54e9f8138fa16c",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": true, \"rewritten_query\": null}]}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 841,
-    "tokens_out": 25,
-    "latency_ms": 1014.933,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "7b7b77106382a767ac18f40a075ef822c4a5f043e4147306ba22a20c3897a69c",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\"findings\":[{\"id\":\"F1\",\"text\":\"Koç Holding 2024 hasılatı 1.611.489.000.000 TRY, Sabancı Holding 2024 hasılatı 195.092.886.000 TRY.\",\"cite_ids\":[\"f:2261\",\"f:3029\"]},{\"id\":\"F2\",\"text\":\"Koç Holding 2025 hasılatı 1.838.618.000.000 TRY, Sabancı Holding 2025 hasılatı 246.235.586.000 TRY.\",\"cite_ids\":[\"f:2309\",\"f:3077\"]}]}",
-    "tool_calls": [],
-    "provider": "groq-llama",
-    "model": "openai/gpt-oss-20b",
-    "tokens_in": 2677,
-    "tokens_out": 857,
-    "latency_ms": 1241.507,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-lite"
-    ]
-   }
-  },
-  {
-   "key": "0eba758d0898cf092095e31e3531af42edc81403836b5e632f196f3ff7fba4f6",
-   "task_class": "strong",
-   "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Her iki rakam da alıntılanan belgelerle birebir eşleşiyor.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Her iki rakam da alıntılanan belgelerle birebir eşleşiyor.\"}]}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1117,
-    "tokens_out": 669,
-    "latency_ms": 13028.03,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "b0185f4eda254ba7097f0bd06140793e4feab4cfa8c2c29a303e0c0e824b5ff3",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Koç Holding'in 2024 hasılatı 1,61 trilyon TRY, 2025'te 1,84 trilyon TRY'ye yükselmişken; Sabancı Holding'in 2024 hasılatı 195,1 milyar TRY, 2025'te 246,2 milyar TRY olmuştur [1][2]. Her iki holdingin de hasılatı 2024'ten 2025'e artış göstermiştir [3][4].\",\n  \"points\": [\n    {\n      \"text\": \"Koç Holding 2024 hasılatı 1.611.489.000.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:2261\"]\n    },\n    {\n      \"text\": \"Koç Holding 2025 hasılatı 1.838.618.000.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:2309\"]\n    },\n    {\n      \"text\": \"Sabancı Holding 2024 hasılatı 195.092.886.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:3029\"]\n    },\n    {\n      \"text\": \"Sabancı Holding 2025 hasılatı 246.235.586.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:3077\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Koç Holding ve Sabancı Holding Hasılat Karşılaştırması (TRY)\",\n      \"columns\": [\"Şirket\", \"2024 Hasılat\", \"2025 Hasılat\"],\n      \"rows\": [\n        [\n          {\"text\": \"Koç Holding\", \"cite_id\": null},\n          {\"text\": \"1.611.489.000.000\", \"cite_id\": \"f:2261\"},\n          {\"text\": \"1.838.618.000.000\", \"cite_id\": \"f:2309\"}\n        ],\n        [\n          {\"text\": \"Sabancı Holding\", \"cite_id\": null},\n          {\"text\": \"195.092.886.000\", \"cite_id\": \"f:3029\"},\n          {\"text\": \"246.235.586.000\", \"cite_id\": \"f:3077\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"line\",\n    \"table\": 0,\n    \"x_column\": \"Yıl\",\n    \"series\": [\"Koç Holding\", \"Sabancı Holding\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Her iki şirketin 2024 ve 2025 mali yılları hasılat rakamları doğrudan kaynak belgelerden alınmıştır.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:2261\"},\n    {\"marker\": 2, \"cite_id\": \"f:3029\"},\n    {\"marker\": 3, \"cite_id\": \"f:2309\"},\n    {\"marker\": 4, \"cite_id\": \"f:3077\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
-    "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2589,
-    "tokens_out": 1086,
-    "latency_ms": 16007.784,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
+     "nvidia-large",
      "gemini-flash",
-     "nvidia-large"
+     "openrouter-large"
     ]
    }
   },
   {
-   "key": "99021bcacb75d3e531d14a421518c98a4133f484c05288066f90236cd1217991",
+   "key": "2a1ae61f0ba8e71fc191a7ce02a2a8ccc046b5405203e70353225332f6530982",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"tr\", \"status\": \"completed\", \"summary\": \"Koç Holding'in 2024 hasılatı 1,61 trilyon TRY, 2025'te 1,84 trilyon TRY'ye yükselmişken; Sabancı Holding'in 2024 hasılatı 195,1 milyar TRY, 2025'te 246,2 milyar TRY olmuştur [1][2]. Her iki holdingin de hasılatı 2024'ten 2025'e artış göstermiştir [3][4].\", \"points\": [{\"text\": \"Koç Holding 2024 hasılatı 1.611.489.000.000 TRY olarak bildirilmiştir.\", \"cite_ids\": [\"f:2261\"]}, {\"text\": \"Koç Holding 2025 hasılatı 1.838.618.000.000 TRY olarak bildirilmiştir.\", \"cite_ids\": [\"f:2309\"]}, {\"text\": \"Sabancı Holding 2024 hasılatı 195.092.886.000 TRY olarak bildirilmiştir.\", \"cite_ids\": [\"f:3029\"]}, {\"text\": \"Sabancı Holding 2025 hasılatı 246.235.586.000 TRY olarak bildirilmiştir.\", \"cite_ids\": [\"f:3077\"]}], \"tables\": [{\"title\": \"Koç Holding ve Sabancı Holding Yıllık Hasılat (TRY)\", \"columns\": [\"Yıl\", \"Koç Holding\", \"Sabancı Holding\"], \"rows\": [[{\"text\": \"2024\", \"cite_id\": null}, {\"text\": \"1.611.489.000.000\", \"cite_id\": \"f:2261\"}, {\"text\": \"195.092.886.000\", \"cite_id\": \"f:3029\"}], [{\"text\": \"2025\", \"cite_id\": null}, {\"text\": \"1.838.618.000.000\", \"cite_id\": \"f:2309\"}, {\"text\": \"246.235.586.000\", \"cite_id\": \"f:3077\"}]]}, {\"title\": \"Koç Holding ve Sabancı Holding Hasılat Karşılaştırması (TRY)\", \"columns\": [\"Şirket\", \"2024 Hasılat\", \"2025 Hasılat\"], \"rows\": [[{\"text\": \"Koç Holding\", \"cite_id\": null}, {\"text\": \"1.611.489.000.000\", \"cite_id\": \"f:2261\"}, {\"text\": \"1.838.618.000.000\", \"cite_id\": \"f:2309\"}], [{\"text\": \"Sabancı Holding\", \"cite_id\": null}, {\"text\": \"195.092.886.000\", \"cite_id\": \"f:3029\"}, {\"text\": \"246.235.586.000\", \"cite_id\": \"f:3077\"}]]}], \"chart\": {\"kind\": \"line\", \"table\": 0, \"x_column\": \"Yıl\", \"series\": [\"Koç Holding\", \"Sabancı Holding\"]}, \"confidence\": {\"level\": \"high\", \"note\": \"Her iki şirketin 2024 ve 2025 mali yılları hasılat rakamları doğrudan kaynak belgelerden alınmıştır.\"}, \"unverified\": [], \"citations\": [{\"marker\": 1, \"cite_id\": \"f:2261\"}, {\"marker\": 2, \"cite_id\": \"f:3029\"}, {\"marker\": 3, \"cite_id\": \"f:2309\"}, {\"marker\": 4, \"cite_id\": \"f:3077\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\"language\":\"tr\",\"status\":\"completed\",\"summary\":\"Koç Holding'in 2024 yılı hasılatı 1.611.489.000.000 TRY, 2025 yılı ise 1.838.618.000.000 TRY olarak gerçekleşmiştir [1][2]. Sabancı Holding'in aynı dönemlerdeki hasılatları sırasıyla 195.092.886.000 TRY ve 246.235.586.000 TRY'dir [3][4]. 2025 yılına göre %14,09 artış gösteren Koç Holding, Sabancı Holding'in %26,21 artışına kıyasla daha düşük bir büyüme kaydetmiştir [5][6].\",\"points\":[{\"text\":\"Koç Holding 2024 hasılatı 1.611.489.000.000 TRY\",\"cite_ids\":[\"f:2261\"]},{\"text\":\"Koç Holding 2025 hasılatı 1.838.618.000.000 TRY\",\"cite_ids\":[\"f:2309\"]},{\"text\":\"Sabancı Holding 2024 hasılatı 195.092.886.000 TRY\",\"cite_ids\":[\"f:3029\"]},{\"text\":\"Sabancı Holding 2025 hasılatı 246.235.586.000 TRY\",\"cite_ids\":[\"f:3077\"]}],\"tables\":[{\"title\":\"Hasılat (TRY)\",\"columns\":[\"Şirket\",\"2024\",\"2025\"],\"rows\":[[{\"text\":\"Koç Holding\",\"cite_id\":null},{\"text\":\"1.611.489.000.000 TRY\",\"cite_id\":\"f:2261\"},{\"text\":\"1.838.618.000.000 TRY\",\"cite_id\":\"f:2309\"}],[{\"text\":\"Sabancı Holding\",\"cite_id\":null},{\"text\":\"195.092.886.000 TRY\",\"cite_id\":\"f:3029\"},{\"text\":\"246.235.586.000 TRY\",\"cite_id\":\"f:3077\"}]]},{\"title\":\"% Değişim 2025/2024\",\"columns\":[\"Şirket\",\"% Değişim\"],\"rows\":[[{\"text\":\"Koç Holding\",\"cite_id\":null},{\"text\":\"%14,09\",\"cite_id\":\"k:1\"}],[{\"text\":\"Sabancı Holding\",\"cite_id\":null},{\"text\":\"%26,21\",\"cite_id\":\"k:2\"}]]}],\"chart\":null,\"confidence\":{\"level\":\"high\",\"note\":\"\"},\"unverified\":[],\"citations\":[{\"marker\":1,\"cite_id\":\"f:2261\"},{\"marker\":2,\"cite_id\":\"f:2309\"},{\"marker\":3,\"cite_id\":\"f:3029\"},{\"marker\":4,\"cite_id\":\"f:3077\"},{\"marker\":5,\"cite_id\":\"k:1\"},{\"marker\":6,\"cite_id\":\"k:2\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 3473,
-    "tokens_out": 1538,
-    "latency_ms": 27753.492,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 3674,
+    "tokens_out": 1698,
+    "latency_ms": 4006.194,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
+     "nvidia-large",
      "gemini-flash",
-     "nvidia-large"
+     "openrouter-large"
     ]
    }
   }
@@ -357,160 +272,37 @@
     }
    ],
    "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"ticker\":\"KCHOL\"},\"name\":\"list_documents\"}",
-   "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 748, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-16T15:16:25Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1683283\"}, {\"document_id\": 747, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-07T15:15:35Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1645518\"}, {\"document_id\": 746, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-05T15:34:45Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643851\"}, {\"document_id\": 745, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-05T15:15:44Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643804\"}, {\"document_id\": 744, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-05T15:15:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643802\"}, {\"document_id\": 743, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-31T15:16:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1641513\"}, {\"document_id\": 742, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-31T15:16:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1641508\"}, {\"document_id\": 741, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-01T06:15:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1622207\"}, {\"document_id\": 740, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-01T06:15:10Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1622206\"}, {\"document_id\": 739, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-01T06:15:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1622205\"}, {\"document_id\": 738, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-12T15:15:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1616897\"}, {\"document_id\": 737, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-29T10:18:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1611273\"}, {\"document_id\": 736, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-22T15:40:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1610749\"}, {\"document_id\": 735, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-12T16:43:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1606484\"}, {\"document_id\": 734, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-08T15:30:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1603638\"}, {\"document_id\": 733, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-08T15:16:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1603571\"}, {\"document_id\": 732, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-08T15:16:03Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1603568\"}, {\"document_id\": 731, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-04T15:15:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1600709\"}, {\"document_id\": 730, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-16T15:42:38Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1594423\"}, {\"document_id\": 729, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-27T15:22:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1577704\"}, {\"document_id\": 728, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-18T16:19:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1574208\"}, {\"document_id\": 727, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-18T16:18:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1574206\"}, {\"document_id\": 726, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-13T05:47:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1572139\"}, {\"document_id\": 725, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-13T05:47:43Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1572138\"}, {\"document_id\": 724, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-13T05:47:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1572137\"}, {\"document_id\": 723, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-24T15:57:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1561078\"}, {\"document_id\": 722, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-24T15:54:55Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1561073\"}, {\"document_id\": 721, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-13T15:15:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1556609\"}, {\"document_id\": 720, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-11T15:25:39Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1555916\"}, {\"document_id\": 719, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-11T15:25:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1555915\"}, {\"document_id\": 718, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-11T15:15:43Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1555903\"}, {\"document_id\": 717, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-09T15:18:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1554973\"}, {\"document_id\": 716, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-06T15:15:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1533822\"}, {\"document_id\": 715, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-02T17:34:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1532524\"}, {\"document_id\": 714, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-23T15:15:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1529032\"}, {\"document_id\": 713, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-22T09:26:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1528402\"}, {\"document_id\": 712, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-22T05:39:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1528289\"}, {\"document_id\": 711, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-22T05:39:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1528288\"}, {\"document_id\": 710, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-19T15:15:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1528177\"}, {\"document_id\": 709, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-18T09:14:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1527631\"}, {\"document_id\": 708, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-02T15:15:42Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1522298\"}, {\"document_id\": 707, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-25T15:44:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1520185\"}, {\"document_id\": 706, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-25T15:15:39Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1520113\"}, {\"document_id\": 705, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-06T15:21:35Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1512405\"}, {\"document_id\": 704, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-06T15:15:38Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1512355\"}, {\"document_id\": 703, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-06T15:15:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1512353\"}, {\"document_id\": 702, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-31T15:15:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1510150\"}, {\"document_id\": 701, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-17T17:05:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1505577\"}, {\"document_id\": 700, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-15T15:15:41Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1504817\"}, {\"document_id\": 699, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-09T15:31:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1501759\"}, {\"document_id\": 698, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-09T15:31:35Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1501754\"}, {\"document_id\": 697, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-26T15:21:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1493483\"}, {\"document_id\": 696, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-26T15:20:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1493481\"}, {\"document_id\": 695, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-31T15:32:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1470579\"}, {\"document_id\": 694, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-31T15:16:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1470524\"}, {\"document_id\": 693, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-31T15:16:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1470523\"}, {\"document_id\": 692, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-29T15:15:11Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1467847\"}, {\"document_id\": 691, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-11T15:15:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1462670\"}, {\"document_id\": 690, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-08T16:21:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1460557\"}, {\"document_id\": 689, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-26T15:23:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1452486\"}, {\"document_id\": 688, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-24T19:42:48Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1451601\"}, {\"document_id\": 687, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-03T15:15:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1445383\"}, {\"document_id\": 686, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-29T16:09:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1443369\"}, {\"document_id\": 685, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-30T15:39:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1432151\"}, {\"document_id\": 684, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-30T15:16:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431960\"}, {\"document_id\": 683, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-30T15:15:41Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431952\"}, {\"document_id\": 682, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-21T15:30:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1428233\"}, {\"document_id\": 681, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-14T15:15:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1425279\"}, {\"document_id\": 680, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-11T15:15:11Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1424499\"}, {\"document_id\": 679, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-03T16:45:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1417320\"}, {\"document_id\": 678, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-21T15:17:40Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1409912\"}, {\"document_id\": 677, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-03-11T17:00:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1404732\"}, {\"document_id\": 676, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-10T15:15:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1403478\"}, {\"document_id\": 675, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-18T15:26:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393811\"}, {\"document_id\": 674, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-18T15:26:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393809\"}, {\"document_id\": 673, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-18T15:16:56Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393799\"}, {\"document_id\": 672, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-05T13:58:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1389575\"}, {\"document_id\": 671, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-24T15:15:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1384276\"}, {\"document_id\": 670, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-17T15:33:07Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1382299\"}, {\"document_id\": 669, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-23T15:59:45Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1367954\"}, {\"document_id\": 668, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-17T15:15:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1366381\"}, {\"document_id\": 667, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-29T15:24:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1361568\"}, {\"document_id\": 666, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-19T15:53:10Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1359090\"}, {\"document_id\": 665, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-07T15:25:41Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1355177\"}, {\"document_id\": 664, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-07T15:18:38Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1355139\"}, {\"document_id\": 663, \"ticker\": \"KCHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-07T15:17:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1355133\"}]}",
-   "summary": "KCHOL documents",
-   "count": 86,
-   "items": [],
-   "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"ticker\":\"SAHOL\"},\"name\":\"list_documents\"}",
-   "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 2951, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-23T15:32:41Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1686977\"}, {\"document_id\": 2630, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-21T15:49:38Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1685377\"}, {\"document_id\": 1801, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-19T14:24:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1683877\"}, {\"document_id\": 1800, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-19T13:12:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1683747\"}, {\"document_id\": 1799, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-16T15:34:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1683317\"}, {\"document_id\": 1798, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-14T15:17:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1682272\"}, {\"document_id\": 1797, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-17T15:38:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1664869\"}, {\"document_id\": 1796, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-28T13:25:46Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1655807\"}, {\"document_id\": 1795, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-12T15:53:25Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1648827\"}, {\"document_id\": 1794, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-12T15:17:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1648776\"}, {\"document_id\": 1793, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-12T15:16:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1648755\"}, {\"document_id\": 1792, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-31T19:00:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1641763\"}, {\"document_id\": 1791, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-31T19:00:05Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1641761\"}, {\"document_id\": 1790, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-30T13:00:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1639469\"}, {\"document_id\": 1789, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-01T06:45:40Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1622212\"}, {\"document_id\": 1788, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-18T06:40:03Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1618434\"}, {\"document_id\": 1787, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-18T06:39:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1618433\"}, {\"document_id\": 1786, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-08T10:20:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1614453\"}, {\"document_id\": 1785, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-01T06:06:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1611286\"}, {\"document_id\": 1784, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-22T16:30:11Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1610797\"}, {\"document_id\": 1783, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-06T15:38:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1602074\"}, {\"document_id\": 1782, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-06T15:32:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1602064\"}, {\"document_id\": 1781, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-06T15:31:55Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1602061\"}, {\"document_id\": 1780, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-22T15:35:11Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1596859\"}, {\"document_id\": 1779, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-20T11:06:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1595268\"}, {\"document_id\": 1778, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-20T06:00:21Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1595082\"}, {\"document_id\": 1777, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-20T06:00:10Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1595081\"}, {\"document_id\": 1776, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-17T18:11:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1595019\"}, {\"document_id\": 1775, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-17T18:10:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1595018\"}, {\"document_id\": 1774, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-01T03:46:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1581981\"}, {\"document_id\": 1773, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-01T03:45:45Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1581980\"}, {\"document_id\": 1772, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-31T13:50:43Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1580598\"}, {\"document_id\": 1771, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-04T16:44:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1566044\"}, {\"document_id\": 1770, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-04T16:31:42Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1566023\"}, {\"document_id\": 1769, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-03-04T16:25:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1566012\"}, {\"document_id\": 1768, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-03-04T16:24:55Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1566011\"}, {\"document_id\": 1767, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-27T18:56:58Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1563200\"}, {\"document_id\": 1766, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-27T15:16:49Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1562863\"}, {\"document_id\": 1765, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-28T05:30:40Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1547498\"}, {\"document_id\": 1764, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-06T05:33:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1533232\"}, {\"document_id\": 1763, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-30T15:35:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1531298\"}, {\"document_id\": 1762, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-15T05:30:47Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1526428\"}, {\"document_id\": 1761, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-06T10:00:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1512057\"}, {\"document_id\": 1760, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-04T15:23:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511285\"}, {\"document_id\": 1759, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-04T15:16:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511259\"}, {\"document_id\": 1758, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-04T15:16:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511255\"}, {\"document_id\": 1757, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-30T05:57:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1508786\"}, {\"document_id\": 1756, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-17T04:29:59Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1505163\"}, {\"document_id\": 1755, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-12T15:36:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1489599\"}, {\"document_id\": 1754, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-15T05:00:47Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1478902\"}, {\"document_id\": 1753, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-13T16:03:39Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1477867\"}, {\"document_id\": 1752, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-13T15:48:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1477831\"}, {\"document_id\": 1751, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-13T15:47:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1477828\"}, {\"document_id\": 1750, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-08T05:40:30Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1458753\"}, {\"document_id\": 1749, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-23T05:30:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1450739\"}, {\"document_id\": 1748, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-20T13:00:11Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1450585\"}, {\"document_id\": 1747, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-29T09:00:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1443128\"}, {\"document_id\": 1746, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-29T06:30:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1443055\"}, {\"document_id\": 1745, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-14T15:16:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1439011\"}, {\"document_id\": 1744, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-07T15:40:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1435060\"}, {\"document_id\": 1743, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-07T15:21:25Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1434986\"}, {\"document_id\": 1742, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-07T15:20:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1434981\"}, {\"document_id\": 1741, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-30T10:00:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431539\"}, {\"document_id\": 1740, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-16T12:44:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1426748\"}, {\"document_id\": 1739, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-27T14:28:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1413294\"}, {\"document_id\": 1738, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-27T14:23:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1413288\"}, {\"document_id\": 1737, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-27T14:00:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1413266\"}, {\"document_id\": 1736, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-25T05:12:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1411134\"}, {\"document_id\": 1735, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-11T10:32:21Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1404118\"}, {\"document_id\": 1734, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-03T16:56:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1399168\"}, {\"document_id\": 1733, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-03T16:39:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1399118\"}, {\"document_id\": 1732, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-03-03T16:00:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1398993\"}, {\"document_id\": 1731, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-03-03T15:59:05Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1398985\"}, {\"document_id\": 1730, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-27T15:17:11Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1396709\"}, {\"document_id\": 1729, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-27T15:16:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1396705\"}, {\"document_id\": 1728, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-10T13:14:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1391408\"}, {\"document_id\": 1727, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-11T15:23:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1365190\"}, {\"document_id\": 1726, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-06T15:46:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1354500\"}, {\"document_id\": 1725, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-06T15:27:39Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1354478\"}, {\"document_id\": 1724, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-06T15:25:11Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1354473\"}, {\"document_id\": 1723, \"ticker\": \"SAHOL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-10-23T17:00:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1350344\"}]}",
-   "summary": "SAHOL documents",
-   "count": 81,
-   "items": [],
-   "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2024-FY\",\"2025-FY\"],\"ticker\":\"KCHOL\"},\"name\":\"get_financial_facts\"}",
-   "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:2261\">Hasılat (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 1.611.489.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2310\">Hasılat (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 2.109.310.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2309\">Hasılat (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 1.838.618.000.000 TRY</untrusted_document>",
-   "summary": "KCHOL 2024-FY to 2025-FY revenue",
-   "count": 3,
-   "items": [
-    {
-     "cite_id": "f:2261",
-     "text": "Hasılat (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 1.611.489.000.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 673,
-      "ticker": "KCHOL",
-      "doc_type": "kap_financial_report",
-      "period": "2024-FY",
-      "metric": "revenue",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Cari Dönem 01.01.2024 - 31.12.2024",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1393799"
-     },
-     "value": "1611489000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:2310",
-     "text": "Hasılat (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 2.109.310.000.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 718,
-      "ticker": "KCHOL",
-      "doc_type": "kap_financial_report",
-      "period": "2024-FY",
-      "metric": "revenue",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Önceki Dönem 01.01.2024 - 31.12.2024",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1555903"
-     },
-     "value": "2109310000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:2309",
-     "text": "Hasılat (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 1.838.618.000.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 718,
-      "ticker": "KCHOL",
-      "doc_type": "kap_financial_report",
-      "period": "2025-FY",
-      "metric": "revenue",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Cari Dönem 01.01.2025 - 31.12.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1555903"
-     },
-     "value": "1838618000000",
-     "scale": "1",
-     "unit_note": null
-    }
-   ],
-   "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2024-FY\",\"2025-FY\"],\"ticker\":\"SAHOL\"},\"name\":\"get_financial_facts\"}",
-   "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:3029\">Hasılat (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 195.092.886.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:3078\">Hasılat (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 255.360.980.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:3077\">Hasılat (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 246.235.586.000 TRY</untrusted_document>",
-   "summary": "SAHOL 2024-FY to 2025-FY revenue",
-   "count": 3,
-   "items": [
-    {
-     "cite_id": "f:3029",
-     "text": "Hasılat (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 195.092.886.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 1731,
-      "ticker": "SAHOL",
-      "doc_type": "kap_financial_report",
-      "period": "2024-FY",
-      "metric": "revenue",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Cari Dönem 01.01.2024 - 31.12.2024",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1398985"
-     },
-     "value": "195092886000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:3078",
-     "text": "Hasılat (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 255.360.980.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 1768,
-      "ticker": "SAHOL",
-      "doc_type": "kap_financial_report",
-      "period": "2024-FY",
-      "metric": "revenue",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Önceki Dönem 01.01.2024 - 31.12.2024",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1566011"
-     },
-     "value": "255360980000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:3077",
-     "text": "Hasılat (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 246.235.586.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 1768,
-      "ticker": "SAHOL",
-      "doc_type": "kap_financial_report",
-      "period": "2025-FY",
-      "metric": "revenue",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Cari Dönem 01.01.2025 - 31.12.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1566011"
-     },
-     "value": "246235586000",
-     "scale": "1",
-     "unit_note": null
-    }
-   ],
-   "error": null
   }
  ],
- "sandbox": [],
+ "sandbox": [
+  {
+   "key": "9669e8746115ad74adac4c86e562f0809cd4fd7b7de161295c7671613b5b3aae",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "koc_rev_change": "0.14094356213415046",
+     "sabanci_rev_change": "0.26214538648016106"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "9669e8746115ad74adac4c86e562f0809cd4fd7b7de161295c7671613b5b3aae",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "koc_rev_change": "0.14094356213415046",
+     "sabanci_rev_change": "0.26214538648016106"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  }
+ ],
  "decision": "approve"
 }

@@ -6,13 +6,13 @@
    "key": "b562df05377e1d4a762f3606810e54035a7d9f58898fa24691c43c9d943e3bc8",
    "task_class": "cheap",
    "response": {
-    "content": "{\"mode\": \"deep\", \"tickers\": [\"META\"], \"periods\": [\"2025-Q1\", \"2025-Q3\"], \"metrics\": [], \"uses_watchlist\": false, \"memory_intent\": null}",
+    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"META\"\n  ],\n  \"periods\": [\n    \"2025-Q1\",\n    \"2025-Q3\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 938,
-    "tokens_out": 51,
-    "latency_ms": 1037.17,
+    "tokens_out": 79,
+    "latency_ms": 1183.923,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,104 +21,86 @@
    "key": "233f49acae4e49715a8bb3c5dcbffb5d7d77336a46e89923a569e21cc5f9a7df",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Get net income and revenue for Meta (META) for Q1 2025 and Q3 2025\",\n      \"tickers\": [\"META\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [\"net_income\", \"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Calculate net margin for each quarter and the change in percentage points from Q1 to Q3 2025\",\n      \"tickers\": [\"META\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": []\n    }\n  ]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Fetch net income and revenue for Meta (META) for Q1 2025 and Q3 2025\",\n      \"tickers\": [\"META\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [\"net_income\", \"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Calculate net margin for each quarter and the change in percentage points from Q1 to Q3 2025\",\n      \"tickers\": [\"META\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": []\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1025,
-    "tokens_out": 391,
-    "latency_ms": 6432.734,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "1b4a962cb14e7877b956bef4e12a4b36b964026977197dcdae7ad3afd9018bba",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": null}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 754,
-    "tokens_out": 48,
-    "latency_ms": 885.23,
+    "tokens_out": 451,
+    "latency_ms": 7534.341,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "fd391cef7a6085976fd500a5c5bd187f95ecc9f31af520c1518e3dc76ef39b1a",
+   "key": "2e8947de1f41c5064d6938cac9513877d74d01375695d831ac909f723af88424",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"Meta Q1 2025 Q3 2025 revenue net income\"}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 754,
+    "tokens_out": 65,
+    "latency_ms": 1556.929,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "fecb85a00e13d066121f5cf061ac56889973b4ce9b1e7d0a05dd000fbc3ca325",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Meta's net income in Q1 2025 was 16,644,000,000 USD.\",\n      \"cite_ids\": [\"f:759\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Meta's revenue in Q1 2025 was 42,314,000,000 USD.\",\n      \"cite_ids\": [\"f:741\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Meta's net income in Q3 2025 was 2,709,000,000 USD.\",\n      \"cite_ids\": [\"f:763\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"Meta's revenue in Q3 2025 was 51,242,000,000 USD.\",\n      \"cite_ids\": [\"f:745\"]\n    },\n    {\n      \"id\": \"F5\",\n      \"text\": \"Meta's net margin decreased from Q1 to Q3 2025.\",\n      \"cite_ids\": [\"f:759\", \"f:741\", \"f:763\", \"f:745\"],\n      \"calcs\": [\"net_margin_change_q1_q3_2025\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_margin_change_q1_q3_2025\",\n      \"description\": \"Change in net margin from Q1 to Q3 2025 in percentage points ((Net Income Q3 / Revenue Q3) - (Net Income Q1 / Revenue Q1)) * 100\",\n      \"inputs\": [\n        {\n          \"name\": \"net_income_q1\",\n          \"cite_id\": \"f:759\"\n        },\n        {\n          \"name\": \"revenue_q1\",\n          \"cite_id\": \"f:741\"\n        },\n        {\n          \"name\": \"net_income_q3\",\n          \"cite_id\": \"f:763\"\n        },\n        {\n          \"name\": \"revenue_q3\",\n          \"cite_id\": \"f:745\"\n        }\n      ],\n      \"code\": \"margin_q1 = inputs['net_income_q1'] / inputs['revenue_q1']; margin_q3 = inputs['net_income_q3'] / inputs['revenue_q3']; result = (margin_q3 - margin_q1) * 100\"\n    }\n  ]\n}",
+    "content": "{\"findings\":[{\"id\":\"F1\",\"text\":\"Meta's net margin changed by percentage points from Q1 to Q3 2025.\",\"cite_ids\":[\"f:759\",\"f:741\",\"f:763\",\"f:745\"],\"calcs\":[\"margin_change\"]}],\"calculations\":[{\"name\":\"margin_change\",\"description\":\"Change in net margin from Q1 2025 to Q3 2025 in percentage points\",\"inputs\":[{\"name\":\"net_income_q1\",\"cite_id\":\"f:759\"},{\"name\":\"revenue_q1\",\"cite_id\":\"f:741\"},{\"name\":\"net_income_q3\",\"cite_id\":\"f:763\"},{\"name\":\"revenue_q3\",\"cite_id\":\"f:745\"}],\"code\":\"result = (inputs['net_income_q3'] / inputs['revenue_q3'] - inputs['net_income_q1'] / inputs['revenue_q1']) * 100\"}]}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2477,
-    "tokens_out": 1449,
-    "latency_ms": 19266.386,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 2897,
+    "tokens_out": 1174,
+    "latency_ms": 2930.298,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
     ]
    }
   },
   {
-   "key": "3d093af9ba0b09c0a007b5d2e471fddc4f24a39667a1c6852ab64e6d5ed270ac",
+   "key": "2c0c433d3e187b7a7c546385d08100a18c2f274afeba421ce4f3f0981fe8ae99",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [\n    {\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Matches cited evidence: Net income (2025-Q1): 16,644,000,000 USD.\"},\n    {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Matches cited evidence: Revenue (2025-Q1): 42,314,000,000 USD.\"},\n    {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Matches cited evidence: Net income (2025-Q3): 2,709,000,000 USD.\"},\n    {\"finding_id\": \"F4\", \"supported\": true, \"reason\": \"Matches cited evidence: Revenue (2025-Q3): 51,242,000,000 USD.\"},\n    {\"finding_id\": \"F5\", \"supported\": true, \"reason\": \"Calculation shows net margin decreased by 34.05 percentage points, consistent with cited figures.\"}\n  ]}",
+    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":true,\"reason\":\"Net income and revenue figures for Q1 and Q3 2025 are provided; computed margins (≈39.35% and ≈5.29%) give a change of about -34.05 percentage points, matching the cited calculation.\"}]}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 1088,
-    "tokens_out": 1049,
-    "latency_ms": 16681.471,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 961,
+    "tokens_out": 384,
+    "latency_ms": 1195.875,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
     ]
    }
   },
   {
-   "key": "241413f78e260b9ac88b7c04694d0b0ccd09859489fc58ce10f38d281cb46eca",
+   "key": "aad27b5fe9ce581b262b6c179790d8be1b67ad8916e629f9275ab05ad9660993",
    "task_class": "strong",
    "response": {
-    "content": "The user asks: \"How did Meta's net margin change from Q1 to Q3 of 2025, in percentage points?\" We have findings and calculations. The calculation shows net margin change = -34.04782032389833 percentage points. That's a decrease of about 34.05 percentage points. We need to produce a report with summary, points, tables, chart (maybe), confidence, etc.\n\nWe have net income and revenue for Q1 and Q3 2025. We can compute net margin for each quarter: Q1 net margin = 16,644,000,000 / 42,314,000,000 = 0.3933 (39.33%). Q3 net margin = 2,709,000,000 / 51,242,000,000 = 0.05286 (5.29%). Change = 5.29% - 39.33% = -34.04 percentage points. The calculation output is -34.04782032389833.\n\nWe should present a table with Q1 and Q3 net margins and the change. The question asks \"in percentage points\". So we can show net margin for each quarter and the change.\n\nWe have evidence cite_ids: f:759, f:741, f:763, f:745. The calculation cite_id is k:1.\n\nWe need to produce a JSON report. Let's structure:\n\n- summary: \"Meta's net margin decreased by approximately 34.05 percentage points from Q1 2025 (39.33%) to Q3 2025 (5.29%).\" with citations.\n\n- points: key facts: Q1 net income, revenue, net margin; Q3 net income, revenue, net margin; change.\n\n- tables: one table with columns: Period, Net Income (USD), Revenue (USD), Net Margin (%). Rows for Q1 2025, Q3 2025, and maybe a row for Change (percentage points). Each numeric cell with cite_id.\n\n- chart: maybe a bar chart comparing net margins for Q1 and Q3. Since the question asks \"how did it change\", a bar chart could show the two margins. But the chart spec says only when the question asks how something changed over periods. It does ask change over periods. So we can include a chart: kind \"bar\", table index 0, x_column \"Period\", series [\"Net Margin (%)\"].\n\n- confidence: high, because we have all data.\n\n- unverified: empty.\n\n- status: completed.\n\n- citations: list of citation refs with markers.\n\nWe need to assign markers in summary: e.g., [1] for Q1 net margin, [2] for Q3 net margin, [3] for change. But we have multiple cite_ids. We'll create citations array with marker and cite_id.\n\nLet's compute net margins precisely using the numbers:\n\nQ1 net margin = 16,644,000,000 / 42,314,000,000 = 0.393333... = 39.33% (rounded to two decimals). Q3 net margin = 2,709,000,000 / 51,242,000,000 = 0.05286 = 5.29% (rounded). Change = -34.04 percentage points.\n\nWe'll present net margin as percentages with two decimals.\n\nNow, we need to include cite_ids for each cell. For net income and revenue, we have direct cite_ids. For net margin, we can cite the calculation k:1 for the change, but for each quarter's net margin we might need to cite the source numbers. Since net margin is derived, we can cite the constituent numbers. But the schema expects cite_id for each cell. We can put the cite_id of the calculation for the change row, and for the net margin cells we can put the cite_ids of the net income and revenue? The spec says \"Every cell that contains a number must have the cite_id of the evidence or calculation it comes from.\" So for net margin, we can cite the calculation that produced it? But we don't have a separate calculation for each quarter's net margin. We could compute them manually and cite the source numbers. However, we can also create a calculation for each net margin? Not provided. We'll cite the relevant net income and revenue cite_ids for each quarter's net margin. But the cell is a single number; we can include multiple cite_ids? The Cell schema has a single cite_id (string or null). It says \"cite_id\": {\"anyOf\": [{\"type\": \"string\"}, {\"type\": \"null\"}], \"default\": null}. So only one cite_id per cell. We could cite the calculation k:1 for the change cell. For net margin cells, we could cite the net income cite_id? But that's not the net margin. Perhaps we can cite the calculation that produced the net margin? Not available. We could create a new calculation? But we cannot invent cite_ids. We'll have to use the existing cite_ids. Maybe we can cite the net income cite_id for net margin? That would be inaccurate. Alternatively, we can omit cite_id for net margin cells (set null). But the rule says \"Every cell that contains a number must have the cite_id of the evidence or calculation it comes from.\" So we must provide a cite_id. We have calculation k:1 for the change. For Q1 net margin, we could compute it and cite the two source cite_ids? But only one allowed. Perhaps we can cite the calculation that produced the change? That includes both quarters. But the change calculation uses both quarters. However, the net margin for each quarter is not directly evidenced. The findings only give net income and revenue. The net margin is derived. The calculation k:1 is the change. We could create a table with only net income, revenue, and change. But the question asks for net margin change. We can present a table with Period, Net Income, Revenue, Net Margin (%). For Net Margin, we can cite the calculation k:1? That's for change. Not ideal.\n\nMaybe we can create two calculations: one for Q1 net margin, one for Q3 net margin. But we cannot invent calculations. The system only gave one calculation. However, we can still compute net margins and cite the source numbers. Since the cell can only have one cite_id, we could cite the net income cite_id for net margin? That would be wrong. But perhaps we can cite the revenue cite_id? Also wrong.\n\nAlternatively, we can present a table with only the change row, but that seems insufficient.\n\nLet's think: The findings include F5: \"Meta's net margin decreased from Q1 to Q3 2025.\" with cite_ids of the four numbers. The calculation k:1 gives the change. So we can present a table with two rows: Q1 2025 and Q3 2025, showing net margin percentages, and a third row for change. For the net margin cells, we can cite the calculation k:1? But that's the change. However, the calculation k:1 is derived from those numbers. It might be acceptable to cite k:1 for the change cell, and for the net margin cells we can cite the respective net income and revenue cite_ids? But we need one cite_id per cell. We could cite the net income cite_id for Q1 net margin, and revenue cite_id for Q3 net margin? That's inconsistent.\n\nMaybe we can avoid showing net margin in the table and just show net income, revenue, and then a separate row for net margin change. But the question is about net margin change. We can present a table with Period, Net Margin (%), and Change (pp). For Q1 and Q3 net margin, we can cite the calculation k:1? Not exactly.\n\nLet's check the schema: Table rows are arrays of Cell objects. Each Cell has text and cite_id. The cite_id can be null. The rule says \"Every cell that contains a number must have the cite_id of the evidence or calculation it comes from.\" So if we put a number, we must have a cite_id. We have cite_ids for net income and revenue. For net margin, we don't have a direct cite_id. However, we can consider the net margin as a calculation from the evidence. The calculation k:1 is the change, not the individual margins. But we could argue that the net margin for each quarter is derived from the same evidence, so we can cite the evidence cite_ids. But we can only put one cite_id. Perhaps we can put the cite_id of the net income for that quarter? That would be the primary driver. But the revenue is also needed. The system might not be that strict. In previous examples, they often cite the calculation cite_id for derived numbers. Since we have a calculation for the change, but not for each margin, we might need to compute them and cite the source numbers. But we can't have two cite_ids.\n\nMaybe we can create a table with columns: Period, Net Income (USD), Revenue (USD), Net Margin (%). For Net Income and Revenue cells, we have direct cite_ids. For Net Margin, we can leave cite_id null? But rule says must have cite_id. However, the rule is part of the instructions to the writer. It says \"Every cell that contains a number must have the cite_id of the evidence or calculation it comes from.\" So we must provide a cite_id. We could create a new calculation cite_id? But we cannot invent. The only calculation cite_id we have is k:1. That calculation uses both quarters. It might be acceptable to cite k:1 for the net margin cells as well, since they are part of that calculation. But the calculation output is the change, not the individual margins.\n\nAlternatively, we can present a table with only the change: \"Change in net margin (percentage points)\" with value -34.05 and cite_id k:1. But the question asks \"How did Meta's net margin change from Q1 to Q3 of 2025, in percentage points?\" So the answer is a single number: -34.05 percentage points. We can provide a summary and a point, and maybe a table with just that change. But the user might expect a comparison.\n\nGiven the constraints, I'll create a table with three rows: Q1 2025, Q3 2025, Change. Columns: Period, Net Income (USD), Revenue (USD), Net Margin (%). For Net Income and Revenue, cite_ids are f:759, f:741, f:763, f:745. For Net Margin, I'll cite the calculation k:1 for the change row, and for Q1 and Q3 net margin, I'll cite the respective net income cite_id? That's not accurate. But maybe we can cite the calculation k:1 for all net margin cells, as they are derived from the same calculation. The calculation k:1 description: \"Change in net margin from Q1 to Q3 2025 in percentage points ((Net Income Q3 / Revenue Q3) - (Net Income Q1 / Revenue Q1)) * 100\". It implicitly contains the individual margins. So citing k:1 for the net margin cells could be acceptable.\n\nAlternatively, we can compute net margins and cite the two source cite_ids by concatenating? But the schema expects a single string. Could we use a combined cite_id like \"f:759,f:741\"? Not sure if allowed. The cite_id is a string, could be any string. But the evidence cite_ids are like \"f:759\". The calculation cite_id is \"k:1\". The system might expect only those IDs. I think it's safer to cite the calculation k:1 for the change cell, and for the net margin cells, cite the relevant net income and revenue cite_ids? But we can only pick one. I'll cite the net income cite_id for Q1 net margin and Q3 net margin, and for revenue cells cite revenue cite_id. For net margin, I'll cite the net income cite_id as a proxy. But that's not ideal.\n\nMaybe we can avoid showing net margin in the table and just show net income and revenue, and then a separate row for net margin change. But the question is about net margin change. The summary can state the change. The points can state the net margins. The table can show the change.\n\nLet's design:\n\nTable 1: \"Meta Net Margin Q1 vs Q3 2025\"\nColumns: Period, Net Margin (%)\nRows:\n- Q1 2025: 39.33% (cite_id: k:1? or maybe f:759 and f:741? I'll use k:1)\n- Q3 2025: 5.29% (cite_id: k:1)\n- Change (pp): -34.05 (cite_id: k:1)\n\nBut the net margin values are not directly from k:1. However, the calculation k:1 uses them. I think it's acceptable.\n\nAlternatively, we can create a table with Period, Net Income, Revenue, Net Margin. For Net Income and Revenue, we have cite_ids. For Net Margin, we can leave cite_id null? But the rule says must have cite_id. The rule is from the developer instruction. We must follow. So we need to provide a cite_id. I'll use the calculation cite_id k:1 for all net margin cells, as they are derived from that calculation.\n\nNow, chart: bar",
+    "content": "{\"language\":\"en\",\"status\":\"completed\",\"summary\":\"Meta's net margin fell sharply between Q1 and Q3 2025. The margin decreased by 34.05 percentage points from Q1 to Q3 2025[1].\",\"points\":[{\"text\":\"Net margin change: -34.05 percentage points[1].\",\"cite_ids\":[\"k:1\"]}],\"tables\":[],\"chart\":null,\"confidence\":{\"level\":\"high\",\"note\":\"\"},\"unverified\":[],\"citations\":[{\"marker\":1,\"cite_id\":\"k:1\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2550,
-    "tokens_out": 3000,
-    "latency_ms": 57042.469,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 3078,
+    "tokens_out": 459,
+    "latency_ms": 2097.636,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "b2a8508f0e158bdaa5ed586f8e501fe197edaeec995dcd3e6397f7cdf3d6fc1a",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Meta's net margin decreased by approximately 34.05 percentage points from Q1 2025 (39.33%) to Q3 2025 (5.29%).\",\n  \"points\": [\n    {\n      \"text\": \"Q1 2025 net income was $16.644 billion and revenue was $42.314 billion, yielding a net margin of 39.33%.\",\n      \"cite_ids\": [\"f:759\", \"f:741\"]\n    },\n    {\n      \"text\": \"Q3 2025 net income was $2.709 billion and revenue was $51.242 billion, yielding a net margin of 5.29%.\",\n      \"cite_ids\": [\"f:763\", \"f:745\"]\n    },\n    {\n      \"text\": \"Net margin fell by 34.05 percentage points from Q1 to Q3 2025.\",\n      \"cite_ids\": [\"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Meta Net Margin Q1 vs Q3 2025\",\n      \"columns\": [\"Period\", \"Net Income (USD)\", \"Revenue (USD)\", \"Net Margin (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Q1 2025\", \"cite_id\": null},\n          {\"text\": \"16,644,000,000\", \"cite_id\": \"f:759\"},\n          {\"text\": \"42,314,000,000\", \"cite_id\": \"f:741\"},\n          {\"text\": \"39.33\", \"cite_id\": \"k:1\"}\n        ],\n        [\n          {\"text\": \"Q3 2025\", \"cite_id\": null},\n          {\"text\": \"2,709,000,000\", \"cite_id\": \"f:763\"},\n          {\"text\": \"51,242,000,000\", \"cite_id\": \"f:745\"},\n          {\"text\": \"5.29\", \"cite_id\": \"k:1\"}\n        ],\n        [\n          {\"text\": \"Change (pp)\", \"cite_id\": null},\n          {\"text\": \"—\", \"cite_id\": null},\n          {\"text\": \"—\", \"cite_id\": null},\n          {\"text\": \"-34.05\", \"cite_id\": \"k:1\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Period\",\n    \"series\": [\"Net Margin (%)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"All required data for Q1 and Q3 2025 net income and revenue are available from SEC filings.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:759\"},\n    {\"marker\": 2, \"cite_id\": \"f:741\"},\n    {\"marker\": 3, \"cite_id\": \"f:763\"},\n    {\"marker\": 4, \"cite_id\": \"f:745\"},\n    {\"marker\": 5, \"cite_id\": \"k:1\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
-    "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 5591,
-    "tokens_out": 1942,
-    "latency_ms": 43071.165,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
     ]
    }
   }
@@ -127,7 +109,7 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"META\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 2995, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-22T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm\"}, {\"document_id\": 2996, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm\"}, {\"document_id\": 2997, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm\"}, {\"document_id\": 2998, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-01-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm\"}, {\"document_id\": 2999, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm\"}, {\"document_id\": 3000, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm\"}, {\"document_id\": 3001, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm\"}, {\"document_id\": 3002, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm\"}, {\"document_id\": 3003, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm\"}]}",
+   "content": "{\"documents\": [{\"document_id\": 3140, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-22T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm\"}, {\"document_id\": 3141, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm\"}, {\"document_id\": 3142, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm\"}, {\"document_id\": 3143, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-01-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm\"}, {\"document_id\": 3144, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm\"}, {\"document_id\": 3145, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm\"}, {\"document_id\": 3146, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm\"}, {\"document_id\": 3147, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm\"}, {\"document_id\": 3148, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm\"}]}",
    "summary": "META documents",
    "count": 9,
    "items": [],
@@ -136,9 +118,9 @@
   {
    "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\"],\"periods\":[\"2025-Q1\",\"2025-Q3\"],\"ticker\":\"META\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:759\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4163\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:760\">Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4164\">Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:763\">Net income (2025-Q3): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4167\">Net income (2025-Q3): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:11503\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:13367\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:741\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4145\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:742\">Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4146\">Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:745\">Revenue (2025-Q3): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4149\">Revenue (2025-Q3): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:11483\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:13347\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>",
+   "content": "<untrusted_document cite_id=\"f:759\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4163\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:760\">Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4164\">Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:763\">Net income (2025-Q3): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4167\">Net income (2025-Q3): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:11503\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:13367\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:15147\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:741\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4145\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:742\">Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4146\">Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:745\">Revenue (2025-Q3): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4149\">Revenue (2025-Q3): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:11483\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:13347\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:15127\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>",
    "summary": "META 2025-Q1 to 2025-Q3 net_income, revenue",
-   "count": 16,
+   "count": 18,
    "items": [
     {
      "cite_id": "f:759",
@@ -279,6 +261,25 @@
      "source": {
       "kind": "fact",
       "document_id": 2995,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:15147",
+     "text": "Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3140,
       "ticker": "META",
       "doc_type": "10-Q",
       "period": "2025-Q3",
@@ -443,6 +444,25 @@
      "value": "51242000000",
      "scale": "1",
      "unit_note": null
+    },
+    {
+     "cite_id": "f:15127",
+     "text": "Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3140,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
     }
    ],
    "error": null
@@ -450,11 +470,11 @@
  ],
  "sandbox": [
   {
-   "key": "50bb0b4093abd724b5dac67cb71de8511546c60fba202420b46dfe76f8ddac4e",
+   "key": "ea6edfe7b963676dfb000a1586f44684059c5dbe6fa57b5e007cc817043f1346",
    "response": {
     "ok": true,
     "outputs": {
-     "net_margin_change_q1_q3_2025": "-34.04782032389833"
+     "margin_change": "-34.04782032389833"
     },
     "stdout": "",
     "error": null,
@@ -463,11 +483,11 @@
    }
   },
   {
-   "key": "50bb0b4093abd724b5dac67cb71de8511546c60fba202420b46dfe76f8ddac4e",
+   "key": "ea6edfe7b963676dfb000a1586f44684059c5dbe6fa57b5e007cc817043f1346",
    "response": {
     "ok": true,
     "outputs": {
-     "net_margin_change_q1_q3_2025": "-34.04782032389833"
+     "margin_change": "-34.04782032389833"
     },
     "stdout": "",
     "error": null,

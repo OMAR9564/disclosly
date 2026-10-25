@@ -12,7 +12,7 @@
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 1013,
     "tokens_out": 91,
-    "latency_ms": 1381.503,
+    "latency_ms": 1111.833,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,104 +21,157 @@
    "key": "4e3a5eea81a3f4ce0f56ac234a39cf2d10cdc4dcd7b81a0dcb3d545e2eea7e0d",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"THYAO 2024 yılsonu FAVÖK, toplam borç ve nakit verilerini getir\", \"tickers\": [\"THYAO\"], \"periods\": [\"2024-FY\"], \"metrics\": [\"ebitda\", \"total_debt\", \"cash\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"Net borç / FAVÖK oranını hesapla (net borç = toplam borç - nakit)\", \"tickers\": [\"THYAO\"], \"periods\": [\"2024-FY\"]}]}",
+    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"THYAO 2024 yılsonu FAVÖK, toplam borç ve nakit değerlerini getir\", \"tickers\": [\"THYAO\"], \"periods\": [\"2024-FY\"], \"metrics\": [\"ebitda\", \"total_debt\", \"cash\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"Net borç (toplam borç - nakit) ve net borç / FAVÖK oranını hesapla\", \"tickers\": [\"THYAO\"], \"periods\": [\"2024-FY\"]}]}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1194,
-    "tokens_out": 299,
-    "latency_ms": 2738.707,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "d99545b11ee8ebb741fead8bebc6038031ea8768807037a9449c6baa776e9136",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"THYAO 2024 yilsonu FAVOK toplam borc ve nakit\"}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 855,
-    "tokens_out": 66,
-    "latency_ms": 1223.534,
+    "tokens_out": 297,
+    "latency_ms": 5196.857,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "08cf9148555ffd5e441616c819313a85571011eb02eb79b1476b4780baf59e5c",
+   "key": "ea3bb006ddb003e7e5ff5f791b4244f717a287ce4e34d1ea914caf254f05172a",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"THYAO 2024 yılsonu FAVÖK toplam borç nakit\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 857,
+    "tokens_out": 98,
+    "latency_ms": 1135.096,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "b1c794b4940a5a77e2fd52532e02ce76e30c345a6ad18085b91a3a77caa31b2e",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"THYAO 31 Aralık 2024 tarihi itibarıyla nakit ve nakit benzerleri 95.992.000.000 TRY'dir.\",\n      \"cite_ids\": [\"f:11\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"THYAO 2024 yılı FAVÖK'su 152.699.000.000 TRY'dir.\",\n      \"cite_ids\": [\"f:23\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"THYAO 31 Aralık 2024 tarihi itibarıyla toplam borç 489.939.000.000 TRY'dir.\",\n      \"cite_ids\": [\"f:21\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"THYAO 2024 yılsonu net borç / FAVÖK oranı 2,58x'tir.\",\n      \"cite_ids\": [\"f:11\", \"f:21\", \"f:23\"],\n      \"calcs\": [\"net_debt_to_ebitda\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_debt_to_ebitda\",\n      \"description\": \"Net borç / FAVÖK oranı (Net borç = Toplam borç - Nakit ve nakit benzerleri)\",\n      \"inputs\": [\n        {\n          \"name\": \"total_debt\",\n          \"cite_id\": \"f:21\"\n        },\n        {\n          \"name\": \"cash\",\n          \"cite_id\": \"f:11\"\n        },\n        {\n          \"name\": \"ebitda\",\n          \"cite_id\": \"f:23\"\n        }\n      ],\n      \"code\": \"net_debt = inputs['total_debt'] - inputs['cash']; result = net_debt / inputs['ebitda']\"\n    }\n  ]\n}",
+    "content": "{\"findings\": [{\"id\": \"F1\", \"text\": \"THYAO 2024 yılsonu nakit ve nakit benzerleri 95.992.000.000 TRY'dir.\", \"cite_ids\": [\"f:11\"]}, {\"id\": \"F2\", \"text\": \"THYAO 2024 yılsonu FAVÖK (EBITDA) 152.699.000.000 TRY'dir.\", \"cite_ids\": [\"f:23\"]}, {\"id\": \"F3\", \"text\": \"THYAO 2024 yılsonu toplam borç 489.939.000.000 TRY'dir.\", \"cite_ids\": [\"f:21\"]}], \"calculations\": [{\"name\": \"net_debt\", \"description\": \"Net borç = Toplam borç - Nakit ve nakit benzerleri\", \"inputs\": [{\"name\": \"total_debt\", \"cite_id\": \"f:21\"}, {\"name\": \"cash\", \"cite_id\": \"f:11\"}], \"code\": \"result = inputs['total_debt'] - inputs['cash']\"}, {\"name\": \"net_debt_to_ebitda\", \"description\": \"Net borç / FAVÖK oranı\", \"inputs\": [{\"name\": \"net_debt\", \"cite_id\": \"k:net_debt\"}, {\"name\": \"ebitda\", \"cite_id\": \"f:23\"}], \"code\": \"result = inputs['net_debt'] / inputs['ebitda']\"}]}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2769,
-    "tokens_out": 1108,
-    "latency_ms": 14361.252,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2863,
+    "tokens_out": 896,
+    "latency_ms": 11984.159,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "0a75c1fd5f2625098df90ec87c0c90bd1b0bb02c901d735c19320d487a53a616",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Kanıt f:11'de 2024 yılsonu nakit ve nakit benzerleri 95.992.000.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Kanıt f:23'te 2024 yılsonu FAVÖK 152.699.000.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Kanıt f:21'de 2024 yılsonu toplam borç 489.939.000.000 TRY olarak açıkça belirtiliyor.\"}]}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1054,
+    "tokens_out": 724,
+    "latency_ms": 11415.114,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "b173b0826488d8be71eed48279a67642ef3aafb3d12fb87d005f721466de2ca0",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"THYAO 2024 yılsonu FAVÖK, toplam borç ve nakit değerlerini getir\",\n      \"tickers\": [\"THYAO\"],\n      \"periods\": [\"2024-FY\"],\n      \"metrics\": [\"ebitda\", \"total_debt\", \"cash\"],\n      \"status\": \"pending\"\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Net borç (toplam borç - nakit) ve net borç / FAVÖK oranını hesapla\",\n      \"tickers\": [\"THYAO\"],\n      \"periods\": [\"2024-FY\"],\n      \"metrics\": [],\n      \"status\": \"pending\"\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1423,
+    "tokens_out": 662,
+    "latency_ms": 8194.455,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "ea3bb006ddb003e7e5ff5f791b4244f717a287ce4e34d1ea914caf254f05172a",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"THYAO 2024 yılsonu toplam borç FAVÖK nakit\"}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 857,
+    "tokens_out": 66,
+    "latency_ms": 1196.543,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "b1c794b4940a5a77e2fd52532e02ce76e30c345a6ad18085b91a3a77caa31b2e",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"THYAO 2024 yılsonu toplam borcu 489.939.000.000 TL'dir.\",\n      \"cite_ids\": [\"f:21\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"THYAO 2024 yılsonu nakit ve nakit benzerleri 95.992.000.000 TL'dir.\",\n      \"cite_ids\": [\"f:11\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"THYAO 2024 yılsonu FAVÖK'su 152.699.000.000 TL'dir.\",\n      \"cite_ids\": [\"f:23\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"THYAO 2024 yılsonu net borç / FAVÖK oranı 2,58'dir.\",\n      \"cite_ids\": [\"f:21\", \"f:11\", \"f:23\"],\n      \"calcs\": [\"net_debt_to_ebitda\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_debt_to_ebitda\",\n      \"description\": \"Net borç / FAVÖK oranı (Net borç = Toplam borç - Nakit ve nakit benzerleri)\",\n      \"inputs\": [\n        {\n          \"name\": \"total_debt\",\n          \"cite_id\": \"f:21\"\n        },\n        {\n          \"name\": \"cash\",\n          \"cite_id\": \"f:11\"\n        },\n        {\n          \"name\": \"ebitda\",\n          \"cite_id\": \"f:23\"\n        }\n      ],\n      \"code\": \"net_debt = inputs['total_debt'] - inputs['cash']; result = net_debt / inputs['ebitda']\"\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2863,
+    "tokens_out": 1040,
+    "latency_ms": 9646.651,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "80551b5ebdd4f0c93568a26fc640f5371ccc2c38390e0da32de4c14744ee1aae",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Kanıt f:21'de 2024 yılsonu toplam borç 489.939.000.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Kanıt f:11'de 2024 yılsonu nakit ve nakit benzerleri 95.992.000.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Kanıt f:23'te 2024 yılsonu FAVÖK 152.699.000.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F4\", \"supported\": true, \"reason\": \"Net borç = 489.939.000.000 - 95.992.000.000 = 393.947.000.000; 393.947.000.000 / 152.699.000.000 = 2,5799 ≈ 2,58; hesaplama kanıtlarla uyumlu.\"}]}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1193,
+    "tokens_out": 919,
+    "latency_ms": 10682.31,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "40180aed76d54b3a7b7d4c986cfa3f79816362f8cc9098af2b7557aaf972e4a3",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"THYAO'nun 2024 yılsonu toplam borcu 489.939.000.000 TL'dir[1]. Nakit ve nakit benzerleri 95.992.000.000 TL olup, net borç 393.947.000.000 TL olarak hesaplanmıştır[4]. 2024 yılı FAVÖK'ü 152.699.000.000 TL'dir[3]. Net borç / FAVÖK oranı 2,58'dir[5].\",\n  \"points\": [\n    {\n      \"text\": \"Toplam borç: 489.939.000.000 TL\",\n      \"cite_ids\": [\"f:21\"]\n    },\n    {\n      \"text\": \"Nakit ve nakit benzerleri: 95.992.000.000 TL\",\n      \"cite_ids\": [\"f:11\"]\n    },\n    {\n      \"text\": \"Net borç / FAVÖK oranı: 2,58 (Net borç 393.947.000.000 TL, EBITDA 152.699.000.000 TL)\",\n      \"cite_ids\": [\"k:3\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"THY 2024 Yılsonu Finansal Verileri\",\n      \"columns\": [\"Öğe\", \"Değer\"],\n      \"rows\": [\n        [\n          {\"text\": \"Toplam Borç\", \"cite_id\": null},\n          {\"text\": \"489.939.000.000 TL\", \"cite_id\": \"f:21\"}\n        ],\n        [\n          {\"text\": \"Nakit ve Nakit Benzerleri\", \"cite_id\": null},\n          {\"text\": \"95.992.000.000 TL\", \"cite_id\": \"f:11\"}\n        ],\n        [\n          {\"text\": \"Net Borç\", \"cite_id\": null},\n          {\"text\": \"393.947.000.000 TL\", \"cite_id\": \"k:1\"}\n        ],\n        [\n          {\"text\": \"FAVÖK\", \"cite_id\": null},\n          {\"text\": \"152.699.000.000 TL\", \"cite_id\": \"f:23\"}\n        ],\n        [\n          {\"text\": \"Net Borç / FAVÖK Oranı\", \"cite_id\": null},\n          {\"text\": \"2,58\", \"cite_id\": \"k:3\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": null,\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:21\"},\n    {\"marker\": 2, \"cite_id\": \"f:11\"},\n    {\"marker\": 3, \"cite_id\": \"f:23\"},\n    {\"marker\": 4, \"cite_id\": \"k:1\"},\n    {\"marker\": 5, \"cite_id\": \"k:3\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 3483,
+    "tokens_out": 1449,
+    "latency_ms": 3558.433,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
     ]
    }
   },
   {
-   "key": "8990a0c55d843d0647b050f66228f0f697b0d28ea73daaf8ee1da9fd25ed8987",
+   "key": "74f3fae423b487e44ddfc87984feaa960c6a7015011d35e2b874b9b37a75e170",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Kanıt f:11'de nakit ve nakit benzerleri 95.992.000.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Kanıt f:23'te FAVÖK 152.699.000.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Kanıt f:21'de toplam borç 489.939.000.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F4\", \"supported\": true, \"reason\": \"Net borç = 489.939.000.000 - 95.992.000.000 = 393.947.000.000 TRY; 393.947.000.000 / 152.699.000.000 = 2,5799 ≈ 2,58x. Hesaplama kanıtlanan rakamlarla uyuşuyor.\"}]}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"THYAO'nun 2024 yılsonu toplam borcu 489.939.000.000 TL'dir[1]. Nakit ve nakit benzerleri 95.992.000.000 TL olup, net borç 393.947.000.000 TL olarak hesaplanmıştır[2]. 2024 yılı FAVÖK'ü 152.699.000.000 TL'dir[3]. Net borç / FAVÖK oranı 2,58'dir[4].\",\n  \"points\": [\n    {\n      \"text\": \"Toplam borç: 489.939.000.000 TL\",\n      \"cite_ids\": [\"f:21\"]\n    },\n    {\n      \"text\": \"Nakit ve nakit benzerleri: 95.992.000.000 TL\",\n      \"cite_ids\": [\"f:11\"]\n    },\n    {\n      \"text\": \"Net borç: 393.947.000.000 TL\",\n      \"cite_ids\": [\"k:1\"]\n    },\n    {\n      \"text\": \"FAVÖK: 152.699.000.000 TL\",\n      \"cite_ids\": [\"f:23\"]\n    },\n    {\n      \"text\": \"Net borç / FAVÖK oranı: 2,58\",\n      \"cite_ids\": [\"k:3\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"THY 2024 Yılsonu Finansal Verileri\",\n      \"columns\": [\"Öğe\", \"Değer\"],\n      \"rows\": [\n        [\n          {\"text\": \"Toplam Borç\", \"cite_id\": null},\n          {\"text\": \"489.939.000.000 TL\", \"cite_id\": \"f:21\"}\n        ],\n        [\n          {\"text\": \"Nakit ve Nakit Benzerleri\", \"cite_id\": null},\n          {\"text\": \"95.992.000.000 TL\", \"cite_id\": \"f:11\"}\n        ],\n        [\n          {\"text\": \"Net Borç\", \"cite_id\": null},\n          {\"text\": \"393.947.000.000 TL\", \"cite_id\": \"k:1\"}\n        ],\n        [\n          {\"text\": \"FAVÖK\", \"cite_id\": null},\n          {\"text\": \"152.699.000.000 TL\", \"cite_id\": \"f:23\"}\n        ],\n        [\n          {\"text\": \"Net Borç / FAVÖK Oranı\", \"cite_id\": null},\n          {\"text\": \"2,58\", \"cite_id\": \"k:3\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": null,\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:21\"},\n    {\"marker\": 2, \"cite_id\": \"k:1\"},\n    {\"marker\": 3, \"cite_id\": \"f:23\"},\n    {\"marker\": 4, \"cite_id\": \"k:3\"},\n    {\"marker\": 5, \"cite_id\": \"f:11\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 1160,
-    "tokens_out": 950,
-    "latency_ms": 16376.941,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 4215,
+    "tokens_out": 1623,
+    "latency_ms": 4007.285,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "a4b36559bbff0fc24bb70d87db1bd72a0ed4875cae7148406f693c30a45756c2",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"THYAO'nun 2024 yılsonu net borç / FAVÖK oranı 2,58x olarak hesaplanmıştır. Net borç 393,947 milyar TRY (toplam borç 489,939 milyar TRY eksi nakit 95,992 milyar TRY) ve FAVÖK 152,699 milyar TRY olarak raporlanmıştır [1][2][3].\",\n  \"points\": [\n    {\n      \"text\": \"THYAO 31 Aralık 2024 itibarıyla nakit ve nakit benzerleri 95,992 milyar TRY'dir.\",\n      \"cite_ids\": [\"f:11\"]\n    },\n    {\n      \"text\": \"THYAO 2024 yılı FAVÖK'su 152,699 milyar TRY'dir.\",\n      \"cite_ids\": [\"f:23\"]\n    },\n    {\n      \"text\": \"THYAO 31 Aralık 2024 itibarıyla toplam borç 489,939 milyar TRY'dir.\",\n      \"cite_ids\": [\"f:21\"]\n    },\n    {\n      \"text\": \"Net borç (toplam borç - nakit) 393,947 milyar TRY olup, FAVÖK'a bölünce 2,58x oranı elde edilir.\",\n      \"cite_ids\": [\"f:11\", \"f:21\", \"f:23\", \"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"THYAO 2024 Yılsonu Net Borç / FAVÖK Hesabı\",\n      \"columns\": [\n        \"Kalem\",\n        \"Tutar (Milyar TRY)\",\n        \"Kaynak\"\n      ],\n      \"rows\": [\n        [\n          {\n            \"text\": \"Toplam Borç\",\n            \"cite_id\": \"f:21\"\n          },\n          {\n            \"text\": \"489,939\",\n            \"cite_id\": \"f:21\"\n          },\n          {\n            \"text\": \"Bilanço\",\n            \"cite_id\": \"f:21\"\n          }\n        ],\n        [\n          {\n            \"text\": \"Nakit ve Nakit Benzerleri\",\n            \"cite_id\": \"f:11\"\n          },\n          {\n            \"text\": \"95,992\",\n            \"cite_id\": \"f:11\"\n          },\n          {\n            \"text\": \"Bilanço\",\n            \"cite_id\": \"f:11\"\n          }\n        ],\n        [\n          {\n            \"text\": \"Net Borç\",\n            \"cite_id\": \"k:1\"\n          },\n          {\n            \"text\": \"393,947\",\n            \"cite_id\": \"k:1\"\n          },\n          {\n            \"text\": \"Hesaplama\",\n            \"cite_id\": \"k:1\"\n          }\n        ],\n        [\n          {\n            \"text\": \"FAVÖK\",\n            \"cite_id\": \"f:23\"\n          },\n          {\n            \"text\": \"152,699\",\n            \"cite_id\": \"f:23\"\n          },\n          {\n            \"text\": \"Gelir Tablosu\",\n            \"cite_id\": \"f:23\"\n          }\n        ],\n        [\n          {\n            \"text\": \"Net Borç / FAVÖK\",\n            \"cite_id\": \"k:1\"\n          },\n          {\n            \"text\": \"2,58x\",\n            \"cite_id\": \"k:1\"\n          },\n          {\n            \"text\": \"Hesaplama\",\n            \"cite_id\": \"k:1\"\n          }\n        ]\n      ]\n    }\n  ],\n  \"chart\": null,\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Gerekli tüm veriler (nakit, toplam borç, FAVÖK) 2024 yılsonu için mevcut ve oran doğrudan hesaplanmıştır.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:11\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:21\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:23\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
-    "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2677,
-    "tokens_out": 1404,
-    "latency_ms": 62882.075,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "142eebf5ed11605216b0281fe20660269ddd9e70fcbbbb0f6e30ded587515f5c",
-   "task_class": "strong",
-   "response": {
-    "content": "The user says the report validation failed because numbers in the summary, points, and tables are not found in the cited sources. The issue is that the numbers in the sources are given in full (e.g., 489.939.000.000 TRY) but I wrote them in billions with commas (e.g., 489,939). The validation expects the numbers to match exactly as they appear in the source documents. I need to use the exact numbers from the sources, not converted to billions. Also, the net debt calculation (393,947) is not directly in the sources; it's a calculation. The validation says \"numbers not found in cited sources\". For calculated numbers, I should still cite the calculation cite_id (k:1) but the number must be presented as it appears in the calculation output? The calculation output is \"2.5798924681890516\" for the ratio, and net debt is not directly given but derived. However, the validation expects numbers to be found in the cited sources. For calculated numbers, perhaps I should not include them in the table as separate rows, or I should present the raw numbers from sources and show the calculation in the summary/points without putting the calculated number in a table cell that expects a source number. But the table includes a row for Net Borç with value 393,947 (in billions). That number is not in any source; it's a calculation. The validation says \"numbers not found in the cited source\". So I need to either omit the calculated row or present the raw numbers (total debt and cash) and then the ratio. But the user asked to calculate net debt/EBITDA ratio. The previous report included a table with calculated numbers. The validation is strict: numbers must be found in the cited sources. So I should only put numbers that appear directly in the sources. For the ratio, the calculation cite_id k:1 gives the ratio 2.5798924681890516. That number is in the calculation output. But the validation might check that the number appears in the cited source (the calculation). However, the error says \"summary numbers not found in cited sources: ['2,58', '393,947']\". The summary includes \"2,58x\" and \"393,947 milyar TRY\". Those numbers are not in the sources (f:11, f:21, f:23). The calculation k:1 gives the ratio as 2.5798924681890516, not 2,58. And net debt 393,947 million is not in any source. So I need to adjust: In summary, I should quote the ratio as 2.58x but cite the calculation k:1? The validation says numbers not found in cited sources. The calculation is a source (k:1). But the number 2,58 is not exactly the same as 2.5798924681890516. The validation might require exact match. I should use the exact number from the calculation: 2.5798924681890516? But that's too many decimals. The instruction says \"Rakamları orada göründükleri gibi, birimiyle birlikte aynen yaz.\" So I should write numbers as they appear in the source. For the ratio, the calculation output is \"2.5798924681890516\". I could write \"2.58\" but that's not exactly as appears. However, the finding F4 says \"THYAO 2024 yılsonu net borç / FAVÖK oranı 2,58x'tir.\" That's a finding with cite_ids f:11, f:21, f:23 and calcs net_debt_to_ebitda. The finding text includes \"2,58x\". That is a finding, not a source document. The validation might consider findings as sources? The findings are provided in the input. The validation likely checks against the untrusted_documents (f:11, f:21, f:23) and calculations (k:1). The finding F4 is not a source document. So I should cite the calculation k:1 for the ratio. But the number in k:1 is 2.5798924681890516. I could write \"2.58\" but that's rounded. The instruction says \"Rakamları orada göründükleri gibi, birimiyle birlikte aynen yaz.\" So I should write the exact number from the calculation? That would be weird. Maybe I should write \"2.58x\" and cite the finding F4? But the finding is not a source document. The validation might not check findings. The error says \"summary numbers not found in cited sources\". The cited sources in summary are [1][2][3] which correspond to f:11, f:21, f:23. Those sources don't contain 2.58 or 393,947. So I need to cite the calculation k:1 for those numbers. But the summary citations are only for the sources, not for calculations. I can add a citation to k:1 in the summary. However, the summary citations array only includes markers 1,2,3. I can add a fourth citation for k:1. But the summary text includes numbers that are not in f:11, f:21, f:23. So I should cite k:1 for the ratio and net debt. But net debt is not directly in k:1; k:1 is the ratio. The net debt is derived from f:11 and f:21. The validation might accept that if I cite both f:11 and f:21 for net debt? But the number 393,947 is not in those sources. The validation is strict: the number must appear in the cited source. So I should not include the net debt number in the summary. I can say \"Net borç (toplam borç - nakit) hesaplanarak FAVÖK'a bölünce 2.58x oranı elde edilir.\" without giving the net debt number. But the summary currently includes \"Net borç 393,947 milyar TRY\". I should remove that number. Similarly, in points, point 3 includes \"393,947 milyar TRY\". I should remove that number. In the table, I should not include a row for Net Borç with a calculated number. Instead, I can show the two source numbers (total debt and cash) and then the ratio. But the table currently has a row for Net Borç with 393,947. That number is not in any source. I should either omit that row or put the formula. But the table cells require numbers. I could put the raw numbers in TRY (not billions) as they appear in sources. For example, total debt: 489.939.000.000 TRY, cash: 95.992.000.000 TRY, FAVÖK: 152.699.000.000 TRY. Then the ratio from calculation: 2.5798924681890516. But the table columns are \"Kalem\", \"Tutar (Milyar TRY)\", \"Kaynak\". If I change the unit to TRY, I need to adjust column header. But the validation expects numbers to match sources. The sources have numbers in TRY (full). So I should use the full numbers in the table, not in billions. The column header can be \"Tutar (TRY)\". Then the numbers will match exactly. For the ratio, it's unitless. I can add a row for \"Net Borç / FAVÖK\" with value \"2.5798924681890516\" and cite k:1. But the finding F4 says 2,58x. I could use that finding as a source? The findings are not in the untrusted_documents. The validation likely only checks against the provided untrusted_documents and calculations. The findings are part of the input but not as citable sources? The citations refer to cite_ids like f:11, f:21, f:23, k:1. The findings have ids F1, F2, F3, F4 but they are not in the cite_id list. The citations in the report must reference cite_ids from the untrusted_documents or calculations. So I should cite k:1 for the ratio. The number in k:1 is 2.5798924681890516. I'll use that exact number in the table. But the summary says 2,58x. I'll change summary to use the exact number from calculation? The instruction says \"Rakamları orada göründükleri gibi, birimiyle birlikte aynen yaz.\" So I should write the ratio as \"2.5798924681890516\" but that's absurd. Maybe I can write \"2.58\" and cite the finding F4? But the finding is not a cite_id. The cite_ids are only those from untrusted_documents and calculations. The findings are not in the cite_id list. However, the findings have cite_ids referencing the untrusted_documents. The finding F4 has cite_ids [\"f:11\", \"f:21\", \"f:23\"] and calcs [\"net_debt_to_ebitda\"]. The calculation k:1 is the net_debt_to_ebitda. So the ratio is derived from those sources. The validation might accept the ratio if I cite k:1. But the number must match exactly. The calculation output is \"2.5798924681890516\". I'll use that. But the summary is supposed to be 2-4 sentences. I can write \"THYAO'nun 2024 yılsonu net borç / FAVÖK oranı 2.5798924681890516'tir.\" That's weird. Maybe I can round to two decimals but cite the calculation. The validation might do a numeric comparison. The error says \"summary numbers not found in cited sources: ['2,58', '393,947']\". It's looking for the exact string \"2,58\" in the cited sources. Since the cited sources are f:11, f:21, f:23, they don't contain \"2,58\". If I cite k:1, the source is the calculation output which is \"2.5798924681890516\". That doesn't contain \"2,58\" either. So I need to either not include the number in the summary, or include the exact number from the calculation. But the summary is for human reading. The instruction says \"Rakamları orada göründükleri gibi, birimiyle birlikte aynen yaz.\" So I should write the number as it appears in the source. For the ratio, the source is the calculation output. I'll write \"2.5798924681890516\". But that's too precise. Maybe the calculation output is considered a source and the number is that. I'll use that. However, the finding F4 says \"2,58x\". That's a finding, not a source. The validation might not consider findings as sources. I'll follow the validation: use exact numbers from cited sources. For the summary, I'll cite k:1 for the ratio and not mention net debt number. For points, I'll avoid calculated numbers. For the table, I'll use the exact numbers from the untrusted_documents (full TRY amounts) and for the ratio, use the exact calculation output. Let's adjust.\n\nFirst, get the exact numbers from untrusted_documents:\n- f:11: \"95.992.000.000 TRY\"\n- f:21: \"489.939.000.000 TRY\"\n- f:23: \"152.699.000.000 TRY\"\n- k:1: \"2.5798924681890516\"\n\nI'll create a table with columns: \"Kalem\", \"Tutar (TRY)\", \"Kaynak\". Rows for Toplam Borç, Nakit ve Nakit Benzerleri, FAVÖK, Net Borç / FAVÖK. For the ratio row, the value is the ratio number. The unit is not TRY, but I can put \"2.5798924681890516\" and cite k:1. The column header \"Tutar (TRY)\" might be misleading for ratio. I can change column header to \"Değer\". But the validation might not care about header. It checks numbers in cells against cited sources. For the ratio cell, the number must match the cited source (k:1). So I'll put the exact string \"2.5798924681890516\". For the other",
-    "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 3923,
-    "tokens_out": 3000,
-    "latency_ms": 40726.585,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
     ]
    }
   }
@@ -370,9 +423,282 @@
     }
    ],
    "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"THYAO\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 106, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-16T06:35:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1682832\"}, {\"document_id\": 105, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-08T13:06:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1676983\"}, {\"document_id\": 104, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-23T15:19:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1667339\"}, {\"document_id\": 103, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-08T19:06:03Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1660523\"}, {\"document_id\": 102, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-07T10:57:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1645098\"}, {\"document_id\": 101, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-05T05:01:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643242\"}, {\"document_id\": 100, \"ticker\": \"THYAO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-05T05:00:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643239\"}, {\"document_id\": 99, \"ticker\": \"THYAO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-05T05:00:21Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643238\"}, {\"document_id\": 98, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-09T11:19:46Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1630629\"}, {\"document_id\": 97, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-08T16:07:25Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1629952\"}, {\"document_id\": 96, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-02T06:32:58Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1622775\"}, {\"document_id\": 95, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-15T17:09:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1617478\"}, {\"document_id\": 94, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-10T07:13:44Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1615692\"}, {\"document_id\": 93, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-10T07:10:46Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1615687\"}, {\"document_id\": 92, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-04T12:53:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1613157\"}, {\"document_id\": 91, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-08T17:39:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1603784\"}, {\"document_id\": 90, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-29T15:21:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1598902\"}, {\"document_id\": 89, \"ticker\": \"THYAO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-29T15:21:07Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1598900\"}, {\"document_id\": 88, \"ticker\": \"THYAO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-29T15:20:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1598897\"}, {\"document_id\": 87, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-09T16:17:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1590373\"}, {\"document_id\": 86, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-09T16:16:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1590371\"}, {\"document_id\": 85, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-09T16:16:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1590370\"}, {\"document_id\": 84, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-09T05:42:55Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1589738\"}, {\"document_id\": 83, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-01T14:56:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1582379\"}, {\"document_id\": 82, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-09T19:39:45Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1569213\"}, {\"document_id\": 81, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-06T15:39:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1567671\"}, {\"document_id\": 80, \"ticker\": \"THYAO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-03-04T18:18:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1566094\"}, {\"document_id\": 79, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-04T16:08:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1566008\"}, {\"document_id\": 78, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-04T15:55:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1565998\"}, {\"document_id\": 77, \"ticker\": \"THYAO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-03-04T15:55:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1565996\"}, {\"document_id\": 76, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-10T12:50:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1555365\"}, {\"document_id\": 75, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-09T14:36:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1554930\"}, {\"document_id\": 74, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-09T06:26:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1537896\"}, {\"document_id\": 73, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-05T15:30:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1533135\"}, {\"document_id\": 72, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-29T16:21:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1530826\"}, {\"document_id\": 71, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-10T14:49:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1525679\"}, {\"document_id\": 70, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-10T14:48:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1525677\"}, {\"document_id\": 69, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-09T08:25:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1525091\"}, {\"document_id\": 68, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-19T14:27:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1518208\"}, {\"document_id\": 67, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-07T05:03:48Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1512547\"}, {\"document_id\": 66, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-07T05:03:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1512546\"}, {\"document_id\": 65, \"ticker\": \"THYAO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-07T05:02:55Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1512544\"}, {\"document_id\": 64, \"ticker\": \"THYAO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-07T05:02:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1512543\"}, {\"document_id\": 63, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-06T06:11:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511960\"}, {\"document_id\": 62, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-05T20:42:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511936\"}, {\"document_id\": 61, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-05T09:26:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511492\"}, {\"document_id\": 60, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-24T12:53:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1507789\"}, {\"document_id\": 59, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-24T12:24:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1507769\"}, {\"document_id\": 58, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-08T16:10:49Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1500827\"}, {\"document_id\": 57, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-30T13:44:49Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1494220\"}, {\"document_id\": 56, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-26T04:03:47Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1493126\"}, {\"document_id\": 55, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-08T16:50:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1488116\"}, {\"document_id\": 54, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-27T10:10:46Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1482980\"}, {\"document_id\": 53, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-19T19:11:48Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1481087\"}, {\"document_id\": 52, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-07T15:41:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1474106\"}, {\"document_id\": 51, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-07T07:12:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1473456\"}, {\"document_id\": 50, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-05T16:16:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1472633\"}, {\"document_id\": 49, \"ticker\": \"THYAO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-05T16:15:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1472627\"}, {\"document_id\": 48, \"ticker\": \"THYAO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-05T16:15:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1472624\"}, {\"document_id\": 47, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-29T18:25:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1467991\"}, {\"document_id\": 46, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-18T06:44:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1464515\"}, {\"document_id\": 45, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-08T14:16:05Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1460019\"}, {\"document_id\": 44, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-20T18:57:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1450725\"}, {\"document_id\": 43, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-11T12:03:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1447442\"}, {\"document_id\": 42, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-04T14:18:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1445891\"}, {\"document_id\": 41, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-02T05:59:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1444201\"}, {\"document_id\": 40, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-27T06:45:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1442222\"}, {\"document_id\": 39, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-21T15:59:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1440808\"}, {\"document_id\": 38, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-21T15:58:43Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1440807\"}, {\"document_id\": 37, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-21T15:57:40Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1440806\"}, {\"document_id\": 36, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-21T15:22:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1440776\"}, {\"document_id\": 35, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-07T08:36:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1434509\"}, {\"document_id\": 34, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-05T13:39:55Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1433423\"}, {\"document_id\": 33, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-28T15:21:10Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1430413\"}, {\"document_id\": 32, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-28T15:20:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1430411\"}, {\"document_id\": 31, \"ticker\": \"THYAO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-28T15:20:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1430407\"}, {\"document_id\": 30, \"ticker\": \"THYAO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-28T15:20:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1430405\"}, {\"document_id\": 29, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-17T13:03:03Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1427106\"}, {\"document_id\": 28, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-09T15:15:10Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1422401\"}, {\"document_id\": 27, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-07T14:00:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1418755\"}, {\"document_id\": 26, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-28T08:59:29Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1414218\"}, {\"document_id\": 25, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-07T15:49:05Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1402572\"}, {\"document_id\": 24, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-28T05:03:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1396950\"}, {\"document_id\": 23, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-28T05:00:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1396943\"}, {\"document_id\": 22, \"ticker\": \"THYAO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-28T05:00:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1396941\"}, {\"document_id\": 21, \"ticker\": \"THYAO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-28T05:00:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1396940\"}, {\"document_id\": 20, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-25T13:32:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1395628\"}, {\"document_id\": 19, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-19T17:53:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1394220\"}, {\"document_id\": 18, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-17T13:01:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393319\"}, {\"document_id\": 17, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-14T16:36:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393070\"}, {\"document_id\": 16, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-07T14:48:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1390814\"}, {\"document_id\": 15, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-05T18:17:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1389746\"}, {\"document_id\": 14, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-05T13:21:53Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1389532\"}, {\"document_id\": 13, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-04T13:22:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1389070\"}, {\"document_id\": 12, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-31T06:52:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1387021\"}, {\"document_id\": 11, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-08T16:17:01Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1375384\"}, {\"document_id\": 10, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-10T08:25:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1364492\"}, {\"document_id\": 9, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-27T10:05:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1360727\"}, {\"document_id\": 8, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-20T09:20:56Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1359203\"}, {\"document_id\": 7, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-14T13:51:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1358003\"}, {\"document_id\": 6, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-09T08:08:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1356129\"}, {\"document_id\": 5, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-04T15:20:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353363\"}, {\"document_id\": 4, \"ticker\": \"THYAO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-04T15:20:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353360\"}, {\"document_id\": 3, \"ticker\": \"THYAO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-04T15:20:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353359\"}, {\"document_id\": 2, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-10-25T12:21:48Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1350863\"}, {\"document_id\": 1, \"ticker\": \"THYAO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-10-25T12:19:47Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1350860\"}]}",
+   "summary": "THYAO documents",
+   "count": 106,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"ebitda\",\"total_debt\",\"cash\"],\"periods\":[\"2024-FY\"],\"ticker\":\"THYAO\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:11\">Nakit ve nakit benzerleri (2024-FY; Cari Dönem 31.12.2024): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:26\">Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-Q1 raporu): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:40\">Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-Q2 raporu): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:50\">Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-Q3 raporu): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:60\">Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-FY raporu): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:23\">FAVÖK (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 152.699.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:72\">FAVÖK (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 152.699.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:21\">Toplam borç (2024-FY; Cari Dönem 31.12.2024): 489.939.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:36\">Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-Q1 raporu): 489.939.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:48\">Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-Q2 raporu): 489.939.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:58\">Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-Q3 raporu): 489.939.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:70\">Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-FY raporu): 489.939.000.000 TRY</untrusted_document>",
+   "summary": "THYAO 2024-FY ebitda, total_debt, cash",
+   "count": 12,
+   "items": [
+    {
+     "cite_id": "f:11",
+     "text": "Nakit ve nakit benzerleri (2024-FY; Cari Dönem 31.12.2024): 95.992.000.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 21,
+      "ticker": "THYAO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Nakit ve Nakit Benzerleri / Cari Dönem 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1396940"
+     },
+     "value": "95992000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:26",
+     "text": "Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-Q1 raporu): 95.992.000.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 30,
+      "ticker": "THYAO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Nakit ve Nakit Benzerleri / Önceki Dönem 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1430405"
+     },
+     "value": "95992000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:40",
+     "text": "Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-Q2 raporu): 95.992.000.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 48,
+      "ticker": "THYAO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Nakit ve Nakit Benzerleri / Önceki Dönem 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1472624"
+     },
+     "value": "95992000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:50",
+     "text": "Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-Q3 raporu): 95.992.000.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 64,
+      "ticker": "THYAO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Nakit ve Nakit Benzerleri / Önceki Dönem 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1512543"
+     },
+     "value": "95992000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:60",
+     "text": "Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-FY raporu): 95.992.000.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 77,
+      "ticker": "THYAO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Nakit ve Nakit Benzerleri / Önceki Dönem 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1565996"
+     },
+     "value": "95992000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:23",
+     "text": "FAVÖK (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 152.699.000.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 21,
+      "ticker": "THYAO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / ESAS FAALİYET KARI (ZARARI) / Cari Dönem 01.01.2024 - 31.12.2024 + Tablo 3 (Nakit Akış Tablosu (Dolaylı Yöntem)) / Amortisman ve İtfa Gideri İle İlgili Düzeltmeler / Cari Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1396940"
+     },
+     "value": "152699000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:72",
+     "text": "FAVÖK (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 152.699.000.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 77,
+      "ticker": "THYAO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / ESAS FAALİYET KARI (ZARARI) / Önceki Dönem 01.01.2024 - 31.12.2024 + Tablo 3 (Nakit Akış Tablosu (Dolaylı Yöntem)) / Amortisman ve İtfa Gideri İle İlgili Düzeltmeler / Önceki Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1565996"
+     },
+     "value": "152699000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:21",
+     "text": "Toplam borç (2024-FY; Cari Dönem 31.12.2024): 489.939.000.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 21,
+      "ticker": "THYAO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Kısa Vadeli Borçlanmalar / Cari Dönem 31.12.2024 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmaların Kısa Vadeli Kısımları / Cari Dönem 31.12.2024 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmalar / Cari Dönem 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1396940"
+     },
+     "value": "489939000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:36",
+     "text": "Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-Q1 raporu): 489.939.000.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 30,
+      "ticker": "THYAO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Kısa Vadeli Borçlanmalar / Önceki Dönem 31.12.2024 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmaların Kısa Vadeli Kısımları / Önceki Dönem 31.12.2024 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmalar / Önceki Dönem 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1430405"
+     },
+     "value": "489939000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:48",
+     "text": "Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-Q2 raporu): 489.939.000.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 48,
+      "ticker": "THYAO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Kısa Vadeli Borçlanmalar / Önceki Dönem 31.12.2024 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmaların Kısa Vadeli Kısımları / Önceki Dönem 31.12.2024 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmalar / Önceki Dönem 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1472624"
+     },
+     "value": "489939000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:58",
+     "text": "Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-Q3 raporu): 489.939.000.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 64,
+      "ticker": "THYAO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Kısa Vadeli Borçlanmalar / Önceki Dönem 31.12.2024 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmaların Kısa Vadeli Kısımları / Önceki Dönem 31.12.2024 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmalar / Önceki Dönem 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1512543"
+     },
+     "value": "489939000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:70",
+     "text": "Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-FY raporu): 489.939.000.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 77,
+      "ticker": "THYAO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Kısa Vadeli Borçlanmalar / Önceki Dönem 31.12.2024 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmaların Kısa Vadeli Kısımları / Önceki Dönem 31.12.2024 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmalar / Önceki Dönem 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1565996"
+     },
+     "value": "489939000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
   }
  ],
  "sandbox": [
+  {
+   "key": "6a501c2bac6edb29190c1a863fbe08fb4bf71381c24fd61efa904732aa5f773c",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_debt": "393947000000.0"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "6a501c2bac6edb29190c1a863fbe08fb4bf71381c24fd61efa904732aa5f773c",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_debt": "393947000000.0"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
   {
    "key": "8d8a703ec70644c4e4c8c0eb32676d44763908a1d17705a006017d03d5344cba",
    "response": {

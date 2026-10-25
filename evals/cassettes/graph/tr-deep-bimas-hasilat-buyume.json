@@ -12,7 +12,7 @@
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 1016,
     "tokens_out": 87,
-    "latency_ms": 1220.369,
+    "latency_ms": 1055.218,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,18 +21,15 @@
    "key": "00c564e5b32b452575c7487ba7973d502c605a273237150240f06c93a96e6a5a",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"BİM (BIMAS) 2024 ve 2025 yıl sonu hasılat (revenue) rakamlarını getir\",\n      \"tickers\": [\"BIMAS\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": [\"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"2024'ten 2025'e hasılat yüzde değişimini hesapla\",\n      \"tickers\": [\"BIMAS\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": []\n    }\n  ]\n}",
+    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"BİM (BIMAS) 2024 ve 2025 yıl sonu hasılat (revenue) rakamlarını getir\", \"tickers\": [\"BIMAS\"], \"periods\": [\"2024-FY\", \"2025-FY\"], \"metrics\": [\"revenue\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"2024'ten 2025'e hasılat yüzde değişimini hesapla\", \"tickers\": [\"BIMAS\"], \"periods\": [\"2024-FY\", \"2025-FY\"]}]}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1195,
-    "tokens_out": 336,
-    "latency_ms": 5701.607,
+    "tokens_out": 369,
+    "latency_ms": 4748.644,
     "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
+    "fallback_from": []
    }
   },
   {
@@ -45,78 +42,57 @@
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 883,
     "tokens_out": 78,
-    "latency_ms": 875.165,
+    "latency_ms": 999.911,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "d2122fcf6f9397faa6597eea9d3fac250491055ae4118bd1f94137dca2e569d5",
+   "key": "632414597333392014369935e3d9e7ee2f97848704876aef1f0342a079fff66d",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"BİM'in 2024 yıl sonu hasılatı (2025 raporuna göre yeniden düzenlenmiş karşılaştırmalı dönem) 680.072.863.000 TL'dir.\",\n      \"cite_ids\": [\"f:2502\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"BİM'in 2025 yıl sonu hasılatı 721.062.506.000 TL'dir.\",\n      \"cite_ids\": [\"f:2501\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"2024'ten 2025'e hasılat %6,03 artmıştır.\",\n      \"cite_ids\": [\"f:2502\", \"f:2501\"],\n      \"calcs\": [\"revenue_yoy_pct_change\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"revenue_yoy_pct_change\",\n      \"description\": \"2024'ten 2025'e hasılat yüzde değişimi (yeniden düzenlenmiş 2024 verisi kullanılarak)\",\n      \"inputs\": [\n        {\n          \"name\": \"revenue_2024\",\n          \"cite_id\": \"f:2502\",\n          \"value\": 680072863000\n        },\n        {\n          \"name\": \"revenue_2025\",\n          \"cite_id\": \"f:2501\",\n          \"value\": 721062506000\n        }\n      ],\n      \"code\": \"result = (inputs['revenue_2025'] - inputs['revenue_2024']) / inputs['revenue_2024'] * 100\"\n    }\n  ]\n}",
+    "content": "{\"findings\": [{\"id\": \"F1\", \"text\": \"BİM'in 2024 yıl sonu hasılatı (2025 yılı raporunun önceki dönem sütununda) 680.072.863.000 TL olarak raporlanmıştır.\", \"cite_ids\": [\"f:2502\"]}, {\"id\": \"F2\", \"text\": \"BİM'in 2025 yıl sonu hasılatı 721.062.506.000 TL olarak raporlanmıştır.\", \"cite_ids\": [\"f:2501\"]}, {\"id\": \"F3\", \"text\": \"BİM'in hasılatı 2024'ten 2025'e %6,03 artmıştır.\", \"cite_ids\": [\"f:2502\", \"f:2501\"], \"calcs\": [\"revenue_yoy_pct_change\"]}], \"calculations\": [{\"name\": \"revenue_yoy_pct_change\", \"description\": \"2024'ten 2025'e hasılat yüzde değişimi: (2025 hasılat - 2024 hasılat) / 2024 hasılat × 100\", \"inputs\": [{\"name\": \"revenue_2024\", \"cite_id\": \"f:2502\"}, {\"name\": \"revenue_2025\", \"cite_id\": \"f:2501\"}], \"code\": \"result = (inputs['revenue_2025'] - inputs['revenue_2024']) / inputs['revenue_2024'] * 100\"}]}",
     "tool_calls": [],
     "provider": "openrouter-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2097,
-    "tokens_out": 1872,
-    "latency_ms": 37133.461,
+    "tokens_in": 2190,
+    "tokens_out": 1192,
+    "latency_ms": 21134.108,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-stable",
+     "nvidia-large",
      "gemini-flash"
     ]
    }
   },
   {
-   "key": "dcc272eaf07a5fa21a62043ecd14a46b1eb3a2d42bd02cfd5d6cd7b8be5aea8b",
+   "key": "8992200f4eb7962ee781449a0af555c81e92c4ece50e7808a9b8e2f6f63a7d81",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true}, {\"finding_id\": \"F2\", \"supported\": true}, {\"finding_id\": \"F3\", \"supported\": true}]}",
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"2024 hasılat rakamı 680.072.863.000 TL, kanıt f:2502 ile birebir eşleşiyor.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"2025 hasılat rakamı 721.062.506.000 TL, kanıt f:2501 ile birebir eşleşiyor.\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Yüzde değişim hesaplaması (721.062.506.000 - 680.072.863.000) / 680.072.863.000 × 100 = 6,027...% ≈ %6,03, kanıtlanan rakamlarla uyumlu.\"}]}",
     "tool_calls": [],
-    "provider": "gemini-flash-stable",
-    "model": "gemini-2.5-flash",
-    "tokens_in": 1064,
-    "tokens_out": 45,
-    "latency_ms": 3933.761,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1087,
+    "tokens_out": 644,
+    "latency_ms": 10867.295,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "6ca0e82a5304a1b8004a65d1f619e832541c0acbd62f879cd67b5dd4ac74cee3",
+   "key": "988bd4fa735f997ffe33c78e68863a498c8747edc5b6c7345db6bc1a880f2fe2",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"tr\", \"status\": \"completed\", \"summary\": \"BİM'in hasılatı 2024 yılında 680,1 milyar TL'den 2025 yılında 721,1 milyar TL'ye yükselmiştir [1][2]. Bu, yıl bazında %6,03'lük bir artışa karşılık gelmektedir [3].\", \"points\": [{\"text\": \"2024 yıl sonu hasılatı (2025 raporuna göre yeniden düzenlenmiş): 680.072.863.000 TL\", \"cite_ids\": [\"f:2502\"]}, {\"text\": \"2025 yıl sonu hasılatı: 721.062.506.000 TL\", \"cite_ids\": [\"f:2501\"]}, {\"text\": \"2024'ten 2025'e hasılat yüzde değişimi: %6,03 artış\", \"cite_ids\": [\"k:1\"]}], \"tables\": [{\"title\": \"BİM Yıllık Hasılat Karşılaştırması (2024-2025)\", \"columns\": [\"Yıl\", \"Hasılat (TL)\"], \"rows\": [[{\"text\": \"2024\", \"cite_id\": \"f:2502\"}, {\"text\": \"680072863000\", \"cite_id\": \"f:2502\"}], [{\"text\": \"2025\", \"cite_id\": \"f:2501\"}, {\"text\": \"721062506000\", \"cite_id\": \"f:2501\"}]]}, {\"title\": \"Hasılat Yüzde Değişimi\", \"columns\": [\"Dönem\", \"Yüzde Değişim (%)\"], \"rows\": [[{\"text\": \"2024 → 2025\", \"cite_id\": \"k:1\"}, {\"text\": \"6,03\", \"cite_id\": \"k:1\"}]]}, {\"title\": \"Hasılat Büyüklikleri (Milyar TL)\", \"columns\": [\"Yıl\", \"Hasılat (Milyar TL)\"], \"rows\": [[{\"text\": \"2024\", \"cite_id\": \"f:2502\"}, {\"text\": \"680,1\", \"cite_id\": \"f:2502\"}], [{\"text\": \"2025\", \"cite_id\": \"f:2501\"}, {\"text\": \"721,1\", \"cite_id\": \"f:2501\"}]]}, {\"title\": \"Yıllık Hasılat Artışı (Milyar TL)\", \"columns\": [\"Dönem\", \"Artış (Milyar TL)\"], \"rows\": [[{\"text\": \"2024 → 2025\", \"cite_id\": \"k:1\"}, {\"text\": \"41,0\", \"cite_id\": \"k:1\"}]]}], \"chart\": {\"kind\": \"bar\", \"table\": 0, \"x_column\": \"Yıl\", \"series\": [\"Hasılat (TL)\"]}, \"confidence\": {\"level\": \"high\", \"note\": \"Her iki yılın hasılat rakamları şirketin resmi yıllık raporlarından (2025 FY raporu) alınmış ve yeniden düzenlenmiş 2024 verisi kullanılarak hesaplanmıştır.\"}, \"unverified\": [], \"citations\": [{\"marker\": 1, \"cite_id\": \"f:2502\"}, {\"marker\": 2, \"cite_id\": \"f:2501\"}, {\"marker\": 3, \"cite_id\": \"k:1\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"BİM'in hasılatı 2024 yılında 680,1 milyar TL'den 2025 yılında 721,1 milyar TL'ye yükselmiş, bu da %6,03'lük bir artışa karşılık gelmektedir [1][2].\",\n  \"points\": [\n    {\n      \"text\": \"2024 yıl sonu hasılatı 680.072.863.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2502\"]\n    },\n    {\n      \"text\": \"2025 yıl sonu hasılatı 721.062.506.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2501\"]\n    },\n    {\n      \"text\": \"Hasılat 2024'ten 2025'e %6,03 artmıştır.\",\n      \"cite_ids\": [\"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"BİM Yıllık Hasılat Karşılaştırması (TL)\",\n      \"columns\": [\"Dönem\", \"Hasılat (TL)\", \"Yıllık Değişim (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"2024\", \"cite_id\": \"f:2502\"},\n          {\"text\": \"680.072.863.000\", \"cite_id\": \"f:2502\"},\n          {\"text\": \"—\", \"cite_id\": null}\n        ],\n        [\n          {\"text\": \"2025\", \"cite_id\": \"f:2501\"},\n          {\"text\": \"721.062.506.000\", \"cite_id\": \"f:2501\"},\n          {\"text\": \"%6,03\", \"cite_id\": \"k:1\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Dönem\",\n    \"series\": [\"Hasılat (TL)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Her iki yıl için de resmi raporlardan alınan hasılat rakamları ve hesaplanan yüzde değişim mevcut.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:2502\"},\n    {\"marker\": 2, \"cite_id\": \"f:2501\"},\n    {\"marker\": 3, \"cite_id\": \"k:1\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2581,
-    "tokens_out": 2286,
-    "latency_ms": 91017.069,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2724,
+    "tokens_out": 891,
+    "latency_ms": 14071.47,
     "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "1eeb293bf7cac1f6724a2a5b0f12fcdfd92bba46a2409ac1da559260d39ab94a",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"BİM'in hasılatı 2024 yılında 680,1 milyar TL'den 2025 yılında 721,1 milyar TL'ye yükselmiştir [1][2]. Bu, yıl bazında %6,03'lük bir artışa karşılık gelmektedir [3].\",\n  \"points\": [\n    {\n      \"text\": \"2024 yıl sonu hasılatı (2025 raporuna göre yeniden düzenlenmiş): 680.072.863.000 TL\",\n      \"cite_ids\": [\"f:2502\"]\n    },\n    {\n      \"text\": \"2025 yıl sonu hasılatı: 721.062.506.000 TL\",\n      \"cite_ids\": [\"f:2501\"]\n    },\n    {\n      \"text\": \"2024'ten 2025'e hasılat yüzde değişimi: %6,03 artış\",\n      \"cite_ids\": [\"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"BİM Yıllık Hasılat Karşılaştırması (2024-2025)\",\n      \"columns\": [\"Yıl\", \"Hasılat (TL)\"],\n      \"rows\": [\n        [\n          {\"text\": \"2024\", \"cite_id\": \"f:2502\"},\n          {\"text\": \"680072863000\", \"cite_id\": \"f:2502\"}\n        ],\n        [\n          {\"text\": \"2025\", \"cite_id\": \"f:2501\"},\n          {\"text\": \"721062506000\", \"cite_id\": \"f:2501\"}\n        ]\n      ]\n    },\n    {\n      \"title\": \"Hasılat Yüzde Değişimi\",\n      \"columns\": [\"Dönem\", \"Yüzde Değişim (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"2024 → 2025\", \"cite_id\": \"k:1\"},\n          {\"text\": \"6,03\", \"cite_id\": \"k:1\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Yıl\",\n    \"series\": [\"Hasılat (TL)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Her iki yılın hasılat rakamları şirketin resmi yıllık raporlarından (2025 FY raporu) alınmış ve yeniden düzenlenmiş 2024 verisi kullanılarak hesaplanmıştır.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:2502\"},\n    {\"marker\": 2, \"cite_id\": \"f:2501\"},\n    {\"marker\": 3, \"cite_id\": \"k:1\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
-    "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 3583,
-    "tokens_out": 996,
-    "latency_ms": 44516.487,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
+    "fallback_from": []
    }
   }
  ],

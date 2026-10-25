@@ -12,7 +12,7 @@
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 930,
     "tokens_out": 84,
-    "latency_ms": 3927.841,
+    "latency_ms": 1038.95,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,46 +21,43 @@
    "key": "4f42bd9e08a426df7771cff896510445b73fab09cc92c40251af0cbb65f38407",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Retrieve 2025 full-year net income for Meta (META) and Alphabet (GOOGL)\",\n      \"tickers\": [\"META\", \"GOOGL\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": [\"net_income\"]\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Retrieve net income for Meta (META) and Alphabet (GOOGL) for fiscal year 2025\",\n      \"tickers\": [\"META\", \"GOOGL\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": [\"net_income\"]\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1016,
-    "tokens_out": 209,
-    "latency_ms": 3049.515,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "d67cbee3b3b70f447acec1655b1f9820b30d3dc7aa2516e25bcf03c886fe3c5a",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 682,
-    "tokens_out": 45,
-    "latency_ms": 901.732,
+    "tokens_out": 191,
+    "latency_ms": 4797.457,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "0c4485b5dd15848f76ac13d606ca17c4dc4f7cad733658734f15b42f10dd256d",
+   "key": "d76329292728fbfc961b9f13638fc60943319e07445843c0f1c9ba6eb5d22016",
    "task_class": "cheap",
    "response": {
-    "content": "{\"findings\":[{\"id\":\"F1\",\"text\":\"Meta's net income for 2025 was 60,458,000,000 USD.\",\"cite_ids\":[\"f:764\",\"f:4168\"]},{\"id\":\"F2\",\"text\":\"Alphabet's net income for 2025 was 132,170,000,000 USD.\",\"cite_ids\":[\"f:680\",\"f:4084\"]},{\"id\":\"F3\",\"text\":\"Alphabet's net income exceeds Meta's net income by the amount calculated in net_income_difference.\",\"cite_ids\":[\"f:764\",\"f:4168\",\"f:680\",\"f:4084\"],\"calcs\":[\"net_income_difference\"]}],\"calculations\":[{\"name\":\"net_income_difference\",\"description\":\"Alphabet net income minus Meta net income\",\"inputs\":[{\"name\":\"meta_net_income\",\"cite_id\":\"f:764\",\"value\":60458000000},{\"name\":\"alphabet_net_income\",\"cite_id\":\"f:680\",\"value\":132170000000}],\"code\":\"result = inputs['alphabet_net_income'] - inputs['meta_net_income']\"}]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Meta Alphabet net income FY 2025\"\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 683,
+    "tokens_out": 56,
+    "latency_ms": 1074.896,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "22a7900793663e316fc8ec8087b17f8c214b6272ed1bd6c664ac125eac13c356",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\"findings\":[{\"id\":\"F1\",\"text\":\"Meta's net income for 2025 was 60,458,000,000 USD.\",\"cite_ids\":[\"f:764\"]},{\"id\":\"F2\",\"text\":\"Alphabet's net income for 2025 was 132,170,000,000 USD.\",\"cite_ids\":[\"f:680\"]},{\"id\":\"F3\",\"text\":\"Alphabet's net income exceeded Meta's by 71,712,000,000 USD.\",\"cite_ids\":[\"f:764\",\"f:680\"],\"calcs\":[\"net_income_difference\"]}],\"calculations\":[{\"name\":\"net_income_difference\",\"description\":\"Alphabet net income minus Meta net income\",\"inputs\":[{\"name\":\"meta_net_income\",\"cite_id\":\"f:764\"},{\"name\":\"alphabet_net_income\",\"cite_id\":\"f:680\"}],\"code\":\"result = inputs['alphabet_net_income'] - inputs['meta_net_income']\"}]}",
     "tool_calls": [],
     "provider": "groq-llama",
     "model": "openai/gpt-oss-20b",
-    "tokens_in": 2278,
-    "tokens_out": 1118,
-    "latency_ms": 1636.183,
+    "tokens_in": 2332,
+    "tokens_out": 940,
+    "latency_ms": 1749.132,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-lite"
@@ -68,40 +65,33 @@
    }
   },
   {
-   "key": "dc51ab491603e420a4337d8904882f3380611541ce09cba39e734318c3a92b52",
+   "key": "5b48ee7fa4df12d995c2a12bff80ce88fff6db123139165da46f7ba4ed117095",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Both cited documents (f:764, f:4168) show Meta's 2025-FY net income as 60,458,000,000 USD.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Both cited documents (f:680, f:4084) show Alphabet's 2025-FY net income as 132,170,000,000 USD.\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"Calculation net_income_difference (132,170,000,000 - 60,458,000,000 = 71,712,000,000) matches the cited output 71712000000.0.\"\n    }\n  ]\n}",
+    "content": "{\"claims\": [\n    {\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Evidence f:764 states Net income (2025-FY): 60,458,000,000 USD, matching the finding.\"},\n    {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Evidence f:680 states Net income (2025-FY): 132,170,000,000 USD, matching the finding.\"},\n    {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Calculation net_income_difference (132,170,000,000 - 60,458,000,000) equals 71,712,000,000 USD, matching the finding.\"}\n  ]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 938,
-    "tokens_out": 843,
-    "latency_ms": 14955.334,
+    "tokens_in": 816,
+    "tokens_out": 612,
+    "latency_ms": 11700.337,
     "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
+    "fallback_from": []
    }
   },
   {
-   "key": "dab3c4c3ce18287b0a78ac073a4b89cf3ad1734c643d8773183bae85e4c1e65b",
+   "key": "2d61857c4c66e26d4e0ae45985ddfca41f829f0c454e03bd39cb04ee8a8a96aa",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Meta's net income for 2025 was $60,458,000,000 USD [1], while Alphabet's net income for 2025 was $132,170,000,000 USD [2]. Alphabet's net income exceeds Meta's by $71,712,000,000 USD [3].\",\n  \"points\": [\n    {\n      \"text\": \"Meta's net income for 2025 was $60,458,000,000 USD.\",\n      \"cite_ids\": [\"f:764\", \"f:4168\"]\n    },\n    {\n      \"text\": \"Alphabet's net income for 2025 was $132,170,000,000 USD.\",\n      \"cite_ids\": [\"f:680\", \"f:4084\"]\n    },\n    {\n      \"text\": \"Alphabet's net income exceeds Meta's net income by $71,712,000,000 USD.\",\n      \"cite_ids\": [\"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Net Income Comparison for 2025\",\n      \"columns\": [\"Company\", \"Net Income (USD)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Meta\", \"cite_id\": null},\n          {\"text\": \"60,458,000,000\", \"cite_id\": \"f:764\"}\n        ],\n        [\n          {\"text\": \"Alphabet\", \"cite_id\": null},\n          {\"text\": \"132,170,000,000\", \"cite_id\": \"f:680\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Company\",\n    \"series\": [\"Net Income (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Both companies' 2025 full-year net income figures are directly available from SEC filings.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:764\"},\n    {\"marker\": 2, \"cite_id\": \"f:680\"},\n    {\"marker\": 3, \"cite_id\": \"k:1\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In fiscal year 2025, Alphabet reported net income of $132.17 billion, while Meta reported $60.46 billion. Alphabet's net income exceeded Meta's by $71.71 billion [1][2][3].\",\n  \"points\": [\n    {\n      \"text\": \"Meta's net income for 2025 was $60,458,000,000 USD.\",\n      \"cite_ids\": [\"f:764\"]\n    },\n    {\n      \"text\": \"Alphabet's net income for 2025 was $132,170,000,000 USD.\",\n      \"cite_ids\": [\"f:680\"]\n    },\n    {\n      \"text\": \"Alphabet's net income exceeded Meta's by $71,712,000,000 USD.\",\n      \"cite_ids\": [\"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Net Income Comparison for Fiscal Year 2025\",\n      \"columns\": [\"Company\", \"Net Income (USD)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Meta\", \"cite_id\": null},\n          {\"text\": \"60,458,000,000\", \"cite_id\": \"f:764\"}\n        ],\n        [\n          {\"text\": \"Alphabet\", \"cite_id\": null},\n          {\"text\": \"132,170,000,000\", \"cite_id\": \"f:680\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Company\",\n    \"series\": [\"Net Income (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Both companies' net income figures for 2025 are directly provided in the evidence.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:764\"},\n    {\"marker\": 2, \"cite_id\": \"f:680\"},\n    {\"marker\": 3, \"cite_id\": \"k:1\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2356,
-    "tokens_out": 1055,
-    "latency_ms": 31589.676,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2339,
+    "tokens_out": 733,
+    "latency_ms": 11376.63,
     "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash",
-     "nvidia-large"
-    ]
+    "fallback_from": []
    }
   }
  ],
