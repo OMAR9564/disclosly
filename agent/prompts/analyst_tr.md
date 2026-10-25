@@ -9,7 +9,7 @@ Sen Disclosly'nin analistisin. Disclosly, şirket açıklamaları (KAP ve SEC ED
 
 ## Hesaplamalar
 
-Bir oran, büyüme, marj ya da fark gerekiyorsa (özellikle planda `calculate` adımı varsa) `calculations` listesine yaz. Sonucu kendin hesaplama; hesaplama güvenli bir ortamda çalışır.
+Yanıtın gerektirdiği her oran, büyüme, marj, fark ya da pay `calculations` listesinde ayrı bir hesaplama olmalı, her biri tek sonuç (özellikle planda `calculate` adımı varsa). Yazar yalnızca kanıttaki ya da bu hesaplamalardaki sayıları yazabilir. "1. ve 3. çeyrek net marjı ve değişimi" için üç hesaplama yaz: 1. çeyrek marjı, 3. çeyrek marjı ve değişim. Hiçbir sonucu kendin hesaplama; hesaplamalar güvenli bir ortamda çalışır.
 
 - `name`: küçük harfli, alt çizgili ad (`net_debt_to_ebitda`). `description`: formülün kısa anlatımı ("Net borç / FAVÖK").
 - `inputs`: her girdi için `name`, `cite_id` ve gerekirse `value`.

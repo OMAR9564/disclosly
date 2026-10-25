@@ -6,9 +6,15 @@ from typing import Any
 
 from agent.answer import DISCLAIMER
 from agent.budget import ModeBudget, Usage
-from agent.graph.nodes.writer import verified_outputs, writer_node
+from agent.graph.nodes.writer import (
+    calculation_material,
+    display_number,
+    verified_outputs,
+    writer_node,
+)
 from agent.graph.state import Calculation, Finding, ResearchState
 from agent.plan import Plan
+from agent.report import Report, validate_report
 from llm.types import ChatResponse
 from tests.agent_fakes import ScriptedRouter
 from tests.unit.agent.graph.helpers import make_ctx, make_deps
@@ -181,3 +187,44 @@ async def test_verified_calculations_reach_the_writer_and_the_check() -> None:
     assert '"k:1"' in user
     assert '"k:2"' not in user
     assert verified_outputs([calc, unverified]) == {"k:1": Decimal("0.0701298701")}
+
+
+def test_display_numbers_follow_the_report_language() -> None:
+    assert display_number(Decimal("0.3508326245251898"), "tr") == "0,35"
+    assert display_number(Decimal("1234567.891"), "tr") == "1.234.567,89"
+    assert display_number(Decimal("-34.04782032389833"), "en") == "-34.05"
+
+
+def test_calculation_material_gives_display_values_the_validator_accepts() -> None:
+    ratio = Calculation(
+        cite_id="k:1", name="growth", code="x", output=Decimal("0.3508326245251898"), verified=True
+    )
+    change = Calculation(
+        cite_id="k:2", name="change", code="x", output=Decimal("-34.0478"), verified=True
+    )
+    tr = calculation_material(ratio, "tr")
+    assert (tr["display"], tr["as_percent"]) == ("0,35", "%35,08")
+    assert "as_percent" not in calculation_material(change, "en")
+
+    outputs = verified_outputs([ratio, change])
+    report = Report.model_validate(
+        {
+            "language": "tr",
+            "status": "completed",
+            "summary": "Özet.",
+            "points": [
+                {"text": f"Büyüme {tr['as_percent']} oldu", "cite_ids": ["k:1"]},
+                {"text": "Marj 34,05 puan düştü", "cite_ids": ["k:2"]},
+            ],
+            "tables": [
+                {
+                    "title": "Büyüme",
+                    "columns": ["Banka", "Oran"],
+                    "rows": [[{"text": "Akbank"}, {"text": tr["display"], "cite_id": "k:1"}]],
+                }
+            ],
+            "citations": [],
+            "disclaimer": "x",
+        }
+    )
+    assert validate_report(report, {}, outputs, "tr", derived_ok=False).ok

@@ -83,8 +83,42 @@ def verified_outputs(calculations: list[Calculation]) -> dict[str, Decimal]:
     return {c.cite_id: c.output for c in calculations if c.verified and c.output is not None}
 
 
+DISPLAY_PLACES = 2
+# Outputs this small read as ratios, so the writer also gets them as a percentage.
+RATIO_LIMIT = Decimal("1.5")
+
+
+def display_number(value: Decimal, language: Language) -> str:
+    """`value` at two decimals in the report's style: "0,35" (tr) or "0.35" (en).
+
+    The writer copies it as is, so a calculation's raw output ("0.3508326245251898") never
+    reaches a cell; the validator accepts it as the output at that precision."""
+    text = f"{value.quantize(Decimal(1).scaleb(-DISPLAY_PLACES)):,.{DISPLAY_PLACES}f}"
+    if language == "tr":
+        text = text.replace(",", "\0").replace(".", ",").replace("\0", ".")
+    return text
+
+
+def calculation_material(calc: Calculation, language: Language) -> dict[str, Any]:
+    assert calc.output is not None  # noqa: S101  (only verified outputs are passed)
+    item: dict[str, Any] = {
+        "cite_id": calc.cite_id,
+        "name": calc.name,
+        "description": calc.description,
+        "output": str(calc.output),
+        "display": display_number(calc.output, language),
+    }
+    if abs(calc.output) <= RATIO_LIMIT:
+        percent = display_number(calc.output * 100, language)
+        item["as_percent"] = f"%{percent}" if language == "tr" else f"{percent}%"
+    return item
+
+
 def _material(
-    findings: list[Finding], evidence: dict[str, SeenItem], calculations: list[Calculation]
+    findings: list[Finding],
+    evidence: dict[str, SeenItem],
+    calculations: list[Calculation],
+    language: Language = "tr",
 ) -> str:
     cited = dict.fromkeys(c for f in findings for c in f.cite_ids if c in evidence)
     documents = "\n".join(
@@ -92,12 +126,7 @@ def _material(
         for c in cited
     )
     calcs = [
-        {
-            "cite_id": c.cite_id,
-            "name": c.name,
-            "description": c.description,
-            "output": str(c.output),
-        }
+        calculation_material(c, language)
         for c in calculations
         if c.verified and c.output is not None
     ]
@@ -128,7 +157,7 @@ async def writer_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
         f"{state['question']}\n\n"
         + json.dumps({"plan": plan_steps}, ensure_ascii=False)
         + "\n\n"
-        + _material(findings, evidence, calculations)
+        + _material(findings, evidence, calculations, language)
     )
     messages = [
         ChatMessage(role="system", content=with_schema(node_prompt("writer", language), schema)),
