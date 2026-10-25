@@ -663,6 +663,7 @@ two are needed for fallback (FR-028):
 GEMINI_API_KEY=...          # Google AI Studio
 GROQ_API_KEY=...            # console.groq.com
 OPENROUTER_API_KEY=...      # openrouter.ai, free models only
+NVIDIA_API_KEY=...          # build.nvidia.com, development endpoints (check terms for production)
 CLOUDFLARE_ACCOUNT_ID=...   # Workers AI
 CLOUDFLARE_AI_TOKEN=...
 ```
