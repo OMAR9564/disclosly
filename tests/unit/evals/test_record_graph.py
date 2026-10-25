@@ -87,6 +87,7 @@ def setup(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Any:
     datasets.mkdir()
     rows: dict[str, list[dict[str, Any]]] = {
         "deep_golden": [DEEP],
+        "answers_golden": [],
         "injection": [INJECTION],
         "advice_refusal": [EDIT],
     }

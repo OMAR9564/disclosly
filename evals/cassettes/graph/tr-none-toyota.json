@@ -1,0 +1,118 @@
+{
+ "case_id": "tr-none-toyota",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "2e0bc5e9392a952e5673af23ed86a9855c22a1dc8ce9b43de9207e21d1e46f16",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\"mode\": \"simple\", \"tickers\": [\"7203\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"net_income\"], \"uses_watchlist\": false, \"memory_intent\": null}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1005,
+    "tokens_out": 48,
+    "latency_ms": 1343.858,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "f15e88d5d6c9a2d3be52c4400632dffba715de4c0b52942b7f8fdf19f8f87598",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1554604",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "TM",
+       "query": "Toyota 2025 net income net kar"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TGaIciSsFPtvlA5DbgBx1XF85DwVWdkt4owoC/jE+SHDzQN9aVZXVCVBdMyXKvrZ0guVY8G/jCZcPBXh/33+xR/gq0Enhc8zRs2osyu65dKrZH700Kfqp3lA="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1613,
+    "tokens_out": 31,
+    "latency_ms": 616.059,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "d73c368f4d9fde36fd9753af778109adcc50f6449d7e706dd6387dc03681969f",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1770821",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "TM"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T7AgsqO1phA8iH1TnkAUtN3PGgKPV2Ixsmjc3riwTpcMpUv1Sy0qF2kU2dCG4i9jBYJ64KUTijf1mIHWoZuEjHbOELE4iBjLB5J9/huT0H+eVInPcOdsb3dg="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1660,
+    "tokens_out": 16,
+    "latency_ms": 692.284,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2025-FY\"],\"ticker\":\"7203\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "No results.",
+   "summary": "7203 2025-FY net_income",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"Toyota'nın 2025 net kârı ne kadardı?\",\"ticker\":\"7203\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "7203 Toyota'nın 2025 net kârı ne kadardı?",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"Toyota 2025 net income net kar\",\"ticker\":\"TM\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "TM Toyota 2025 net income net kar",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"TM\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": []}",
+   "summary": "TM documents",
+   "count": 0,
+   "items": [],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

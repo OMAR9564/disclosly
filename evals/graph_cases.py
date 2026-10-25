@@ -60,8 +60,15 @@ from tools.types import SeenItem
 
 CASSETTES_DIR = EVALS_DIR / "cassettes" / "graph"
 
-GraphDataset = Literal["deep_golden", "advice_refusal", "injection", "verifier_seeded"]
-GRAPH_DATASETS: tuple[GraphDataset, ...] = ("deep_golden", "advice_refusal", "injection")
+GraphDataset = Literal[
+    "deep_golden", "answers_golden", "advice_refusal", "injection", "verifier_seeded"
+]
+GRAPH_DATASETS: tuple[GraphDataset, ...] = (
+    "deep_golden",
+    "answers_golden",
+    "advice_refusal",
+    "injection",
+)
 SEEDED: GraphDataset = "verifier_seeded"
 
 

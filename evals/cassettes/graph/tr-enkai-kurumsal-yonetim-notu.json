@@ -1,0 +1,317 @@
+{
+ "case_id": "tr-enkai-kurumsal-yonetim-notu",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "49a9e36817ad829885bbd6f5a147b16d59d14b606ea0dcb44061057889e2686c",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"ENKAI\"\n  ],\n  \"periods\": [\n    \"2024-Q4\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1020,
+    "tokens_out": 70,
+    "latency_ms": 999.774,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "a5c6fe9192251aa08def693c05eeefd5c438a826f9d650cf96efb0b23ab3ff0b",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2530549",
+      "name": "search_documents",
+      "arguments": {
+       "query": "kurumsal yönetim derecelendirme notu",
+       "ticker": "ENKAI"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0THN/R/DYi8GbKa/OP7amjx/PFAc0WVh/wrXb8LpaP6RpnbHvNLOUGX+Y2A81cFZO2DcjEkbrjWETCPHpbRCGkFfSgjMHDrqHrvMZmdk8hnCIxnsGo0tWot6c="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 5625,
+    "tokens_out": 32,
+    "latency_ms": 844.265,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "b51c52fca21a5bc4b1f34d354aed23f26825cd5f3bb815f6d9515b8753373f54",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"ENKA İnşaat ve Sanayi A.Ş.'nin kurumsal yönetim derecelendirme notu 2024 yılının son çeyreğinde (Kasım 2024) 9,38 olarak güncellenmiştir [c:5568e4f81eb5f7c736b9231e06485dbce874c6b627b5d56120d1c734cfab79fb].\",\n  \"points\": [\n    {\n      \"text\": \"ENKA İnşaat ve Sanayi A.Ş.'nin Kurumsal Yönetim Derecelendirme notu, Kasım 2024 itibarıyla 9,38 olarak güncellenmiştir.\",\n      \"cite_ids\": [\n        \"c:5568e4f81eb5f7c736b9231e06485dbce874c6b627b5d56120d1c734cfab79fb\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:5568e4f81eb5f7c736b9231e06485dbce874c6b627b5d56120d1c734cfab79fb\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 8285,
+    "tokens_out": 396,
+    "latency_ms": 1605.295,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "d26c98d9070f130d1c469d0264b47ec7052525fb00de0685e5b9aa04e538a908",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"ENKA'nın kurumsal yönetim derecelendirme notu 2024 yılının son çeyreğinde (Kasım 2024) 9,38 olarak güncellenmiştir.\",\n  \"points\": [\n    {\n      \"text\": \"2024 yılının son çeyreğinde (Kasım 2024) ENKA'nın Kurumsal Yönetim Derecelendirme notu 9,38 olarak güncellenmiştir.\",\n      \"cite_ids\": [\n        \"c:5568e4f81eb5f7c736b9231e06485dbce874c6b627b5d56120d1c734cfab79fb\",\n        \"c:8a2cf7393029232fcad7e066567d544117a41cf22d48a970ebd03ddd2a15827b\",\n        \"c:a44799a63f93cd8e07fe56a8ad9cb9c72958f3946e7428c112761300700f0a87\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:5568e4f81eb5f7c736b9231e06485dbce874c6b627b5d56120d1c734cfab79fb\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:8a2cf7393029232fcad7e066567d544117a41cf22d48a970ebd03ddd2a15827b\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"c:a44799a63f93cd8e07fe56a8ad9cb9c72958f3946e7428c1",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 8432,
+    "tokens_out": 2048,
+    "latency_ms": 57242.228,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\"],\"periods\":[\"2024-Q4\"],\"ticker\":\"ENKAI\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "No results.",
+   "summary": "ENKAI 2024-Q4 net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"ENKA'nın kurumsal yönetim derecelendirme notu 2024 yılının son çeyreğinde kaç olarak güncellendi?\",\"ticker\":\"ENKAI\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:b8dd0ea9c0b3bd7a542d69d9eb44b0fcbfc38180b7d0eaae020a9dd3d5292b77\">FAALIYET RAPORU / 2024 ENKA INŞAAT VE SANAYI A.Ş. / 2024 203 204 SÜRDÜRÜLEBILIRLIK ILKELERINE UYUM RAPORU Şirket’in Çevresel, Sosyal, Yönetişim (ÇSY) sistemleri, çalışmaları, performansı ve hedefleri; Faaliyet Rapo - ru’nun Sürdürülebilirlik İlkelerine Uyum Raporu başlı - ğı altında tüm paydaşların bilgisine sunulmuştur. Şir - ket’in Yönetim Kurulu Yıllık Faaliyet Raporu’nda ÇSY uygulamalarına ilişkin bilgiler yer almaktadır. Sürdü - rülebilirlik konularına ilişkin detaylı bilgiler ise her yıl Faaliyet Raporu ile eş zamanlı yayımlanan ENKA Sür- dürülebilirlik Raporu’nda yer almaktadır. Sürdürülebilirlik İlkelerine Uyum Raporu’nun kapsa - mı, Şirket’in yıllık Sürdürülebilirlik Raporu ve Faaliyet Raporu ile aynıdır. Rapor içerisinde Çevresel İlkeler ile ilgili paylaşılan sayısal değerlerin kapsamı, Sürdü - rülebilirlik Raporu’nun Ek 2 bölümünde özetlenmiştir. ÇSY sistemi içerisinde paylaşılan politikalar ise Faali - yet Raporu kapsamına giren tüm şirketler için geçer- lidir. Bu rapor, 1 Ocak 2024 – 31 Aralık 2024 tarihlerini kapsamaktadır. ENKA, Sürdürülebilirlik Yönetimi ile dünyanın pek çok farklı yerinde; mühendislik, inşaat, enerji, gayrimen - kul ve ticaret gibi farklı sektörlerde yürüttüğü faaliyet- lerinde yarattığı sosyal, çevresel ve ekonomik etkile - rini sorumlu, etkili ve şeffaf bir şekilde yönetmektedir. Bu amaçla çevresel, sosyal ve yönetişim risklerini ve fırsatlarını tespit etmekte; farklı paydaş gruplarının katılımıyla 2 yılda bir öncelikli sürdürülebilirlik konu - larını belirlemekte ve bu doğrultuda oluşturulmuş politika, strateji ve prosedürlerini güncellemektedir. ENKA’nın ÇSY kapsamında yer alan politikalarına ENKA kurumsal internet sitesinden ( www.enka.com) ulaşılabilmektedir. ENKA, bu politikaları ile uyumlu olacak şekilde Sürdü- rülebilirlik Stratejisini güncellemiş ve sürdürülebilirlik hedeflerini ise güçlendirmiştir. ENKA Sürdürülebilirlik Stratejisi ile 2030 ve 2050 yılları için belirlenen sür - dürülebilirlik hedeflerine aşağıdaki bağlantılar aracılı- ğıyla ulaşılabilmektedir. Şirketin bu hedefler karşısın - daki 2024 yılı performansı ise Sürdürülebilirlik İlkeleri Uyum Raporu’nun sonunda yer alan ENKA Sürdürü - lebilirlik Hedefleri tablosunda özetlenmiştir. Sürdürülebilirlik Stratejisi:</untrusted_document>\n<untrusted_document cite_id=\"c:5a5be724669c399e7eea8dd10508cdaf521ea7e6e662982e39d1eab8758cc442\">› 2024 yılında yapılacak olan 2023 yılı ENKA İnşaat ve Sanayi A.Ş. (“ENKA”) Olağan Genel Kurul Toplantısında “Bağımsız Yönetim Kurulu Üyesi” sıfatı ile aday olmam kapsamında; › ENKA, ENKA’nın yönetim kontrolü ya da önemli derecede etki sahibi olduğu ortaklıklar ile ENKA’nın yöne - tim kontrolünü elinde bulunduran veya ENKA’da önemli derecede etki sahibi olan ortaklar ve bu ortakların yönetim kontrolüne sahip olduğu tüzel kişiler ile kendim, eşim ve ikinci dereceye kadar kan ve sıhri hısımla- rım arasında;</untrusted_document>\n<untrusted_document cite_id=\"c:419cc836214fe7ea03ad5a916dbb2c6d80f09d495c519076a6493e2f265ac228\">x ENKA 2024 Faaliyet Raporu, Sürdürülebilirlik İlkelerine Uyum Raporu Bölümü. A3.2 Ortaklık tarafından, faaliyetlerinin Birleşmiş Milletler (BM) 2030 Sürdürülebilir Kalkınma Amaçlarından hangileri ile ilişkili olduğuna ilişkin bilgi kamuya açıklanmıştır. x ENKA 2024 Faaliyet Raporu, Sürdürülebilirlik İlkelerine Uyum Raporu Bölümü. A3.3 ÇSY konularında aleyhte açılan ve/veya sonuçlanan, ÇSY politikaları açısından önemli nitelikteki ve/veya faaliyetleri önemli ölçüde etkileyecek davalar kamuya açıklanmıştır. x Her yılın Sürdürülebilirlik Raporu’nda açıklanmaktadır. (Rüşvet ve Yolsuzlukla Mücadele, Gezegenimiz Bölümleri) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf A4 DOĞRULAMA A4.1 Ortaklığın ÇSY Kilit Performans ölçümleri bağımsız üçüncü tarafça doğrulanmış ve kamuya açıklanmıştır. x ENKA Enerji şirketlerinin operasyonlarından kaynaklanan sera gazı emisyonları ilgili mevzuat çerçevesinde her yıl akredite kuruluşlar tarafından denetlenmektedir. Ayrıca ENKA, Sürdürülebilirlik Raporu’nda yer alan seçili enerji, sera gazı emisyonları, su çekimi ve iş sağlığı ve güvenliği göstergeleriyle, sınırlı seviyede dış denetimden geçmektedir. Sınırlı dış güvence beyanı ENKA Sürdürülebilirlik Raporu’nda yer verilmektedir. 2024 yılı bağımsız dış denetim raporuna 2024 yılı Sürdürülebilirlik Raporu’ndan ulaşılabilmektedir. (Ek 1) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf B ÇEVRESEL ILKELER B1 Ortaklık, çevre yönetimi alanındaki politika ve uygulamalarını, eylem planlarını, çevresel yönetim sistemlerini (ISO 14001 standardı ile bilinmektedir) ve programlarını kamuya açıklamıştır. x ISO 14001 Sertifikası: https://www.enka.com/sustainability/tr/ anasayfa/cevre-is-sagligi-guvenligi/cevre- yonetimi-yaklasimi-ve-politikasi/ B2 Çevre yönetimine ilişkin bilgilerin verilmesinde hazırlanan çevresel raporlara ilişkin olarak raporun kapsamı, raporlama dönemi, raporlama tarihi, raporlama koşulları ile ilgili kısıtlar kamuya açıklanmıştır. x ENKA Sürdürülebilirlik Raporu:</untrusted_document>\n<untrusted_document cite_id=\"c:bfc58ef37fc29bae0ba1d22459c95a8e3f15e013f5471a0511a144e4dd777119\">Şirketin bu hedefler karşısın - daki 2024 yılı performansı ise Sürdürülebilirlik İlkeleri Uyum Raporu’nun sonunda yer alan ENKA Sürdürü - lebilirlik Hedefleri tablosunda özetlenmiştir. Sürdürülebilirlik Stratejisi: https://www.enka.com/sustainability/tr/anasayfa/ strateji/ ENKA Sürdürülebilirlik Hedefleri: https://www.enka.com/sustainability/tr/2050- surdurulebilirlik-hedefleri/ Sürdürülebilirliğin, şirketin iş stratejilerine entegre edilmesi ve bu doğrultuda planlanan aksiyonlara öncülük etmesi amacıyla 2017 yılında oluşturulan ve ENKA’nın tüm ana fonksiyonlarını temsil eden ENKA Merkez Ofis ve iştiraklerindeki farklı birim ve depart - manlardaki yöneticilerden oluşan ENKA Sürdürülebi- lirlik Komitesi, Şirket’in çevre, iklim değişikliği, insan hakları, sosyal sorumluluk ve etik konularındaki stra - teji ve çalışmalarına öncülük etmektedir ve komiteye liderlik eden ENKA’nın Yönetim Kurulu Başkanı bu ko- nularda en üst düzey sorumlusudur. 2017 yılından beri Birleşmiş Milletler Küresel İlkeler Sözleşmesi’nin imzacısı olan ENKA; sürdürülebilir lik performansını, hedeflerini ve faaliyetlerini her yıl Sür- dürülebilirlik Raporu aracılığıyla kamuya açık bir şekil- de yayımlamaktadır. Küresel Raporlama Girişimi (GRI) Standartları’na uygun olarak, Sustainability Accounting Standards Board (SASB - Sürdürülebilirlik Muhasebesi Standartları Kurulu) Sektör Standartları; Birleşmiş Mil- letler (BM) Küresel İlkeler Sözleşmesi ve Birleşmiş Mil- letler Sürdürülebilir Kalkınma Amaçları (SKA) rehberli- ğinde ve International Financial Reporting Standards (IFRS) ve Türkiye Sürdürülebilirlik Raporlama Stan - dartları (TSRS) “S 1 - Sürdürülebilirlikle İlgili Finansal Bilgilerin Açıklanmasına İlişkin Genel Hükümler” ve “S 2 - İklimle İlgili Açıklamalar” standartları ve stan - dartlarda atıf yapılan “Yönetişim, Strateji, Risk Yöne - timi, Ölçüt ve Hedefler” yaklaşımları doğrultusunda hazırlanan bu rapora ek olarak ENKA, yıllık olarak Kar- bon Saydamlık Projesi (CDP)’nin İklim Değişikliği ve Su Güvenliği programları kapsamında da halka açık şekilde raporlama gerçekleştirmektedir.</untrusted_document>\n<untrusted_document cite_id=\"c:e45b746069072b80b15633a13065a9c030fcc8025e0964a89d5523453dd9f652\">x ENKA Sürdürülebilirlik Raporu ve CDP cevaplarında detaylı olarak paylaşılmaktadır. ENKA 2024 Sürdürülebilirlik Raporu: (Gezegenimiz Bölümü ve Ekler) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf ENKA CDP Cevapları 2024: https://www.enka.com/sustainability/wp- content/uploads/2024/07/ENKA_INSAAT_VE_ SANAYI_AS-26-07-2024-CORPORATE-13-54. pdf B10 Verileri toplamak ve hesaplamak için kullanılan standart, protokol, metodoloji ve baz yıl ayrıntıları kamuya açıklanmıştır. x ENKA 2024 Sürdürülebilirlik Raporu: (Ra- por Hakkında ve Gezegenimiz Bölümleri) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf B11 Önceki yıllarla karşılaştırmalı olarak rapor yılı için çevresel göstergelerinin artış veya azalışı kamuya açıklanmıştır. x ENKA 2024 Sürdürülebilirlik Raporu: (Gezegenimiz Bölümü ve Ekler) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf B12 Çevresel etkilerini azaltmak için kısa ve uzun vadeli hedefler belirlenmiş, bu hedefler ve geçmiş yıllarda belirlenen hedeflere göre ilerleme durumu kamuya açıklanmıştır. x ENKA Sürdürülebilirlik Hedefleri: https://www.enka.com/sustainability/tr/2050- surdurulebilirlik-hedefleri/ ENKA 2024 Sürdürülebilirlik Raporu: (Sür- dürülebilirlik Performansımız Bölümü) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf B13 İklim krizi ile mücadele stratejisi oluşturulmuş ve planlanan eylemler kamuya açıklanmıştır. x Her yıl Sürdürülebilirlik Raporu ve CDP cevaplarında iklim değişikliği ile ilgili yönetim, strateji, risk ve fırsat değerlendirmesi ve metrikler halka açık bir şekilde yayımlanmaktadır. ENKA 2024 Sürdürülebilirlik Raporu: (Stratejik Yaklaşımımız, Kontrol Mekanizmaları, Risk ve Fırsat Yönetimi, Gezegenimiz Bölümleri) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf B14 Ürünler ve/veya hizmetlerin çevreye potansiyel olumsuz etkisini önlemek veya bu etkileri minimuma indirmek amacıyla program ya da prosedürler oluşturulmuş ve kamuya açıklanmıştır.</untrusted_document>\n<untrusted_document cite_id=\"c:95aa22bbbc1aff672c6e7e5733b11f4d00652f91959cfb5b9179c080a3cf0239\">ENKA Grubu’nda 2024 yılında çalışanlara 1.380.492 insan-saati aşkın ÇGS eğitimi verilmiştir. Tüm ENKA Grubu çalışanları ve alt yüklenicileri arasında 172 adet kaydedilebilir kaza gerçekleşmiştir. Bu kazaların 45’i Kayıp Günlü Kaza olarak kayda geçmiştir. İş kazaların- dan kaynaklanan toplam kayıp gün sayısı 1.221, Kayıp Günlü Kaza Sıklık Oranı 0,12, Kayıp Günlü Kaza Ağırlık Oranı ise 3,27 olarak gerçekleşmiştir. ENKA’da Sosyal Sorumluluk ve Toplumsal Yatırım: ENKA Vakfı ve ENKA İnşaat ile rapor kapsamdaki işti - raklerin 2024 yılı içerisinde eğitim, sağlık, spor, sosyal ve çevre alanlarında ENKA’nın öncelikli sürdürülebilir- lik konuları doğrultusunda gerçekleştirdikleri toplum- sal yatırım toplamı yaklaşık 323 milyon TL tutarında olmuştur. 2024 yılı içinde gerçekleştirilen sosyal so - rumluluk çalışmaları, ENKA kurumsal internet sitesin- de ve yıllık olarak hazırlanan Sürdürülebilirlik Rapo - ru’nda yer almaktadır. ENKA SÜRDÜRÜLEBILIRLIK HEDEFLERI ENKA Sürdürülebilirlik Hedefleri karşısında gösterdiği performansı ve bu performansın yıllar içindeki deği - şimini, her yıl yayımladığı Sürdürülebilirlik Raporu’n - da ve CDP cevaplarında paylaşmaktadır. Aşağıda, bu hedeflerin bir bölümüne ilişkin performansın özeti yer almaktadır. ENKA GRUBU ISG ISTATISTIKLERI* TOPLAM (FIRMA VE TAŞERON) 2022 2023 2024 Kayıp günlü kaza sayısı 34 30 45 Kayıp günlü kaza sıklık oranı 0,10 0,09 0,12 Kayıp günlü kaza ağırlık oranı 1,54 1,50 3,27 Ölümlü Kaza Sayısı 1 4 0 2030 YILI GLOBAL HEDEFLERI IŞIMI Z VE IL KELER IMI Z 2024 PERFORMANSI Tüm proje ve iştiraklerimizde yolsuzluk ve rüşveti önlemeye yönelik yılda en az bir denetim gerçekleştireceğiz. Projelerin tamamında 1 denetim gerçekleştirilmiştir. İştiraklerin %100’ü denetlenmiştir. “Yüksek riskli” tedarikçi ve alt yüklenicilerimizin %10’unda (çevre, etik ve uyum, insan hakları, sosyal uyum ve iş sağlığı ve güvenliğini kapsayan) sürdürülebilirlik denetimleri gerçekleştireceğiz. Tedarikçilerin %55’i sürdürülebilirlik konularında değerlendirilmiştir. Tedarikçilerin %1’inde sürdürülebilirlik denetimi gerçekleştirilmiştir. Yönetim Kurulumuzdaki kadın üye oranını %25’in üstüne çıkarmayı hedefliyoruz. Üst yönetimde görev alan kadın çalışan oranı %13’tür. Yönetim kurulu hedefi için çalışmalar devam etmektedir ve oran %20’ye çıkmıştır.</untrusted_document>",
+   "summary": "ENKAI ENKA'nın kurumsal yönetim derecelendirme notu 2024 yılının son çeyreğinde kaç olarak güncellendi?",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:b8dd0ea9c0b3bd7a542d69d9eb44b0fcbfc38180b7d0eaae020a9dd3d5292b77",
+     "text": "FAALIYET RAPORU / 2024 ENKA INŞAAT VE SANAYI A.Ş. / 2024 203 204 SÜRDÜRÜLEBILIRLIK ILKELERINE UYUM RAPORU Şirket’in Çevresel, Sosyal, Yönetişim (ÇSY) sistemleri, çalışmaları, performansı ve hedefleri; Faaliyet Rapo - ru’nun Sürdürülebilirlik İlkelerine Uyum Raporu başlı - ğı altında tüm paydaşların bilgisine sunulmuştur. Şir - ket’in Yönetim Kurulu Yıllık Faaliyet Raporu’nda ÇSY uygulamalarına ilişkin bilgiler yer almaktadır. Sürdü - rülebilirlik konularına ilişkin detaylı bilgiler ise her yıl Faaliyet Raporu ile eş zamanlı yayımlanan ENKA Sür- dürülebilirlik Raporu’nda yer almaktadır. Sürdürülebilirlik İlkelerine Uyum Raporu’nun kapsa - mı, Şirket’in yıllık Sürdürülebilirlik Raporu ve Faaliyet Raporu ile aynıdır. Rapor içerisinde Çevresel İlkeler ile ilgili paylaşılan sayısal değerlerin kapsamı, Sürdü - rülebilirlik Raporu’nun Ek 2 bölümünde özetlenmiştir. ÇSY sistemi içerisinde paylaşılan politikalar ise Faali - yet Raporu kapsamına giren tüm şirketler için geçer- lidir. Bu rapor, 1 Ocak 2024 – 31 Aralık 2024 tarihlerini kapsamaktadır. ENKA, Sürdürülebilirlik Yönetimi ile dünyanın pek çok farklı yerinde; mühendislik, inşaat, enerji, gayrimen - kul ve ticaret gibi farklı sektörlerde yürüttüğü faaliyet- lerinde yarattığı sosyal, çevresel ve ekonomik etkile - rini sorumlu, etkili ve şeffaf bir şekilde yönetmektedir. Bu amaçla çevresel, sosyal ve yönetişim risklerini ve fırsatlarını tespit etmekte; farklı paydaş gruplarının katılımıyla 2 yılda bir öncelikli sürdürülebilirlik konu - larını belirlemekte ve bu doğrultuda oluşturulmuş politika, strateji ve prosedürlerini güncellemektedir. ENKA’nın ÇSY kapsamında yer alan politikalarına ENKA kurumsal internet sitesinden ( www.enka.com) ulaşılabilmektedir. ENKA, bu politikaları ile uyumlu olacak şekilde Sürdü- rülebilirlik Stratejisini güncellemiş ve sürdürülebilirlik hedeflerini ise güçlendirmiştir. ENKA Sürdürülebilirlik Stratejisi ile 2030 ve 2050 yılları için belirlenen sür - dürülebilirlik hedeflerine aşağıdaki bağlantılar aracılı- ğıyla ulaşılabilmektedir. Şirketin bu hedefler karşısın - daki 2024 yılı performansı ise Sürdürülebilirlik İlkeleri Uyum Raporu’nun sonunda yer alan ENKA Sürdürü - lebilirlik Hedefleri tablosunda özetlenmiştir. Sürdürülebilirlik Stratejisi:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 759,
+      "ticker": "ENKAI",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 102,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1401123"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:5a5be724669c399e7eea8dd10508cdaf521ea7e6e662982e39d1eab8758cc442",
+     "text": "› 2024 yılında yapılacak olan 2023 yılı ENKA İnşaat ve Sanayi A.Ş. (“ENKA”) Olağan Genel Kurul Toplantısında “Bağımsız Yönetim Kurulu Üyesi” sıfatı ile aday olmam kapsamında; › ENKA, ENKA’nın yönetim kontrolü ya da önemli derecede etki sahibi olduğu ortaklıklar ile ENKA’nın yöne - tim kontrolünü elinde bulunduran veya ENKA’da önemli derecede etki sahibi olan ortaklar ve bu ortakların yönetim kontrolüne sahip olduğu tüzel kişiler ile kendim, eşim ve ikinci dereceye kadar kan ve sıhri hısımla- rım arasında;",
+     "source": {
+      "kind": "chunk",
+      "document_id": 759,
+      "ticker": "ENKAI",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 92,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1401123"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:419cc836214fe7ea03ad5a916dbb2c6d80f09d495c519076a6493e2f265ac228",
+     "text": "x ENKA 2024 Faaliyet Raporu, Sürdürülebilirlik İlkelerine Uyum Raporu Bölümü. A3.2 Ortaklık tarafından, faaliyetlerinin Birleşmiş Milletler (BM) 2030 Sürdürülebilir Kalkınma Amaçlarından hangileri ile ilişkili olduğuna ilişkin bilgi kamuya açıklanmıştır. x ENKA 2024 Faaliyet Raporu, Sürdürülebilirlik İlkelerine Uyum Raporu Bölümü. A3.3 ÇSY konularında aleyhte açılan ve/veya sonuçlanan, ÇSY politikaları açısından önemli nitelikteki ve/veya faaliyetleri önemli ölçüde etkileyecek davalar kamuya açıklanmıştır. x Her yılın Sürdürülebilirlik Raporu’nda açıklanmaktadır. (Rüşvet ve Yolsuzlukla Mücadele, Gezegenimiz Bölümleri) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf A4 DOĞRULAMA A4.1 Ortaklığın ÇSY Kilit Performans ölçümleri bağımsız üçüncü tarafça doğrulanmış ve kamuya açıklanmıştır. x ENKA Enerji şirketlerinin operasyonlarından kaynaklanan sera gazı emisyonları ilgili mevzuat çerçevesinde her yıl akredite kuruluşlar tarafından denetlenmektedir. Ayrıca ENKA, Sürdürülebilirlik Raporu’nda yer alan seçili enerji, sera gazı emisyonları, su çekimi ve iş sağlığı ve güvenliği göstergeleriyle, sınırlı seviyede dış denetimden geçmektedir. Sınırlı dış güvence beyanı ENKA Sürdürülebilirlik Raporu’nda yer verilmektedir. 2024 yılı bağımsız dış denetim raporuna 2024 yılı Sürdürülebilirlik Raporu’ndan ulaşılabilmektedir. (Ek 1) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf B ÇEVRESEL ILKELER B1 Ortaklık, çevre yönetimi alanındaki politika ve uygulamalarını, eylem planlarını, çevresel yönetim sistemlerini (ISO 14001 standardı ile bilinmektedir) ve programlarını kamuya açıklamıştır. x ISO 14001 Sertifikası: https://www.enka.com/sustainability/tr/ anasayfa/cevre-is-sagligi-guvenligi/cevre- yonetimi-yaklasimi-ve-politikasi/ B2 Çevre yönetimine ilişkin bilgilerin verilmesinde hazırlanan çevresel raporlara ilişkin olarak raporun kapsamı, raporlama dönemi, raporlama tarihi, raporlama koşulları ile ilgili kısıtlar kamuya açıklanmıştır. x ENKA Sürdürülebilirlik Raporu:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 759,
+      "ticker": "ENKAI",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 106,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1401123"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:bfc58ef37fc29bae0ba1d22459c95a8e3f15e013f5471a0511a144e4dd777119",
+     "text": "Şirketin bu hedefler karşısın - daki 2024 yılı performansı ise Sürdürülebilirlik İlkeleri Uyum Raporu’nun sonunda yer alan ENKA Sürdürü - lebilirlik Hedefleri tablosunda özetlenmiştir. Sürdürülebilirlik Stratejisi: https://www.enka.com/sustainability/tr/anasayfa/ strateji/ ENKA Sürdürülebilirlik Hedefleri: https://www.enka.com/sustainability/tr/2050- surdurulebilirlik-hedefleri/ Sürdürülebilirliğin, şirketin iş stratejilerine entegre edilmesi ve bu doğrultuda planlanan aksiyonlara öncülük etmesi amacıyla 2017 yılında oluşturulan ve ENKA’nın tüm ana fonksiyonlarını temsil eden ENKA Merkez Ofis ve iştiraklerindeki farklı birim ve depart - manlardaki yöneticilerden oluşan ENKA Sürdürülebi- lirlik Komitesi, Şirket’in çevre, iklim değişikliği, insan hakları, sosyal sorumluluk ve etik konularındaki stra - teji ve çalışmalarına öncülük etmektedir ve komiteye liderlik eden ENKA’nın Yönetim Kurulu Başkanı bu ko- nularda en üst düzey sorumlusudur. 2017 yılından beri Birleşmiş Milletler Küresel İlkeler Sözleşmesi’nin imzacısı olan ENKA; sürdürülebilir lik performansını, hedeflerini ve faaliyetlerini her yıl Sür- dürülebilirlik Raporu aracılığıyla kamuya açık bir şekil- de yayımlamaktadır. Küresel Raporlama Girişimi (GRI) Standartları’na uygun olarak, Sustainability Accounting Standards Board (SASB - Sürdürülebilirlik Muhasebesi Standartları Kurulu) Sektör Standartları; Birleşmiş Mil- letler (BM) Küresel İlkeler Sözleşmesi ve Birleşmiş Mil- letler Sürdürülebilir Kalkınma Amaçları (SKA) rehberli- ğinde ve International Financial Reporting Standards (IFRS) ve Türkiye Sürdürülebilirlik Raporlama Stan - dartları (TSRS) “S 1 - Sürdürülebilirlikle İlgili Finansal Bilgilerin Açıklanmasına İlişkin Genel Hükümler” ve “S 2 - İklimle İlgili Açıklamalar” standartları ve stan - dartlarda atıf yapılan “Yönetişim, Strateji, Risk Yöne - timi, Ölçüt ve Hedefler” yaklaşımları doğrultusunda hazırlanan bu rapora ek olarak ENKA, yıllık olarak Kar- bon Saydamlık Projesi (CDP)’nin İklim Değişikliği ve Su Güvenliği programları kapsamında da halka açık şekilde raporlama gerçekleştirmektedir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 759,
+      "ticker": "ENKAI",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 102,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1401123"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:e45b746069072b80b15633a13065a9c030fcc8025e0964a89d5523453dd9f652",
+     "text": "x ENKA Sürdürülebilirlik Raporu ve CDP cevaplarında detaylı olarak paylaşılmaktadır. ENKA 2024 Sürdürülebilirlik Raporu: (Gezegenimiz Bölümü ve Ekler) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf ENKA CDP Cevapları 2024: https://www.enka.com/sustainability/wp- content/uploads/2024/07/ENKA_INSAAT_VE_ SANAYI_AS-26-07-2024-CORPORATE-13-54. pdf B10 Verileri toplamak ve hesaplamak için kullanılan standart, protokol, metodoloji ve baz yıl ayrıntıları kamuya açıklanmıştır. x ENKA 2024 Sürdürülebilirlik Raporu: (Ra- por Hakkında ve Gezegenimiz Bölümleri) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf B11 Önceki yıllarla karşılaştırmalı olarak rapor yılı için çevresel göstergelerinin artış veya azalışı kamuya açıklanmıştır. x ENKA 2024 Sürdürülebilirlik Raporu: (Gezegenimiz Bölümü ve Ekler) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf B12 Çevresel etkilerini azaltmak için kısa ve uzun vadeli hedefler belirlenmiş, bu hedefler ve geçmiş yıllarda belirlenen hedeflere göre ilerleme durumu kamuya açıklanmıştır. x ENKA Sürdürülebilirlik Hedefleri: https://www.enka.com/sustainability/tr/2050- surdurulebilirlik-hedefleri/ ENKA 2024 Sürdürülebilirlik Raporu: (Sür- dürülebilirlik Performansımız Bölümü) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf B13 İklim krizi ile mücadele stratejisi oluşturulmuş ve planlanan eylemler kamuya açıklanmıştır. x Her yıl Sürdürülebilirlik Raporu ve CDP cevaplarında iklim değişikliği ile ilgili yönetim, strateji, risk ve fırsat değerlendirmesi ve metrikler halka açık bir şekilde yayımlanmaktadır. ENKA 2024 Sürdürülebilirlik Raporu: (Stratejik Yaklaşımımız, Kontrol Mekanizmaları, Risk ve Fırsat Yönetimi, Gezegenimiz Bölümleri) https://www.enka.com/allfiles/pdf/ENKA_ Surdurulebilirlik_Raporu_2024.pdf B14 Ürünler ve/veya hizmetlerin çevreye potansiyel olumsuz etkisini önlemek veya bu etkileri minimuma indirmek amacıyla program ya da prosedürler oluşturulmuş ve kamuya açıklanmıştır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 759,
+      "ticker": "ENKAI",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 106,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1401123"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:95aa22bbbc1aff672c6e7e5733b11f4d00652f91959cfb5b9179c080a3cf0239",
+     "text": "ENKA Grubu’nda 2024 yılında çalışanlara 1.380.492 insan-saati aşkın ÇGS eğitimi verilmiştir. Tüm ENKA Grubu çalışanları ve alt yüklenicileri arasında 172 adet kaydedilebilir kaza gerçekleşmiştir. Bu kazaların 45’i Kayıp Günlü Kaza olarak kayda geçmiştir. İş kazaların- dan kaynaklanan toplam kayıp gün sayısı 1.221, Kayıp Günlü Kaza Sıklık Oranı 0,12, Kayıp Günlü Kaza Ağırlık Oranı ise 3,27 olarak gerçekleşmiştir. ENKA’da Sosyal Sorumluluk ve Toplumsal Yatırım: ENKA Vakfı ve ENKA İnşaat ile rapor kapsamdaki işti - raklerin 2024 yılı içerisinde eğitim, sağlık, spor, sosyal ve çevre alanlarında ENKA’nın öncelikli sürdürülebilir- lik konuları doğrultusunda gerçekleştirdikleri toplum- sal yatırım toplamı yaklaşık 323 milyon TL tutarında olmuştur. 2024 yılı içinde gerçekleştirilen sosyal so - rumluluk çalışmaları, ENKA kurumsal internet sitesin- de ve yıllık olarak hazırlanan Sürdürülebilirlik Rapo - ru’nda yer almaktadır. ENKA SÜRDÜRÜLEBILIRLIK HEDEFLERI ENKA Sürdürülebilirlik Hedefleri karşısında gösterdiği performansı ve bu performansın yıllar içindeki deği - şimini, her yıl yayımladığı Sürdürülebilirlik Raporu’n - da ve CDP cevaplarında paylaşmaktadır. Aşağıda, bu hedeflerin bir bölümüne ilişkin performansın özeti yer almaktadır. ENKA GRUBU ISG ISTATISTIKLERI* TOPLAM (FIRMA VE TAŞERON) 2022 2023 2024 Kayıp günlü kaza sayısı 34 30 45 Kayıp günlü kaza sıklık oranı 0,10 0,09 0,12 Kayıp günlü kaza ağırlık oranı 1,54 1,50 3,27 Ölümlü Kaza Sayısı 1 4 0 2030 YILI GLOBAL HEDEFLERI IŞIMI Z VE IL KELER IMI Z 2024 PERFORMANSI Tüm proje ve iştiraklerimizde yolsuzluk ve rüşveti önlemeye yönelik yılda en az bir denetim gerçekleştireceğiz. Projelerin tamamında 1 denetim gerçekleştirilmiştir. İştiraklerin %100’ü denetlenmiştir. “Yüksek riskli” tedarikçi ve alt yüklenicilerimizin %10’unda (çevre, etik ve uyum, insan hakları, sosyal uyum ve iş sağlığı ve güvenliğini kapsayan) sürdürülebilirlik denetimleri gerçekleştireceğiz. Tedarikçilerin %55’i sürdürülebilirlik konularında değerlendirilmiştir. Tedarikçilerin %1’inde sürdürülebilirlik denetimi gerçekleştirilmiştir. Yönetim Kurulumuzdaki kadın üye oranını %25’in üstüne çıkarmayı hedefliyoruz. Üst yönetimde görev alan kadın çalışan oranı %13’tür. Yönetim kurulu hedefi için çalışmalar devam etmektedir ve oran %20’ye çıkmıştır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 759,
+      "ticker": "ENKAI",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 104,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1401123"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"kurumsal yönetim derecelendirme notu\",\"ticker\":\"ENKAI\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:a44799a63f93cd8e07fe56a8ad9cb9c72958f3946e7428c112761300700f0a87\">2023 Kayıtlı Sertifika No : 45154 Kurumsal Yönetim Notu : 9.38- Kasım 2024 Saha Kurumsal Yönetim ve Kredi Derecelendirme A.Ş. Merkez Ofis Adresi : Balmumcu Mah. Zincirlikuyu Yolu No:10, 34349 Beşiktaş/İstanbul Tel : +90 (212) 376 10 00 (pbx) Fax : +90 (212) 272 88 69 Resmi İnternet Sitesi : www.enka.com E-posta : enka@enka.com 30 HAZİRAN 2025 ARA DÖNEM YÖNETİM KURULU FAALİYET RAPORU 30 HAZİRAN 2025 ARA DÖNEM YÖNETİM KURULU FAALİYET RAPORU / 4 YÖNETİM KURULU VE DENETİM KOMİTESİ Yönetim Kurulu: Şirketin 28.03.2025 tarihinde yapılan Olağan Genel Kurulu’nda 1 yıl süreyle görev yapmak üzere seçilen Yönetim Kurulu aşağıdaki gibidir. Agah Mehmet Tara : Yönetim Kurulu Başkanı Cem Çeliker : Yönetim Kurulu Başkan Yardımcısı Erdoğan Turgut : Yönetim Kurulu Üyesi (İcracı Olmayan Üye) Vasıf Sayıl : Yönetim Kurulu Üyesi (İcracı Olmayan Bağımsız Üye) Nazlı Tlabar Güler : Yönetim Kurulu Üyesi (İcracı Olmayan Bağımsız Üye) Bağımsız Yönetim Kurulu Üyelerimize ilişkin bağımsızlık beyanları, SPK’nın Kurumsal Yönetim İlkelerinin Belirlenmesine ve Uygulanmasına İlişkin Tebliği’ne uygun olarak kendilerinden alınmıştır. Denetim Komitesi: Şirket’in Denetim Komitesi Yönetim Kurulu Kararı ile seçilmiş olup bağımsız Yönetim Kurulu Üyeleri Vasıf Sayıl ve Nazlı Tlabar Güler’den oluşmaktadır. FAALİYET ÖZETİ Şirket’in aktif büyüklüğü dönem sonunda 10,89 milyar ABD Doları (432,64 milyar TL) seviyesinde ve dönem içinde konsolide satış gelirleri 1,72 milyar ABD Doları (64,36 milyar TL) seviyesinde gerçekleşmiştir. Ana ortaklık payları itibarıyla net kar ise 415,670 milyon ABD Doları (15,57 milyar TL) olarak gerçekleşmiştir. Şirket’in nakit ve benzeri kıymetleri ile kısa ve uzun vadeli finansal yatırımlarının toplamı 5,59 milyar ABD Doları (222,27 milyar TL) seviyesindedir. Buna karşılık aynı dönemde kısa ve uzun vadeli finansal borçları ise 141,9 milyon ABD Doları (5,64 milyar TL) seviyesinde gerçekleşmiştir ve Şirket’in net nakit pozisyonu 5,45 milyar ABD Doları (216,63 milyar TL) seviyesinde gerçekleşmiştir. Dönem içinde ortalama 25.452 kişinin çalışmakta olduğu ENKA'da odaklanılan sektörler, mühendislik ve inşaat, enerji üretimi, gayrimenkul yatırım ve yönetimi ile ticarettir.</untrusted_document>\n<untrusted_document cite_id=\"c:23137a13fe6342504418ec2701358896ec696a607f34fe3b5413a07999b68c88\">45152 ASME U2 : 2023 Kayıtlı Sertifika No : 45153 ASME S : 2023 Kayıtlı Sertifika No : 45154 Kurumsal Yönetim Notu 9.43 - Kasım 2025 Saha Kurumsal Yönetim ve Kredi Derecelendirme A.Ş. Merkez Ofis Adresi Balmumcu Mah. Zincirlikuyu Yolu No:10, 34349 Beşiktaş/ İstanbul Tel +90 (212) 376 10 00 (pbx) Fax +90 (212) 272 88 69 Resmi İnternet Sitesi www.enka.com E-posta enka@enka.com ENKA İNŞAAT VE SANAYİ A.Ş. 30 Haziran 2026 3 30 HAZİRAN 2026 ARA DÖNEM YÖNETİM KURULU FAALİYET RAPORU YÖNETİM KURULU VE DENETİM KOMİTESİ Yönetim Kurulu: Şirketin 27.03.2026 tarihinde yapılan Olağan Genel Kurulu’nda 1 yıl süreyle görev yapmak üzere seçilen Yönetim Kurulu aşağıdaki gibidir. Agah Mehmet Tara : Yönetim Kurulu Başkanı Cem Çeliker : Yönetim Kurulu Başkan Yardımcısı Erdoğan Turgut : Yönetim Kurulu Üyesi (İcracı Olmayan Üye) Vasıf Sayıl : Yönetim Kurulu Üyesi (İcracı Olmayan Bağımsız Üye) Nazlı Tlabar Güler : Yönetim Kurulu Üyesi (İcracı Olmayan Bağımsız Üye) Bağımsız Yönetim Kurulu Üyelerimize ilişkin bağımsızlık beyanları, SPK’nın Kurumsal Yönetim İlkelerinin Belirlenmesine ve Uygulanmasına İlişkin Tebliği’ne uygun olarak kendilerinden alınmıştır. Denetim Komitesi: Şirket’in Denetim Komitesi Yönetim Kurulu Kararı ile seçilmiş olup bağımsız Yönetim Kurulu Üyeleri Vasıf Sayıl ve Nazlı Tlabar Güler’den oluşmaktadır. FAALİYET ÖZETİ Şirket’in aktif büyüklüğü dönem sonunda 11,65 milyar ABD Doları (542,81 milyar TL) seviyesinde ve dönem içinde konsolide satış gelirleri 1,9 milyar ABD Doları (84,75 milyar TL) seviyesinde gerçekleşmiştir. Ana ortaklık payları itibarıyla net kâr ise 414,5 milyon ABD Doları (18,5 milyar TL) olarak gerçekleşmiştir. Şirket’in nakit ve benzeri kıymetleri ile kısa ve uzun vadeli finansal yatırımlarının toplamı 5,54 milyar ABD Doları (257,8 milyar TL) seviyesindedir. Buna karşılık aynı dönemde kısa ve uzun vadeli finansal borçları ise 162,85 milyon ABD Doları (7,58 milyar TL) seviyesinde gerçekleşmiştir ve Şirket’in net nakit pozisyonu 5,37 milyar ABD Doları (250,26 milyar TL) seviyesinde gerçekleşmiştir. Dönem içinde ortalama 24.587 kişinin çalışmakta olduğu ENKA’da odaklanılan sektörler; mühendislik ve inşaat, enerji üretimi, gayrimenkul yatırımı ve yönetimi, ticaret ile veri merkezi yatırımı ve yönetimidir.</untrusted_document>\n<untrusted_document cite_id=\"c:93f65a93024e37bca5aab7497490524b356ba2a817d01563d2287afe4ae2f10b\">Derecelendirme Kuruluşu Ünvanı: Saha Kurumsal Yönetim ve Kredi Derecelendirme Hizmetleri A.Ş Sözleşme Geçerlilik Başlangıç Tarihi: 10/05/2024 Sözleşme Geçerlilik Bitiş Tarihi: 10/05/2026 Not Geçerlilik Başlangıç Tarihi: 04/11/2025 Şirketimizin Kurumsal Yönetim Derecelendirme notu 9,43 olarak güncellenmiştir. Ağırlık: % 25 Alınan Not: 95,43</untrusted_document>\n<untrusted_document cite_id=\"c:5568e4f81eb5f7c736b9231e06485dbce874c6b627b5d56120d1c734cfab79fb\">Derecelendirme Kuruluşu Unvanı: Saha Kurumsal Yönetim ve Kredi Derecelendirme Hizmetleri A.Ş. Sözleşme Geçerlilik Başlangıç Tarihi: 10/05/2024 Sözleşme Geçerlilik Bitiş Tarihi: 10/05/2026 Not Geçerlilik Başlangıç Tarihi: 04/11/2024 Şirketimizin Kurumsal Yönetim Derecelendirme notu 9,38 olarak güncellenmiştir. Ağırlık: % 25 Alınan Not: 95,43</untrusted_document>\n<untrusted_document cite_id=\"c:8a2cf7393029232fcad7e066567d544117a41cf22d48a970ebd03ddd2a15827b\">Derecelendirme Kuruluşu Unvanı: Saha Kurumsal Yönetim ve Kredi Derecelendirme Hizmetleri A.Ş. Sözleşme Geçerlilik Başlangıç Tarihi: 10/05/2024 Sözleşme Geçerlilik Bitiş Tarihi: 10/05/2026 Not Geçerlilik Başlangıç Tarihi: 04/11/2024 ENKA İnşaat ve Sanayi A.Ş.'nin Kurumsal Yönetim İlkelerine Uyum Derecelendirmesi Notu 9,38 olarak güncellemiştir. Ağırlık: % 25 Alınan Not: 95,43</untrusted_document>\n<untrusted_document cite_id=\"c:1251412c3fd928c0159a376d410c9d55a26c108dd1df6cfed7f8eb9680b6df21\">Derecelendirme Kuruluşu Ünvanı: Saha Kurumsal Yönetim ve Kredi Derecelendirme Hizmetleri A.Ş. Sözleşme Geçerlilik Başlangıç Tarihi: 08/05/2026 Sözleşme Geçerlilik Bitiş Tarihi: 08/05/2028 Not Geçerlilik Başlangıç Tarihi: - Kurumsal Yönetim İlkelerine Uyum Derecelendirmesi Sözleşmesi 08.05.2026 tarihinde Şirketimiz ile Saha Kurumsal Yönetim ve Kredi Derecelendirme Hizmetleri A.Ş. arasında imzalanmıştır. Sözleşme iki derecelendirme dönemini kapsamakta olup 08.05.2028 tarihinde sona erecektir.</untrusted_document>",
+   "summary": "ENKAI kurumsal yönetim derecelendirme notu",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:a44799a63f93cd8e07fe56a8ad9cb9c72958f3946e7428c112761300700f0a87",
+     "text": "2023 Kayıtlı Sertifika No : 45154 Kurumsal Yönetim Notu : 9.38- Kasım 2024 Saha Kurumsal Yönetim ve Kredi Derecelendirme A.Ş. Merkez Ofis Adresi : Balmumcu Mah. Zincirlikuyu Yolu No:10, 34349 Beşiktaş/İstanbul Tel : +90 (212) 376 10 00 (pbx) Fax : +90 (212) 272 88 69 Resmi İnternet Sitesi : www.enka.com E-posta : enka@enka.com 30 HAZİRAN 2025 ARA DÖNEM YÖNETİM KURULU FAALİYET RAPORU 30 HAZİRAN 2025 ARA DÖNEM YÖNETİM KURULU FAALİYET RAPORU / 4 YÖNETİM KURULU VE DENETİM KOMİTESİ Yönetim Kurulu: Şirketin 28.03.2025 tarihinde yapılan Olağan Genel Kurulu’nda 1 yıl süreyle görev yapmak üzere seçilen Yönetim Kurulu aşağıdaki gibidir. Agah Mehmet Tara : Yönetim Kurulu Başkanı Cem Çeliker : Yönetim Kurulu Başkan Yardımcısı Erdoğan Turgut : Yönetim Kurulu Üyesi (İcracı Olmayan Üye) Vasıf Sayıl : Yönetim Kurulu Üyesi (İcracı Olmayan Bağımsız Üye) Nazlı Tlabar Güler : Yönetim Kurulu Üyesi (İcracı Olmayan Bağımsız Üye) Bağımsız Yönetim Kurulu Üyelerimize ilişkin bağımsızlık beyanları, SPK’nın Kurumsal Yönetim İlkelerinin Belirlenmesine ve Uygulanmasına İlişkin Tebliği’ne uygun olarak kendilerinden alınmıştır. Denetim Komitesi: Şirket’in Denetim Komitesi Yönetim Kurulu Kararı ile seçilmiş olup bağımsız Yönetim Kurulu Üyeleri Vasıf Sayıl ve Nazlı Tlabar Güler’den oluşmaktadır. FAALİYET ÖZETİ Şirket’in aktif büyüklüğü dönem sonunda 10,89 milyar ABD Doları (432,64 milyar TL) seviyesinde ve dönem içinde konsolide satış gelirleri 1,72 milyar ABD Doları (64,36 milyar TL) seviyesinde gerçekleşmiştir. Ana ortaklık payları itibarıyla net kar ise 415,670 milyon ABD Doları (15,57 milyar TL) olarak gerçekleşmiştir. Şirket’in nakit ve benzeri kıymetleri ile kısa ve uzun vadeli finansal yatırımlarının toplamı 5,59 milyar ABD Doları (222,27 milyar TL) seviyesindedir. Buna karşılık aynı dönemde kısa ve uzun vadeli finansal borçları ise 141,9 milyon ABD Doları (5,64 milyar TL) seviyesinde gerçekleşmiştir ve Şirket’in net nakit pozisyonu 5,45 milyar ABD Doları (216,63 milyar TL) seviyesinde gerçekleşmiştir. Dönem içinde ortalama 25.452 kişinin çalışmakta olduğu ENKA'da odaklanılan sektörler, mühendislik ve inşaat, enerji üretimi, gayrimenkul yatırım ve yönetimi ile ticarettir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 769,
+      "ticker": "ENKAI",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": 3,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1479436"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:23137a13fe6342504418ec2701358896ec696a607f34fe3b5413a07999b68c88",
+     "text": "45152 ASME U2 : 2023 Kayıtlı Sertifika No : 45153 ASME S : 2023 Kayıtlı Sertifika No : 45154 Kurumsal Yönetim Notu 9.43 - Kasım 2025 Saha Kurumsal Yönetim ve Kredi Derecelendirme A.Ş. Merkez Ofis Adresi Balmumcu Mah. Zincirlikuyu Yolu No:10, 34349 Beşiktaş/ İstanbul Tel +90 (212) 376 10 00 (pbx) Fax +90 (212) 272 88 69 Resmi İnternet Sitesi www.enka.com E-posta enka@enka.com ENKA İNŞAAT VE SANAYİ A.Ş. 30 Haziran 2026 3 30 HAZİRAN 2026 ARA DÖNEM YÖNETİM KURULU FAALİYET RAPORU YÖNETİM KURULU VE DENETİM KOMİTESİ Yönetim Kurulu: Şirketin 27.03.2026 tarihinde yapılan Olağan Genel Kurulu’nda 1 yıl süreyle görev yapmak üzere seçilen Yönetim Kurulu aşağıdaki gibidir. Agah Mehmet Tara : Yönetim Kurulu Başkanı Cem Çeliker : Yönetim Kurulu Başkan Yardımcısı Erdoğan Turgut : Yönetim Kurulu Üyesi (İcracı Olmayan Üye) Vasıf Sayıl : Yönetim Kurulu Üyesi (İcracı Olmayan Bağımsız Üye) Nazlı Tlabar Güler : Yönetim Kurulu Üyesi (İcracı Olmayan Bağımsız Üye) Bağımsız Yönetim Kurulu Üyelerimize ilişkin bağımsızlık beyanları, SPK’nın Kurumsal Yönetim İlkelerinin Belirlenmesine ve Uygulanmasına İlişkin Tebliği’ne uygun olarak kendilerinden alınmıştır. Denetim Komitesi: Şirket’in Denetim Komitesi Yönetim Kurulu Kararı ile seçilmiş olup bağımsız Yönetim Kurulu Üyeleri Vasıf Sayıl ve Nazlı Tlabar Güler’den oluşmaktadır. FAALİYET ÖZETİ Şirket’in aktif büyüklüğü dönem sonunda 11,65 milyar ABD Doları (542,81 milyar TL) seviyesinde ve dönem içinde konsolide satış gelirleri 1,9 milyar ABD Doları (84,75 milyar TL) seviyesinde gerçekleşmiştir. Ana ortaklık payları itibarıyla net kâr ise 414,5 milyon ABD Doları (18,5 milyar TL) olarak gerçekleşmiştir. Şirket’in nakit ve benzeri kıymetleri ile kısa ve uzun vadeli finansal yatırımlarının toplamı 5,54 milyar ABD Doları (257,8 milyar TL) seviyesindedir. Buna karşılık aynı dönemde kısa ve uzun vadeli finansal borçları ise 162,85 milyon ABD Doları (7,58 milyar TL) seviyesinde gerçekleşmiştir ve Şirket’in net nakit pozisyonu 5,37 milyar ABD Doları (250,26 milyar TL) seviyesinde gerçekleşmiştir. Dönem içinde ortalama 24.587 kişinin çalışmakta olduğu ENKA’da odaklanılan sektörler; mühendislik ve inşaat, enerji üretimi, gayrimenkul yatırımı ve yönetimi, ticaret ile veri merkezi yatırımı ve yönetimidir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 792,
+      "ticker": "ENKAI",
+      "doc_type": "kap_annual_report",
+      "period": "2026-Q2",
+      "section": "body",
+      "page": 3,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1650589"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:93f65a93024e37bca5aab7497490524b356ba2a817d01563d2287afe4ae2f10b",
+     "text": "Derecelendirme Kuruluşu Ünvanı: Saha Kurumsal Yönetim ve Kredi Derecelendirme Hizmetleri A.Ş Sözleşme Geçerlilik Başlangıç Tarihi: 10/05/2024 Sözleşme Geçerlilik Bitiş Tarihi: 10/05/2026 Not Geçerlilik Başlangıç Tarihi: 04/11/2025 Şirketimizin Kurumsal Yönetim Derecelendirme notu 9,43 olarak güncellenmiştir. Ağırlık: % 25 Alınan Not: 95,43",
+     "source": {
+      "kind": "chunk",
+      "document_id": 772,
+      "ticker": "ENKAI",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511022"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:5568e4f81eb5f7c736b9231e06485dbce874c6b627b5d56120d1c734cfab79fb",
+     "text": "Derecelendirme Kuruluşu Unvanı: Saha Kurumsal Yönetim ve Kredi Derecelendirme Hizmetleri A.Ş. Sözleşme Geçerlilik Başlangıç Tarihi: 10/05/2024 Sözleşme Geçerlilik Bitiş Tarihi: 10/05/2026 Not Geçerlilik Başlangıç Tarihi: 04/11/2024 Şirketimizin Kurumsal Yönetim Derecelendirme notu 9,38 olarak güncellenmiştir. Ağırlık: % 25 Alınan Not: 95,43",
+     "source": {
+      "kind": "chunk",
+      "document_id": 749,
+      "ticker": "ENKAI",
+      "doc_type": "kap_material_event",
+      "period": "2024-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1353077"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:8a2cf7393029232fcad7e066567d544117a41cf22d48a970ebd03ddd2a15827b",
+     "text": "Derecelendirme Kuruluşu Unvanı: Saha Kurumsal Yönetim ve Kredi Derecelendirme Hizmetleri A.Ş. Sözleşme Geçerlilik Başlangıç Tarihi: 10/05/2024 Sözleşme Geçerlilik Bitiş Tarihi: 10/05/2026 Not Geçerlilik Başlangıç Tarihi: 04/11/2024 ENKA İnşaat ve Sanayi A.Ş.'nin Kurumsal Yönetim İlkelerine Uyum Derecelendirmesi Notu 9,38 olarak güncellemiştir. Ağırlık: % 25 Alınan Not: 95,43",
+     "source": {
+      "kind": "chunk",
+      "document_id": 750,
+      "ticker": "ENKAI",
+      "doc_type": "kap_material_event",
+      "period": "2024-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1353104"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:1251412c3fd928c0159a376d410c9d55a26c108dd1df6cfed7f8eb9680b6df21",
+     "text": "Derecelendirme Kuruluşu Ünvanı: Saha Kurumsal Yönetim ve Kredi Derecelendirme Hizmetleri A.Ş. Sözleşme Geçerlilik Başlangıç Tarihi: 08/05/2026 Sözleşme Geçerlilik Bitiş Tarihi: 08/05/2028 Not Geçerlilik Başlangıç Tarihi: - Kurumsal Yönetim İlkelerine Uyum Derecelendirmesi Sözleşmesi 08.05.2026 tarihinde Şirketimiz ile Saha Kurumsal Yönetim ve Kredi Derecelendirme Hizmetleri A.Ş. arasında imzalanmıştır. Sözleşme iki derecelendirme dönemini kapsamakta olup 08.05.2028 tarihinde sona erecektir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 789,
+      "ticker": "ENKAI",
+      "doc_type": "kap_material_event",
+      "period": "2026-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1603563"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

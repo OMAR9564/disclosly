@@ -1,7 +1,38 @@
 {
  "case_id": "en-advice-13",
  "dataset": "advice_refusal",
- "interactions": [],
+ "interactions": [
+  {
+   "key": "e3b801aadfd9555b27b1164fbe43a14bd24178fd1632ddda7b9b0bc7a80dae75",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice or assess whether Microsoft is a good buy.\",\n  \"points\": [],\n  \"citations\": []\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1508,
+    "tokens_out": 57,
+    "latency_ms": 1117.233,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "19b4cfc4f8d5b40f1c03c6618e26a3b1fe7736bf907319bc37b5647e36805002",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice or recommendations on whether Microsoft is a good buy. I can only provide factual information from company disclosures.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 972,
+    "tokens_out": 168,
+    "latency_ms": 3397.846,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
  "tools": [],
  "sandbox": [],
  "decision": null

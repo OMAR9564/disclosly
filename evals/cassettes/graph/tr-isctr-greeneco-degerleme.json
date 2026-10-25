@@ -1,0 +1,167 @@
+{
+ "case_id": "tr-isctr-greeneco-degerleme",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "2f09c4bc46fbd182298e556f2ca108867e51027ccc3df9f40a338e223edddf4e",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"ISCTR\"\n  ],\n  \"periods\": [],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1008,
+    "tokens_out": 55,
+    "latency_ms": 1114.259,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "4f700e8abd0b9f31567b094bac228e439c80b26c449ddac821a0260ebf9d3ff6",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Greeneco Enerji işleminde KPMG Yönetim Danışmanlığı A.Ş. değerleme raporu sonucunda bulunan tutar 100.000.000 USD'dir [c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e].\",\n  \"points\": [\n    {\n      \"text\": \"KPMG Yönetim Danışmanlığı A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: 100.000.000 USD\",\n      \"cite_ids\": [\n        \"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 5004,
+    "tokens_out": 383,
+    "latency_ms": 1608.062,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "b98563f7e4e41f04cef1774e4a35b983a6fedb9a7ffc3667c6df2963dd073ae4",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"İş Bankası Greeneco Enerji işleminde KPMG Yönetim Danışmanlığı A.Ş. tarafından hazırlanan değerleme raporunda bulunan tutar 100.000.000 USD olarak belirtilmiştir.\",\n  \"points\": [\n    {\n      \"text\": \"Greeneco Enerji Elektrik Üretim A.Ş. işlemi için KPMG değerleme raporu sonucu bulunan tutar 100.000.000 USD'dir.\",\n      \"cite_ids\": [\"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 4830,
+    "tokens_out": 581,
+    "latency_ms": 24508.063,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"İş Bankası Greeneco Enerji işleminde değerleme raporunda bulunan tutar nedir?\",\"ticker\":\"ISCTR\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:8c695ba5ae7589ee3586dc8e7a2f8f9c0fd82757fef42a9982da650558e462d5\">Değerleme Raporu Sonucu Bulunan Tutar: 600.000.000 TL + KDV İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: - Yönetim Kurulu'nun 16.07.2025 tarihli kararı çerçevesinde; Şirketimizin kira gelirlerine katkı sağlayacak gayrimenkul portföyünün genişletilmesi amacıyla Türkiye İş Bankası A.Ş.'nin mülkiyetinde olan Beyoğlu ilçesi, Katip Mustafa Çelebi mahallesi, 457 ada, 22 parsel numarası ile kayıtlı olan Parmakkapı Hizmet Binası'nın KDV hariç 600.000.000 TL bedelle satın alınmasına karar verilmiştir. Parmakkapı Hizmet Binası'nın yıllık ekspertiz kira değeri KDV hariç 34,4 milyon TL'dir. İlgili gayrimenkulle yönelik hazırlanan değerleme raporu ekte yer almaktadır.</untrusted_document>\n<untrusted_document cite_id=\"c:4d43bcfb8da8a8f5e5a3c20d91f028ab16d34add1e5e9d303847a7943494ced2\">Değerleme Raporu Sonucu Bulunan Tutar: 509.850.000 + KDV İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: - Yönetim Kurulu'nun 25.03.2026 tarihli kararı çerçevesinde; Şirketimizin portföy yönetimi ve uzun vadeli değer artışı stratejileri ile uyumlu gayrimenkul portföyünün genişletilmesi amacıyla Türkiye İş Bankası A.Ş.'nin mülkiyetinde olan İstanbul ili, Beyoğlu ilçesi, Bereketzade Mahallesi, 152 ada, 11 numaralı parselde kayıtlı olan Kuledibi Binası'nın KDV hariç 500.000.000 TL bedelle satın alınmasına karar verilmiştir. İlgili gayrimenkule yönelik hazırlanan değerleme raporu ekte yer almaktadır.</untrusted_document>\n<untrusted_document cite_id=\"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\">KPMG Yönetim Danışmanlığı A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: 100.000.000 USD İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: - İlgi: 15.09.2023 ve 20.09.2023 tarihli özel durum açıklamalarımız. İlgide kayıtlı açıklamalarımızda Greeneco Enerji Elektrik Üretim A.Ş.'nin %50 oranındaki paylarının Bankamıza devrinin gerçekleştiği duyurulmuştu. Bankamız mali tablolarında 3.533.527 bin TL değerle takip edilen ilgili paylar, %100 oranında dolaylı pay sahibi olduğumuz İş Enerji Yatırımları A.Ş.'ye satılmış olup, satış bedelinin 20 milyon USD'lik bölümü peşin olarak tahsil edilmiştir. Söz konusu bedelin kalan kısmı ise 2026 yılı içerisinde tahsil edilecektir.</untrusted_document>\n<untrusted_document cite_id=\"c:91289ced2c65d4b3642d396836cf5dcaef9b05d7c7b7b9f12f66983f73bc81ae\">KULLANIM BEYANI İş Bankası A.Ş. 1 Ocak 2024-31 Aralık 2024 dönemi için GRI Standartlarına uygun olarak (in accordance with) raporlama yapmıştır. KULLANILAN GRI 1 GRI 1: Temel Esaslar 2021 SEKTÖR STANDARDI Bulunmamaktadır. GRI STANDARDI AÇIKLAMALAR BİLDİRİM YERİ/DOĞRUDAN CEVAP HARİÇ TUTULANLAR Hariç Tutulan Gereksinimler Nedeni Açıklama GENEL AÇIKLAMALAR GRI 2: GENEL AÇIKLAMALAR 2021 2-1 Organizasyonel detaylar Kurumsal Profil, Sayfa: 10 https://www.isbank.com.tr/bankamizi-taniyin/hakkimizda - - - 2-2 Şirketin sürdürülebilirlik raporlamasına dahil edilen kurumlar Rapor Hakkında, Sayfa: 6-7 - - - 2-3 Raporlama dönemi, sıklığı ve irtibat kişisi Rapor Hakkında, Sayfa: 6-7 Şirket Bilgileri, Sayfa: 592 - - - 2-4 Beyanların yeniden ifadesi Önceki raporlarda sağlanan bilgilere ilişkin yeniden düzenlenen bir beyan bulunmamaktadır. - - - 2-5 Dış denetim Bağımsız Güvence Raporu, Sayfa: 580-582 - - - 2-6 Şirketin faaliyetleri, markaları, ürün ve hizmetleri Kurumsal Profil, Sayfa: 10 2024 Yılında İş Bankası ve Faaliyetleri, Sayfa: 74-86 İş Bankası’nın İştirakleri, Sayfa: 87-88 https://www.isbank.com.tr/bankamizi-taniyin/hakkimizda - - - 2-7 Çalışanlar İnsan Kaynakları Verileri, Sayfa: 555-560 - - - 2-8 Şirket çalışanı olmayan işçiler Sorumlu Tedarik Zinciri Yönetimi, Sayfa: 158-159 İnsan Kaynakları Verileri, Sayfa: 555-560 - - - 2-9 Kurumsal yönetim yapılanması ve kompozisyonu Yönetim Yapısı, Sayfa: 187 Yönetim Kurulu Matrisi, Sayfa: 188-189 - - - 2-10 En üst yönetim organının seçimi ve atanması Yönetim Yapısı, Sayfa: 187 Yönetim Kurulu Matrisi, Sayfa: 188-189 - - - 2-11 En üst yönetim organının başkanı Yönetim Yapısı, Sayfa: 187 Yönetim Kurulu, Sayfa: 190-193 - - - 2-12 En üst yönetim organının kuruluşun etkilerinin yönetimindeki rolü Yönetim Yapısı, Sayfa: 187 - - - 2-13 Etkilerin yönetilmesi konusunda sorumluluk devri Sürdürülebilirlik Yönetimi, Sayfa: 45 Yönetim Yapısı, Sayfa: 187 - - - 2-14 En üst yönetim organının sürdürülebilirlik raporlanmasındaki rolü Sürdürülebilirlik Yönetimi, Sayfa: 45 Yönetim Yapısı, Sayfa: 187 - - - 2-15 Çıkar çatışmaları İnsan Hakları, Sayfa: 218-219 Yönetim Yapısı, Sayfa:</untrusted_document>\n<untrusted_document cite_id=\"c:5c03c17bd400c11b247ab9f093984f300dd4261ff0f49a9b49ca91fdb62405ef\">· Sürdürülebilir Finansman Tutarı (milyar TL) Banka’nın raporlama döneminde, Yeşil Varlık Oranı Hakkında Tebliğ Taslağı ve iyi uygulama olarak kabul gören sürdürülebilir finans çerçeveleri ve iyi uygulama olarak kabul gören sosyal sürdürülebilirliğe ilişkin finans çerçeveleri dikkate alınarak sağlanan finansman tutarını ifade etmektedir. · Çevresel ve Sosyal Risk Değerlendirmesi Kapsamında Değerlendirmeye Tabi Tutulan Proje Sayısı Raporlama döneminde, Banka’nın bankacılık sistemi ile entegre çevresel ve sosyal risk değerlendirme kriterleri ile değerlendirmeye tabi tutulan toplam proje sayısını ifade etmektedir. · Çevresel ve Sosyal Risk Değerlendirmesi Kapsamında Değerlendirmeye Tabi Tutularak Finansman Sağlanan Proje Sayısı Raporlama döneminde, Banka’nın bankacılık sistemi ile entegre çevresel ve sosyal risk değerlendirme kriterleri ile değerlendirmeye tabi tutulan ve değerlendirme sonucuna göre finansman sağlanan toplam proje sayısını ifade etmektedir. · Çevresel ve Sosyal Risk Değerlendirmesi Kapsamında Finanse Edilen Projelerin Risk Kategorileri Raporlama döneminde, Banka’nın bankacılık sistemi ile entegre çevresel ve sosyal risk değerlendirme kriterleri ile değerlendirmeye tabi tutulan ve değerlendirme sonucuna göre finansman sağlanan, risk kategorisine göre ayrı ayrı A’dan D’ye kadar puanlanank (A-yüksek risk, D-düşük risk) toplam proje sayısını ifa de etmektedir. · Çevresel ve Sosyal Risk Değerlendirmesi Kapsamında Yapılan Saha Ziyareti Sayısı Raporlama döneminde, Banka’nın bankacılık sistemi ile entegre çevresel ve sosyal risk değerlendirme kriterleri ile değerlendirmeye tabi tutulan ve bu kapsamda değerlendirme amaçlı gerçekleştirilen saha ziyareti sayısını ifade etmektedir. · Tarım Sektörüne Kullandırılan Nakdi Ticari Kredilerin Toplam Tutarı (milyar TL) Raporlama döneminde, Banka’nın tarım sektöründe yer alan firmalara kullandırmış olduğu, bireysel ve ticari nakdi tarım kredileri tutarını ifade etmektedir. Raporlama Kılavuzu 570 İş Bankasına Genel Bakış Nasıl Değer Yaratıyoruz Güvenilir Finansal Aktör · Yıl İçinde Uluslararası Finansal Kuruluşlarla İmzalanan Sürdürülebilirlik Temalı Kredi Anlaşması Tutarı (milyar TL) Raporlama döneminde, Banka’nın European Bank for Reconstruction and Development, International Finance Corporation, Proparco ve Green for Growth Fund gibi uluslararası finansal kuru luş ve uluslararası fonlardan ikili anlaşmalar veya havale akımlarına dayalı seküritizasyon işlemleri yoluyla temin ettiği çevresel ve sosyal fayda yaratmaya yönelik özel kullandırım amaçlarına sahip kredi anlaşmalarının toplam tutarını ifade etmektedir.</untrusted_document>\n<untrusted_document cite_id=\"c:5c36a7529d012275c26c3d608b917638dcf42517eed9f693b297f11bb4adce61\">çalışma saati Yeniden Görüş Beyanı Doğrulanan verilerinin ölçülmesi ve raporlanması kaçınılmaz olarak bir dereceye kadar tahmin içerir. Banka seviyesinde veriler üzerinde %5’ten fazla bir değişiklik olduğu durumda, yeniden görüş beyanı düşünülebilir. Raporlama Kılavuzu 594 595 İnsan Odaklı Değer Yaratan Bankacılık I Sorumluluk Odaklı Şeffaf Bankacılık I Finansal Raporlar ve Ekler İş Bankası’na Genel Bakış I Güven Odaklı Sürdürülebilir Bankacılık I Dönüşüm Odaklı Yenilikçi Bankacılık İş Bankası I 2025 Entegre Faaliyet Raporu YANINDAYIZ.YARINDAYIZ. Sınırlı Güvence Raporu Sınırlı Güvence Raporu Türkiye İş Bankası A.Ş. Yönetim Kurulu’na Türkiye İş Bankası Anonim Şirketi’nin (“Banka”) tarafından 31 Aralık 2025 tarihinde sona eren yıl itibariyle hazırlanan Türkiye İş Bankası 2025 Entegre Faaliyet Raporu’nda (“2025 Entegre Faaliyet Raporu”) yer alan ve aşağıda listelenmiş Seçilmiş Sürdürülebilirlik Bilgileri (“Seçilmiş Bilgiler”) üzerinde sınırlı güvence çalışması yürütmek üzere görevlendirilmiş bulunuyoruz. Seçilmiş Bilgiler Sınırlı güvence çalışmamıza konu olan ve 2025 Entegre Faaliyet Raporu’nun 21., 58., 87., 103., 113.,118., 119., 123., 145., 146., 147., 161, 164., 180., 189., 567., 568., 569., 570., 571. ve 572. sayfalarında bulunan ve “ ” ile işaretlenmiş göstergelerin kapsamı 31 Aralık 2025 tarihinde sona eren yıl itibariyle aşağıdaki gibidir: Çevresel Göstergeler • Yıl içinde finansman sağlanan yenilenebilir enerji projelerinin sayısı, kurulu güç büyüklüğü ve bu projelere sağlanan kredi miktarı (milyon ABD Doları) • Yenilenebilir enerji projeleri /Enerji üretim portföyü (%) • Sürdürülebilir finansman tutarı (milyar TL) • Çevresel ve sosyal risk değerlendirmesi kapsamında o Değerlendirmeye tabi tutulan proje sayısı o Değerlendirmeye tabi tutularak finansman sağlanan proje sayısı o Finanse edilen projelerin risk kategorileri o Yapılan saha ziyaretleri • Tarım sektörüne kullandırılan nakdi ticari kredilerin toplam tutarı (milyar TL) • Yıl içinde uluslararası finansal kuruluşlarla imzalanan sürdürülebilirlik temalı kredi anlaşması tutarı • Sera Gazı Emisyonları ve kapsamları • Kapsam 1 (ton CO2e) • Kapsam 2 (ton CO2e) • Kapsam 3 (ton CO2e) o Kategori 1: Satın Alınan Mal ve Hizmetler o Kategori 2: Sermaye Malları o Kategori 3:</untrusted_document>",
+   "summary": "ISCTR İş Bankası Greeneco Enerji işleminde değerleme raporunda bulunan tutar nedir?",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:8c695ba5ae7589ee3586dc8e7a2f8f9c0fd82757fef42a9982da650558e462d5",
+     "text": "Değerleme Raporu Sonucu Bulunan Tutar: 600.000.000 TL + KDV İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: - Yönetim Kurulu'nun 16.07.2025 tarihli kararı çerçevesinde; Şirketimizin kira gelirlerine katkı sağlayacak gayrimenkul portföyünün genişletilmesi amacıyla Türkiye İş Bankası A.Ş.'nin mülkiyetinde olan Beyoğlu ilçesi, Katip Mustafa Çelebi mahallesi, 457 ada, 22 parsel numarası ile kayıtlı olan Parmakkapı Hizmet Binası'nın KDV hariç 600.000.000 TL bedelle satın alınmasına karar verilmiştir. Parmakkapı Hizmet Binası'nın yıllık ekspertiz kira değeri KDV hariç 34,4 milyon TL'dir. İlgili gayrimenkulle yönelik hazırlanan değerleme raporu ekte yer almaktadır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1265,
+      "ticker": "ISCTR",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1464106"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:4d43bcfb8da8a8f5e5a3c20d91f028ab16d34add1e5e9d303847a7943494ced2",
+     "text": "Değerleme Raporu Sonucu Bulunan Tutar: 509.850.000 + KDV İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: - Yönetim Kurulu'nun 25.03.2026 tarihli kararı çerçevesinde; Şirketimizin portföy yönetimi ve uzun vadeli değer artışı stratejileri ile uyumlu gayrimenkul portföyünün genişletilmesi amacıyla Türkiye İş Bankası A.Ş.'nin mülkiyetinde olan İstanbul ili, Beyoğlu ilçesi, Bereketzade Mahallesi, 152 ada, 11 numaralı parselde kayıtlı olan Kuledibi Binası'nın KDV hariç 500.000.000 TL bedelle satın alınmasına karar verilmiştir. İlgili gayrimenkule yönelik hazırlanan değerleme raporu ekte yer almaktadır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1319,
+      "ticker": "ISCTR",
+      "doc_type": "kap_material_event",
+      "period": "2026-Q1",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1575801"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e",
+     "text": "KPMG Yönetim Danışmanlığı A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: 100.000.000 USD İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: - İlgi: 15.09.2023 ve 20.09.2023 tarihli özel durum açıklamalarımız. İlgide kayıtlı açıklamalarımızda Greeneco Enerji Elektrik Üretim A.Ş.'nin %50 oranındaki paylarının Bankamıza devrinin gerçekleştiği duyurulmuştu. Bankamız mali tablolarında 3.533.527 bin TL değerle takip edilen ilgili paylar, %100 oranında dolaylı pay sahibi olduğumuz İş Enerji Yatırımları A.Ş.'ye satılmış olup, satış bedelinin 20 milyon USD'lik bölümü peşin olarak tahsil edilmiştir. Söz konusu bedelin kalan kısmı ise 2026 yılı içerisinde tahsil edilecektir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1297,
+      "ticker": "ISCTR",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1531462"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:91289ced2c65d4b3642d396836cf5dcaef9b05d7c7b7b9f12f66983f73bc81ae",
+     "text": "KULLANIM BEYANI İş Bankası A.Ş. 1 Ocak 2024-31 Aralık 2024 dönemi için GRI Standartlarına uygun olarak (in accordance with) raporlama yapmıştır. KULLANILAN GRI 1 GRI 1: Temel Esaslar 2021 SEKTÖR STANDARDI Bulunmamaktadır. GRI STANDARDI AÇIKLAMALAR BİLDİRİM YERİ/DOĞRUDAN CEVAP HARİÇ TUTULANLAR Hariç Tutulan Gereksinimler Nedeni Açıklama GENEL AÇIKLAMALAR GRI 2: GENEL AÇIKLAMALAR 2021 2-1 Organizasyonel detaylar Kurumsal Profil, Sayfa: 10 https://www.isbank.com.tr/bankamizi-taniyin/hakkimizda - - - 2-2 Şirketin sürdürülebilirlik raporlamasına dahil edilen kurumlar Rapor Hakkında, Sayfa: 6-7 - - - 2-3 Raporlama dönemi, sıklığı ve irtibat kişisi Rapor Hakkında, Sayfa: 6-7 Şirket Bilgileri, Sayfa: 592 - - - 2-4 Beyanların yeniden ifadesi Önceki raporlarda sağlanan bilgilere ilişkin yeniden düzenlenen bir beyan bulunmamaktadır. - - - 2-5 Dış denetim Bağımsız Güvence Raporu, Sayfa: 580-582 - - - 2-6 Şirketin faaliyetleri, markaları, ürün ve hizmetleri Kurumsal Profil, Sayfa: 10 2024 Yılında İş Bankası ve Faaliyetleri, Sayfa: 74-86 İş Bankası’nın İştirakleri, Sayfa: 87-88 https://www.isbank.com.tr/bankamizi-taniyin/hakkimizda - - - 2-7 Çalışanlar İnsan Kaynakları Verileri, Sayfa: 555-560 - - - 2-8 Şirket çalışanı olmayan işçiler Sorumlu Tedarik Zinciri Yönetimi, Sayfa: 158-159 İnsan Kaynakları Verileri, Sayfa: 555-560 - - - 2-9 Kurumsal yönetim yapılanması ve kompozisyonu Yönetim Yapısı, Sayfa: 187 Yönetim Kurulu Matrisi, Sayfa: 188-189 - - - 2-10 En üst yönetim organının seçimi ve atanması Yönetim Yapısı, Sayfa: 187 Yönetim Kurulu Matrisi, Sayfa: 188-189 - - - 2-11 En üst yönetim organının başkanı Yönetim Yapısı, Sayfa: 187 Yönetim Kurulu, Sayfa: 190-193 - - - 2-12 En üst yönetim organının kuruluşun etkilerinin yönetimindeki rolü Yönetim Yapısı, Sayfa: 187 - - - 2-13 Etkilerin yönetilmesi konusunda sorumluluk devri Sürdürülebilirlik Yönetimi, Sayfa: 45 Yönetim Yapısı, Sayfa: 187 - - - 2-14 En üst yönetim organının sürdürülebilirlik raporlanmasındaki rolü Sürdürülebilirlik Yönetimi, Sayfa: 45 Yönetim Yapısı, Sayfa: 187 - - - 2-15 Çıkar çatışmaları İnsan Hakları, Sayfa: 218-219 Yönetim Yapısı, Sayfa:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1229,
+      "ticker": "ISCTR",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 585,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1401873"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:5c03c17bd400c11b247ab9f093984f300dd4261ff0f49a9b49ca91fdb62405ef",
+     "text": "· Sürdürülebilir Finansman Tutarı (milyar TL) Banka’nın raporlama döneminde, Yeşil Varlık Oranı Hakkında Tebliğ Taslağı ve iyi uygulama olarak kabul gören sürdürülebilir finans çerçeveleri ve iyi uygulama olarak kabul gören sosyal sürdürülebilirliğe ilişkin finans çerçeveleri dikkate alınarak sağlanan finansman tutarını ifade etmektedir. · Çevresel ve Sosyal Risk Değerlendirmesi Kapsamında Değerlendirmeye Tabi Tutulan Proje Sayısı Raporlama döneminde, Banka’nın bankacılık sistemi ile entegre çevresel ve sosyal risk değerlendirme kriterleri ile değerlendirmeye tabi tutulan toplam proje sayısını ifade etmektedir. · Çevresel ve Sosyal Risk Değerlendirmesi Kapsamında Değerlendirmeye Tabi Tutularak Finansman Sağlanan Proje Sayısı Raporlama döneminde, Banka’nın bankacılık sistemi ile entegre çevresel ve sosyal risk değerlendirme kriterleri ile değerlendirmeye tabi tutulan ve değerlendirme sonucuna göre finansman sağlanan toplam proje sayısını ifade etmektedir. · Çevresel ve Sosyal Risk Değerlendirmesi Kapsamında Finanse Edilen Projelerin Risk Kategorileri Raporlama döneminde, Banka’nın bankacılık sistemi ile entegre çevresel ve sosyal risk değerlendirme kriterleri ile değerlendirmeye tabi tutulan ve değerlendirme sonucuna göre finansman sağlanan, risk kategorisine göre ayrı ayrı A’dan D’ye kadar puanlanank (A-yüksek risk, D-düşük risk) toplam proje sayısını ifa de etmektedir. · Çevresel ve Sosyal Risk Değerlendirmesi Kapsamında Yapılan Saha Ziyareti Sayısı Raporlama döneminde, Banka’nın bankacılık sistemi ile entegre çevresel ve sosyal risk değerlendirme kriterleri ile değerlendirmeye tabi tutulan ve bu kapsamda değerlendirme amaçlı gerçekleştirilen saha ziyareti sayısını ifade etmektedir. · Tarım Sektörüne Kullandırılan Nakdi Ticari Kredilerin Toplam Tutarı (milyar TL) Raporlama döneminde, Banka’nın tarım sektöründe yer alan firmalara kullandırmış olduğu, bireysel ve ticari nakdi tarım kredileri tutarını ifade etmektedir. Raporlama Kılavuzu 570 İş Bankasına Genel Bakış Nasıl Değer Yaratıyoruz Güvenilir Finansal Aktör · Yıl İçinde Uluslararası Finansal Kuruluşlarla İmzalanan Sürdürülebilirlik Temalı Kredi Anlaşması Tutarı (milyar TL) Raporlama döneminde, Banka’nın European Bank for Reconstruction and Development, International Finance Corporation, Proparco ve Green for Growth Fund gibi uluslararası finansal kuru luş ve uluslararası fonlardan ikili anlaşmalar veya havale akımlarına dayalı seküritizasyon işlemleri yoluyla temin ettiği çevresel ve sosyal fayda yaratmaya yönelik özel kullandırım amaçlarına sahip kredi anlaşmalarının toplam tutarını ifade etmektedir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1229,
+      "ticker": "ISCTR",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 572,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1401873"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:5c36a7529d012275c26c3d608b917638dcf42517eed9f693b297f11bb4adce61",
+     "text": "çalışma saati Yeniden Görüş Beyanı Doğrulanan verilerinin ölçülmesi ve raporlanması kaçınılmaz olarak bir dereceye kadar tahmin içerir. Banka seviyesinde veriler üzerinde %5’ten fazla bir değişiklik olduğu durumda, yeniden görüş beyanı düşünülebilir. Raporlama Kılavuzu 594 595 İnsan Odaklı Değer Yaratan Bankacılık I Sorumluluk Odaklı Şeffaf Bankacılık I Finansal Raporlar ve Ekler İş Bankası’na Genel Bakış I Güven Odaklı Sürdürülebilir Bankacılık I Dönüşüm Odaklı Yenilikçi Bankacılık İş Bankası I 2025 Entegre Faaliyet Raporu YANINDAYIZ.YARINDAYIZ. Sınırlı Güvence Raporu Sınırlı Güvence Raporu Türkiye İş Bankası A.Ş. Yönetim Kurulu’na Türkiye İş Bankası Anonim Şirketi’nin (“Banka”) tarafından 31 Aralık 2025 tarihinde sona eren yıl itibariyle hazırlanan Türkiye İş Bankası 2025 Entegre Faaliyet Raporu’nda (“2025 Entegre Faaliyet Raporu”) yer alan ve aşağıda listelenmiş Seçilmiş Sürdürülebilirlik Bilgileri (“Seçilmiş Bilgiler”) üzerinde sınırlı güvence çalışması yürütmek üzere görevlendirilmiş bulunuyoruz. Seçilmiş Bilgiler Sınırlı güvence çalışmamıza konu olan ve 2025 Entegre Faaliyet Raporu’nun 21., 58., 87., 103., 113.,118., 119., 123., 145., 146., 147., 161, 164., 180., 189., 567., 568., 569., 570., 571. ve 572. sayfalarında bulunan ve “ ” ile işaretlenmiş göstergelerin kapsamı 31 Aralık 2025 tarihinde sona eren yıl itibariyle aşağıdaki gibidir: Çevresel Göstergeler • Yıl içinde finansman sağlanan yenilenebilir enerji projelerinin sayısı, kurulu güç büyüklüğü ve bu projelere sağlanan kredi miktarı (milyon ABD Doları) • Yenilenebilir enerji projeleri /Enerji üretim portföyü (%) • Sürdürülebilir finansman tutarı (milyar TL) • Çevresel ve sosyal risk değerlendirmesi kapsamında o Değerlendirmeye tabi tutulan proje sayısı o Değerlendirmeye tabi tutularak finansman sağlanan proje sayısı o Finanse edilen projelerin risk kategorileri o Yapılan saha ziyaretleri • Tarım sektörüne kullandırılan nakdi ticari kredilerin toplam tutarı (milyar TL) • Yıl içinde uluslararası finansal kuruluşlarla imzalanan sürdürülebilirlik temalı kredi anlaşması tutarı • Sera Gazı Emisyonları ve kapsamları • Kapsam 1 (ton CO2e) • Kapsam 2 (ton CO2e) • Kapsam 3 (ton CO2e) o Kategori 1: Satın Alınan Mal ve Hizmetler o Kategori 2: Sermaye Malları o Kategori 3:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1315,
+      "ticker": "ISCTR",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 297,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1569176"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

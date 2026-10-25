@@ -1,0 +1,307 @@
+{
+ "case_id": "tr-kchol-genel-merkez-devir",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "444c028f2ed3e1c055f9ba51245c0442a6cbe916ba795a0472f93fce2a721de6",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"KCHOL\"\n  ],\n  \"periods\": [],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1007,
+    "tokens_out": 56,
+    "latency_ms": 2632.206,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "73653dbffbdff8a2d02c4d265dd7fa5547c91331db9a09246763859b374070a4",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2137699",
+      "name": "search_documents",
+      "arguments": {
+       "query": "Koç Holding genel merkez devir bedeli"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T8+/SDmkT7Unq8ulfRL4JSl2mXjKX7K6jAI0ISkI4W1B5paRcrTvykF9zrKPELBlPGN2vd9VhH/SZ7mDAGkbRQG9du4/aJ83zmChDHnm9T+KLM25STdRGEgk="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 5542,
+    "tokens_out": 24,
+    "latency_ms": 2686.546,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "458d6ff1a7d066b1232eeceacc2233416eb1c14772c98d38bba9d7df33caa334",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Koç Holding'in genel merkez devir işlemlerinde şirketlerin payına düşen bedeller ve detaylar resmi açıklamalarda yer almaktadır.\",\n  \"points\": [\n    {\n      \"text\": \"Koç Holding'in sermayesinin %7,1'lik kısmını temsil eden geri alınan payların nakden ve peşin olarak Koç Holding A.Ş.'ye satışına ilişkin toplam bedel 5.197.920.000 TL olarak belirlenmiştir.\",\n      \"cite_ids\": [\n        \"c:8a10581c8ca7df73fa582036e2bd22297ae1074ff5b9922dfe6ec3836ddfdf7d\"\n      ]\n    },\n    {\n      \"text\": \"Genel merkez binalarının bulunduğu Zincirlikuyu'daki arsa payı devrinde, Aygaz payına düşen devir bedeli KDV hariç 1.147.532.064 TL'dir.\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\"\n      ]\n    },\n    {\n      \"text\": \"Tofaş'ın genel merkez binasının da yer aldığı aynı parseldeki devir işleminde Tofaş payına karşılık gelen devir bedeli KDV hariç 1.194.767.040 TL'dir.\",\n      \"cite_ids\": [\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:8a10581c8ca7df73fa582036e2bd22297ae1074ff5b9922dfe6ec3836ddfdf7d\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 10537,
+    "tokens_out": 758,
+    "latency_ms": 6542.96,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "658cfee7925a92ae5124936670f67c73788712d858bf5b8b0c8016f48720c325",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"Belgelerde Koç Holding'in genel merkez devri işlemlerinde (Büyükdere Caddesi No: 145 Zincirlikuyu/İstanbul adresli mülk paylarının Temel Ticaret ve Yatırım A.Ş.'ye devri) %15,7 oranındaki payına karşılık gelen bedelin TL cinsinden kesin tutarı yer almamaktadır. Belgelerde yalnızca açıklama yapan şirketlerin (Aygaz, Tofaş vb.) paylarına düşen bedeller (1.147.532.064 TL, 1.194.767.040 TL, ~1,2 milyar TL) ve mülkün toplam değeri (2.778.528.000 TL KDV hariç) ile Koç Holding'in %15,7 oranındaki pay oranı belirtilmiştir.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 10152,
+    "tokens_out": 1542,
+    "latency_ms": 32161.398,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"Koç Holding'in genel merkez devrinde payına düşen bedel ne kadar?\",\"ticker\":\"KCHOL\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:8a10581c8ca7df73fa582036e2bd22297ae1074ff5b9922dfe6ec3836ddfdf7d\">Yönetim Kurulumuz tarafından Şirketimizin mülkiyetindeki ve Şirketimiz sermayesinin %7,1'lik kısmını temsil eden toplam 48.000.000 TL nominal değerli geri alınan payların Geri Alınan Paylar Tebliği ve Borsa İstanbul A.Ş.'nin Toptan Alış Satış İşlemlerine İlişkin Prosedür'ü kapsamında geçmiş 10 iş günü boyunca oluşmuş ağırlıklı ortalama fiyatların ortalaması alınarak en yakın fiyat adımına yuvarlanması suretiyle hesaplanan 108,29 TL baz fiyat üzerinden, toplam 5.197.920.000 TL bedel karşılığında nakden ve peşin olarak Koç Holding A.Ş.'ye satışına karar verilmiştir. İşlemin tamamlanabilmesi için Borsa İstanbul A.Ş.'ye başvuru bugün yapılacaktır. Şirketimiz gelir tablosunu etkilemeyecek söz konusu işlem kapsamında, 30.11.2025 tarihli satın alma gücüne göre endekslenmiş maliyeti 10.033.344.021 TL olan geri alınan payların satışından geçmiş yıl karları/zararları kaleminde 4.835.424.022 TL tutarında azalış muhasebeleştirilmesi, ayrıca özkaynaklar altında kısıtlanmış yedekler içerisinde izlenen 10.033.344.021 TL tutarındaki geri alınan paylara ilişkin yedeklerin de serbest bırakılarak geçmiş yıl kârlarına sınıflandırılması öngörülmektedir. Böylece işlem sonucunda, geçmiş yıl karları kaleminde ve dolayısıyla toplam özkaynaklarda nette 5.197.920.000 TL tutarında artış oluşması öngörülmektedir. İşlemin nihai etkisi kamuya açıklanacak 2025 yılı finansal tablolarımızdan takip edilebilecektir. İşbu açıklamamızın İngilizce çevirisi eş anlı yapılmakta olup, açıklama metinlerinde herhangi bir farklılık olması durumunda Türkçe açıklama esas kabul edilecektir.</untrusted_document>\n<untrusted_document cite_id=\"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\">Şirketimiz için değerleme raporunda takdir edilen tutar üzerinden TFRS'ye göre yaklaşık 0,9 milyar TL vergi öncesi taşınmaz satış kazancı elde edilmesi öngörülmekte olup, nihai tutar işlem tarihinde kesinleşecektir. Varsa Satış Karının Ne Şekilde Değerlendirileceği: - Varsa Satış Karının Ne Şekilde Değerlendirileceğine İlişkin Yönetim Kurulu Karar Tarihi: - Karşı Taraf: Temel Ticaret ve Yatırım A.Ş. Karşı Taraf SPK Düzenlemelerine Göre İlişkili Taraf mıdır?: Evet (Yes) Karşı Taraf İle Olan İlişkinin Niteliği: Nihai ana ortak Varsa İşleme İlişkin Sözleşme Tarihi: - Önemli Niteliklteki İşlem Kapsamında Kullandırılacak Ayrılma Hakkı Fiyatı: - Maddi Duran Varlığın Değerinin Belirlenme Yöntemi: Taraflarca değerleme raporunda belirlenen değer dikkate alınarak belirlenecektir. Değerleme Raporu Düzenlendi mi?: Düzenlendi (Prepared) Değerleme Raporu Düzenlenmediyse Nedeni: - Değerleme Raporu Düzenlendiyse Tarih ve Numarası: 23.07.2025/49 Değerleme Raporunu Hazırlayan Değerleme Kuruluşunun Ünvanı: Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: Tümü için KDV hariç 2.778.528.000 TL olup, Şirketimize düşen pay 1.147.532.064 TL'dir. İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: İşlem değerleme raporundaki sonuçlar dikkate alınarak gerçekleştirilecektir Şirketimizin %41,3; Koç Holding'in %15,7 ve Aygaz'ın %43,0 oranında pay sahibi olduğu; Büyükdere Caddesi N 145 Zincirlikuyu / İstanbul adresindeki Şirketimiz ve Aygaz genel merkezlerinin bulunduğu 2011 ada 1 no'lu parseldeki üzerinde bağımsız bölümler bulunan arsadaki payımızın, söz konusu duran varlığın nakde çevrilerek daha etkin bir şekilde kullanılması amacı doğrultusunda, Şirketimizin nihai ana ortağı Temel Ticaret ve Yatırım A.Ş.'ye devrine karar verilmiş olup, ödeme ve devir işlemlerinin Ekim ayı sonuna kadar tamamlanması öngörülmektedir. Koç Holding ve Aygaz tarafından da aynı parseldeki paylarının devredileceği işlemde, devir bedeli Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından hazırlanan değerleme raporu dikkate alınarak belirlenecek olup, işlem tarihinde kesinleşen tutar ayrıca kamuya açıklanacaktır . Değerleme raporunda takdir edilen tutar üzerinden Şirketimiz payına karşılık gelen devir bedeli KDV hariç 1.147.532.064 TL 'dir.</untrusted_document>\n<untrusted_document cite_id=\"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\">Şirketimiz için değerleme raporunda takdir edilen tutar üzerinden TFRS'ye göre yaklaşık 1,1 milyar TL vergi öncesi taşınmaz satış kazancı elde edilmesi öngörülmekte olup, nihai tutar işlem tarihinde kesinleşecektir. Varsa Satış Karının Ne Şekilde Değerlendirileceği: - Varsa Satış Karının Ne Şekilde Değerlendirileceğine İlişkin Yönetim Kurulu Karar Tarihi: - Karşı Taraf: Temel Ticaret ve Yatırım A.Ş. Karşı Taraf SPK Düzenlemelerine Göre İlişkili Taraf mıdır?: Evet (Yes) Karşı Taraf İle Olan İlişkinin Niteliği: Nihai ana ortak Önemli Niteliklteki İşlem Kapsamında Kullandırılacak Ayrılma Hakkı Fiyatı: - Maddi Duran Varlığın Değerinin Belirlenme Yöntemi: Taraflarca değerleme raporunda belirlenen değer dikkate alınarak belirlenecektir. Değerleme Raporu Düzenlendi mi?: Düzenlendi (Prepared) Değerleme Raporu Düzenlenmediyse Nedeni: - Değerleme Raporu Düzenlendiyse Tarih ve Numarası: 23.07.2025/49 Değerleme Raporunu Hazırlayan Değerleme Kuruluşunun Ünvanı: Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: Tümü için KDV hariç 2.778.528.000 TL olup, Şirketimize düşen pay 1.194.767.040 TL'dir. İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: İşlem değerleme raporundaki sonuçlar dikkate alınarak gerçekleştirilecektir. Şirketimizin %43; Koç Holding'in %15,7 ve Tofaş'ın %41,3 oranında pay sahibi olduğu; Büyükdere Caddesi No : 145 Zincirlikuyu / İstanbul adresindeki Şirketimiz ve Tofaş genel merkezlerinin bulunduğu 2011 ada 1 no'lu parseldeki üzerinde bağımsız bölümler bulunan arsadaki payımızın, söz konusu duran varlığın nakde çevrilerek daha etkin bir şekilde kullanılması amacı doğrultusunda, Şirketimizin nihai ana ortağı Temel Ticaret ve Yatırım A.Ş.'ye devrine karar verilmiş olup, ödeme ve devir işlemlerinin Ekim ayı sonuna kadar tamamlanması öngörülmektedir. Koç Holding ve Tofaş tarafından da aynı parseldeki paylarının devredileceği işlemde, devir bedeli Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından hazırlanan değerleme raporu dikkate alınarak belirlenecek olup, işlem tarihinde kesinleşen tutar ayrıca kamuya açıklanacaktır. Değerleme raporunda takdir edilen tutar üzerinden Şirketimiz payına karşılık gelen devir bedeli KDV hariç 1.194.767.040 TL'dir.</untrusted_document>\n<untrusted_document cite_id=\"c:d68a8b9edd240cbab69be411420c24bb54a188fd406302d23130b1f88b6e4631\">İşbu rapor tarihi itibariyle kredi kullanımı 2025 9 AY ARA DÖNEM FAALİYET RAPORU 11 / 14 gerçekleşmemiş olup, toplam 600 milyon ABD doları tutarına kadar kullanılabilecek kredinin masraf ve komisyonlar hariç maliyeti, SOFR + %1,95'tir. İmza tarihinden itibaren 6 ay içerisinde kullanılabilecek kredi, 6 ayda bir faiz ödemeli olup, imza tarihinden itibaren ilk 2,5 yılı geri ödemesiz ve sonrasında 6 eşit taksitte 6 ayda bir ödemeli şekilde toplam 5 yıl vadelidir. ARÇELİK A.Ş. (ARÇELİK) • Arçelik’in Hollanda'da yerleşik ve paylarının tamamına sahip olduğu bağlı ortaklığı Beko B.V. tarafından, 25.900.000 Euro tutarında sermaye azaltımı ve 22.800.000 Euro tutarında temettü dağıtımı yapılmasına karar verilmiştir. Söz konusu işlemler kapsamında toplam 48.700.000 Euro 31.10.2025 tarihi itibarıyla Arçelik A.Ş. hesaplarına ulaşmıştır. AYGAZ A.Ş. (AYGAZ) • Aygaz’ın %43; Koç Holding'in %15,7 ve Tofaş'ın %41,3 oranında pay sahibi olduğu; Büyükdere Caddesi No : 145 Zincirlikuyu / İstanbul adresindeki Aygaz ve Tofaş genel merkezlerinin bulunduğu 2011 ada 1 no'lu parseldeki üzerinde bağımsız bölümler bulunan arsadaki payının, söz konusu duran varlığın nakde çevrilerek daha etkin bir şekilde kullanılması amacı doğrultusunda, Aygaz’ın nihai ana ortağı Temel Tic aret ve Yatırım A.Ş.'ye devrine ilişkin işlemler ve ödeme 09.10.2025 tarihinde tamamlanmıştır. Koç Holding ve Tofaş tarafından da aynı parseldeki paylarının devredildiği işlemde, devir bedeli Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından hazırlanan değerleme raporu dikkate alınarak belirlenmiş olup, Aygaz payına düşen satış bedeli yaklaşık 1,2 milyar TL olarak gerçekleşmiştir. FORD OTOMOTİV SANAYİ A.Ş. (FORD OTOSAN) • Ford Otosan yönetim kurulu tarafından, kayıtlı ser maye tavanının geçerlilik süresinin 2029 yılının sonuna kadar uzatılması, kayıtlı sermaye tavanının iç kaynakların sermayeye ilave edilmesi suretiyle gerçekleştirilen ve 30.05.2025 tarihinde tescil edilen sermaye artırımı neticesinde Sermaye Piyasası Kurulu'nun Kayıtlı Sermaye Sistemi Tebliği hükümlerine uygun şekilde aşılmış olması nedeniyle 10.000.000.000 TL'ye çıkarılması, Esas Sözleşme'nin 6.6. maddesindeki pay grubu dağılımını gösteren tablonun mevcut s ermaye yapısına ve 6.7.</untrusted_document>\n<untrusted_document cite_id=\"c:de69feebc665ee4d8d8f8e6d9d3f8b812d47129759b7fc04ce3b2d8b49901910\">(Yapı Kredi Plaza / Levent-İstanbul) ile Şirket birimlerimizden veya www.koc.com.tr adresindeki Şirketimizin kurumsal internet sitesinden temin etmeleri ve bu doğrultuda 24.12.2013 tarih ve 28861 sayılı Resmî Gazete’de yayımlanarak yürürlüğe giren II-30.1 sayılı “Vekâleten Oy Kullanılması ve Çağrı Yoluyla Vekâlet Toplanması Tebliği”nde öngörülen hususları da yerine getirerek, Şirketimize ibraz etmeleri gerekmektedir. Elektronik Genel Kurul Sistemi üzerinden elektronik yöntemle atanmış olan vekilin bir vekâlet belgesi ibrazı gerekli değildir. Söz konusu Tebliğ’de zorunlu tutulan ve genel kurul davet ilanı ekinde yer alan vekâletname örneğine uygun olmayan vekâletnameler, hukuki sorumluluğumuz nedeniyle kesinlikle kabul edilmeyecektir. Elektronik Genel Kurul Sistemi ile oy kullanacak pay sahiplerimizin, ilgili yönetmelik ve tebliğ hükümlerine uygun olarak toplantıya katılarak pay sahibi haklarını kullanabilmeleri için Merkezi Kayıt Kuruluşu’ndan, Şirketimizin www.koc.com.tr adresindeki kurumsal internet sitesinden veya Şirket merkezimizden (Tel: 0 216 531 00 00) bilgi edinmeleri rica olunur. 6102 sayılı Türk Ticaret Kanunu’nun 415’inci maddesinin 4’üncü fıkrası ve Sermaye Piyasası Kanunu’nun 30’uncu maddesinin 1’inci fıkrası uyarınca, genel kurula katılma ve oy kullanma hakkı, pay senetlerinin depo edilmesi şartına bağlı değildir. Bu çerçevede, pay sahiplerimizin Genel Kurul Toplantısı’na katılmak istemeleri durumunda, paylarını bloke etmelerine gerek bulunmamaktadır. 6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca, kişisel verilerinizin Şirketimiz tarafından işlenmesine ilişkin detaylı bilgilere www. koc.com.tr internet adresinden kamuoyu ile paylaşılmış olan Koç Holding Anonim Şirketi Kişisel Verilerin Korunması ve İşlenmesi Politikası’ndan ulaşabilirsiniz. Olağan Genel Kurul Toplantısında gündem maddelerinin oylanmasına ilişkin elektronik yöntemle oy kullanma hükümleri saklı olmak kaydıyla, el kaldırma usulü ile açık oylama yöntemi kullanılacaktır. Genel kurul toplantımıza tüm hak ve menfaat sahipleri ile basın-yayın organları davetlidir. Sermaye Piyasası Kanunu uyarınca nama yazılı olup, borsada işlem gören paylar için pay sahiplerine ayrıca taahhütlü mektupla bildirim yapılmayacaktır. Sayın Pay Sahiplerinin bilgilerine arz olunur. KOÇ HOLDİNG A.Ş. YÖNETİM KURULU Şirket Adresi: Nakkaştepe Azizbey Sok. No: 1 34674 Üsküdar/İstanbul Ticaret Sicili ve Numarası: İstanbul/85714 Mersis No:</untrusted_document>\n<untrusted_document cite_id=\"c:e1d7bef2cab90b8cdca5f0f4ef0cfec9f1710158ac1f3d8e193a195e626b9189\">tarafından hazırlanan değerleme raporu dikkate alınarak belirlenecek olup, işlem tarihinde kesinleşen tutar ayrıca kamuya açıklanacaktır. Değerleme raporunda takdir edilen tutar üzerinden Şirketimiz payına karşılık gelen devir bedeli KDV hariç 1.194.767.040 TL'dir. Devir sonrası şirketimiz genel merkezinin taşınması öngörülmekte olup, bu sürece ilişkin önemli gelişmeler ayrıca kamuya açıklanacaktır.</untrusted_document>",
+   "summary": "KCHOL Koç Holding'in genel merkez devrinde payına düşen bedel ne kadar?",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:8a10581c8ca7df73fa582036e2bd22297ae1074ff5b9922dfe6ec3836ddfdf7d",
+     "text": "Yönetim Kurulumuz tarafından Şirketimizin mülkiyetindeki ve Şirketimiz sermayesinin %7,1'lik kısmını temsil eden toplam 48.000.000 TL nominal değerli geri alınan payların Geri Alınan Paylar Tebliği ve Borsa İstanbul A.Ş.'nin Toptan Alış Satış İşlemlerine İlişkin Prosedür'ü kapsamında geçmiş 10 iş günü boyunca oluşmuş ağırlıklı ortalama fiyatların ortalaması alınarak en yakın fiyat adımına yuvarlanması suretiyle hesaplanan 108,29 TL baz fiyat üzerinden, toplam 5.197.920.000 TL bedel karşılığında nakden ve peşin olarak Koç Holding A.Ş.'ye satışına karar verilmiştir. İşlemin tamamlanabilmesi için Borsa İstanbul A.Ş.'ye başvuru bugün yapılacaktır. Şirketimiz gelir tablosunu etkilemeyecek söz konusu işlem kapsamında, 30.11.2025 tarihli satın alma gücüne göre endekslenmiş maliyeti 10.033.344.021 TL olan geri alınan payların satışından geçmiş yıl karları/zararları kaleminde 4.835.424.022 TL tutarında azalış muhasebeleştirilmesi, ayrıca özkaynaklar altında kısıtlanmış yedekler içerisinde izlenen 10.033.344.021 TL tutarındaki geri alınan paylara ilişkin yedeklerin de serbest bırakılarak geçmiş yıl kârlarına sınıflandırılması öngörülmektedir. Böylece işlem sonucunda, geçmiş yıl karları kaleminde ve dolayısıyla toplam özkaynaklarda nette 5.197.920.000 TL tutarında artış oluşması öngörülmektedir. İşlemin nihai etkisi kamuya açıklanacak 2025 yılı finansal tablolarımızdan takip edilebilecektir. İşbu açıklamamızın İngilizce çevirisi eş anlı yapılmakta olup, açıklama metinlerinde herhangi bir farklılık olması durumunda Türkçe açıklama esas kabul edilecektir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 712,
+      "ticker": "KCHOL",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1528289"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6",
+     "text": "Şirketimiz için değerleme raporunda takdir edilen tutar üzerinden TFRS'ye göre yaklaşık 0,9 milyar TL vergi öncesi taşınmaz satış kazancı elde edilmesi öngörülmekte olup, nihai tutar işlem tarihinde kesinleşecektir. Varsa Satış Karının Ne Şekilde Değerlendirileceği: - Varsa Satış Karının Ne Şekilde Değerlendirileceğine İlişkin Yönetim Kurulu Karar Tarihi: - Karşı Taraf: Temel Ticaret ve Yatırım A.Ş. Karşı Taraf SPK Düzenlemelerine Göre İlişkili Taraf mıdır?: Evet (Yes) Karşı Taraf İle Olan İlişkinin Niteliği: Nihai ana ortak Varsa İşleme İlişkin Sözleşme Tarihi: - Önemli Niteliklteki İşlem Kapsamında Kullandırılacak Ayrılma Hakkı Fiyatı: - Maddi Duran Varlığın Değerinin Belirlenme Yöntemi: Taraflarca değerleme raporunda belirlenen değer dikkate alınarak belirlenecektir. Değerleme Raporu Düzenlendi mi?: Düzenlendi (Prepared) Değerleme Raporu Düzenlenmediyse Nedeni: - Değerleme Raporu Düzenlendiyse Tarih ve Numarası: 23.07.2025/49 Değerleme Raporunu Hazırlayan Değerleme Kuruluşunun Ünvanı: Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: Tümü için KDV hariç 2.778.528.000 TL olup, Şirketimize düşen pay 1.147.532.064 TL'dir. İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: İşlem değerleme raporundaki sonuçlar dikkate alınarak gerçekleştirilecektir Şirketimizin %41,3; Koç Holding'in %15,7 ve Aygaz'ın %43,0 oranında pay sahibi olduğu; Büyükdere Caddesi N 145 Zincirlikuyu / İstanbul adresindeki Şirketimiz ve Aygaz genel merkezlerinin bulunduğu 2011 ada 1 no'lu parseldeki üzerinde bağımsız bölümler bulunan arsadaki payımızın, söz konusu duran varlığın nakde çevrilerek daha etkin bir şekilde kullanılması amacı doğrultusunda, Şirketimizin nihai ana ortağı Temel Ticaret ve Yatırım A.Ş.'ye devrine karar verilmiş olup, ödeme ve devir işlemlerinin Ekim ayı sonuna kadar tamamlanması öngörülmektedir. Koç Holding ve Aygaz tarafından da aynı parseldeki paylarının devredileceği işlemde, devir bedeli Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından hazırlanan değerleme raporu dikkate alınarak belirlenecek olup, işlem tarihinde kesinleşen tutar ayrıca kamuya açıklanacaktır . Değerleme raporunda takdir edilen tutar üzerinden Şirketimiz payına karşılık gelen devir bedeli KDV hariç 1.147.532.064 TL 'dir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 697,
+      "ticker": "KCHOL",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1493483"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742",
+     "text": "Şirketimiz için değerleme raporunda takdir edilen tutar üzerinden TFRS'ye göre yaklaşık 1,1 milyar TL vergi öncesi taşınmaz satış kazancı elde edilmesi öngörülmekte olup, nihai tutar işlem tarihinde kesinleşecektir. Varsa Satış Karının Ne Şekilde Değerlendirileceği: - Varsa Satış Karının Ne Şekilde Değerlendirileceğine İlişkin Yönetim Kurulu Karar Tarihi: - Karşı Taraf: Temel Ticaret ve Yatırım A.Ş. Karşı Taraf SPK Düzenlemelerine Göre İlişkili Taraf mıdır?: Evet (Yes) Karşı Taraf İle Olan İlişkinin Niteliği: Nihai ana ortak Önemli Niteliklteki İşlem Kapsamında Kullandırılacak Ayrılma Hakkı Fiyatı: - Maddi Duran Varlığın Değerinin Belirlenme Yöntemi: Taraflarca değerleme raporunda belirlenen değer dikkate alınarak belirlenecektir. Değerleme Raporu Düzenlendi mi?: Düzenlendi (Prepared) Değerleme Raporu Düzenlenmediyse Nedeni: - Değerleme Raporu Düzenlendiyse Tarih ve Numarası: 23.07.2025/49 Değerleme Raporunu Hazırlayan Değerleme Kuruluşunun Ünvanı: Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: Tümü için KDV hariç 2.778.528.000 TL olup, Şirketimize düşen pay 1.194.767.040 TL'dir. İşlem Değerleme Raporundaki Sonuçlara Uygun Gerçekleştirilmemişse/Gerçekleştirilmeyecekse Gerekçesi: İşlem değerleme raporundaki sonuçlar dikkate alınarak gerçekleştirilecektir. Şirketimizin %43; Koç Holding'in %15,7 ve Tofaş'ın %41,3 oranında pay sahibi olduğu; Büyükdere Caddesi No : 145 Zincirlikuyu / İstanbul adresindeki Şirketimiz ve Tofaş genel merkezlerinin bulunduğu 2011 ada 1 no'lu parseldeki üzerinde bağımsız bölümler bulunan arsadaki payımızın, söz konusu duran varlığın nakde çevrilerek daha etkin bir şekilde kullanılması amacı doğrultusunda, Şirketimizin nihai ana ortağı Temel Ticaret ve Yatırım A.Ş.'ye devrine karar verilmiş olup, ödeme ve devir işlemlerinin Ekim ayı sonuna kadar tamamlanması öngörülmektedir. Koç Holding ve Tofaş tarafından da aynı parseldeki paylarının devredileceği işlemde, devir bedeli Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından hazırlanan değerleme raporu dikkate alınarak belirlenecek olup, işlem tarihinde kesinleşen tutar ayrıca kamuya açıklanacaktır. Değerleme raporunda takdir edilen tutar üzerinden Şirketimiz payına karşılık gelen devir bedeli KDV hariç 1.194.767.040 TL'dir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 696,
+      "ticker": "KCHOL",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1493481"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:d68a8b9edd240cbab69be411420c24bb54a188fd406302d23130b1f88b6e4631",
+     "text": "İşbu rapor tarihi itibariyle kredi kullanımı 2025 9 AY ARA DÖNEM FAALİYET RAPORU 11 / 14 gerçekleşmemiş olup, toplam 600 milyon ABD doları tutarına kadar kullanılabilecek kredinin masraf ve komisyonlar hariç maliyeti, SOFR + %1,95'tir. İmza tarihinden itibaren 6 ay içerisinde kullanılabilecek kredi, 6 ayda bir faiz ödemeli olup, imza tarihinden itibaren ilk 2,5 yılı geri ödemesiz ve sonrasında 6 eşit taksitte 6 ayda bir ödemeli şekilde toplam 5 yıl vadelidir. ARÇELİK A.Ş. (ARÇELİK) • Arçelik’in Hollanda'da yerleşik ve paylarının tamamına sahip olduğu bağlı ortaklığı Beko B.V. tarafından, 25.900.000 Euro tutarında sermaye azaltımı ve 22.800.000 Euro tutarında temettü dağıtımı yapılmasına karar verilmiştir. Söz konusu işlemler kapsamında toplam 48.700.000 Euro 31.10.2025 tarihi itibarıyla Arçelik A.Ş. hesaplarına ulaşmıştır. AYGAZ A.Ş. (AYGAZ) • Aygaz’ın %43; Koç Holding'in %15,7 ve Tofaş'ın %41,3 oranında pay sahibi olduğu; Büyükdere Caddesi No : 145 Zincirlikuyu / İstanbul adresindeki Aygaz ve Tofaş genel merkezlerinin bulunduğu 2011 ada 1 no'lu parseldeki üzerinde bağımsız bölümler bulunan arsadaki payının, söz konusu duran varlığın nakde çevrilerek daha etkin bir şekilde kullanılması amacı doğrultusunda, Aygaz’ın nihai ana ortağı Temel Tic aret ve Yatırım A.Ş.'ye devrine ilişkin işlemler ve ödeme 09.10.2025 tarihinde tamamlanmıştır. Koç Holding ve Tofaş tarafından da aynı parseldeki paylarının devredildiği işlemde, devir bedeli Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından hazırlanan değerleme raporu dikkate alınarak belirlenmiş olup, Aygaz payına düşen satış bedeli yaklaşık 1,2 milyar TL olarak gerçekleşmiştir. FORD OTOMOTİV SANAYİ A.Ş. (FORD OTOSAN) • Ford Otosan yönetim kurulu tarafından, kayıtlı ser maye tavanının geçerlilik süresinin 2029 yılının sonuna kadar uzatılması, kayıtlı sermaye tavanının iç kaynakların sermayeye ilave edilmesi suretiyle gerçekleştirilen ve 30.05.2025 tarihinde tescil edilen sermaye artırımı neticesinde Sermaye Piyasası Kurulu'nun Kayıtlı Sermaye Sistemi Tebliği hükümlerine uygun şekilde aşılmış olması nedeniyle 10.000.000.000 TL'ye çıkarılması, Esas Sözleşme'nin 6.6. maddesindeki pay grubu dağılımını gösteren tablonun mevcut s ermaye yapısına ve 6.7.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 704,
+      "ticker": "KCHOL",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": 10,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1512355"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:de69feebc665ee4d8d8f8e6d9d3f8b812d47129759b7fc04ce3b2d8b49901910",
+     "text": "(Yapı Kredi Plaza / Levent-İstanbul) ile Şirket birimlerimizden veya www.koc.com.tr adresindeki Şirketimizin kurumsal internet sitesinden temin etmeleri ve bu doğrultuda 24.12.2013 tarih ve 28861 sayılı Resmî Gazete’de yayımlanarak yürürlüğe giren II-30.1 sayılı “Vekâleten Oy Kullanılması ve Çağrı Yoluyla Vekâlet Toplanması Tebliği”nde öngörülen hususları da yerine getirerek, Şirketimize ibraz etmeleri gerekmektedir. Elektronik Genel Kurul Sistemi üzerinden elektronik yöntemle atanmış olan vekilin bir vekâlet belgesi ibrazı gerekli değildir. Söz konusu Tebliğ’de zorunlu tutulan ve genel kurul davet ilanı ekinde yer alan vekâletname örneğine uygun olmayan vekâletnameler, hukuki sorumluluğumuz nedeniyle kesinlikle kabul edilmeyecektir. Elektronik Genel Kurul Sistemi ile oy kullanacak pay sahiplerimizin, ilgili yönetmelik ve tebliğ hükümlerine uygun olarak toplantıya katılarak pay sahibi haklarını kullanabilmeleri için Merkezi Kayıt Kuruluşu’ndan, Şirketimizin www.koc.com.tr adresindeki kurumsal internet sitesinden veya Şirket merkezimizden (Tel: 0 216 531 00 00) bilgi edinmeleri rica olunur. 6102 sayılı Türk Ticaret Kanunu’nun 415’inci maddesinin 4’üncü fıkrası ve Sermaye Piyasası Kanunu’nun 30’uncu maddesinin 1’inci fıkrası uyarınca, genel kurula katılma ve oy kullanma hakkı, pay senetlerinin depo edilmesi şartına bağlı değildir. Bu çerçevede, pay sahiplerimizin Genel Kurul Toplantısı’na katılmak istemeleri durumunda, paylarını bloke etmelerine gerek bulunmamaktadır. 6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca, kişisel verilerinizin Şirketimiz tarafından işlenmesine ilişkin detaylı bilgilere www. koc.com.tr internet adresinden kamuoyu ile paylaşılmış olan Koç Holding Anonim Şirketi Kişisel Verilerin Korunması ve İşlenmesi Politikası’ndan ulaşabilirsiniz. Olağan Genel Kurul Toplantısında gündem maddelerinin oylanmasına ilişkin elektronik yöntemle oy kullanma hükümleri saklı olmak kaydıyla, el kaldırma usulü ile açık oylama yöntemi kullanılacaktır. Genel kurul toplantımıza tüm hak ve menfaat sahipleri ile basın-yayın organları davetlidir. Sermaye Piyasası Kanunu uyarınca nama yazılı olup, borsada işlem gören paylar için pay sahiplerine ayrıca taahhütlü mektupla bildirim yapılmayacaktır. Sayın Pay Sahiplerinin bilgilerine arz olunur. KOÇ HOLDİNG A.Ş. YÖNETİM KURULU Şirket Adresi: Nakkaştepe Azizbey Sok. No: 1 34674 Üsküdar/İstanbul Ticaret Sicili ve Numarası: İstanbul/85714 Mersis No:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 677,
+      "ticker": "KCHOL",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 330,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1404732"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:e1d7bef2cab90b8cdca5f0f4ef0cfec9f1710158ac1f3d8e193a195e626b9189",
+     "text": "tarafından hazırlanan değerleme raporu dikkate alınarak belirlenecek olup, işlem tarihinde kesinleşen tutar ayrıca kamuya açıklanacaktır. Değerleme raporunda takdir edilen tutar üzerinden Şirketimiz payına karşılık gelen devir bedeli KDV hariç 1.194.767.040 TL'dir. Devir sonrası şirketimiz genel merkezinin taşınması öngörülmekte olup, bu sürece ilişkin önemli gelişmeler ayrıca kamuya açıklanacaktır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 696,
+      "ticker": "KCHOL",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1493481"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"Koç Holding genel merkez devir bedeli\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:0fa60373a8814e7fab7f51474407f5a9df72faa46ea1e91bc0916227edeb1cc6\">Koç Holding’in 1 Ocak – 30 Eylül 2025 dönemine ilişkin konsolide ana ortaklık payı net dönem kârı %54 artışla 14.352 milyon TL olarak gerçekleşmiştir. Şirketin özet konsolide finansal bilgileri aşağıda yer almaktadır: 9A25 Milyon TL 9A25* 9A24* Değişim Mn € Mn $ Gelirler 1.954.626 2.213.367 -12% 40.179 47.101 Brüt Kâr 330.543 320.786 3% 6.795 7.965 Esas Faaliyet Kârı 81.111 110.599 -27% 1.668 1.954 Vergi Öncesi Kâr 51.208 44.858 14% 1.052 1.234 Net Dönem Kârı 23.290 14.398 62% 478 562 Kontrol Gücü Olmayan Paylar 8.938 5.098 75% 183 216 Ana Ortaklık Payları 14.352 9.300 54% 295 346 30.09.2025 30.09.2025 31.12.2024 Değişim Mn € Mn $ Toplam Varlıklar 5.105.989 4.901.995 4% 104.960 123.039 Toplam Özkaynaklar 1.039.810 1.077.021 -3% 21.375 25.056 Ana Ortaklığa Ait Özkaynaklar 644.488 663.066 -3% 13.249 15.530 30 Eylül 2025 itibarıyla, Koç Holding solo net nakit pozisyonu 874 milyon ABD doları seviyesindedir. Yılın ilk dokuz ayında toplam kombine yatırımlar 107,8 milyar TL (2,6 milyar ABD doları) seviyesinde gerçekleşmiştir. (*) Tutarlar aksi belirtilmedikçe tablolarda Türk Lirası’nın 30 Eylül 2025 tarihindeki satın alma gücü cinsinden milyon Türk Lirası (“TL”) olarak ifade edilmiştir. TFRS’ye uygun hazırlanan konsolide finansal tablolarda gösterilen EUR ve USD tutarlar, TL tutarları üzerinden TCMB tarafından duyurulan 30 Eylül 2025 tarihinde geçerli olan 48,6479 TL = 1 EUR ve 41,4984 TL= 1 USD resmi alış kurları kullanılarak hesaplanmış olup, bu ara dönem özet konsolide finansal tabloların bir parçası değildir. 2025 9 AY ARA DÖNEM FAALİYET RAPORU 5 / 14 EKONOMİK GELİŞMELER 2025’in üçüncü çeyreğinde küresel ekonomi yatay seyretmiş , ancak küresel ticaret ve piyasaları etkileyen önemli gelişmeler yaşanmaya devam etmiştir. ABD’nin gümrük vergisi politikası üçüncü çeyrekte küresel bir belirsizlik unsuru olmayı sürdürmüştür. Başkan Trump, bu dönemde de birçok ürüne yeni gümrük vergileri eklemiştir. “Liberation Day” adı verilen ve ABD’nin ticaret açığı temelinde belirlediği ülke bazlı gümrük vergileri de Ağustos 2025’te yürürlüğe girmiştir.</untrusted_document>\n<untrusted_document cite_id=\"c:23733aab4386b76bf45c63a6928c1b058dd16c22f236022ca9f6d9042fde8525\">Koç Holding Anonim Şirketi’nin Vergi Usul Kanuna Göre Düzenlenmiş 31 Aralık 2025 ve 31 Aralık 2024 Tarihli Karşılaştırmalı Ayrıntılı Bilançoları (TL) AKTİF (VARLIKLAR) 31.12.2025 31.12.2024* DÖNEN VARLIKLAR 39.793.870.192,13 62.428.781.367,88 Hazır Değerler 33.434.350.548,25 48.213.093.078,69 Bankalar 33.434.350.548,25 48.213.093.078,69 Menkul Kıymetler 2.212.008.289,94 10.438.122.651,02 Özel Kes.Tah.Sen.ve Bono 1.071.557.500,00 9.672.318.180,00 Diğer Menkul Kıymetler 1.140.450.789,94 765.804.471,02 Kısa Vadeli Ticari Alacaklar 3.487.312.657,98 2.505.206.730,05 Alıcılar 3.482.743.994,02 2.501.876.926,10 Verilen Depozito ve Teminatlar 4.227.857,96 3.202.453,90 Şüpheli Ticari Alacaklar 5.176.706,73 1.822.174,35 Şüpheli Ticari Alacaklar Karşılığı -4.835.900,73 -1.694.824,30 Gelecek Aylara Ait Giderler ve Gelir Tahakkukları 644.832.057,44 1.258.602.881,93 Gelecek Aylara Ait Giderler 257.744.343,37 106.135.104,16 Gelir Tahakkukları 387.087.714,07 1.152.467.777,77 Diğer Dönen Varlıklar 15.366.638,52 13.756.026,19 Diğer Çeşitli Dönen Varlıklar 15.366.638,52 13.756.026,19 DURAN VARLIKLAR 186.843.437.844,36 168.519.028.925,26 Finansal Duran Varlıklar 176.888.212.796,31 155.073.650.488,49 İştirakler 77.262.770.998,12 75.636.417.297,29 Bağlı Ortaklıklar 99.625.441.798,19 79.437.233.191,20 Maddi Duran Varlıklar 9.729.246.816,80 13.228.416.883,23 Arazi ve Arsalar 1.065.978.090,04 1.065.978.090,04 Yeraltı ve Yerüstü Düzenleri 260.823.413,70 259.942.351,31 Binalar 7.474.803.511,22 8.768.470.552,31 Tesis, Makina ve Cihazlar</untrusted_document>\n<untrusted_document cite_id=\"c:c3a0bb32531f194d6e111f3b3bea67b81f42788ab8e351a665c97abf899b0816\">İlgili Üretim Sözleşmesi uyarınca toplam 256 milyon Euro tutara kadar yatırım ile 2026'nın üçüncü çeyreğinde hayata geçirilmesi öngörülen proje, demonte araçlar (CKD) da dahil olmak üzere yıllık 150.000 adet üretim kapasitesine sahip olacaktır. Proje kapsamında, yatırım faaliyetlerinin tamamlanmasını takiben 2034'ün son çeyreğine kadar yaklaşık %80'lik bölümü Türkiye piyasası için olmak üzere, CKD hariç, yaklaşık 660.000 adet araç üretilmesi hedeflenmektedir . https://www.kap.org.tr/tr/Bildirim/1488110 26.09.2025 Maddi Duran Varlık Satımı Şirketimizin %43; Koç Holding'in %15,7 ve Tofaş'ın %41,3 oranında pay sahibi olduğu; Büyükdere Caddesi No : 145 Zincirlikuyu / İstanbul adresindeki Şirketimiz ve Tofaş genel merkezlerinin bulunduğu 2011 ada 1 no'lu parseldeki üzerinde bağımsız bölümler bul unan arsadaki payımızın, söz konusu duran varlığın nakde çevrilerek daha etkin bir şekilde kullanılması amacı doğrultusunda, Şirketimizin nihai ana ortağı Temel Ticaret ve Yatırım A.Ş.'ye devrine karar verilmiş olup, ödeme ve devir işlemlerinin Ekim ayı sonuna kadar tamamlanması öngörülmektedir. Koç Holding ve Tofaş tarafından da aynı parseldeki paylarının devredileceği işlemde, devir bedeli Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından hazırlanan değerleme raporu dikkate alınarak belirlenecek olup, işlem tarihinde kesinleşen tutar ayrıca kamuya açıklanacaktır. Değerleme raporunda takdir edilen tutar üzerinden Şirketimiz payına karşılık gelen devir bedeli KDV hariç 1.194.767.040 TL'dir. https://www.kap.org.tr/tr/Bildirim/1493481 09.10.2025 Maddi Duran Varlık Satımı 26.09.2025 tarihinde kamuya açıkladığımız, Şirketimizin %43; Koç Holding'in %15,7 ve Tofaş'ın %41,3 oranında pay sahibi olduğu; Büyükdere Caddesi No : 145 Zincirlikuyu / İstanbul adresindeki Şirketimiz ve Tofaş genel merkezlerinin bulunduğu 2011 ada 1 no'l u parseldeki üzerinde bağımsız bölümler bulunan arsadaki payımızın, Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından hazırlanan değerleme raporu dikkate alınarak belirlenen bedel üzerinden Şirketimizin nihai ana ortağı Temel Ticaret ve Y atırım A.Ş.'ye devri ve ödeme işlemleri 09.10.2025 tarihinde tamamlanmıştır. https://www.kap.org.tr/tr/Bildirim/1501759</untrusted_document>\n<untrusted_document cite_id=\"c:8a10581c8ca7df73fa582036e2bd22297ae1074ff5b9922dfe6ec3836ddfdf7d\">Yönetim Kurulumuz tarafından Şirketimizin mülkiyetindeki ve Şirketimiz sermayesinin %7,1'lik kısmını temsil eden toplam 48.000.000 TL nominal değerli geri alınan payların Geri Alınan Paylar Tebliği ve Borsa İstanbul A.Ş.'nin Toptan Alış Satış İşlemlerine İlişkin Prosedür'ü kapsamında geçmiş 10 iş günü boyunca oluşmuş ağırlıklı ortalama fiyatların ortalaması alınarak en yakın fiyat adımına yuvarlanması suretiyle hesaplanan 108,29 TL baz fiyat üzerinden, toplam 5.197.920.000 TL bedel karşılığında nakden ve peşin olarak Koç Holding A.Ş.'ye satışına karar verilmiştir. İşlemin tamamlanabilmesi için Borsa İstanbul A.Ş.'ye başvuru bugün yapılacaktır. Şirketimiz gelir tablosunu etkilemeyecek söz konusu işlem kapsamında, 30.11.2025 tarihli satın alma gücüne göre endekslenmiş maliyeti 10.033.344.021 TL olan geri alınan payların satışından geçmiş yıl karları/zararları kaleminde 4.835.424.022 TL tutarında azalış muhasebeleştirilmesi, ayrıca özkaynaklar altında kısıtlanmış yedekler içerisinde izlenen 10.033.344.021 TL tutarındaki geri alınan paylara ilişkin yedeklerin de serbest bırakılarak geçmiş yıl kârlarına sınıflandırılması öngörülmektedir. Böylece işlem sonucunda, geçmiş yıl karları kaleminde ve dolayısıyla toplam özkaynaklarda nette 5.197.920.000 TL tutarında artış oluşması öngörülmektedir. İşlemin nihai etkisi kamuya açıklanacak 2025 yılı finansal tablolarımızdan takip edilebilecektir. İşbu açıklamamızın İngilizce çevirisi eş anlı yapılmakta olup, açıklama metinlerinde herhangi bir farklılık olması durumunda Türkçe açıklama esas kabul edilecektir.</untrusted_document>\n<untrusted_document cite_id=\"c:a004deaa83577f432eca9d0a6f0ff08b8cca1fda5ef73a58702b9f98fed2b218\">Konsolide gelir tablosunda, satın alma tarihinden sonra Whirlpool MENA’nın hasılat ve ana ortaklık net dönem kârına katkısı, sırasıyla 3.019 milyon TL ve 22 milyon TL olarak gerçekleşmiştir. Satın alımdan kaynaklanan nakit çıkışının detayı aşağıdaki gibidir: Toplam satın alma bedeli - nakit (970) Nakit ve nakit benzerleri - iktisap edilen 724 Satın almadan kaynaklanan nakit çıkışı (net) (246) iii) Grup’un Bağlı Ortaklıkları’ndan Koç Medical B.V., inorganik büyüme stratejisi kapsamında 29 Temmuz 2023 tarihinde tıbbi cihazlar alanında faaliyet gösteren Bıçakcılar Global Tıbbi Ürünler Sanayi ve Ticaret A.Ş.’nin (“Bıçakcılar Global”) paylarının tamamını 30,6 milyon USD bedel karşılığında satın almıştır. Söz konusu satın alım ile sağlık teknolojileri alanında ürün yelpazesi çeşitlendirilirken, ihracat pazarlarının genişletilmesi ve global büyümeye de önemli katkı sağlanması hedeflenmektedir. Söz konusu işleme ilişkin, 1.496 milyon TL tutarındaki toplam satın alma bedeli ile iktisap edilen varlık ve yükümlülüklerin TFRS 3 kapsamında belirlenen 1.440 milyon TL tutarındaki gerçeğe uygun değerleri arasındaki fark konsolide finansal tablolarda şerefiye olarak muhasebeleştirilmiştir. iv) Koç Holding’in 4 Ocak 2024 tarihli özel durum açıklamasında belirtildiği üzere, Grup’un sağlık sektöründe büyüme fırsatlarına yönelik değerlendirmeleri kapsamında, Anatolia Hospital markasıyla Antalya’da özel hastane işletmeciliği sektöründe faaliyet gösteren Kemer Medical Center Özel Sağlık Hizmetleri Turizm ve Ticaret A.Ş.’nin (“KMC Sağlık”) sermayesinin %80’ine denk gelen payların kapanış düzeltmesine tabi 83 milyon EUR bedel karşılığında satın alınmasına ilişkin pay devir işlemleri 27 Mart 2024 tarihinde tamamlanmıştır. Söz konusu işleme ilişkin, %80’lik paya isabet eden 3.620 milyon TL tutarındaki satın alma bedeli ile iktisap edilen varlık ve yükümlülüklerin TFRS 3 kapsamında belirlenen 3.902 milyon TL tutarındaki gerçeğe uygun değerleri arasındaki fark pazarlıklı satın alım sonucu oluşan kazanç olarak konsolide finansal tablolarda muhasebeleştirilmiştir (Not 26). 254 Koç Holding 2024 Faaliyet Raporu KOÇ HOLDİNG A.Ş.</untrusted_document>\n<untrusted_document cite_id=\"c:c6b7326d7a5e4b34b95ef9791185eb48b9056242a0b5419ba24cec0599bb6d27\">1.109.340 43,75 Koç Ailesi Üyeleri1 464.948 18,33 Rahmi M. Koç ve Mahdumları Maden, İnşaat, Turizm, Ulaştırma, Yatırım ve Tic. A.Ş. 35.385 1,40 Koç Ailesi Üyeleri ve Koç Ailesi Üyeleri tarafından sahip olunan şirketlerin toplam payı 1.609.673 63,48 Vehbi Koç Vakfı 184.820 7,29 Koç Holding Emekli ve Yardım Sandığı Vakfı 59.553 2,35 Diğer (Halka Açık)2 681.852 26,89 Toplam Çıkarılmış Sermaye 2.535.898 100,00 (1) Koç Ailesi Üyeleri: Rahmi M. Koç, Semahat S. Arsel, M. Ömer Koç, Ali Y. Koç, İpek Kıraç, Caroline Nicole Koç, Esra Ç. Koç ve Aylin E. Koç (2) Halka açık kısımdaki toplam 890.475 TL nominal değerli pay (sermayenin yaklaşık %0,04’ü) Koç Holding tarafından geri alınmış paylardır; 30.06.2026 tarihi itibarıyla geri alınan payların toplam nominal değerinde bir değişiklik olmamıştır. 2025 Yılı Kâr Payı Dağıtımı Koç Holding’in 18 Mart 2026 tarihinde yapılan Olağan Genel Kurulu’nda; ortaklara toplam 17.320.183.681,50 TL tutarında nakit temettü ; intifa senedi sahiplerine 656.211.182,93 TL ve Koç Holding Emek li ve Yardım Sandığı Vakfı’na 25.000.000 TL kâr payı dağıtılmasına karar verilmiş ve toplamda 18.001.394.864,43 TL nakit temettü ve kâr paylarının ödemesi 25-27 Mart 2026 tarihlerinde gerçekleştirilmiştir. Üst Yönetim Koç Holding’in üst yönetimi bu rapor tarihi itibarıyla aşağıdaki gibidir: Levent Çakıroğlu CEO Doğan Korkmaz CFO Gökhan Erün Bankacılık Grubu Başkanı Polat Şen Dayanıklı Tüketim Grubu Başkanı Yağız Eyüboğlu Enerji Grubu Başkanı Haydar Yenigün Otomotiv Grubu Başkanı Dr. Erhan Bulutcu Sağlık Grubu Başkanı Özgür Burak Akkol Turizm, Gıda ve Perakende Grubu Başkanı Kemal Uzun Denetim Grubu Başkanı Kenan Yılmaz Baş Hukuk ve Uyum Müşaviri Mehmet Umut Günal İnsan Kaynakları Direktörü Burçun Serra İmir Belovacıklı Kurumsal İletişim Direktörü Ali Utku Atalay Resmi İşler Direktörü Mehmet Apak Muhasebe Direktörü 4 / 15 BÖLÜM 2:</untrusted_document>",
+   "summary": "Koç Holding genel merkez devir bedeli",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:0fa60373a8814e7fab7f51474407f5a9df72faa46ea1e91bc0916227edeb1cc6",
+     "text": "Koç Holding’in 1 Ocak – 30 Eylül 2025 dönemine ilişkin konsolide ana ortaklık payı net dönem kârı %54 artışla 14.352 milyon TL olarak gerçekleşmiştir. Şirketin özet konsolide finansal bilgileri aşağıda yer almaktadır: 9A25 Milyon TL 9A25* 9A24* Değişim Mn € Mn $ Gelirler 1.954.626 2.213.367 -12% 40.179 47.101 Brüt Kâr 330.543 320.786 3% 6.795 7.965 Esas Faaliyet Kârı 81.111 110.599 -27% 1.668 1.954 Vergi Öncesi Kâr 51.208 44.858 14% 1.052 1.234 Net Dönem Kârı 23.290 14.398 62% 478 562 Kontrol Gücü Olmayan Paylar 8.938 5.098 75% 183 216 Ana Ortaklık Payları 14.352 9.300 54% 295 346 30.09.2025 30.09.2025 31.12.2024 Değişim Mn € Mn $ Toplam Varlıklar 5.105.989 4.901.995 4% 104.960 123.039 Toplam Özkaynaklar 1.039.810 1.077.021 -3% 21.375 25.056 Ana Ortaklığa Ait Özkaynaklar 644.488 663.066 -3% 13.249 15.530 30 Eylül 2025 itibarıyla, Koç Holding solo net nakit pozisyonu 874 milyon ABD doları seviyesindedir. Yılın ilk dokuz ayında toplam kombine yatırımlar 107,8 milyar TL (2,6 milyar ABD doları) seviyesinde gerçekleşmiştir. (*) Tutarlar aksi belirtilmedikçe tablolarda Türk Lirası’nın 30 Eylül 2025 tarihindeki satın alma gücü cinsinden milyon Türk Lirası (“TL”) olarak ifade edilmiştir. TFRS’ye uygun hazırlanan konsolide finansal tablolarda gösterilen EUR ve USD tutarlar, TL tutarları üzerinden TCMB tarafından duyurulan 30 Eylül 2025 tarihinde geçerli olan 48,6479 TL = 1 EUR ve 41,4984 TL= 1 USD resmi alış kurları kullanılarak hesaplanmış olup, bu ara dönem özet konsolide finansal tabloların bir parçası değildir. 2025 9 AY ARA DÖNEM FAALİYET RAPORU 5 / 14 EKONOMİK GELİŞMELER 2025’in üçüncü çeyreğinde küresel ekonomi yatay seyretmiş , ancak küresel ticaret ve piyasaları etkileyen önemli gelişmeler yaşanmaya devam etmiştir. ABD’nin gümrük vergisi politikası üçüncü çeyrekte küresel bir belirsizlik unsuru olmayı sürdürmüştür. Başkan Trump, bu dönemde de birçok ürüne yeni gümrük vergileri eklemiştir. “Liberation Day” adı verilen ve ABD’nin ticaret açığı temelinde belirlediği ülke bazlı gümrük vergileri de Ağustos 2025’te yürürlüğe girmiştir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 704,
+      "ticker": "KCHOL",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": 4,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1512355"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:23733aab4386b76bf45c63a6928c1b058dd16c22f236022ca9f6d9042fde8525",
+     "text": "Koç Holding Anonim Şirketi’nin Vergi Usul Kanuna Göre Düzenlenmiş 31 Aralık 2025 ve 31 Aralık 2024 Tarihli Karşılaştırmalı Ayrıntılı Bilançoları (TL) AKTİF (VARLIKLAR) 31.12.2025 31.12.2024* DÖNEN VARLIKLAR 39.793.870.192,13 62.428.781.367,88 Hazır Değerler 33.434.350.548,25 48.213.093.078,69 Bankalar 33.434.350.548,25 48.213.093.078,69 Menkul Kıymetler 2.212.008.289,94 10.438.122.651,02 Özel Kes.Tah.Sen.ve Bono 1.071.557.500,00 9.672.318.180,00 Diğer Menkul Kıymetler 1.140.450.789,94 765.804.471,02 Kısa Vadeli Ticari Alacaklar 3.487.312.657,98 2.505.206.730,05 Alıcılar 3.482.743.994,02 2.501.876.926,10 Verilen Depozito ve Teminatlar 4.227.857,96 3.202.453,90 Şüpheli Ticari Alacaklar 5.176.706,73 1.822.174,35 Şüpheli Ticari Alacaklar Karşılığı -4.835.900,73 -1.694.824,30 Gelecek Aylara Ait Giderler ve Gelir Tahakkukları 644.832.057,44 1.258.602.881,93 Gelecek Aylara Ait Giderler 257.744.343,37 106.135.104,16 Gelir Tahakkukları 387.087.714,07 1.152.467.777,77 Diğer Dönen Varlıklar 15.366.638,52 13.756.026,19 Diğer Çeşitli Dönen Varlıklar 15.366.638,52 13.756.026,19 DURAN VARLIKLAR 186.843.437.844,36 168.519.028.925,26 Finansal Duran Varlıklar 176.888.212.796,31 155.073.650.488,49 İştirakler 77.262.770.998,12 75.636.417.297,29 Bağlı Ortaklıklar 99.625.441.798,19 79.437.233.191,20 Maddi Duran Varlıklar 9.729.246.816,80 13.228.416.883,23 Arazi ve Arsalar 1.065.978.090,04 1.065.978.090,04 Yeraltı ve Yerüstü Düzenleri 260.823.413,70 259.942.351,31 Binalar 7.474.803.511,22 8.768.470.552,31 Tesis, Makina ve Cihazlar",
+     "source": {
+      "kind": "chunk",
+      "document_id": 722,
+      "ticker": "KCHOL",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 320,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1561073"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:c3a0bb32531f194d6e111f3b3bea67b81f42788ab8e351a665c97abf899b0816",
+     "text": "İlgili Üretim Sözleşmesi uyarınca toplam 256 milyon Euro tutara kadar yatırım ile 2026'nın üçüncü çeyreğinde hayata geçirilmesi öngörülen proje, demonte araçlar (CKD) da dahil olmak üzere yıllık 150.000 adet üretim kapasitesine sahip olacaktır. Proje kapsamında, yatırım faaliyetlerinin tamamlanmasını takiben 2034'ün son çeyreğine kadar yaklaşık %80'lik bölümü Türkiye piyasası için olmak üzere, CKD hariç, yaklaşık 660.000 adet araç üretilmesi hedeflenmektedir . https://www.kap.org.tr/tr/Bildirim/1488110 26.09.2025 Maddi Duran Varlık Satımı Şirketimizin %43; Koç Holding'in %15,7 ve Tofaş'ın %41,3 oranında pay sahibi olduğu; Büyükdere Caddesi No : 145 Zincirlikuyu / İstanbul adresindeki Şirketimiz ve Tofaş genel merkezlerinin bulunduğu 2011 ada 1 no'lu parseldeki üzerinde bağımsız bölümler bul unan arsadaki payımızın, söz konusu duran varlığın nakde çevrilerek daha etkin bir şekilde kullanılması amacı doğrultusunda, Şirketimizin nihai ana ortağı Temel Ticaret ve Yatırım A.Ş.'ye devrine karar verilmiş olup, ödeme ve devir işlemlerinin Ekim ayı sonuna kadar tamamlanması öngörülmektedir. Koç Holding ve Tofaş tarafından da aynı parseldeki paylarının devredileceği işlemde, devir bedeli Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından hazırlanan değerleme raporu dikkate alınarak belirlenecek olup, işlem tarihinde kesinleşen tutar ayrıca kamuya açıklanacaktır. Değerleme raporunda takdir edilen tutar üzerinden Şirketimiz payına karşılık gelen devir bedeli KDV hariç 1.194.767.040 TL'dir. https://www.kap.org.tr/tr/Bildirim/1493481 09.10.2025 Maddi Duran Varlık Satımı 26.09.2025 tarihinde kamuya açıkladığımız, Şirketimizin %43; Koç Holding'in %15,7 ve Tofaş'ın %41,3 oranında pay sahibi olduğu; Büyükdere Caddesi No : 145 Zincirlikuyu / İstanbul adresindeki Şirketimiz ve Tofaş genel merkezlerinin bulunduğu 2011 ada 1 no'l u parseldeki üzerinde bağımsız bölümler bulunan arsadaki payımızın, Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından hazırlanan değerleme raporu dikkate alınarak belirlenen bedel üzerinden Şirketimizin nihai ana ortağı Temel Ticaret ve Y atırım A.Ş.'ye devri ve ödeme işlemleri 09.10.2025 tarihinde tamamlanmıştır. https://www.kap.org.tr/tr/Bildirim/1501759",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2298,
+      "ticker": "TOASO",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": 14,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1510788"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:8a10581c8ca7df73fa582036e2bd22297ae1074ff5b9922dfe6ec3836ddfdf7d",
+     "text": "Yönetim Kurulumuz tarafından Şirketimizin mülkiyetindeki ve Şirketimiz sermayesinin %7,1'lik kısmını temsil eden toplam 48.000.000 TL nominal değerli geri alınan payların Geri Alınan Paylar Tebliği ve Borsa İstanbul A.Ş.'nin Toptan Alış Satış İşlemlerine İlişkin Prosedür'ü kapsamında geçmiş 10 iş günü boyunca oluşmuş ağırlıklı ortalama fiyatların ortalaması alınarak en yakın fiyat adımına yuvarlanması suretiyle hesaplanan 108,29 TL baz fiyat üzerinden, toplam 5.197.920.000 TL bedel karşılığında nakden ve peşin olarak Koç Holding A.Ş.'ye satışına karar verilmiştir. İşlemin tamamlanabilmesi için Borsa İstanbul A.Ş.'ye başvuru bugün yapılacaktır. Şirketimiz gelir tablosunu etkilemeyecek söz konusu işlem kapsamında, 30.11.2025 tarihli satın alma gücüne göre endekslenmiş maliyeti 10.033.344.021 TL olan geri alınan payların satışından geçmiş yıl karları/zararları kaleminde 4.835.424.022 TL tutarında azalış muhasebeleştirilmesi, ayrıca özkaynaklar altında kısıtlanmış yedekler içerisinde izlenen 10.033.344.021 TL tutarındaki geri alınan paylara ilişkin yedeklerin de serbest bırakılarak geçmiş yıl kârlarına sınıflandırılması öngörülmektedir. Böylece işlem sonucunda, geçmiş yıl karları kaleminde ve dolayısıyla toplam özkaynaklarda nette 5.197.920.000 TL tutarında artış oluşması öngörülmektedir. İşlemin nihai etkisi kamuya açıklanacak 2025 yılı finansal tablolarımızdan takip edilebilecektir. İşbu açıklamamızın İngilizce çevirisi eş anlı yapılmakta olup, açıklama metinlerinde herhangi bir farklılık olması durumunda Türkçe açıklama esas kabul edilecektir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 712,
+      "ticker": "KCHOL",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1528289"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:a004deaa83577f432eca9d0a6f0ff08b8cca1fda5ef73a58702b9f98fed2b218",
+     "text": "Konsolide gelir tablosunda, satın alma tarihinden sonra Whirlpool MENA’nın hasılat ve ana ortaklık net dönem kârına katkısı, sırasıyla 3.019 milyon TL ve 22 milyon TL olarak gerçekleşmiştir. Satın alımdan kaynaklanan nakit çıkışının detayı aşağıdaki gibidir: Toplam satın alma bedeli - nakit (970) Nakit ve nakit benzerleri - iktisap edilen 724 Satın almadan kaynaklanan nakit çıkışı (net) (246) iii) Grup’un Bağlı Ortaklıkları’ndan Koç Medical B.V., inorganik büyüme stratejisi kapsamında 29 Temmuz 2023 tarihinde tıbbi cihazlar alanında faaliyet gösteren Bıçakcılar Global Tıbbi Ürünler Sanayi ve Ticaret A.Ş.’nin (“Bıçakcılar Global”) paylarının tamamını 30,6 milyon USD bedel karşılığında satın almıştır. Söz konusu satın alım ile sağlık teknolojileri alanında ürün yelpazesi çeşitlendirilirken, ihracat pazarlarının genişletilmesi ve global büyümeye de önemli katkı sağlanması hedeflenmektedir. Söz konusu işleme ilişkin, 1.496 milyon TL tutarındaki toplam satın alma bedeli ile iktisap edilen varlık ve yükümlülüklerin TFRS 3 kapsamında belirlenen 1.440 milyon TL tutarındaki gerçeğe uygun değerleri arasındaki fark konsolide finansal tablolarda şerefiye olarak muhasebeleştirilmiştir. iv) Koç Holding’in 4 Ocak 2024 tarihli özel durum açıklamasında belirtildiği üzere, Grup’un sağlık sektöründe büyüme fırsatlarına yönelik değerlendirmeleri kapsamında, Anatolia Hospital markasıyla Antalya’da özel hastane işletmeciliği sektöründe faaliyet gösteren Kemer Medical Center Özel Sağlık Hizmetleri Turizm ve Ticaret A.Ş.’nin (“KMC Sağlık”) sermayesinin %80’ine denk gelen payların kapanış düzeltmesine tabi 83 milyon EUR bedel karşılığında satın alınmasına ilişkin pay devir işlemleri 27 Mart 2024 tarihinde tamamlanmıştır. Söz konusu işleme ilişkin, %80’lik paya isabet eden 3.620 milyon TL tutarındaki satın alma bedeli ile iktisap edilen varlık ve yükümlülüklerin TFRS 3 kapsamında belirlenen 3.902 milyon TL tutarındaki gerçeğe uygun değerleri arasındaki fark pazarlıklı satın alım sonucu oluşan kazanç olarak konsolide finansal tablolarda muhasebeleştirilmiştir (Not 26). 254 Koç Holding 2024 Faaliyet Raporu KOÇ HOLDİNG A.Ş.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 677,
+      "ticker": "KCHOL",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 256,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1404732"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:c6b7326d7a5e4b34b95ef9791185eb48b9056242a0b5419ba24cec0599bb6d27",
+     "text": "1.109.340 43,75 Koç Ailesi Üyeleri1 464.948 18,33 Rahmi M. Koç ve Mahdumları Maden, İnşaat, Turizm, Ulaştırma, Yatırım ve Tic. A.Ş. 35.385 1,40 Koç Ailesi Üyeleri ve Koç Ailesi Üyeleri tarafından sahip olunan şirketlerin toplam payı 1.609.673 63,48 Vehbi Koç Vakfı 184.820 7,29 Koç Holding Emekli ve Yardım Sandığı Vakfı 59.553 2,35 Diğer (Halka Açık)2 681.852 26,89 Toplam Çıkarılmış Sermaye 2.535.898 100,00 (1) Koç Ailesi Üyeleri: Rahmi M. Koç, Semahat S. Arsel, M. Ömer Koç, Ali Y. Koç, İpek Kıraç, Caroline Nicole Koç, Esra Ç. Koç ve Aylin E. Koç (2) Halka açık kısımdaki toplam 890.475 TL nominal değerli pay (sermayenin yaklaşık %0,04’ü) Koç Holding tarafından geri alınmış paylardır; 30.06.2026 tarihi itibarıyla geri alınan payların toplam nominal değerinde bir değişiklik olmamıştır. 2025 Yılı Kâr Payı Dağıtımı Koç Holding’in 18 Mart 2026 tarihinde yapılan Olağan Genel Kurulu’nda; ortaklara toplam 17.320.183.681,50 TL tutarında nakit temettü ; intifa senedi sahiplerine 656.211.182,93 TL ve Koç Holding Emek li ve Yardım Sandığı Vakfı’na 25.000.000 TL kâr payı dağıtılmasına karar verilmiş ve toplamda 18.001.394.864,43 TL nakit temettü ve kâr paylarının ödemesi 25-27 Mart 2026 tarihlerinde gerçekleştirilmiştir. Üst Yönetim Koç Holding’in üst yönetimi bu rapor tarihi itibarıyla aşağıdaki gibidir: Levent Çakıroğlu CEO Doğan Korkmaz CFO Gökhan Erün Bankacılık Grubu Başkanı Polat Şen Dayanıklı Tüketim Grubu Başkanı Yağız Eyüboğlu Enerji Grubu Başkanı Haydar Yenigün Otomotiv Grubu Başkanı Dr. Erhan Bulutcu Sağlık Grubu Başkanı Özgür Burak Akkol Turizm, Gıda ve Perakende Grubu Başkanı Kemal Uzun Denetim Grubu Başkanı Kenan Yılmaz Baş Hukuk ve Uyum Müşaviri Mehmet Umut Günal İnsan Kaynakları Direktörü Burçun Serra İmir Belovacıklı Kurumsal İletişim Direktörü Ali Utku Atalay Resmi İşler Direktörü Mehmet Apak Muhasebe Direktörü 4 / 15 BÖLÜM 2:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 745,
+      "ticker": "KCHOL",
+      "doc_type": "kap_annual_report",
+      "period": "2026-Q2",
+      "section": "body",
+      "page": 4,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1643804"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

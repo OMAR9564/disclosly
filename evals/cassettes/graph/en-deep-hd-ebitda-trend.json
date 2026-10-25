@@ -6,19 +6,59 @@
    "key": "ee25e22b465c696a89cf6c603628701bb98fee9525bd6e565f20b4d045a861a3",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\"HD\"],\n  \"periods\": [\"2026-Q2\", \"2026-Q3\"],\n  \"metrics\": [\"ebitda\"],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"HD\"\n  ],\n  \"periods\": [\n    \"2026-Q2\",\n    \"2026-Q3\"\n  ],\n  \"metrics\": [\n    \"ebitda\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 935,
-    "tokens_out": 69,
-    "latency_ms": 1321.995,
+    "tokens_out": 89,
+    "latency_ms": 1530.648,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "868f5767df33182c3464bc49538d5851f74983abad3117af0b2bdace2a24816d",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Retrieve Home Depot's EBITDA for fiscal Q2 and Q3 2026\",\n      \"tickers\": [\"HD\"],\n      \"periods\": [\"2026-Q2\", \"2026-Q3\"],\n      \"metrics\": [\"ebitda\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Calculate the change in EBITDA from Q2 to Q3 of fiscal 2026\",\n      \"tickers\": [\"HD\"],\n      \"periods\": [\"2026-Q2\", \"2026-Q3\"]\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1026,
+    "tokens_out": 440,
+    "latency_ms": 11733.714,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "251e62d83327ba58766ce5552fab9097b6b915ff5047758d4fc272f07d605e53",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"findings\": [], \"calculations\": []}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1702,
+    "tokens_out": 342,
+    "latency_ms": 6374.097,
     "cache_hit": false,
     "fallback_from": []
    }
   }
  ],
- "tools": [],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"HD\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "Tool error: document search is temporarily unavailable",
+   "summary": "HD documents",
+   "count": 0,
+   "items": [],
+   "error": "document search is temporarily unavailable"
+  }
+ ],
  "sandbox": [],
- "decision": null
+ "decision": "approve"
 }

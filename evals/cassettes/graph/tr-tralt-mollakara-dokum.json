@@ -1,0 +1,167 @@
+{
+ "case_id": "tr-tralt-mollakara-dokum",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "3aa91e74fada2a975eb1b6ace46d9d6b6a973dc80cc09d8365ba9c7fbd802da9",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\"mode\": \"simple\", \"tickers\": [], \"periods\": [], \"metrics\": [], \"uses_watchlist\": false, \"memory_intent\": null}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1009,
+    "tokens_out": 32,
+    "latency_ms": 962.417,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "a95da21e2d51174bec4ced695768a697f43f383a57f48bb06cef9c23bf43ad80",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Türk Altın Mollakara madeninde gerçekleştirilen ilk altın dökümünde 7.474 ons altın (veya 7.474,2 gram altın) elde edilmiştir [1, 2].\",\n  \"points\": [\n    {\n      \"text\": \"Mollakara Altın Madeni Projesi'nde gerçekleştirilen ilk üretim sonucunda 7.474 ons altın elde edilmiştir.\",\n      \"cite_ids\": [\n        \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n      ]\n    },\n    {\n      \"text\": \"Proje kapsamında gerçekleştirilen ilk üretim sonucunda 7.474,2 gram altın elde edilmiştir.\",\n      \"cite_ids\": [\n        \"c:d53f0edf5bfa08272c69128cf8061f86041d918159a9b5dfe736dd2bcd081f57\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:d53f0edf5bfa08272c69128cf8061f86041d918159a9b5dfe736dd2bcd081f57\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 4995,
+    "tokens_out": 499,
+    "latency_ms": 2985.455,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "d7c2c625fa55dcb72646e1c5e7b5e12f9942872e2b3a6426f04ca6f746b60e81",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Türk Altın İşletmeleri'nin Ağrı ili Diyadin ilçesindeki Mollakara Altın Madeni'nde gerçekleştirilen ilk altın dökümünde 7.474 ons altın elde edilmiştir.\",\n  \"points\": [\n    {\n      \"text\": \"İlk dökümde 7.474 ons altın üretilmiştir.\",\n      \"cite_ids\": [\n        \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 4873,
+    "tokens_out": 941,
+    "latency_ms": 19147.529,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"Türk Altın Mollakara madeninde ilk dökümde kaç ons altın üretti?\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\">Şirketimizin Ağrı İli, Diyadin İlçesi'nde bulunan Mollakara Altın Madeni Projesi'nde ilk altın dökümü başarıyla gerçekleştirilmiştir. Proje kapsamında gerçekleştirilen ilk üretim sonucunda 7.474 ons altın elde edilmiştir. Projede, 2026 yılı sonu itibarıyla yaklaşık 32.000 ONS altın üretimi gerçekleştirilmesi hedeflenmektedir. Mollakara Altın Madeni Projesi'nin görünür ve muhtemel altın rezervi 471.000 ONS seviyesinde olup, bugünkü ons fiyatı ile (ONS : 4.000 USD) hesaplandığında yaklaşık 1.884.000.000 USD hasılat oluşturması beklenmektedir. Emeğin, alın terinin ve büyük bir vizyonun eseri olan tesisimiz; ülkemiz ve bölgemiz için değer üretecek, ekonomimize önemli katkılar sunacaktır. Kamuoyunun bilgisine saygıyla sunarız. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:d53f0edf5bfa08272c69128cf8061f86041d918159a9b5dfe736dd2bcd081f57\">Şirketimizin Ağrı İli, Diyadin İlçesi'nde bulunan Mollakara Altın Madeni Projesi'nde ilk altın dökümü başarıyla gerçekleştirilmiştir. Proje kapsamında gerçekleştirilen ilk üretim sonucunda 7.474,2 gram altın elde edilmiştir. Projede, 2026 yılı sonu itibarıyla yaklaşık 32.000 ONS altın üretimi gerçekleştirilmesi hedeflenmektedir. Mollakara Altın Madeni Projesi'nin görünür ve muhtemel altın rezervi 471.000 ONS seviyesinde olup, bugünkü ons fiyatı ile (ONS : 4.000 USD) hesaplandığında yaklaşık 1.884.000.000 USD hasılat oluşturması beklenmektedir. Emeğin, alın terinin ve büyük bir vizyonun eseri olan tesisimiz; ülkemiz ve bölgemiz için değer üretecek, ekonomimize önemli katkılar sunacaktır. Kamuoyunun bilgisine saygıyla sunarız. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:3b1432f8383b4a8f28fe3b1d2b6553241a8ca6e092eab540be776cb2e3cbb100\">Şirketimiz Türkiye Varlık Fonu bünyesine katıldı. Mollakara Altın Madeni faaliyetlerine başladı. KİLOMETRE TAŞLARI 14 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 Türk Altın İşletmeleri 2005 2006 2007 2009 2011 2008 2010 Ülkenin yeraltı kaynaklarını ekonomiye kazandırmayı hedeﬂeyen Şirketimizin temelleri atıldı. Ovacık Altın Madeni, Şirketimiz tarafından satın alındıktan sonra Türkiye'nin ilk yüzde yüz yerli sermayeli Altın Madeni olarak işletilmeye başlandı. Eskişehir Kaymaz Altın Madeni projesi şirket bünyesine katıldı. Havran Altın Madeni açık ocak üretimine başladı. Ovacık açık ocak üretimi tamamlandı. Mastra’da ilk altın dökümü gerçekleşmiştir . Çukuralan Altın Madeni yeraltı üretimine başladı. Havran Altın Madeni rehabilite edildi. Toplamda 500.000 ons altın döküldü. Çukuralan Altın Madeni açık ocak üretimine başladı. Havran Altın Madeni cevher üretimi tamamlandı. Toplamda 1.000.000 ons altın döküldü. Kilometre Taşları Türk Altın İşletmeleri Türk Altın İşletmeleri 2013 2014 2017 2015 2021 2025 2019 2024 2026 Toplamda 2.000.000 ons altın döküldü. Çoraklıktepe rehabilitasyon çalışmaları tamamlandı. Karapınar Projesi girişimi şirket bünyesine katıldı. Toplamda 4.000.000 ons altın döküldü. Şirketimiz “Türk Altın” ismiyle kimlik yeniledi. Himmetdede İşletmesi üretime başladı. Çukuralan açık ocak üretimi tamamlandı ve rehabilitasyon çalışmaları başladı. Türkiye’nin ilk maden atığı depolama tesisi rehabilitasyonu yapıldı. (Ovacık 1. MADT) Himmetdede İşletmesi açık ocak faaliyetleri tamamlandı. Şirketimiz Türkiye Varlık Fonu bünyesine katıldı. Mollakara Altın Madeni faaliyetlerine başladı. KİLOMETRE TAŞLARI 15 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 YILLARA GÖRE AL TIN ÜRETİMİ Türk Altın İşletmeleri A.Ş. 2005 yılından bu yana üretim artış seviyelerinde kapsamlı bir trend sergilemiş bulunmaktadır . Şirketin madenleri araştırma ve geliştirme projeleri, sürdürülebilir büyüme için önemli bir potansiyel teşkil etmektedir . 2005 yılında, iktisap sonrası Ovacık madeninde yeniden üretime başlanmıştır . 2006 yılında Küçükdere, 2008 yılında Mastra, 2009 yılında Gıcık, 2010 yılında Çukuralan madenleri geliştirilerek cevher üretimi gerçekleştirilmeye başlanmıştır . 2011 yılı Mart ayında Kaymaz açık ocak işletmesinde üretim faaliyetlerine başlanmıştır .</untrusted_document>\n<untrusted_document cite_id=\"c:91e1e4d49e15c1b1bfbd3e13c0d65820966f63a912e56e3cce5621103061c3fc\">• 16 Temmuz 2026 tarihinde ilk altın dökümü gerçekleştirilerek Mollakara İşletmesi resmen devreye alınmıştır . • Büyüme Potansiyeli: Bugüne kadar yapılan sondajlarda cevherin sınırları henüz tam olarak sınırlandırılmamış olup yatak her yönde büyümeye açıktır . Toplam kaynağın önemli bir bölümünü oluşturan sahada arama ve geliştirme faaliyetleri aktif olarak devam etmektedir . 43 GELİNTEPE KAŞKÖY KARAPINAR KUBAŞLAR PROJELERİMİZ TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-31 MART 2026 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 44 GELİNTEPE KAŞKÖY KARAPINAR KUBAŞLAR TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-31 MART 2026 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 45 KAŞKÖY PROJESİ • Kayseri ilinin Kocasinan ilçesinde, Kayseri il merkezinin 41 km kuzeybatısında ve Ankara’nın 220 km güneydoğusunda yer almaktadır . • Ruhsat, 2018 yılında MAPEG tarafından düzenlenen ihale ile Türk Altın bünyesine katılmıştır . Sahaya 1 km mesafede Mahmat Altın Madeni açık ocağı, yaklaşık 9 km kuzeydoğusunda ise Himmetdede Altın Madeni bulunmaktadır . • Jeolojik yapı ve Cevherleşme Tipi: * Alterasyon, mineralizasyon tipi, doku ve mineral birlikteliklerine göre orojenik altın yatağı olarak tanımlanmıştır . * Karbonat yan kayaçlı, yapısal kontrollü bir yatak olan Kaşköy’de iki farklı mineralizasyon yer almakta; ana damar yapısını şist-mermer kontağında ve mermerlerin içinde gelişen breşik kuvars damarı oluşturmaktadır . Diğeri ise makaslamaya uğramış kuvars-mika şistler içerisinde gelişen, sülfidli ve baz metal açısından daha zengin cevherleşmedir . * Cevherleşme genel azimut açısı 310–315° (yaklaşık K45°B) doğrultusunda olup metamorfikler içerisinde yüzeyde 1 km boyunca takip edilebilmektedir . * İzinli arama sondaj verilerine göre cevher kütlesinin boyutları 1400 metre uzunluğa, 550 metre genişliğe ve yaklaşık 30 metre kalınlığa ulaşmaktadır . • Metalurjik Testler: 1. ve 2. etap metalurjik testler ile Kanada SGS Lakefield laboratuvarlarında yürütülen 3. etap test çalışmaları tamamlanmıştır . • Mühendislik ve Fizibilite: Projenin ön fizibilite çalışmaları 2023 yıl sonu itibarıyla tamamlanmıştır .</untrusted_document>\n<untrusted_document cite_id=\"c:7f3181a9425c2fc08c220510d063cef6b05019b6f6c48818945b13c03ed41df8\">Şirketimizin Ağrı İli, Diyadin İlçesi'nde bulunan, görünür ve muhtemel altın rezervi 471.000 ons altın olarak belirlenen ve 2026 yılı sonu itibarıyla yaklaşık 32.000 ons altın üretimi gerçekleştirilmesi hedeflenen Mollakara Altın Madeni'nde ilk altın dökümünün başarıyla gerçekleştirilerek üretim faaliyetlerine başlandığı daha önce kamuoyuna duyurulmuştu. Projenin üretim aşamasına geçmesiyle birlikte, Mollakara Altın Madeni'nin resmi açılış töreni, Cumhurbaşkanı Yardımcısı Sayın Cevdet Yılmaz'ın teşrifleriyle 27 Ağustos 2026 Perşembe günü saat 10:30'da gerçekleştirilecektir. Ülkemiz madencilik sektörü açısından önem taşıyan açılış törenine tüm halkımız davetlidir. Ülkemizin yer altı kaynaklarının ekonomiye kazandırılmasına ve Şirketimizin üretim kapasitesinin artırılmasına önemli katkı sağlaması beklenen Mollakara Altın Madeni'nin vatanımıza, milletimize ve ülke ekonomimize hayırlı olmasını temenni ederiz. Kamuoyunun bilgisine sunarız. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:cd0ed52b2792e66e053c3a6ed3e20954e6b30b0ba67fd7b4477951ee6ff681af\">100,3 koz altın (2,43 g/t) 33,3 koz gümüş (2,09 g/t) 14 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK -31 ARALIK 2025 Türk Altın bünyesinde, Ovacık İşletmesinde yeraltı ocak işletmeciliği, Çukuralan İşletmesinde yeraltı ocak işletmeciliği, Kaymaz İşletmesinde açık ocak işletmeciliği devam etmektedir. Mastra İşletmesinde yeraltı ocak ve Himmetdede işletmesinde açık ocak madenciliği sonlandırılmıştır. Fizibilite projeleri kapsamında Türkiye ’nin kuzey doğusunda yer alan Ağrı ’ya yakın Mollakara projesi ve Batı Anadolu içindeki projeler bulunmaktadır. Bu sahalardan Mollakara projesinde metalurji çalışmalarının bir bölümü gerek Türk Altın bünyesindeki laboratuvarlarda gerekse yurtdışındaki laboratuvarlarda tamamlanmış olup, çevresel testler ve bazı ek metalurji çalışmaları devam etmektedir. Ayrıca Mollakara projesinde temel ve detay mühendislik çalışmaları tamamlanmıştır. Çanakkale Karapınar projesi 2020 yılı sonunda Türk Altın İşletmeleri ’ nin rezervlerine eklenmiştir, Maden Kaynakları ve Rezervlerinin geliştirilmesine yönelik arama faaliyetleri devam etmektedir. Kayseri Kaşköy projesinde ön fizibilite çalışmaları tamamlanmış ve 2023 yıl sonu itibariyle Türk Altın İşletmeleri ’nin rezervlerine eklenmiştir. Buna ilaveten, Şirket mülkleri kapsamında, Türkiye ’de, erken aşamadan gelişmiş arama aşamalarına kadar uzanan ve 2024 yılında kaynak hesaplamalarının tamamlanmış olduğu 12 arama projesi mevcuttur. Halihazırda şirketin arama faaliyetleri Ovacık, Mastra, Kaymaz, Çukuralan, Diyadin, Himmetdede, Narlıca, Kıratlı, Kubaşlar, Gelintepe, Kaşköy ve Karapınar projesi sahaları arama alanlarında kaynakların genişletilmesine odaklanmıştır. MADENCİLİK FAALİYETLERİ 15 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK -31 ARALIK 2025 Ovacık Madeni, Türkiye ’nin batısında, İzmir ’in 100 km kuzeyinde bulunan Ovacık köyü yanında yer alan yeraltı işletmesidir. Mevcut yeraltı maden rezervlerinin 2026 yılı içerisinde üretilmesi planlanmaktadır. Ruhsat sahasında cevher geliştirme ve arama faaliyetleri devam etmektedir. Projede 3.atık depolama tesisinin yükseltme çalışmalarına Ekim 2022 dönemi itibariyle başlanmış olup, 2023 yılı 4. çeyrekte çalışmalar tamamlanmıştır. OVACIK İŞLETMESİ Ovacık İşletmesi maden üretim verileri aşağıdaki tabloda belirtilmiştir;</untrusted_document>",
+   "summary": "Türk Altın Mollakara madeninde ilk dökümde kaç ons altın üretti?",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85",
+     "text": "Şirketimizin Ağrı İli, Diyadin İlçesi'nde bulunan Mollakara Altın Madeni Projesi'nde ilk altın dökümü başarıyla gerçekleştirilmiştir. Proje kapsamında gerçekleştirilen ilk üretim sonucunda 7.474 ons altın elde edilmiştir. Projede, 2026 yılı sonu itibarıyla yaklaşık 32.000 ONS altın üretimi gerçekleştirilmesi hedeflenmektedir. Mollakara Altın Madeni Projesi'nin görünür ve muhtemel altın rezervi 471.000 ONS seviyesinde olup, bugünkü ons fiyatı ile (ONS : 4.000 USD) hesaplandığında yaklaşık 1.884.000.000 USD hasılat oluşturması beklenmektedir. Emeğin, alın terinin ve büyük bir vizyonun eseri olan tesisimiz; ülkemiz ve bölgemiz için değer üretecek, ekonomimize önemli katkılar sunacaktır. Kamuoyunun bilgisine saygıyla sunarız. Saygılarımızla,",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2109,
+      "ticker": "TRALT",
+      "doc_type": "kap_material_event",
+      "period": "2026-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1634199"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:d53f0edf5bfa08272c69128cf8061f86041d918159a9b5dfe736dd2bcd081f57",
+     "text": "Şirketimizin Ağrı İli, Diyadin İlçesi'nde bulunan Mollakara Altın Madeni Projesi'nde ilk altın dökümü başarıyla gerçekleştirilmiştir. Proje kapsamında gerçekleştirilen ilk üretim sonucunda 7.474,2 gram altın elde edilmiştir. Projede, 2026 yılı sonu itibarıyla yaklaşık 32.000 ONS altın üretimi gerçekleştirilmesi hedeflenmektedir. Mollakara Altın Madeni Projesi'nin görünür ve muhtemel altın rezervi 471.000 ONS seviyesinde olup, bugünkü ons fiyatı ile (ONS : 4.000 USD) hesaplandığında yaklaşık 1.884.000.000 USD hasılat oluşturması beklenmektedir. Emeğin, alın terinin ve büyük bir vizyonun eseri olan tesisimiz; ülkemiz ve bölgemiz için değer üretecek, ekonomimize önemli katkılar sunacaktır. Kamuoyunun bilgisine saygıyla sunarız. Saygılarımızla,",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2110,
+      "ticker": "TRALT",
+      "doc_type": "kap_material_event",
+      "period": "2026-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1634256"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:3b1432f8383b4a8f28fe3b1d2b6553241a8ca6e092eab540be776cb2e3cbb100",
+     "text": "Şirketimiz Türkiye Varlık Fonu bünyesine katıldı. Mollakara Altın Madeni faaliyetlerine başladı. KİLOMETRE TAŞLARI 14 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 Türk Altın İşletmeleri 2005 2006 2007 2009 2011 2008 2010 Ülkenin yeraltı kaynaklarını ekonomiye kazandırmayı hedeﬂeyen Şirketimizin temelleri atıldı. Ovacık Altın Madeni, Şirketimiz tarafından satın alındıktan sonra Türkiye'nin ilk yüzde yüz yerli sermayeli Altın Madeni olarak işletilmeye başlandı. Eskişehir Kaymaz Altın Madeni projesi şirket bünyesine katıldı. Havran Altın Madeni açık ocak üretimine başladı. Ovacık açık ocak üretimi tamamlandı. Mastra’da ilk altın dökümü gerçekleşmiştir . Çukuralan Altın Madeni yeraltı üretimine başladı. Havran Altın Madeni rehabilite edildi. Toplamda 500.000 ons altın döküldü. Çukuralan Altın Madeni açık ocak üretimine başladı. Havran Altın Madeni cevher üretimi tamamlandı. Toplamda 1.000.000 ons altın döküldü. Kilometre Taşları Türk Altın İşletmeleri Türk Altın İşletmeleri 2013 2014 2017 2015 2021 2025 2019 2024 2026 Toplamda 2.000.000 ons altın döküldü. Çoraklıktepe rehabilitasyon çalışmaları tamamlandı. Karapınar Projesi girişimi şirket bünyesine katıldı. Toplamda 4.000.000 ons altın döküldü. Şirketimiz “Türk Altın” ismiyle kimlik yeniledi. Himmetdede İşletmesi üretime başladı. Çukuralan açık ocak üretimi tamamlandı ve rehabilitasyon çalışmaları başladı. Türkiye’nin ilk maden atığı depolama tesisi rehabilitasyonu yapıldı. (Ovacık 1. MADT) Himmetdede İşletmesi açık ocak faaliyetleri tamamlandı. Şirketimiz Türkiye Varlık Fonu bünyesine katıldı. Mollakara Altın Madeni faaliyetlerine başladı. KİLOMETRE TAŞLARI 15 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 YILLARA GÖRE AL TIN ÜRETİMİ Türk Altın İşletmeleri A.Ş. 2005 yılından bu yana üretim artış seviyelerinde kapsamlı bir trend sergilemiş bulunmaktadır . Şirketin madenleri araştırma ve geliştirme projeleri, sürdürülebilir büyüme için önemli bir potansiyel teşkil etmektedir . 2005 yılında, iktisap sonrası Ovacık madeninde yeniden üretime başlanmıştır . 2006 yılında Küçükdere, 2008 yılında Mastra, 2009 yılında Gıcık, 2010 yılında Çukuralan madenleri geliştirilerek cevher üretimi gerçekleştirilmeye başlanmıştır . 2011 yılı Mart ayında Kaymaz açık ocak işletmesinde üretim faaliyetlerine başlanmıştır .",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2118,
+      "ticker": "TRALT",
+      "doc_type": "kap_annual_report",
+      "period": "2026-Q2",
+      "section": "body",
+      "page": 17,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1647395"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:91e1e4d49e15c1b1bfbd3e13c0d65820966f63a912e56e3cce5621103061c3fc",
+     "text": "• 16 Temmuz 2026 tarihinde ilk altın dökümü gerçekleştirilerek Mollakara İşletmesi resmen devreye alınmıştır . • Büyüme Potansiyeli: Bugüne kadar yapılan sondajlarda cevherin sınırları henüz tam olarak sınırlandırılmamış olup yatak her yönde büyümeye açıktır . Toplam kaynağın önemli bir bölümünü oluşturan sahada arama ve geliştirme faaliyetleri aktif olarak devam etmektedir . 43 GELİNTEPE KAŞKÖY KARAPINAR KUBAŞLAR PROJELERİMİZ TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-31 MART 2026 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 44 GELİNTEPE KAŞKÖY KARAPINAR KUBAŞLAR TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-31 MART 2026 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK-30 HAZİRAN 2026 45 KAŞKÖY PROJESİ • Kayseri ilinin Kocasinan ilçesinde, Kayseri il merkezinin 41 km kuzeybatısında ve Ankara’nın 220 km güneydoğusunda yer almaktadır . • Ruhsat, 2018 yılında MAPEG tarafından düzenlenen ihale ile Türk Altın bünyesine katılmıştır . Sahaya 1 km mesafede Mahmat Altın Madeni açık ocağı, yaklaşık 9 km kuzeydoğusunda ise Himmetdede Altın Madeni bulunmaktadır . • Jeolojik yapı ve Cevherleşme Tipi: * Alterasyon, mineralizasyon tipi, doku ve mineral birlikteliklerine göre orojenik altın yatağı olarak tanımlanmıştır . * Karbonat yan kayaçlı, yapısal kontrollü bir yatak olan Kaşköy’de iki farklı mineralizasyon yer almakta; ana damar yapısını şist-mermer kontağında ve mermerlerin içinde gelişen breşik kuvars damarı oluşturmaktadır . Diğeri ise makaslamaya uğramış kuvars-mika şistler içerisinde gelişen, sülfidli ve baz metal açısından daha zengin cevherleşmedir . * Cevherleşme genel azimut açısı 310–315° (yaklaşık K45°B) doğrultusunda olup metamorfikler içerisinde yüzeyde 1 km boyunca takip edilebilmektedir . * İzinli arama sondaj verilerine göre cevher kütlesinin boyutları 1400 metre uzunluğa, 550 metre genişliğe ve yaklaşık 30 metre kalınlığa ulaşmaktadır . • Metalurjik Testler: 1. ve 2. etap metalurjik testler ile Kanada SGS Lakefield laboratuvarlarında yürütülen 3. etap test çalışmaları tamamlanmıştır . • Mühendislik ve Fizibilite: Projenin ön fizibilite çalışmaları 2023 yıl sonu itibarıyla tamamlanmıştır .",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2118,
+      "ticker": "TRALT",
+      "doc_type": "kap_annual_report",
+      "period": "2026-Q2",
+      "section": "body",
+      "page": 46,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1647395"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:7f3181a9425c2fc08c220510d063cef6b05019b6f6c48818945b13c03ed41df8",
+     "text": "Şirketimizin Ağrı İli, Diyadin İlçesi'nde bulunan, görünür ve muhtemel altın rezervi 471.000 ons altın olarak belirlenen ve 2026 yılı sonu itibarıyla yaklaşık 32.000 ons altın üretimi gerçekleştirilmesi hedeflenen Mollakara Altın Madeni'nde ilk altın dökümünün başarıyla gerçekleştirilerek üretim faaliyetlerine başlandığı daha önce kamuoyuna duyurulmuştu. Projenin üretim aşamasına geçmesiyle birlikte, Mollakara Altın Madeni'nin resmi açılış töreni, Cumhurbaşkanı Yardımcısı Sayın Cevdet Yılmaz'ın teşrifleriyle 27 Ağustos 2026 Perşembe günü saat 10:30'da gerçekleştirilecektir. Ülkemiz madencilik sektörü açısından önem taşıyan açılış törenine tüm halkımız davetlidir. Ülkemizin yer altı kaynaklarının ekonomiye kazandırılmasına ve Şirketimizin üretim kapasitesinin artırılmasına önemli katkı sağlaması beklenen Mollakara Altın Madeni'nin vatanımıza, milletimize ve ülke ekonomimize hayırlı olmasını temenni ederiz. Kamuoyunun bilgisine sunarız. Saygılarımızla,",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2123,
+      "ticker": "TRALT",
+      "doc_type": "kap_material_event",
+      "period": "2026-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1655180"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:cd0ed52b2792e66e053c3a6ed3e20954e6b30b0ba67fd7b4477951ee6ff681af",
+     "text": "100,3 koz altın (2,43 g/t) 33,3 koz gümüş (2,09 g/t) 14 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK -31 ARALIK 2025 Türk Altın bünyesinde, Ovacık İşletmesinde yeraltı ocak işletmeciliği, Çukuralan İşletmesinde yeraltı ocak işletmeciliği, Kaymaz İşletmesinde açık ocak işletmeciliği devam etmektedir. Mastra İşletmesinde yeraltı ocak ve Himmetdede işletmesinde açık ocak madenciliği sonlandırılmıştır. Fizibilite projeleri kapsamında Türkiye ’nin kuzey doğusunda yer alan Ağrı ’ya yakın Mollakara projesi ve Batı Anadolu içindeki projeler bulunmaktadır. Bu sahalardan Mollakara projesinde metalurji çalışmalarının bir bölümü gerek Türk Altın bünyesindeki laboratuvarlarda gerekse yurtdışındaki laboratuvarlarda tamamlanmış olup, çevresel testler ve bazı ek metalurji çalışmaları devam etmektedir. Ayrıca Mollakara projesinde temel ve detay mühendislik çalışmaları tamamlanmıştır. Çanakkale Karapınar projesi 2020 yılı sonunda Türk Altın İşletmeleri ’ nin rezervlerine eklenmiştir, Maden Kaynakları ve Rezervlerinin geliştirilmesine yönelik arama faaliyetleri devam etmektedir. Kayseri Kaşköy projesinde ön fizibilite çalışmaları tamamlanmış ve 2023 yıl sonu itibariyle Türk Altın İşletmeleri ’nin rezervlerine eklenmiştir. Buna ilaveten, Şirket mülkleri kapsamında, Türkiye ’de, erken aşamadan gelişmiş arama aşamalarına kadar uzanan ve 2024 yılında kaynak hesaplamalarının tamamlanmış olduğu 12 arama projesi mevcuttur. Halihazırda şirketin arama faaliyetleri Ovacık, Mastra, Kaymaz, Çukuralan, Diyadin, Himmetdede, Narlıca, Kıratlı, Kubaşlar, Gelintepe, Kaşköy ve Karapınar projesi sahaları arama alanlarında kaynakların genişletilmesine odaklanmıştır. MADENCİLİK FAALİYETLERİ 15 TÜRK ALTIN İŞLETMELERİ FAALİYET RAPORU / 1 OCAK -31 ARALIK 2025 Ovacık Madeni, Türkiye ’nin batısında, İzmir ’in 100 km kuzeyinde bulunan Ovacık köyü yanında yer alan yeraltı işletmesidir. Mevcut yeraltı maden rezervlerinin 2026 yılı içerisinde üretilmesi planlanmaktadır. Ruhsat sahasında cevher geliştirme ve arama faaliyetleri devam etmektedir. Projede 3.atık depolama tesisinin yükseltme çalışmalarına Ekim 2022 dönemi itibariyle başlanmış olup, 2023 yılı 4. çeyrekte çalışmalar tamamlanmıştır. OVACIK İŞLETMESİ Ovacık İşletmesi maden üretim verileri aşağıdaki tabloda belirtilmiştir;",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2080,
+      "ticker": "TRALT",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 13,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1562971"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

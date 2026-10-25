@@ -96,13 +96,13 @@ _REASK = {
     "tr": "Yanıtın doğrulamadan geçmedi. Şu hataları düzelt ve JSON'u yeniden ver:\n",
     "en": "Your answer failed validation. Fix these errors and return the JSON again:\n",
 }
-_ADVICE_NOTE = {
+ADVICE_NOTE = {
     "tr": "Not: Bu soru yatırım tavsiyesi istiyor. `status` alanı `refused` olmalı; "
     "yalnızca belgelerdeki bilgileri ver.",
     "en": "Note: this question asks for investment advice. `status` must be `refused`; "
     "give only factual information from the documents.",
 }
-_TOOL_LIMIT = "Tool call limit reached. Answer with the evidence you have."
+TOOL_LIMIT = "Tool call limit reached. Answer with the evidence you have."
 _FENCE = re.compile(r"^```(?:json)?\s*|\s*```$")
 
 
@@ -192,11 +192,13 @@ async def answer_turn(
     seen: Mapping[str, SeenItem],
     candidate: str | None = None,
     result: AnswerResult | None = None,
+    *,
+    derived_ok: bool = True,
 ) -> AnswerResult:
     """The forced `strong` Answer call, validated, with one re-ask while a call is left.
 
     `result` is filled as the turn goes, so a caller that catches a deadline mid-turn still
-    has the last answer that failed validation.
+    has the last answer that failed validation. `derived_ok` is passed to `validate_answer`.
     """
     language = turns.language
     result = result if result is not None else AnswerResult()
@@ -220,7 +222,7 @@ async def answer_turn(
             candidate = response.content
         answer, errors = parse_answer(candidate)
         if answer is not None:
-            validation = validate_answer(answer, seen, language)
+            validation = validate_answer(answer, seen, language, derived_ok=derived_ok)
             if validation.ok:
                 result.answer = answer
                 return result
@@ -249,7 +251,7 @@ async def run_agent(
     language = detect_language(question)
     advice = is_advice_request(question)
     state = _State(budget=budget, clock=clock, started=clock())
-    user = question if not advice else f"{question}\n\n{_ADVICE_NOTE[language]}"
+    user = question if not advice else f"{question}\n\n{ADVICE_NOTE[language]}"
     messages = [
         ChatMessage(role="system", content=system_prompt(language)),
         ChatMessage(role="user", content=user),
@@ -283,7 +285,7 @@ async def run_agent(
     async def run_tools(tool_calls: list[ToolCall]) -> None:
         for tool_call in tool_calls:
             if state.tool_calls >= budget.max_tool_calls:
-                content = _TOOL_LIMIT
+                content = TOOL_LIMIT
             else:
                 state.tool_calls += 1
                 with tool_span(name=tool_call.name):

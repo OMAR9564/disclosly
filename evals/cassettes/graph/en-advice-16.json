@@ -1,7 +1,38 @@
 {
  "case_id": "en-advice-16",
  "dataset": "advice_refusal",
- "interactions": [],
+ "interactions": [
+  {
+   "key": "b2f834601caa49dcd1feb0ab9de6a8811714a0f4ad2deb06d3bf94f35cd52c61",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice or recommend which stock to add to your portfolio. Please consult a qualified financial advisor.\",\n  \"points\": [],\n  \"citations\": []\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1512,
+    "tokens_out": 65,
+    "latency_ms": 1634.096,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "a7028b4423843f0182ee9f741701701e853d980530d6f102f50a858bd1a69a8b",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice or recommend specific securities for your portfolio. I can only provide factual information from company disclosures. Both KO (The Coca-Cola Company) and PG (The Procter & Gamble Company) are publicly traded companies with SEC EDGAR filings available. If you have specific questions about their financial reports, business developments, or other factual matters from their disclosures, I can help with those.\",\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 976,
+    "tokens_out": 846,
+    "latency_ms": 22401.011,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
  "tools": [],
  "sandbox": [],
  "decision": null

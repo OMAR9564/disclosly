@@ -1,7 +1,38 @@
 {
  "case_id": "tr-advice-01",
  "dataset": "advice_refusal",
- "interactions": [],
+ "interactions": [
+  {
+   "key": "71e8696c83ac0923dae493a6cedaf0694c1d3fc135646a6d4934355f6970c96f",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi taleplerine yanıt verilememektedir. Lütfen şirket açıklamaları ve finansal veriler ile ilgili bilgi talep ediniz.\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1640,
+    "tokens_out": 64,
+    "latency_ms": 1425.662,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "cc974484202f21999176fd04af674b08debc2ae1912412b7fbc49a75406625d0",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\": \"tr\", \"status\": \"refused\", \"summary\": \"Yatırım tavsiyesi veremem. THYAO ile ilgili şirket açıklamaları, finansal tablolar veya KAP/SEC belgeleri üzerinden bilgi sağlayabilirim. Belirli bir konu (ör. son çeyrek gelirleri, borç yapısı, gidişat açıklamaları) hakkında belge dayalı özet isterseniz yardımcı olabilirim.\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1170,
+    "tokens_out": 261,
+    "latency_ms": 9811.031,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
  "tools": [],
  "sandbox": [],
  "decision": null

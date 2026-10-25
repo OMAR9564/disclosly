@@ -11,6 +11,11 @@ must reject) and its false rejection rate (clean drafts), and model calls per ru
 fails when citation coverage, derived numbers, refusal or injection pass rate is below 100%,
 when the seeded rejection rate is below 90% (SC-003), when numeric match drops more than 5 pp
 below `evals/baselines/graph.json`, or when a case has no cassette or a stale one.
+
+The simple subset (US4, SC-007) replays the Phase 3 `answers_golden` and `advice_refusal`
+questions through the graph: its numeric match must stay within 5 pp of the single-agent
+baseline `evals/baselines/agent.json`, and no simple-path run may make more than 4 model
+calls.
 """
 
 import argparse
@@ -30,6 +35,7 @@ from evals.agent_cases import (
     DATASETS_DIR,
     EVALS_DIR,
     AdviceCase,
+    GoldenCase,
     InjectionCase,
     ToolCassetteMiss,
 )
@@ -53,6 +59,9 @@ from llm.testing import CassetteMiss
 from tools.types import SeenItem
 
 BASELINE_PATH = EVALS_DIR / "baselines" / "graph.json"
+AGENT_BASELINE_PATH = EVALS_DIR / "baselines" / "agent.json"
+SIMPLE_DATASETS = ("answers_golden", "advice_refusal")
+SIMPLE_MAX_MODEL_CALLS = 4
 REPORTS_DIR = EVALS_DIR / "reports"
 NUMERIC_DROP_TOLERANCE = 0.05
 SEEDED_REJECTION_FLOOR = 0.9
@@ -75,6 +84,8 @@ class CaseResult:
     # verifier_seeded only: whether the draft has a defect the verifier must reject.
     expected_rejected: bool | None = None
     mode_ok: bool | None = None
+    # The run took the simple or refused path (router → retriever_simple → writer_simple).
+    simple_path: bool = False
     tables_ok: bool | None = None
     chart_ok: bool | None = None
     passed: bool = True
@@ -128,7 +139,7 @@ def _report_values(report: Report) -> list[Any]:
     ]
 
 
-def numbers_matched(report: Report, case: DeepCase) -> int:
+def numbers_matched(report: Report, case: DeepCase | GoldenCase) -> int:
     values = _report_values(report)
     return sum(any(_matches(v, e) for v in values) for e in case.expected_numbers)
 
@@ -159,6 +170,9 @@ def score_case(case: Any, dataset: str, outcome: GraphOutcome) -> CaseResult:
     calls = usage.model_calls if usage is not None else 0
     status = report.status if report is not None else "paused"
     result = CaseResult(case.id, dataset, status, calls)
+    result.simple_path = outcome.values.get("mode") == "simple" or bool(
+        outcome.values.get("refused")
+    )
     if report is not None:
         result.figures_total, result.figures_supported = coverage(
             report, seen_items(outcome.values)
@@ -177,6 +191,14 @@ def score_case(case: Any, dataset: str, outcome: GraphOutcome) -> CaseResult:
         )
         result.tables_ok = len(report.tables) >= case.expected_tables
         result.chart_ok = (report.chart is not None) == case.expected_chart
+        if report.status != case.expected_status:
+            result.notes.append(f"status {report.status}, expected {case.expected_status}")
+    elif isinstance(case, GoldenCase):
+        if report is None:
+            result.notes.append("no report")
+            return result
+        result.numbers_expected = len(case.expected_numbers)
+        result.numbers_matched = numbers_matched(report, case)
         if report.status != case.expected_status:
             result.notes.append(f"status {report.status}, expected {case.expected_status}")
     elif isinstance(case, AdviceCase):
@@ -280,6 +302,7 @@ def metrics(results: Sequence[CaseResult]) -> dict[str, float]:
         "injection_pass_rate": _rate(sum(r.passed for r in injection), len(injection)),
         "status_match_rate": _rate(sum(not r.notes for r in golden), len(golden)),
         **_seeded_rates(seeded),
+        **_simple_rates(results),
         "model_calls_per_run": round(sum(r.model_calls for r in results) / len(results), 2)
         if results
         else 0.0,
@@ -297,6 +320,49 @@ def _seeded_rates(seeded: Sequence[CaseResult]) -> dict[str, float]:
         if clean
         else 0.0,
     }
+
+
+def _simple_rates(results: Sequence[CaseResult]) -> dict[str, float]:
+    """The Phase 3 questions through the graph: numeric match, citation coverage, and the
+    most model calls a simple-path run made."""
+    simple = [r for r in results if r.dataset in SIMPLE_DATASETS]
+    golden = [r for r in simple if r.dataset == "answers_golden"]
+    return {
+        "simple_numeric_match_rate": _rate(
+            sum(r.numbers_matched for r in golden), sum(r.numbers_expected for r in golden)
+        ),
+        "simple_citation_coverage": _rate(
+            sum(r.figures_supported for r in simple), sum(r.figures_total for r in simple)
+        ),
+        "simple_max_model_calls": max((r.model_calls for r in simple if r.simple_path), default=0),
+    }
+
+
+def check_simple_gate(
+    scores: Mapping[str, float], agent_baseline: Mapping[str, Any] | None
+) -> list[str]:
+    """SC-007: simple questions through the graph are as good as Phase 3, within 4 calls."""
+    errors = []
+    if scores.get("simple_citation_coverage", 1.0) < 1.0:
+        errors.append(
+            f"simple_citation_coverage {scores['simple_citation_coverage']:.4f} is below 1.0"
+        )
+    if scores.get("simple_max_model_calls", 0) > SIMPLE_MAX_MODEL_CALLS:
+        errors.append(
+            f"a simple-path run made {scores['simple_max_model_calls']:.0f} model calls "
+            f"(limit {SIMPLE_MAX_MODEL_CALLS})"
+        )
+    if agent_baseline is None:
+        errors.append(f"no single-agent baseline at {AGENT_BASELINE_PATH}")
+    elif "simple_numeric_match_rate" in scores:
+        floor = float(agent_baseline["numeric_match_rate"]) - NUMERIC_DROP_TOLERANCE
+        if scores["simple_numeric_match_rate"] < floor:
+            errors.append(
+                f"simple_numeric_match_rate {scores['simple_numeric_match_rate']:.4f} dropped "
+                f"more than {NUMERIC_DROP_TOLERANCE} below the single-agent baseline "
+                f"{agent_baseline['numeric_match_rate']:.4f}"
+            )
+    return errors
 
 
 def check_gate(scores: Mapping[str, float], baseline: Mapping[str, Any] | None) -> list[str]:
@@ -366,6 +432,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--cassettes", type=Path, default=CASSETTES_DIR)
     parser.add_argument("--reports", type=Path, default=REPORTS_DIR)
     parser.add_argument("--baseline", type=Path, default=BASELINE_PATH)
+    parser.add_argument("--agent-baseline", type=Path, default=AGENT_BASELINE_PATH)
     parser.add_argument("--write-baseline", action="store_true")
     args = parser.parse_args(argv)
 
@@ -389,7 +456,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     baseline = (
         json.loads(args.baseline.read_text(encoding="utf-8")) if args.baseline.is_file() else None
     )
-    errors = suite.failures + check_gate(scores, baseline)
+    agent_baseline = (
+        json.loads(args.agent_baseline.read_text(encoding="utf-8"))
+        if args.agent_baseline.is_file()
+        else None
+    )
+    errors = (
+        suite.failures + check_gate(scores, baseline) + check_simple_gate(scores, agent_baseline)
+    )
     for error in errors:
         print(error, file=sys.stderr)
     return 1 if errors else 0

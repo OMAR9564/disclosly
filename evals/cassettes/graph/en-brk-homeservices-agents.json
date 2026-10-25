@@ -1,0 +1,109 @@
+{
+ "case_id": "en-brk-homeservices-agents",
+ "dataset": "answers_golden",
+ "interactions": [
+  {
+   "key": "5502d4235cb7a6ceaac3c686f61e1bd8e883f50e1747e8f87a4a1efd0cfb08f7",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\"mode\": \"simple\", \"tickers\": [\"BRK.A\"], \"periods\": [], \"metrics\": [], \"uses_watchlist\": false, \"memory_intent\": null}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 927,
+    "tokens_out": 37,
+    "latency_ms": 1559.16,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "5c3b0dde87ea5a2420d5350bb5070d2851f73531309203f056f75b653c0f6042",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2181057",
+      "name": "search_documents",
+      "arguments": {
+       "query": "real estate agents HomeServices Berkshire Hathaway",
+       "ticker": "BRK-A"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T+fiLLMsXDRdew2QeBESepLrHNfgXsDvX/XGct5u18jnYHxjuH1ele1JDhHN72D4ucI+YpkcKipN9x4BuYrPLymIAgMZbgW9uCbZk63u3G6UBJ0bZGLHyMG8="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1487,
+    "tokens_out": 31,
+    "latency_ms": 788.838,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "eab633f8adaebada39677c643b73b4d4a7aa1b9b1690729fbd56ed87469cb2d5",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1731811",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "BRK-A"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0Tz89+usVUTmmfRRmYECRty1IitsCLQIkpZqmaQzD0hkBYHN1v3LhFLZtOumgdpI6Mzw7D4mQbApDWmPt02qvqM85xqyRuv4y0jrKYdVwj3S1xjczEjvTMr44="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1534,
+    "tokens_out": 19,
+    "latency_ms": 500.29,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"How many real estate agents does Berkshire Hathaway's HomeServices have?\",\"ticker\":\"BRK.A\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "BRK.A How many real estate agents does Berkshire Hathaway's HomeServices have?",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"real estate agents HomeServices Berkshire Hathaway\",\"ticker\":\"BRK-A\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "BRK-A real estate agents HomeServices Berkshire Hathaway",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"BRK-A\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": []}",
+   "summary": "BRK-A documents",
+   "count": 0,
+   "items": [],
+   "error": null
+  }
+ ],
+ "sandbox": [],
+ "decision": null
+}

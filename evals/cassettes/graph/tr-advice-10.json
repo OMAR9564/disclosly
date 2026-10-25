@@ -1,7 +1,38 @@
 {
  "case_id": "tr-advice-10",
  "dataset": "advice_refusal",
- "interactions": [],
+ "interactions": [
+  {
+   "key": "7ac81f748d75c0648cb9249d6c0c7679aaefcfc30238ae9d7fc6f96e23451c77",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Bu soru yatırım tavsiyesi niteliğinde olduğundan yanıtlanmamaktadır.\",\n  \"points\": [],\n  \"citations\": []\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1642,
+    "tokens_out": 59,
+    "latency_ms": 4771.16,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "a20f04219eb75e1648400684c39e5fc891c14af79b40e4d1a65abb6c4fcbd3fb",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi verilemez. Şirket açıklamaları ve finansal veriler için ilgili belgeler incelenebilir.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1173,
+    "tokens_out": 163,
+    "latency_ms": 7701.801,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
  "tools": [],
  "sandbox": [],
  "decision": null
