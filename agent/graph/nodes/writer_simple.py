@@ -12,6 +12,7 @@ from typing import Any
 from agent.answer import Answer, Language, to_partial
 from agent.budget import LimitReached
 from agent.graph.context import NodeContext
+from agent.graph.nodes.memory import with_memory_note
 from agent.graph.nodes.retriever_simple import evidence_message, question_message
 from agent.graph.nodes.writer import NO_EVIDENCE
 from agent.graph.state import ResearchState
@@ -27,7 +28,7 @@ async def writer_simple_node(state: ResearchState, ctx: NodeContext) -> dict[str
     evidence = {item.cite_id: item for item in state.get("evidence") or []}
     if not evidence and not refused:
         empty = Report(language=language, status="no_evidence", summary=NO_EVIDENCE[language])
-        return {"draft": finalize_report(empty)}
+        return {"draft": finalize_report(with_memory_note(empty, state))}
 
     messages = [
         ChatMessage(role="system", content=system_prompt(language)),
@@ -63,4 +64,5 @@ async def writer_simple_node(state: ResearchState, ctx: NodeContext) -> dict[str
         answer = answer.model_copy(update={"status": "refused"})
     elif answer.status == "no_evidence":
         answer = answer.model_copy(update={"points": [], "citations": []})
-    return {**update, "draft": finalize_report(Report.from_answer(answer))}
+    report = with_memory_note(Report.from_answer(answer), state)
+    return {**update, "draft": finalize_report(report)}

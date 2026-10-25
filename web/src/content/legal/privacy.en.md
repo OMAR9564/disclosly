@@ -2,7 +2,7 @@
 
 # Privacy policy
 
-Last updated: 21 October 2026
+Last updated: 25 October 2026
 
 This policy explains what personal data Disclosly stores, why, and what rights you have under the Turkish Personal Data Protection Law No. 6698 (KVKK).
 
@@ -14,6 +14,7 @@ Disclosly is run by its owner as the data controller. Contact: privacy@disclosly
 
 - Your email address and display name, taken from Google or GitHub when you sign in. We store nothing else from your Google or GitHub account.
 - The questions you ask and the answers we produce, so you can open a past answer again.
+- Your watchlist and preferences: the companies you add to your watchlist (at most 50), your preferred answer language and your default period range. Only you change them: on the settings page, or by asking for a change in your question.
 - Your daily question count and short-lived rate-limit counters. These hold an account id or a one-way hash of your IP address, not the address itself.
 
 We do not store passwords. We do not use advertising or tracking cookies. The only cookies are the sign-in cookies `session` (15 minutes) and `refresh` (7 days).
@@ -22,6 +23,7 @@ We do not store passwords. We do not use advertising or tracking cookies. The on
 
 - To let you sign in and to check that your address is on the beta list.
 - To show your answers and enforce the daily question limit.
+- To use the companies on your watchlist when a question says "my watchlist", and your default period when a question names none. Your watchlist and preferences are never shown to other users or sent to model providers as a profile, and monitoring records only how many companies the watchlist holds.
 - To keep the service safe from abuse.
 
 The legal basis is the performance of the service you asked for and our legitimate interest in keeping it secure (KVKK article 5/2-c and 5/2-f).
@@ -36,7 +38,7 @@ Cloudflare Turnstile checks that a person, not a bot, is signing in. Google and 
 
 ## How long we keep it
 
-We keep your account data, questions and answers until you ask us to delete your account. Sign-in cookies expire as listed above. Counters expire within 48 hours.
+We keep your account data, questions and answers until you ask us to delete your account. You can delete your watchlist and preferences for good at any time with "Delete all memory" on the settings page; deleting your account deletes them too. Sign-in cookies expire as listed above. Counters expire within 48 hours.
 
 <!-- OWNER: confirm the retention periods above and add a period for server logs. -->
 

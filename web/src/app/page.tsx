@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -71,6 +72,11 @@ export default function Home() {
         <p className="board__sources">{t.sourcesValue}</p>
         <div className="board__keys">
           {quota ? <QuotaBadge quota={quota} t={t} /> : null}
+          {quota ? (
+            <Link href="/settings" className="key key--quiet board__link">
+              {t.settingsLink}
+            </Link>
+          ) : null}
           <LanguageToggle t={t} onToggle={toggle} />
         </div>
       </header>

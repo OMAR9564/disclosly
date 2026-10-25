@@ -10,6 +10,7 @@ import re
 from datetime import timedelta
 from typing import Any
 
+from opentelemetry import trace
 from pydantic import ValidationError
 
 from agent.advice import detect_language, is_advice_request
@@ -17,11 +18,14 @@ from agent.answer import Language
 from agent.budget import ModeBudget
 from agent.graph.context import NodeContext
 from agent.graph.state import ResearchState, RouterDecision
+from agent.memory import DEFAULT_RANGE, resolve_periods
 from agent.prompts import node_prompt, with_schema
 from llm.types import ChatMessage, ChatRequest
 from tools.facts import KNOWN_METRICS
 
 MAX_TOKENS = 512
+# RouterDecision.tickers holds at most this many.
+MAX_TICKERS = 8
 _FENCE = re.compile(r"^```(?:json)?\s*|\s*```$")
 _PERIOD = re.compile(r"^\d{4}-(Q[1-4]|FY)$")
 
@@ -92,6 +96,43 @@ async def _decide(
     return RouterDecision(mode="simple")
 
 
+def watchlist_cap(ctx: NodeContext) -> int:
+    """The most watchlist companies one plan covers: the step limit, within the router's
+    ticker limit."""
+    return min(ctx.deps.plan_max_steps, MAX_TICKERS)
+
+
+async def use_memory(
+    state: ResearchState, ctx: NodeContext, decision: RouterDecision
+) -> tuple[RouterDecision, dict[str, Any]]:
+    """Read the user's memory once (code, no tool) and apply it to the decision (FR-030).
+
+    "My watchlist" questions take the saved companies, up to `watchlist_cap`; the rest are
+    left out and named. A numeric question that names no period gets the default range,
+    ending at the latest period with facts for its companies.
+    """
+    store = ctx.deps.memory
+    user_id = state.get("user_id")
+    if store is None or not user_id:
+        return decision, {}
+    snapshot = await store.snapshot(user_id)
+    # Telemetry gets the size only, never tickers or preferences (FR-032).
+    trace.get_current_span().set_attribute("disclosly.watchlist_size", len(snapshot.watchlist))
+    update: dict[str, Any] = {"memory": snapshot}
+    if decision.uses_watchlist:
+        cap = watchlist_cap(ctx)
+        decision = decision.model_copy(update={"tickers": snapshot.watchlist[:cap]})
+        update |= {"used_watchlist": True, "watchlist_left_out": snapshot.watchlist[cap:]}
+    if not decision.periods and decision.tickers and (decision.metrics or decision.mode == "deep"):
+        latest = await store.latest_period(decision.tickers)
+        period_range = snapshot.default_period_range or DEFAULT_RANGE
+        periods = resolve_periods(period_range, latest)
+        if periods:
+            decision = decision.model_copy(update={"periods": periods})
+            update["used_period_range"] = period_range
+    return decision, update
+
+
 async def router_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
     question = state["question"]
     language = detect_language(question)
@@ -113,11 +154,13 @@ async def router_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
     # The router call is bounded by the simple deadline whichever mode it picks.
     ctx.deadline_at = simple_deadline
     decision = clean(await _decide(question, language, ctx, simple), question)
+    decision, memory_update = await use_memory(state, ctx, decision)
     await ctx.emit(
         "mode_selected", {"mode": decision.mode, "uses_watchlist": decision.uses_watchlist}
     )
     deep = decision.mode == "deep"
     return {
+        **memory_update,
         "language": language,
         "mode": decision.mode,
         "refused": False,

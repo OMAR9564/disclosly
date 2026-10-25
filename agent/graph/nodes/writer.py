@@ -16,6 +16,7 @@ from pydantic import ValidationError
 
 from agent.answer import Language
 from agent.graph.context import NodeContext
+from agent.graph.nodes.memory import with_memory_note
 from agent.graph.state import Calculation, Finding, ResearchState
 from agent.prompts import node_prompt, with_schema
 from agent.report import (
@@ -144,7 +145,7 @@ async def writer_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
     calculations = state.get("calculations") or []
     if not findings and not evidence:
         empty = Report(language=language, status="no_evidence", summary=NO_EVIDENCE[language])
-        return {"draft": finalize_report(empty)}
+        return {"draft": finalize_report(with_memory_note(empty, state))}
 
     outputs = verified_outputs(calculations)
     dropped = state.get("unverified") or []
@@ -180,7 +181,8 @@ async def writer_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
             if report.confidence is None and report.status != "refused":
                 validation.errors.append(CONFIDENCE_REQUIRED)
             if validation.ok:
-                return {"draft": finalize_report(with_unverified(report, dropped, language))}
+                report = with_memory_note(with_unverified(report, dropped, language), state)
+                return {"draft": finalize_report(report)}
             last = (report, validation)
             errors = validation.errors
         messages = [
@@ -192,4 +194,5 @@ async def writer_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
     if last is None:
         return {"draft": None}
     partial = to_partial(last[0], last[1], language)
-    return {"draft": finalize_report(with_unverified(partial, dropped, language))}
+    partial = with_memory_note(with_unverified(partial, dropped, language), state)
+    return {"draft": finalize_report(partial)}

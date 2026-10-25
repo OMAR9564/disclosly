@@ -444,3 +444,108 @@ export function approveRun(
     baseUrl,
   );
 }
+
+/** User memory (contracts/http-api.md, "Memory" and "Companies"). */
+export type Market = "bist" | "us";
+export type PeriodRange = "last_4q" | "last_8q" | "last_2fy" | "last_3fy";
+export const PERIOD_RANGES: PeriodRange[] = [
+  "last_4q",
+  "last_8q",
+  "last_2fy",
+  "last_3fy",
+];
+
+export interface Company {
+  ticker: string;
+  name: string;
+  market: Market;
+}
+
+export interface WatchlistItem extends Company {
+  added_at: string;
+}
+
+export interface Preferences {
+  answer_language: Language | null;
+  default_period_range: PeriodRange | null;
+}
+
+export interface Memory {
+  watchlist: WatchlistItem[];
+  preferences: Preferences;
+  limits: { watchlist_max: number };
+}
+
+export function getMemory(
+  language: Language,
+  baseUrl: string = apiBase(),
+): Promise<Memory> {
+  return request<Memory>("/v1/me/memory", { method: "GET" }, language, baseUrl);
+}
+
+export function savePreferences(
+  preferences: Preferences,
+  language: Language,
+  baseUrl: string = apiBase(),
+): Promise<Memory> {
+  return request<Memory>(
+    "/v1/me/memory/preferences",
+    { method: "PUT", body: JSON.stringify(preferences) },
+    language,
+    baseUrl,
+  );
+}
+
+export function addToWatchlist(
+  ticker: string,
+  language: Language,
+  baseUrl: string = apiBase(),
+): Promise<Memory> {
+  return request<Memory>(
+    "/v1/me/memory/watchlist",
+    { method: "POST", body: JSON.stringify({ ticker }) },
+    language,
+    baseUrl,
+  );
+}
+
+export function removeFromWatchlist(
+  ticker: string,
+  language: Language,
+  baseUrl: string = apiBase(),
+): Promise<Memory> {
+  return request<Memory>(
+    `/v1/me/memory/watchlist/${encodeURIComponent(ticker)}`,
+    { method: "DELETE" },
+    language,
+    baseUrl,
+  );
+}
+
+export function deleteMemory(
+  language: Language,
+  baseUrl: string = apiBase(),
+): Promise<void> {
+  return request<void>(
+    "/v1/me/memory",
+    { method: "DELETE" },
+    language,
+    baseUrl,
+  );
+}
+
+export function searchCompanies(
+  query: string,
+  language: Language,
+  limit = 8,
+  baseUrl: string = apiBase(),
+): Promise<{ items: Company[] }> {
+  const params = new URLSearchParams({ limit: String(limit) });
+  if (query.trim()) params.set("q", query.trim().slice(0, 50));
+  return request<{ items: Company[] }>(
+    `/v1/companies?${params}`,
+    { method: "GET" },
+    language,
+    baseUrl,
+  );
+}

@@ -151,6 +151,14 @@ class ResearchState(TypedDict, total=False):
     refused: bool
     router: RouterDecision | None
     memory: MemorySnapshot
+    # What the router took from memory (FR-030): the report says so.
+    used_watchlist: bool
+    # Watchlist companies beyond what one plan can cover (named in the plan and report).
+    watchlist_left_out: list[str]
+    # The question named no period, so the user's default range was used.
+    used_period_range: PeriodRange | None
+    # The outcome of `memory_intent`: "added", "removed", "unchanged" or an error code.
+    memory_result: str | None
     plan: Plan | None
     plan_approved: bool
     # The pending decision's kind while the graph waits at `decision`.

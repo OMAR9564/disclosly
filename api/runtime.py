@@ -14,6 +14,7 @@ from agent.checkpoint import open_checkpointer
 from agent.graph.build import build_graph
 from agent.graph.context import GraphDeps
 from agent.loop import Budget
+from agent.memory import EngineMemory
 from agent.runs import RunService, StreamRedis
 from agent.supervisor import LeaseRedis, Leases
 from api.auth.allowlist import Allowlist, AllowRedis, db_lookup
@@ -113,6 +114,7 @@ def graph_deps(
         runs=service,
         sandbox=sandbox,
         citations=CorpusCitations(service.engine),
+        memory=EngineMemory(service.engine),
     )
 
 

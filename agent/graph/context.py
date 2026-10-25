@@ -12,7 +12,7 @@ from datetime import datetime
 from typing import Any, Protocol
 
 from agent.budget import Clock, Mode, ModeBudget, Usage, guarded_call, utcnow
-from agent.graph.state import ResearchState
+from agent.graph.state import MemoryIntent, MemorySnapshot, ResearchState
 from llm.router import Router
 from llm.types import ChatRequest, ChatResponse, TaskClass
 from tools.python import Sandbox
@@ -40,6 +40,16 @@ class CitationReloader(Protocol):
     """Reads citations again from the corpus for the verifier (tools/citations.py)."""
 
     async def reload(self, cite_ids: Iterable[str]) -> dict[str, SeenItem]: ...
+
+
+class MemoryStore(Protocol):
+    """The user's memory as the graph reads and changes it (agent/memory.py)."""
+
+    async def snapshot(self, user_id: str) -> MemorySnapshot: ...
+
+    async def apply(self, user_id: str, intent: MemoryIntent) -> str: ...
+
+    async def latest_period(self, tickers: list[str]) -> str | None: ...
 
 
 class RunStore(Protocol):
@@ -77,6 +87,8 @@ class GraphDeps:
     sandbox: Sandbox | None = None
     # The verifier's input check reads citations again; None falls back to the run's evidence.
     citations: CitationReloader | None = None
+    # The user's memory; None where runs have no memory (tests, evals without a fixture).
+    memory: MemoryStore | None = None
 
 
 @dataclass

@@ -37,7 +37,7 @@ export function RunView() {
   return (
     <main className="board">
       <header className="board__top">
-        <Link href="/" className="board__sources board__home">
+        <Link href="/" className="board__sources board__home" lang="en">
           Disclosly
         </Link>
         <LanguageToggle t={t} onToggle={toggle} />

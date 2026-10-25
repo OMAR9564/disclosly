@@ -1609,3 +1609,153 @@ select.plan-field__input option {
     justify-self: start;
   }
 }
+
+/*
+ * Watchlist and settings: the user's memory set on the board. Bands stack under the name row,
+ * each opened by a rule; the watchlist reads like a quote board, one company per row.
+ */
+.memory-bands {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3rem);
+}
+
+.memory {
+  display: grid;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  min-width: 0;
+}
+
+.memory__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.memory__head .row__label,
+.memory > .row__label {
+  margin: 0;
+}
+
+.memory__count {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.watchlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.watchlist__row {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.watchlist__row .plan-step__ticker {
+  justify-self: start;
+}
+
+.watchlist__name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.watchlist__market {
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variation-settings: "wdth" 80;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--letter-muted);
+}
+
+.watchlist__add {
+  min-width: 6.5rem;
+}
+
+.watchlist--results {
+  margin-top: 0.75rem;
+}
+
+.memory__search {
+  display: grid;
+  gap: 0.25rem;
+  max-width: 40rem;
+}
+
+.memory__search input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+.memory__prefs {
+  display: grid;
+  gap: 1rem;
+  max-width: 40rem;
+}
+
+.memory__hint {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: var(--letter-muted);
+}
+
+.memory__status {
+  margin: 0;
+  align-self: center;
+  color: var(--letter-muted);
+}
+
+.memory__confirm {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 60ch;
+  padding-left: 1rem;
+  border-left: 1px solid var(--letter);
+}
+
+.memory__ask {
+  margin: 0;
+  font-weight: 600;
+}
+
+.board__link {
+  padding-inline: 0.75rem;
+}
+
+@media (max-width: 36rem) {
+  .watchlist__row {
+    grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+  }
+
+  .watchlist__market {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: -0.5rem;
+  }
+
+  .watchlist__row > .key {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+
+  .memory .plan__keys .key {
+    width: 100%;
+  }
+}
+
+/* The placard's rule already opens the first band. */
+.memory-bands > .memory:first-child {
+  padding-top: 0;
+  border-top: 0;
+}

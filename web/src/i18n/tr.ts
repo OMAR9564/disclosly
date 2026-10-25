@@ -168,6 +168,57 @@ export const tr = {
     "Dönemler 2025-Q3 veya 2024-FY biçiminde olmalı; bir adımda en çok 8 dönem olabilir.",
   planReasonEstimate:
     "Bu plan kalan model çağrılarını aşabilir. Adım sayısını azalt.",
+  settingsLink: "Takip listesi",
+  settingsTitle: "Takip listesi ve tercihler",
+  settingsIntro:
+    "Takip listesindeki şirketler “takip listem” diye sorduğun sorularda kullanılır. Değişiklikler bir sonraki sorundan itibaren geçerli olur.",
+  watchlistLabel: "Takip listesi",
+  watchlistCount: "{count} / {max} şirket",
+  watchlistEmpty:
+    "Takip listen boş. Aşağıdan şirket ara veya soru sorarken “ASELS'i takip listeme ekle” yaz.",
+  watchlistRemove: "{ticker} şirketini listeden çıkar",
+  watchlistTicker: "Kod",
+  watchlistName: "Şirket",
+  watchlistMarket: "Piyasa",
+  marketBist: "Borsa İstanbul",
+  marketUs: "ABD",
+  companySearchLabel: "Şirket ekle",
+  companySearchPlaceholder: "Kod veya ad, örn. ASELS ya da Aselsan",
+  companySearchNone: "Kapsamda bu aramaya uyan şirket yok.",
+  companySearchResults: "Arama sonuçları",
+  companyAdd: "Ekle",
+  companyAdded: "Listede",
+  companyAddLabel: "{ticker} şirketini takip listesine ekle",
+  watchlistFull:
+    "Takip listen dolu ({max} şirket). Yeni şirket eklemeden önce birini çıkar.",
+  preferencesLabel: "Tercihler",
+  prefLanguage: "Yanıt dili",
+  prefLanguageHint: "Sorunun dili anlaşılamadığında kullanılır.",
+  prefLanguageAuto: "Sorunun dili",
+  prefLanguageTr: "Türkçe",
+  prefLanguageEn: "İngilizce",
+  prefPeriod: "Varsayılan dönem",
+  prefPeriodHint: "Dönem belirtmediğin sorularda kullanılır.",
+  range_last_4q: "Son 4 çeyrek",
+  range_last_8q: "Son 8 çeyrek",
+  range_last_2fy: "Son 2 mali yıl",
+  range_last_3fy: "Son 3 mali yıl",
+  prefSave: "Tercihleri kaydet",
+  prefSaving: "Kaydediliyor…",
+  prefSaved: "Tercihler kaydedildi.",
+  forgetLabel: "Hafızayı sil",
+  forgetBody:
+    "Takip listen ve tercihlerin kalıcı olarak silinir. Geçmiş araştırmaların etkilenmez.",
+  forgetStart: "Tüm hafızayı sil",
+  forgetConfirm: "Evet, hepsini sil",
+  forgetCancel: "Vazgeç",
+  forgetAsk:
+    "Takip listendeki {count} şirket ve tercihlerin silinsin mi? Bu geri alınamaz.",
+  forgetDone: "Hafızan silindi.",
+  memoryLoading: "Hafıza yükleniyor…",
+  errorWatchlistFull:
+    "Takip listen dolu. Yeni şirket eklemeden önce birini çıkar.",
+  errorNotCovered: "Bu şirket Disclosly kapsamında değil.",
 } as const;
 
 export type Dictionary = { readonly [K in keyof typeof tr]: string };

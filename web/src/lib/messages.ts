@@ -30,6 +30,10 @@ export function errorMessage(
       return t.errorSandbox;
     case "interrupted_limit":
       return t.errorInterrupted;
+    case "watchlist_full":
+      return t.errorWatchlistFull;
+    case "company_not_covered":
+      return t.errorNotCovered;
     default:
       return t.errorGeneric;
   }

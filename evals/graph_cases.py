@@ -35,7 +35,14 @@ from agent.graph.build import DURABILITY, build_graph
 from agent.graph.context import GraphDeps, NodeContext
 from agent.graph.nodes.decision import Decision
 from agent.graph.nodes.verifier import verifier_node
-from agent.graph.state import Calculation, Finding, ResearchState, VerificationResult
+from agent.graph.state import (
+    Calculation,
+    Finding,
+    MemoryIntent,
+    MemorySnapshot,
+    ResearchState,
+    VerificationResult,
+)
 from agent.plan import Plan, Reason, validate_edit
 from agent.report import Report
 from evals.agent_cases import (
@@ -44,6 +51,7 @@ from evals.agent_cases import (
     AdviceCase,
     ExpectedNumber,
     InjectionCase,
+    MemoryFixture,
     RecordedTool,
     ToolCassetteMiss,
     _Case,
@@ -72,12 +80,48 @@ GRAPH_DATASETS: tuple[GraphDataset, ...] = (
 SEEDED: GraphDataset = "verifier_seeded"
 
 
+class CaseMemory:
+    """`MemoryStore` for a case: the fixture's snapshot, with every change recorded.
+
+    Eval runs never write real memory; a change asked for by the question is applied to the
+    in-memory watchlist so the run can report it."""
+
+    def __init__(self, fixture: MemoryFixture | None) -> None:
+        self.fixture = fixture or MemoryFixture()
+        self.watchlist = list(self.fixture.watchlist)
+        self.applied: list[MemoryIntent] = []
+
+    async def snapshot(self, user_id: str) -> MemorySnapshot:
+        return MemorySnapshot(
+            watchlist=list(self.watchlist),
+            default_period_range=self.fixture.default_period_range,
+        )
+
+    async def apply(self, user_id: str, intent: MemoryIntent) -> str:
+        self.applied.append(intent)
+        if intent.action == "watchlist_add":
+            if intent.ticker in self.watchlist:
+                return "unchanged"
+            self.watchlist.append(intent.ticker)
+            return "added"
+        if intent.ticker not in self.watchlist:
+            return "unchanged"
+        self.watchlist.remove(intent.ticker)
+        return "removed"
+
+    async def latest_period(self, tickers: list[str]) -> str | None:
+        return self.fixture.latest_period
+
+
 class DeepCase(_Case):
     expected_mode: Literal["simple", "deep"] = "deep"
     expected_status: Literal["completed", "partial", "no_evidence"] = "completed"
     expected_numbers: list[ExpectedNumber] = Field(default_factory=list)
     expected_tables: int = Field(default=0, ge=0, le=4)
     expected_chart: bool = False
+    memory: MemoryFixture | None = None
+    # Watchlist cases: the companies the plan (or the simple path) must cover, exactly.
+    expected_tickers: list[str] | None = None
 
 
 SeededDefect = Literal[
@@ -305,6 +349,7 @@ class GraphOutcome:
     values: dict[str, Any]
     paused_plan: Plan | None = None
     edit_reasons: list[Reason] = field(default_factory=list)
+    memory_changes: list[MemoryIntent] = field(default_factory=list)
 
     @property
     def report(self) -> Report | None:
@@ -316,7 +361,8 @@ async def run_graph_case(
     case: Any, router: Router, toolbox: Any, sandbox: Sandbox | None = None
 ) -> GraphOutcome:
     """Run one case through the graph; approve the plan, or try the case's plan edit."""
-    deps = GraphDeps(router=router, tools=toolbox, sandbox=sandbox)
+    store = CaseMemory(getattr(case, "memory", None))
+    deps = GraphDeps(router=router, tools=toolbox, sandbox=sandbox, memory=store)
     graph = build_graph(deps, InMemorySaver(serde=graph_serde()))
     config: RunnableConfig = {"configurable": {"thread_id": case.id}}
     initial: ResearchState = {
@@ -343,13 +389,13 @@ async def run_graph_case(
             edited = plan.model_copy(update={"steps": [step, *plan.steps[1:]]})
             usage = values.get("usage") or Usage()
             reasons = validate_edit(edited, deps.budgets["deep"], usage.model_calls)
-            return GraphOutcome(values, plan, reasons)
+            return GraphOutcome(values, plan, reasons, store.applied)
         decision = Decision(action="approve", decided_at=datetime.now(UTC))
         await graph.ainvoke(
             Command(resume=decision.model_dump(mode="json")), config, durability=DURABILITY
         )
         snapshot = await graph.aget_state(config)
-    return GraphOutcome(dict(snapshot.values))
+    return GraphOutcome(dict(snapshot.values), memory_changes=store.applied)
 
 
 async def run_seeded_case(
