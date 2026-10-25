@@ -6,7 +6,7 @@ usage) and stamps `node` and `attempt` on every event the node emits
 (contracts/sse-events.md).
 """
 
-from collections.abc import Awaitable, Callable, Mapping
+from collections.abc import Awaitable, Callable, Iterable, Mapping
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any, Protocol
@@ -15,7 +15,9 @@ from agent.budget import Clock, Mode, ModeBudget, Usage, guarded_call, utcnow
 from agent.graph.state import ResearchState
 from llm.router import Router
 from llm.types import ChatRequest, ChatResponse, TaskClass
+from tools.python import Sandbox
 from tools.registry import GraphNode, NodeTools
+from tools.types import SeenItem
 
 EmitEvent = Callable[[str, str, dict[str, Any]], Awaitable[None]]
 """`(run_id, event, data)`: appends one event to the run's stream."""
@@ -32,6 +34,12 @@ class DeepQuota(Protocol):
     """Reads the deep quota without taking it (quota_gate); the API takes it at approval."""
 
     async def deep_remaining(self, user_id: str) -> int: ...
+
+
+class CitationReloader(Protocol):
+    """Reads citations again from the corpus for the verifier (tools/citations.py)."""
+
+    async def reload(self, cite_ids: Iterable[str]) -> dict[str, SeenItem]: ...
 
 
 class RunStore(Protocol):
@@ -65,6 +73,10 @@ class GraphDeps:
     verify_max_rounds: int = 2
     quota: DeepQuota | None = None
     runs: RunStore | None = None
+    # The calculation sandbox (analyst and verifier); None where no calculation can run.
+    sandbox: Sandbox | None = None
+    # The verifier's input check reads citations again; None falls back to the run's evidence.
+    citations: CitationReloader | None = None
 
 
 @dataclass

@@ -1,0 +1,399 @@
+{
+ "case_id": "en-deep-unh-net-debt-ebitda",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "b53a9c7219e610eec05b3eadea2b675a019e8f4f7fa485798d85cc595f67d1ea",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"UNH\"\n  ],\n  \"periods\": [\n    \"2024-FY\"\n  ],\n  \"metrics\": [\n    \"total_debt\",\n    \"cash\",\n    \"ebitda\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 930,
+    "tokens_out": 90,
+    "latency_ms": 1717.761,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "fe231c570432800c837ad1c84b08ab33777a370c278d650fc823bf5354a057db",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Fetch UnitedHealth's total debt, cash, and EBITDA for fiscal 2024\",\n      \"tickers\": [\"UNH\"],\n      \"periods\": [\"2024-FY\"],\n      \"metrics\": [\"total_debt\", \"cash\", \"ebitda\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Calculate net debt (total debt minus cash) and net debt to EBITDA ratio for fiscal 2024\",\n      \"tickers\": [\"UNH\"],\n      \"periods\": [\"2024-FY\"],\n      \"metrics\": []\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1020,
+    "tokens_out": 335,
+    "latency_ms": 4381.368,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "aee3c9a97ce9cc0cef355b9814abf5e618ef342e4d1a8ecfe720b603c8a8fd03",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"UnitedHealth Group total debt cash EBITDA 2024\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 742,
+    "tokens_out": 91,
+    "latency_ms": 1924.927,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "d669cbfc8b351f6ad837f2c399bcf84171efcd22ae2966d86d0047a34b4ce549",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"UnitedHealth's total debt for fiscal 2024 was 72,359,000,000 USD.\",\n      \"cite_ids\": [\"f:1378\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"UnitedHealth's cash and cash equivalents for fiscal 2024 were 25,312,000,000 USD.\",\n      \"cite_ids\": [\"f:1412\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"UnitedHealth's EBITDA for fiscal 2024 was 36,386,000,000 USD.\",\n      \"cite_ids\": [\"f:1433\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"UnitedHealth's net debt for fiscal 2024 (total debt minus cash) was calculated.\",\n      \"cite_ids\": [\"f:1378\", \"f:1412\"],\n      \"calcs\": [\"net_debt\"]\n    },\n    {\n      \"id\": \"F5\",\n      \"text\": \"UnitedHealth's net debt to EBITDA ratio for fiscal 2024 was calculated.\",\n      \"cite_ids\": [\"f:1378\", \"f:1412\", \"f:1433\"],\n      \"calcs\": [\"net_debt_to_ebitda\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_debt\",\n      \"description\": \"Net debt = Total debt - Cash and cash equivalents\",\n      \"inputs\": [\n        {\n          \"name\": \"total_debt\",\n          \"cite_id\": \"f:1378\"\n        },\n        {\n          \"name\": \"cash\",\n          \"cite_id\": \"f:1412\"\n        }\n      ],\n      \"code\": \"result = inputs['total_debt'] - inputs['cash']\"\n    },\n    {\n      \"name\": \"net_debt_to_ebitda\",\n      \"description\": \"Net debt to EBITDA ratio = Net debt / EBITDA\",\n      \"inputs\": [\n        {\n          \"name\": \"total_debt\",\n          \"cite_id\": \"f:1378\"\n        },\n        {\n          \"name\": \"cash\",\n          \"cite_id\": \"f:1412\"\n        },\n        {\n          \"name\": \"ebitda\",\n          \"cite_id\": \"f:1433\"\n        }\n      ],\n      \"code\": \"net_debt = inputs['total_debt'] - inputs['cash']; result = net_debt / inputs['ebitda']\"\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2313,
+    "tokens_out": 984,
+    "latency_ms": 14734.406,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "86dad7737aa674d2a134d1b7e15de3b3c1489a1ef4d04e5e3417dcd646436725",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Matches evidence f:1378 exactly.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Matches evidence f:1412 exactly.\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"Matches evidence f:1433 exactly.\"\n    },\n    {\n      \"finding_id\": \"F4\",\n      \"supported\": true,\n      \"reason\": \"Calculation net_debt (72,359M - 25,312M = 47,047M) matches output 47047000000.0.\"\n    },\n    {\n      \"finding_id\": \"F5\",\n      \"supported\": true,\n      \"reason\": \"Calculation net_debt_to_ebitda (47,047M / 36,386M = 1.293) matches output 1.2929973066564062.\"\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1059,
+    "tokens_out": 872,
+    "latency_ms": 11195.704,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "bb251baad877a07119c9c66008263b9007dd0e60f607e7d6339bb35bf0a8a1ec",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\":\"en\",\"status\":\"completed\",\"summary\":\"UnitedHealth's net debt to EBITDA ratio for fiscal 2024 was 1.29 times (129.30%).[1]\",\"points\":[{\"text\":\"Net debt was $47,047,000,000.00 (total debt $72,359,000,000 minus cash $25,312,000,000).\",\"cite_ids\":[\"k:1\"]},{\"text\":\"EBITDA for fiscal 2024 was $36,386,000,000.00.\",\"cite_ids\":[\"f:1433\"]},{\"text\":\"Net debt to EBITDA ratio was 1.29 times (129.30%).\",\"cite_ids\":[\"k:2\"]}],\"tables\":[],\"chart\":null,\"confidence\":{\"level\":\"high\",\"note\":\"\"},\"unverified\":[],\"citations\":[{\"marker\":1,\"cite_id\":\"k:2\"},{\"marker\":2,\"cite_id\":\"k:1\"},{\"marker\":3,\"cite_id\":\"f:1433\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 3306,
+    "tokens_out": 684,
+    "latency_ms": 7257.547,
+    "cache_hit": false,
+    "fallback_from": [
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
+    ]
+   }
+  },
+  {
+   "key": "cb55b9135c4d28d84decb52fbee94f43154907495a5624f1bdb4a2bdb64f9557",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\":\"en\",\"status\":\"completed\",\"summary\":\"UnitedHealth's net debt to EBITDA ratio for fiscal 2024 was 1.29 times (129.30%).[1]\",\"points\":[{\"text\":\"Net debt was $47,047,000,000.00 (total debt $72,359,000,000 minus cash $25,312,000,000).\",\"cite_ids\":[\"f:1378\",\"f:1412\",\"k:1\"]},{\"text\":\"EBITDA for fiscal 2024 was $36,386,000,000.00.\",\"cite_ids\":[\"f:1433\"]},{\"text\":\"Net debt to EBITDA ratio was 1.29 times (129.30%).\",\"cite_ids\":[\"k:2\"]}],\"tables\":[],\"chart\":null,\"confidence\":{\"level\":\"high\",\"note\":\"\"},\"unverified\":[],\"citations\":[{\"marker\":1,\"cite_id\":\"k:2\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 3580,
+    "tokens_out": 561,
+    "latency_ms": 1785.678,
+    "cache_hit": false,
+    "fallback_from": [
+     "nvidia-large",
+     "gemini-flash",
+     "openrouter-large"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"UNH\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 3206, \"ticker\": \"UNH\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-10T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/731766/000073176626000197/unh-20260630.htm\"}, {\"document_id\": 3207, \"ticker\": \"UNH\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/731766/000073176626000127/unh-20260331.htm\"}, {\"document_id\": 3208, \"ticker\": \"UNH\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-03-02T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm\"}, {\"document_id\": 3209, \"ticker\": \"UNH\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/731766/000073176625000305/unh-20250930.htm\"}, {\"document_id\": 3210, \"ticker\": \"UNH\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-11T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/731766/000073176625000236/unh-20250630.htm\"}, {\"document_id\": 3211, \"ticker\": \"UNH\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-07T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/731766/000073176625000131/unh-20250331.htm\"}, {\"document_id\": 3212, \"ticker\": \"UNH\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-27T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm\"}, {\"document_id\": 3213, \"ticker\": \"UNH\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-04T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/731766/000073176624000323/unh-20240930.htm\"}]}",
+   "summary": "UNH documents",
+   "count": 8,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"total_debt\",\"cash\",\"ebitda\"],\"periods\":[\"2024-FY\"],\"ticker\":\"UNH\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:1412\">Cash and cash equivalents (2024-FY): 25,312,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4816\">Cash and cash equivalents (2024-FY): 25,312,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1416\">Cash and cash equivalents (2024-FY; 2025-FY report): 25,312,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4820\">Cash and cash equivalents (2024-FY; 2025-FY report): 25,312,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1433\">EBITDA (2024-FY): 36,386,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4837\">EBITDA (2024-FY): 36,386,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1434\">EBITDA (2024-FY; 2025-FY report): 36,386,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4838\">EBITDA (2024-FY; 2025-FY report): 36,386,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1378\">Total debt (2024-FY): 72,359,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4782\">Total debt (2024-FY): 72,359,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1382\">Total debt (2024-FY; 2025-FY report): 72,359,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4786\">Total debt (2024-FY; 2025-FY report): 72,359,000,000 USD</untrusted_document>",
+   "summary": "UNH 2024-FY total_debt, cash, ebitda",
+   "count": 12,
+   "items": [
+    {
+     "cite_id": "f:1412",
+     "text": "Cash and cash equivalents (2024-FY): 25,312,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 205,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000731766-25-000063",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": "25312000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4816",
+     "text": "Cash and cash equivalents (2024-FY): 25,312,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2422,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000731766-25-000063",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": "25312000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1416",
+     "text": "Cash and cash equivalents (2024-FY; 2025-FY report): 25,312,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 201,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000731766-26-000062",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm"
+     },
+     "value": "25312000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4820",
+     "text": "Cash and cash equivalents (2024-FY; 2025-FY report): 25,312,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2418,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000731766-26-000062",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm"
+     },
+     "value": "25312000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1433",
+     "text": "EBITDA (2024-FY): 36,386,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 205,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000731766-25-000063 + us-gaap:DepreciationAndAmortization 0000731766-25-000063",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": "36386000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4837",
+     "text": "EBITDA (2024-FY): 36,386,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2422,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000731766-25-000063 + us-gaap:DepreciationAndAmortization 0000731766-25-000063",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": "36386000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1434",
+     "text": "EBITDA (2024-FY; 2025-FY report): 36,386,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 201,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000731766-26-000062 + us-gaap:DepreciationAndAmortization 0000731766-26-000062",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm"
+     },
+     "value": "36386000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4838",
+     "text": "EBITDA (2024-FY; 2025-FY report): 36,386,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2418,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000731766-26-000062 + us-gaap:DepreciationAndAmortization 0000731766-26-000062",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm"
+     },
+     "value": "36386000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1378",
+     "text": "Total debt (2024-FY): 72,359,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 205,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebtNoncurrent 0000731766-25-000063",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": "72359000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4782",
+     "text": "Total debt (2024-FY): 72,359,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2422,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebtNoncurrent 0000731766-25-000063",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": "72359000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1382",
+     "text": "Total debt (2024-FY; 2025-FY report): 72,359,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 201,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebtNoncurrent 0000731766-26-000062",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm"
+     },
+     "value": "72359000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4786",
+     "text": "Total debt (2024-FY; 2025-FY report): 72,359,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2418,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebtNoncurrent 0000731766-26-000062",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm"
+     },
+     "value": "72359000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "sandbox": [
+  {
+   "key": "26cf8002b78ae123a6e758df7f457986ca8a3b1bb0ee37057b4b2ce5d00cb15e",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_debt": "47047000000.0",
+     "net_debt_to_ebitda": "1.2929973066564062"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "26cf8002b78ae123a6e758df7f457986ca8a3b1bb0ee37057b4b2ce5d00cb15e",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_debt": "47047000000.0",
+     "net_debt_to_ebitda": "1.2929973066564062"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  }
+ ],
+ "decision": "approve"
+}

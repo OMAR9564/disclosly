@@ -1,0 +1,42 @@
+{
+ "case_id": "tr-asels-clean",
+ "dataset": "verifier_seeded",
+ "interactions": [
+  {
+   "key": "2dce9369692247922fa2b220cc39dc4a950b303d47af4965caa4e59699e04a2c",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":true,\"reason\":\"Numbers and calculation match cited evidence.\"}]}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 1051,
+    "tokens_out": 404,
+    "latency_ms": 1293.39,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash",
+     "openrouter-large"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "sandbox": [
+  {
+   "key": "b92cb0f1d8f114a1130662ee00efb6b3aa8032be4b4146d62728c6a721b28ef8",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_debt_to_ebitda": "0.5201688744556661"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  }
+ ],
+ "decision": null
+}

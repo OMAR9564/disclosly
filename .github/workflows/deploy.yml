@@ -18,6 +18,7 @@ env:
   HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
   API_IMAGE: ghcr.io/omar9564/disclosly-api
   WORKER_IMAGE: ghcr.io/omar9564/disclosly-worker
+  SANDBOX_IMAGE: ghcr.io/omar9564/disclosly-sandbox
   API_BASE_URL: https://api.disclosly.com
   VERCEL_CLI_VERSION: 64.5.0
 
@@ -32,12 +33,32 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 2
       - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
       - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      # The calculation image (contracts/sandbox.md) changes rarely; it is pushed before the
+      # deploy so deploy.sh can pull it (`main` is the tag the server's SANDBOX_IMAGE_TAG names).
+      - name: Check for sandbox image changes
+        id: sandbox
+        run: |
+          if git diff --name-only HEAD~1 HEAD | grep -qE '^sandbox/(Dockerfile|requirements\.txt|runner/)'; then
+            echo "build=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "build=false" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.sandbox.outputs.build == 'true'
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          file: sandbox/Dockerfile
+          push: true
+          tags: |
+            ${{ env.SANDBOX_IMAGE }}:${{ env.HEAD_SHA }}
+            ${{ env.SANDBOX_IMAGE }}:main
       - uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: .

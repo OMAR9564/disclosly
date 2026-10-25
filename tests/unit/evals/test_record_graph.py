@@ -132,6 +132,7 @@ async def test_records_and_replays_the_same_report(setup: Any) -> None:
         "cheap",
         "cheap",
         "strong",
+        "strong",
     ]
     assert {t.tool for t in cassette.tools} == {"list_documents", "get_financial_facts"}
     raw = (cassettes / "tr-deep-thyao-borc.json").read_text(encoding="utf-8")
@@ -143,7 +144,7 @@ async def test_records_and_replays_the_same_report(setup: Any) -> None:
     assert outcome.report is not None
     assert outcome.report.status == "completed"
     assert outcome.report.chart is not None
-    assert len(router.calls) == 5
+    assert len(router.calls) == 6
 
 
 async def test_injection_poison_is_recorded(setup: Any) -> None:

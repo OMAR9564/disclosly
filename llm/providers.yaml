@@ -9,7 +9,7 @@
 # GitHub Models was retired on 2026-07-30 (its endpoint answers "OK" as plain text), so it is gone.
 classes:
   cheap: [gemini-flash-lite, groq-llama, groq-qwen, openrouter-free, cloudflare]
-  strong: [gemini-flash-stable, gemini-flash, openrouter-large, groq-large]
+  strong: [gemini-flash-stable, gemini-flash, nvidia-large, openrouter-large, groq-large]
 providers:
   gemini-flash-lite:
     base_url: https://generativelanguage.googleapis.com/v1beta/openai
@@ -68,6 +68,17 @@ providers:
     model: nvidia/nemotron-3-ultra-550b-a55b:free
     api_key_env: OPENROUTER_API_KEY
     daily_requests: 25
+    native_tools: true
+    price_per_mtok: {input: 0.0, output: 0.0}
+  # NVIDIA's hosted NIM endpoints (build.nvidia.com): free for development, about 40
+  # requests per minute (community-measured; NVIDIA publishes no number). Answered the report
+  # schema and a tool call in about 10 s on 2026-10-25; several listed models return 404 for
+  # a new key. Production use needs NVIDIA AI Enterprise: owner checks the terms first.
+  nvidia-large:
+    base_url: https://integrate.api.nvidia.com/v1
+    model: nvidia/nemotron-3-ultra-550b-a55b
+    api_key_env: NVIDIA_API_KEY
+    daily_requests: 1000
     native_tools: true
     price_per_mtok: {input: 0.0, output: 0.0}
   cloudflare:

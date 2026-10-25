@@ -1,0 +1,41 @@
+{
+ "case_id": "en-meta-clean",
+ "dataset": "verifier_seeded",
+ "interactions": [
+  {
+   "key": "72757656b588fb774b41ba7712fdae502095df99dcb3b3a8fa7488299d49c949",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"All figures match the cited evidence and the net debt to EBITDA calculation is correct.\"\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 793,
+    "tokens_out": 431,
+    "latency_ms": 11114.217,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "sandbox": [
+  {
+   "key": "d1918451d2283daa23e6219dde66eaa4d79d640498a77ccd41d53e91b0ed81ed",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_debt_to_ebitda": "-0.17746648130257547"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  }
+ ],
+ "decision": null
+}

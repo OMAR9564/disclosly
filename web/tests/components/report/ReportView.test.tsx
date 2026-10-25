@@ -111,7 +111,7 @@ describe("ReportView", () => {
     const plate = screen.getByTestId("citation");
     expect(plate.textContent).toContain("net_debt_to_ebitda");
     expect(plate.textContent).toContain("Net borç / FAVÖK = net_debt / ebitda");
-    expect(plate.textContent).toContain("41200000000");
-    expect(plate.textContent).toContain("1.9");
+    expect(plate.textContent).toContain("41.200.000.000");
+    expect(plate.textContent).toContain("1,9");
   });
 });

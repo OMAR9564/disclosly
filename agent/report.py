@@ -165,8 +165,11 @@ def validate_report(
     language: Language,
     *,
     limit_hit: bool = False,
+    derived_ok: bool = True,
 ) -> ReportValidation:
-    """Rules 1 to 6 above. `calculations` maps each verified calculation's `k:` id to its output."""
+    """Rules 1 to 6 above. `calculations` maps each verified calculation's `k:` id to its output.
+
+    `derived_ok=False` (deep mode) rejects percentages the model derived itself (FR-008)."""
     items: dict[str, SeenItem] = dict(seen)
     for cite_id, output in calculations.items():
         items[cite_id] = calculation_item(cite_id, cite_id, output)
@@ -177,9 +180,9 @@ def validate_report(
     if unknown := sorted(set(report.cite_ids()) - items.keys()):
         result.errors.append(f"unknown cite_id(s) not produced in this run: {unknown}")
 
-    _check_summary(report, items, language, result)
-    _check_points(report, items, language, result)
-    _check_tables(report, items, language, result)
+    _check_summary(report, items, language, result, derived_ok)
+    _check_points(report, items, language, result, derived_ok)
+    _check_tables(report, items, language, result, derived_ok)
     _check_chart(report, language, result)
 
     if report.status == "partial" and not limit_hit:
@@ -192,7 +195,11 @@ def validate_report(
 
 
 def _check_summary(
-    report: Report, items: Mapping[str, SeenItem], language: Language, result: ReportValidation
+    report: Report,
+    items: Mapping[str, SeenItem],
+    language: Language,
+    result: ReportValidation,
+    derived_ok: bool = True,
 ) -> None:
     markers = {c.marker: c.cite_id for c in report.citations}
     used = {int(m) for m in _MARKER.findall(report.summary)}
@@ -202,13 +209,17 @@ def _check_summary(
     if any(markers[m] not in items for m in used if m in markers):
         result.summary_ok = False
     cited = [items[c] for c in markers.values() if c in items]
-    if bad := unsupported_figures(report.summary, language, cited):
+    if bad := unsupported_figures(report.summary, language, cited, derived_ok=derived_ok):
         result.errors.append(f"summary numbers not found in cited sources: {bad}")
         result.summary_ok = False
 
 
 def _check_points(
-    report: Report, items: Mapping[str, SeenItem], language: Language, result: ReportValidation
+    report: Report,
+    items: Mapping[str, SeenItem],
+    language: Language,
+    result: ReportValidation,
+    derived_ok: bool = True,
 ) -> None:
     for index, point in enumerate(report.points):
         if not point.cite_ids:
@@ -218,18 +229,25 @@ def _check_points(
         if any(c not in items for c in point.cite_ids):
             result.bad_points.add(index)  # already reported as unknown
             continue
-        if bad := unsupported_figures(point.text, language, [items[c] for c in point.cite_ids]):
+        cited = [items[c] for c in point.cite_ids]
+        if bad := unsupported_figures(point.text, language, cited, derived_ok=derived_ok):
             result.errors.append(f"point {index} numbers not found in cited sources: {bad}")
             result.bad_points.add(index)
 
 
 def _check_tables(
-    report: Report, items: Mapping[str, SeenItem], language: Language, result: ReportValidation
+    report: Report,
+    items: Mapping[str, SeenItem],
+    language: Language,
+    result: ReportValidation,
+    derived_ok: bool = True,
 ) -> None:
     for t, table in enumerate(report.tables):
         for r, row in enumerate(table.rows):
             for c, cell in enumerate(row):
-                if not [f for f in figures(cell.text, language) if f.value >= 0]:
+                # Malformed numbers ("0.3508" in a Turkish report) are checked too: they never
+                # match a source, so the writer is asked to write them in the report's style.
+                if not figures(cell.text, language):
                     continue
                 where = f"table {t} row {r} column {table.columns[c]!r}"
                 if cell.cite_id is None:
@@ -237,7 +255,9 @@ def _check_tables(
                     result.bad_rows.add((t, r))
                 elif cell.cite_id not in items:
                     result.bad_rows.add((t, r))
-                elif bad := unsupported_figures(cell.text, language, [items[cell.cite_id]]):
+                elif bad := unsupported_figures(
+                    cell.text, language, [items[cell.cite_id]], derived_ok=derived_ok
+                ):
                     result.errors.append(f"{where}: numbers not found in the cited source: {bad}")
                     result.bad_rows.add((t, r))
 
@@ -287,7 +307,10 @@ def to_partial(report: Report, validation: ReportValidation, language: Language)
     if chart is not None:
         kept = chart.table in index_map and validation.chart_ok
         source = report.tables[chart.table] if chart.table < len(report.tables) else None
-        unchanged = source is not None and tables[index_map[chart.table]].rows == source.rows
+        # A table emptied by dropped rows is gone from `index_map`: the chart goes with it.
+        unchanged = (
+            kept and source is not None and tables[index_map[chart.table]].rows == source.rows
+        )
         chart = (
             chart.model_copy(update={"table": index_map[chart.table]})
             if kept and unchanged

@@ -157,6 +157,7 @@ export const en: Dictionary = {
   calcFormula: "Formula",
   calcInputs: "Inputs",
   calcOutput: "Result",
+  calcShowCode: "Show the calculation code",
   planReasonAdvice:
     "This step asks for investment advice, which Disclosly does not give. Phrase the goal around what the documents say.",
   planReasonGoal: "The goal must be 1 to 300 characters.",

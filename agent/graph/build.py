@@ -39,6 +39,7 @@ from agent.graph.nodes.planner import planner_node
 from agent.graph.nodes.quota_gate import quota_gate_node
 from agent.graph.nodes.retriever import retriever_node
 from agent.graph.nodes.router import router_node
+from agent.graph.nodes.verifier import verifier_node
 from agent.graph.nodes.writer import writer_node
 from agent.graph.state import ResearchState
 from agent.telemetry import node_span
@@ -65,6 +66,7 @@ DEFAULT_NODES: dict[GraphNode, NodeFn] = {
     "decision": decision_node,
     "retriever": retriever_node,
     "analyst": analyst_node,
+    "verifier": verifier_node,
     "writer": writer_node,
     "finalize_partial": finalize_partial_node,
 }
@@ -178,7 +180,8 @@ class Routes:
             return self.go("writer")
         if state.get("verify_rounds", 0) < self._verify_max_rounds:
             return self.go("planner")
-        return FINALIZE
+        # Rounds used up: the verifier kept only what passed; the writer reports it as partial.
+        return self.go("writer") if state.get("findings") else FINALIZE
 
     def after_retriever_simple(self, state: ResearchState) -> str:
         return FINALIZE if state.get("limit_hit") else self.go("writer_simple")

@@ -12,6 +12,7 @@ ALL_KEYS = {
     "GEMINI_API_KEY": "g",
     "GROQ_API_KEY": "q",
     "OPENROUTER_API_KEY": "o",
+    "NVIDIA_API_KEY": "n",
     "CLOUDFLARE_AI_TOKEN": "c",
     "CLOUDFLARE_ACCOUNT_ID": "acct123",
 }
@@ -49,6 +50,7 @@ def test_repo_file_has_every_provider_and_both_classes() -> None:
     assert strong == [
         "gemini-flash-stable",
         "gemini-flash",
+        "nvidia-large",
         "openrouter-large",
         "groq-large",
     ]
@@ -61,7 +63,7 @@ def test_repo_file_has_every_provider_and_both_classes() -> None:
 def test_repo_file_with_no_keys_skips_everything() -> None:
     config = load_providers(REPO_FILE, {})
     assert config.providers_for("cheap") == []
-    assert len(config.skipped) == 9
+    assert len(config.skipped) == 10
 
 
 def test_provider_with_unset_key_is_skipped() -> None:

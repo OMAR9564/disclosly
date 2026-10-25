@@ -1,0 +1,28 @@
+{
+ "case_id": "en-pep-unsupported-claim",
+ "dataset": "verifier_seeded",
+ "interactions": [
+  {
+   "key": "9bf9e69f9a6793ea3a71a7bfa1f0c2953831b1563667917c9562d51c6a105493",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":false,\"reason\":\"Finding only states total debt and adds a cause not in evidence; it does not provide net debt, EBITDA, or the net‑debt‑to‑EBITDA ratio required to answer the question.\"}]}",
+    "tool_calls": [],
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 816,
+    "tokens_out": 240,
+    "latency_ms": 3172.808,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash",
+     "openrouter-large"
+    ]
+   }
+  }
+ ],
+ "tools": [],
+ "sandbox": [],
+ "decision": null
+}

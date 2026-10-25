@@ -264,6 +264,19 @@ def test_to_partial_keeps_chart_of_untouched_table() -> None:
     assert partial.unverified == ["Net borç 50 milyar TL"]
 
 
+def test_to_partial_drops_the_chart_of_an_emptied_table() -> None:
+    report = _report()
+    validation = validate_report(report, SEEN, CALCS, "tr")
+    assert report.chart is not None
+    table = report.chart.table
+    validation.bad_rows = {(table, r) for r in range(len(report.tables[table].rows))}
+
+    partial = to_partial(report, validation, "tr")
+
+    assert len(partial.tables) == len(report.tables) - 1
+    assert partial.chart is None
+
+
 def test_to_partial_with_nothing_left() -> None:
     report = _report(
         summary="Oran 7 [1].",
@@ -275,3 +288,25 @@ def test_to_partial_with_nothing_left() -> None:
     assert partial.summary.startswith("No answer could be verified")
     assert partial.citations == []
     assert partial.unverified[0] == "Oran 7 [1]."
+
+
+def test_deep_reports_reject_percentages_the_model_derived() -> None:
+    # 41,2 / 38,5 - 1 = %7,0: implied by the cited facts, but no calculation made it (FR-008).
+    report = _report(points=[{"text": "Net borç %7,0 arttı", "cite_ids": ["f:88", "f:87"]}])
+    assert 0 not in validate_report(report, SEEN, CALCS, "tr").bad_points
+    deep = validate_report(report, SEEN, CALCS, "tr", derived_ok=False)
+    assert deep.bad_points == {0}
+
+
+def test_a_negative_calculation_output_supports_its_magnitude() -> None:
+    calcs = {"k:1": Decimal("-34.04782032389833")}
+    report = _report(points=[{"text": "Net borç 34,05 puan düştü", "cite_ids": ["k:1"]}])
+    assert validate_report(report, SEEN, calcs, "tr", derived_ok=False).bad_points == set()
+
+
+def test_a_malformed_number_in_a_cell_is_rejected() -> None:
+    body = _report().model_dump()
+    body["tables"][0]["rows"][0][1] = {"text": "0.3508326245251898", "cite_id": "k:1"}
+    report = Report.model_validate(body)
+    validation = validate_report(report, SEEN, CALCS, "tr")
+    assert (0, 0) in validation.bad_rows
