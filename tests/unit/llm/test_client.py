@@ -408,3 +408,17 @@ async def test_each_provider_uses_its_own_timeout() -> None:
     await _call(handler)
     assert seen[0]["read"] == 60.0
     assert seen[1]["read"] == 15.0
+
+
+def test_reasoning_effort_is_sent_only_when_configured() -> None:
+    quiet = _provider().model_copy(update={"reasoning_effort": "none"})
+    assert build_payload(quiet, _request())["reasoning_effort"] == "none"
+    assert "reasoning_effort" not in build_payload(_provider(), _request())
+
+
+def test_gemini_stable_has_reasoning_off() -> None:
+    from llm.config import load_providers
+
+    config = load_providers("llm/providers.yaml", {"GEMINI_API_KEY": "k"})
+    stable = next(p for p in config.providers_for("strong") if p.name == "gemini-flash-stable")
+    assert stable.reasoning_effort == "none"

@@ -7,6 +7,7 @@ A task class that names an unknown provider is a configuration error.
 import re
 from collections.abc import Mapping
 from pathlib import Path
+from typing import Literal
 
 import yaml
 from pydantic import BaseModel, ConfigDict, Field, SecretStr, ValidationError, model_validator
@@ -40,6 +41,9 @@ class ProviderSpec(BaseModel):
     price_per_mtok: Price
     # Seconds to wait for one answer; slow hosted models need more than the default.
     timeout_seconds: float = Field(default=15.0, gt=0, le=120)
+    # Sent as `reasoning_effort`; "none" stops a thinking model from spending the answer's
+    # token budget on hidden reasoning.
+    reasoning_effort: Literal["none", "minimal", "low", "medium", "high"] | None = None
 
 
 class ProvidersFile(BaseModel):
@@ -70,6 +74,7 @@ class Provider(BaseModel):
     native_tools: bool
     price_per_mtok: Price
     timeout_seconds: float = 15.0
+    reasoning_effort: str | None = None
 
 
 class RouterConfig(BaseModel):
@@ -101,6 +106,7 @@ def _resolve(name: str, spec: ProviderSpec, env: Mapping[str, str]) -> Provider 
         native_tools=spec.native_tools,
         price_per_mtok=spec.price_per_mtok,
         timeout_seconds=spec.timeout_seconds,
+        reasoning_effort=spec.reasoning_effort,
     )
 
 

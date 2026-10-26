@@ -175,6 +175,8 @@ def build_payload(provider: Provider, request: ChatRequest) -> dict[str, Any]:
         "temperature": request.temperature,
         "max_tokens": request.max_tokens,
     }
+    if provider.reasoning_effort is not None:
+        payload["reasoning_effort"] = provider.reasoning_effort
     if request.response_schema is not None:
         schema = request.response_schema
         payload["response_format"] = {
