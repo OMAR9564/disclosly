@@ -300,7 +300,12 @@ def to_partial(report: Report, validation: ReportValidation, language: Language)
             for r, row in enumerate(table.rows)
             if (t, r) in validation.bad_rows
         ]
-        if rows:
+        # A table that lost rows keeps only placeholder rows ("—", "no data") unless a kept row
+        # still has a number; such a table says nothing, so it goes too.
+        lost = len(rows) < len(table.rows)
+        if rows and not (
+            lost and not any(figures(cell.text, language) for row in rows for cell in row)
+        ):
             index_map[t] = len(tables)
             tables.append(table.model_copy(update={"rows": rows}))
     chart = report.chart

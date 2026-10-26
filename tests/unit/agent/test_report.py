@@ -310,3 +310,21 @@ def test_a_malformed_number_in_a_cell_is_rejected() -> None:
     report = Report.model_validate(body)
     validation = validate_report(report, SEEN, CALCS, "tr")
     assert (0, 0) in validation.bad_rows
+
+
+def test_to_partial_drops_a_table_left_with_placeholder_rows() -> None:
+    body = _report().model_dump()
+    rows = body["tables"][0]["rows"]
+    body["tables"][0]["rows"] = [
+        [rows[0][0], {"text": "39,0 milyar TL", "cite_id": None}, {"text": "—"}],  # uncited
+        [{"text": "2025-Q4"}, {"text": "—"}, {"text": "veri yok"}],
+    ]
+    body["chart"] = None
+    report = Report.model_validate(body)
+    validation = validate_report(report, SEEN, CALCS, "tr")
+    assert validation.bad_rows == {(0, 0)}
+
+    partial = to_partial(report, validation, "tr")
+
+    assert partial.tables == []
+    assert any("39,0 milyar TL" in u for u in partial.unverified)
