@@ -237,13 +237,21 @@ per run.
 PROJECT_SPEC §7 defines `run_python` with pandas/numpy and trends over many periods are easier
 in pandas). One sandbox run per calculation (more container starts for no gain).
 
+Balance-sheet facts (cash, total debt, net debt, total assets, equity) asked for `YYYY-Q4` come
+from the `YYYY-FY` year-end report when no Q4 figure is stored, since issuers file an annual
+report instead of a fourth-quarter one; the excerpt names the year-end balance sheet. Flow
+metrics never do: a year is not its fourth quarter (amended 2026-10-26).
+
 ## R10. Verifier
 
 **Decision**: Three checks, in order:
 
 1. **Inputs** (code): every calculation input is re-resolved from its citation (fact value
    from the database; chunk number from the stored chunk text). A mismatch fails the
-   calculation.
+   calculation. So does a calculation that names net debt (in its name or description) but
+   has total debt and no cash among its inputs, nor a net debt fact or an earlier net debt
+   calculation (amended 2026-10-26: a "net debt / EBITDA" built on total debt reached a
+   production report).
 2. **Recompute** (sandbox): all calculations re-run in one fresh sandbox execution with the
    re-resolved inputs; every output must equal the recorded output within
    `max(1e-9 × |value|, 0.005)` (and, for percentages, 0.1 pp as in Phase 3).

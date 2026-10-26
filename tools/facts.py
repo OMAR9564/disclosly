@@ -2,7 +2,7 @@
 
 import asyncio
 from decimal import Decimal
-from typing import Literal
+from typing import Any, Literal
 
 from sqlalchemy import Engine, select
 
@@ -70,6 +70,16 @@ def format_number(value: Decimal, language: Language) -> str:
 
 
 REPORT_LABEL: dict[Language, str] = {"tr": "{period} raporu", "en": "{period} report"}
+# Balance-sheet amounts are stocks at a date: the year-end balance sheet (stored as YYYY-FY,
+# since KAP and SEC file one annual report instead of a Q4 one) is also the YYYY-Q4 figure.
+# Flow amounts (revenue, income, EBITDA) are not: a year is not its fourth quarter.
+BALANCE_SHEET_METRICS = frozenset(
+    {"cash", "total_debt", "net_debt", "total_assets", "total_equity"}
+)
+YEAR_END_LABEL: dict[Language, str] = {
+    "tr": "{period} yıl sonu bilançosu",
+    "en": "{period} year-end balance sheet",
+}
 
 
 def source_column(source_ref: str | None) -> str | None:
@@ -112,6 +122,9 @@ def _query(
     engine: Engine, ticker: str, metrics: list[str], periods: list[str], language: Language
 ) -> list[SeenItem]:
     facts, companies, docs = schema.financial_facts, schema.companies, schema.documents
+    # YYYY-Q4 asked: the year-end balance sheet (YYYY-FY) can answer its balance-sheet metrics.
+    year_ends = {f"{p[:4]}-FY": p for p in periods if p.endswith("-Q4")}
+    wanted = list(dict.fromkeys([*periods, *year_ends]))
     query = (
         select(
             facts.c.id,
@@ -135,24 +148,39 @@ def _query(
         .where(
             companies.c.ticker == ticker,
             facts.c.metric.in_(metrics),
-            facts.c.period.in_(periods),
+            facts.c.period.in_(wanted),
         )
         # The figure as first reported comes before restatements in later reports.
         .order_by(facts.c.metric, facts.c.period, docs.c.period != facts.c.period, facts.c.id)
     )
     with engine.connect() as conn:
-        rows = list(conn.execute(query))
+        found = list(conn.execute(query))
+    asked = set(periods)
+    have = {(r.metric, r.period) for r in found if r.period in asked}
+    rows: list[tuple[Any, str, str | None]] = []  # (row, period shown, year-end period)
+    for r in found:
+        if r.period in asked:
+            rows.append((r, r.period, None))
+        elif (
+            r.metric in BALANCE_SHEET_METRICS
+            and (quarter := year_ends.get(r.period))
+            and (r.metric, quarter) not in have
+        ):
+            have.add((r.metric, quarter))
+            rows.append((r, quarter, r.period))
     return [
         SeenItem(
             cite_id=f"f:{r.id}",
             text=render_fact(
                 r.metric,
-                r.period,
+                period,
                 r.value,
                 r.unit,
                 r.currency,
                 language,
-                column=source_column(r.source_ref),
+                column=YEAR_END_LABEL[language].format(period=year_end)
+                if year_end
+                else source_column(r.source_ref),
                 report_period=r.report_period,
             ),
             value=r.value,
@@ -162,7 +190,8 @@ def _query(
                 "document_id": r.source_document_id,
                 "ticker": r.ticker,
                 "doc_type": r.doc_type,
-                "period": r.period,
+                "period": period,
+                **({"year_end": year_end} if year_end else {}),
                 "metric": r.metric,
                 "unit": r.unit,
                 "currency": r.currency,
@@ -170,7 +199,7 @@ def _query(
                 "source_url": r.source_url,
             },
         )
-        for r in rows
+        for r, period, year_end in rows
     ]
 
 

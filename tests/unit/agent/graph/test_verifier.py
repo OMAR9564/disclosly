@@ -327,3 +327,53 @@ def test_writer_marks_the_report_partial_with_what_was_dropped() -> None:
     assert with_unverified(report, [], "tr") is report
     refused = report.model_copy(update={"status": "refused"})
     assert with_unverified(refused, ["x"], "tr") is refused
+
+
+def _fact(cite_id: str, metric: str) -> SeenItem:
+    return SeenItem(
+        cite_id=cite_id, text="x", value=Decimal(1), source={"kind": "fact", "metric": metric}
+    )
+
+
+def test_a_net_debt_ratio_needs_cash_or_a_net_debt_figure() -> None:
+    from agent.graph.nodes.verifier import definition_problem
+
+    gross = {"f:88": _fact("f:88", "total_debt"), "f:91": _fact("f:91", "ebitda")}
+    assert definition_problem(CALC, gross, {}) == (
+        "net debt needs cash (or a net debt figure); only total debt was used"
+    )
+    net = {**gross, "f:88": _fact("f:88", "net_debt")}
+    assert definition_problem(CALC, net, {}) is None
+    with_cash = CALC.model_copy(
+        update={
+            "inputs": [
+                *CALC.inputs,
+                CalculationInput(name="cash", cite_id="f:92", value=Decimal(1)),
+            ]
+        }
+    )
+    assert definition_problem(with_cash, {**gross, "f:92": _fact("f:92", "cash")}, {}) is None
+    # Net debt from an earlier calculation counts.
+    earlier = CALC.model_copy(update={"cite_id": "k:2", "name": "net_debt", "description": ""})
+    chained = CALC.model_copy(
+        update={
+            "inputs": [
+                CalculationInput(name="net_debt", cite_id="k:2", value=Decimal(1)),
+                CALC.inputs[1],
+            ]
+        }
+    )
+    assert definition_problem(chained, gross, {"k:2": earlier}) is None
+    # A ratio that does not claim net debt is left alone.
+    gross_ratio = CALC.model_copy(
+        update={"name": "debt_to_ebitda", "description": "Toplam borç / FAVÖK"}
+    )
+    assert definition_problem(gross_ratio, gross, {}) is None
+
+
+async def test_a_net_debt_ratio_on_total_debt_fails_the_input_check() -> None:
+    total = NET_DEBT.model_copy(update={"source": {**NET_DEBT.source, "metric": "total_debt"}})
+    update, _ = await _verify([_claims(("F2", True))], store=Store({"f:88": total, "f:91": EBITDA}))
+    result = update["verification"]
+    assert ("input_mismatch", "k:1") in [(f.kind, f.ref) for f in result.failures]
+    assert update["calculations"][0].verified is False
