@@ -842,3 +842,17 @@ more than `CHECKPOINT_RETENTION_DAYS` (default 7) ago, once a day. To see the si
 dc exec postgres psql -U disclosly disclosly -c \
   "select pg_size_pretty(sum(pg_total_relation_size(c.oid))) from pg_class c join pg_namespace n on n.oid = c.relnamespace where n.nspname = 'agent_graph'"
 ```
+
+### 6. Memory
+
+Measured 2026-10-26 on the server, graph engine on, idle: `api` 238.8 MiB of 512 MiB (47%),
+`sandbox` 41.2 MiB of 128 MiB. One calculation container running a 5 s batch peaked at
+18.3 MiB of its 512 MiB limit; at most two run at once. To measure again:
+
+```bash
+docker stats --no-stream --format '{{.Name}} {{.MemUsage}} {{.MemPerc}}'                 # server
+docker stats --no-stream $(docker ps -q --filter label=disclosly.sandbox=1)               # server, during a calculation
+```
+
+If `api` stays above 80% of its limit (410 MiB) during deep runs, raise it with the owner
+before changing `mem_limit` in `infra/docker-compose.yml`.
