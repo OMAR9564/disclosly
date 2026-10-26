@@ -26,7 +26,9 @@ providers:
     native_tools: true
     price_per_mtok: {input: 0.30, output: 2.50}
   # First in `strong`: answers in about 1 s, while the 3.x flash models took 10-15 s and
-  # often returned 503 (measured 2026-10-22); the client timeout is 15 s.
+  # often returned 503 (measured 2026-10-22); the client timeout is 15 s. It thinks by
+  # default, and the thinking used about 2,000 of an analyst call's 2,048 tokens, cutting the
+  # JSON short (2026-10-26); with reasoning off the same call answered in 6 s.
   gemini-flash-stable:
     base_url: https://generativelanguage.googleapis.com/v1beta/openai
     model: gemini-2.5-flash
@@ -34,6 +36,7 @@ providers:
     daily_requests: 250
     native_tools: true
     price_per_mtok: {input: 0.30, output: 2.50}
+    reasoning_effort: none
   groq-llama:
     base_url: https://api.groq.com/openai/v1
     model: openai/gpt-oss-20b
