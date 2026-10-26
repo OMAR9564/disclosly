@@ -97,6 +97,39 @@ def check_input(item: CalculationInput, source: SeenItem | None) -> str | None:
     return None
 
 
+# A calculation that says it computes net debt (or a ratio of it) must subtract cash: from a
+# cash fact, a net debt fact, or another calculation of net debt. Total debt alone is gross
+# debt, and a ratio built on it would be shown to the user under the wrong name.
+_NET_DEBT = re.compile(r"net[\s_-]*(debt|bor[çc])", re.IGNORECASE)
+
+
+def _mentions_net_debt(calc: Calculation) -> bool:
+    return bool(_NET_DEBT.search(f"{calc.name} {calc.description}"))
+
+
+def definition_problem(
+    calc: Calculation, sources: Mapping[str, SeenItem], calcs: Mapping[str, Calculation]
+) -> str | None:
+    """Why the inputs cannot give what the calculation says it computes, or None."""
+    if not _mentions_net_debt(calc):
+        return None
+    metrics = set()
+    for item in calc.inputs:
+        if item.cite_id.startswith("k:"):
+            source_calc = calcs.get(item.cite_id)
+            if source_calc is not None and _mentions_net_debt(source_calc):
+                return None
+            continue
+        source = sources.get(item.cite_id)
+        if source is not None:
+            metrics.add((source.source or {}).get("metric"))
+    if metrics & {"cash", "net_debt"}:
+        return None
+    if "total_debt" in metrics:
+        return "net debt needs cash (or a net debt figure); only total debt was used"
+    return None
+
+
 class Checks:
     """Failures collected over one verification round."""
 
@@ -132,6 +165,7 @@ async def _check_calculations(
     """Inputs and recompute for the round's unchecked calculations; returns them updated."""
     evidence = {item.cite_id: item for item in state.get("evidence") or []}
     pending = [c for c in state.get("calculations") or [] if not c.checked]
+    by_cite = {c.cite_id: c for c in state.get("calculations") or []}
     sources = await _reload(ctx, [i.cite_id for c in pending for i in c.inputs], evidence)
     rerun: list[Calculation] = []
     for calc in pending:
@@ -139,6 +173,8 @@ async def _check_calculations(
             checks.calc("sandbox_error", calc, calc.error or "no result")
             continue
         problems = [p for i in calc.inputs if (p := check_input(i, sources.get(i.cite_id)))]
+        if not problems and (wrong := definition_problem(calc, sources, by_cite)):
+            problems.append(wrong)
         if problems:
             checks.calc("input_mismatch", calc, "; ".join(problems)[:300])
         else:

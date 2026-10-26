@@ -3,7 +3,9 @@
 from decimal import Decimal
 
 import pytest
+from sqlalchemy import insert
 
+from ingestion import schema
 from llm.types import ToolCall
 from tests.integration.retrieval.corpus import Corpus
 from tools.facts import get_financial_facts
@@ -73,3 +75,49 @@ async def test_registry_dispatch_wraps_facts(facts_corpus: Corpus) -> None:
     )
     assert result.count == 1
     assert result.content.startswith('<untrusted_document cite_id="f:503">')
+
+
+def _add_year_end(corpus: Corpus, rows: list[tuple[int, str, str, str]]) -> None:
+    with corpus.engine.begin() as conn:
+        conn.execute(
+            insert(schema.financial_facts),
+            [
+                {"id": fid, "company_id": 1, "metric": metric, "period": period,
+                 "value": Decimal(value), "unit": "million", "currency": "TRY",
+                 "source_document_id": 10, "source_ref": "table 2"}
+                for fid, metric, period, value in rows
+            ],
+        )  # fmt: skip
+
+
+async def test_q4_balance_sheet_comes_from_the_year_end_report(facts_corpus: Corpus) -> None:
+    _add_year_end(
+        facts_corpus,
+        [(701, "total_debt", "2025-FY", "700"), (702, "revenue", "2025-FY", "36000")],
+    )
+    items = await get_financial_facts(
+        facts_corpus.engine,
+        ticker="THYAO",
+        metrics=["total_debt", "revenue"],
+        periods=["2025-Q4"],
+    )
+    # The year's revenue is not its fourth quarter's; the year-end debt is the Q4 debt.
+    assert [i.cite_id for i in items] == ["f:701"]
+    debt = items[0]
+    assert debt.source["period"] == "2025-Q4"
+    assert debt.source["year_end"] == "2025-FY"
+    assert debt.text.startswith("Toplam borç (2025-Q4; 2025-FY yıl sonu bilançosu")
+
+
+async def test_a_reported_q4_figure_wins_over_the_year_end(facts_corpus: Corpus) -> None:
+    _add_year_end(
+        facts_corpus,
+        [(703, "cash", "2025-FY", "50"), (704, "cash", "2025-Q4", "51")],
+    )
+    items = await get_financial_facts(
+        facts_corpus.engine, ticker="THYAO", metrics=["cash"], periods=["2025-Q4", "2025-FY"]
+    )
+    assert sorted((i.cite_id, i.source["period"]) for i in items) == [
+        ("f:703", "2025-FY"),
+        ("f:704", "2025-Q4"),
+    ]
