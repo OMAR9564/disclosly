@@ -36,7 +36,7 @@ from agent.graph.state import Calculation, ResearchState
 from agent.loop import Budget, RunOutcome, Tools, run_agent
 from agent.report import Report, finalize_report
 from agent.supervisor import Lease, Leases
-from agent.telemetry import run_span
+from agent.telemetry import record_resume, run_span
 from api import schema
 from api.errors import ApiError, ErrorCode, localized_message
 from llm.router import Router
@@ -328,6 +328,7 @@ class RunService:
             )
             graph_input = Command(resume=decision.model_dump(mode="json"))
         from_node = snapshot.next[0] if snapshot.next else None
+        record_resume(run_id=str(run.id), from_node=from_node, resume_count=resume_count)
         await self._emit_service(
             run.id, "run_resumed", {"from_node": from_node, "resume_count": resume_count}
         )

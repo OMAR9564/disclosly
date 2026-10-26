@@ -65,7 +65,7 @@ class Settings(BaseSettings):
     agent_max_tool_calls: int = Field(default=6, ge=0)
 
     # Multi-agent research (specs/004-multi-agent-graph/contracts/agent-graph.md).
-    agent_engine: AgentEngine = "single"
+    agent_engine: AgentEngine = "graph"
     agent_deep_max_model_calls: int = Field(default=20, ge=1)
     agent_deep_deadline_seconds: int = Field(default=300, ge=1)
     agent_deep_max_steps: int = Field(default=12, ge=1)

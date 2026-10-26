@@ -150,3 +150,68 @@ flowchart LR
 Both paths apply the same filters (ticker, period range, document type, section, language,
 chunker version) in SQL, so no hit can break a filter. Every hit carries its document, section,
 page and source URL for citation.
+
+## Research graph (Phase 4)
+
+Design and the choices behind it: [ADR 0004](adr/0004-multi-agent-graph.md). With
+`AGENT_ENGINE=graph`, `POST /v1/research` starts a LangGraph run in the API process.
+
+```mermaid
+flowchart LR
+    router[router<br/>mode, tickers, periods] --> memory[memory<br/>watchlist, default period]
+    memory -->|simple or refused| rs[retriever_simple] --> ws[writer_simple]
+    memory -->|deep| qg[quota_gate]
+    qg --> planner[planner] --> decision{{decision<br/>user approves, edits, cancels}}
+    qg -->|no deep quota| decision
+    decision -->|approve| retriever[retriever<br/>facts and documents per step]
+    retriever --> analyst[analyst<br/>findings, calculations]
+    analyst --> verifier[verifier<br/>recompute, check inputs, claim support]
+    verifier -->|failed, round < 2| planner
+    verifier -->|passed| writer[writer<br/>report, tables, chart]
+    writer --> report([report])
+    ws --> report
+    retriever -. limit or error .-> fp[finalize_partial] --> report
+```
+
+Every node runs inside a wrapper that counts model calls per node, enforces the run's budget
+and opens an `agent.node` span. The state after each node is written to Postgres schema
+`agent_graph` before the next node starts. Events (`plan_proposed`, `step_started`,
+`verification`, `final` and others) go to the run's Redis stream, which the browser reads over
+SSE, as in Phase 3.
+
+### Calculation sandbox
+
+```mermaid
+flowchart LR
+    api[api<br/>analyst, verifier] -->|POST /run<br/>sandbox_net, internal| sandbox[sandbox service<br/>Docker socket]
+    sandbox -->|create, start, wait, logs, remove| docker[(Docker daemon)]
+    docker --> box[calculation container<br/>no network, read-only, 512 MiB,<br/>1 CPU, 64 pids, 20 s]
+```
+
+The analyst writes calculations as Python over named inputs, each tied to a cited fact. The
+API sends the code and the input values to `sandbox`, which starts one container per batch
+with a fixed spec and returns the outputs as decimals. `sandbox_net` is internal, so neither
+`sandbox` nor the calculation container can reach the internet, and `sandbox` is the only
+container with the Docker socket.
+
+### Resume after a restart
+
+```mermaid
+sequenceDiagram
+    participant A as api (old process)
+    participant R as Redis
+    participant P as Postgres
+    participant B as api (new process)
+    A->>R: SET run:{id}:lease NX PX 30000, renew every 10 s
+    A->>P: checkpoint after each node
+    Note over A: deploy or crash
+    R-->>R: lease expires after 30 s
+    B->>P: running graph runs (every 15 s)
+    B->>R: SET run:{id}:lease NX
+    B->>P: load the last checkpoint
+    B->>R: event run_resumed {from_node}
+    B->>P: continue from the next node
+```
+
+The resumed run keeps its event ids in order, takes no second quota unit and repeats no
+finished node. A run resumed more than 3 times fails with `interrupted_limit`.

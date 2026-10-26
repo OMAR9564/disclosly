@@ -164,15 +164,15 @@ Backend packages at repo root (`api/`, `agent/`, `agent/graph/`, `llm/`, `tools/
 
 ## Phase 9: Polish & Cross-Cutting Concerns
 
-- [ ] T053 [P] Extend the log/trace scrub test `tests/integration/api/test_no_secrets_in_logs.py` to a full graph run with memory and a calculation: no email, key, memory value (ticker or preference), calculation code or calculation input appears in logs or spans
-- [ ] T054 [P] Telemetry test `tests/unit/agent/graph/test_telemetry.py`: in-memory exporter shows `agent.node` per node with attempt, `sandbox.run`, `agent.verify` per round, `agent.resume` after a resume; user id hashed
-- [ ] T055 [P] ADR `docs/adr/0004-multi-agent-graph.md`: LangGraph + Postgres checkpointer in schema `agent_graph`, batched stages and the call budget, Redis leases and the supervisor, quota swap, sandbox service holding the Docker socket with the fixed container spec, verifier design, `AGENT_ENGINE` switch; amend ADR 0003's consequences (runs are no longer failed by a deploy)
-- [ ] T056 [P] Runbook `docs/runbook.md`: sandbox service and image (pull, rebuild, check `docker ps` for leftovers), resuming and inspecting a stuck run (lease key, checkpoint thread, `resume_count`), switching `AGENT_ENGINE`, deep quota changes, checkpoint retention
-- [ ] T057 [P] Update `docs/architecture.md` with the graph, the sandbox service and the resume flow
+- [X] T053 [P] Extend the log/trace scrub test `tests/integration/api/test_no_secrets_in_logs.py` to a full graph run with memory and a calculation: no email, key, memory value (ticker or preference), calculation code or calculation input appears in logs or spans
+- [X] T054 [P] Telemetry test `tests/unit/agent/graph/test_telemetry.py`: in-memory exporter shows `agent.node` per node with attempt, `sandbox.run`, `agent.verify` per round, `agent.resume` after a resume; user id hashed
+- [X] T055 [P] ADR `docs/adr/0004-multi-agent-graph.md`: LangGraph + Postgres checkpointer in schema `agent_graph`, batched stages and the call budget, Redis leases and the supervisor, quota swap, sandbox service holding the Docker socket with the fixed container spec, verifier design, `AGENT_ENGINE` switch; amend ADR 0003's consequences (runs are no longer failed by a deploy)
+- [X] T056 [P] Runbook `docs/runbook.md`: sandbox service and image (pull, rebuild, check `docker ps` for leftovers), resuming and inspecting a stuck run (lease key, checkpoint thread, `resume_count`), switching `AGENT_ENGINE`, deep quota changes, checkpoint retention
+- [X] T057 [P] Update `docs/architecture.md` with the graph, the sandbox service and the resume flow
 - [ ] T058 Measure memory after the graph and sandbox land: `api` idle and during a deep run, `sandbox` service, peak sandbox container; record in the `README.md` memory table and `docs/runbook.md`; if `api` exceeds 80% of 512 MB, stop and ask the owner before changing limits
-- [ ] T059 [P] i18n completeness and mobile checks: `web/tests/i18n/keys.test.ts` passes with all new keys; `web/tests/e2e/mobile.spec.ts` adds the plan dialog, report and settings page at 375×812
-- [ ] T060 Run the CI eval gate end to end (`evals.run agent`, `graph`, `compare` with `--replay`) and the full test suites (`pytest`, `pytest -m integration`, `pytest -m sandbox`, web unit and e2e); fix regressions without weakening tests
-- [ ] T061 Switch the engine: `AGENT_ENGINE` default becomes `graph` in `api/config.py`, `.env.example` and `infra/docker-compose.yml`; `tests/unit/api/test_config.py` updated; runbook notes how to switch back
+- [X] T059 [P] i18n completeness and mobile checks: `web/tests/i18n/keys.test.ts` passes with all new keys; `web/tests/e2e/mobile.spec.ts` adds the plan dialog, report and settings page at 375×812
+- [X] T060 Run the CI eval gate end to end (`evals.run agent`, `graph`, `compare` with `--replay`) and the full test suites (`pytest`, `pytest -m integration`, `pytest -m sandbox`, web unit and e2e); fix regressions without weakening tests
+- [X] T061 Switch the engine: `AGENT_ENGINE` default becomes `graph` in `api/config.py`, `.env.example` and `infra/docker-compose.yml`; `tests/unit/api/test_config.py` updated; runbook notes how to switch back
 - [ ] T062 Run [quickstart.md](./quickstart.md) end to end on production with the owner's and test accounts, including the manual restart during a deep run and while a plan waits; record SC-001–SC-010 results, latency percentiles from `runs.usage` (plan time, report time after approval) and the live comparison notes in `evals/reports/phase4-<date>.md`
 
 ---

@@ -1,3 +1,7 @@
+import type { Page } from "@playwright/test";
+
+import { sseBody } from "./run";
+
 /** Synthetic deep run used by the mocked-API tests: a plan, an approval, then a report. */
 
 export const DEEP_RUN_ID = "7d1c9a52-0000-4000-8000-000000000002";
@@ -231,3 +235,53 @@ export const QUOTAS = {
   },
   deep: { limit: 5, used: 1, remaining: 4, resets_at: "2026-10-22T21:00:00Z" },
 };
+
+/** Mocks a deep run: plan pause, then the timeline and report after the decision. */
+export async function mockDeepRun(
+  page: Page,
+): Promise<{ decisions: unknown[] }> {
+  const decisions: unknown[] = [];
+  let streams = 0;
+  await page.route("**/healthz", (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ status: "ok", version: "abc1234" }),
+    }),
+  );
+  await page.route("**/v1/auth/refresh", (route) =>
+    route.fulfill({ status: 401, body: "{}" }),
+  );
+  await page.route(`**/v1/research/${DEEP_RUN_ID}/stream`, (route) => {
+    streams += 1;
+    // The first stream ends at the pause; after the decision a new EventSource cannot send
+    // Last-Event-ID, so the server replays from the start and the client skips what it saw.
+    const events =
+      streams === 1 ? BEFORE_DECISION : [...BEFORE_DECISION, ...AFTER_DECISION];
+    return route.fulfill({
+      status: 200,
+      contentType: "text/event-stream",
+      body: sseBody(events),
+    });
+  });
+  await page.route(`**/v1/research/${DEEP_RUN_ID}/approve`, async (route) => {
+    decisions.push(route.request().postDataJSON());
+    await route.fulfill({
+      status: 202,
+      contentType: "application/json",
+      body: JSON.stringify({
+        run_id: DEEP_RUN_ID,
+        status: "running",
+        quota: QUOTAS,
+      }),
+    });
+  });
+  await page.route(`**/v1/research/${DEEP_RUN_ID}`, (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify(DEEP_RUN),
+    }),
+  );
+  return { decisions };
+}

@@ -72,7 +72,9 @@ database read.
 ## Consequences
 
 - A deploy restarts the API and interrupts running runs. They are marked `failed` on startup,
-  and their quota is not refunded.
+  and their quota is not refunded. With `AGENT_ENGINE=graph` this holds only for runs started
+  by the single agent; graph runs resume from their last checkpoint (ADR 0004, amended
+  2026-10-26).
 - Fallback quality varies by provider; the eval gate (citation coverage 100%) runs against
   recorded cassettes, not live providers.
 - The deploy workflow builds the worker image when worker code changes (amended 2026-10-22).
