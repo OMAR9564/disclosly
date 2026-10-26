@@ -52,15 +52,22 @@ Answers, single agent against the multi-agent graph, measured 2026-10-26 on the 
 
 ## Cost and latency
 
-Production idle memory (Phase 1, measured 2026-10-19 with `docker stats --no-stream`):
+Production memory after Phase 4 (measured 2026-10-26 with `docker stats --no-stream`, graph
+engine on, idle):
 
 | Service | Used | Limit |
 |---|---|---|
-| api | 133.7 MiB | 512 MiB |
-| postgres | 31.1 MiB | 1 GiB |
-| caddy | 12.8 MiB | 64 MiB |
-| redis | 3.2 MiB | 160 MiB |
-| total | about 181 MiB | 2 GB target |
+| api | 238.8 MiB | 512 MiB |
+| sandbox (service) | 41.2 MiB | 128 MiB |
+| calculation container (peak, one 5 s batch) | 18.3 MiB | 512 MiB |
+| search | 564.1 MiB | 1.5 GiB |
+| worker | 439.6 MiB | 768 MiB |
+| postgres | 348.6 MiB | 1 GiB |
+| caddy | 18.8 MiB | 64 MiB |
+| redis | 3.5 MiB | 160 MiB |
+
+`api` during a deep run is not measured yet; it is recorded with the Phase 4 production check
+(`evals/reports/phase4-<date>.md`). The Phase 1 idle figure for `api` was 133.7 MiB.
 
 Search latency on the server (2026-10-20, 2 vCPU, 204 searches, no cache): p50 0.61 s,
 p95 0.88 s (target p95 < 1 s). One search process with both models loaded uses about 1.4 GiB.
