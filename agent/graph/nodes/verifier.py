@@ -18,6 +18,7 @@ writer marks the report partial.
 
 import json
 import re
+from collections import Counter
 from collections.abc import Mapping
 from decimal import Decimal
 from typing import Any, Literal
@@ -37,6 +38,7 @@ from agent.graph.state import (
 )
 from agent.prompts import node_prompt, with_schema
 from agent.report import calculation_item
+from agent.telemetry import verify_span
 from llm.types import ChatMessage, ChatRequest
 from tools.python import SandboxRejected, run_python
 from tools.registry import wrap
@@ -266,6 +268,18 @@ async def _check_findings(
 
 
 async def verifier_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
+    round_number = state.get("verify_rounds", 0) + 1
+    with verify_span(round_number=round_number) as span:
+        update, checks = await _verify(state, ctx, round_number)
+        span.set_attribute("disclosly.verify.passed", not checks.failures)
+        for kind, count in Counter(f.kind for f in checks.failures).items():
+            span.set_attribute(f"disclosly.verify.failures.{kind}", count)
+    return update
+
+
+async def _verify(
+    state: ResearchState, ctx: NodeContext, round_number: int
+) -> tuple[dict[str, Any], Checks]:
     checks = Checks()
     checked = await _check_calculations(state, ctx, checks)
     known = {c.cite_id: c for c in state.get("calculations") or []}
@@ -273,8 +287,6 @@ async def verifier_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any
     findings = state.get("findings") or []
     await _check_findings(state, ctx, findings, list(known.values()), checks)
 
-    rounds = state.get("verify_rounds", 0)
-    round_number = rounds + 1
     passed = not checks.failures
     result = VerificationResult(round=round_number, passed=passed, failures=checks.failures)
     update: dict[str, Any] = {"verification": result, "calculations": checked}
@@ -300,4 +312,4 @@ async def verifier_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any
             "next": next_node,
         },
     )
-    return update
+    return update, checks

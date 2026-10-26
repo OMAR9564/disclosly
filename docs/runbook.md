@@ -752,3 +752,93 @@ dc ps search            # healthy once the models are loaded
 ```
 
 If every run fails at its first search, check `dc logs search` first.
+
+## Multi-agent research graph
+
+Design: [ADR 0004](adr/0004-multi-agent-graph.md). The commands below run on the server as
+`deploy`, with the `dc` alias from [Logs](#logs).
+
+### 1. Sandbox service and image
+
+`sandbox` runs `sandbox.service` and is the only container with `/var/run/docker.sock`. Each
+calculation batch runs in a new container from `ghcr.io/omar9564/disclosly-sandbox:<tag>`,
+where the tag is `SANDBOX_IMAGE_TAG` in the server `.env` (default `main`). The deploy
+workflow builds and pushes the image only when `sandbox/Dockerfile`,
+`sandbox/requirements.txt` or `sandbox/runner/` change; `deploy.sh` pulls it.
+
+```bash
+docker pull ghcr.io/omar9564/disclosly-sandbox:main   # server: fetch the image by hand
+dc restart sandbox                                     # pick up a new image or tag
+dc logs --tail 100 sandbox                             # one line per run, no code or inputs
+```
+
+To rebuild on the laptop and test the container spec:
+
+```bash
+docker build -f sandbox/Dockerfile -t disclosly-sandbox:dev .   # laptop
+uv run pytest -m sandbox --no-cov tests/integration/sandbox     # laptop: escape suite
+```
+
+Calculation containers carry the label `disclosly.sandbox=1` and are removed after each run.
+Anything left over means a run was killed mid-calculation:
+
+```bash
+docker ps -a --filter label=disclosly.sandbox=1                          # server: should be empty
+docker rm -f $(docker ps -aq --filter label=disclosly.sandbox=1)         # server: remove leftovers
+```
+
+If deep runs fail with `sandbox_unavailable`, check `dc ps sandbox`, then
+`dc logs sandbox` for Docker errors, then that the image is present (`docker images | grep sandbox`).
+
+### 2. A stuck run
+
+A graph run runs only where its Redis lease `run:<id>:lease` lives (30 s, renewed every
+10 s). The supervisor in each API process resumes `running` graph runs that have no lease
+every 15 s, from the last checkpoint (thread id = run id). After 3 resumes the run fails with
+`interrupted_limit`.
+
+```bash
+dc exec redis redis-cli PTTL run:<id>:lease          # ms left; -2 means no lease (resume pending)
+dc exec redis redis-cli GET run:<id>:lease           # the process holding it
+dc exec postgres psql -U disclosly disclosly -c \
+  "select status, mode, engine, resume_count, plan_expires_at, decision, updated_at from runs where id = '<id>'"
+dc exec postgres psql -U disclosly disclosly -c \
+  "select checkpoint_id, metadata->>'step' as step from agent_graph.checkpoints where thread_id = '<id>' order by checkpoint_id"
+dc logs api | grep '<id>'                            # events and the resume line
+```
+
+A run in `awaiting_decision` is waiting for the user, not stuck; it expires at
+`plan_expires_at`. A `running` run with a live lease and no new events for longer than the
+deep deadline (`AGENT_DEEP_DEADLINE_SECONDS`, 300 s) points at a hung provider call; restarting
+`api` makes the supervisor resume it from the last finished node.
+
+### 3. Switching `AGENT_ENGINE`
+
+`AGENT_ENGINE` (`graph`, the default, or `single`) chooses the engine for new runs. Runs
+already started keep their engine. To switch back to the Phase 3 agent, add
+`AGENT_ENGINE=single` to the server `.env` (remove the line to return to `graph`), then:
+
+```bash
+dc up -d api   # server: recreate api with the new value
+```
+
+Switching back to `single` turns off deep research, plan approval, memory use in questions and
+run resume; the settings page still saves the watchlist and preferences.
+
+### 4. Deep quota
+
+`QUOTA_DAILY_DEEP` (default 5) is the deep runs a user can approve per day (Europe/Istanbul),
+on top of `QUOTA_DAILY_QUESTIONS`. The unit is taken when a plan is approved, so an offered or
+cancelled plan costs nothing. With no unit left the run offers simple mode before any planner
+call. Change the value in the server `.env` and run `dc up -d api`. Lower it first if the free
+model tiers start returning 429s during the day.
+
+### 5. Checkpoint retention
+
+Checkpoints live in schema `agent_graph`. The supervisor deletes the threads of runs finished
+more than `CHECKPOINT_RETENTION_DAYS` (default 7) ago, once a day. To see the size:
+
+```bash
+dc exec postgres psql -U disclosly disclosly -c \
+  "select pg_size_pretty(sum(pg_total_relation_size(c.oid))) from pg_class c join pg_namespace n on n.oid = c.relnamespace where n.nspname = 'agent_graph'"
+```

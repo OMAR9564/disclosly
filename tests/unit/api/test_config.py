@@ -179,7 +179,7 @@ def test_load_settings_error_names_variable_not_value(
 def test_phase4_defaults(env: pytest.MonkeyPatch) -> None:
     settings = Settings()
 
-    assert settings.agent_engine == "single"
+    assert settings.agent_engine == "graph"
     assert settings.agent_deep_max_model_calls == 20
     assert settings.agent_deep_deadline_seconds == 300
     assert settings.agent_deep_max_steps == 12
@@ -254,7 +254,7 @@ def test_langsmith_tracing_refused(
 def test_langsmith_tracing_off_values_allowed(env: pytest.MonkeyPatch, value: str) -> None:
     env.setenv("LANGSMITH_TRACING", value)
     env.setenv("LANGCHAIN_TRACING_V2", value)
-    assert load_settings().agent_engine == "single"
+    assert load_settings().agent_engine == "graph"
 
 
 def test_tracing_enabled_lists_only_truthy_names() -> None:

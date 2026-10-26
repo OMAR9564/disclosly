@@ -33,7 +33,7 @@ x-api-environment: &api-environment
   RATE_LIMIT_USER_PER_MIN: ${RATE_LIMIT_USER_PER_MIN:-30}
   RATE_LIMIT_IP_PER_MIN: ${RATE_LIMIT_IP_PER_MIN:-60}
   # Multi-agent research (Phase 4); `single` keeps the Phase 3 loop until the graph is switched on.
-  AGENT_ENGINE: ${AGENT_ENGINE:-single}
+  AGENT_ENGINE: ${AGENT_ENGINE:-graph}
   AGENT_DEEP_MAX_MODEL_CALLS: ${AGENT_DEEP_MAX_MODEL_CALLS:-20}
   AGENT_DEEP_DEADLINE_SECONDS: ${AGENT_DEEP_DEADLINE_SECONDS:-300}
   AGENT_DEEP_MAX_STEPS: ${AGENT_DEEP_MAX_STEPS:-12}
