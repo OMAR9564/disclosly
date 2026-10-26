@@ -38,6 +38,8 @@ class ProviderSpec(BaseModel):
     daily_requests: int = Field(ge=1)
     native_tools: bool = True
     price_per_mtok: Price
+    # Seconds to wait for one answer; slow hosted models need more than the default.
+    timeout_seconds: float = Field(default=15.0, gt=0, le=120)
 
 
 class ProvidersFile(BaseModel):
@@ -67,6 +69,7 @@ class Provider(BaseModel):
     daily_requests: int
     native_tools: bool
     price_per_mtok: Price
+    timeout_seconds: float = 15.0
 
 
 class RouterConfig(BaseModel):
@@ -97,6 +100,7 @@ def _resolve(name: str, spec: ProviderSpec, env: Mapping[str, str]) -> Provider 
         daily_requests=spec.daily_requests,
         native_tools=spec.native_tools,
         price_per_mtok=spec.price_per_mtok,
+        timeout_seconds=spec.timeout_seconds,
     )
 
 

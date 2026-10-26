@@ -14,8 +14,6 @@ import httpx
 from llm.config import Provider
 from llm.types import ChatMessage, ChatRequest, ChatResponse, ToolCall
 
-TIMEOUT_SECONDS = 15.0
-
 # Output shape for providers without native tool calling.
 _EMULATED_TOOLS_SCHEMA: dict[str, Any] = {
     "type": "object",
@@ -128,6 +126,44 @@ def _tools_instruction(request: ChatRequest) -> str:
     )
 
 
+# Gemini compiles a response schema into a decoding automaton and rejects large ones ("too
+# many states for serving", HTTP 400): the plan and report schemas hit it through their
+# length, item-count and range limits. The caller validates every answer against the full
+# schema anyway, so Gemini gets the same shape without those limits.
+_GEMINI_DROPPED = frozenset(
+    {
+        "maxLength",
+        "minLength",
+        "maxItems",
+        "minItems",
+        "pattern",
+        "minimum",
+        "maximum",
+        "exclusiveMinimum",
+        "exclusiveMaximum",
+        "format",
+    }
+)
+
+
+def relaxed(schema: Any) -> Any:
+    """`schema` without length, count, pattern and range limits (for Gemini)."""
+    if isinstance(schema, list):
+        return [relaxed(item) for item in schema]
+    if not isinstance(schema, dict):
+        return schema
+    out: dict[str, Any] = {}
+    for key, value in schema.items():
+        if key in _GEMINI_DROPPED:
+            continue
+        if key in ("properties", "$defs", "definitions") and isinstance(value, dict):
+            # Keys here are property or definition names, not keywords: keep them all.
+            out[key] = {name: relaxed(sub) for name, sub in value.items()}
+        else:
+            out[key] = relaxed(value)
+    return out
+
+
 def build_payload(provider: Provider, request: ChatRequest) -> dict[str, Any]:
     """The JSON body for `POST {base_url}/chat/completions`."""
     native = provider.native_tools
@@ -140,9 +176,10 @@ def build_payload(provider: Provider, request: ChatRequest) -> dict[str, Any]:
         "max_tokens": request.max_tokens,
     }
     if request.response_schema is not None:
+        schema = request.response_schema
         payload["response_format"] = {
             "type": "json_schema",
-            "json_schema": {"name": "answer", "schema": request.response_schema},
+            "json_schema": {"name": "answer", "schema": relaxed(schema) if gemini else schema},
         }
     elif request.tools and native:
         payload["tools"] = [
@@ -266,7 +303,7 @@ async def chat_completion(
             f"{provider.base_url}/chat/completions",
             json=build_payload(provider, request),
             headers={"Authorization": f"Bearer {provider.api_key.get_secret_value()}"},
-            timeout=TIMEOUT_SECONDS,
+            timeout=provider.timeout_seconds,
         )
     except httpx.TimeoutException:
         raise Unavailable(name, "timeout") from None

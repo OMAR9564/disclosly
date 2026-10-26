@@ -358,3 +358,53 @@ def test_extra_content_is_not_part_of_the_cache_key() -> None:
         return ChatRequest(messages=[ChatMessage(role="assistant", tool_calls=[call])])
 
     assert cache_key(request(None), "m") == cache_key(request({"google": {"a": 1}}), "m")
+
+
+def test_gemini_gets_the_schema_without_size_limits() -> None:
+    """Gemini rejects the plan and report schemas with their limits ("too many states")."""
+    from agent.report import report_json_schema
+    from llm.client import relaxed
+
+    schema = {
+        "type": "object",
+        "properties": {
+            # Property names that look like keywords stay.
+            "pattern": {"type": "string", "maxLength": 300, "pattern": "^x"},
+            "steps": {"type": "array", "items": {"type": "integer", "minimum": 1}, "maxItems": 8},
+        },
+        "required": ["pattern"],
+    }
+    gemini = _provider()
+    gemini = gemini.model_copy(update={"base_url": "https://generativelanguage.googleapis.com/v1"})
+    sent = build_payload(gemini, _request(response_schema=schema))
+    assert sent["response_format"]["json_schema"]["schema"] == {
+        "type": "object",
+        "properties": {
+            "pattern": {"type": "string"},
+            "steps": {"type": "array", "items": {"type": "integer"}},
+        },
+        "required": ["pattern"],
+    }
+    # Other providers keep the full schema.
+    assert (
+        build_payload(_provider(), _request(response_schema=schema))["response_format"][
+            "json_schema"
+        ]["schema"]
+        == schema
+    )
+    text = json.dumps(relaxed(report_json_schema()))
+    assert all(f'"{k}"' not in text for k in ("maxLength", "maxItems", "minimum"))
+
+
+async def test_each_provider_uses_its_own_timeout() -> None:
+    seen: list[Any] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(request.extensions["timeout"])
+        return httpx.Response(200, json=_completion({"content": "ok"}))
+
+    slow = _provider().model_copy(update={"timeout_seconds": 60.0})
+    await _call(handler, slow)
+    await _call(handler)
+    assert seen[0]["read"] == 60.0
+    assert seen[1]["read"] == 15.0

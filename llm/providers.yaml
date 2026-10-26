@@ -74,6 +74,7 @@ providers:
   # requests per minute (community-measured; NVIDIA publishes no number). Answered the report
   # schema and a tool call in about 10 s on 2026-10-25; several listed models return 404 for
   # a new key. Production use needs NVIDIA AI Enterprise: owner checks the terms first.
+  # A plan took 27 s on 2026-10-26, so the 15 s default timed out every deep call.
   nvidia-large:
     base_url: https://integrate.api.nvidia.com/v1
     model: nvidia/nemotron-3-ultra-550b-a55b
@@ -81,6 +82,7 @@ providers:
     daily_requests: 1000
     native_tools: true
     price_per_mtok: {input: 0.0, output: 0.0}
+    timeout_seconds: 60
   cloudflare:
     base_url: https://api.cloudflare.com/client/v4/accounts/{CLOUDFLARE_ACCOUNT_ID}/ai/v1
     model: "@cf/meta/llama-4-scout-17b-16e-instruct"
