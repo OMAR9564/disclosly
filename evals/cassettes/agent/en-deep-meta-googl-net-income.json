@@ -1,0 +1,170 @@
+{
+ "case_id": "en-deep-meta-googl-net-income",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "9543fb6fa59650a52a9b92b4130603787ffe6a908e6d9f203c87e2b5270433e5",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2298290",
+      "name": "get_financial_facts",
+      "arguments": {
+       "metrics": [
+        "net_income"
+       ],
+       "ticker": "META",
+       "periods": [
+        "2025-FY",
+        "2025-Q4"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TVK+wQpcUGXR76HLJXytY7TbmzDDkxxzKrc/aryAqXWax7SC/W6g1NVJmKg0FQ69ltRyrNKIeqUyuyUaxMnekOEjxCqoSwBFIT++dj30V70/34lPx2Xz/phQ="
+       }
+      }
+     },
+     {
+      "id": "call_2298291",
+      "name": "get_financial_facts",
+      "arguments": {
+       "ticker": "GOOGL",
+       "periods": [
+        "2025-FY",
+        "2025-Q4"
+       ],
+       "metrics": [
+        "net_income"
+       ]
+      },
+      "extra": null
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1490,
+    "tokens_out": 96,
+    "latency_ms": 636.068,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "d87378e298aa6492bf9ead1cff65dd248102b867682c7d45e7048fe17f541fae",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In the 2025 fiscal year, Meta reported a net income of 60,458,000,000 USD [1], while Alphabet reported a net income of 132,170,000,000 USD [2].\",\n  \"points\": [\n    {\n      \"text\": \"Meta's net income for 2025 was 60,458,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:764\"\n      ]\n    },\n    {\n      \"text\": \"Alphabet's net income for 2025 was 132,170,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:680\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:764\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:680\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1809,
+    "tokens_out": 309,
+    "latency_ms": 1301.019,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2025-FY\",\"2025-Q4\"],\"ticker\":\"META\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:764\">Net income (2025-FY): 60,458,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4168\">Net income (2025-FY): 60,458,000,000 USD</untrusted_document>",
+   "summary": "META 2025-FY to 2025-Q4 net_income",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "f:764",
+     "text": "Net income (2025-FY): 60,458,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 149,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-003942",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+     },
+     "value": "60458000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4168",
+     "text": "Net income (2025-FY): 60,458,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2366,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-003942",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+     },
+     "value": "60458000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2025-FY\",\"2025-Q4\"],\"ticker\":\"GOOGL\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:680\">Net income (2025-FY): 132,170,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4084\">Net income (2025-FY): 132,170,000,000 USD</untrusted_document>",
+   "summary": "GOOGL 2025-FY to 2025-Q4 net_income",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "f:680",
+     "text": "Net income (2025-FY): 132,170,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 141,
+      "ticker": "GOOGL",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001652044-26-000018",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm"
+     },
+     "value": "132170000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4084",
+     "text": "Net income (2025-FY): 132,170,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2358,
+      "ticker": "GOOGL",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001652044-26-000018",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm"
+     },
+     "value": "132170000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 2385
+}

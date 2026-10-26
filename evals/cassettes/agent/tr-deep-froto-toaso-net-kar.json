@@ -1,0 +1,414 @@
+{
+ "case_id": "tr-deep-froto-toaso-net-kar",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "bad9939c954d7d97be507703f237b03675f26a1af89732c0a5e1bac003b7497f",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2775593",
+      "name": "get_financial_facts",
+      "arguments": {
+       "metrics": [
+        "net_income"
+       ],
+       "ticker": "FROTO",
+       "periods": [
+        "2025-Q3"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TJPqmoSyjpy6EEr70ssbHJGFaYYUVV5OmyIU3rA/d1v315c9ZkvsVVq9OZQMXtI6wfaW5xq2KzCTjrxXHaiRBEnq9jiAGO6f9VTQ/sBE9BEMPptApA3+jKuc="
+       }
+      }
+     },
+     {
+      "id": "call_2775594",
+      "name": "get_financial_facts",
+      "arguments": {
+       "periods": [
+        "2025-Q3"
+       ],
+       "ticker": "TOASO",
+       "metrics": [
+        "net_income"
+       ]
+      },
+      "extra": null
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1627,
+    "tokens_out": 80,
+    "latency_ms": 1645.898,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "4d0371e59ee8018cbb545881dd19bd9c62e03336474270d5f6bcb53f5382acd6",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2188482",
+      "name": "search_documents",
+      "arguments": {
+       "period_to": "2025-Q3",
+       "query": "9 aylık net dönem kârı",
+       "ticker": "FROTO",
+       "period_from": "2025-Q3"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TtAJtub/iYWfi+NWMnGOETf3ysMQojkXjuzxpqTG0LX19PUh5WCnoLY1zahbuzhx9C1v/yWMpkjIJZ2GEN6BFNe4nSYtpTQgN8JVhsWfp/PcGl/LC7d+OTG0="
+       }
+      }
+     },
+     {
+      "id": "call_2188483",
+      "name": "search_documents",
+      "arguments": {
+       "query": "9 aylık net dönem kârı",
+       "period_to": "2025-Q3",
+       "ticker": "TOASO",
+       "period_from": "2025-Q3"
+      },
+      "extra": null
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1900,
+    "tokens_out": 118,
+    "latency_ms": 810.092,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "69087db387fbf750433925d2fd07d1ead7ccb403eee31a5ec00a5fe200784ac5",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Ford Otosan (FROTO) ve Tofaş'ın (TOASO) 2025 yılı ilk üç çeyreğindeki (01.01.2025 - 30.09.2025 dönemi) ve üçüncü çeyrek 3 aylık (01.07.2025 - 30.09.2025 dönemi) net kârları karşılaştırılmıştır [c:2f96a6a936b3ab972c1de39698db920783bd7ff0814acf5a4aeab5c614234826, c:45787375f5370d078ed32bd8677f9ea7213d95aaed3361e4f98b8c0856d6de5f].\",\n  \"points\": [\n    {\n      \"text\": \"Ford Otosan'ın 2025 yılı 9 aylık (01.01.2025 - 30.09.2025) net dönem kârı 22.363.602.000 TRY'dir [c:2f96a6a936b3ab972c1de39698db920783bd7ff0814acf5a4aeab5c614234826].\",\n      \"cite_ids\": [\n        \"c:2f96a6a936b3ab972c1de39698db920783bd7ff0814acf5a4aeab5c614234826\"\n      ]\n    },\n    {\n      \"text\": \"Ford Otosan'ın 2025 yılı 3. çeyrek (01.07.2025 - 30.09.2025) 3 aylık net dönem kârı 8.401.456.000 TRY'dir [f:2879].\",\n      \"cite_ids\": [\n        \"f:2879\"\n      ]\n    },\n    {\n      \"text\": \"Tofaş'ın 2025 yılı 9 aylık (01.01.2025 - 30.09.2025) net dönem kârı 2.930.752.000 TRY'dir [c:45787375f5370d078ed32bd8677f9ea7213d95aaed3361e4f98b8c0856d6de5f].\",\n      \"cite_ids\": [\n        \"c:45787375f5370d078ed32bd8677f9ea7213d95aaed3361e4f98b8c0856d6de5f\"\n      ]\n    },\n    {\n      \"text\": \"Tofaş'ın 2025 yılı 3. çeyrek (01.07.2025 - 30.09.2025) 3 aylık net dönem kârı 1.208.344.000 TRY'dir [f:3565].\",\n      \"cite_ids\": [\n        \"f:3565\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:2f96a6a936b3ab972c1de39698db920783bd7ff0814acf5a4aeab5c614234826\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2879\"\n    },\n    {\n      \"marker\": 3,\n      \"",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 10289,
+    "tokens_out": 1020,
+    "latency_ms": 2719.264,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "2d93d0e7014f532d1bcd1679b26c97f7cf7f6d9b4f76fdb872924b9c91499497",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Ford Otosan (FROTO) ve Tofaş'ın (TOASO) 2025 yılı ilk üç çeyreğindeki (01.01.2025 - 30.09.2025 dönemi) ve üçüncü çeyrek 3 aylık (01.07.2025 - 30.09.2025 dönemi) net kârları karşılaştırılmıştır.\",\n  \"points\": [\n    {\n      \"text\": \"Ford Otosan'ın 2025 yılı 9 aylık (01.01.2025 - 30.09.2025) net dönem kârı 22.363.602.000 TRY'dir.\",\n      \"cite_ids\": [\n        \"c:2f96a6a936b3ab972c1de39698db920783bd7ff0814acf5a4aeab5c614234826\"\n      ]\n    },\n    {\n      \"text\": \"Ford Otosan'ın 2025 yılı 3. çeyrek (01.07.2025 - 30.09.2025) 3 aylık net dönem kârı 8.401.456.000 TRY'dir.\",\n      \"cite_ids\": [\n        \"f:2879\"\n      ]\n    },\n    {\n      \"text\": \"Tofaş'ın 2025 yılı 9 aylık (01.01.2025 - 30.09.2025) net dönem kârı 2.930.752.000 TRY'dir.\",\n      \"cite_ids\": [\n        \"c:45787375f5370d078ed32bd8677f9ea7213d95aaed3361e4f98b8c0856d6de5f\"\n      ]\n    },\n    {\n      \"text\": \"Tofaş'ın 2025 yılı 3. çeyrek (01.07.2025 - 30.09.2025) 3 aylık net dönem kârı 1.208.344.000 TRY'dir.\",\n      \"cite_ids\": [\n        \"f:3565\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:2f96a6a936b3ab972c1de39698db920783bd7ff0814acf5a4aeab5c614234826\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2879\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"c:45787375f5370d078ed32bd8677f9ea7213d95aaed3361e4f98b8c0856d6de5f\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:3565\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 11136,
+    "tokens_out": 936,
+    "latency_ms": 11009.451,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2025-Q3\"],\"ticker\":\"FROTO\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2879\">Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 8.401.456.000 TRY</untrusted_document>",
+   "summary": "FROTO 2025-Q3 net_income",
+   "count": 1,
+   "items": [
+    {
+     "cite_id": "f:2879",
+     "text": "Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 8.401.456.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1598,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511818"
+     },
+     "value": "8401456000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2025-Q3\"],\"ticker\":\"TOASO\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:3565\">Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 1.208.344.000 TRY</untrusted_document>",
+   "summary": "TOASO 2025-Q3 net_income",
+   "count": 1,
+   "items": [
+    {
+     "cite_id": "f:3565",
+     "text": "Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 1.208.344.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 2297,
+      "ticker": "TOASO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1510787"
+     },
+     "value": "1208344000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q3\",\"period_to\":\"2025-Q3\",\"query\":\"9 aylık net dönem kârı\",\"ticker\":\"FROTO\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:17ab577a50608733d478fe4c923d47f6574561d9a8cddda0aab2a3e6ecf3238e\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024\nİŞLETME FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInOperatingActivities |  | 71147718 | 26329739\nDönem Karı (Zararı) | kap-fr_ProfitLossForCashFlowStatement |  | 22363602 | 34210692\nDönem Net Karı (Zararı) Mutabakatı İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForReconcileProfitLoss |  | 37184748 | 10637482\nAmortisman ve İtfa Gideri İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForDepreciationAndAmortisationExpense | 15 | 12383452 | 9961153\nDeğer Düşüklüğü (İptali) İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLoss |  | -198224 | 776156\nStok Değer Düşüklüğü (İptali) ile İlgili Düzeltmeler | ifrs-full_AdjustmentsForImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLossInventories | 7 | -198224 | 776156\nKarşılıklar İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForProvisions |  | 6132420 | 2427820\nÇalışanlara Sağlanan Faydalara İlişkin Karşılıklar (İptali) ile İlgili Düzeltmeler | kap-fr_AdjustmentsForReversalOfProvisionsRelatedWithEmployeeBenefits |  | 404368 | -1415664\nDava ve/veya Ceza Karşılıkları (İptali) ile İlgili Düzeltmeler | kap-fr_AdjustmentsForReversalOfLawsuitAndOrPenaltyProvisions | 11 | 386759 | 158798\nGaranti Karşılıkları (İptali) ile İlgili Düzeltmeler | kap-fr_AdjustmentsForReversalOfWarrantyProvisions | 11 | 5302953 | 3372212</untrusted_document>\n<untrusted_document cite_id=\"c:a7f9a96ae113f15f8c12e35e8332c0def8c7500c4210e27fa30cfe10a25f2ced\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024\nÇalışanlara Sağlanan Faydalara İlişkin Karşılıklar Kapsamında Yapılan Ödemeler | kap-fr_PaymentsRelatedWithProvisionsForEmployeeBenefits |  | -146745 | -407392\nDiğer Karşılıklara İlişkin Ödemeler | kap-fr_PaymentsRelatedWithOtherProvisions |  | -4445451 | -2762011\nVergi İadeleri (Ödemeleri) | ifrs-full_IncomeTaxesPaidRefundClassifiedAsOperatingActivities |  | -1147109 | -385301\nYATIRIM FAALİYETLERİNDEN KAYNAKLANAN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInInvestingActivities |  | -16211198 | -30746567\nİştiraklar ve/veya İş Ortaklıkları Pay Alımı veya Sermaye Artırımı Sebebiyle Oluşan Nakit Çıkışları | kap-fr_CashOutflowsArisingFromPurchaseOfSharesOrCapitalIncreaseOfAssociatesAndOrJointVenturesClassifiedAsInvestingActivities |  | -112070 | -107092\nMaddi ve Maddi Olmayan Duran Varlıkların Satışından Kaynaklanan Nakit Girişleri | kap-fr_ProceedsFromSalesOfPropertyPlantEquipmentAndIntangibleAssetsClassifiedAsInvestingActivities |  | 778381 | 472433\nMaddi Duran Varlıkların Satışından Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities |  | 778381 | 472433\nMaddi ve Maddi Olmayan Duran Varlıkların Alımından Kaynaklanan Nakit Çıkışları | kap-fr_PurchaseOfPropertyPlantEquipmentAndIntangibleAssetsClassifiedAsInvestingActivities |  | -19671192 | -33118661\nMaddi Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities | 8 | -16303753 | -29212040</untrusted_document>\n<untrusted_document cite_id=\"c:14a0b8e5c5f76bbe2d81cda85705e370ed96b7586fc1bbd2629fdacf78b919e1\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nYurtdışındaki İşletmelerin Çevrimine İlişkin Yabancı Para Çevrim Farklarından Kazançlar (Kayıplar) | ifrs-full_GainsLossesOnExchangeDifferencesOnTranslationBeforeTax |  | 919382 | -5704635 | -999999 | -145066\nGerçeğe Uygun Değer Farkı Diğer Kapsamlı Gelire Yansıtılan Finansal Varlıklara İlişkin Diğer Kapsamlı Gelir (Gider) | ifrs-full_OtherComprehensiveIncomeBeforeTaxFinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncome |  | 19684 | 14055 | 76176 | -116845\nGerçeğe Uygun Değer Farkı Diğer Kapsamlı Gelire Yansıtılan Finansal Varlıklardan Kazançlar (Kayıplar) | ifrs-full_GainsLossesOnFinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncomeBeforeTax |  | 19684 | 14055 | 76176 | -116845\nNakit Akış Riskinden Korunmaya İlişkin Diğer Kapsamlı Gelir (Gider) | ifrs-full_OtherComprehensiveIncomeBeforeTaxCashFlowHedges |  | -2766967 | -2980756 | 371872 | -4547117\nNakit Akış Riskinden Korunma Kazançları (Kayıpları) | ifrs-full_GainsLossesOnCashFlowHedgesBeforeTax | 24 | -2766967 | -2980756 | 371872 | -4547117\nKar veya Zararda Yeniden Sınıflandırılacak Diğer Kapsamlı Gelire İlişkin Vergiler | ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillBeReclassifiedToProfitOrLoss |  | 689281 | 744486 | -102491 | 1142622</untrusted_document>\n<untrusted_document cite_id=\"c:2f96a6a936b3ab972c1de39698db920783bd7ff0814acf5a4aeab5c614234826\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nSÜRDÜRÜLEN FAALİYETLER DÖNEM KARI (ZARARI) | ifrs-full_ProfitLossFromContinuingOperations |  | 22363602 | 34210692 | 8401456 | 11412992\nDÖNEM KARI (ZARARI) | ifrs-full_ProfitLoss |  | 22363602 | 34210692 | 8401456 | 11412992\nKontrol Gücü Olmayan Paylar | ifrs-full_ProfitLossAttributableToNoncontrollingInterests |  | 0 | 0 | 0 | 0\nAna Ortaklık Payları | ifrs-full_ProfitLossAttributableToOwnersOfParent |  | 22363602 | 34210692 | 8401456 | 11412992</untrusted_document>\n<untrusted_document cite_id=\"c:7044724cea58eab17b0aea4e038edd14bfbc623328483102176468700fcf3f27\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nDÖNEM KARI (ZARARI) | ifrs-full_ProfitLoss |  | 22363602 | 34210692 | 8401456 | 11412992\nKar veya Zararda Yeniden Sınıflandırılmayacaklar | ifrs-full_OtherComprehensiveIncomeThatWillNotBeReclassifiedToProfitOrLossNetOfTax |  | -139754 | -187878 | 24745 | 592410\nTanımlanmış Fayda Planları Yeniden Ölçüm Kazançları (Kayıpları) | ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans |  | -186339 | -250505 | 32993 | 789878\nKar veya Zararda Yeniden Sınıflandırılmayacak Diğer Kapsamlı Gelire İlişkin Vergiler | ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillNotBeReclassifiedToProfitOrLoss |  | 46585 | 62627 | -8248 | -197468\nTanımlanmış Fayda Planları Yeniden Ölçüm Kazançları (Kayıpları), Vergi Etkisi | ifrs-full_IncomeTaxRelatingToRemeasurementsOfDefinedBenefitPlansOfOtherComprehensiveIncome |  | 46585 | 62627 | -8248 | -197468\nKar veya Zarar Olarak Yeniden Sınıflandırılacaklar | ifrs-full_OtherComprehensiveIncomeThatWillBeReclassifiedToProfitOrLossNetOfTax |  | -1138620 | -7926850 | -654442 | -3666406\nYurtdışındaki İşletmelerin Çevrimine İlişkin Yabancı Para Çevrim Farkları | ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation |  | 919382 | -5704635 | -999999 | -145066</untrusted_document>\n<untrusted_document cite_id=\"c:c49d5b54eb9df283a3cdbf3a03eabe8b7c334f8ad3dde05223edad74b9ed638c\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nHasılat | ifrs-full_Revenue | 14 | 582360631 | 539395947 | 189584291 | 188917686\nSatışların Maliyeti | ifrs-full_CostOfSales | 14 | -533610450 | -485725458 | -173950204 | -171019344\nTİCARİ FAALİYETLERDEN BRÜT KAR (ZARAR) | kap-fr_GrossProfitLossFromCommercialOperations |  | 48750181 | 53670489 | 15634087 | 17898342\nBRÜT KAR (ZARAR) | ifrs-full_GrossProfit |  | 48750181 | 53670489 | 15634087 | 17898342\nGenel Yönetim Giderleri | ifrs-full_AdministrativeExpense |  | -6693841 | -8667982 | -2115543 | -3047334\nPazarlama Giderleri | kap-fr_MarketingExpense |  | -11589875 | -9786155 | -3747199 | -3794540\nAraştırma ve Geliştirme Giderleri | ifrs-full_ResearchAndDevelopmentExpense |  | -6109949 | -6086247 | -2181595 | -1632342\nEsas Faaliyetlerden Diğer Gelirler | ifrs-full_OtherIncome | 16 | 17942147 | 13264736 | 4491594 | 4680144\nEsas Faaliyetlerden Diğer Giderler | ifrs-full_OtherExpenseByFunction | 16 | -12250030 | -11813754 | -3779660 | -3367889\nESAS FAALİYET KARI (ZARARI) | ifrs-full_ProfitLossFromOperatingActivities |  | 30048633 | 30581087 | 8301684 | 10736381\nYatırım Faaliyetlerinden Gelirler | kap-fr_InvestmentActivityIncome | 25 | 9647744 | 4283464 | 2196302 | 2721329</untrusted_document>",
+   "summary": "FROTO 9 aylık net dönem kârı",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:17ab577a50608733d478fe4c923d47f6574561d9a8cddda0aab2a3e6ecf3238e",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024\nİŞLETME FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInOperatingActivities |  | 71147718 | 26329739\nDönem Karı (Zararı) | kap-fr_ProfitLossForCashFlowStatement |  | 22363602 | 34210692\nDönem Net Karı (Zararı) Mutabakatı İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForReconcileProfitLoss |  | 37184748 | 10637482\nAmortisman ve İtfa Gideri İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForDepreciationAndAmortisationExpense | 15 | 12383452 | 9961153\nDeğer Düşüklüğü (İptali) İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLoss |  | -198224 | 776156\nStok Değer Düşüklüğü (İptali) ile İlgili Düzeltmeler | ifrs-full_AdjustmentsForImpairmentLossReversalOfImpairmentLossRecognisedInProfitOrLossInventories | 7 | -198224 | 776156\nKarşılıklar İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForProvisions |  | 6132420 | 2427820\nÇalışanlara Sağlanan Faydalara İlişkin Karşılıklar (İptali) ile İlgili Düzeltmeler | kap-fr_AdjustmentsForReversalOfProvisionsRelatedWithEmployeeBenefits |  | 404368 | -1415664\nDava ve/veya Ceza Karşılıkları (İptali) ile İlgili Düzeltmeler | kap-fr_AdjustmentsForReversalOfLawsuitAndOrPenaltyProvisions | 11 | 386759 | 158798\nGaranti Karşılıkları (İptali) ile İlgili Düzeltmeler | kap-fr_AdjustmentsForReversalOfWarrantyProvisions | 11 | 5302953 | 3372212",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1598,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "section": "Tablo 4",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511818"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:a7f9a96ae113f15f8c12e35e8332c0def8c7500c4210e27fa30cfe10a25f2ced",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024\nÇalışanlara Sağlanan Faydalara İlişkin Karşılıklar Kapsamında Yapılan Ödemeler | kap-fr_PaymentsRelatedWithProvisionsForEmployeeBenefits |  | -146745 | -407392\nDiğer Karşılıklara İlişkin Ödemeler | kap-fr_PaymentsRelatedWithOtherProvisions |  | -4445451 | -2762011\nVergi İadeleri (Ödemeleri) | ifrs-full_IncomeTaxesPaidRefundClassifiedAsOperatingActivities |  | -1147109 | -385301\nYATIRIM FAALİYETLERİNDEN KAYNAKLANAN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInInvestingActivities |  | -16211198 | -30746567\nİştiraklar ve/veya İş Ortaklıkları Pay Alımı veya Sermaye Artırımı Sebebiyle Oluşan Nakit Çıkışları | kap-fr_CashOutflowsArisingFromPurchaseOfSharesOrCapitalIncreaseOfAssociatesAndOrJointVenturesClassifiedAsInvestingActivities |  | -112070 | -107092\nMaddi ve Maddi Olmayan Duran Varlıkların Satışından Kaynaklanan Nakit Girişleri | kap-fr_ProceedsFromSalesOfPropertyPlantEquipmentAndIntangibleAssetsClassifiedAsInvestingActivities |  | 778381 | 472433\nMaddi Duran Varlıkların Satışından Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities |  | 778381 | 472433\nMaddi ve Maddi Olmayan Duran Varlıkların Alımından Kaynaklanan Nakit Çıkışları | kap-fr_PurchaseOfPropertyPlantEquipmentAndIntangibleAssetsClassifiedAsInvestingActivities |  | -19671192 | -33118661\nMaddi Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities | 8 | -16303753 | -29212040",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1598,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "section": "Tablo 4",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511818"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:14a0b8e5c5f76bbe2d81cda85705e370ed96b7586fc1bbd2629fdacf78b919e1",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nYurtdışındaki İşletmelerin Çevrimine İlişkin Yabancı Para Çevrim Farklarından Kazançlar (Kayıplar) | ifrs-full_GainsLossesOnExchangeDifferencesOnTranslationBeforeTax |  | 919382 | -5704635 | -999999 | -145066\nGerçeğe Uygun Değer Farkı Diğer Kapsamlı Gelire Yansıtılan Finansal Varlıklara İlişkin Diğer Kapsamlı Gelir (Gider) | ifrs-full_OtherComprehensiveIncomeBeforeTaxFinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncome |  | 19684 | 14055 | 76176 | -116845\nGerçeğe Uygun Değer Farkı Diğer Kapsamlı Gelire Yansıtılan Finansal Varlıklardan Kazançlar (Kayıplar) | ifrs-full_GainsLossesOnFinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncomeBeforeTax |  | 19684 | 14055 | 76176 | -116845\nNakit Akış Riskinden Korunmaya İlişkin Diğer Kapsamlı Gelir (Gider) | ifrs-full_OtherComprehensiveIncomeBeforeTaxCashFlowHedges |  | -2766967 | -2980756 | 371872 | -4547117\nNakit Akış Riskinden Korunma Kazançları (Kayıpları) | ifrs-full_GainsLossesOnCashFlowHedgesBeforeTax | 24 | -2766967 | -2980756 | 371872 | -4547117\nKar veya Zararda Yeniden Sınıflandırılacak Diğer Kapsamlı Gelire İlişkin Vergiler | ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillBeReclassifiedToProfitOrLoss |  | 689281 | 744486 | -102491 | 1142622",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1598,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "section": "Tablo 3",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511818"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:2f96a6a936b3ab972c1de39698db920783bd7ff0814acf5a4aeab5c614234826",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nSÜRDÜRÜLEN FAALİYETLER DÖNEM KARI (ZARARI) | ifrs-full_ProfitLossFromContinuingOperations |  | 22363602 | 34210692 | 8401456 | 11412992\nDÖNEM KARI (ZARARI) | ifrs-full_ProfitLoss |  | 22363602 | 34210692 | 8401456 | 11412992\nKontrol Gücü Olmayan Paylar | ifrs-full_ProfitLossAttributableToNoncontrollingInterests |  | 0 | 0 | 0 | 0\nAna Ortaklık Payları | ifrs-full_ProfitLossAttributableToOwnersOfParent |  | 22363602 | 34210692 | 8401456 | 11412992",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1598,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "section": "Tablo 2",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511818"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:7044724cea58eab17b0aea4e038edd14bfbc623328483102176468700fcf3f27",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nDÖNEM KARI (ZARARI) | ifrs-full_ProfitLoss |  | 22363602 | 34210692 | 8401456 | 11412992\nKar veya Zararda Yeniden Sınıflandırılmayacaklar | ifrs-full_OtherComprehensiveIncomeThatWillNotBeReclassifiedToProfitOrLossNetOfTax |  | -139754 | -187878 | 24745 | 592410\nTanımlanmış Fayda Planları Yeniden Ölçüm Kazançları (Kayıpları) | ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans |  | -186339 | -250505 | 32993 | 789878\nKar veya Zararda Yeniden Sınıflandırılmayacak Diğer Kapsamlı Gelire İlişkin Vergiler | ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillNotBeReclassifiedToProfitOrLoss |  | 46585 | 62627 | -8248 | -197468\nTanımlanmış Fayda Planları Yeniden Ölçüm Kazançları (Kayıpları), Vergi Etkisi | ifrs-full_IncomeTaxRelatingToRemeasurementsOfDefinedBenefitPlansOfOtherComprehensiveIncome |  | 46585 | 62627 | -8248 | -197468\nKar veya Zarar Olarak Yeniden Sınıflandırılacaklar | ifrs-full_OtherComprehensiveIncomeThatWillBeReclassifiedToProfitOrLossNetOfTax |  | -1138620 | -7926850 | -654442 | -3666406\nYurtdışındaki İşletmelerin Çevrimine İlişkin Yabancı Para Çevrim Farkları | ifrs-full_OtherComprehensiveIncomeBeforeTaxExchangeDifferencesOnTranslation |  | 919382 | -5704635 | -999999 | -145066",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1598,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "section": "Tablo 3",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511818"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:c49d5b54eb9df283a3cdbf3a03eabe8b7c334f8ad3dde05223edad74b9ed638c",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nHasılat | ifrs-full_Revenue | 14 | 582360631 | 539395947 | 189584291 | 188917686\nSatışların Maliyeti | ifrs-full_CostOfSales | 14 | -533610450 | -485725458 | -173950204 | -171019344\nTİCARİ FAALİYETLERDEN BRÜT KAR (ZARAR) | kap-fr_GrossProfitLossFromCommercialOperations |  | 48750181 | 53670489 | 15634087 | 17898342\nBRÜT KAR (ZARAR) | ifrs-full_GrossProfit |  | 48750181 | 53670489 | 15634087 | 17898342\nGenel Yönetim Giderleri | ifrs-full_AdministrativeExpense |  | -6693841 | -8667982 | -2115543 | -3047334\nPazarlama Giderleri | kap-fr_MarketingExpense |  | -11589875 | -9786155 | -3747199 | -3794540\nAraştırma ve Geliştirme Giderleri | ifrs-full_ResearchAndDevelopmentExpense |  | -6109949 | -6086247 | -2181595 | -1632342\nEsas Faaliyetlerden Diğer Gelirler | ifrs-full_OtherIncome | 16 | 17942147 | 13264736 | 4491594 | 4680144\nEsas Faaliyetlerden Diğer Giderler | ifrs-full_OtherExpenseByFunction | 16 | -12250030 | -11813754 | -3779660 | -3367889\nESAS FAALİYET KARI (ZARARI) | ifrs-full_ProfitLossFromOperatingActivities |  | 30048633 | 30581087 | 8301684 | 10736381\nYatırım Faaliyetlerinden Gelirler | kap-fr_InvestmentActivityIncome | 25 | 9647744 | 4283464 | 2196302 | 2721329",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1598,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "section": "Tablo 2",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511818"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q3\",\"period_to\":\"2025-Q3\",\"query\":\"9 aylık net dönem kârı\",\"ticker\":\"TOASO\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:eefa7a1db6cc6fd1de50820ce18b8378508857f1e6c86461ffdcceb9b85bacb4\">İlişkili kuruluşlardan alınan faiz 30 Eylül 2025 tarihinde sona eren 9 aylık dönem itibarıyla 347.236 TL’dir (30 Eylül 2024: 965.346). 2025 yılının ilk 9 ayı içerisinde Grup’un üst düzey yöneticilere (28 kişi) (30 Eylül 2024: 32 kişi) sağlamış olduğu ücret ve benzeri faydaların toplamı 1 62.827 TL’dir. (30 Eylül 2024: 167.267 TL). TOFAŞ’ın üst düzey yöneticileri; Yönetim Kurulu Başkan ve Üyeleri, Genel Müdür ve Genel Müdüre doğrudan bağlı Direktörler olarak belirlenmiştir. 30 Eylül 2025 Tarihinde Sona Eren 9 Aylık Ara Döneme Ait Konsolide Mali Tablolara ve önceki dönemlere ait tablolara aşağıdaki linklerden ulaşabilirsiniz: i. www.kap.org.tr 20 ii. https://www.tofas.com.tr/YatirimciIliskileri/FinansalSonuclar/Pages/default.aspx Bu dönemde Şirket faaliyetlerini önemli derecede etkileyen gelişmelere ilişkin açıklamalar yukarıda sunulmuştur. Diğer bilgiler için 20 24 Yılına Ait Yıllık Faaliyet Raporuna aşağıdaki linkten ulaşabilirsiniz: * https://www.tofas.com.tr/YatirimciIliskileri/FaaliyetRaporlari/Pages/default.aspx Şirketin 1Y 2025 ve önceki dönemlere ait Yatırımcı Sunumlarına aşağıdaki linkten ulaşabilirsiniz: https://www.tofas.com.tr/YatirimciIliskileri/Sunumlar/Pages/default.aspx</untrusted_document>\n<untrusted_document cite_id=\"c:1c85dc95d4b2b502103cf6e8abc7c17f8c4d6f6bb27ceff23bfa11337c89b318\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nHasılat | ifrs-full_Revenue | 13 | 189458771 | 116068466 | 87223981 | 28588439\nSatışların Maliyeti | ifrs-full_CostOfSales | 13 | -179606199 | -102774887 | -83523977 | -27342544\nTİCARİ FAALİYETLERDEN BRÜT KAR (ZARAR) | kap-fr_GrossProfitLossFromCommercialOperations |  | 9852572 | 13293579 | 3700004 | 1245895\nFinans Sektörü Faaliyetleri Hasılatı | kap-fr_RevenueFromFinanceSectorOperations |  | 8476817 | 8456961 | 2907906 | 2836154\nFinans Sektörü Faaliyetleri Maliyeti | kap-fr_CostOfFinanceSectorOperations |  | -6923830 | -7044644 | -2371467 | -2297069\nFİNANS SEKTÖRÜ FAALİYETLERİNDEN BRÜT KAR (ZARAR) | kap-fr_GrossProfitLossFromFinanceSectorOperations |  | 1552987 | 1412317 | 536439 | 539085\nBRÜT KAR (ZARAR) | ifrs-full_GrossProfit |  | 11405559 | 14705896 | 4236443 | 1784980\nGenel Yönetim Giderleri | ifrs-full_AdministrativeExpense | 14 | -3120833 | -3474083 | -854096 | -1114904\nPazarlama Giderleri | kap-fr_MarketingExpense | 14 | -7625560 | -4178109 | -3150885 | -1445895\nAraştırma ve Geliştirme Giderleri | ifrs-full_ResearchAndDevelopmentExpense | 14 | -1230060 | -1867143 | -397430 | -637876\nEsas Faaliyetlerden Diğer Gelirler | ifrs-full_OtherIncome | 15 | 7774477 | 7887629 | 1478904 | 3023064</untrusted_document>\n<untrusted_document cite_id=\"c:45787375f5370d078ed32bd8677f9ea7213d95aaed3361e4f98b8c0856d6de5f\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nErtelenmiş Vergi (Gideri) Geliri | kap-fr_DeferredIncomeTaxExpenseContinuingOperations | 17 | 16360 | 3142949 | -273890 | 87909\nSÜRDÜRÜLEN FAALİYETLER DÖNEM KARI (ZARARI) | ifrs-full_ProfitLossFromContinuingOperations |  | 2930752 | 6700941 | 1208344 | 426300\nDÖNEM KARI (ZARARI) | ifrs-full_ProfitLoss |  | 2930752 | 6700941 | 1208344 | 426300\nKontrol Gücü Olmayan Paylar | ifrs-full_ProfitLossAttributableToNoncontrollingInterests |  | 0 | 0 | 0 | 0\nAna Ortaklık Payları | ifrs-full_ProfitLossAttributableToOwnersOfParent |  | 2930752 | 6700941 | 1208344 | 426300</untrusted_document>\n<untrusted_document cite_id=\"c:64a4c1fb1f8f3654c3a857192779af1990abd113dfe2f5efc031832a0412515a\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nDÖNEM KARI (ZARARI) | ifrs-full_ProfitLoss |  | 2930752 | 6700941 | 1208344 | 426300\nKar veya Zararda Yeniden Sınıflandırılmayacaklar | ifrs-full_OtherComprehensiveIncomeThatWillNotBeReclassifiedToProfitOrLossNetOfTax |  | -30257 | -104777 | 39402 | 20399\nTanımlanmış Fayda Planları Yeniden Ölçüm Kazançları (Kayıpları) | ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans |  | -40343 | -139703 | 52536 | 27199\nKar veya Zararda Yeniden Sınıflandırılmayacak Diğer Kapsamlı Gelire İlişkin Vergiler | ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillNotBeReclassifiedToProfitOrLoss |  | 10086 | 34926 | -13134 | -6800\nTanımlanmış Fayda Planları Yeniden Ölçüm Kazançları (Kayıpları), Vergi Etkisi | ifrs-full_IncomeTaxRelatingToRemeasurementsOfDefinedBenefitPlansOfOtherComprehensiveIncome |  | 10086 | 34926 | -13134 | -6800\nKar veya Zarar Olarak Yeniden Sınıflandırılacaklar | ifrs-full_OtherComprehensiveIncomeThatWillBeReclassifiedToProfitOrLossNetOfTax |  | -2348336 | 1160711 | -312968 | 338710\nNakit Akış Riskinden Korunmaya İlişkin Diğer Kapsamlı Gelir (Gider) | ifrs-full_OtherComprehensiveIncomeBeforeTaxCashFlowHedges |  | -3131115 | 1547615 | -417291 | 451613</untrusted_document>\n<untrusted_document cite_id=\"c:7f9c87acd807b5a6020434e4cab5359accec9d8c96c97fc562d9c8e19e6a138a\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nEsas Faaliyetlerden Diğer Giderler | ifrs-full_OtherExpenseByFunction | 15 | -7685619 | -7080894 | -1079048 | -3054888\nESAS FAALİYET KARI (ZARARI) | ifrs-full_ProfitLossFromOperatingActivities |  | -482036 | 5993296 | 233888 | -1445519\nYatırım Faaliyetlerinden Gelirler | kap-fr_InvestmentActivityIncome |  | 417751 | 318573 | 105366 | 208960\nFİNANSMAN GELİRİ (GİDERİ) ÖNCESİ FAALİYET KARI (ZARARI) | kap-fr_ProfitLossBeforeFinancingExpense |  | -64285 | 6311869 | 339254 | -1236559\nFinansman Gelirleri | ifrs-full_FinanceIncome | 16 | 8074476 | 10407422 | 1382408 | 3760308\nFinansman Giderleri | ifrs-full_FinanceCosts | 16 | -4586025 | -4941625 | -1013974 | -2393870\nNet Parasal Pozisyon Kazançları (Kayıpları) | ifrs-full_GainsLossesOnNetMonetaryPosition | 24 | -317335 | -5280790 | 1039301 | 570686\nSÜRDÜRÜLEN FAALİYETLER VERGİ ÖNCESİ KARI (ZARARI) | ifrs-full_ProfitLossBeforeTax |  | 3106831 | 6496876 | 1746989 | 700565\nSürdürülen Faaliyetler Vergi (Gideri) Geliri | ifrs-full_IncomeTaxExpenseContinuingOperations |  | -176079 | 204065 | -538645 | -274265\nDönem Vergi (Gideri) Geliri | kap-fr_CurrentPeriodTaxExpenseContinuingOperations | 17 | -192439 | -2938884 | -264755 | -362174</untrusted_document>\n<untrusted_document cite_id=\"c:a6dd89c0ee7d17859d1d5f3a48bc92ed6509dd602f8da0213c073fdf30316044\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nKar veya Zararda Yeniden Sınıflandırılacak Diğer Kapsamlı Gelire İlişkin Vergiler | ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillBeReclassifiedToProfitOrLoss |  | 782779 | -386904 | 104323 | -112903\nNakit Akış Riskinden Korunmaya İlişkin Diğer Kapsamlı Gelir, Vergi Etkisi | ifrs-full_IncomeTaxRelatingToCashFlowHedgesOfOtherComprehensiveIncome |  | 782779 | -386904 | 104323 | -112903\nDİĞER KAPSAMLI GELİR (GİDER) | ifrs-full_OtherComprehensiveIncome |  | -2378593 | 1055934 | -273566 | 359109\nTOPLAM KAPSAMLI GELİR (GİDER) | ifrs-full_ComprehensiveIncome |  | 552159 | 7756875 | 934778 | 785409\nKontrol Gücü Olmayan Paylar | ifrs-full_ComprehensiveIncomeAttributableToNoncontrollingInterests |  | 0 | 0 | 0 | 0\nAna Ortaklık Payları | ifrs-full_ComprehensiveIncomeAttributableToOwnersOfParent |  | 552159 | 7756875 | 934778 | 785409</untrusted_document>",
+   "summary": "TOASO 9 aylık net dönem kârı",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:eefa7a1db6cc6fd1de50820ce18b8378508857f1e6c86461ffdcceb9b85bacb4",
+     "text": "İlişkili kuruluşlardan alınan faiz 30 Eylül 2025 tarihinde sona eren 9 aylık dönem itibarıyla 347.236 TL’dir (30 Eylül 2024: 965.346). 2025 yılının ilk 9 ayı içerisinde Grup’un üst düzey yöneticilere (28 kişi) (30 Eylül 2024: 32 kişi) sağlamış olduğu ücret ve benzeri faydaların toplamı 1 62.827 TL’dir. (30 Eylül 2024: 167.267 TL). TOFAŞ’ın üst düzey yöneticileri; Yönetim Kurulu Başkan ve Üyeleri, Genel Müdür ve Genel Müdüre doğrudan bağlı Direktörler olarak belirlenmiştir. 30 Eylül 2025 Tarihinde Sona Eren 9 Aylık Ara Döneme Ait Konsolide Mali Tablolara ve önceki dönemlere ait tablolara aşağıdaki linklerden ulaşabilirsiniz: i. www.kap.org.tr 20 ii. https://www.tofas.com.tr/YatirimciIliskileri/FinansalSonuclar/Pages/default.aspx Bu dönemde Şirket faaliyetlerini önemli derecede etkileyen gelişmelere ilişkin açıklamalar yukarıda sunulmuştur. Diğer bilgiler için 20 24 Yılına Ait Yıllık Faaliyet Raporuna aşağıdaki linkten ulaşabilirsiniz: * https://www.tofas.com.tr/YatirimciIliskileri/FaaliyetRaporlari/Pages/default.aspx Şirketin 1Y 2025 ve önceki dönemlere ait Yatırımcı Sunumlarına aşağıdaki linkten ulaşabilirsiniz: https://www.tofas.com.tr/YatirimciIliskileri/Sunumlar/Pages/default.aspx",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2298,
+      "ticker": "TOASO",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": 19,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1510788"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:1c85dc95d4b2b502103cf6e8abc7c17f8c4d6f6bb27ceff23bfa11337c89b318",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nHasılat | ifrs-full_Revenue | 13 | 189458771 | 116068466 | 87223981 | 28588439\nSatışların Maliyeti | ifrs-full_CostOfSales | 13 | -179606199 | -102774887 | -83523977 | -27342544\nTİCARİ FAALİYETLERDEN BRÜT KAR (ZARAR) | kap-fr_GrossProfitLossFromCommercialOperations |  | 9852572 | 13293579 | 3700004 | 1245895\nFinans Sektörü Faaliyetleri Hasılatı | kap-fr_RevenueFromFinanceSectorOperations |  | 8476817 | 8456961 | 2907906 | 2836154\nFinans Sektörü Faaliyetleri Maliyeti | kap-fr_CostOfFinanceSectorOperations |  | -6923830 | -7044644 | -2371467 | -2297069\nFİNANS SEKTÖRÜ FAALİYETLERİNDEN BRÜT KAR (ZARAR) | kap-fr_GrossProfitLossFromFinanceSectorOperations |  | 1552987 | 1412317 | 536439 | 539085\nBRÜT KAR (ZARAR) | ifrs-full_GrossProfit |  | 11405559 | 14705896 | 4236443 | 1784980\nGenel Yönetim Giderleri | ifrs-full_AdministrativeExpense | 14 | -3120833 | -3474083 | -854096 | -1114904\nPazarlama Giderleri | kap-fr_MarketingExpense | 14 | -7625560 | -4178109 | -3150885 | -1445895\nAraştırma ve Geliştirme Giderleri | ifrs-full_ResearchAndDevelopmentExpense | 14 | -1230060 | -1867143 | -397430 | -637876\nEsas Faaliyetlerden Diğer Gelirler | ifrs-full_OtherIncome | 15 | 7774477 | 7887629 | 1478904 | 3023064",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2297,
+      "ticker": "TOASO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "section": "Tablo 2",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1510787"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:45787375f5370d078ed32bd8677f9ea7213d95aaed3361e4f98b8c0856d6de5f",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nErtelenmiş Vergi (Gideri) Geliri | kap-fr_DeferredIncomeTaxExpenseContinuingOperations | 17 | 16360 | 3142949 | -273890 | 87909\nSÜRDÜRÜLEN FAALİYETLER DÖNEM KARI (ZARARI) | ifrs-full_ProfitLossFromContinuingOperations |  | 2930752 | 6700941 | 1208344 | 426300\nDÖNEM KARI (ZARARI) | ifrs-full_ProfitLoss |  | 2930752 | 6700941 | 1208344 | 426300\nKontrol Gücü Olmayan Paylar | ifrs-full_ProfitLossAttributableToNoncontrollingInterests |  | 0 | 0 | 0 | 0\nAna Ortaklık Payları | ifrs-full_ProfitLossAttributableToOwnersOfParent |  | 2930752 | 6700941 | 1208344 | 426300",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2297,
+      "ticker": "TOASO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "section": "Tablo 2",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1510787"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:64a4c1fb1f8f3654c3a857192779af1990abd113dfe2f5efc031832a0412515a",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nDÖNEM KARI (ZARARI) | ifrs-full_ProfitLoss |  | 2930752 | 6700941 | 1208344 | 426300\nKar veya Zararda Yeniden Sınıflandırılmayacaklar | ifrs-full_OtherComprehensiveIncomeThatWillNotBeReclassifiedToProfitOrLossNetOfTax |  | -30257 | -104777 | 39402 | 20399\nTanımlanmış Fayda Planları Yeniden Ölçüm Kazançları (Kayıpları) | ifrs-full_OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans |  | -40343 | -139703 | 52536 | 27199\nKar veya Zararda Yeniden Sınıflandırılmayacak Diğer Kapsamlı Gelire İlişkin Vergiler | ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillNotBeReclassifiedToProfitOrLoss |  | 10086 | 34926 | -13134 | -6800\nTanımlanmış Fayda Planları Yeniden Ölçüm Kazançları (Kayıpları), Vergi Etkisi | ifrs-full_IncomeTaxRelatingToRemeasurementsOfDefinedBenefitPlansOfOtherComprehensiveIncome |  | 10086 | 34926 | -13134 | -6800\nKar veya Zarar Olarak Yeniden Sınıflandırılacaklar | ifrs-full_OtherComprehensiveIncomeThatWillBeReclassifiedToProfitOrLossNetOfTax |  | -2348336 | 1160711 | -312968 | 338710\nNakit Akış Riskinden Korunmaya İlişkin Diğer Kapsamlı Gelir (Gider) | ifrs-full_OtherComprehensiveIncomeBeforeTaxCashFlowHedges |  | -3131115 | 1547615 | -417291 | 451613",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2297,
+      "ticker": "TOASO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "section": "Tablo 3",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1510787"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:7f9c87acd807b5a6020434e4cab5359accec9d8c96c97fc562d9c8e19e6a138a",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nEsas Faaliyetlerden Diğer Giderler | ifrs-full_OtherExpenseByFunction | 15 | -7685619 | -7080894 | -1079048 | -3054888\nESAS FAALİYET KARI (ZARARI) | ifrs-full_ProfitLossFromOperatingActivities |  | -482036 | 5993296 | 233888 | -1445519\nYatırım Faaliyetlerinden Gelirler | kap-fr_InvestmentActivityIncome |  | 417751 | 318573 | 105366 | 208960\nFİNANSMAN GELİRİ (GİDERİ) ÖNCESİ FAALİYET KARI (ZARARI) | kap-fr_ProfitLossBeforeFinancingExpense |  | -64285 | 6311869 | 339254 | -1236559\nFinansman Gelirleri | ifrs-full_FinanceIncome | 16 | 8074476 | 10407422 | 1382408 | 3760308\nFinansman Giderleri | ifrs-full_FinanceCosts | 16 | -4586025 | -4941625 | -1013974 | -2393870\nNet Parasal Pozisyon Kazançları (Kayıpları) | ifrs-full_GainsLossesOnNetMonetaryPosition | 24 | -317335 | -5280790 | 1039301 | 570686\nSÜRDÜRÜLEN FAALİYETLER VERGİ ÖNCESİ KARI (ZARARI) | ifrs-full_ProfitLossBeforeTax |  | 3106831 | 6496876 | 1746989 | 700565\nSürdürülen Faaliyetler Vergi (Gideri) Geliri | ifrs-full_IncomeTaxExpenseContinuingOperations |  | -176079 | 204065 | -538645 | -274265\nDönem Vergi (Gideri) Geliri | kap-fr_CurrentPeriodTaxExpenseContinuingOperations | 17 | -192439 | -2938884 | -264755 | -362174",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2297,
+      "ticker": "TOASO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "section": "Tablo 2",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1510787"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:a6dd89c0ee7d17859d1d5f3a48bc92ed6509dd602f8da0213c073fdf30316044",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024 | Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025 | Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024\nKar veya Zararda Yeniden Sınıflandırılacak Diğer Kapsamlı Gelire İlişkin Vergiler | ifrs-full_IncomeTaxRelatingToComponentsOfOtherComprehensiveIncomeThatWillBeReclassifiedToProfitOrLoss |  | 782779 | -386904 | 104323 | -112903\nNakit Akış Riskinden Korunmaya İlişkin Diğer Kapsamlı Gelir, Vergi Etkisi | ifrs-full_IncomeTaxRelatingToCashFlowHedgesOfOtherComprehensiveIncome |  | 782779 | -386904 | 104323 | -112903\nDİĞER KAPSAMLI GELİR (GİDER) | ifrs-full_OtherComprehensiveIncome |  | -2378593 | 1055934 | -273566 | 359109\nTOPLAM KAPSAMLI GELİR (GİDER) | ifrs-full_ComprehensiveIncome |  | 552159 | 7756875 | 934778 | 785409\nKontrol Gücü Olmayan Paylar | ifrs-full_ComprehensiveIncomeAttributableToNoncontrollingInterests |  | 0 | 0 | 0 | 0\nAna Ortaklık Payları | ifrs-full_ComprehensiveIncomeAttributableToOwnersOfParent |  | 552159 | 7756875 | 934778 | 785409",
+     "source": {
+      "kind": "chunk",
+      "document_id": 2297,
+      "ticker": "TOASO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "section": "Tablo 3",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1510787"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 37786
+}

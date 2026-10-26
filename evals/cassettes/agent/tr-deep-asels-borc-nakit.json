@@ -1,0 +1,382 @@
+{
+ "case_id": "tr-deep-asels-borc-nakit",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "2418663f6358fe9a75a889bf01b0d8c84933ecb5505249567e9f6641644c366d",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2025972",
+      "name": "search_documents",
+      "arguments": {
+       "query": "nakit toplam borç",
+       "ticker": "ASELS"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T5PR0qk9XWg+1fyQHkCw7AeAf3w0n0BXIjOdpwqggzPrDfTDqHOfSl9h19abc0EMlCnk4BQydlUCQJzKasO8bRsS4AzYGAnA1cLbGy4apwLbZcGhjDtr3GEc="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1633,
+    "tokens_out": 27,
+    "latency_ms": 718.317,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "92d6a2a5ae40e38b8b03d37adf194bbd454dc9435efb48c1d50c4db70ae26718",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_413813",
+      "name": "get_financial_facts",
+      "arguments": {
+       "ticker": "ASELS",
+       "periods": [
+        "2025-FY",
+        "2026-Q2"
+       ],
+       "metrics": [
+        "cash",
+        "total_debt"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0Tc8YxyHOQVrULtn9eAh2u7o1HxnBWAfzeMb6Qvh5t4yKHt8j384zv9XInJNcczrCfut+gwaEcMFBVPGQT/+iNoZom4ZUEKUHu7MqbRmlhNxW2+P5HveYZD0c="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 5768,
+    "tokens_out": 52,
+    "latency_ms": 754.712,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "38629293b4c9ab3a1a5dcbd67aaabb43ccc295ec934bf5b4b9a4e26cbbeefa19",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Aselsan'ın nakit ve nakit benzerleri 2025 yıl sonunda 34.251.653.000 TL iken 2026 yılı 2. çeyreğinde 39.468.926.000 TL olmuştur [2, 4]. Toplam borç ise 2025 yıl sonunda 50.702.532.000 TL iken 2026 yılı 2. çeyreğinde 73.293.290.000 TL olarak gerçekleşmiştir [6, 8].\",\n  \"points\": [\n    {\n      \"text\": \"Aselsan'ın nakit ve nakit benzerleri 2025 yıl sonundaki 34.251.653.000 TL tutarından 2026 2. çeyreğinde 39.468.926.000 TL seviyesine gelmiştir.\",\n      \"cite_ids\": [\n        \"f:2082\",\n        \"f:2095\"\n      ]\n    },\n    {\n      \"text\": \"Şirketin toplam borcu 2025 yıl sonundaki 50.702.532.000 TL tutarından 2026 2. çeyreğinde 73.293.290.000 TL'ye ulaşmıştır.\",\n      \"cite_ids\": [\n        \"f:2104\",\n        \"f:2103\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2082\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2082\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:2095\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:2095\"\n    },\n    {\n      \"marker\": 5,\n      \"cite_id\": \"f:2104\"\n    },\n    {\n      \"marker\": 6,\n      \"cite_id\": \"f:2104\"\n    },\n    {\n      \"marker\": 7,\n      \"cite_id\": \"f:2103\"\n    },\n    {\n      \"marker\": 8,\n      \"cite_id\": \"f:2103\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 6424,
+    "tokens_out": 667,
+    "latency_ms": 2046.214,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "852bb1e49077cc6e7b1f4e98d2d015e301748df0d90cb035352c1fb083777a20",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Aselsan'ın nakit ve nakit benzerleri 2025 yıl sonunda 34.251.653.000 TL iken 2026 yılı 2. çeyreğinde 39.468.926.000 TL olmuştur [1, 3]. Toplam borç ise 2025 yıl sonunda 50.702.532.000 TL iken 2026 yılı 2. çeyreğinde 73.293.290.000 TL olarak gerçekleşmiştir [2, 4].\",\n  \"points\": [\n    {\n      \"text\": \"Aselsan'ın nakit ve nakit benzerleri 2025 yıl sonundaki 34.251.653.000 TL tutarından 2026 2. çeyreğinde 39.468.926.000 TL seviyesine gelmiştir.\",\n      \"cite_ids\": [\n        \"f:2096\",\n        \"f:2095\"\n      ]\n    },\n    {\n      \"text\": \"Şirketin toplam borcu 2025 yıl sonundaki 50.702.532.000 TL tutarından 2026 2. çeyreğinde 73.293.290.000 TL'ye ulaşmıştır.\",\n      \"cite_ids\": [\n        \"f:2104\",\n        \"f:2103\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2096\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2104\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:2095\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:2103\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 6844,
+    "tokens_out": 1281,
+    "latency_ms": 58427.377,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash",
+     "nvidia-large"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"nakit toplam borç\",\"ticker\":\"ASELS\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:ba6215b1075465f9a48dfd6097f42dab509c7e8b442294e2c05149b4385c9ee6\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 31.12.2024 | Önceki Dönem 01.01.2023 - 31.12.2023\nMaddi Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities | 11 | -6027026 | -7640660\nMaddi Olmayan Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities | 12 | -15271921 | -10330984\nTürev Araçlardan Nakit Girişleri | ifrs-full_CashReceiptsFromFutureContractsForwardContractsOptionContractsAndSwapContractsClassifiedAsInvestingActivities |  | 0 | 0\nAlınan Temettüler | ifrs-full_DividendsReceivedClassifiedAsInvestingActivities | 23 | 44750 | 22219\nDiğer Nakit Girişleri (Çıkışları) | ifrs-full_OtherInflowsOutflowsOfCashClassifiedAsInvestingActivities |  | -758040 | 639384\nFİNANSMAN FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInFinancingActivities |  | 10017341 | 5993544\nPay ve Diğer Özkaynağa Dayalı Araçların İhracından Kaynaklanan Nakit Girişleri | kap-fr_ProceedsFromIssuingSharesOtherEquityInstruments |  | 0 | 0\nPay İhracından Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromIssuingShares |  | 0 | 0\nBorçlanmadan Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities |  | 34580193 | 28177107\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities |  | -24393209 | -21867034\nÖdenen Temettüler | ifrs-full_DividendsPaidClassifiedAsFinancingActivities | 19 | -169643 | -316529</untrusted_document>\n<untrusted_document cite_id=\"c:e3947fd2384e84b5cb8751719376f5d005ad50a512b86cda0df0e24c45ec4f94\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2026 - 31.03.2026 | Önceki Dönem 01.01.2025 - 31.03.2025\nMaddi ve Maddi Olmayan Duran Varlıkların Alımından Kaynaklanan Nakit Çıkışları | kap-fr_PurchaseOfPropertyPlantEquipmentAndIntangibleAssetsClassifiedAsInvestingActivities |  | -13558725 | -7791420\nMaddi Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities | 8 | -5734750 | -2024305\nMaddi Olmayan Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities | 8 | -7823975 | -5767115\nAlınan Temettüler | ifrs-full_DividendsReceivedClassifiedAsInvestingActivities |  | 0 | 0\nDiğer Nakit Girişleri (Çıkışları) | ifrs-full_OtherInflowsOutflowsOfCashClassifiedAsInvestingActivities |  | -497609 | 178530\nFİNANSMAN FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInFinancingActivities |  | 9128007 | -3125566\nPay ve Diğer Özkaynağa Dayalı Araçların İhracından Kaynaklanan Nakit Girişleri | kap-fr_ProceedsFromIssuingSharesOtherEquityInstruments |  | 0 | 0\nPay İhracından Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromIssuingShares |  | 0 | 0\nBorçlanmadan Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities |  | 29373170 | 8749983\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities |  | -20245163 | -11875549\nÖdenen Temettüler | ifrs-full_DividendsPaidClassifiedAsFinancingActivities |  | -0 | -0</untrusted_document>\n<untrusted_document cite_id=\"c:6204ab3e8058dedc9cfa6c99474df4c1e1e1016fc3963e8459586e27b242e4ab\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 31.12.2025 | Önceki Dönem 01.01.2024 - 31.12.2024\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities |  | -27216621 | -31928759\nÖdenen Temettüler | ifrs-full_DividendsPaidClassifiedAsFinancingActivities | 20 | 0 | -222049\nÖdenen Faiz | ifrs-full_InterestPaidClassifiedAsFinancingActivities |  | 0 | 0\nAlınan Faiz | kap-fr_InterestReceivedClassifiedAsFinancingActivities |  | 0 | 0\nYABANCI PARA ÇEVRİM FARKLARININ ETKİSİNDEN ÖNCE NAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges |  | 11975514 | 13202992\nYabancı Para Çevrim Farklarının Nakit ve Nakit Benzerleri Üzerindeki Etkisi | ifrs-full_EffectOfExchangeRateChangesOnCashAndCashEquivalents |  | -4665885 | -3900877\nNAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalents |  | 7309629 | 9302115\nDÖNEM BAŞI NAKİT VE NAKİT BENZERLERİ | kap-fr_CashAndCashEquivalentsForCashFlowStatement |  | 21776847 | 12474732\nDÖNEM SONU NAKİT VE NAKİT BENZERLERİ | kap-fr_CashAndCashEquivalentsForCashFlowStatement | 3 | 29086476 | 21776847</untrusted_document>\n<untrusted_document cite_id=\"c:57ba7c4bfee157fd213308a32b32297ede2b76a2ed1d576d53cf54ea9e1b1f16\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024\nMaddi Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities |  | -7247996 | -4764441\nMaddi Olmayan Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities |  | -16767108 | -15439693\nAlınan Temettüler | ifrs-full_DividendsReceivedClassifiedAsInvestingActivities |  | 66546 | 59619\nDiğer Nakit Girişleri (Çıkışları) | ifrs-full_OtherInflowsOutflowsOfCashClassifiedAsInvestingActivities |  | -864637 | -71631\nFİNANSMAN FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInFinancingActivities |  | -1986939 | 14485878\nPay ve Diğer Özkaynağa Dayalı Araçların İhracından Kaynaklanan Nakit Girişleri | kap-fr_ProceedsFromIssuingSharesOtherEquityInstruments |  | 0 | 0\nPay İhracından Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromIssuingShares |  | 0 | 0\nBorçlanmadan Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities |  | 18469433 | 32261740\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities |  | -20456372 | -17775862\nÖdenen Temettüler | ifrs-full_DividendsPaidClassifiedAsFinancingActivities |  | -0 | -0\nÖdenen Faiz | ifrs-full_InterestPaidClassifiedAsFinancingActivities |  | -0 | -0\nAlınan Faiz | kap-fr_InterestReceivedClassifiedAsFinancingActivities |  | 0 | 0</untrusted_document>\n<untrusted_document cite_id=\"c:d6a85f457cc009173fad3d3ed5811d07aeb405145579daa114f3637f52761f75\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.06.2025 | Önceki Dönem 01.01.2024 - 30.06.2024\nMaddi Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities |  | -4173430 | -2526100\nMaddi Olmayan Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities |  | -8839186 | -9354362\nAlınan Temettüler | ifrs-full_DividendsReceivedClassifiedAsInvestingActivities |  | 66546 | 60435\nDiğer Nakit Girişleri (Çıkışları) | ifrs-full_OtherInflowsOutflowsOfCashClassifiedAsInvestingActivities |  | -25855 | 136793\nFİNANSMAN FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInFinancingActivities |  | -1927200 | 7649578\nPay ve Diğer Özkaynağa Dayalı Araçların İhracından Kaynaklanan Nakit Girişleri | kap-fr_ProceedsFromIssuingSharesOtherEquityInstruments |  | 0 | 0\nPay İhracından Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromIssuingShares |  | 0 | 0\nBorçlanmadan Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities |  | 7182771 | 17221223\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities |  | -9109971 | -9571645\nÖdenen Temettüler | ifrs-full_DividendsPaidClassifiedAsFinancingActivities |  | -0 | -0\nÖdenen Faiz | ifrs-full_InterestPaidClassifiedAsFinancingActivities |  | -0 | -0\nAlınan Faiz | kap-fr_InterestReceivedClassifiedAsFinancingActivities |  | 0 | 0</untrusted_document>\n<untrusted_document cite_id=\"c:7de7ae3043a7a0b72dd152664c06a876c217ffd78413e990c6b60ecc6d291012\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2026 - 30.06.2026 | Önceki Dönem 01.01.2025 - 30.06.2025\nMaddi Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities | 8 | -14257326 | -5513477\nMaddi Olmayan Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities | 8 | -19488824 | -11677360\nAlınan Temettüler | ifrs-full_DividendsReceivedClassifiedAsInvestingActivities |  | 122899 | 87913\nDiğer Nakit Girişleri (Çıkışları) | ifrs-full_OtherInflowsOutflowsOfCashClassifiedAsInvestingActivities |  | -655365 | -34156\nFİNANSMAN FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInFinancingActivities |  | 27717459 | -2546005\nBorçlanmadan Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities |  | 48593359 | 9489087\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities |  | -20875900 | -12035092\nYABANCI PARA ÇEVRİM FARKLARININ ETKİSİNDEN ÖNCE NAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges |  | 9386191 | -1467399\nYabancı Para Çevrim Farklarının Nakit ve Nakit Benzerleri Üzerindeki Etkisi | ifrs-full_EffectOfExchangeRateChangesOnCashAndCashEquivalents |  | -4168918 | -3314402\nNAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalents |  | 5217273 | -4781801</untrusted_document>",
+   "summary": "ASELS nakit toplam borç",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:ba6215b1075465f9a48dfd6097f42dab509c7e8b442294e2c05149b4385c9ee6",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 31.12.2024 | Önceki Dönem 01.01.2023 - 31.12.2023\nMaddi Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities | 11 | -6027026 | -7640660\nMaddi Olmayan Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities | 12 | -15271921 | -10330984\nTürev Araçlardan Nakit Girişleri | ifrs-full_CashReceiptsFromFutureContractsForwardContractsOptionContractsAndSwapContractsClassifiedAsInvestingActivities |  | 0 | 0\nAlınan Temettüler | ifrs-full_DividendsReceivedClassifiedAsInvestingActivities | 23 | 44750 | 22219\nDiğer Nakit Girişleri (Çıkışları) | ifrs-full_OtherInflowsOutflowsOfCashClassifiedAsInvestingActivities |  | -758040 | 639384\nFİNANSMAN FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInFinancingActivities |  | 10017341 | 5993544\nPay ve Diğer Özkaynağa Dayalı Araçların İhracından Kaynaklanan Nakit Girişleri | kap-fr_ProceedsFromIssuingSharesOtherEquityInstruments |  | 0 | 0\nPay İhracından Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromIssuingShares |  | 0 | 0\nBorçlanmadan Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities |  | 34580193 | 28177107\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities |  | -24393209 | -21867034\nÖdenen Temettüler | ifrs-full_DividendsPaidClassifiedAsFinancingActivities | 19 | -169643 | -316529",
+     "source": {
+      "kind": "chunk",
+      "document_id": 287,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "section": "Tablo 3",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1395801"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:e3947fd2384e84b5cb8751719376f5d005ad50a512b86cda0df0e24c45ec4f94",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2026 - 31.03.2026 | Önceki Dönem 01.01.2025 - 31.03.2025\nMaddi ve Maddi Olmayan Duran Varlıkların Alımından Kaynaklanan Nakit Çıkışları | kap-fr_PurchaseOfPropertyPlantEquipmentAndIntangibleAssetsClassifiedAsInvestingActivities |  | -13558725 | -7791420\nMaddi Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities | 8 | -5734750 | -2024305\nMaddi Olmayan Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities | 8 | -7823975 | -5767115\nAlınan Temettüler | ifrs-full_DividendsReceivedClassifiedAsInvestingActivities |  | 0 | 0\nDiğer Nakit Girişleri (Çıkışları) | ifrs-full_OtherInflowsOutflowsOfCashClassifiedAsInvestingActivities |  | -497609 | 178530\nFİNANSMAN FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInFinancingActivities |  | 9128007 | -3125566\nPay ve Diğer Özkaynağa Dayalı Araçların İhracından Kaynaklanan Nakit Girişleri | kap-fr_ProceedsFromIssuingSharesOtherEquityInstruments |  | 0 | 0\nPay İhracından Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromIssuingShares |  | 0 | 0\nBorçlanmadan Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities |  | 29373170 | 8749983\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities |  | -20245163 | -11875549\nÖdenen Temettüler | ifrs-full_DividendsPaidClassifiedAsFinancingActivities |  | -0 | -0",
+     "source": {
+      "kind": "chunk",
+      "document_id": 338,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2026-Q1",
+      "section": "Tablo 3",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1598316"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:6204ab3e8058dedc9cfa6c99474df4c1e1e1016fc3963e8459586e27b242e4ab",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 31.12.2025 | Önceki Dönem 01.01.2024 - 31.12.2024\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities |  | -27216621 | -31928759\nÖdenen Temettüler | ifrs-full_DividendsPaidClassifiedAsFinancingActivities | 20 | 0 | -222049\nÖdenen Faiz | ifrs-full_InterestPaidClassifiedAsFinancingActivities |  | 0 | 0\nAlınan Faiz | kap-fr_InterestReceivedClassifiedAsFinancingActivities |  | 0 | 0\nYABANCI PARA ÇEVRİM FARKLARININ ETKİSİNDEN ÖNCE NAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges |  | 11975514 | 13202992\nYabancı Para Çevrim Farklarının Nakit ve Nakit Benzerleri Üzerindeki Etkisi | ifrs-full_EffectOfExchangeRateChangesOnCashAndCashEquivalents |  | -4665885 | -3900877\nNAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalents |  | 7309629 | 9302115\nDÖNEM BAŞI NAKİT VE NAKİT BENZERLERİ | kap-fr_CashAndCashEquivalentsForCashFlowStatement |  | 21776847 | 12474732\nDÖNEM SONU NAKİT VE NAKİT BENZERLERİ | kap-fr_CashAndCashEquivalentsForCashFlowStatement | 3 | 29086476 | 21776847",
+     "source": {
+      "kind": "chunk",
+      "document_id": 335,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "section": "Tablo 3",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1561039"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:57ba7c4bfee157fd213308a32b32297ede2b76a2ed1d576d53cf54ea9e1b1f16",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.09.2025 | Önceki Dönem 01.01.2024 - 30.09.2024\nMaddi Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities |  | -7247996 | -4764441\nMaddi Olmayan Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities |  | -16767108 | -15439693\nAlınan Temettüler | ifrs-full_DividendsReceivedClassifiedAsInvestingActivities |  | 66546 | 59619\nDiğer Nakit Girişleri (Çıkışları) | ifrs-full_OtherInflowsOutflowsOfCashClassifiedAsInvestingActivities |  | -864637 | -71631\nFİNANSMAN FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInFinancingActivities |  | -1986939 | 14485878\nPay ve Diğer Özkaynağa Dayalı Araçların İhracından Kaynaklanan Nakit Girişleri | kap-fr_ProceedsFromIssuingSharesOtherEquityInstruments |  | 0 | 0\nPay İhracından Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromIssuingShares |  | 0 | 0\nBorçlanmadan Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities |  | 18469433 | 32261740\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities |  | -20456372 | -17775862\nÖdenen Temettüler | ifrs-full_DividendsPaidClassifiedAsFinancingActivities |  | -0 | -0\nÖdenen Faiz | ifrs-full_InterestPaidClassifiedAsFinancingActivities |  | -0 | -0\nAlınan Faiz | kap-fr_InterestReceivedClassifiedAsFinancingActivities |  | 0 | 0",
+     "source": {
+      "kind": "chunk",
+      "document_id": 321,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "section": "Tablo 3",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511313"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:d6a85f457cc009173fad3d3ed5811d07aeb405145579daa114f3637f52761f75",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 30.06.2025 | Önceki Dönem 01.01.2024 - 30.06.2024\nMaddi Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities |  | -4173430 | -2526100\nMaddi Olmayan Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities |  | -8839186 | -9354362\nAlınan Temettüler | ifrs-full_DividendsReceivedClassifiedAsInvestingActivities |  | 66546 | 60435\nDiğer Nakit Girişleri (Çıkışları) | ifrs-full_OtherInflowsOutflowsOfCashClassifiedAsInvestingActivities |  | -25855 | 136793\nFİNANSMAN FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInFinancingActivities |  | -1927200 | 7649578\nPay ve Diğer Özkaynağa Dayalı Araçların İhracından Kaynaklanan Nakit Girişleri | kap-fr_ProceedsFromIssuingSharesOtherEquityInstruments |  | 0 | 0\nPay İhracından Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromIssuingShares |  | 0 | 0\nBorçlanmadan Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities |  | 7182771 | 17221223\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities |  | -9109971 | -9571645\nÖdenen Temettüler | ifrs-full_DividendsPaidClassifiedAsFinancingActivities |  | -0 | -0\nÖdenen Faiz | ifrs-full_InterestPaidClassifiedAsFinancingActivities |  | -0 | -0\nAlınan Faiz | kap-fr_InterestReceivedClassifiedAsFinancingActivities |  | 0 | 0",
+     "source": {
+      "kind": "chunk",
+      "document_id": 313,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q2",
+      "section": "Tablo 3",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1472637"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:7de7ae3043a7a0b72dd152664c06a876c217ffd78413e990c6b60ecc6d291012",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2026 - 30.06.2026 | Önceki Dönem 01.01.2025 - 30.06.2025\nMaddi Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities | 8 | -14257326 | -5513477\nMaddi Olmayan Duran Varlık Alımından Kaynaklanan Nakit Çıkışları | ifrs-full_PurchaseOfIntangibleAssetsClassifiedAsInvestingActivities | 8 | -19488824 | -11677360\nAlınan Temettüler | ifrs-full_DividendsReceivedClassifiedAsInvestingActivities |  | 122899 | 87913\nDiğer Nakit Girişleri (Çıkışları) | ifrs-full_OtherInflowsOutflowsOfCashClassifiedAsInvestingActivities |  | -655365 | -34156\nFİNANSMAN FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInFinancingActivities |  | 27717459 | -2546005\nBorçlanmadan Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities |  | 48593359 | 9489087\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities |  | -20875900 | -12035092\nYABANCI PARA ÇEVRİM FARKLARININ ETKİSİNDEN ÖNCE NAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges |  | 9386191 | -1467399\nYabancı Para Çevrim Farklarının Nakit ve Nakit Benzerleri Üzerindeki Etkisi | ifrs-full_EffectOfExchangeRateChangesOnCashAndCashEquivalents |  | -4168918 | -3314402\nNAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalents |  | 5217273 | -4781801",
+     "source": {
+      "kind": "chunk",
+      "document_id": 356,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2026-Q2",
+      "section": "Tablo 3",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1643141"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"cash\",\"total_debt\"],\"periods\":[\"2025-FY\",\"2026-Q2\"],\"ticker\":\"ASELS\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2067\">Nakit ve nakit benzerleri (2025-FY; Cari Dönem 31.12.2025): 29.086.476.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2082\">Nakit ve nakit benzerleri (2025-FY; Önceki Dönem 31.12.2025; 2026-Q1 raporu): 32.006.758.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2096\">Nakit ve nakit benzerleri (2025-FY; Önceki Dönem 31.12.2025; 2026-Q2 raporu): 34.251.653.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2095\">Nakit ve nakit benzerleri (2026-Q2; Cari Dönem 30.06.2026): 39.468.926.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2077\">Toplam borç (2025-FY; Cari Dönem 31.12.2025): 43.056.550.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2092\">Toplam borç (2025-FY; Önceki Dönem 31.12.2025; 2026-Q1 raporu): 47.379.427.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2104\">Toplam borç (2025-FY; Önceki Dönem 31.12.2025; 2026-Q2 raporu): 50.702.532.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2103\">Toplam borç (2026-Q2; Cari Dönem 30.06.2026): 73.293.290.000 TRY</untrusted_document>",
+   "summary": "ASELS 2025-FY to 2026-Q2 cash, total_debt",
+   "count": 8,
+   "items": [
+    {
+     "cite_id": "f:2067",
+     "text": "Nakit ve nakit benzerleri (2025-FY; Cari Dönem 31.12.2025): 29.086.476.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 335,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "cash",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Nakit ve Nakit Benzerleri / Cari Dönem 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1561039"
+     },
+     "value": "29086476000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2082",
+     "text": "Nakit ve nakit benzerleri (2025-FY; Önceki Dönem 31.12.2025; 2026-Q1 raporu): 32.006.758.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 338,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "cash",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Nakit ve Nakit Benzerleri / Önceki Dönem 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1598316"
+     },
+     "value": "32006758000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2096",
+     "text": "Nakit ve nakit benzerleri (2025-FY; Önceki Dönem 31.12.2025; 2026-Q2 raporu): 34.251.653.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 356,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "cash",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Nakit ve Nakit Benzerleri / Önceki Dönem 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1643141"
+     },
+     "value": "34251653000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2095",
+     "text": "Nakit ve nakit benzerleri (2026-Q2; Cari Dönem 30.06.2026): 39.468.926.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 356,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2026-Q2",
+      "metric": "cash",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Nakit ve Nakit Benzerleri / Cari Dönem 30.06.2026",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1643141"
+     },
+     "value": "39468926000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2077",
+     "text": "Toplam borç (2025-FY; Cari Dönem 31.12.2025): 43.056.550.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 335,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "total_debt",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Kısa Vadeli Borçlanmalar / Cari Dönem 31.12.2025 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmaların Kısa Vadeli Kısımları / Cari Dönem 31.12.2025 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmalar / Cari Dönem 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1561039"
+     },
+     "value": "43056550000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2092",
+     "text": "Toplam borç (2025-FY; Önceki Dönem 31.12.2025; 2026-Q1 raporu): 47.379.427.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 338,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "total_debt",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Kısa Vadeli Borçlanmalar / Önceki Dönem 31.12.2025 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmaların Kısa Vadeli Kısımları / Önceki Dönem 31.12.2025 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmalar / Önceki Dönem 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1598316"
+     },
+     "value": "47379427000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2104",
+     "text": "Toplam borç (2025-FY; Önceki Dönem 31.12.2025; 2026-Q2 raporu): 50.702.532.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 356,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "total_debt",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Kısa Vadeli Borçlanmalar / Önceki Dönem 31.12.2025 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmaların Kısa Vadeli Kısımları / Önceki Dönem 31.12.2025 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmalar / Önceki Dönem 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1643141"
+     },
+     "value": "50702532000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2103",
+     "text": "Toplam borç (2026-Q2; Cari Dönem 30.06.2026): 73.293.290.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 356,
+      "ticker": "ASELS",
+      "doc_type": "kap_financial_report",
+      "period": "2026-Q2",
+      "metric": "total_debt",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Kısa Vadeli Borçlanmalar / Cari Dönem 30.06.2026 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmaların Kısa Vadeli Kısımları / Cari Dönem 30.06.2026 + Tablo 1 (Finansal Durum Tablosu (Bilanço)) / Uzun Vadeli Borçlanmalar / Cari Dönem 30.06.2026",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1643141"
+     },
+     "value": "73293290000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 83086
+}

@@ -1,0 +1,267 @@
+{
+ "case_id": "tr-deep-bimas-hasilat-buyume",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "4027ecbbf0b38bb285124c022fb5f28c9103a5594bbb6cc928f520845c7cc2e0",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2098705",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "BIMAS",
+       "query": "BİM hasılat satışlar 2024 2025"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T6rgIGiRd3hs/CzVVps4TwjZS844onjFHtG+Epl11UxY9ITJPxNL5CL3we+3VSnISkupcaToWOGe9xfCoWyBZSbECepxNC25Q5uOJ+AV1yiNyisGnXmyWs8E="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1624,
+    "tokens_out": 40,
+    "latency_ms": 807.577,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "7d0f0d59775bba24631fdecf4202eef98d2c3aa643270db6a36c3efc1b6278a7",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2274992",
+      "name": "get_financial_facts",
+      "arguments": {
+       "periods": [
+        "2024-FY",
+        "2025-FY"
+       ],
+       "ticker": "BIMAS",
+       "metrics": [
+        "revenue"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TDbGX1R3bdnUWNXOm6aGSRzFTAwnQEA33MGFubL5YwwfcRZ8M5l272ehcaNgntJSu7YfeGYVGWOB5XLlAUqNgs5xn5ovXittwQRdQYFvD2FfedASp4rbSDp8="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 6339,
+    "tokens_out": 46,
+    "latency_ms": 916.889,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "9b171639e37aeb73bc155f392e5fdf01f3d049f003a6e8f9993380091ee0a4d3",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"BİM'in bağımsız denetimden geçmiş finansal raporlarına göre hasılatı 2024 yılında 680.072.863.000 TL [f:2502], 2025 yılında ise 721.062.506.000 TL [f:2501] olarak gerçekleşmiştir. Bu verilere göre BİM'in hasılatı 2024'ten 2025'e %6,03 oranında artmıştır.\",\n  \"points\": [\n    {\n      \"text\": \"BİM'in 2024 yılı hasılatı 680.072.863.000 TL'dir.\",\n      \"cite_ids\": [\n        \"f:2502\"\n      ]\n    },\n    {\n      \"text\": \"BİM'in 2025 yılı hasılatı 721.062.506.000 TL'dir.\",\n      \"cite_ids\": [\n        \"f:2501\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2502\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2501\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 6645,
+    "tokens_out": 382,
+    "latency_ms": 1919.372,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"BİM hasılat satışlar 2024 2025\",\"ticker\":\"BIMAS\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:7a36f72e2aaab9f70032bd320bb4265f4857697a8a0b817c457638d506d7569f\">BİM, 2025 yılı itibarıyla bu oranı %25’e yükseltmeyi hedeflemektedir. • BİM, 2024 yılında birim sera gazı emisyonunu 2019’a göre %19 azaltmış olup 2026 yılı %20 sera gazı emisyonu azaltım hedefine emin adımlarla ilerlemektedir. 2024 yılında üretilen 64.059 MWh elektrik enerjisi sayesinde 28 bin tonun üzerinde CO2 tasarrufu sağlanmıştır. • 2024 yılında BİM ve FİLE mağazalarında ambalajlamada kaynak verimliliğini artırmak ve sürdürülebilir ham madde alternatiflerini yaygınlaştırmak için yürütülen çalışmalar sonucunda toplam 491 ton plastik ve 801 ton kâğıt tüketiminin önüne geçilmiştir. Söz konusu uygulamalarla yaklaşık 34 milyon TL finansal tasarruf sağlanmıştır. BİM yapacağı geliştirmelerle 2025 yılında kâğıt atıkları 820 ton/yıl, plastik atıkları ise 750 ton/ yıl azaltmayı ve ambalajlarında 480 ton/yıl geri dönüştürülmüş plastik kullanmayı hedeflemektedir. GÜÇLÜ KURUMSAL YÖNETİŞİM SÜRDÜRÜLEBİLİR ÜRÜNLER İNSANA DEĞERİKLİM DEĞİŞİMİYLE MÜCADELEYE KATKI Bir Bakışta BİM18 BİM 2024 Entegre Faaliyet Raporu 19 BİM Hakkında Perakende sektörünün lideri Türkiye’de perakende sektörünün lideri konumunda bulunan BİM’in başarı yolculuğu 1995 yılında 21 mağaza ile başladı. BİM’in kurulduğu günden bugüne temel prensibimizi kaliteli ürünleri müşterilerimize olabildiğince uygun fiyatlara sunmak olarak belirledik. Operasyonel maliyetlerimizi en düşük seviyede tutarak kazanımlarımızı müşterilerimize fiyat indirimi olarak yansıtma ilkesiyle hareket ediyoruz. Şirketimiz organizasyonel yapısı, etkin maliyet yönetimi uygulamaları ve sınırlı ürün portföyüyle yüksek indirim modelinin Türkiye’deki ilk temsilcisidir. BİM’in merkezi olmayan organizasyon yapısı, bölge direktörlüklerimiz ve mağazalarımız arasında dinamik bir lojistik ve bilgi ağı kurmamızı kolaylaştırarak karar alma ve uygulama süreçlerimizin hızlı ve verimli olmasını sağlıyor. BİM’de, ürün fiyatlarını yükseltecek her türlü gereksiz harcamadan kaçınıyoruz. Ürün portföyümüzü yaklaşık 900 adetle sınırlayarak kalite standartlarının denetimini en etkin biçimde gerçekleştiriyor, ürünlerimizi mümkün olan en uygun fiyatla müşteriye ulaştırıyoruz. Her yıl yeni ürünler lanse ederek ve bazı ürünlerimizi listeden çıkartarak ürün portföyümüzün kompozisyonunu müşterilerimizin zaman içinde farklılaşan beklenti ve ihtiyaçlarına göre güncelliyoruz. Kendi Markalarımıza Yatırım Yaparız Tedarikçilerimize BİM’e özel olarak ürettirdiğimiz kendi markalı ürünlerimiz, yüksek indirim iş modelimizin ve sürdürülebilir ürün anlayışımızın temelini oluşturuyor.</untrusted_document>\n<untrusted_document cite_id=\"c:bffbbc7c2c07e64ecb91b406bc5152155ba8d36e344003325a750b1da72dfb5c\">BİM olarak 2025 yılında gerçekleştirdiğimiz toplam 458,3 milyon TL bağışın %26’sı kamu kurum ve kuruluşlarına, %71’i yardım amaçlı dernek ve vakıflara, %3’ü ise eğitim kurumlarına destek olmak üzere yapıldı. Şirket, herhangi bir siyasi faaliyeti, partiyi veya adayı desteklemek için siyasi ödeme yapmamakta veya ayni yardımda bulunmamaktadır. 2025 yılında da herhangi bir politik bağış yapılmamıştır. Kadın Kooperatiflerine Anlamlı Destek BİM olarak, kadınların ekonomik yaşam koşullarını iyileştirmelerine destek olmak ve yerel kalkınmadaki liderliklerini güçlendirmek üzere çeşitli programlar yürüten Kadın Emeğini Değerlendirme Vakfı (KEDV) ile iş birliği kurarak yerel kalkınmaya ve kadın emeğine desteğimizi artırdık. 6 Şubat 2023 yılında yaşadığımız depremin ardından Aşhane Kadın Kooperatifi ile ortak çalışmamıza 2025 yılında da devam ettik. İstanbul, Bursa ve Kocaeli illerimizde Aşhane Kadın Kooperatifi tarafından üretilen ürünler sürekli olarak satışa sunuldu. Dost’tan Doğaya Projesi BİM olarak, biyoçeşitliliğin korunmasını sorumlu tüketim anlayışıyla bütünleştiren Kurumsal Sosyal Sorumluluk projeleri yürütüyoruz. 2025 yılında başlattığımız “Dost’tan Doğaya” projesiyle, Dost Süt markamız üzerinden satılan her 1 litre %0,5 yağlı süt için bir tohumu doğayla buluşturuyor; tüketimi ölçülebilir bir çevresel etkiye dönüştürüyoruz. Muğla’da orman yangınlarından etkilenen alanlarda yürüttüğümüz bu çalışmalarla biyoçeşitliliğin artırılmasına ve karbon tutulumuna katkı sağlarken, tohumların işlenmesi süreçlerinde kırsal bölgelerde yaşayan kadınların istihdam edilmesini destekliyoruz. Dijital olarak izlenebilen ve satış hacmiyle ilişkilendirilen bu modelle, projeyi şeffaf, ölçeklenebilir ve uzun vadede sürdürülebilir bir yapıya kavuşturuyoruz. 97 En Kıymetli Sermaye: İnsan96 BİM 2025 Entegre Faaliyet Raporu BİM olarak iklim değişikliğiyle mücadeleyi uzun vadeli değer üretme yaklaşımımızın ayrılmaz bir parçası olarak ele alıyor; bu kapsamda bilim temelli, ölçülebilir ve zaman tanımlı bir karbon azaltım planı uyguluyoruz. En Kıymetli Miras: Dünya 99 En Kıymetli Miras: Dünya98 BİM 2025 Entegre Faaliyet Raporu İklim Değişikliği ile Mücadele ve Çevre Yönetimi Çevresel etkiyi azaltmaya yönelik kararlı adımlar 2025 yılında iklim krizinin beraberinde getirdiği risklere karşı küresel ölçekte yürütülen mücadeleye katkı sunmak üzere enerji ve kaynak verimliliği ile karbonsuzlaşmayı odağımıza alarak yatırımlarımıza hız kesmeden devam ettik.</untrusted_document>\n<untrusted_document cite_id=\"c:83eeff9460187195fc044dbe40af062701fb7271576bce5ffd758206b6de58b5\">Şirketin %100 iştiraki ile Mısır’da aynı iş kolunda faaliyet göstermek üzere kurulu bulunan Bim Stores L.L.C. Ş irketi, 30 Eylül 2025 itibariyle 2 bölge müdürlüğü 436 (31.12.2024 – 418) mağazası ile Mısır’da faaliyetlerini sürdürmektedir. Şirket gerek Fas gerek Mısır’da faaliyetlerde bulunan söz konusu iştiraklerin mali sonuçlarını 30 Eylül 2025 tarihli mali tablolarında tam konsolidasyon yöntemi uygulayarak yansıtmıştır. Söz konusu bağlı ortaklıkların ana ortaklık sermayesinde payları (karşılıklı iştirak) bulunmamaktadır. Mağaza Sayıları Özet Tablo Eylül 25 Aralık 24 Eylül 24 BİM Türkiye 12.568 12.089 11.952 FİLE Türkiye 329 287 272 BİM Fas 898 789 759 BİM Mısır 436 418 394 TOPLAM 14.231 13.583 13.377 2 BÖLÜM 2 - KURUMSAL BİLGİLER Ortaklık Yapısı 30 Eylül 2025 itibariyle Şirket ortaklık yapısı aşağıda gibi şekillenmiştir. Ortak Eylül 2025 Aralık 2024 Merkez Bereket Gıda Sanayi ve Ticaret A.Ş. 15,41% 15,15% Naspak Gıda Sanayi ve Ticaret A.Ş. 11,67% 11,53% Diğer (Halka Açık Olmayan Kısım) 1,54% 1,52% Diğer (Halka Açık Olan Kısım) 71,39% 71,80% 100% 100% Şirket Yönetim Kurulu Üyeleri ve Denetçiler 29 Nisan 2025 tarihinde gerçekleştirilen 2024 yılı Olağan Genel Kurul Toplantısı’nda 6 kişilik yöne tim kurulu üyeleri bir yıllığına seçilmişlerdir. Sermaye Piyasası Kurulu Kurumsal Yönetim İlkeleri’ne uygun olarak 6 üyeli Yönetim Kurulu’nun 2’si b ağımsız üye olarak görev yapmaktadır. Yönetim Kurulu Üyeleri Mahmud Muhammed TOPBAŞ Üye - Yönetim Kurulu Başkanı Galip AYKAÇ Üye - Yönetim Kurulu Başkan Yardımcısı Ömer Hulusi TOPBAŞ Üye Paul Michael FOLEY Üye Bekir PAKDEMİRLİ Bağımsız Üye Karl-Heinz HOLLAND Bağımsız Üye Üst Yönetim 30 Eylül 2025 tarihi itibariyle üst yönetim kadrosu aşağıdaki gibidir. Üst Yönetim Mahmud Muhammed TOPBAŞ İcra Başkanı (CEO) Fatih MERİÇ Mali İşler Başkanı (CFO) Tolga ŞAHİN Operasyon Başkanı (COO) Hasan KAYA İnsan Kaynakları Başkanı (CHRO) Umut BABA Ticaret Başkanı (CCO) Ali CAN Teknoloji Başkanı (CTO) 3 BÖLÜM 3 - SEKTÖREL BİLGİLER İndirim mağazacılığı perakende sektöründe önemli bir yer edinerek son yıllarda ciddi bir büyüme ivmesi yakalamıştır. BİM, Türkiye perakendecilik sektörünün lideri konumundadır. Şirket, düşük kâr marjları, etkin maliyet yönetimi ve kararlıkla uyguladığı özgün mağaza formatıyla istikrarlı büyümesini sürdürmektedir.</untrusted_document>\n<untrusted_document cite_id=\"c:f2f3b6cc79e77bfcdf8cc42baf48eb31482c8d65c721d99778c07df9221ba664\">Kurumsal Yönetim138 BİM 2025 Entegre Faaliyet Raporu İlişkili Taraflarla Y apılan İşlemler Raporu Sermaye Piyasası Kurulu’nun Seri: II-17.1 sayılı Kurumsal Yönetim Tebliği’nin 10. maddesi gereğince, Şirket ile ilişkili tarafları arasındaki yaygın ve süreklilik arz eden işlemlerin bir hesap dönemi içerisindeki tutarının alış işlemlerinde kamuya açıklanan son yıllık finansal tablolara göre oluşan satışların maliyetine olan oranının, satış işlemlerinde ise hasılat tutarına olan oranının %10’dan fazla bir orana ulaşacağının öngörülmesi durumunda, ortaklık yönetim kurulu tarafından işlemlerin şartlarına ve piyasa koşulları ile karşılaştırılmasına ilişkin olarak bir rapor hazırlanması zorunlu kılınmıştır. 2025 yılında gerçekleştirilen yaygınlık ve süreklilik arz eden ilişkili kuruluşlardan alımların ilgili mevzuat gereğince incelenmesini ve 2026 yılında gerçekleştirilecek benzer işlemlerin uygunluğunun tespit edilmesi amacıyla hazırlanan rapor Yönetim Kurulu tarafından onaylanmış olup, ilgili rapor Genel Kurul’da ortakların bilgisine sunulacaktır. Raporun sonuç kısmı aşağıda yer almaktadır. Raporun Sonuç Kısmı Sermaye Piyasası Kurulu’nun ilgili tebliğlerindeki düzenlemelerine istinaden Yönetim Kurulu tarafından hazırlanan işbu raporda, BİM Birleşik Mağazalar A.Ş.’nin ilişkili taraf işlemleri değerlendirilmiş ve BİM Birleşik Mağazalar A.Ş.’nin 24 No.lu Uluslararası Muhasebe Standardı kapsamında belirlenen ilişkili taraflarla 2025 yılında gerçekleştirdiği yaygınlık ve süreklilik arz eden işlemlerin şartlarının emsallerine uygunluklarına nazaran bariz farklılıklar göstermediği ve 2026 yılında da ilgili kuruluşlardan benzer koşullarda yaygınlık ve süreklilik arz eden alımların yapılmasında sakınca olmadığı sonucuna varılmıştır. Kurumsal Yönetim İlkelerine Uyum Raporu Kurumsal Yönetim Uyum Raporu Evet Kısmen Hayır Muaf İlgisiz Açıklama 1.1. PAY SAHİPLİĞİ HAKLARININ KULLANIMININ KOLAYLAŞTIRILMASI 1.1.2 - Pay sahipliği haklarının kullanımını etkileyebilecek nitelikteki bilgi ve açıklamalar güncel olarak ortaklığın kurumsal internet sitesinde yatırımcıların kullanımına sunulmaktadır. X 1.2. BİLGİ ALMA VE İNCELEME HAKKI 1.2.1- Şirket yönetimi özel denetim yapılmasını zorlaştırıcı işlem yapmaktan kaçınmıştır. X 1.3. GENEL KURUL 1.3.2 - Şirket, Genel Kurul gündeminin açık şekilde ifade edilmesini ve her teklifin ayrı bir başlık altında verilmiş olmasını temin etmiştir. X 1.3.7 - İmtiyazlı bir şekilde ortaklık bilgilerine ulaşma imkânı olan kimseler, kendileri adına ortaklığın faaliyet konusu kapsamında yaptıkları işlemler hakkında genel kurulda bilgi verilmesini teminen gündeme eklenmek üzere yönetim kurulunu bilgilendirmiştir.</untrusted_document>\n<untrusted_document cite_id=\"c:5c43fb908a289283a6616756d21cada1a6e868c0806e003493ce677dd7dc2b60\">2025 yılında bu yatırımların %15 tüketim karşılama oranıyla sağladığı 24 baz puanlık marj avantajı finansal performansa entegre edilmiştir. 201 2025 Yılı TSRS Uyumlu Sürdürülebilirlik Raporu200 BİM 2025 Entegre Faaliyet Raporu Strateji SÜRDÜRÜLEBİLİRLİK VE İKLİM RİSKLERİNİN YOĞUNLAŞMA ALANLARI VE DEĞER ZİNCİRİ ANALİZİ BİM, operasyonel yaygınlığı ve iş modelinin yapısı gereği; sürdürülebilirlik ve iklimle ilgili risk ve fırsatların yoğunlaştığı alanları üç ana eksende tanımlamıştır: 1. Varlık Türü ve Finansal Tablo Kalemlerinde Y oğunlaşma: İklim değişikliğiyle ilgili geçiş riskleri ve enerji maliyet artışları, örneğin BİM Türkiye’nin Türkiye geneline yayılmış 81 ildeki 12.751 mağazasındaki \"Ticari Soğutucu Dolaplar ve İklimlendirme Sistemleri\" üzerinde yoğunlaşmaktadır. Bu varlık grubu (Maddi Duran Varlıklar), hem en yüksek enerji tüketim kalemi olması hem de emisyon azaltım hedeflerinin odağında yer alması nedeniyle stratejik öneme sahiptir. Ayrıca, fiziksel risklere karşı en hassas varlık grubu; raf ömrü sınırlı olan ve \"Stoklar\" kalemini oluşturan bozulabilir taze gıda ürünleridir. 2. Coğrafi Alan ve Operasyonel Y oğunlaşma: Fiziksel risk senaryoları (RCP 8.5) ve kuraklık haritaları kapsamında; risklerin coğrafi dağılımı çeşitlilik göstermektedir. o Tedarik Tarafında: Kuraklık ve su stresi riskleri, tarımsal tedarikin en yoğun olduğu İç Anadolu, Ege ve Akdeniz havzalarında yoğunlaşmaktadır. o Operasyon Tarafında: Aşırı sıcak hava dalgaları ve sel riski, özellikle Kıyı Ege, Akdeniz ve Marmara Bölgesi'ndeki operasyonları etkilemektedir. Aşırı yağış kaynaklı riskler ise Karadeniz Bölgesi lojistik hatlarında belirgindir. o Kritik Düğümler: Lojistik ağının merkezi olan Bölge Depoları, mağazalara kıyasla operasyonel sürekliliğin daha hassas olduğu ve riskin yoğunlaştığı lokasyonlardır. 3. Değer Zinciri ve Tedarikçi Y oğunlaşması: Gıda güvenliği ve hammaddeye erişim riskleri, cironun büyük kısmını oluşturan \"Kendi Markalı (Private Label) Ürün Tedarikçileri\" ekosistemi üzerinde yoğunlaşmıştır. Özellikle su stresi altındaki tarımsal havzalarda üretim yapan tedarikçiler, iklim değişikliğinin dolaylı etkilerine (verim kaybı, fiyat oynaklığı) açıktır.</untrusted_document>\n<untrusted_document cite_id=\"c:c3b25f7de879ac6d52eeb181b8e8035f1250f8e738f6c281fe24d2e9b7424e72\">33 Bir Bakışta BİM32 BİM 2025 Entegre Faaliyet Raporu Başlıca Finansal ve Operasyonel Göstergelerimiz Sürdürülebilir finansal ve operasyonel sonuçlar BİM olarak, yüksek enflasyon döneminin hâkim olduğu 2025 yılında sosyal sorumluluğumuzun bilinciyle, her gün düşük fiyat yaklaşımımızla tüketicilerin yanında olmaya özen gösterdik. Verimlilik artışıyla elde ettiğimiz kazancı ürün fiyatlarımıza yansıtarak ülkemiz için katma değer üretmeyi sürdürdük. Yüksek kalite ve düşük fiyat ile halka sunduğumuz BİM’in ve FİLE’nin kendi markalı ürünleri ülkemizde enflasyonla mücadelede önemli bir role sahiptir. BİM’in 2025 yıl sonu itibarıyla kendi markalı ürünlerinin net satışlara oranı %55 olarak gerçekleşmiştir. Şirketimiz güçlü sermaye yapısı ve nakit pozisyonu sayesinde sürdürülebilir büyümesini kendi kaynaklarından karşılayarak 2025 yılında konsolide bazda 20,7 milyar TL yatırım gerçekleştirmiştir. 2025 yılında 890 yeni mağaza açılışı ile organik büyümesine devam eden BİM, 6.033 kişiyle yeni istihdam sağlamıştır. Finansal sonuçlar, SPK’nın Seri: II No: 14.1 tebliği çerçevesinde TMS/TFRS’ye uygun biçimde konsolide olarak hazırlanmaktadır. Konsolide edilen bağlı ortaklıklara ait bilgilere, raporun Bağlı Ortaklıklar ve İştirakler başlıklı bölümünden ulaşılabilir. SPK’nın 28 Aralık 2023 tarih ve 81/1820 sayılı kararı uyarınca, Türkiye Muhasebe/ Finansal Raporlama Standartlarını uygulayan finansal raporlama düzenlemelerine tabi ihraççılar ile sermaye piyasası kurumlarının, 31 Aralık 2023 tarihi itibarıyla sona eren hesap dönemlerine ait yıllık finansal raporlarından başlamak üzere TMS29 hükümlerini uygulamak suretiyle enflasyon muhasebesi uygulamasına karar verildi. Bu kapsamda, şirketimizin bağımsız denetimden geçmiş 2024 ve 2025 yılı konsolide finansal tabloları enflasyon etkisine göre düzeltilerek karşılaştırmalı olarak sunulmuştur.</untrusted_document>",
+   "summary": "BIMAS BİM hasılat satışlar 2024 2025",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:7a36f72e2aaab9f70032bd320bb4265f4857697a8a0b817c457638d506d7569f",
+     "text": "BİM, 2025 yılı itibarıyla bu oranı %25’e yükseltmeyi hedeflemektedir. • BİM, 2024 yılında birim sera gazı emisyonunu 2019’a göre %19 azaltmış olup 2026 yılı %20 sera gazı emisyonu azaltım hedefine emin adımlarla ilerlemektedir. 2024 yılında üretilen 64.059 MWh elektrik enerjisi sayesinde 28 bin tonun üzerinde CO2 tasarrufu sağlanmıştır. • 2024 yılında BİM ve FİLE mağazalarında ambalajlamada kaynak verimliliğini artırmak ve sürdürülebilir ham madde alternatiflerini yaygınlaştırmak için yürütülen çalışmalar sonucunda toplam 491 ton plastik ve 801 ton kâğıt tüketiminin önüne geçilmiştir. Söz konusu uygulamalarla yaklaşık 34 milyon TL finansal tasarruf sağlanmıştır. BİM yapacağı geliştirmelerle 2025 yılında kâğıt atıkları 820 ton/yıl, plastik atıkları ise 750 ton/ yıl azaltmayı ve ambalajlarında 480 ton/yıl geri dönüştürülmüş plastik kullanmayı hedeflemektedir. GÜÇLÜ KURUMSAL YÖNETİŞİM SÜRDÜRÜLEBİLİR ÜRÜNLER İNSANA DEĞERİKLİM DEĞİŞİMİYLE MÜCADELEYE KATKI Bir Bakışta BİM18 BİM 2024 Entegre Faaliyet Raporu 19 BİM Hakkında Perakende sektörünün lideri Türkiye’de perakende sektörünün lideri konumunda bulunan BİM’in başarı yolculuğu 1995 yılında 21 mağaza ile başladı. BİM’in kurulduğu günden bugüne temel prensibimizi kaliteli ürünleri müşterilerimize olabildiğince uygun fiyatlara sunmak olarak belirledik. Operasyonel maliyetlerimizi en düşük seviyede tutarak kazanımlarımızı müşterilerimize fiyat indirimi olarak yansıtma ilkesiyle hareket ediyoruz. Şirketimiz organizasyonel yapısı, etkin maliyet yönetimi uygulamaları ve sınırlı ürün portföyüyle yüksek indirim modelinin Türkiye’deki ilk temsilcisidir. BİM’in merkezi olmayan organizasyon yapısı, bölge direktörlüklerimiz ve mağazalarımız arasında dinamik bir lojistik ve bilgi ağı kurmamızı kolaylaştırarak karar alma ve uygulama süreçlerimizin hızlı ve verimli olmasını sağlıyor. BİM’de, ürün fiyatlarını yükseltecek her türlü gereksiz harcamadan kaçınıyoruz. Ürün portföyümüzü yaklaşık 900 adetle sınırlayarak kalite standartlarının denetimini en etkin biçimde gerçekleştiriyor, ürünlerimizi mümkün olan en uygun fiyatla müşteriye ulaştırıyoruz. Her yıl yeni ürünler lanse ederek ve bazı ürünlerimizi listeden çıkartarak ürün portföyümüzün kompozisyonunu müşterilerimizin zaman içinde farklılaşan beklenti ve ihtiyaçlarına göre güncelliyoruz. Kendi Markalarımıza Yatırım Yaparız Tedarikçilerimize BİM’e özel olarak ürettirdiğimiz kendi markalı ürünlerimiz, yüksek indirim iş modelimizin ve sürdürülebilir ürün anlayışımızın temelini oluşturuyor.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 806,
+      "ticker": "BIMAS",
+      "doc_type": "kap_annual_report",
+      "period": "2024-FY",
+      "section": "body",
+      "page": 10,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1405398"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:bffbbc7c2c07e64ecb91b406bc5152155ba8d36e344003325a750b1da72dfb5c",
+     "text": "BİM olarak 2025 yılında gerçekleştirdiğimiz toplam 458,3 milyon TL bağışın %26’sı kamu kurum ve kuruluşlarına, %71’i yardım amaçlı dernek ve vakıflara, %3’ü ise eğitim kurumlarına destek olmak üzere yapıldı. Şirket, herhangi bir siyasi faaliyeti, partiyi veya adayı desteklemek için siyasi ödeme yapmamakta veya ayni yardımda bulunmamaktadır. 2025 yılında da herhangi bir politik bağış yapılmamıştır. Kadın Kooperatiflerine Anlamlı Destek BİM olarak, kadınların ekonomik yaşam koşullarını iyileştirmelerine destek olmak ve yerel kalkınmadaki liderliklerini güçlendirmek üzere çeşitli programlar yürüten Kadın Emeğini Değerlendirme Vakfı (KEDV) ile iş birliği kurarak yerel kalkınmaya ve kadın emeğine desteğimizi artırdık. 6 Şubat 2023 yılında yaşadığımız depremin ardından Aşhane Kadın Kooperatifi ile ortak çalışmamıza 2025 yılında da devam ettik. İstanbul, Bursa ve Kocaeli illerimizde Aşhane Kadın Kooperatifi tarafından üretilen ürünler sürekli olarak satışa sunuldu. Dost’tan Doğaya Projesi BİM olarak, biyoçeşitliliğin korunmasını sorumlu tüketim anlayışıyla bütünleştiren Kurumsal Sosyal Sorumluluk projeleri yürütüyoruz. 2025 yılında başlattığımız “Dost’tan Doğaya” projesiyle, Dost Süt markamız üzerinden satılan her 1 litre %0,5 yağlı süt için bir tohumu doğayla buluşturuyor; tüketimi ölçülebilir bir çevresel etkiye dönüştürüyoruz. Muğla’da orman yangınlarından etkilenen alanlarda yürüttüğümüz bu çalışmalarla biyoçeşitliliğin artırılmasına ve karbon tutulumuna katkı sağlarken, tohumların işlenmesi süreçlerinde kırsal bölgelerde yaşayan kadınların istihdam edilmesini destekliyoruz. Dijital olarak izlenebilen ve satış hacmiyle ilişkilendirilen bu modelle, projeyi şeffaf, ölçeklenebilir ve uzun vadede sürdürülebilir bir yapıya kavuşturuyoruz. 97 En Kıymetli Sermaye: İnsan96 BİM 2025 Entegre Faaliyet Raporu BİM olarak iklim değişikliğiyle mücadeleyi uzun vadeli değer üretme yaklaşımımızın ayrılmaz bir parçası olarak ele alıyor; bu kapsamda bilim temelli, ölçülebilir ve zaman tanımlı bir karbon azaltım planı uyguluyoruz. En Kıymetli Miras: Dünya 99 En Kıymetli Miras: Dünya98 BİM 2025 Entegre Faaliyet Raporu İklim Değişikliği ile Mücadele ve Çevre Yönetimi Çevresel etkiyi azaltmaya yönelik kararlı adımlar 2025 yılında iklim krizinin beraberinde getirdiği risklere karşı küresel ölçekte yürütülen mücadeleye katkı sunmak üzere enerji ve kaynak verimliliği ile karbonsuzlaşmayı odağımıza alarak yatırımlarımıza hız kesmeden devam ettik.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 838,
+      "ticker": "BIMAS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 47,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1570151"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:83eeff9460187195fc044dbe40af062701fb7271576bce5ffd758206b6de58b5",
+     "text": "Şirketin %100 iştiraki ile Mısır’da aynı iş kolunda faaliyet göstermek üzere kurulu bulunan Bim Stores L.L.C. Ş irketi, 30 Eylül 2025 itibariyle 2 bölge müdürlüğü 436 (31.12.2024 – 418) mağazası ile Mısır’da faaliyetlerini sürdürmektedir. Şirket gerek Fas gerek Mısır’da faaliyetlerde bulunan söz konusu iştiraklerin mali sonuçlarını 30 Eylül 2025 tarihli mali tablolarında tam konsolidasyon yöntemi uygulayarak yansıtmıştır. Söz konusu bağlı ortaklıkların ana ortaklık sermayesinde payları (karşılıklı iştirak) bulunmamaktadır. Mağaza Sayıları Özet Tablo Eylül 25 Aralık 24 Eylül 24 BİM Türkiye 12.568 12.089 11.952 FİLE Türkiye 329 287 272 BİM Fas 898 789 759 BİM Mısır 436 418 394 TOPLAM 14.231 13.583 13.377 2 BÖLÜM 2 - KURUMSAL BİLGİLER Ortaklık Yapısı 30 Eylül 2025 itibariyle Şirket ortaklık yapısı aşağıda gibi şekillenmiştir. Ortak Eylül 2025 Aralık 2024 Merkez Bereket Gıda Sanayi ve Ticaret A.Ş. 15,41% 15,15% Naspak Gıda Sanayi ve Ticaret A.Ş. 11,67% 11,53% Diğer (Halka Açık Olmayan Kısım) 1,54% 1,52% Diğer (Halka Açık Olan Kısım) 71,39% 71,80% 100% 100% Şirket Yönetim Kurulu Üyeleri ve Denetçiler 29 Nisan 2025 tarihinde gerçekleştirilen 2024 yılı Olağan Genel Kurul Toplantısı’nda 6 kişilik yöne tim kurulu üyeleri bir yıllığına seçilmişlerdir. Sermaye Piyasası Kurulu Kurumsal Yönetim İlkeleri’ne uygun olarak 6 üyeli Yönetim Kurulu’nun 2’si b ağımsız üye olarak görev yapmaktadır. Yönetim Kurulu Üyeleri Mahmud Muhammed TOPBAŞ Üye - Yönetim Kurulu Başkanı Galip AYKAÇ Üye - Yönetim Kurulu Başkan Yardımcısı Ömer Hulusi TOPBAŞ Üye Paul Michael FOLEY Üye Bekir PAKDEMİRLİ Bağımsız Üye Karl-Heinz HOLLAND Bağımsız Üye Üst Yönetim 30 Eylül 2025 tarihi itibariyle üst yönetim kadrosu aşağıdaki gibidir. Üst Yönetim Mahmud Muhammed TOPBAŞ İcra Başkanı (CEO) Fatih MERİÇ Mali İşler Başkanı (CFO) Tolga ŞAHİN Operasyon Başkanı (COO) Hasan KAYA İnsan Kaynakları Başkanı (CHRO) Umut BABA Ticaret Başkanı (CCO) Ali CAN Teknoloji Başkanı (CTO) 3 BÖLÜM 3 - SEKTÖREL BİLGİLER İndirim mağazacılığı perakende sektöründe önemli bir yer edinerek son yıllarda ciddi bir büyüme ivmesi yakalamıştır. BİM, Türkiye perakendecilik sektörünün lideri konumundadır. Şirket, düşük kâr marjları, etkin maliyet yönetimi ve kararlıkla uyguladığı özgün mağaza formatıyla istikrarlı büyümesini sürdürmektedir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 829,
+      "ticker": "BIMAS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": 3,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1514899"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:f2f3b6cc79e77bfcdf8cc42baf48eb31482c8d65c721d99778c07df9221ba664",
+     "text": "Kurumsal Yönetim138 BİM 2025 Entegre Faaliyet Raporu İlişkili Taraflarla Y apılan İşlemler Raporu Sermaye Piyasası Kurulu’nun Seri: II-17.1 sayılı Kurumsal Yönetim Tebliği’nin 10. maddesi gereğince, Şirket ile ilişkili tarafları arasındaki yaygın ve süreklilik arz eden işlemlerin bir hesap dönemi içerisindeki tutarının alış işlemlerinde kamuya açıklanan son yıllık finansal tablolara göre oluşan satışların maliyetine olan oranının, satış işlemlerinde ise hasılat tutarına olan oranının %10’dan fazla bir orana ulaşacağının öngörülmesi durumunda, ortaklık yönetim kurulu tarafından işlemlerin şartlarına ve piyasa koşulları ile karşılaştırılmasına ilişkin olarak bir rapor hazırlanması zorunlu kılınmıştır. 2025 yılında gerçekleştirilen yaygınlık ve süreklilik arz eden ilişkili kuruluşlardan alımların ilgili mevzuat gereğince incelenmesini ve 2026 yılında gerçekleştirilecek benzer işlemlerin uygunluğunun tespit edilmesi amacıyla hazırlanan rapor Yönetim Kurulu tarafından onaylanmış olup, ilgili rapor Genel Kurul’da ortakların bilgisine sunulacaktır. Raporun sonuç kısmı aşağıda yer almaktadır. Raporun Sonuç Kısmı Sermaye Piyasası Kurulu’nun ilgili tebliğlerindeki düzenlemelerine istinaden Yönetim Kurulu tarafından hazırlanan işbu raporda, BİM Birleşik Mağazalar A.Ş.’nin ilişkili taraf işlemleri değerlendirilmiş ve BİM Birleşik Mağazalar A.Ş.’nin 24 No.lu Uluslararası Muhasebe Standardı kapsamında belirlenen ilişkili taraflarla 2025 yılında gerçekleştirdiği yaygınlık ve süreklilik arz eden işlemlerin şartlarının emsallerine uygunluklarına nazaran bariz farklılıklar göstermediği ve 2026 yılında da ilgili kuruluşlardan benzer koşullarda yaygınlık ve süreklilik arz eden alımların yapılmasında sakınca olmadığı sonucuna varılmıştır. Kurumsal Yönetim İlkelerine Uyum Raporu Kurumsal Yönetim Uyum Raporu Evet Kısmen Hayır Muaf İlgisiz Açıklama 1.1. PAY SAHİPLİĞİ HAKLARININ KULLANIMININ KOLAYLAŞTIRILMASI 1.1.2 - Pay sahipliği haklarının kullanımını etkileyebilecek nitelikteki bilgi ve açıklamalar güncel olarak ortaklığın kurumsal internet sitesinde yatırımcıların kullanımına sunulmaktadır. X 1.2. BİLGİ ALMA VE İNCELEME HAKKI 1.2.1- Şirket yönetimi özel denetim yapılmasını zorlaştırıcı işlem yapmaktan kaçınmıştır. X 1.3. GENEL KURUL 1.3.2 - Şirket, Genel Kurul gündeminin açık şekilde ifade edilmesini ve her teklifin ayrı bir başlık altında verilmiş olmasını temin etmiştir. X 1.3.7 - İmtiyazlı bir şekilde ortaklık bilgilerine ulaşma imkânı olan kimseler, kendileri adına ortaklığın faaliyet konusu kapsamında yaptıkları işlemler hakkında genel kurulda bilgi verilmesini teminen gündeme eklenmek üzere yönetim kurulunu bilgilendirmiştir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 838,
+      "ticker": "BIMAS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 67,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1570151"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:5c43fb908a289283a6616756d21cada1a6e868c0806e003493ce677dd7dc2b60",
+     "text": "2025 yılında bu yatırımların %15 tüketim karşılama oranıyla sağladığı 24 baz puanlık marj avantajı finansal performansa entegre edilmiştir. 201 2025 Yılı TSRS Uyumlu Sürdürülebilirlik Raporu200 BİM 2025 Entegre Faaliyet Raporu Strateji SÜRDÜRÜLEBİLİRLİK VE İKLİM RİSKLERİNİN YOĞUNLAŞMA ALANLARI VE DEĞER ZİNCİRİ ANALİZİ BİM, operasyonel yaygınlığı ve iş modelinin yapısı gereği; sürdürülebilirlik ve iklimle ilgili risk ve fırsatların yoğunlaştığı alanları üç ana eksende tanımlamıştır: 1. Varlık Türü ve Finansal Tablo Kalemlerinde Y oğunlaşma: İklim değişikliğiyle ilgili geçiş riskleri ve enerji maliyet artışları, örneğin BİM Türkiye’nin Türkiye geneline yayılmış 81 ildeki 12.751 mağazasındaki \"Ticari Soğutucu Dolaplar ve İklimlendirme Sistemleri\" üzerinde yoğunlaşmaktadır. Bu varlık grubu (Maddi Duran Varlıklar), hem en yüksek enerji tüketim kalemi olması hem de emisyon azaltım hedeflerinin odağında yer alması nedeniyle stratejik öneme sahiptir. Ayrıca, fiziksel risklere karşı en hassas varlık grubu; raf ömrü sınırlı olan ve \"Stoklar\" kalemini oluşturan bozulabilir taze gıda ürünleridir. 2. Coğrafi Alan ve Operasyonel Y oğunlaşma: Fiziksel risk senaryoları (RCP 8.5) ve kuraklık haritaları kapsamında; risklerin coğrafi dağılımı çeşitlilik göstermektedir. o Tedarik Tarafında: Kuraklık ve su stresi riskleri, tarımsal tedarikin en yoğun olduğu İç Anadolu, Ege ve Akdeniz havzalarında yoğunlaşmaktadır. o Operasyon Tarafında: Aşırı sıcak hava dalgaları ve sel riski, özellikle Kıyı Ege, Akdeniz ve Marmara Bölgesi'ndeki operasyonları etkilemektedir. Aşırı yağış kaynaklı riskler ise Karadeniz Bölgesi lojistik hatlarında belirgindir. o Kritik Düğümler: Lojistik ağının merkezi olan Bölge Depoları, mağazalara kıyasla operasyonel sürekliliğin daha hassas olduğu ve riskin yoğunlaştığı lokasyonlardır. 3. Değer Zinciri ve Tedarikçi Y oğunlaşması: Gıda güvenliği ve hammaddeye erişim riskleri, cironun büyük kısmını oluşturan \"Kendi Markalı (Private Label) Ürün Tedarikçileri\" ekosistemi üzerinde yoğunlaşmıştır. Özellikle su stresi altındaki tarımsal havzalarda üretim yapan tedarikçiler, iklim değişikliğinin dolaylı etkilerine (verim kaybı, fiyat oynaklığı) açıktır.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 838,
+      "ticker": "BIMAS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 98,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1570151"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:c3b25f7de879ac6d52eeb181b8e8035f1250f8e738f6c281fe24d2e9b7424e72",
+     "text": "33 Bir Bakışta BİM32 BİM 2025 Entegre Faaliyet Raporu Başlıca Finansal ve Operasyonel Göstergelerimiz Sürdürülebilir finansal ve operasyonel sonuçlar BİM olarak, yüksek enflasyon döneminin hâkim olduğu 2025 yılında sosyal sorumluluğumuzun bilinciyle, her gün düşük fiyat yaklaşımımızla tüketicilerin yanında olmaya özen gösterdik. Verimlilik artışıyla elde ettiğimiz kazancı ürün fiyatlarımıza yansıtarak ülkemiz için katma değer üretmeyi sürdürdük. Yüksek kalite ve düşük fiyat ile halka sunduğumuz BİM’in ve FİLE’nin kendi markalı ürünleri ülkemizde enflasyonla mücadelede önemli bir role sahiptir. BİM’in 2025 yıl sonu itibarıyla kendi markalı ürünlerinin net satışlara oranı %55 olarak gerçekleşmiştir. Şirketimiz güçlü sermaye yapısı ve nakit pozisyonu sayesinde sürdürülebilir büyümesini kendi kaynaklarından karşılayarak 2025 yılında konsolide bazda 20,7 milyar TL yatırım gerçekleştirmiştir. 2025 yılında 890 yeni mağaza açılışı ile organik büyümesine devam eden BİM, 6.033 kişiyle yeni istihdam sağlamıştır. Finansal sonuçlar, SPK’nın Seri: II No: 14.1 tebliği çerçevesinde TMS/TFRS’ye uygun biçimde konsolide olarak hazırlanmaktadır. Konsolide edilen bağlı ortaklıklara ait bilgilere, raporun Bağlı Ortaklıklar ve İştirakler başlıklı bölümünden ulaşılabilir. SPK’nın 28 Aralık 2023 tarih ve 81/1820 sayılı kararı uyarınca, Türkiye Muhasebe/ Finansal Raporlama Standartlarını uygulayan finansal raporlama düzenlemelerine tabi ihraççılar ile sermaye piyasası kurumlarının, 31 Aralık 2023 tarihi itibarıyla sona eren hesap dönemlerine ait yıllık finansal raporlarından başlamak üzere TMS29 hükümlerini uygulamak suretiyle enflasyon muhasebesi uygulamasına karar verildi. Bu kapsamda, şirketimizin bağımsız denetimden geçmiş 2024 ve 2025 yılı konsolide finansal tabloları enflasyon etkisine göre düzeltilerek karşılaştırmalı olarak sunulmuştur.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 838,
+      "ticker": "BIMAS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 17,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1570151"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2024-FY\",\"2025-FY\"],\"ticker\":\"BIMAS\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2453\">Hasılat (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 519.566.633.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2502\">Hasılat (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 680.072.863.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2501\">Hasılat (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 721.062.506.000 TRY</untrusted_document>",
+   "summary": "BIMAS 2024-FY to 2025-FY revenue",
+   "count": 3,
+   "items": [
+    {
+     "cite_id": "f:2453",
+     "text": "Hasılat (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 519.566.633.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 802,
+      "ticker": "BIMAS",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / Hasılat / Cari Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1405385"
+     },
+     "value": "519566633000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2502",
+     "text": "Hasılat (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 680.072.863.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 837,
+      "ticker": "BIMAS",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / Hasılat / Önceki Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1570150"
+     },
+     "value": "680072863000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2501",
+     "text": "Hasılat (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 721.062.506.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 837,
+      "ticker": "BIMAS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / Hasılat / Cari Dönem 01.01.2025 - 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1570150"
+     },
+     "value": "721062506000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 5707
+}

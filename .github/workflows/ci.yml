@@ -156,6 +156,9 @@ jobs:
       # Graph gate (Phase 4 T025): replays recorded graph runs; same thresholds as the agent
       # gate, plus router mode, tables and chart presence in the report. No Docker needed.
       - run: uv run python -m evals.run graph --replay --reports "$RUNNER_TEMP/reports"
+      # Single vs multi-agent comparison (Phase 4 T051): replays both engines on the shared
+      # cases and writes the report; fails only on a stale cassette.
+      - run: uv run python -m evals.run compare --replay --reports "$RUNNER_TEMP/reports"
 
   # Calculation sandbox (Phase 4 T032): builds the sandbox image and runs the escape suite
   # against the real Docker daemon through sandbox.service (contracts/sandbox.md).

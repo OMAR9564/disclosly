@@ -1,0 +1,348 @@
+{
+ "case_id": "en-deep-nvda-revenue-trend",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "fbac77dc73fdf2abcf7e6d79a2b3340ccf9fd5e1cf0f8a0545b7fcfb016925c4",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2262412",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "NVDA",
+       "query": "revenue Q2 Q3 fiscal 2026 NVIDIA"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T5NPzdPG9GMACyQIPgcDks403FY7wsEgtHTtNiEBAwEtCIIqgcMqGrJq2DjNqeku5v3/ssdm+UVbWn2Jp9EGV53YxiXgYWUA/gyAJOd8UlEq4hHxxe+6zHgc="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1495,
+    "tokens_out": 34,
+    "latency_ms": 675.11,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "515cd33615912dc941b61f63493474bc786a1148d50465ffbff78c97e34f13bb",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_3122051",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "NVDA"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0Tr6VVKRpsffWm9b8pnxEyxJUAJRmBrCmfPsHimWk/USltMY4kTo6JDgH49lAkzrEF1NaIp1Z6wZ7/qb/ghUA3TneMYBU+bN1EV+qPALPWg5SnFRadGNCSsNA="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 3287,
+    "tokens_out": 17,
+    "latency_ms": 741.158,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "ac6d24efa32a9517c232c4559a6f283118d35c91c1fa8648706bf9541eeeb245",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2445320",
+      "name": "search_documents",
+      "arguments": {
+       "query": "revenue third quarter second quarter fiscal 2026",
+       "period_to": "2026-Q3",
+       "period_from": "2025-Q3",
+       "ticker": "NVDA"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TgfXgmfQPnY/4dU2YaytL9w9/59Tyo/F4SIUF1asiCZ5LAZDjL1QrmrJwy0UfNNysicBpy1WfiTr1qPE/bK+jeieSiNYFkB9gjodPIiW+FfQ0FGnJcWgDXMI="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 4407,
+    "tokens_out": 61,
+    "latency_ms": 1161.353,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "d432e722f2f9465db4c272083257e6753b4d142849cb5038582f99b30c6a8d34",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"NVIDIA's quarterly revenue increased from $26.04 billion in Q2 FY2026 to $30.04 billion in Q3 FY2026, representing a $4.00 billion (15.4%) increase.\",\n  \"points\": [\n    {\n      \"text\": \"Q2 FY2026 revenue: $26.04 billion\",\n      \"cite_ids\": [\"c:0253fc53e94502e5ecc3b3cdf0c81a15114ecf0d4c923533bc972cb0e63b64a5\"]\n    },\n    {\n      \"text\": \"Q3 FY2026 revenue: $30.04 billion\",\n      \"cite_ids\": [\"c:029e4ac6575d2f2dca4c6a851b54c248253b55a9cb9aa7db0eaffd1aed56c4e6\"]\n    },\n    {\n      \"text\": \"Revenue increased by $4.00 billion (15.4%) from Q2 to Q3 FY2026\",\n      \"cite_ids\": [\"c:0253fc53e94502e5ecc3b3cdf0c81a15114ecf0d4c923533bc972cb0e63b64a5\", \"c:029e4ac6575d2f2dca4c6a851b54c248253b55a9cb9aa7db0eaffd1aed56c4e6\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:0253fc53e94502e5ecc3b3cdf0c81a15114ecf0d4c923533bc972cb0e63b64a5\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:029e4ac6575d2f2dca4c6a851b54c248253b55a9cb9aa7db0eaffd1aed56c4e6\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 7196,
+    "tokens_out": 821,
+    "latency_ms": 8996.482,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"revenue Q2 Q3 fiscal 2026 NVIDIA\",\"ticker\":\"NVDA\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:029e4ac6575d2f2dca4c6a851b54c248253b55a9cb9aa7db0eaffd1aed56c4e6\" amounts_in=\"millions\">(1) We recorded inventory provisions of $ 378 million and $ 322 million for the third quarter of fiscal years 2026 and 2025, respectively, and $ 3.6 billion and $ 876 million for the first nine months of fiscal years 2026 and 2025, respectively, in cost of revenue. Property and Equipment: Property, equipment and intangible assets acquired but not paid for the first nine months of fiscal years 2026 and 2025 were $ 790 million and not significant, respectively.</untrusted_document>\n<untrusted_document cite_id=\"c:0253fc53e94502e5ecc3b3cdf0c81a15114ecf0d4c923533bc972cb0e63b64a5\" amounts_in=\"millions\">(1) Included customer advances and unearned revenue primarily related to hardware and software support, and license and development arrangements. The balance as of July 26, 2026, and January 25, 2026, included $ 2.8 billion and $ 160 million of customer advances, respectively. 14 NVIDIA Corporation and Subsidiaries Notes to Condensed Consolidated Financial Statements (Continued) (Unaudited) (2) We recognized $ 201 million and $ 137 million for the second quarter, and $ 501 million and $ 3.1 billion for the first half, of fiscal years 2027 and 2026, respectively, in Cost of revenue. (3) Related to the Groq, Inc. non-exclusive license agreement.</untrusted_document>\n<untrusted_document cite_id=\"c:031937b3ae9400817ac78090edc0b0973a1b5b81319982bd20136a55b7afbb11\" amounts_in=\"millions\"> | Commitments | \n | (In millions) | \nFiscal Year: |  | \n2026 (excluding the first half of fiscal year 2026) |  | 30,930\n2027 | 6,573 | \n2028 | 3,915 | \n2029 | 2,736 | \n2030 | 1,402 | \n2031 and thereafter | 218 | \nTotal |  | 45,774</untrusted_document>\n<untrusted_document cite_id=\"c:0151a7117b53d4a5651a87792623723097ccefa54c932d0c78e2579cca790482\">Issuer Purchases of Equity Securities We repurchased 92 million and 254 million shares of our common stock for $11.1 billion and $26.2 billion during the third quarter and first nine months of fiscal year 2025, respectively. As of October 27, 2024, we were authorized, subject to certain specifications, to repurchase up to $46.4 billion of our common stock. The repurchases can be made in the open market, in privately negotiated transactions, pursuant to a Rule 10b5-1 trading plan or in structured share repurchase agreements in compliance with Rule 10b-18 of the Exchange Act, subject to market conditions, applicable legal requirements, and other factors. Our share repurchase program may be suspended at any time at our discretion. We paid cash dividends to our shareholders of $245 million and $589 million during the third quarter and first nine months of fiscal year 2025, respectively. Our cash dividend program and the payment of future cash dividends under that program are subject to our Board of Directors' continuing determination that the dividend program and the declaration of dividends thereunder are in the best interests of our shareholders. 39 The following table presents details of our share repurchase transactions during the third quarter of fiscal year 2025:</untrusted_document>\n<untrusted_document cite_id=\"c:0102895d0cb7e2e9aad5dbcb347249f858b3f34885d4ba021868831b4565701f\" amounts_in=\"millions\">We made two federal income tax payments in the second quarter of fiscal year 2027, as compared with no estimated tax payments in the first quarter of fiscal year 2027. Capital Return to Shareholders In the second quarter and first half of fiscal year 2027, we repurchased 94 million and 203 million shares of our common stock for $19.7 billion and $39.8 billion, respectively. On May 18, 2026, our Board of Directors approved an additional $80.0 billion in share repurchase authorization, without expiration. As of July 26, 2026, we were authorized, subject to certain specifications, to repurchase up to $99.3 billion of our common stock. We may execute repurchases from time to time, subject to market conditions, operating requirements and other investment opportunities, in the open market, in privately-negotiated transactions, pursuant to a Rule 10b5-1 trading plan or in structured share repurchase agreements in compliance with Rule 10b-18 of the Exchange Act. Our share repurchase program may be suspended at any time at our discretion. We paid cash dividends to our shareholders of $6.0 billion and $6.3 billion during the second quarter and first half of fiscal year 2027, respectively. On May 18, 2026, we increased our quarterly cash dividend from $0.01 per share to $0.25 per share. The payment of future cash dividends is subject to our Board of Directors’ continuing determination that the declaration of dividends is in the best interests of our shareholders. The U.S. Inflation Reduction Act of 2022 requires a 1% excise tax on certain share repurchases in excess of shares issued for employee compensation made after December 31, 2022. The excise tax is included in our share repurchase cost and was not significant for the second quarter and first half of fiscal year 2027. Outstanding Indebtedness and Commercial Paper Program In June 2026, we issued an aggregate of $25.0 billion of senior unsecured notes across seven tranches for general corporate purposes. Our aggregate debt maturities as of July 26, 2026, by year payable, were as follows:</untrusted_document>\n<untrusted_document cite_id=\"c:0095aa5bc3ccdbbeebb88fde4783acacd04a922c2c64c929e161c55016e3f0c8\" amounts_in=\"millions\">The income tax expense (benefit) differs from the amount computed by applying the U.S. federal statutory rate of 21.0 % to income before income taxes for the fiscal year ended January 25, 2026 as follows:</untrusted_document>",
+   "summary": "NVDA revenue Q2 Q3 fiscal 2026 NVIDIA",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:029e4ac6575d2f2dca4c6a851b54c248253b55a9cb9aa7db0eaffd1aed56c4e6",
+     "text": "(1) We recorded inventory provisions of $ 378 million and $ 322 million for the third quarter of fiscal years 2026 and 2025, respectively, and $ 3.6 billion and $ 876 million for the first nine months of fiscal years 2026 and 2025, respectively, in cost of revenue. Property and Equipment: Property, equipment and intangible assets acquired but not paid for the first nine months of fiscal years 2026 and 2025 were $ 790 million and not significant, respectively.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3288,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2025-Q4",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:0253fc53e94502e5ecc3b3cdf0c81a15114ecf0d4c923533bc972cb0e63b64a5",
+     "text": "(1) Included customer advances and unearned revenue primarily related to hardware and software support, and license and development arrangements. The balance as of July 26, 2026, and January 25, 2026, included $ 2.8 billion and $ 160 million of customer advances, respectively. 14 NVIDIA Corporation and Subsidiaries Notes to Condensed Consolidated Financial Statements (Continued) (Unaudited) (2) We recognized $ 201 million and $ 137 million for the second quarter, and $ 501 million and $ 3.1 billion for the first half, of fiscal years 2027 and 2026, respectively, in Cost of revenue. (3) Related to the Groq, Inc. non-exclusive license agreement.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3285,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2026-Q3",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:031937b3ae9400817ac78090edc0b0973a1b5b81319982bd20136a55b7afbb11",
+     "text": " | Commitments | \n | (In millions) | \nFiscal Year: |  | \n2026 (excluding the first half of fiscal year 2026) |  | 30,930\n2027 | 6,573 | \n2028 | 3,915 | \n2029 | 2,736 | \n2030 | 1,402 | \n2031 and thereafter | 218 | \nTotal |  | 45,774",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3289,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:0151a7117b53d4a5651a87792623723097ccefa54c932d0c78e2579cca790482",
+     "text": "Issuer Purchases of Equity Securities We repurchased 92 million and 254 million shares of our common stock for $11.1 billion and $26.2 billion during the third quarter and first nine months of fiscal year 2025, respectively. As of October 27, 2024, we were authorized, subject to certain specifications, to repurchase up to $46.4 billion of our common stock. The repurchases can be made in the open market, in privately negotiated transactions, pursuant to a Rule 10b5-1 trading plan or in structured share repurchase agreements in compliance with Rule 10b-18 of the Exchange Act, subject to market conditions, applicable legal requirements, and other factors. Our share repurchase program may be suspended at any time at our discretion. We paid cash dividends to our shareholders of $245 million and $589 million during the third quarter and first nine months of fiscal year 2025, respectively. Our cash dividend program and the payment of future cash dividends under that program are subject to our Board of Directors' continuing determination that the dividend program and the declaration of dividends thereunder are in the best interests of our shareholders. 39 The following table presents details of our share repurchase transactions during the third quarter of fiscal year 2025:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3292,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2024-Q4",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:0102895d0cb7e2e9aad5dbcb347249f858b3f34885d4ba021868831b4565701f",
+     "text": "We made two federal income tax payments in the second quarter of fiscal year 2027, as compared with no estimated tax payments in the first quarter of fiscal year 2027. Capital Return to Shareholders In the second quarter and first half of fiscal year 2027, we repurchased 94 million and 203 million shares of our common stock for $19.7 billion and $39.8 billion, respectively. On May 18, 2026, our Board of Directors approved an additional $80.0 billion in share repurchase authorization, without expiration. As of July 26, 2026, we were authorized, subject to certain specifications, to repurchase up to $99.3 billion of our common stock. We may execute repurchases from time to time, subject to market conditions, operating requirements and other investment opportunities, in the open market, in privately-negotiated transactions, pursuant to a Rule 10b5-1 trading plan or in structured share repurchase agreements in compliance with Rule 10b-18 of the Exchange Act. Our share repurchase program may be suspended at any time at our discretion. We paid cash dividends to our shareholders of $6.0 billion and $6.3 billion during the second quarter and first half of fiscal year 2027, respectively. On May 18, 2026, we increased our quarterly cash dividend from $0.01 per share to $0.25 per share. The payment of future cash dividends is subject to our Board of Directors’ continuing determination that the declaration of dividends is in the best interests of our shareholders. The U.S. Inflation Reduction Act of 2022 requires a 1% excise tax on certain share repurchases in excess of shares issued for employee compensation made after December 31, 2022. The excise tax is included in our share repurchase cost and was not significant for the second quarter and first half of fiscal year 2027. Outstanding Indebtedness and Commercial Paper Program In June 2026, we issued an aggregate of $25.0 billion of senior unsecured notes across seven tranches for general corporate purposes. Our aggregate debt maturities as of July 26, 2026, by year payable, were as follows:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3285,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2026-Q3",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:0095aa5bc3ccdbbeebb88fde4783acacd04a922c2c64c929e161c55016e3f0c8",
+     "text": "The income tax expense (benefit) differs from the amount computed by applying the U.S. federal statutory rate of 21.0 % to income before income taxes for the fiscal year ended January 25, 2026 as follows:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3287,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"NVDA\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 3285, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm\"}, {\"document_id\": 3286, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm\"}, {\"document_id\": 3287, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-02-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm\"}, {\"document_id\": 3288, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-19T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm\"}, {\"document_id\": 3289, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-27T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm\"}, {\"document_id\": 3290, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm\"}, {\"document_id\": 3291, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-02-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm\"}, {\"document_id\": 3292, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm\"}]}",
+   "summary": "NVDA documents",
+   "count": 8,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q3\",\"period_to\":\"2026-Q3\",\"query\":\"revenue third quarter second quarter fiscal 2026\",\"ticker\":\"NVDA\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:029e4ac6575d2f2dca4c6a851b54c248253b55a9cb9aa7db0eaffd1aed56c4e6\" amounts_in=\"millions\">(1) We recorded inventory provisions of $ 378 million and $ 322 million for the third quarter of fiscal years 2026 and 2025, respectively, and $ 3.6 billion and $ 876 million for the first nine months of fiscal years 2026 and 2025, respectively, in cost of revenue. Property and Equipment: Property, equipment and intangible assets acquired but not paid for the first nine months of fiscal years 2026 and 2025 were $ 790 million and not significant, respectively.</untrusted_document>\n<untrusted_document cite_id=\"c:18e171b17ffd4b89f82d1c7cf5ee7125d5155561122eee0a39d2bd0555d1e586\" amounts_in=\"millions\">(1) Singapore represented 22 %, and 21 % of the second quarter and first half of fiscal year 2026 total revenue based upon customer billing location, respectively. Customers use Singapore to centralize invoicing while our products are almost always shipped elsewhere. Over 99 % of controlled Data Center compute revenue billed to Singapore was for orders from U.S.-based customers for the second quarter and first half of fiscal year 2026. Controlled Data Center compute refers to products that meet the characteristics of Export Control Classification Numbers 3A090.a or 4A090.a. Revenue from sales to customers outside of the United States accounted for 50 % and 51 % of total revenue for the second quarter and first half of fiscal year 2026, respectively, and 57 % and 53 % of total revenue for the second quarter and first half of fiscal year 2025, respectively. We refer to customers who purchase products directly from NVIDIA as direct customers, such as add-in board manufacturers, distributors, ODMs, OEMs, and system integrators. We have certain customers that may purchase products directly from NVIDIA and may use either internal resources or third-party system integrators to complete their build. We also have indirect customers, who purchase products through our direct customers; indirect customers include cloud service providers, or CSPs, consumer internet companies, enterprises, and public sector entities. For the second quarter of fiscal year 2026, sales to one direct customer, Customer A, represented 23 % of total revenue; and sales to a second direct customer, Customer B, represented 16 % of total revenue, respectively, both of which were attributable to the Compute & Networking segment. For the first half of fiscal year 2026, sales to one direct customer, Customer A, represented 20 % of total revenue; and sales to a second direct customer, Customer B, represented 15 % of total revenue, respectively, both of which were attributable to the Compute & Networking segment. Sales to four direct customers represented 14 %, 11 %, 11 %, and 10 % of revenue for the second quarter, and sales to three direct customers represented 14 %, 10 %, and 10 % of revenue for the first half, of fiscal year 2025, all of which were attributable to the Compute & Networking segment. The following table summarizes revenue by specialized markets:</untrusted_document>\n<untrusted_document cite_id=\"c:dcba661ff371d0dc16a8d07f93037d7086ffa95d8c3ecb5e11848db37405fac1\" amounts_in=\"millions\">Revenue from sales to customers headquartered outside of the United States accounted for 38 % and 30 % of total revenue for the second quarter and first half of fiscal year 2027, respectively, and 30 % and 35 % of total revenue for the second quarter and first half of fiscal year 2026, respectively. We refer to customers who purchase products directly from NVIDIA as direct customers, such as AIBs, distributors, ODMs, OEMs, CSPs, AI model makers, and system integrators. Certain direct customers may use either internal resources or third-party system integrators to complete their build. We refer to indirect customers as those who purchase products through our direct customers; indirect customers include CSPs, AI clouds, AI model makers, enterprises, and public sector entities. Our revenue is concentrated among a limited number of direct and indirect customers and this trend may continue. For the second quarter of fiscal year 2027, one direct customer represented 16 % of total revenue, which was primarily attributable to the Compute & Networking segment. For the first half of fiscal year 2027, three direct customers represented 16 %, 15 %, and 13 % of total revenue, all of which was primarily attributable to the Compute & Networking segment. For the second quarter of fiscal year 2026, two direct customers represented 23 % and 16 % of total revenue, all of which was primarily attributable to the Compute & Networking segment. For the first half of fiscal year 2026, two direct customers represented 20 % and 15 % of total revenue, all of which was primarily attributable to the Compute & Networking segment. In the first quarter of fiscal year 2027, we changed our presentation of revenue by market platform, and the comparable periods were recast. During the second quarter of fiscal year 2027, we reclassified a company from AI Clouds, Industrial, & Enterprise (ACIE) to Hyperscale due to a change in their business model and recast the prior period revenue associated with this company. 23 NVIDIA Corporation and Subsidiaries Notes to Condensed Consolidated Financial Statements (Continued) (Unaudited)</untrusted_document>\n<untrusted_document cite_id=\"c:0102895d0cb7e2e9aad5dbcb347249f858b3f34885d4ba021868831b4565701f\" amounts_in=\"millions\">We made two federal income tax payments in the second quarter of fiscal year 2027, as compared with no estimated tax payments in the first quarter of fiscal year 2027. Capital Return to Shareholders In the second quarter and first half of fiscal year 2027, we repurchased 94 million and 203 million shares of our common stock for $19.7 billion and $39.8 billion, respectively. On May 18, 2026, our Board of Directors approved an additional $80.0 billion in share repurchase authorization, without expiration. As of July 26, 2026, we were authorized, subject to certain specifications, to repurchase up to $99.3 billion of our common stock. We may execute repurchases from time to time, subject to market conditions, operating requirements and other investment opportunities, in the open market, in privately-negotiated transactions, pursuant to a Rule 10b5-1 trading plan or in structured share repurchase agreements in compliance with Rule 10b-18 of the Exchange Act. Our share repurchase program may be suspended at any time at our discretion. We paid cash dividends to our shareholders of $6.0 billion and $6.3 billion during the second quarter and first half of fiscal year 2027, respectively. On May 18, 2026, we increased our quarterly cash dividend from $0.01 per share to $0.25 per share. The payment of future cash dividends is subject to our Board of Directors’ continuing determination that the declaration of dividends is in the best interests of our shareholders. The U.S. Inflation Reduction Act of 2022 requires a 1% excise tax on certain share repurchases in excess of shares issued for employee compensation made after December 31, 2022. The excise tax is included in our share repurchase cost and was not significant for the second quarter and first half of fiscal year 2027. Outstanding Indebtedness and Commercial Paper Program In June 2026, we issued an aggregate of $25.0 billion of senior unsecured notes across seven tranches for general corporate purposes. Our aggregate debt maturities as of July 26, 2026, by year payable, were as follows:</untrusted_document>\n<untrusted_document cite_id=\"c:2918652a06d3a7dae8a1e455ce8b45548669ba5740c078c30f31f136d614c270\">Recent Developments, Future Objectives and Challenges Revenue growth in the second quarter and the first half of fiscal year 2027 was driven by data center products for accelerated computing and AI solutions. Blackwell continued to account for the majority of our system shipments. Our next-generation Data Center architecture, Vera Rubin, began production shipments in the third quarter of fiscal year 2027. We will be shipping both Blackwell and Rubin systems in the future and are currently experiencing certain supply constraints. Demand estimates for our products can be inaccurate and create volatility in our revenue or supply levels. To secure inventory and capacity to meet demand for the next several years, we have entered into significant commitments and may continue to enter into manufacturing and supply agreements for both current and future products, and we continue to expand our supplier base. The scale and size of our production needs and the complexity of producing our data center systems has caused and could in the future cause delays in production, challenges in managing supply and demand, revenue volatility, quality issues, increased inventory provisions, decreases in product yields, higher material 25 costs, and increased warranty costs. We have significantly increased our supply and capacity commitments from $119 billion last quarter to $279 billion as of July 26, 2026 to meet future demand. Refer to Note 10 of the Notes to Condensed Consolidated Financial Statements included in Part 1, Item 1 of this Quarterly Report on Form 10-Q. Customers may postpone purchasing new architectures due to the lack of availability of data center infrastructure to deploy our products, constraints on capital to have sufficient funding to purchase our products, or may adopt new technologies more gradually than anticipated, affecting our revenue timing and supply chain expenses. The availability of land, power, shell, and capital is crucial to support the buildout of a full data center inclusive of NVIDIA AI infrastructure by our customers and partners, and any shortage of these or other necessary resources could impact our future revenue and financial performance. Expanding land, power, shell, and energy needs to meet demand is a complex, multi-year process that involves significant regulatory, technical, and construction challenges. In addition, access to capital can be particularly constrained for less-capitalized companies, which may face difficulties securing financing for large-scale infrastructure projects. We believe AI clouds and AI model makers have significant demand for training and inference compute and currently lack the ability to secure long-term infrastructure contracts and investment-grade financing capacity to secure the AI infrastructure necessary to grow.</untrusted_document>\n<untrusted_document cite_id=\"c:e92879192ebef297d6daa858b639336c24bb7805405d8c401f8fc010506f8af2\">Compute & Networking revenue – The year over year increase in the second quarter and first half of fiscal year 2026 was driven by demand for our accelerated computing platform used for large language models, recommendation engines, and generative and agentic AI applications. Revenue from Data Center computing grew 62% year-on-year compared to the first half of fiscal year 2025, driven by demand for our Blackwell computing platform. Revenue from Data Center networking grew 79% year-on-year compared to the first half of fiscal year 2025 driven by the growth of NVLink compute fabric for GB200 and GB300 systems, the ramp of XDR InfiniBand products, and adoption of Ethernet for AI solutions at cloud service providers and consumer internet companies. Graphics revenue – The year over year increase in the second quarter and first half of fiscal year 2026 was driven by sales of our Blackwell architecture. Reportable segment operating income – The year over year increase in Compute & Networking segment operating income in the second quarter of fiscal year 2026 was driven by the growth in revenue. The year over year increase in Compute & Networking segment operating income in the first half of fiscal year 2026 was driven by the growth in revenue, partially offset by a $4.5 billion charge associated with H20 excess inventory and purchase obligations in the first quarter of fiscal year 2026. The year over year increase in Graphics segment operating income in the second quarter and first half of fiscal year 2026 was driven by the growth in revenue. Concentration of Revenue We refer to customers who purchase products directly from NVIDIA as direct customers, such as add-in board manufacturers, distributors, ODMs, OEMs, and system integrators. We have certain customers that may purchase products directly from NVIDIA and may use either internal resources or third-party system integrators to complete their build. We also have indirect customers, who purchase products through our direct customers; indirect customers include CSPs, consumer internet companies, enterprises, and public sector entities. Direct Customers – For the second quarter of fiscal year 2026, sales to one direct customer, Customer A, represented 23% of total revenue; and sales to a second direct customer, Customer B, represented 16% of total revenue, respectively, both of which were attributable to the Compute & Networking segment. For the first half of fiscal year 2026, sales to one direct customer, Customer A, represented 20% of total revenue; and sales to a second direct customer, Customer B, represented 15% of total revenue, respectively, both of which were attributable to the Compute & Networking segment.</untrusted_document>",
+   "summary": "NVDA revenue third quarter second quarter fiscal 2026",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:029e4ac6575d2f2dca4c6a851b54c248253b55a9cb9aa7db0eaffd1aed56c4e6",
+     "text": "(1) We recorded inventory provisions of $ 378 million and $ 322 million for the third quarter of fiscal years 2026 and 2025, respectively, and $ 3.6 billion and $ 876 million for the first nine months of fiscal years 2026 and 2025, respectively, in cost of revenue. Property and Equipment: Property, equipment and intangible assets acquired but not paid for the first nine months of fiscal years 2026 and 2025 were $ 790 million and not significant, respectively.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3288,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2025-Q4",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:18e171b17ffd4b89f82d1c7cf5ee7125d5155561122eee0a39d2bd0555d1e586",
+     "text": "(1) Singapore represented 22 %, and 21 % of the second quarter and first half of fiscal year 2026 total revenue based upon customer billing location, respectively. Customers use Singapore to centralize invoicing while our products are almost always shipped elsewhere. Over 99 % of controlled Data Center compute revenue billed to Singapore was for orders from U.S.-based customers for the second quarter and first half of fiscal year 2026. Controlled Data Center compute refers to products that meet the characteristics of Export Control Classification Numbers 3A090.a or 4A090.a. Revenue from sales to customers outside of the United States accounted for 50 % and 51 % of total revenue for the second quarter and first half of fiscal year 2026, respectively, and 57 % and 53 % of total revenue for the second quarter and first half of fiscal year 2025, respectively. We refer to customers who purchase products directly from NVIDIA as direct customers, such as add-in board manufacturers, distributors, ODMs, OEMs, and system integrators. We have certain customers that may purchase products directly from NVIDIA and may use either internal resources or third-party system integrators to complete their build. We also have indirect customers, who purchase products through our direct customers; indirect customers include cloud service providers, or CSPs, consumer internet companies, enterprises, and public sector entities. For the second quarter of fiscal year 2026, sales to one direct customer, Customer A, represented 23 % of total revenue; and sales to a second direct customer, Customer B, represented 16 % of total revenue, respectively, both of which were attributable to the Compute & Networking segment. For the first half of fiscal year 2026, sales to one direct customer, Customer A, represented 20 % of total revenue; and sales to a second direct customer, Customer B, represented 15 % of total revenue, respectively, both of which were attributable to the Compute & Networking segment. Sales to four direct customers represented 14 %, 11 %, 11 %, and 10 % of revenue for the second quarter, and sales to three direct customers represented 14 %, 10 %, and 10 % of revenue for the first half, of fiscal year 2025, all of which were attributable to the Compute & Networking segment. The following table summarizes revenue by specialized markets:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3289,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:dcba661ff371d0dc16a8d07f93037d7086ffa95d8c3ecb5e11848db37405fac1",
+     "text": "Revenue from sales to customers headquartered outside of the United States accounted for 38 % and 30 % of total revenue for the second quarter and first half of fiscal year 2027, respectively, and 30 % and 35 % of total revenue for the second quarter and first half of fiscal year 2026, respectively. We refer to customers who purchase products directly from NVIDIA as direct customers, such as AIBs, distributors, ODMs, OEMs, CSPs, AI model makers, and system integrators. Certain direct customers may use either internal resources or third-party system integrators to complete their build. We refer to indirect customers as those who purchase products through our direct customers; indirect customers include CSPs, AI clouds, AI model makers, enterprises, and public sector entities. Our revenue is concentrated among a limited number of direct and indirect customers and this trend may continue. For the second quarter of fiscal year 2027, one direct customer represented 16 % of total revenue, which was primarily attributable to the Compute & Networking segment. For the first half of fiscal year 2027, three direct customers represented 16 %, 15 %, and 13 % of total revenue, all of which was primarily attributable to the Compute & Networking segment. For the second quarter of fiscal year 2026, two direct customers represented 23 % and 16 % of total revenue, all of which was primarily attributable to the Compute & Networking segment. For the first half of fiscal year 2026, two direct customers represented 20 % and 15 % of total revenue, all of which was primarily attributable to the Compute & Networking segment. In the first quarter of fiscal year 2027, we changed our presentation of revenue by market platform, and the comparable periods were recast. During the second quarter of fiscal year 2027, we reclassified a company from AI Clouds, Industrial, & Enterprise (ACIE) to Hyperscale due to a change in their business model and recast the prior period revenue associated with this company. 23 NVIDIA Corporation and Subsidiaries Notes to Condensed Consolidated Financial Statements (Continued) (Unaudited)",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3285,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2026-Q3",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:0102895d0cb7e2e9aad5dbcb347249f858b3f34885d4ba021868831b4565701f",
+     "text": "We made two federal income tax payments in the second quarter of fiscal year 2027, as compared with no estimated tax payments in the first quarter of fiscal year 2027. Capital Return to Shareholders In the second quarter and first half of fiscal year 2027, we repurchased 94 million and 203 million shares of our common stock for $19.7 billion and $39.8 billion, respectively. On May 18, 2026, our Board of Directors approved an additional $80.0 billion in share repurchase authorization, without expiration. As of July 26, 2026, we were authorized, subject to certain specifications, to repurchase up to $99.3 billion of our common stock. We may execute repurchases from time to time, subject to market conditions, operating requirements and other investment opportunities, in the open market, in privately-negotiated transactions, pursuant to a Rule 10b5-1 trading plan or in structured share repurchase agreements in compliance with Rule 10b-18 of the Exchange Act. Our share repurchase program may be suspended at any time at our discretion. We paid cash dividends to our shareholders of $6.0 billion and $6.3 billion during the second quarter and first half of fiscal year 2027, respectively. On May 18, 2026, we increased our quarterly cash dividend from $0.01 per share to $0.25 per share. The payment of future cash dividends is subject to our Board of Directors’ continuing determination that the declaration of dividends is in the best interests of our shareholders. The U.S. Inflation Reduction Act of 2022 requires a 1% excise tax on certain share repurchases in excess of shares issued for employee compensation made after December 31, 2022. The excise tax is included in our share repurchase cost and was not significant for the second quarter and first half of fiscal year 2027. Outstanding Indebtedness and Commercial Paper Program In June 2026, we issued an aggregate of $25.0 billion of senior unsecured notes across seven tranches for general corporate purposes. Our aggregate debt maturities as of July 26, 2026, by year payable, were as follows:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3285,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2026-Q3",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:2918652a06d3a7dae8a1e455ce8b45548669ba5740c078c30f31f136d614c270",
+     "text": "Recent Developments, Future Objectives and Challenges Revenue growth in the second quarter and the first half of fiscal year 2027 was driven by data center products for accelerated computing and AI solutions. Blackwell continued to account for the majority of our system shipments. Our next-generation Data Center architecture, Vera Rubin, began production shipments in the third quarter of fiscal year 2027. We will be shipping both Blackwell and Rubin systems in the future and are currently experiencing certain supply constraints. Demand estimates for our products can be inaccurate and create volatility in our revenue or supply levels. To secure inventory and capacity to meet demand for the next several years, we have entered into significant commitments and may continue to enter into manufacturing and supply agreements for both current and future products, and we continue to expand our supplier base. The scale and size of our production needs and the complexity of producing our data center systems has caused and could in the future cause delays in production, challenges in managing supply and demand, revenue volatility, quality issues, increased inventory provisions, decreases in product yields, higher material 25 costs, and increased warranty costs. We have significantly increased our supply and capacity commitments from $119 billion last quarter to $279 billion as of July 26, 2026 to meet future demand. Refer to Note 10 of the Notes to Condensed Consolidated Financial Statements included in Part 1, Item 1 of this Quarterly Report on Form 10-Q. Customers may postpone purchasing new architectures due to the lack of availability of data center infrastructure to deploy our products, constraints on capital to have sufficient funding to purchase our products, or may adopt new technologies more gradually than anticipated, affecting our revenue timing and supply chain expenses. The availability of land, power, shell, and capital is crucial to support the buildout of a full data center inclusive of NVIDIA AI infrastructure by our customers and partners, and any shortage of these or other necessary resources could impact our future revenue and financial performance. Expanding land, power, shell, and energy needs to meet demand is a complex, multi-year process that involves significant regulatory, technical, and construction challenges. In addition, access to capital can be particularly constrained for less-capitalized companies, which may face difficulties securing financing for large-scale infrastructure projects. We believe AI clouds and AI model makers have significant demand for training and inference compute and currently lack the ability to secure long-term infrastructure contracts and investment-grade financing capacity to secure the AI infrastructure necessary to grow.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3285,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2026-Q3",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:e92879192ebef297d6daa858b639336c24bb7805405d8c401f8fc010506f8af2",
+     "text": "Compute & Networking revenue – The year over year increase in the second quarter and first half of fiscal year 2026 was driven by demand for our accelerated computing platform used for large language models, recommendation engines, and generative and agentic AI applications. Revenue from Data Center computing grew 62% year-on-year compared to the first half of fiscal year 2025, driven by demand for our Blackwell computing platform. Revenue from Data Center networking grew 79% year-on-year compared to the first half of fiscal year 2025 driven by the growth of NVLink compute fabric for GB200 and GB300 systems, the ramp of XDR InfiniBand products, and adoption of Ethernet for AI solutions at cloud service providers and consumer internet companies. Graphics revenue – The year over year increase in the second quarter and first half of fiscal year 2026 was driven by sales of our Blackwell architecture. Reportable segment operating income – The year over year increase in Compute & Networking segment operating income in the second quarter of fiscal year 2026 was driven by the growth in revenue. The year over year increase in Compute & Networking segment operating income in the first half of fiscal year 2026 was driven by the growth in revenue, partially offset by a $4.5 billion charge associated with H20 excess inventory and purchase obligations in the first quarter of fiscal year 2026. The year over year increase in Graphics segment operating income in the second quarter and first half of fiscal year 2026 was driven by the growth in revenue. Concentration of Revenue We refer to customers who purchase products directly from NVIDIA as direct customers, such as add-in board manufacturers, distributors, ODMs, OEMs, and system integrators. We have certain customers that may purchase products directly from NVIDIA and may use either internal resources or third-party system integrators to complete their build. We also have indirect customers, who purchase products through our direct customers; indirect customers include CSPs, consumer internet companies, enterprises, and public sector entities. Direct Customers – For the second quarter of fiscal year 2026, sales to one direct customer, Customer A, represented 23% of total revenue; and sales to a second direct customer, Customer B, represented 16% of total revenue, respectively, both of which were attributable to the Compute & Networking segment. For the first half of fiscal year 2026, sales to one direct customer, Customer A, represented 20% of total revenue; and sales to a second direct customer, Customer B, represented 15% of total revenue, respectively, both of which were attributable to the Compute & Networking segment.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3289,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 33000
+}

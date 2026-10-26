@@ -7,7 +7,8 @@ cassette exists; scoring is added with the first real eval.
 
 `retrieval_golden.jsonl` has its own runner and cassette layout (`python -m evals.retrieval`),
 and the agent datasets have theirs (`python -m evals.run agent --replay`, evals/agent.py, and
-`python -m evals.run graph --replay`, evals/graph.py), so this runner skips them.
+`python -m evals.run graph --replay`, evals/graph.py; `python -m evals.run compare --replay`,
+evals/compare.py, replays both), so this runner skips them.
 """
 
 import argparse
@@ -69,6 +70,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         from evals.agent import main as agent_main
 
         return agent_main(args_list[1:])
+    if args_list[:1] == ["compare"]:
+        from evals.compare import main as compare_main
+
+        return compare_main(args_list[1:])
     if args_list[:1] == ["graph"]:
         from evals.graph import main as graph_main
 

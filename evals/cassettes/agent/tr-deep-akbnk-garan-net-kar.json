@@ -1,0 +1,326 @@
+{
+ "case_id": "tr-deep-akbnk-garan-net-kar",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "b865322815987f04502cc8f1aad59868b67d5dc7b403c529dc0051494208685f",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2208773",
+      "name": "get_financial_facts",
+      "arguments": {
+       "periods": [
+        "2024-FY",
+        "2025-FY",
+        "2024-Q4",
+        "2025-Q4"
+       ],
+       "metrics": [
+        "net_income"
+       ],
+       "ticker": "AKBNK"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0THgsXYIiNvxbLCFEjlcyQv3GkGQxhSfJ5NCosdu26zJ0DCOr0jvty0vFAwvOZH0G5prxCXT8l9Kfr/wa9jJKwTkHoBrh3i0SxKhWY8VbL0slvX8w0AvngLG8="
+       }
+      }
+     },
+     {
+      "id": "call_2208774",
+      "name": "get_financial_facts",
+      "arguments": {
+       "ticker": "GARAN",
+       "metrics": [
+        "net_income"
+       ],
+       "periods": [
+        "2024-FY",
+        "2025-FY",
+        "2024-Q4",
+        "2025-Q4"
+       ]
+      },
+      "extra": null
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1624,
+    "tokens_out": 135,
+    "latency_ms": 862.798,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "f3b120d5cf06eb2a23621eb6ddc6dc44e2afc3f25ef5b5c0c85485b8ed707aed",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Akbank ve Garanti BBVAnın 2024 ve 2025 yılı net dönem kârı karşılaştırması şu şekildedir: Akbank'ın 2024 yılı net kârı 42.362.192.000 TRY [f:2543] (veya diğer konsolide raporda 42.366.070.000 TRY [f:2547]), 2025 yılı net kârı ise 57.224.231.000 TRY [f:2567] (veya 57.247.061.000 TRY [f:2571]) olarak gerçekleşmiştir. Garanti BBVAnın 2024 yılı net kârı 92.178.886.000 TRY [f:2207] (veya 92.174.994.000 TRY [f:2211]), 2025 yılı net kârı ise 111.262.197.000 TRY [f:2231] (veya 110.604.633.000 TRY [f:2235]) olarak raporlanmıştır.\",\n  \"points\": [\n    {\n      \"text\": \"Akbank 2024 yılı net dönem kârı 42.362.192.000 TRY veya 42.366.070.000 TRY'dir.\",\n      \"cite_ids\": [\n        \"f:2543\",\n        \"f:2547\"\n      ]\n    },\n    {\n      \"text\": \"Akbank 2025 yılı net dönem kârı 57.224.231.000 TRY veya 57.247.061.000 TRY'dir.\",\n      \"cite_ids\": [\n        \"f:2567\",\n        \"f:2571\"\n      ]\n    },\n    {\n      \"text\": \"Garanti BBVA 2024 yılı net dönem kârı 92.178.886.000 TRY veya 92.174.994.000 TRY'dir.\",\n      \"cite_ids\": [\n        \"f:2207\",\n        \"f:2211\"\n      ]\n    },\n    {\n      \"text\": \"Garanti BBVA 2025 yılı net dönem kârı 111.262.197.000 TRY veya 110.604.633.000 TRY'dir.\",\n      \"cite_ids\": [\n        \"f:2231\",\n        \"f:2235\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2543\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2547\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:2567\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:2571\"\n    },\n    {\n      \"marker\": 5,\n      \"cite_id\": \"f:2207\"\n    },\n    {\n      \"marker\": 6,\n      \"cite_id\": \"f:2211\"\n    },\n    {\n      \"marker\": 7,\n      \"cite_id\": \"f:2231\"\n    },\n    {\n      \"marker\": 8,\n      \"cite_id\": \"f:2235\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2784,
+    "tokens_out": 981,
+    "latency_ms": 2366.993,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2024-FY\",\"2025-FY\",\"2024-Q4\",\"2025-Q4\"],\"ticker\":\"AKBNK\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2543\">Net dönem kârı (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 42.362.192.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2547\">Net dönem kârı (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 42.366.070.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2568\">Net dönem kârı (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 42.362.192.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2572\">Net dönem kârı (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 42.366.070.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2567\">Net dönem kârı (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 57.224.231.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2571\">Net dönem kârı (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 57.247.061.000 TRY</untrusted_document>",
+   "summary": "AKBNK 2024-FY to 2025-Q4 net_income",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "f:2543",
+     "text": "Net dönem kârı (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 42.362.192.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 863,
+      "ticker": "AKBNK",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 4 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu (TFRS 9'a Göre Karşılık Ayrılmış)) / DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1386664"
+     },
+     "value": "42362192000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2547",
+     "text": "Net dönem kârı (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 42.366.070.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 864,
+      "ticker": "AKBNK",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 4 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu (TFRS 9'a Göre Karşılık Ayrılmış)) / DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1386666"
+     },
+     "value": "42366070000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2568",
+     "text": "Net dönem kârı (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 42.362.192.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 917,
+      "ticker": "AKBNK",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 4 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu (TFRS 9'a Göre Karşılık Ayrılmış)) / DÖNEM KARI (ZARARI) / Önceki Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1551575"
+     },
+     "value": "42362192000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2572",
+     "text": "Net dönem kârı (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 42.366.070.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 918,
+      "ticker": "AKBNK",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 4 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu (TFRS 9'a Göre Karşılık Ayrılmış)) / DÖNEM KARI (ZARARI) / Önceki Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1551576"
+     },
+     "value": "42366070000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2567",
+     "text": "Net dönem kârı (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 57.224.231.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 917,
+      "ticker": "AKBNK",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 4 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu (TFRS 9'a Göre Karşılık Ayrılmış)) / DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1551575"
+     },
+     "value": "57224231000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2571",
+     "text": "Net dönem kârı (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 57.247.061.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 918,
+      "ticker": "AKBNK",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 4 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu (TFRS 9'a Göre Karşılık Ayrılmış)) / DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1551576"
+     },
+     "value": "57247061000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2024-FY\",\"2025-FY\",\"2024-Q4\",\"2025-Q4\"],\"ticker\":\"GARAN\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2207\">Net dönem kârı (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 92.178.886.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2211\">Net dönem kârı (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 92.174.994.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2232\">Net dönem kârı (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 92.178.886.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2236\">Net dönem kârı (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 92.174.994.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2231\">Net dönem kârı (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 111.262.197.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2235\">Net dönem kârı (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 110.604.633.000 TRY</untrusted_document>",
+   "summary": "GARAN 2024-FY to 2025-Q4 net_income",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "f:2207",
+     "text": "Net dönem kârı (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 92.178.886.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 473,
+      "ticker": "GARAN",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 4 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu (TFRS 9'a Göre Karşılık Ayrılmış)) / DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1385927"
+     },
+     "value": "92178886000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2211",
+     "text": "Net dönem kârı (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 92.174.994.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 474,
+      "ticker": "GARAN",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 4 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu (TFRS 9'a Göre Karşılık Ayrılmış)) / DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1385928"
+     },
+     "value": "92174994000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2232",
+     "text": "Net dönem kârı (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 92.178.886.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 585,
+      "ticker": "GARAN",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 4 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu (TFRS 9'a Göre Karşılık Ayrılmış)) / DÖNEM KARI (ZARARI) / Önceki Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1552588"
+     },
+     "value": "92178886000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2236",
+     "text": "Net dönem kârı (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 92.174.994.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 586,
+      "ticker": "GARAN",
+      "doc_type": "kap_financial_report",
+      "period": "2024-FY",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 4 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu (TFRS 9'a Göre Karşılık Ayrılmış)) / DÖNEM KARI (ZARARI) / Önceki Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1552589"
+     },
+     "value": "92174994000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2231",
+     "text": "Net dönem kârı (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 111.262.197.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 585,
+      "ticker": "GARAN",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 4 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu (TFRS 9'a Göre Karşılık Ayrılmış)) / DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1552588"
+     },
+     "value": "111262197000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2235",
+     "text": "Net dönem kârı (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 110.604.633.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 586,
+      "ticker": "GARAN",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 4 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu (TFRS 9'a Göre Karşılık Ayrılmış)) / DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1552589"
+     },
+     "value": "110604633000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 3700
+}

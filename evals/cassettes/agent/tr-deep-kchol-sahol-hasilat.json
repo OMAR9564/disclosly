@@ -1,0 +1,138 @@
+{
+ "case_id": "tr-deep-kchol-sahol-hasilat",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "cc9ae2f3dbe51fdc43b5362474b842036d0f5f428eda4a6ab1d90b338100718d",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2224739",
+      "name": "search_documents",
+      "arguments": {
+       "period_to": "2025-Q4",
+       "period_from": "2024-Q1",
+       "ticker": "KCHOL.IS",
+       "query": "hasılat gelir satışlar"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T01LKE7hEU606lBbzts54gGH3vmaEBJFUCWtg3i1fv0woo8pEPYWXXlB1xMVlYwlEFP9B7g0ZpsJldgE59LPR+YDhT4pd57usxFzL8D6v+QfuJWMBoIIm8bA="
+       }
+      }
+     },
+     {
+      "id": "call_2224740",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "SAHOL.IS",
+       "period_from": "2024-Q1",
+       "query": "hasılat gelir satışlar",
+       "period_to": "2025-Q4"
+      },
+      "extra": null
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1624,
+    "tokens_out": 117,
+    "latency_ms": 893.531,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "0bb1f24e09ab8b10f602b5b5fd5ef94666a781820767bc13df03f49ee4d58d2d",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1192523",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "KCHOL.IS"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T+pZfQqp0D41Y96bwZozA5GxifQuKCGVme40/KJQbU+tqvzo+01Mk4fEk7uE+KIGjCNu81j7YW7dQ9O9M7KvjoD2xX25DQ4Rn8zZn+ZiA9p6Rf6ONjjoXebY="
+       }
+      }
+     },
+     {
+      "id": "call_1192524",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "SAHOL.IS"
+      },
+      "extra": null
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1777,
+    "tokens_out": 39,
+    "latency_ms": 1231.308,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "c9049ac648526541db3dc791c8429b25e61d9e98a16749b1adfdc0cc13ca2c7e",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"Koç Holding ve Sabancı Holding'in 2024 ve 2025 yıllarına ait hasılat verilerine ulaşmak için gerekli belgelere veya verilere erişilememiştir.\",\n  \"citations\": []\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1854,
+    "tokens_out": 82,
+    "latency_ms": 932.09,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2024-Q1\",\"period_to\":\"2025-Q4\",\"query\":\"hasılat gelir satışlar\",\"ticker\":\"KCHOL.IS\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "KCHOL.IS hasılat gelir satışlar",
+   "count": 0,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2024-Q1\",\"period_to\":\"2025-Q4\",\"query\":\"hasılat gelir satışlar\",\"ticker\":\"SAHOL.IS\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "Tool error: document search is temporarily unavailable",
+   "summary": "SAHOL.IS hasılat gelir satışlar",
+   "count": 0,
+   "items": [],
+   "error": "document search is temporarily unavailable"
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"KCHOL.IS\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "Tool error: document search is temporarily unavailable",
+   "summary": "KCHOL.IS documents",
+   "count": 0,
+   "items": [],
+   "error": "document search is temporarily unavailable"
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"SAHOL.IS\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": []}",
+   "summary": "SAHOL.IS documents",
+   "count": 0,
+   "items": [],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 5159
+}

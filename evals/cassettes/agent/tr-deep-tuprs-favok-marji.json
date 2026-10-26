@@ -1,0 +1,103 @@
+{
+ "case_id": "tr-deep-tuprs-favok-marji",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "16fc958953a6dcc13d8abf9e4b018282910681c072670988d8a5766f8d1c47f0",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1985861",
+      "name": "search_documents",
+      "arguments": {
+       "period_to": "2025-Q4",
+       "query": "FAVÖK marjı",
+       "period_from": "2025-Q1",
+       "ticker": "TUPRS"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TTgYfAHEqj4NqiCONC7uvIhuWlEK3M4zIfP9bLHJYMZCi4IRp0GEph/GR6wvWMsT4qEnDmMNXtHL0CM6F8HigkGHTW1Le94AwowfVpTiq6YQALO26TOB23p8="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1618,
+    "tokens_out": 58,
+    "latency_ms": 1088.764,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "369284d78676c64f5e12304ffcb7a8ed3602b25ceccf4e74898498214c34b1f1",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2997921",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "TUPRS",
+       "period_to": "2025-Q4",
+       "period_from": "2025-Q1"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TUICNOwIteCVU4Bc3b0V3YRJuJU29caKbvjFaIlS+S9ADNckGSarEstIdmKcpYWmZNXvKtQHkQVmPqIX7UDnvDmK8AegDV4Z/T0Qd5sHJthlIAqzyaAv5BIs="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1697,
+    "tokens_out": 46,
+    "latency_ms": 542.473,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "e8eea337d0d1aa9c05f45a445daaa0540c21ee902ef8c124d0d11c5692d05272",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"Tüpraş'ın 2025 yılına ait FAVÖK marjı verilerine ulaşılamamıştır.\",\n  \"citations\": []\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1764,
+    "tokens_out": 66,
+    "latency_ms": 1046.427,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q1\",\"period_to\":\"2025-Q4\",\"query\":\"FAVÖK marjı\",\"ticker\":\"TUPRS\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "Tool error: document search is temporarily unavailable",
+   "summary": "TUPRS FAVÖK marjı",
+   "count": 0,
+   "items": [],
+   "error": "document search is temporarily unavailable"
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q1\",\"period_to\":\"2025-Q4\",\"ticker\":\"TUPRS\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "Tool error: document search is temporarily unavailable",
+   "summary": "TUPRS documents",
+   "count": 0,
+   "items": [],
+   "error": "document search is temporarily unavailable"
+  }
+ ],
+ "elapsed_ms": 4258
+}
