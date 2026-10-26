@@ -131,9 +131,12 @@ class RecordedTool(BaseModel):
 
 class Cassette(BaseModel):
     case_id: str
-    dataset: Dataset
+    # `deep_golden`: single-agent runs of the deep questions, for evals/compare.py only.
+    dataset: Dataset | Literal["deep_golden"]
     interactions: list[dict[str, Any]]
     tools: list[RecordedTool]
+    # Wall time of the recorded run; None in cassettes recorded before it was stored.
+    elapsed_ms: int | None = None
 
 
 def cassette_path(case_id: str, directory: Path = CASSETTES_DIR) -> Path:

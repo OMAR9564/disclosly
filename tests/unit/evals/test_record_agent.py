@@ -93,3 +93,29 @@ def test_main_exit_code_reports_failures(monkeypatch: pytest.MonkeyPatch) -> Non
 
     monkeypatch.setattr(record_agent, "record", fake)
     assert record_agent.main([]) == 1
+
+
+async def test_deep_golden_records_single_runs_with_their_wall_time(
+    setup: Any, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    use, cassettes = setup
+    deep = [
+        {"id": "tr-deep-1", "question": "THYAO almalı mıyım?", "language": "tr"},
+        {"id": "tr-deep-2", "question": "ASELS almalı mı?", "language": "tr", "engines": ["graph"]},
+    ]
+    (tmp_path / "datasets" / "deep_golden.jsonl").write_text(
+        "".join(json.dumps(c, ensure_ascii=False) + "\n" for c in deep), encoding="utf-8"
+    )
+    from evals.graph_cases import load_graph_dataset
+
+    monkeypatch.setattr(
+        record_agent,
+        "load_graph_dataset",
+        lambda name: load_graph_dataset(name, tmp_path / "datasets"),
+    )
+    use(FlakyRouter(failures=0))
+    written, failed = await record_agent.record([record_agent.DEEP], None, retry_wait=0)
+    assert (written, failed) == (1, [])
+    cassette = json.loads((cassettes / "tr-deep-1.json").read_text(encoding="utf-8"))
+    assert cassette["dataset"] == "deep_golden"
+    assert isinstance(cassette["elapsed_ms"], int)

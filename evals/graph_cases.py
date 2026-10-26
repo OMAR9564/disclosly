@@ -188,6 +188,8 @@ class GraphCassette(BaseModel):
     sandbox: list[SandboxRecord] = Field(default_factory=list)
     # The decision the recorder sent at the plan pause, or None when the run never paused.
     decision: Literal["approve", "edit"] | None = None
+    # Wall time of the recorded run; None in cassettes recorded before it was stored.
+    elapsed_ms: int | None = None
 
 
 class SandboxCassetteMiss(Exception):

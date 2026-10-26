@@ -1,0 +1,61 @@
+{
+ "case_id": "tr-deep-watchlist-bos",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "c2a1c05507e3744dbfd8190ff2ca12ce3f72e83e62bab351b379939dcc56d495",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2595669",
+      "name": "search_documents",
+      "arguments": {
+       "query": "FAVÖK"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TzjC3OL7bYo1c5HjKAUdizIMVixFiN4aXOVU7L4A2KK8zJ6pKiRVRXRalS9fD+bmH4sA6ezA4YcV4tqkYwt3yZuyS5sAda7tR/7nu7kMogFISCOIhkSpnpkI="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1617,
+    "tokens_out": 19,
+    "latency_ms": 2170.364,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "3683430586bbe18d2b2434ebf49c4d1999668c6a314c8b684d9ce8b09dec6097",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"Takip listenizdeki şirketlerin 2025 FAVÖK verilerine ulaşılamamıştır.\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1657,
+    "tokens_out": 55,
+    "latency_ms": 1599.828,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"FAVÖK\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "Tool error: document search is temporarily unavailable",
+   "summary": "FAVÖK",
+   "count": 0,
+   "items": [],
+   "error": "document search is temporarily unavailable"
+  }
+ ],
+ "elapsed_ms": 5074
+}

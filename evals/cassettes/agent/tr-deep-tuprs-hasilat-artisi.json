@@ -1,0 +1,309 @@
+{
+ "case_id": "tr-deep-tuprs-hasilat-artisi",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "476e9877dc086cc9ce0c21c7a86e645dba9f782ee1b5f57db90e62bafb4156bc",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_334706",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "TUPRS"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TDkgj6MWK6raC59Fr30EfM5w2mAS9pS1VgeQIA8oCD+MTXH5/nJyXDJM9MFyd2VRQLEH6ikJvb71TWogsfxS76+WnCOnpDo+ACqIQW5ZVNACqc8qbgMZmO/w="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1629,
+    "tokens_out": 18,
+    "latency_ms": 687.298,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "6a9e3fbef6ef813a64a2fe6b99674beeaf788b173225162de474ede8535049dc",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2810455",
+      "name": "get_financial_facts",
+      "arguments": {
+       "metrics": [
+        "revenue"
+       ],
+       "ticker": "TUPRS",
+       "periods": [
+        "2025-Q1",
+        "2025-Q3"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TK35hRJnh6vFYVVjlE5b3zedpcyk5mq/Db0vi/M6lPBpkwdHUsI5/VHI0pe7t/efFCJ+kF4a+L4kbLB83k6HMWhq8u9N7Ewheot4XqNDnh9S6FsrGtKpTS9U="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 10292,
+    "tokens_out": 48,
+    "latency_ms": 1120.233,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "7e7920a11264e10dc06457b955fc614beeb69c842d41da9e963747d0948ded20",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2183078",
+      "name": "search_documents",
+      "arguments": {
+       "period_to": "2025-Q3",
+       "query": "hasılat satış gelirleri 2025",
+       "period_from": "2025-Q1",
+       "ticker": "TUPRS"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TG+g+32BC0czMg1r85wsx/OE91I67xyOXap2tqzOrp23TcAxT5MYoHTtFBoT0MLRORoK8qJ+Aid72TUFQpx3hIPCoKLl01oEwJMkmcvlcj1vVfDdUXMbFlaI="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 10608,
+    "tokens_out": 62,
+    "latency_ms": 1180.369,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "29253035f005dc6336e173794724e81ea7c4b9d24ec97bb4c2bbd73738f65a14",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Tüpraş'ın hasılatı 2025-Q1'de 158.623.387.000 TRY'den 2025-Q3'te 220.665.829.000 TRY'ye yükselmiş, bu da yaklaşık %39,1 artışa karşılık gelmektedir [1][2].\",\n  \"points\": [\n    {\n      \"text\": \"2025-Q1 hasılatı: 158.623.387.000 TRY\",\n      \"cite_ids\": [\"f:2131\"]\n    },\n    {\n      \"text\": \"2025-Q3 hasılatı: 220.665.829.000 TRY\",\n      \"cite_ids\": [\"f:2155\"]\n    },\n    {\n      \"text\": \"Yüzde değişim: ((220.665.829.000 - 158.623.387.000) / 158.623.387.000) * 100 ≈ %39,1\",\n      \"cite_ids\": [\"f:2131\", \"f:2155\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2131\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2155\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 14606,
+    "tokens_out": 716,
+    "latency_ms": 11701.773,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"TUPRS\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 449, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-02T09:14:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1671264\"}, {\"document_id\": 448, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-02T06:24:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1671102\"}, {\"document_id\": 447, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-09T15:23:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1661253\"}, {\"document_id\": 446, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-07T16:00:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1659787\"}, {\"document_id\": 445, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-02T09:47:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1657177\"}, {\"document_id\": 444, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-02T08:41:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1657157\"}, {\"document_id\": 443, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-02T07:43:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1657090\"}, {\"document_id\": 442, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-01T17:05:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1656968\"}, {\"document_id\": 441, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-01T15:44:56Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1656945\"}, {\"document_id\": 440, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-04T16:22:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643171\"}, {\"document_id\": 439, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-04T15:25:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643118\"}, {\"document_id\": 438, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-04T15:24:45Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643117\"}, {\"document_id\": 437, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-04T15:24:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643116\"}, {\"document_id\": 436, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-29T06:53:25Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1638082\"}, {\"document_id\": 435, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-15T15:16:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1617405\"}, {\"document_id\": 434, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-08T15:15:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1603560\"}, {\"document_id\": 433, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-06T16:27:01Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1602109\"}, {\"document_id\": 432, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-06T15:18:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1602030\"}, {\"document_id\": 431, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-06T15:18:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1602029\"}, {\"document_id\": 430, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-03T18:00:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1584102\"}, {\"document_id\": 429, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-31T15:15:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1580840\"}, {\"document_id\": 428, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-26T06:55:40Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1576079\"}, {\"document_id\": 427, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-25T21:16:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1575944\"}, {\"document_id\": 426, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-25T16:00:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1575866\"}, {\"document_id\": 425, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-25T15:22:10Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1575803\"}, {\"document_id\": 424, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-24T15:19:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1575233\"}, {\"document_id\": 423, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-18T15:16:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1574152\"}, {\"document_id\": 422, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-11T16:02:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1570803\"}, {\"document_id\": 421, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-27T15:15:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1562851\"}, {\"document_id\": 420, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-16T21:48:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1557178\"}, {\"document_id\": 419, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-13T15:16:07Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1556613\"}, {\"document_id\": 418, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-12T06:20:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1555987\"}, {\"document_id\": 417, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-06T16:24:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1554178\"}, {\"document_id\": 416, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-06T15:34:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1554109\"}, {\"document_id\": 415, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-06T15:34:29Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1554106\"}, {\"document_id\": 414, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-30T06:39:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1549131\"}, {\"document_id\": 413, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-22T15:14:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1545944\"}, {\"document_id\": 412, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-26T15:18:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1530365\"}, {\"document_id\": 411, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-26T15:15:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1530350\"}, {\"document_id\": 410, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-31T16:21:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1510258\"}, {\"document_id\": 409, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-31T15:20:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1510167\"}, {\"document_id\": 408, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-31T15:19:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1510165\"}, {\"document_id\": 407, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-31T15:19:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1510162\"}, {\"document_id\": 406, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-02T08:49:53Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1495110\"}, {\"document_id\": 405, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-02T06:15:41Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1495027\"}, {\"document_id\": 404, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-15T15:30:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1490049\"}, {\"document_id\": 403, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-14T05:32:47Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1478038\"}, {\"document_id\": 402, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-31T11:22:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1469685\"}, {\"document_id\": 401, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-29T16:37:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1467963\"}, {\"document_id\": 400, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-29T16:28:53Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1467958\"}, {\"document_id\": 399, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-29T15:35:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1467924\"}, {\"document_id\": 398, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-29T15:33:39Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1467923\"}, {\"document_id\": 397, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-13T15:22:43Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1448816\"}, {\"document_id\": 396, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-13T15:22:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1448815\"}, {\"document_id\": 395, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-15T06:25:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1439169\"}, {\"document_id\": 394, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-07T06:42:42Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1434450\"}, {\"document_id\": 393, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-29T19:00:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431267\"}, {\"document_id\": 392, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-29T16:19:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431180\"}, {\"document_id\": 391, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-29T15:22:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431090\"}, {\"document_id\": 390, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-29T15:21:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431089\"}, {\"document_id\": 389, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-21T15:44:07Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1428274\"}, {\"document_id\": 388, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-11T15:45:47Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1424563\"}, {\"document_id\": 387, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-27T12:48:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1413111\"}, {\"document_id\": 386, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-27T12:37:59Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1413098\"}, {\"document_id\": 385, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-27T12:12:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1413056\"}, {\"document_id\": 384, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-26T06:27:55Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1411860\"}, {\"document_id\": 383, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-03-05T23:54:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1401146\"}, {\"document_id\": 382, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-03T15:21:48Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1398845\"}, {\"document_id\": 381, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-17T16:31:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393478\"}, {\"document_id\": 380, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-17T15:29:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393453\"}, {\"document_id\": 379, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-17T15:27:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393449\"}, {\"document_id\": 378, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-17T15:26:35Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393446\"}, {\"document_id\": 377, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-14T05:54:29Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1392740\"}, {\"document_id\": 376, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-31T06:05:30Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1386935\"}, {\"document_id\": 375, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-26T15:22:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1368930\"}, {\"document_id\": 374, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-26T15:16:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1368921\"}, {\"document_id\": 373, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-26T06:20:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1360378\"}, {\"document_id\": 372, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-12T15:15:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1357325\"}, {\"document_id\": 371, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-05T16:22:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353858\"}, {\"document_id\": 370, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-05T15:22:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353830\"}, {\"document_id\": 369, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-05T15:21:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353828\"}, {\"document_id\": 368, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-05T12:01:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353547\"}, {\"document_id\": 367, \"ticker\": \"TUPRS\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-10-28T05:30:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1351132\"}]}",
+   "summary": "TUPRS documents",
+   "count": 83,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2025-Q1\",\"2025-Q3\"],\"ticker\":\"TUPRS\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2131\">Hasılat (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 158.623.387.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2180\">Hasılat (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 207.582.495.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2155\">Hasılat (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 220.665.829.000 TRY</untrusted_document>",
+   "summary": "TUPRS 2025-Q1 to 2025-Q3 revenue",
+   "count": 3,
+   "items": [
+    {
+     "cite_id": "f:2131",
+     "text": "Hasılat (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 158.623.387.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 390,
+      "ticker": "TUPRS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Cari Dönem 01.01.2025 - 31.03.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1431089"
+     },
+     "value": "158623387000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2180",
+     "text": "Hasılat (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 207.582.495.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 431,
+      "ticker": "TUPRS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Önceki Dönem 01.01.2025 - 31.03.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1602029"
+     },
+     "value": "207582495000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2155",
+     "text": "Hasılat (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 220.665.829.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 407,
+      "ticker": "TUPRS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1510162"
+     },
+     "value": "220665829000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q1\",\"period_to\":\"2025-Q3\",\"query\":\"hasılat satış gelirleri 2025\",\"ticker\":\"TUPRS\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:194c3510dcb87f58ef500a2ab9e706372f58cfc07189c8196c34b4e8fcc81a88\">ÖZET GELİR TABLOSU (Milyon TL) 31 Mart 2024 31 Mart 2025 Net Satışlar 228.525 158.623 Brüt Kar 18.195 13.165 Esas Faaliyet Karı 5.496 3.891 EBITDA 13.237 9.626 Sürdürülen faaliyetler vergi öncesi karı/(zararı) 2.613 2.533 Dönem Karı (Ana Ortaklık Payları) 442 97 Dönem Karı (Azınlık Payları) 131 23 10 Yatırım Ülkemizin enerji ihtiyacının karşılaşmasında stratejik öneminin bilincinde Tüpraş , 202 5 yılı üç aylık dönemde modernizasyon ve enerji verimliliği konularında projelerini sürdürerek toplam 83 milyon dolar yatırım harcaması gerçekleşmiştir. Bilanço Tarihinden Sonra Meydana Gelen Önemli Husus ve Gelişmeler Yoktur. Öngörüler Yıllık finansal sonuçlarımızla beraber açıkladığımız, 202 5 yılı geleceğe yönelik beklentilerimizde bir değişiklik olmayıp, Tüpraş net rafineri marj beklentisi 5 -6 ABD doları/varil, % 90-95 kapasite kullanımı ile yaklaşık 26 milyon ton üretim ve 30 milyon ton toplam satış hacmi güncelliğini korumaktadır. 2025 yılında toplam yatırım beklentisi ise yaklaşık 600 milyon ABD dolarıdır. ÇEKİNCE Bu raporda ileriye dönük bazı görüş ve tahmini rakamlar yer almaktadır. Bunlar Şirket’in veya Şirket’in bağlı ortaklıklarının ya da iş ortaklıklarının Yönetimlerinin gelecekteki duruma ilişkin şu andaki görüşlerini yansıtmaktadır ve belli varsayımları içermektedir. Ancak gerçekleşmeler, ileriye dönük görüşleri ve tahmini rakamları oluşturan değişkenlerde ve varsayımlardaki gelişim ve gerçekleşmelere bağımlı olarak farklılık gösterebilecektir.</untrusted_document>\n<untrusted_document cite_id=\"c:5d46905d9fd7b4d5f525e55635aab6a090ea73e21d871ec3f5cd7790b3c027ab\">2025 yılı ilk dokuz aylık dönemde, yurt içi satışlar geçtiğimiz yılın aynı dönemine göre %1 oranında dü şüşle 17,4 milyon ton, uluslararası satışlar dahil toplam satışlar ise %4 oranında düşüşle 21,9 milyon ton olarak gerçekleşmiştir. 7 Satışlar (1000 ton) 2025 (9 Aylık) 2024 (9 Aylık) Fark LPG 542 550 -8,1 -%1 Benzin 4.158 3.587 570 %16 Jet Yakıtı 3.267 3.380 -113 -%3 Motorin 7.232 7.938 -706 -%9 Fuel Oil 170 287 -116 -%41 Bitüm 1.202 1.148 54 %5 Diğer 862 716 146 %20 Yurtiçi Satış 17.433 17.610 -177 -%1 LPG 21 24 -3 -%12 Nafta - 68 -68 -%100 Benzin 573 891 -319 -%36 Jet 411 91 320 %353 Motorin 1.132 721 411 %57 Fuel Oil 993 2.664 -1671 -%63 Bitüm 900 724 176 %24 Diğer 460 129 331 %257 Uluslararası Satış 4.490 5.312 -822 -%15 Genel Toplam 21.923 22.922 -999 -%4 OPET Eylül sonu itibarıyla OPET, Türkiye'de 1.272’si OPET, 629’u Sunpet olmak üzere toplamda 1.901 istasyonu ve beş farklı terminalinde yaklaşık 1,1 milyon m3’lük depolama kapasitesi ile akaryakıt dağıtım sektöründe önemli bir oyuncu konumundadır. OPET istasyonlarının 265’inde (%1 4) Elektrikli Araç Şarj Ünitesi bulunmaktadır. Sektördeki pazar payını ve istasyon ağını her geçen gün artıran OPET Türkiye’de akaryakıt dağıtım sektöründe tüketicinin ilk tercihi olma temel hedef ve prensibiyle hareket etmektedir. OPET, Türkiye tüketiminde EPDK tarafından en son açıklanan veriler kapsamında Ağustos 2025 sonu itibarıyla beyaz ürünlerde %19,3, siyah ürün lerde ise %15,6 olmak üzere toplam % 19,0 pazar payı na sahiptir. Ditaş Ditaş, Tüpraş'ın ham petrol ve petrol ürünlerinin yurtiçi ve yurtdışında denizyolu ile taşınması operasyonunu yürütmenin yanı sıra, aktiflerindeki tankerleri zaman esaslı ya da tek sefer esaslı olarak kiraya vermekte, kiraladığı tankerlerin işletmeciliğini yapmakta, limanlarda terminal hizmetleri vermekte ve sektörde faaliyet gösteren firmalara aracılık ve acentelik hizmetleri vermektedir.</untrusted_document>\n<untrusted_document cite_id=\"c:8774c4876be09f1ff013aea17db839d5117662bff3534f571a3205a03e394422\">6 ➢ Elektrik Sektöründeki Gelişmeler 2025 yılının ilk dokuz ayında piyasa takas fiyatı (“PTF”) geçen yılın aynı dönemine kıyasla %17 artışla, 2.548 TL/MWh olarak gerçekleşmiştir. Enerji ve Tabii Kaynaklar Bakanlığı, 2025 yılı itibarıyla Türkiye’nin yenilenebilir enerji kapasitesini artırmak için önemli bir adım atmıştır. Bakanlık, 2025 yılına kadar r üzgâr ve güneş enerjisinde toplam 120 bin MW kurulu güce ulaşmayı hedeflemektedir. Bu doğrultuda, her yıl 2.000 MW ilave kapasite için Yenilenebilir Enerji Kaynak Alanı (YEKA) yarışmaları düzenlenecektir. Bu kapsamda, toplam 2 .000 MW kurulu güce ulaşacak şekilde; 1.150 MW kapasiteli 6 adet RES ve 850 MW kapasiteli 10 adet GES yatırımı için yarışma süreci başlatılmıştır. Bakanlık açıklamasına göre başvurular ; GES için 4 Kasım 2025’te, RES için ise 18 Kasım 2025’te alınacaktır. ➢ Operasyonel Bilgil er (Rafinaj) Yılın ilk dokuz aylık dönemde kapasite kullanım oranı %93,6’ya ulaşılmıştır. Aşağıdaki tabloda görüldüğü üzere, 2025 yılının ilk dokuz ayında toplam 21,1 milyon ton ham petrol ve yarı mamul şarja verilmiş; bunun sonucunda 20,1 milyon ton satılabilir ürün üretilmiştir. Geçen yılın aynı dönemiyle kıyaslandığında, üretim süreçlerinin etkin yönetimi ve RUP ünitelerinin katkısıyla beyaz ürün verimi %76,2’den %82,0 seviyesine yükselmiştir. İşlenen Ham Petrol 2025 (9 Aylık) 2024 (9 Aylık) Fark Toplam Şarj (bin ton) 21.062 20.792 270,0 Beyaz Ürün Verimi 82,0 76,2 5,8 API 32,3 32,0 0,3 Kapasite Kullanımı % 93,6 92,4 1,2 Üretim (1000 ton) 2025 (9 Aylık) 2024 (9 Aylık) Fark LPG 642 638 4 %0,6 Nafta 1 71 -70 -%98,8 Benzinler 4.542 4.412 130 %2,9 Jet Yakıtı/Gazyağı 3.715 3.502 213 %6,1 Motorin 7.380 6.444 936 %14,5 Fuel Oiller 778 2.319 -1.541 -%66,4 Bitümler 2.018 1.818 200 %11,0 Diğer 1.072 792 280 %35,4 Toplam 20.147 19.996 151 %0,8 2025 yılı ilk dokuz aylık dönemde, yurt içi satışlar geçtiğimiz yılın aynı dönemine göre %1 oranında dü şüşle 17,4 milyon ton, uluslararası satışlar dahil toplam satışlar ise %4 oranında düşüşle 21,9 milyon ton olarak gerçekleşmiştir. 7</untrusted_document>\n<untrusted_document cite_id=\"c:e4133bce4b8cdf5166a49c2c18b70f2725dd0465ae0b5607ba3ce4e3927045d7\">10 ÖZET BİLANÇO (milyon TL) 30 Haziran 2025 31 Aralık 2024 Dönen varlıklar 229.194 216.536 Duran varlıklar 316.437 313.312 Toplam Varlıklar 545.630 529.849 Kısa Vadeli Yükümlülükler 187.464 173.574 Uzun Vadeli Yükümlülükler 46.678 22.298 Ana Ortaklığa Ait Özsermaye 306.638 329.272 Azınlık Payları 4.851 4.705 Toplam Kaynaklar 545.630 529.849 ÖZET GELİR TABLOSU ( milyon TL) 30 Haziran 2025 30 Haziran 2024 Net Satışlar 351.316 499.812 Brüt Kar 31.783 42.830 Esas Faaliyet Karı 13.747 20.113 EBITDA 25.248 30.811 Sürdürülen faaliyetler vergi öncesi karı/(zararı) 13.705 14.913 Dönem Karı (Ana Ortaklık Payları) 8.987 7.227 Dönem Karı (Azınlık Payları) 83 230 Yatırım Ülkemizin enerji ihtiyacının karşılaşmasında stratejik öneminin bilincinde Tüpraş, 202 5 yılı altı aylık dönemde modernizasyon ve enerji verimliliği konularında projelerini sürdürerek toplam 231,8 milyon dolar yatırım harcaması gerçekleşmiştir. Bilanço Tarihinden Sonra Meydana Gelen Önemli Husus ve Gelişmeler Yoktur. Öngörüler Yıllık finansal sonuçlarımızla beraber açıkladığımız, 2025 yılı geleceğe yönelik beklentilerimizde bir değişiklik olmayıp, Tüpraş net rafineri marj beklentisi 5 -6 ABD doları/varil, %90 -95 kapasite kullanımı ile yaklaşık 26 milyon ton üretim ve 30 milyon to n toplam satış hacmi güncelliğini korumaktadır. 2025 yılında toplam yatırım beklentisi ise yaklaşık 600 milyon ABD dolarıdır. ÇEKİNCE Bu raporda ileriye dönük bazı görüş ve tahmini rakamlar yer almaktadır. Bunlar Şirket’in veya Şirket’in bağlı ortaklıklarının ya da iş ortaklıklarının Yönetimlerinin gelecekteki duruma ilişkin şu andaki görüşlerini yansıtmaktadır ve belli varsayımları içermektedir. Ancak gerçekleşmeler, ileriye dönük görüşleri ve tahmini rakamları oluşturan değişkenlerde ve varsayımlardaki gelişim ve gerçekleşmelere bağımlı olarak farklılık gösterebilecektir.</untrusted_document>\n<untrusted_document cite_id=\"c:68b9a3b08d50f7528c2c6b52acbbd3497fa5192120bce0282544a092e6c17943\">2025 ilk üç ayda taşıdığı akaryakıt ürünü ve ara ürün miktarını 0,5 milyon ton seviyesinde gerçekleştiren Körfez Ulaştırma, bu miktarın %100’ünü kendi trenleri ile gerçekleştirmiştir. Demiryolu konteyner taşımacılığı faaliyetlerine devam eden Körfez Ulaştı rma, aynı dönemde DP liman lokasyonlu olmak üzere 78 adet konteyner taşıması gerçekleştirmiştir. Atölye dış hizmet satış faaliyetleri kapsamında toplam 46 vagon revizyonu ve 197 adet teker çakma hizmeti verilmiştir. Tupras Trading Ltd. Tüpraş’ın %100 iştiraki olan ve merkezi Londra’da bulunan Tupras Trading Ltd’nin temel amacı piyasa fırsatlarını değerlendirerek Tüpraş’ın ticari yetkinliklerini daha üst seviyeye taşımaktır. 8 Şirket, Tüpraş’ın ham petrol ve ara ürün tedarik zincirinde kesinti yaşamadan operasyonlarını sürdürmesini, ürünlerini yeni coğrafyalara en kârlı şekilde ihraç etmesini, rafineri sisteminin optimize edilmesine imkân veren ticari esnekliğin oluşturulması, s üreçlerine ek olarak üçüncü taraf ticaretinde de aktif rol oynayarak önemli gelir elde edilmesini sağlamıştır. Tupras Trading Ltd. aynı zamanda türev işlemler aracılığıyla, Tüpraş stoklarının fiyat riskinden korunmasına yönelik hedge süreçlerini de yöneter ek risk yönetim politikalarında etkin rol oynamaktadır. 2025 yılının ilk üç ayında fuel oil, hafif ve orta distilat , bitüm ve biofuel olmak üzere yaklaşık 1,6 milyon ton ürün ticareti ve Tüpraş rafinerilerinin ihtiyacına yönelik yaklaşık 3,2 milyon ton spot ham petrol bağlantıları Tupras Trading Ltd. aracılığıyla gerçekleştirilmiştir. Entek Elektrik Tüpraş’ın %99,23 oranında payına sahip olduğu, elektrik üretimi konusunda faaliyet gösteren Entek Elektrik Üretimi A.Ş. (“Entek”), sekiz adet hidroelektrik santrali), bir adet rüzgâr enerji santrali bir adet hibrit (enerji santrali ile sıfır karbonlu elekt rik üretiminde 380 MW elektriksel kurulu güce, 415 MW mekanik kurulu güce sahiptir. Kocaeli’nde bulunan doğal gaz çevrim santrali ile birlikte toplamda 492 MW’lık elektriksel kurulu güç, 552 MW’lık mekanik güce mevcuttur. Entek, yurt içinde toptan elektrik satış alanında faaliyet gösteren Eltek’te %100, yurt dışı yatırımlar için konumlandırdığı Enspire’da %100, Esinti Enerji’de dolaylı paylar dahil %75, araç şarj istasyonlarının Türkiye’de yayılımı için kurulmuş olan WAT Mobilite’de %10 ve Enerji Borsası’nı işletmek üzere kurulan Enerji Piyasaları İşletme A.Ş.’de ise %0,5 pay sahibidir.</untrusted_document>\n<untrusted_document cite_id=\"c:4a680bd6304729294ddf087fd4a23d62063da381bb644ea912db8c8c18ee5bc3\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 31.03.2025 | Önceki Dönem 01.01.2024 - 31.03.2024\nHasılat | ifrs-full_Revenue | 21 | 158623387 | 228524890\nSatışların Maliyeti | ifrs-full_CostOfSales | 21,22 | -145458378 | -210330068\nTİCARİ FAALİYETLERDEN BRÜT KAR (ZARAR) | kap-fr_GrossProfitLossFromCommercialOperations |  | 13165009 | 18194822\nBRÜT KAR (ZARAR) | ifrs-full_GrossProfit |  | 13165009 | 18194822\nGenel Yönetim Giderleri | ifrs-full_AdministrativeExpense | 22 | -4238443 | -4846765\nPazarlama Giderleri | kap-fr_MarketingExpense | 22 | -2065209 | -3098986\nAraştırma ve Geliştirme Giderleri | ifrs-full_ResearchAndDevelopmentExpense | 22 | -113053 | -137560\nEsas Faaliyetlerden Diğer Gelirler | ifrs-full_OtherIncome | 23 | 2389817 | 3985730\nEsas Faaliyetlerden Diğer Giderler | ifrs-full_OtherExpenseByFunction | 23 | -5247164 | -8601721\nESAS FAALİYET KARI (ZARARI) | ifrs-full_ProfitLossFromOperatingActivities |  | 3890957 | 5495520\nYatırım Faaliyetlerinden Gelirler | kap-fr_InvestmentActivityIncome | 24 | 6789 | \nYatırım Faaliyetlerinden Giderler | kap-fr_InvestmentActivityExpenses | 24 |  | -489\nÖzkaynak Yöntemiyle Değerlenen Yatırımların Karlarından (Zararlarından) Paylar | ifrs-full_ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod | 10 | -56057 | 389397\nFİNANSMAN GELİRİ (GİDERİ) ÖNCESİ FAALİYET KARI (ZARARI) | kap-fr_ProfitLossBeforeFinancingExpense |  | 3841689 | 5884428</untrusted_document>",
+   "summary": "TUPRS hasılat satış gelirleri 2025",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:194c3510dcb87f58ef500a2ab9e706372f58cfc07189c8196c34b4e8fcc81a88",
+     "text": "ÖZET GELİR TABLOSU (Milyon TL) 31 Mart 2024 31 Mart 2025 Net Satışlar 228.525 158.623 Brüt Kar 18.195 13.165 Esas Faaliyet Karı 5.496 3.891 EBITDA 13.237 9.626 Sürdürülen faaliyetler vergi öncesi karı/(zararı) 2.613 2.533 Dönem Karı (Ana Ortaklık Payları) 442 97 Dönem Karı (Azınlık Payları) 131 23 10 Yatırım Ülkemizin enerji ihtiyacının karşılaşmasında stratejik öneminin bilincinde Tüpraş , 202 5 yılı üç aylık dönemde modernizasyon ve enerji verimliliği konularında projelerini sürdürerek toplam 83 milyon dolar yatırım harcaması gerçekleşmiştir. Bilanço Tarihinden Sonra Meydana Gelen Önemli Husus ve Gelişmeler Yoktur. Öngörüler Yıllık finansal sonuçlarımızla beraber açıkladığımız, 202 5 yılı geleceğe yönelik beklentilerimizde bir değişiklik olmayıp, Tüpraş net rafineri marj beklentisi 5 -6 ABD doları/varil, % 90-95 kapasite kullanımı ile yaklaşık 26 milyon ton üretim ve 30 milyon ton toplam satış hacmi güncelliğini korumaktadır. 2025 yılında toplam yatırım beklentisi ise yaklaşık 600 milyon ABD dolarıdır. ÇEKİNCE Bu raporda ileriye dönük bazı görüş ve tahmini rakamlar yer almaktadır. Bunlar Şirket’in veya Şirket’in bağlı ortaklıklarının ya da iş ortaklıklarının Yönetimlerinin gelecekteki duruma ilişkin şu andaki görüşlerini yansıtmaktadır ve belli varsayımları içermektedir. Ancak gerçekleşmeler, ileriye dönük görüşleri ve tahmini rakamları oluşturan değişkenlerde ve varsayımlardaki gelişim ve gerçekleşmelere bağımlı olarak farklılık gösterebilecektir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 391,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q1",
+      "section": "body",
+      "page": 9,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1431090"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:5d46905d9fd7b4d5f525e55635aab6a090ea73e21d871ec3f5cd7790b3c027ab",
+     "text": "2025 yılı ilk dokuz aylık dönemde, yurt içi satışlar geçtiğimiz yılın aynı dönemine göre %1 oranında dü şüşle 17,4 milyon ton, uluslararası satışlar dahil toplam satışlar ise %4 oranında düşüşle 21,9 milyon ton olarak gerçekleşmiştir. 7 Satışlar (1000 ton) 2025 (9 Aylık) 2024 (9 Aylık) Fark LPG 542 550 -8,1 -%1 Benzin 4.158 3.587 570 %16 Jet Yakıtı 3.267 3.380 -113 -%3 Motorin 7.232 7.938 -706 -%9 Fuel Oil 170 287 -116 -%41 Bitüm 1.202 1.148 54 %5 Diğer 862 716 146 %20 Yurtiçi Satış 17.433 17.610 -177 -%1 LPG 21 24 -3 -%12 Nafta - 68 -68 -%100 Benzin 573 891 -319 -%36 Jet 411 91 320 %353 Motorin 1.132 721 411 %57 Fuel Oil 993 2.664 -1671 -%63 Bitüm 900 724 176 %24 Diğer 460 129 331 %257 Uluslararası Satış 4.490 5.312 -822 -%15 Genel Toplam 21.923 22.922 -999 -%4 OPET Eylül sonu itibarıyla OPET, Türkiye'de 1.272’si OPET, 629’u Sunpet olmak üzere toplamda 1.901 istasyonu ve beş farklı terminalinde yaklaşık 1,1 milyon m3’lük depolama kapasitesi ile akaryakıt dağıtım sektöründe önemli bir oyuncu konumundadır. OPET istasyonlarının 265’inde (%1 4) Elektrikli Araç Şarj Ünitesi bulunmaktadır. Sektördeki pazar payını ve istasyon ağını her geçen gün artıran OPET Türkiye’de akaryakıt dağıtım sektöründe tüketicinin ilk tercihi olma temel hedef ve prensibiyle hareket etmektedir. OPET, Türkiye tüketiminde EPDK tarafından en son açıklanan veriler kapsamında Ağustos 2025 sonu itibarıyla beyaz ürünlerde %19,3, siyah ürün lerde ise %15,6 olmak üzere toplam % 19,0 pazar payı na sahiptir. Ditaş Ditaş, Tüpraş'ın ham petrol ve petrol ürünlerinin yurtiçi ve yurtdışında denizyolu ile taşınması operasyonunu yürütmenin yanı sıra, aktiflerindeki tankerleri zaman esaslı ya da tek sefer esaslı olarak kiraya vermekte, kiraladığı tankerlerin işletmeciliğini yapmakta, limanlarda terminal hizmetleri vermekte ve sektörde faaliyet gösteren firmalara aracılık ve acentelik hizmetleri vermektedir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 408,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": 6,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1510165"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:8774c4876be09f1ff013aea17db839d5117662bff3534f571a3205a03e394422",
+     "text": "6 ➢ Elektrik Sektöründeki Gelişmeler 2025 yılının ilk dokuz ayında piyasa takas fiyatı (“PTF”) geçen yılın aynı dönemine kıyasla %17 artışla, 2.548 TL/MWh olarak gerçekleşmiştir. Enerji ve Tabii Kaynaklar Bakanlığı, 2025 yılı itibarıyla Türkiye’nin yenilenebilir enerji kapasitesini artırmak için önemli bir adım atmıştır. Bakanlık, 2025 yılına kadar r üzgâr ve güneş enerjisinde toplam 120 bin MW kurulu güce ulaşmayı hedeflemektedir. Bu doğrultuda, her yıl 2.000 MW ilave kapasite için Yenilenebilir Enerji Kaynak Alanı (YEKA) yarışmaları düzenlenecektir. Bu kapsamda, toplam 2 .000 MW kurulu güce ulaşacak şekilde; 1.150 MW kapasiteli 6 adet RES ve 850 MW kapasiteli 10 adet GES yatırımı için yarışma süreci başlatılmıştır. Bakanlık açıklamasına göre başvurular ; GES için 4 Kasım 2025’te, RES için ise 18 Kasım 2025’te alınacaktır. ➢ Operasyonel Bilgil er (Rafinaj) Yılın ilk dokuz aylık dönemde kapasite kullanım oranı %93,6’ya ulaşılmıştır. Aşağıdaki tabloda görüldüğü üzere, 2025 yılının ilk dokuz ayında toplam 21,1 milyon ton ham petrol ve yarı mamul şarja verilmiş; bunun sonucunda 20,1 milyon ton satılabilir ürün üretilmiştir. Geçen yılın aynı dönemiyle kıyaslandığında, üretim süreçlerinin etkin yönetimi ve RUP ünitelerinin katkısıyla beyaz ürün verimi %76,2’den %82,0 seviyesine yükselmiştir. İşlenen Ham Petrol 2025 (9 Aylık) 2024 (9 Aylık) Fark Toplam Şarj (bin ton) 21.062 20.792 270,0 Beyaz Ürün Verimi 82,0 76,2 5,8 API 32,3 32,0 0,3 Kapasite Kullanımı % 93,6 92,4 1,2 Üretim (1000 ton) 2025 (9 Aylık) 2024 (9 Aylık) Fark LPG 642 638 4 %0,6 Nafta 1 71 -70 -%98,8 Benzinler 4.542 4.412 130 %2,9 Jet Yakıtı/Gazyağı 3.715 3.502 213 %6,1 Motorin 7.380 6.444 936 %14,5 Fuel Oiller 778 2.319 -1.541 -%66,4 Bitümler 2.018 1.818 200 %11,0 Diğer 1.072 792 280 %35,4 Toplam 20.147 19.996 151 %0,8 2025 yılı ilk dokuz aylık dönemde, yurt içi satışlar geçtiğimiz yılın aynı dönemine göre %1 oranında dü şüşle 17,4 milyon ton, uluslararası satışlar dahil toplam satışlar ise %4 oranında düşüşle 21,9 milyon ton olarak gerçekleşmiştir. 7",
+     "source": {
+      "kind": "chunk",
+      "document_id": 408,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q3",
+      "section": "body",
+      "page": 6,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1510165"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:e4133bce4b8cdf5166a49c2c18b70f2725dd0465ae0b5607ba3ce4e3927045d7",
+     "text": "10 ÖZET BİLANÇO (milyon TL) 30 Haziran 2025 31 Aralık 2024 Dönen varlıklar 229.194 216.536 Duran varlıklar 316.437 313.312 Toplam Varlıklar 545.630 529.849 Kısa Vadeli Yükümlülükler 187.464 173.574 Uzun Vadeli Yükümlülükler 46.678 22.298 Ana Ortaklığa Ait Özsermaye 306.638 329.272 Azınlık Payları 4.851 4.705 Toplam Kaynaklar 545.630 529.849 ÖZET GELİR TABLOSU ( milyon TL) 30 Haziran 2025 30 Haziran 2024 Net Satışlar 351.316 499.812 Brüt Kar 31.783 42.830 Esas Faaliyet Karı 13.747 20.113 EBITDA 25.248 30.811 Sürdürülen faaliyetler vergi öncesi karı/(zararı) 13.705 14.913 Dönem Karı (Ana Ortaklık Payları) 8.987 7.227 Dönem Karı (Azınlık Payları) 83 230 Yatırım Ülkemizin enerji ihtiyacının karşılaşmasında stratejik öneminin bilincinde Tüpraş, 202 5 yılı altı aylık dönemde modernizasyon ve enerji verimliliği konularında projelerini sürdürerek toplam 231,8 milyon dolar yatırım harcaması gerçekleşmiştir. Bilanço Tarihinden Sonra Meydana Gelen Önemli Husus ve Gelişmeler Yoktur. Öngörüler Yıllık finansal sonuçlarımızla beraber açıkladığımız, 2025 yılı geleceğe yönelik beklentilerimizde bir değişiklik olmayıp, Tüpraş net rafineri marj beklentisi 5 -6 ABD doları/varil, %90 -95 kapasite kullanımı ile yaklaşık 26 milyon ton üretim ve 30 milyon to n toplam satış hacmi güncelliğini korumaktadır. 2025 yılında toplam yatırım beklentisi ise yaklaşık 600 milyon ABD dolarıdır. ÇEKİNCE Bu raporda ileriye dönük bazı görüş ve tahmini rakamlar yer almaktadır. Bunlar Şirket’in veya Şirket’in bağlı ortaklıklarının ya da iş ortaklıklarının Yönetimlerinin gelecekteki duruma ilişkin şu andaki görüşlerini yansıtmaktadır ve belli varsayımları içermektedir. Ancak gerçekleşmeler, ileriye dönük görüşleri ve tahmini rakamları oluşturan değişkenlerde ve varsayımlardaki gelişim ve gerçekleşmelere bağımlı olarak farklılık gösterebilecektir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 399,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": 11,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1467924"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:68b9a3b08d50f7528c2c6b52acbbd3497fa5192120bce0282544a092e6c17943",
+     "text": "2025 ilk üç ayda taşıdığı akaryakıt ürünü ve ara ürün miktarını 0,5 milyon ton seviyesinde gerçekleştiren Körfez Ulaştırma, bu miktarın %100’ünü kendi trenleri ile gerçekleştirmiştir. Demiryolu konteyner taşımacılığı faaliyetlerine devam eden Körfez Ulaştı rma, aynı dönemde DP liman lokasyonlu olmak üzere 78 adet konteyner taşıması gerçekleştirmiştir. Atölye dış hizmet satış faaliyetleri kapsamında toplam 46 vagon revizyonu ve 197 adet teker çakma hizmeti verilmiştir. Tupras Trading Ltd. Tüpraş’ın %100 iştiraki olan ve merkezi Londra’da bulunan Tupras Trading Ltd’nin temel amacı piyasa fırsatlarını değerlendirerek Tüpraş’ın ticari yetkinliklerini daha üst seviyeye taşımaktır. 8 Şirket, Tüpraş’ın ham petrol ve ara ürün tedarik zincirinde kesinti yaşamadan operasyonlarını sürdürmesini, ürünlerini yeni coğrafyalara en kârlı şekilde ihraç etmesini, rafineri sisteminin optimize edilmesine imkân veren ticari esnekliğin oluşturulması, s üreçlerine ek olarak üçüncü taraf ticaretinde de aktif rol oynayarak önemli gelir elde edilmesini sağlamıştır. Tupras Trading Ltd. aynı zamanda türev işlemler aracılığıyla, Tüpraş stoklarının fiyat riskinden korunmasına yönelik hedge süreçlerini de yöneter ek risk yönetim politikalarında etkin rol oynamaktadır. 2025 yılının ilk üç ayında fuel oil, hafif ve orta distilat , bitüm ve biofuel olmak üzere yaklaşık 1,6 milyon ton ürün ticareti ve Tüpraş rafinerilerinin ihtiyacına yönelik yaklaşık 3,2 milyon ton spot ham petrol bağlantıları Tupras Trading Ltd. aracılığıyla gerçekleştirilmiştir. Entek Elektrik Tüpraş’ın %99,23 oranında payına sahip olduğu, elektrik üretimi konusunda faaliyet gösteren Entek Elektrik Üretimi A.Ş. (“Entek”), sekiz adet hidroelektrik santrali), bir adet rüzgâr enerji santrali bir adet hibrit (enerji santrali ile sıfır karbonlu elekt rik üretiminde 380 MW elektriksel kurulu güce, 415 MW mekanik kurulu güce sahiptir. Kocaeli’nde bulunan doğal gaz çevrim santrali ile birlikte toplamda 492 MW’lık elektriksel kurulu güç, 552 MW’lık mekanik güce mevcuttur. Entek, yurt içinde toptan elektrik satış alanında faaliyet gösteren Eltek’te %100, yurt dışı yatırımlar için konumlandırdığı Enspire’da %100, Esinti Enerji’de dolaylı paylar dahil %75, araç şarj istasyonlarının Türkiye’de yayılımı için kurulmuş olan WAT Mobilite’de %10 ve Enerji Borsası’nı işletmek üzere kurulan Enerji Piyasaları İşletme A.Ş.’de ise %0,5 pay sahibidir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 391,
+      "ticker": "TUPRS",
+      "doc_type": "kap_annual_report",
+      "period": "2025-Q1",
+      "section": "body",
+      "page": 7,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1431090"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:4a680bd6304729294ddf087fd4a23d62063da381bb644ea912db8c8c18ee5bc3",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 31.03.2025 | Önceki Dönem 01.01.2024 - 31.03.2024\nHasılat | ifrs-full_Revenue | 21 | 158623387 | 228524890\nSatışların Maliyeti | ifrs-full_CostOfSales | 21,22 | -145458378 | -210330068\nTİCARİ FAALİYETLERDEN BRÜT KAR (ZARAR) | kap-fr_GrossProfitLossFromCommercialOperations |  | 13165009 | 18194822\nBRÜT KAR (ZARAR) | ifrs-full_GrossProfit |  | 13165009 | 18194822\nGenel Yönetim Giderleri | ifrs-full_AdministrativeExpense | 22 | -4238443 | -4846765\nPazarlama Giderleri | kap-fr_MarketingExpense | 22 | -2065209 | -3098986\nAraştırma ve Geliştirme Giderleri | ifrs-full_ResearchAndDevelopmentExpense | 22 | -113053 | -137560\nEsas Faaliyetlerden Diğer Gelirler | ifrs-full_OtherIncome | 23 | 2389817 | 3985730\nEsas Faaliyetlerden Diğer Giderler | ifrs-full_OtherExpenseByFunction | 23 | -5247164 | -8601721\nESAS FAALİYET KARI (ZARARI) | ifrs-full_ProfitLossFromOperatingActivities |  | 3890957 | 5495520\nYatırım Faaliyetlerinden Gelirler | kap-fr_InvestmentActivityIncome | 24 | 6789 | \nYatırım Faaliyetlerinden Giderler | kap-fr_InvestmentActivityExpenses | 24 |  | -489\nÖzkaynak Yöntemiyle Değerlenen Yatırımların Karlarından (Zararlarından) Paylar | ifrs-full_ShareOfProfitLossOfAssociatesAndJointVenturesAccountedForUsingEquityMethod | 10 | -56057 | 389397\nFİNANSMAN GELİRİ (GİDERİ) ÖNCESİ FAALİYET KARI (ZARARI) | kap-fr_ProfitLossBeforeFinancingExpense |  | 3841689 | 5884428",
+     "source": {
+      "kind": "chunk",
+      "document_id": 390,
+      "ticker": "TUPRS",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q1",
+      "section": "Tablo 2",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1431089"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 23782
+}

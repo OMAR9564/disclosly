@@ -1,0 +1,302 @@
+{
+ "case_id": "en-deep-aapl-operating-margin",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "cf473407fd1d73f8b3e388549b937ca344f36b7cac430cd1297521cc76145857",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1439388",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "AAPL",
+       "query": "operating margin operating income revenue 2024"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TaG6vKgchwec0eW/0hHsfhjcig99XH1NBSFOQAwW5IgVZOXGnHkKNWkPQP3qIx9PoyqZZ48kg61GYmLvYOCE2j8tJ7N1eG9Tya022bay2Ug9TBMk3QtuDLvo="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1488,
+    "tokens_out": 31,
+    "latency_ms": 843.543,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "c0fd2d25183818b55371598ac51ea06ca4e45e0045077d377fc6cb0d6dfd1f61",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2554756",
+      "name": "search_documents",
+      "arguments": {
+       "period_to": "2024-FY",
+       "period_from": "2024-FY",
+       "ticker": "AAPL",
+       "query": "Operating income total net sales revenue 2024 Consolidated Statements of Operations"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TGZbuzV+TezrhLC8gZgG0ZOjcMpsWRDwOIcnQ1EG3Qze+HAVuPAWL3z0xw41NEKS5e2EAB8qtP74Ht2gtT5B7+X+8r2YEWt8jDHdnk10zj55W3B+0ld5eI/s="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 4035,
+    "tokens_out": 62,
+    "latency_ms": 1233.991,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "7c3abc88390d37105f0439ed91a2474806f801d26231bb394a70ab579a94701a",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1831836",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "AAPL",
+       "period_to": "2024-FY",
+       "query": "Consolidated Statements of Operations Apple Inc. 2024 revenue operating income",
+       "period_from": "2024-FY",
+       "doc_type": "10-K"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TJFRl7mzZdlKaB+RdDkMXo5LhSiJ1aQXbLpeeU4YyB6UJjM+iNEM+TwEAkhsCVTx+mTxcSDyZrqTYRFpILy99X6BWdTSdYTZeX5FZCUdHZcOYkEZbYZ1HoHY="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 4528,
+    "tokens_out": 74,
+    "latency_ms": 898.369,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "b3a27bbb8b48f1bbd02f9ad5fc838d94289d3ca6ba06eb4b31adcac14db8dd90",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"I could not locate Apple's fiscal 2024 operating income and total net sales figures in the available disclosure documents. The search results returned unrelated tables (common stock activity, term debt) but not the Consolidated Statements of Operations needed to compute operating margin.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 4584,
+    "tokens_out": 199,
+    "latency_ms": 2700.213,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"operating margin operating income revenue 2024\",\"ticker\":\"AAPL\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:031b0097b8e1ecc56aba6cf6305e1f0874c00e9e436bb26c3847ecb807339955\" amounts_in=\"millions\">(1) On May 1, 2025, the Company announced a program to repurchase up to $100 billion of the Company’s common stock. As of June 27, 2026, remaining availability under the May 2025 program was $38.0 billion. On April 30, 2026, the Company announced an additional program to repurchase up to $100 billion of the Company’s common stock. The programs do not obligate the Company to acquire a minimum amount of shares. Under the programs, shares may be repurchased in privately negotiated or open market transactions, including under plans complying with Rule 10b5-1 under the Exchange Act. (2) In May 2026, the Company entered into new accelerated share repurchase agreements (“ASRs”). Under the terms of the ASRs, financial institutions committed to deliver shares of the Company’s common stock during the purchase periods in exchange for up-front payments totaling $10.0 billion. The total number of shares ultimately delivered under the ASRs, and therefore the average repurchase price paid per share, is determined based on the volume-weighted average price of the Company’s common stock during the ASRs’ purchase periods, which end in the fourth quarter of 2026.</untrusted_document>\n<untrusted_document cite_id=\"c:02735acc1278e796a565838a150fad1ee1bcd4bd7d609138a48968e5db8aa2fe\" amounts_in=\"thousands\"> | 2024 | 2023 |  | 2022 | \nCommon stock outstanding, beginning balances | 15,550,061 |  | 15,943,425 |  | 16,426,786\nCommon stock repurchased | ( 499,372 ) |  | ( 471,419 ) |  | ( 568,589 )\nCommon stock issued, net of shares withheld for employee taxes | 66,097 |  | 78,055 |  | 85,228\nCommon stock outstanding, ending balances | 15,116,786 |  | 15,550,061 |  | 15,943,425</untrusted_document>\n<untrusted_document cite_id=\"c:03516a2d8a546ec7e1afa9e8efbd522ef9f439ecc53fb0242e753a94ef64cf2d\" amounts_in=\"millions\"> | March 28, 2026 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | \n | Adjusted Cost |  | Unrealized Gains |  | Unrealized Losses |  | Fair Value | Cash and Cash Equivalents |  | Current Marketable Securities | Non-Current Marketable Securities |  |  |  |  |  | \nCash |  | 29,740 |  |  |  | — |  |  | — |  |  | 29,740 |  | 29,740 |  | — | —\nLevel 1: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | \nMoney market funds | 6,588 |  |  | — |  |  | — |  | 6,588 |  | 6,588 |  | — |  | — |  | \nMutual funds | 821 |  |  | 128 |  |  | ( 14 ) |  | 935 |  | — |  | 935 |  | — |  | \nSubtotal | 7,409 |  |  | 128 |  |  | ( 14 ) |  | 7,523 |  | 6,588 |  | 935 |  | — |  | \nLevel 2 (1) : |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | \nU.S. Treasury securities | 18,650 |  |  | 14 |  |  | ( 254 ) |  | 18,410 |  | 2,935 |  | 4,174 |  | 11,301 |  | \nU.S. agency securities | 7,483 |  |  | — |  |  | ( 112 ) |  | 7,371 |  | 2,923 |  | 2,470 |  | 1,978 |  | \nNon-U.S. government securities | 5,906 |  |  | 45 |  |  | ( 493 ) |  | 5,458 |  | — |  | 576 |  | 4,882 |  | </untrusted_document>\n<untrusted_document cite_id=\"c:03c5d56f91acb712c105ca557755b75030f0e7b463465fe1a6e17dca56bdf30d\" amounts_in=\"millions\"> | Three Months Ended December 27, 2025 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | \n | Americas |  | Europe |  | Greater China |  | Japan | Rest of Asia Pacific |  | Corporate | Total |  |  |  |  |  | \nNet sales |  | 58,529 |  |  |  | 38,146 |  |  | 25,526 |  |  | 9,413 |  | 12,142 |  | — | 143,756\nCost of sales | ( 31,849 ) |  |  | ( 19,061 ) |  |  | ( 13,030 ) |  | ( 4,511 ) |  | ( 6,074 ) |  | — |  | ( 74,525 ) |  | \nResearch and development | — |  |  | — |  |  | — |  | — |  | — |  | ( 10,887 ) |  | ( 10,887 ) |  | \nSelling and marketing | ( 2,727 ) |  |  | ( 1,295 ) |  |  | ( 704 ) |  | ( 289 ) |  | ( 382 ) |  | — |  | ( 5,397 ) |  | \nGeneral and administrative | — |  |  | — |  |  | — |  | — |  | — |  | ( 2,095 ) |  | ( 2,095 ) |  | \nOperating income/(loss) |  | 23,953 |  |  |  | 17,790 |  |  | 11,792 |  |  | 4,613 |  | 5,686 |  | ( 12,982 ) | 50,852\n | Three Months Ended December 28, 2024 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | \n | Americas |  | Europe |  | Greater China |  | Japan | Rest of Asia Pacific |  | Corporate | Total |  |  |  |  |  | \nNet sales |  | 52,648 |  |  |  | 33,861 |  |  | 18,513 |  |  | 8,987 |  | 10,291 |  | — | 124,300</untrusted_document>\n<untrusted_document cite_id=\"c:0239cee317f3609f4e69ebd9aa4f5b3d56eb14a957c3d8ad8114f1a73c518014\" amounts_in=\"millions\">iPhone iPhone net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 due to higher net sales of Pro models. Mac Mac net sales increased during the second quarter of 2026 compared to the second quarter of 2025 due to higher net sales of laptops. Year-over-year Mac net sales during the first six months of 2026 were relatively flat. iPad iPad net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 primarily due to higher net sales of iPad, partially offset by lower net sales of iPad mini ® . Wearables, Home and Accessories Wearables, Home and Accessories net sales increased during the second quarter of 2026 compared to the second quarter of 2025 primarily due to higher net sales of Accessories and Wearables. Year-over-year Wearables, Home and Accessories net sales during the first six months of 2026 were relatively flat. Services Services net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 primarily due to higher net sales from advertising, the App Store ® and cloud services. Apple Inc. | Q2 2026 Form 10-Q | 15 Gross Margin Products and Services gross margin and gross margin percentage for the three- and six-month periods ended March 28, 2026 and March 29, 2025, were as follows (dollars in millions):</untrusted_document>",
+   "summary": "AAPL operating margin operating income revenue 2024",
+   "count": 5,
+   "items": [
+    {
+     "cite_id": "c:031b0097b8e1ecc56aba6cf6305e1f0874c00e9e436bb26c3847ecb807339955",
+     "text": "(1) On May 1, 2025, the Company announced a program to repurchase up to $100 billion of the Company’s common stock. As of June 27, 2026, remaining availability under the May 2025 program was $38.0 billion. On April 30, 2026, the Company announced an additional program to repurchase up to $100 billion of the Company’s common stock. The programs do not obligate the Company to acquire a minimum amount of shares. Under the programs, shares may be repurchased in privately negotiated or open market transactions, including under plans complying with Rule 10b5-1 under the Exchange Act. (2) In May 2026, the Company entered into new accelerated share repurchase agreements (“ASRs”). Under the terms of the ASRs, financial institutions committed to deliver shares of the Company’s common stock during the purchase periods in exchange for up-front payments totaling $10.0 billion. The total number of shares ultimately delivered under the ASRs, and therefore the average repurchase price paid per share, is determined based on the volume-weighted average price of the Company’s common stock during the ASRs’ purchase periods, which end in the fourth quarter of 2026.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3261,
+      "ticker": "AAPL",
+      "doc_type": "10-Q",
+      "period": "2026-Q2",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:02735acc1278e796a565838a150fad1ee1bcd4bd7d609138a48968e5db8aa2fe",
+     "text": " | 2024 | 2023 |  | 2022 | \nCommon stock outstanding, beginning balances | 15,550,061 |  | 15,943,425 |  | 16,426,786\nCommon stock repurchased | ( 499,372 ) |  | ( 471,419 ) |  | ( 568,589 )\nCommon stock issued, net of shares withheld for employee taxes | 66,097 |  | 78,055 |  | 85,228\nCommon stock outstanding, ending balances | 15,116,786 |  | 15,550,061 |  | 15,943,425",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3268,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "thousands"
+    },
+    {
+     "cite_id": "c:03516a2d8a546ec7e1afa9e8efbd522ef9f439ecc53fb0242e753a94ef64cf2d",
+     "text": " | March 28, 2026 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | \n | Adjusted Cost |  | Unrealized Gains |  | Unrealized Losses |  | Fair Value | Cash and Cash Equivalents |  | Current Marketable Securities | Non-Current Marketable Securities |  |  |  |  |  | \nCash |  | 29,740 |  |  |  | — |  |  | — |  |  | 29,740 |  | 29,740 |  | — | —\nLevel 1: |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | \nMoney market funds | 6,588 |  |  | — |  |  | — |  | 6,588 |  | 6,588 |  | — |  | — |  | \nMutual funds | 821 |  |  | 128 |  |  | ( 14 ) |  | 935 |  | — |  | 935 |  | — |  | \nSubtotal | 7,409 |  |  | 128 |  |  | ( 14 ) |  | 7,523 |  | 6,588 |  | 935 |  | — |  | \nLevel 2 (1) : |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | \nU.S. Treasury securities | 18,650 |  |  | 14 |  |  | ( 254 ) |  | 18,410 |  | 2,935 |  | 4,174 |  | 11,301 |  | \nU.S. agency securities | 7,483 |  |  | — |  |  | ( 112 ) |  | 7,371 |  | 2,923 |  | 2,470 |  | 1,978 |  | \nNon-U.S. government securities | 5,906 |  |  | 45 |  |  | ( 493 ) |  | 5,458 |  | — |  | 576 |  | 4,882 |  | ",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3262,
+      "ticker": "AAPL",
+      "doc_type": "10-Q",
+      "period": "2026-Q1",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:03c5d56f91acb712c105ca557755b75030f0e7b463465fe1a6e17dca56bdf30d",
+     "text": " | Three Months Ended December 27, 2025 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | \n | Americas |  | Europe |  | Greater China |  | Japan | Rest of Asia Pacific |  | Corporate | Total |  |  |  |  |  | \nNet sales |  | 58,529 |  |  |  | 38,146 |  |  | 25,526 |  |  | 9,413 |  | 12,142 |  | — | 143,756\nCost of sales | ( 31,849 ) |  |  | ( 19,061 ) |  |  | ( 13,030 ) |  | ( 4,511 ) |  | ( 6,074 ) |  | — |  | ( 74,525 ) |  | \nResearch and development | — |  |  | — |  |  | — |  | — |  | — |  | ( 10,887 ) |  | ( 10,887 ) |  | \nSelling and marketing | ( 2,727 ) |  |  | ( 1,295 ) |  |  | ( 704 ) |  | ( 289 ) |  | ( 382 ) |  | — |  | ( 5,397 ) |  | \nGeneral and administrative | — |  |  | — |  |  | — |  | — |  | — |  | ( 2,095 ) |  | ( 2,095 ) |  | \nOperating income/(loss) |  | 23,953 |  |  |  | 17,790 |  |  | 11,792 |  |  | 4,613 |  | 5,686 |  | ( 12,982 ) | 50,852\n | Three Months Ended December 28, 2024 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | \n | Americas |  | Europe |  | Greater China |  | Japan | Rest of Asia Pacific |  | Corporate | Total |  |  |  |  |  | \nNet sales |  | 52,648 |  |  |  | 33,861 |  |  | 18,513 |  |  | 8,987 |  | 10,291 |  | — | 124,300",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3263,
+      "ticker": "AAPL",
+      "doc_type": "10-Q",
+      "period": "2025-Q4",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000006/aapl-20251227.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:0239cee317f3609f4e69ebd9aa4f5b3d56eb14a957c3d8ad8114f1a73c518014",
+     "text": "iPhone iPhone net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 due to higher net sales of Pro models. Mac Mac net sales increased during the second quarter of 2026 compared to the second quarter of 2025 due to higher net sales of laptops. Year-over-year Mac net sales during the first six months of 2026 were relatively flat. iPad iPad net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 primarily due to higher net sales of iPad, partially offset by lower net sales of iPad mini ® . Wearables, Home and Accessories Wearables, Home and Accessories net sales increased during the second quarter of 2026 compared to the second quarter of 2025 primarily due to higher net sales of Accessories and Wearables. Year-over-year Wearables, Home and Accessories net sales during the first six months of 2026 were relatively flat. Services Services net sales increased during the second quarter and first six months of 2026 compared to the same periods in 2025 primarily due to higher net sales from advertising, the App Store ® and cloud services. Apple Inc. | Q2 2026 Form 10-Q | 15 Gross Margin Products and Services gross margin and gross margin percentage for the three- and six-month periods ended March 28, 2026 and March 29, 2025, were as follows (dollars in millions):",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3262,
+      "ticker": "AAPL",
+      "doc_type": "10-Q",
+      "period": "2026-Q1",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2024-FY\",\"period_to\":\"2024-FY\",\"query\":\"Operating income total net sales revenue 2024 Consolidated Statements of Operations\",\"ticker\":\"AAPL\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:02735acc1278e796a565838a150fad1ee1bcd4bd7d609138a48968e5db8aa2fe\" amounts_in=\"thousands\"> | 2024 | 2023 |  | 2022 | \nCommon stock outstanding, beginning balances | 15,550,061 |  | 15,943,425 |  | 16,426,786\nCommon stock repurchased | ( 499,372 ) |  | ( 471,419 ) |  | ( 568,589 )\nCommon stock issued, net of shares withheld for employee taxes | 66,097 |  | 78,055 |  | 85,228\nCommon stock outstanding, ending balances | 15,116,786 |  | 15,550,061 |  | 15,943,425</untrusted_document>\n<untrusted_document cite_id=\"c:01d8c8f75880a03bd356885dcf36f6142f01f1e7d1ce15d552e94f96d411648f\" amounts_in=\"millions\">Term Debt The Company has outstanding Notes, which are senior unsecured obligations with interest payable in arrears. The following table provides a summary of the Company’s term debt as of September 28, 2024 and September 30, 2023:</untrusted_document>",
+   "summary": "AAPL Operating income total net sales revenue 2024 Consolidated Statements of Operations",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "c:02735acc1278e796a565838a150fad1ee1bcd4bd7d609138a48968e5db8aa2fe",
+     "text": " | 2024 | 2023 |  | 2022 | \nCommon stock outstanding, beginning balances | 15,550,061 |  | 15,943,425 |  | 16,426,786\nCommon stock repurchased | ( 499,372 ) |  | ( 471,419 ) |  | ( 568,589 )\nCommon stock issued, net of shares withheld for employee taxes | 66,097 |  | 78,055 |  | 85,228\nCommon stock outstanding, ending balances | 15,116,786 |  | 15,550,061 |  | 15,943,425",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3268,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "thousands"
+    },
+    {
+     "cite_id": "c:01d8c8f75880a03bd356885dcf36f6142f01f1e7d1ce15d552e94f96d411648f",
+     "text": "Term Debt The Company has outstanding Notes, which are senior unsecured obligations with interest payable in arrears. The following table provides a summary of the Company’s term debt as of September 28, 2024 and September 30, 2023:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3268,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"doc_type\":\"10-K\",\"period_from\":\"2024-FY\",\"period_to\":\"2024-FY\",\"query\":\"Consolidated Statements of Operations Apple Inc. 2024 revenue operating income\",\"ticker\":\"AAPL\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:02735acc1278e796a565838a150fad1ee1bcd4bd7d609138a48968e5db8aa2fe\" amounts_in=\"thousands\"> | 2024 | 2023 |  | 2022 | \nCommon stock outstanding, beginning balances | 15,550,061 |  | 15,943,425 |  | 16,426,786\nCommon stock repurchased | ( 499,372 ) |  | ( 471,419 ) |  | ( 568,589 )\nCommon stock issued, net of shares withheld for employee taxes | 66,097 |  | 78,055 |  | 85,228\nCommon stock outstanding, ending balances | 15,116,786 |  | 15,550,061 |  | 15,943,425</untrusted_document>\n<untrusted_document cite_id=\"c:01d8c8f75880a03bd356885dcf36f6142f01f1e7d1ce15d552e94f96d411648f\" amounts_in=\"millions\">Term Debt The Company has outstanding Notes, which are senior unsecured obligations with interest payable in arrears. The following table provides a summary of the Company’s term debt as of September 28, 2024 and September 30, 2023:</untrusted_document>",
+   "summary": "AAPL Consolidated Statements of Operations Apple Inc. 2024 revenue operating income",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "c:02735acc1278e796a565838a150fad1ee1bcd4bd7d609138a48968e5db8aa2fe",
+     "text": " | 2024 | 2023 |  | 2022 | \nCommon stock outstanding, beginning balances | 15,550,061 |  | 15,943,425 |  | 16,426,786\nCommon stock repurchased | ( 499,372 ) |  | ( 471,419 ) |  | ( 568,589 )\nCommon stock issued, net of shares withheld for employee taxes | 66,097 |  | 78,055 |  | 85,228\nCommon stock outstanding, ending balances | 15,116,786 |  | 15,550,061 |  | 15,943,425",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3268,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "thousands"
+    },
+    {
+     "cite_id": "c:01d8c8f75880a03bd356885dcf36f6142f01f1e7d1ce15d552e94f96d411648f",
+     "text": "Term Debt The Company has outstanding Notes, which are senior unsecured obligations with interest payable in arrears. The following table provides a summary of the Company’s term debt as of September 28, 2024 and September 30, 2023:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3268,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 26621
+}

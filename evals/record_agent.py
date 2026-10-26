@@ -1,22 +1,28 @@
 """Record agent cassettes from live providers (owner action; CI only replays).
 
-    python -m evals.record_agent [--dataset answers_golden] [--case <id>]
+    python -m evals.record_agent [--dataset answers_golden] [--case <id>] [--remote-search redis://…]
 
 Needs `DATABASE_URL` (the real corpus), provider keys in the environment and the retrieval
-models. For injection cases the poisoned chunk is appended to the first `search_documents`
-result. Cassettes hold only request keys, responses and tool results; no headers are written.
+models; with `--remote-search` the searches go to a running search worker through that Redis
+instead. `--dataset deep_golden` records the single agent on the deep questions, which only
+the single-vs-multi comparison (evals/compare.py) replays; their memory fixtures are ignored,
+since the single agent has no memory. For injection cases the poisoned chunk is appended to
+the first `search_documents` result. Cassettes hold only request keys, responses and tool
+results; no headers are written.
 """
 
 import argparse
 import asyncio
 import os
 import sys
+import time
 from collections.abc import Sequence
 from typing import Any
 
 import httpx
 
 from agent.loop import Budget, run_agent
+from api.search_client import RemoteSearch
 from evals.agent_cases import (
     DATASETS,
     Cassette,
@@ -28,6 +34,7 @@ from evals.agent_cases import (
     tool_key,
     write_cassette,
 )
+from evals.graph_cases import load_graph_dataset
 from ingestion.config import IngestionSettings
 from ingestion.db import make_engine
 from llm.config import load_providers
@@ -93,6 +100,7 @@ async def _noop(event: str, data: dict[str, Any]) -> None:
     return None
 
 
+DEEP = "deep_golden"
 ATTEMPTS = 3
 RETRY_WAIT_SECONDS = 30.0
 
@@ -103,6 +111,7 @@ async def record(
     *,
     overwrite: bool = False,
     retry_wait: float = RETRY_WAIT_SECONDS,
+    remote_search: str | None = None,
 ) -> tuple[int, list[str]]:
     """Record each case; skip cases already on disk unless `overwrite`.
 
@@ -111,14 +120,18 @@ async def record(
     """
     settings = IngestionSettings()
     engine = make_engine(settings.require_database_url())
-    registry = ToolRegistry(default_service(), engine)
+    search = RemoteSearch(remote_search) if remote_search else default_service()
+    registry = ToolRegistry(search, engine)
     budget = Budget()
     written = 0
     failed: list[str] = []
     async with httpx.AsyncClient(timeout=15.0) as http:
         live = ModelRouter(load_providers("llm/providers.yaml", os.environ), http)
         for name in datasets:
-            for case in load_dataset(name):  # type: ignore[arg-type]
+            cases = load_graph_dataset(DEEP) if name == DEEP else load_dataset(name)  # type: ignore[arg-type]
+            for case in cases:
+                if "single" not in case.engines:
+                    continue
                 if case_filter and case.id != case_filter:
                     continue
                 if not overwrite and cassette_path(case.id).is_file():
@@ -127,6 +140,7 @@ async def record(
                     router = RecordingRouter(live)
                     poison = case if isinstance(case, InjectionCase) else None
                     tools = RecordingTools(registry, poison)
+                    started = time.perf_counter()
                     try:
                         outcome = await run_agent(case.question, router, tools, budget, _noop)
                         break
@@ -143,6 +157,7 @@ async def record(
                         dataset=name,
                         interactions=router.interactions,
                         tools=tools.recorded,
+                        elapsed_ms=round((time.perf_counter() - started) * 1000),
                     )
                 )
                 written += 1
@@ -152,12 +167,18 @@ async def record(
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="python -m evals.record_agent", description=__doc__)
-    parser.add_argument("--dataset", choices=DATASETS, action="append")
+    parser.add_argument("--dataset", choices=[*DATASETS, DEEP], action="append")
     parser.add_argument("--case")
     parser.add_argument("--overwrite", action="store_true", help="re-record existing cassettes")
+    parser.add_argument("--remote-search", help="Redis URL of a running search worker")
     args = parser.parse_args(argv)
     written, failed = asyncio.run(
-        record(args.dataset or DATASETS, args.case, overwrite=args.overwrite)
+        record(
+            args.dataset or DATASETS,
+            args.case,
+            overwrite=args.overwrite,
+            remote_search=args.remote_search,
+        )
     )
     print(f"{written} cassettes written")
     if failed:

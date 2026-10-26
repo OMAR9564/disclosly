@@ -1,0 +1,245 @@
+{
+ "case_id": "en-deep-hd-ebitda-trend",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "16ce691bcc83799b348df5a5f0a69285340c50516297baa43d8908dae5842bc6",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2122275",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "HD"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T5eVqxVxTNU1DNCYo8Bv3utb9JzaecF41CHE+fVK/bqnmkqXFRzivql9Qd9bjsigHpVzoMFZVqF5R/otBaRKiSnLUBE0m2R4WRXxJ1a/2KemLzsi3kZmcEW0="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1495,
+    "tokens_out": 16,
+    "latency_ms": 936.597,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "aba2bd7718f1814bd80543cb0ade477117c38a3d9bdd4bc37fdea66036f8cccf",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2853132",
+      "name": "get_financial_facts",
+      "arguments": {
+       "metrics": [
+        "ebitda"
+       ],
+       "periods": [
+        "2026-Q2",
+        "2026-Q3"
+       ],
+       "ticker": "HD"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0THcCdpgaptRhY6Cc2vYZSi5jW14Q+oq5yJ0ukYsN3Bg4fa3UAN8Fu2kUxTVvNLq5m7NZxD6b6Xf2h6/l4vtwzO8fwzWMROHwGWEg7P/CZVO2Zqg2ppXtXYSE="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2590,
+    "tokens_out": 48,
+    "latency_ms": 654.603,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "89c523e8c90771ce7748dcd934c2c32e925b8734e24579f67382ac6eab50f7ec",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2301476",
+      "name": "search_documents",
+      "arguments": {
+       "period_from": "2026-Q2",
+       "period_to": "2026-Q3",
+       "ticker": "HD",
+       "doc_type": "10-Q",
+       "query": "EBITDA"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0Tixw9NHZebXxcbWUr6LjSzkOuiHScS+81SF8w0eMOWbl0DyYSDMxRBXx0fYjj13iizfdAPw0O92y3u7++fwmpaPHs1Qr+fJUShwH4rmPNNLIHAbQrCc03mD4="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2903,
+    "tokens_out": 63,
+    "latency_ms": 785.747,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "f2719fcf2e331230887bc8696a25c8885ac0f05184069facb99d4ac3b5104d9b",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\": \"en\", \"status\": \"completed\", \"summary\": \"Home Depot's EBITDA increased from $5,891,000,000 in fiscal Q2 2026 to $7,691,000,000 in fiscal Q3 2026, a rise of $1,800,000,000 (approximately 30.6%).\", \"points\": [{\"text\": \"EBITDA in fiscal Q2 2026 was $5,891,000,000.\", \"cite_ids\": [\"f:1549\"]}, {\"text\": \"EBITDA in fiscal Q3 2026 was $7,691,000,000.\", \"cite_ids\": [\"f:1550\"]}, {\"text\": \"The quarter-over-quarter change was an increase of $1,800,000,000.\", \"cite_ids\": [\"f:1549\", \"f:1550\"]}, {\"text\": \"This represents a percentage increase of approximately 30.6%.\", \"cite_ids\": [\"f:1549\", \"f:1550\"]}], \"citations\": [{\"marker\": 1, \"cite_id\": \"f:1549\"}, {\"marker\": 2, \"cite_id\": \"f:1550\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2442,
+    "tokens_out": 629,
+    "latency_ms": 12567.468,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"HD\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 3367, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000162828026058715/hd-20260802.htm\"}, {\"document_id\": 3368, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-27T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000162828026038247/hd-20260503.htm\"}, {\"document_id\": 3369, \"ticker\": \"HD\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-03-18T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000162828026019436/hd-20260201.htm\"}, {\"document_id\": 3370, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000162828025053868/hd-20251102.htm\"}, {\"document_id\": 3371, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000035495025000217/hd-20250803.htm\"}, {\"document_id\": 3372, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000035495025000165/hd-20250504.htm\"}, {\"document_id\": 3373, \"ticker\": \"HD\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-03-21T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000035495025000085/hd-20250202.htm\"}, {\"document_id\": 3374, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-19T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000035495024000240/hd-20241027.htm\"}]}",
+   "summary": "HD documents",
+   "count": 8,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"ebitda\"],\"periods\":[\"2026-Q2\",\"2026-Q3\"],\"ticker\":\"HD\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:1549\">EBITDA (2026-Q2): 5,891,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4953\">EBITDA (2026-Q2): 5,891,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17926\">EBITDA (2026-Q2): 5,891,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1550\">EBITDA (2026-Q3): 7,691,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4954\">EBITDA (2026-Q3): 7,691,000,000 USD</untrusted_document>",
+   "summary": "HD 2026-Q2 to 2026-Q3 ebitda",
+   "count": 5,
+   "items": [
+    {
+     "cite_id": "f:1549",
+     "text": "EBITDA (2026-Q2): 5,891,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 208,
+      "ticker": "HD",
+      "doc_type": "10-Q",
+      "period": "2026-Q2",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0001628280-26-038247 + us-gaap:DepreciationDepletionAndAmortization 0001628280-26-038247",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026038247/hd-20260503.htm"
+     },
+     "value": "5891000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4953",
+     "text": "EBITDA (2026-Q2): 5,891,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2425,
+      "ticker": "HD",
+      "doc_type": "10-Q",
+      "period": "2026-Q2",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0001628280-26-038247 + us-gaap:DepreciationDepletionAndAmortization 0001628280-26-038247",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026038247/hd-20260503.htm"
+     },
+     "value": "5891000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:17926",
+     "text": "EBITDA (2026-Q2): 5,891,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3368,
+      "ticker": "HD",
+      "doc_type": "10-Q",
+      "period": "2026-Q2",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0001628280-26-038247 + us-gaap:DepreciationDepletionAndAmortization 0001628280-26-038247",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026038247/hd-20260503.htm"
+     },
+     "value": "5891000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1550",
+     "text": "EBITDA (2026-Q3): 7,691,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 207,
+      "ticker": "HD",
+      "doc_type": "10-Q",
+      "period": "2026-Q3",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0001628280-26-058715 + us-gaap:DepreciationAndAmortization 0001628280-26-058715",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026058715/hd-20260802.htm"
+     },
+     "value": "7691000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4954",
+     "text": "EBITDA (2026-Q3): 7,691,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2424,
+      "ticker": "HD",
+      "doc_type": "10-Q",
+      "period": "2026-Q3",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0001628280-26-058715 + us-gaap:DepreciationAndAmortization 0001628280-26-058715",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/354950/000162828026058715/hd-20260802.htm"
+     },
+     "value": "7691000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"doc_type\":\"10-Q\",\"period_from\":\"2026-Q2\",\"period_to\":\"2026-Q3\",\"query\":\"EBITDA\",\"ticker\":\"HD\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "Tool error: document search is temporarily unavailable",
+   "summary": "HD EBITDA",
+   "count": 0,
+   "items": [],
+   "error": "document search is temporarily unavailable"
+  }
+ ],
+ "elapsed_ms": 31997
+}

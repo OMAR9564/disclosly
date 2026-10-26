@@ -1,0 +1,332 @@
+{
+ "case_id": "tr-deep-donemsiz-froto",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "9a90d83f2375bfccd07329c2e751f6c1c58bcafa387f475f46c4f6ea2c4ae7ed",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1954469",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "FROTO",
+       "period_to": "2024-Q4",
+       "period_from": "2024-Q1"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TB7l5a06du08lPK6bMje3jIqCn7J3S3559ZrcH1hUAGEOi/M6n3dM0ATZ5o4ZOPy2eajQMYBdCcmlcStzylhkk9dQD7rytfus9fPqU9UxV0hEmRnmYMdcuYs="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1614,
+    "tokens_out": 46,
+    "latency_ms": 2274.817,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "8d4e241d58d4f3ba555c40514b05b195add312e23bf5b385a94c7ecc5764c771",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2233301",
+      "name": "get_financial_facts",
+      "arguments": {
+       "periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3"
+       ],
+       "ticker": "FROTO",
+       "metrics": [
+        "net_income"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0Tr1BSWGR1bfwztC5dLkOsfdLM0TiRgW7m22AC+J3VjRPlqRSClEONHW1Q/DJ/Fhot5i/nAplZq10BWl4B1wduMNE3Hhg3E2o5kPjAfKaAZWYRdwC/kaB4DOk="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2202,
+    "tokens_out": 60,
+    "latency_ms": 2022.79,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "e16abc6aa45e13fca8c1d32858d89095ff4f20e66fe77d1a25ead776583231cf",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2340017",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "FROTO",
+       "period_from": "2024-Q3",
+       "period_to": "2024-Q3",
+       "doc_type": "kap_financial_report",
+       "query": "net dönem kârı"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TezpEjfGsmcuHTf8+HT08vnQyqdXN4eysqkxbAi+QvO9k0jYD3SocofhBWGzF1OlkTB/b5+uDYQbUOpZ0X/1ToDwJR+Qh8iEdQpmJ94OSFEmtIprKVdae3Og="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2645,
+    "tokens_out": 68,
+    "latency_ms": 801.476,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "e214fcec74fc4c807b58f70e3fb812c81bd5321a2c5540956a805c6fe5c4e3f5",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\": \"tr\", \"status\": \"completed\", \"summary\": \"Ford Otosan (FROTO) 2024 yılı çeyreklik net kârı: Q1 12,39 Milyar TL, Q2 8,07 Milyar TL, Q3 8,56 Milyar TL. Q1'den Q2'ye %34,9 düşüş, Q2'den Q3'e %6,1 artış gösterdi.\", \"points\": [{\"text\": \"2024-Q1 net dönem kârı: 12.392.116.000 TL\", \"cite_ids\": [\"f:2856\"]}, {\"text\": \"2024-Q2 net dönem kârı: 8.069.867.000 TL\", \"cite_ids\": [\"f:2870\"]}, {\"text\": \"2024-Q3 net dönem kârı (3 aylık): 8.562.179.000 TL\", \"cite_ids\": [\"f:2831\", \"c:06a7bee5787990bfe9e7a9c0721b31fffa142617707906e90ea067d1d2327982\"]}, {\"text\": \"Q1'den Q2'ye net kâr %34,9 azaldı (12,39 Mrd TL → 8,07 Mrd TL)\", \"cite_ids\": [\"f:2856\", \"f:2870\"]}, {\"text\": \"Q2'den Q3'e net kâr %6,1 arttı (8,07 Mrd TL → 8,56 Mrd TL)\", \"cite_ids\": [\"f:2870\", \"f:2831\"]}], \"citations\": [{\"marker\": 1, \"cite_id\": \"f:2856\"}, {\"marker\": 2, \"cite_id\": \"f:2870\"}, {\"marker\": 3, \"cite_id\": \"f:2831\"}, {\"marker\": 4, \"cite_id\": \"c:06a7bee5787990bfe9e7a9c0721b31fffa142617707906e90ea067d1d2327982\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 6349,
+    "tokens_out": 1166,
+    "latency_ms": 14970.877,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2024-Q1\",\"period_to\":\"2024-Q4\",\"ticker\":\"FROTO\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 1571, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-27T15:33:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1369340\"}, {\"document_id\": 1570, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-27T15:15:05Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1369300\"}, {\"document_id\": 1569, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-05T17:43:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353879\"}, {\"document_id\": 1568, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-05T17:42:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353877\"}, {\"document_id\": 1567, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-05T17:41:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353876\"}]}",
+   "summary": "FROTO documents",
+   "count": 5,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2024-Q1\",\"2024-Q2\",\"2024-Q3\"],\"ticker\":\"FROTO\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2856\">Net dönem kârı (2024-Q1; Önceki Dönem 01.01.2024 - 31.03.2024; 2025-Q1 raporu): 12.392.116.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2870\">Net dönem kârı (2024-Q2; Önceki Dönem 3 Aylık 01.04.2024 - 30.06.2024; 2025-Q2 raporu): 8.069.867.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2831\">Net dönem kârı (2024-Q3; Cari Dönem 3 Aylık 01.07.2024 - 30.09.2024): 8.562.179.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2880\">Net dönem kârı (2024-Q3; Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024; 2025-Q3 raporu): 11.412.992.000 TRY</untrusted_document>",
+   "summary": "FROTO 2024-Q1 to 2024-Q3 net_income",
+   "count": 4,
+   "items": [
+    {
+     "cite_id": "f:2856",
+     "text": "Net dönem kârı (2024-Q1; Önceki Dönem 01.01.2024 - 31.03.2024; 2025-Q1 raporu): 12.392.116.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1588,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-Q1",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Önceki Dönem 01.01.2024 - 31.03.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1431134"
+     },
+     "value": "12392116000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2870",
+     "text": "Net dönem kârı (2024-Q2; Önceki Dönem 3 Aylık 01.04.2024 - 30.06.2024; 2025-Q2 raporu): 8.069.867.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1595,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-Q2",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Önceki Dönem 3 Aylık 01.04.2024 - 30.06.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1469124"
+     },
+     "value": "8069867000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2831",
+     "text": "Net dönem kârı (2024-Q3; Cari Dönem 3 Aylık 01.07.2024 - 30.09.2024): 8.562.179.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1567,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-Q3",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 3 Aylık 01.07.2024 - 30.09.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1353876"
+     },
+     "value": "8562179000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2880",
+     "text": "Net dönem kârı (2024-Q3; Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024; 2025-Q3 raporu): 11.412.992.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1598,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-Q3",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Önceki Dönem 3 Aylık 01.07.2024 - 30.09.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511818"
+     },
+     "value": "11412992000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"doc_type\":\"kap_financial_report\",\"period_from\":\"2024-Q3\",\"period_to\":\"2024-Q3\",\"query\":\"net dönem kârı\",\"ticker\":\"FROTO\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:dc734e6b75107dec083e11a61f929b0697af256cd262fc54a48b0b0ef636f5fe\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 30.09.2024 | Önceki Dönem 01.01.2023 - 30.09.2023\nNAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalents |  | 16308716 | 36081858\nDÖNEM BAŞI NAKİT VE NAKİT BENZERLERİ | kap-fr_CashAndCashEquivalentsForCashFlowStatement |  | 20642281 | 22631461\nNAKİT VE NAKİT BENZERLERİNE İLİŞKİN ENFLASYON ETKİSİ | kap-fr_InflationEffectOnCashAndCashEquivalents |  | -6816999 | -13199205\nDÖNEM SONU NAKİT VE NAKİT BENZERLERİ | kap-fr_CashAndCashEquivalentsForCashFlowStatement |  | 30133998 | 45514114</untrusted_document>\n<untrusted_document cite_id=\"c:05402d587066c50012db220055c16f9fa2de1bf4a464d1863c7fbbd239661ca1\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 30.09.2024 | Önceki Dönem 01.01.2023 - 30.09.2023\nVerilen Nakit Avans ve Borçlar | ifrs-full_CashAdvancesAndLoansMadeToOtherPartiesClassifiedAsInvestingActivities |  | 1505509 | -4892271\nFİNANSMAN FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInFinancingActivities |  | 19301208 | 2809718\nBorçlanmadan Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities | 5 | 66236675 | 34344400\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities | 5 | -24143097 | -20665452\nKira Sözleşmelerinden Kaynaklanan Borç Ödemelerine İlişkin Nakit Çıkışları | kap-fr_PaymentsOfLeaseLiabilitiesClassifiedAsFinancingActivities | 5 | -435844 | -182420\nÖdenen Temettüler | ifrs-full_DividendsPaidClassifiedAsFinancingActivities |  | -17387766 | -9948406\nÖdenen Faiz | ifrs-full_InterestPaidClassifiedAsFinancingActivities |  | -7603012 | -4187528\nAlınan Faiz | kap-fr_InterestReceivedClassifiedAsFinancingActivities |  | 2634252 | 3449124\nYABANCI PARA ÇEVRİM FARKLARININ ETKİSİNDEN ÖNCE NAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges |  | 16253134 | 35729352\nYabancı Para Çevrim Farklarının Nakit ve Nakit Benzerleri Üzerindeki Etkisi | ifrs-full_EffectOfExchangeRateChangesOnCashAndCashEquivalents |  | 55582 | 352506</untrusted_document>\n<untrusted_document cite_id=\"c:e03f52f6ed08f7edc0cf7dafececf1c3739b548f136bfe9bf6f50e644def73a6\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 30.09.2024 | Önceki Dönem 01.01.2023 - 30.09.2023\nFaiz (Gelirleri) ve Giderleri İle İlgili Düzeltmeler | kap-fr_AdjustmentsForInterestIncomeAndExpenses |  | 7980742 | 2781668\nFaiz Gelirleri ile İlgili Düzeltmeler | ifrs-full_AdjustmentsForInterestIncome | 17 | -2595380 | -3569451\nFaiz Giderleri ile İlgili Düzeltmeler | ifrs-full_AdjustmentsForInterestExpense | 18 | 8795033 | 5423011\nVadeli Alımlardan Kaynaklanan Ertelenmiş Finansman Gideri | kap-fr_DefferedFinancialExpenseFromCreditPurchases | 16 | 7222048 | 4645627\nVadeli Satışlardan Kaynaklanan Kazanılmamış Finansman Geliri | kap-fr_UnearnedFinancialIncomeFromCreditSales | 16 | -5440959 | -3717519\nGerçekleşmemiş Yabancı Para Çevrim Farkları İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForUnrealisedForeignExchangeLossesGains |  | 2483039 | -220179\nVergi (Geliri) Gideri İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForIncomeTaxExpense | 19 | 1275141 | 7735233\nDuran Varlıkların Elden Çıkarılmasından Kaynaklanan Kayıplar (Kazançlar) İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForLossesGainsOnDisposalOfNoncurrentAssets |  | 0 | 2133\nYatırım ya da Finansman Faaliyetlerinden Kaynaklanan Nakit Akışlarına Neden Olan Diğer Kalemlere İlişkin Düzeltmeler | ifrs-full_OtherAdjustmentsForWhichCashEffectsAreInvestingOrFinancingCashFlow |  | 10211156 | 10892929\nParasal Pozisyon Kazanç ve Kayıplarıyla İlgili Düzeltmeler | kap-fr_AdjustmentsRelatedtoGainandLossesonNetMonetaryPosition |  | -23580848 | -19057728\nİşletme Sermayesinde Gerçekleşen Değişimler | ifrs-full_IncreaseDecreaseInWorkingCapital |  | -9142694 | 7286161</untrusted_document>\n<untrusted_document cite_id=\"c:06a7bee5787990bfe9e7a9c0721b31fffa142617707906e90ea067d1d2327982\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 30.09.2024 | Önceki Dönem 01.01.2023 - 30.09.2023 | Cari Dönem 3 Aylık 01.07.2024 - 30.09.2024 | Önceki Dönem 3 Aylık 01.07.2023 - 30.09.2023\nSÜRDÜRÜLEN FAALİYETLER DÖNEM KARI (ZARARI) | ifrs-full_ProfitLossFromContinuingOperations |  | 25665591 | 41243011 | 8562179 | 20115761\nDÖNEM KARI (ZARARI) | ifrs-full_ProfitLoss |  | 25665591 | 41243011 | 8562179 | 20115761\nKontrol Gücü Olmayan Paylar | ifrs-full_ProfitLossAttributableToNoncontrollingInterests |  | 0 | 0 | 0 | 0\nAna Ortaklık Payları | ifrs-full_ProfitLossAttributableToOwnersOfParent |  | 25665591 | 41243011 | 8562179 | 20115761</untrusted_document>\n<untrusted_document cite_id=\"c:101e4c39a6eb80d100fd18338be85ea0fcce34cf3410ca6ca5fddd2de0fff625\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 30.09.2024 | Önceki Dönem 01.01.2023 - 30.09.2023 | Cari Dönem 3 Aylık 01.07.2024 - 30.09.2024 | Önceki Dönem 3 Aylık 01.07.2023 - 30.09.2023\nYatırım Faaliyetlerinden Giderler | kap-fr_InvestmentActivityExpenses |  | -307019 | -103374 | -301563 | -100155\nFİNANSMAN GELİRİ (GİDERİ) ÖNCESİ FAALİYET KARI (ZARARI) | kap-fr_ProfitLossBeforeFinancingExpense |  | 25849111 | 53601705 | 9794614 | 22933164\nFinansman Gelirleri | ifrs-full_FinanceIncome | 17 | 8583970 | 15621888 | 3394077 | 5538197\nFinansman Giderleri | ifrs-full_FinanceCosts | 18 | -24331951 | -27671668 | -8499647 | -6476826\nNet Parasal Pozisyon Kazançları (Kayıpları) | ifrs-full_GainsLossesOnNetMonetaryPosition |  | 16839602 | 7426319 | 5329139 | 38937\nSÜRDÜRÜLEN FAALİYETLER VERGİ ÖNCESİ KARI (ZARARI) | ifrs-full_ProfitLossBeforeTax |  | 26940732 | 48978244 | 10018183 | 22033472\nSürdürülen Faaliyetler Vergi (Gideri) Geliri | ifrs-full_IncomeTaxExpenseContinuingOperations |  | -1275141 | -7735233 | -1456004 | -1917711\nDönem Vergi (Gideri) Geliri | kap-fr_CurrentPeriodTaxExpenseContinuingOperations | 19 | -579801 | -3745998 | -292855 | -68435\nErtelenmiş Vergi (Gideri) Geliri | kap-fr_DeferredIncomeTaxExpenseContinuingOperations | 19 | -695340 | -3989235 | -1163149 | -1849276</untrusted_document>\n<untrusted_document cite_id=\"c:532e4e5c432fb122061df2a71c334207525d904ef28c4453ad1ee0f0ebfa62bb\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 30.09.2024 | Önceki Dönem 01.01.2023 - 30.09.2023 | Cari Dönem 3 Aylık 01.07.2024 - 30.09.2024 | Önceki Dönem 3 Aylık 01.07.2023 - 30.09.2023\nHasılat | ifrs-full_Revenue | 14 | 404666337 | 412873683 | 141728720 | 137095278\nSatışların Maliyeti | ifrs-full_CostOfSales | 14 | -364401592 | -348446419 | -128301141 | -108980765\nTİCARİ FAALİYETLERDEN BRÜT KAR (ZARAR) | kap-fr_GrossProfitLossFromCommercialOperations |  | 40264745 | 64427264 | 13427579 | 28114513\nBRÜT KAR (ZARAR) | ifrs-full_GrossProfit |  | 40264745 | 64427264 | 13427579 | 28114513\nGenel Yönetim Giderleri | ifrs-full_AdministrativeExpense |  | -6502905 | -6408189 | -2286153 | -2619162\nPazarlama Giderleri | kap-fr_MarketingExpense |  | -7341782 | -6747204 | -2846721 | -2396830\nAraştırma ve Geliştirme Giderleri | ifrs-full_ResearchAndDevelopmentExpense |  | -4566032 | -5880106 | -1224601 | -1880620\nEsas Faaliyetlerden Diğer Gelirler | ifrs-full_OtherIncome | 16 | 9951488 | 16545527 | 3511110 | 3586913\nEsas Faaliyetlerden Diğer Giderler | ifrs-full_OtherExpenseByFunction | 16 | -8862930 | -8233151 | -2526630 | -1772153\nESAS FAALİYET KARI (ZARARI) | ifrs-full_ProfitLossFromOperatingActivities |  | 22942584 | 53704141 | 8054584 | 23032661\nYatırım Faaliyetlerinden Gelirler | kap-fr_InvestmentActivityIncome |  | 3213546 | 938 | 2041593 | 658</untrusted_document>",
+   "summary": "FROTO net dönem kârı",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:dc734e6b75107dec083e11a61f929b0697af256cd262fc54a48b0b0ef636f5fe",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 30.09.2024 | Önceki Dönem 01.01.2023 - 30.09.2023\nNAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalents |  | 16308716 | 36081858\nDÖNEM BAŞI NAKİT VE NAKİT BENZERLERİ | kap-fr_CashAndCashEquivalentsForCashFlowStatement |  | 20642281 | 22631461\nNAKİT VE NAKİT BENZERLERİNE İLİŞKİN ENFLASYON ETKİSİ | kap-fr_InflationEffectOnCashAndCashEquivalents |  | -6816999 | -13199205\nDÖNEM SONU NAKİT VE NAKİT BENZERLERİ | kap-fr_CashAndCashEquivalentsForCashFlowStatement |  | 30133998 | 45514114",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1567,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-Q3",
+      "section": "Tablo 4",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1353876"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:05402d587066c50012db220055c16f9fa2de1bf4a464d1863c7fbbd239661ca1",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 30.09.2024 | Önceki Dönem 01.01.2023 - 30.09.2023\nVerilen Nakit Avans ve Borçlar | ifrs-full_CashAdvancesAndLoansMadeToOtherPartiesClassifiedAsInvestingActivities |  | 1505509 | -4892271\nFİNANSMAN FAALİYETLERİNDEN NAKİT AKIŞLARI | ifrs-full_CashFlowsFromUsedInFinancingActivities |  | 19301208 | 2809718\nBorçlanmadan Kaynaklanan Nakit Girişleri | ifrs-full_ProceedsFromBorrowingsClassifiedAsFinancingActivities | 5 | 66236675 | 34344400\nBorç Ödemelerine İlişkin Nakit Çıkışları | ifrs-full_RepaymentsOfBorrowingsClassifiedAsFinancingActivities | 5 | -24143097 | -20665452\nKira Sözleşmelerinden Kaynaklanan Borç Ödemelerine İlişkin Nakit Çıkışları | kap-fr_PaymentsOfLeaseLiabilitiesClassifiedAsFinancingActivities | 5 | -435844 | -182420\nÖdenen Temettüler | ifrs-full_DividendsPaidClassifiedAsFinancingActivities |  | -17387766 | -9948406\nÖdenen Faiz | ifrs-full_InterestPaidClassifiedAsFinancingActivities |  | -7603012 | -4187528\nAlınan Faiz | kap-fr_InterestReceivedClassifiedAsFinancingActivities |  | 2634252 | 3449124\nYABANCI PARA ÇEVRİM FARKLARININ ETKİSİNDEN ÖNCE NAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges |  | 16253134 | 35729352\nYabancı Para Çevrim Farklarının Nakit ve Nakit Benzerleri Üzerindeki Etkisi | ifrs-full_EffectOfExchangeRateChangesOnCashAndCashEquivalents |  | 55582 | 352506",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1567,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-Q3",
+      "section": "Tablo 4",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1353876"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:e03f52f6ed08f7edc0cf7dafececf1c3739b548f136bfe9bf6f50e644def73a6",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 30.09.2024 | Önceki Dönem 01.01.2023 - 30.09.2023\nFaiz (Gelirleri) ve Giderleri İle İlgili Düzeltmeler | kap-fr_AdjustmentsForInterestIncomeAndExpenses |  | 7980742 | 2781668\nFaiz Gelirleri ile İlgili Düzeltmeler | ifrs-full_AdjustmentsForInterestIncome | 17 | -2595380 | -3569451\nFaiz Giderleri ile İlgili Düzeltmeler | ifrs-full_AdjustmentsForInterestExpense | 18 | 8795033 | 5423011\nVadeli Alımlardan Kaynaklanan Ertelenmiş Finansman Gideri | kap-fr_DefferedFinancialExpenseFromCreditPurchases | 16 | 7222048 | 4645627\nVadeli Satışlardan Kaynaklanan Kazanılmamış Finansman Geliri | kap-fr_UnearnedFinancialIncomeFromCreditSales | 16 | -5440959 | -3717519\nGerçekleşmemiş Yabancı Para Çevrim Farkları İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForUnrealisedForeignExchangeLossesGains |  | 2483039 | -220179\nVergi (Geliri) Gideri İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForIncomeTaxExpense | 19 | 1275141 | 7735233\nDuran Varlıkların Elden Çıkarılmasından Kaynaklanan Kayıplar (Kazançlar) İle İlgili Düzeltmeler | ifrs-full_AdjustmentsForLossesGainsOnDisposalOfNoncurrentAssets |  | 0 | 2133\nYatırım ya da Finansman Faaliyetlerinden Kaynaklanan Nakit Akışlarına Neden Olan Diğer Kalemlere İlişkin Düzeltmeler | ifrs-full_OtherAdjustmentsForWhichCashEffectsAreInvestingOrFinancingCashFlow |  | 10211156 | 10892929\nParasal Pozisyon Kazanç ve Kayıplarıyla İlgili Düzeltmeler | kap-fr_AdjustmentsRelatedtoGainandLossesonNetMonetaryPosition |  | -23580848 | -19057728\nİşletme Sermayesinde Gerçekleşen Değişimler | ifrs-full_IncreaseDecreaseInWorkingCapital |  | -9142694 | 7286161",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1567,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-Q3",
+      "section": "Tablo 4",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1353876"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:06a7bee5787990bfe9e7a9c0721b31fffa142617707906e90ea067d1d2327982",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 30.09.2024 | Önceki Dönem 01.01.2023 - 30.09.2023 | Cari Dönem 3 Aylık 01.07.2024 - 30.09.2024 | Önceki Dönem 3 Aylık 01.07.2023 - 30.09.2023\nSÜRDÜRÜLEN FAALİYETLER DÖNEM KARI (ZARARI) | ifrs-full_ProfitLossFromContinuingOperations |  | 25665591 | 41243011 | 8562179 | 20115761\nDÖNEM KARI (ZARARI) | ifrs-full_ProfitLoss |  | 25665591 | 41243011 | 8562179 | 20115761\nKontrol Gücü Olmayan Paylar | ifrs-full_ProfitLossAttributableToNoncontrollingInterests |  | 0 | 0 | 0 | 0\nAna Ortaklık Payları | ifrs-full_ProfitLossAttributableToOwnersOfParent |  | 25665591 | 41243011 | 8562179 | 20115761",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1567,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-Q3",
+      "section": "Tablo 2",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1353876"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:101e4c39a6eb80d100fd18338be85ea0fcce34cf3410ca6ca5fddd2de0fff625",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 30.09.2024 | Önceki Dönem 01.01.2023 - 30.09.2023 | Cari Dönem 3 Aylık 01.07.2024 - 30.09.2024 | Önceki Dönem 3 Aylık 01.07.2023 - 30.09.2023\nYatırım Faaliyetlerinden Giderler | kap-fr_InvestmentActivityExpenses |  | -307019 | -103374 | -301563 | -100155\nFİNANSMAN GELİRİ (GİDERİ) ÖNCESİ FAALİYET KARI (ZARARI) | kap-fr_ProfitLossBeforeFinancingExpense |  | 25849111 | 53601705 | 9794614 | 22933164\nFinansman Gelirleri | ifrs-full_FinanceIncome | 17 | 8583970 | 15621888 | 3394077 | 5538197\nFinansman Giderleri | ifrs-full_FinanceCosts | 18 | -24331951 | -27671668 | -8499647 | -6476826\nNet Parasal Pozisyon Kazançları (Kayıpları) | ifrs-full_GainsLossesOnNetMonetaryPosition |  | 16839602 | 7426319 | 5329139 | 38937\nSÜRDÜRÜLEN FAALİYETLER VERGİ ÖNCESİ KARI (ZARARI) | ifrs-full_ProfitLossBeforeTax |  | 26940732 | 48978244 | 10018183 | 22033472\nSürdürülen Faaliyetler Vergi (Gideri) Geliri | ifrs-full_IncomeTaxExpenseContinuingOperations |  | -1275141 | -7735233 | -1456004 | -1917711\nDönem Vergi (Gideri) Geliri | kap-fr_CurrentPeriodTaxExpenseContinuingOperations | 19 | -579801 | -3745998 | -292855 | -68435\nErtelenmiş Vergi (Gideri) Geliri | kap-fr_DeferredIncomeTaxExpenseContinuingOperations | 19 | -695340 | -3989235 | -1163149 | -1849276",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1567,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-Q3",
+      "section": "Tablo 2",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1353876"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:532e4e5c432fb122061df2a71c334207525d904ef28c4453ad1ee0f0ebfa62bb",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2024 - 30.09.2024 | Önceki Dönem 01.01.2023 - 30.09.2023 | Cari Dönem 3 Aylık 01.07.2024 - 30.09.2024 | Önceki Dönem 3 Aylık 01.07.2023 - 30.09.2023\nHasılat | ifrs-full_Revenue | 14 | 404666337 | 412873683 | 141728720 | 137095278\nSatışların Maliyeti | ifrs-full_CostOfSales | 14 | -364401592 | -348446419 | -128301141 | -108980765\nTİCARİ FAALİYETLERDEN BRÜT KAR (ZARAR) | kap-fr_GrossProfitLossFromCommercialOperations |  | 40264745 | 64427264 | 13427579 | 28114513\nBRÜT KAR (ZARAR) | ifrs-full_GrossProfit |  | 40264745 | 64427264 | 13427579 | 28114513\nGenel Yönetim Giderleri | ifrs-full_AdministrativeExpense |  | -6502905 | -6408189 | -2286153 | -2619162\nPazarlama Giderleri | kap-fr_MarketingExpense |  | -7341782 | -6747204 | -2846721 | -2396830\nAraştırma ve Geliştirme Giderleri | ifrs-full_ResearchAndDevelopmentExpense |  | -4566032 | -5880106 | -1224601 | -1880620\nEsas Faaliyetlerden Diğer Gelirler | ifrs-full_OtherIncome | 16 | 9951488 | 16545527 | 3511110 | 3586913\nEsas Faaliyetlerden Diğer Giderler | ifrs-full_OtherExpenseByFunction | 16 | -8862930 | -8233151 | -2526630 | -1772153\nESAS FAALİYET KARI (ZARARI) | ifrs-full_ProfitLossFromOperatingActivities |  | 22942584 | 53704141 | 8054584 | 23032661\nYatırım Faaliyetlerinden Gelirler | kap-fr_InvestmentActivityIncome |  | 3213546 | 938 | 2041593 | 658",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1567,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2024-Q3",
+      "section": "Tablo 2",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1353876"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 38144
+}

@@ -1,0 +1,330 @@
+{
+ "case_id": "en-deep-amzn-operating-margin",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "f79352a13c879b402590806f950e093290ee27e9627463dbfe500d3abce4b003",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2560617",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "AMZN"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TCFQbzUYOWl0+lOrREr2F5AHXA1fryr5lUxjuXlBfB59GYtUPzy2c/BE7Iort80APpCXDaMxplGbBc7zLp4ULPYangpySCaQHGceq46EsNqnsuQYEHtTVJeY="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1487,
+    "tokens_out": 17,
+    "latency_ms": 1078.915,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "20cb349802be0c63ec54e7fe0ad57c750f20fff310e904286ffc23aa254fd39e",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2826290",
+      "name": "get_financial_facts",
+      "arguments": {
+       "periods": [
+        "2025-FY"
+       ],
+       "metrics": [
+        "revenue",
+        "operating_income"
+       ],
+       "ticker": "AMZN"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TylY9xG0/VZlW1so+EJ1mwGVkYQptXRYLmjRHMxax7BO7JuzK6ut84VbAO0GPGaD3XevHQreCcgYJpWc2rX1MTb0k68GJ3EVvzWco1q30F50dHIhfPGjAMgE="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2607,
+    "tokens_out": 42,
+    "latency_ms": 942.74,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "1ceb01e48cbc1b18c704a29449cc724a6301012e242b126d8a530ee03a55b8b2",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2109514",
+      "name": "search_documents",
+      "arguments": {
+       "doc_type": "10-K",
+       "period_from": "2025-FY",
+       "query": "operating margin 2025 net sales operating income",
+       "ticker": "AMZN",
+       "period_to": "2025-FY"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TTvnZghFNXhKmzFdnPRXh7HDprmhpKJrMKGmfLXQHnicTDXdUM1m2afJsUe8c6r96ye8bpmFhm9iF5LFwJnnqqNV1iZizlJR4LeMtCLNwON/BlJR1I/kANnQ="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2857,
+    "tokens_out": 70,
+    "latency_ms": 1066.758,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "eaf0cd6754c90015ff053f2e8bc73df1fe390c3ae28e1d70751016a53097a6c8",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\": \"en\", \"status\": \"completed\", \"summary\": \"Amazon's operating margin for fiscal year 2025 was approximately 11.16%, calculated from operating income of $79.975 billion[2] and revenue of $716.924 billion[1].\", \"points\": [{\"text\": \"Revenue for 2025-FY: $716,924,000,000\", \"cite_ids\": [\"f:516\"]}, {\"text\": \"Operating income for 2025-FY: $79,975,000,000\", \"cite_ids\": [\"f:564\"]}, {\"text\": \"Operating margin = Operating income / Revenue = 79,975,000,000 / 716,924,000,000 ≈ 11.16%\", \"cite_ids\": [\"f:516\", \"f:564\"]}], \"citations\": [{\"marker\": 1, \"cite_id\": \"f:516\"}, {\"marker\": 2, \"cite_id\": \"f:564\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 4350,
+    "tokens_out": 1462,
+    "latency_ms": 45516.912,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash",
+     "nvidia-large"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"AMZN\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 3277, \"ticker\": \"AMZN\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872426000026/amzn-20260630.htm\"}, {\"document_id\": 3278, \"ticker\": \"AMZN\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872426000014/amzn-20260331.htm\"}, {\"document_id\": 3279, \"ticker\": \"AMZN\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-06T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm\"}, {\"document_id\": 3280, \"ticker\": \"AMZN\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872425000123/amzn-20250930.htm\"}, {\"document_id\": 3281, \"ticker\": \"AMZN\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872425000086/amzn-20250630.htm\"}, {\"document_id\": 3282, \"ticker\": \"AMZN\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-02T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872425000036/amzn-20250331.htm\"}, {\"document_id\": 3283, \"ticker\": \"AMZN\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-07T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm\"}, {\"document_id\": 3284, \"ticker\": \"AMZN\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1018724/000101872424000161/amzn-20240930.htm\"}]}",
+   "summary": "AMZN documents",
+   "count": 8,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\",\"operating_income\"],\"periods\":[\"2025-FY\"],\"ticker\":\"AMZN\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:564\">Operating income (2025-FY): 79,975,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3968\">Operating income (2025-FY): 79,975,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:516\">Revenue (2025-FY): 716,924,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3920\">Revenue (2025-FY): 716,924,000,000 USD</untrusted_document>",
+   "summary": "AMZN 2025-FY revenue, operating_income",
+   "count": 4,
+   "items": [
+    {
+     "cite_id": "f:564",
+     "text": "Operating income (2025-FY): 79,975,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 133,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0001018724-26-000004",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": "79975000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3968",
+     "text": "Operating income (2025-FY): 79,975,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2350,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0001018724-26-000004",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": "79975000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:516",
+     "text": "Revenue (2025-FY): 716,924,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 133,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001018724-26-000004",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": "716924000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3920",
+     "text": "Revenue (2025-FY): 716,924,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2350,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001018724-26-000004",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": "716924000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"doc_type\":\"10-K\",\"period_from\":\"2025-FY\",\"period_to\":\"2025-FY\",\"query\":\"operating margin 2025 net sales operating income\",\"ticker\":\"AMZN\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:00fe51cb1e44b4c0d0621b139bd53dcc0a7129fde14a267c3395fe4f92aba162\" amounts_in=\"millions\">___________________ (1) As of December 31, 2025, we had approximately $ 6.6 billion of income tax contingencies of which $ 5.0 billion, if fully recognized, would decrease our effective tax rate. As of December 31, 2024 and 2025, we had accrued interest and penalties, net of federal income tax benefit, related to tax contingencies of $ 316 million and $ 400 million. Interest and penalties, net of federal income tax benefit, recognized for the years ended December 31, 2023, 2024, and 2025 were $ 91 million, $ 121 million, and $ 84 million. We are under examination, or may be subject to examination, by the Internal Revenue Service for the calendar year 2016 and thereafter. These examinations may lead to ordinary course adjustments or proposed adjustments to our taxes or our net operating losses with respect to years under examination as well as subsequent periods. We are also subject to taxation in various states and foreign jurisdictions including Germany, India, Japan, Luxembourg, and the United Kingdom. We are under, or may be subject to, audit or examination and additional assessments by the relevant authorities in respect of these particular jurisdictions primarily for 2011 and thereafter. We are currently disputing tax assessments in multiple jurisdictions, including with respect to the allocation and characterization of income. In September 2022, the Luxembourg tax authority (“LTA”) denied the tax basis of certain intangible assets that we distributed from Luxembourg to the U.S. in 2021. When we are assessed by the LTA, we will need to remit taxes related to this matter. We believe the LTA’s position is without merit, we intend to defend ourselves vigorously in this matter, and we expect to recoup taxes paid. The Indian tax authority (“ITA”) has asserted that tax applies to cloud services fees paid to Amazon in the U.S. We will need to remit taxes related to this matter until it is resolved, which payments could be significant in the aggregate. We believe the ITA’s position is without merit, we are defending our position vigorously, and we expect to recoup taxes paid. If this matter is adversely resolved, we could recognize significant additional tax expense, including for taxes previously paid. Changes in tax laws, regulations, administrative practices, principles, and interpretations may impact our tax contingencies. Due to various factors, including the inherent complexities and uncertainties of the judicial, administrative, and regulatory processes in certain jurisdictions, the timing of the resolution of income tax controversies is highly uncertain, and the amounts ultimately paid, if any, upon resolution of the issues raised by the taxing authorities may differ from the amounts accrued.</untrusted_document>\n<untrusted_document cite_id=\"c:034532bc73d057402231e43852ca0f1461a641bbd92de597379ad329299b20c0\">79</untrusted_document>\n<untrusted_document cite_id=\"c:016ebb5ca8595c09741d8e1a1e350b1fb59443dee03b34f5410458fd73772606\" amounts_in=\"millions\">See accompanying notes to consolidated financial statements. 36 Table of Contents AMAZON.COM, INC. CONSOLIDATED STATEMENTS OF OPERATIONS (in millions, except per share data)</untrusted_document>\n<untrusted_document cite_id=\"c:02c860cd3ed290a7d7b5390ec4157706ff18a5a4311bb1b2b88bb34acee8e5da\" amounts_in=\"millions\">Note 3 — PROPERTY AND EQUIPMENT Property and equipment, at cost, consisted of the following (in millions):</untrusted_document>\n<untrusted_document cite_id=\"c:019d886af51ace88c7f57e715bd17c942dbaa02f9c098b6d5606b0fe68f66a65\">___________________ (1) Segment amounts exclude corporate facilities. Shared facilities are allocated among the segments based on usage and primarily relate to facilities that hold our technology infrastructure. See Item 8 of Part II, “Financial Statements and Supplementary Data — Note 10 — Segment Information.” We own and lease our corporate headquarters in Washington’s Puget Sound region and Arlington, Virginia. See Item 8 of Part II, “Financial Statements and Supplementary Data — Note 7 — Commitments and Contingencies — Legal Proceedings.” Not applicable. 18 Table of Contents PART II Market Information Our common stock is traded on the Nasdaq Global Select Market under the symbol “AMZN.” Holders As of January 28, 2026, there were 12,165 shareholders of record of our common stock, although there is a much larger number of beneficial owners. Recent Sales of Unregistered Securities None. Issuer Purchases of Equity Securities None. 19 Table of Contents Forward-Looking Statements This Annual Report on Form 10-K includes forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995. All statements other than statements of historical fact, including statements regarding guidance, industry prospects, or future results of operations or financial position, made in this Annual Report on Form 10-K are forward-looking. We use words such as anticipates, believes, expects, future, intends, and similar expressions to identify forward-looking statements. Forward-looking statements reflect management’s current expectations and are inherently uncertain.</untrusted_document>\n<untrusted_document cite_id=\"c:031e3324b0d13aa304a59901a8ce3e540157a5d8fa62d9e4ee9412f97e878df8\">Additionally, under our A-to-z Guarantee, we may reimburse customers for certain product liability claims up to certain limits in these situations, and as our third-party seller sales grow, the cost of this program will increase and could negatively affect our operating results. Although we maintain liability insurance, we cannot be certain that our coverage will be adequate for liabilities actually incurred or that insurance will continue to be available to us on economically reasonable terms, or at all. Although we impose contractual terms on sellers that are intended to prohibit sales of certain type of products, we may not be able to detect, enforce, or collect sufficient damages for breaches of such agreements. In addition, some of our agreements with our vendors and sellers do not indemnify us from product liability. We Face Additional Tax Liabilities and Collection Obligations We are subject to a variety of taxes and tax collection obligations in the U.S. (federal and state) and numerous foreign jurisdictions. We may recognize additional tax expense and be subject to additional tax liabilities, including other liabilities for tax collection obligations due to changes in laws, regulations, administrative practices, principles, and interpretations related to tax, including changes to the global tax framework, competition, and other laws and accounting rules in various jurisdictions. Such changes could come about as a result of economic, political, and other conditions. An increasing number of jurisdictions are considering or have adopted laws or administrative practices that impose new tax measures, including revenue-based taxes, targeting online commerce and the remote selling of goods and services. These include new obligations to withhold or collect sales, consumption, value added, or other taxes on online marketplaces and remote sellers, or other requirements that may result in liability for third party obligations. For example, non-U.S. jurisdictions have proposed or enacted taxes on online advertising and marketplace service revenues. Proliferation of these or similar unilateral tax measures may continue unless broader international tax reform is implemented. In addition, the European Union and other countries (including those in which we operate) have enacted or may enact global minimum taxes, which may increase our tax expense. Our results of operations and cash flows could be adversely affected by additional taxes imposed on us prospectively or retroactively or additional taxes or penalties resulting from the failure to comply with any collection obligations or failure to provide information about our customers, suppliers, and other third parties for tax reporting purposes to various government agencies.</untrusted_document>",
+   "summary": "AMZN operating margin 2025 net sales operating income",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:00fe51cb1e44b4c0d0621b139bd53dcc0a7129fde14a267c3395fe4f92aba162",
+     "text": "___________________ (1) As of December 31, 2025, we had approximately $ 6.6 billion of income tax contingencies of which $ 5.0 billion, if fully recognized, would decrease our effective tax rate. As of December 31, 2024 and 2025, we had accrued interest and penalties, net of federal income tax benefit, related to tax contingencies of $ 316 million and $ 400 million. Interest and penalties, net of federal income tax benefit, recognized for the years ended December 31, 2023, 2024, and 2025 were $ 91 million, $ 121 million, and $ 84 million. We are under examination, or may be subject to examination, by the Internal Revenue Service for the calendar year 2016 and thereafter. These examinations may lead to ordinary course adjustments or proposed adjustments to our taxes or our net operating losses with respect to years under examination as well as subsequent periods. We are also subject to taxation in various states and foreign jurisdictions including Germany, India, Japan, Luxembourg, and the United Kingdom. We are under, or may be subject to, audit or examination and additional assessments by the relevant authorities in respect of these particular jurisdictions primarily for 2011 and thereafter. We are currently disputing tax assessments in multiple jurisdictions, including with respect to the allocation and characterization of income. In September 2022, the Luxembourg tax authority (“LTA”) denied the tax basis of certain intangible assets that we distributed from Luxembourg to the U.S. in 2021. When we are assessed by the LTA, we will need to remit taxes related to this matter. We believe the LTA’s position is without merit, we intend to defend ourselves vigorously in this matter, and we expect to recoup taxes paid. The Indian tax authority (“ITA”) has asserted that tax applies to cloud services fees paid to Amazon in the U.S. We will need to remit taxes related to this matter until it is resolved, which payments could be significant in the aggregate. We believe the ITA’s position is without merit, we are defending our position vigorously, and we expect to recoup taxes paid. If this matter is adversely resolved, we could recognize significant additional tax expense, including for taxes previously paid. Changes in tax laws, regulations, administrative practices, principles, and interpretations may impact our tax contingencies. Due to various factors, including the inherent complexities and uncertainties of the judicial, administrative, and regulatory processes in certain jurisdictions, the timing of the resolution of income tax controversies is highly uncertain, and the amounts ultimately paid, if any, upon resolution of the issues raised by the taxing authorities may differ from the amounts accrued.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3279,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:034532bc73d057402231e43852ca0f1461a641bbd92de597379ad329299b20c0",
+     "text": "79",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3279,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:016ebb5ca8595c09741d8e1a1e350b1fb59443dee03b34f5410458fd73772606",
+     "text": "See accompanying notes to consolidated financial statements. 36 Table of Contents AMAZON.COM, INC. CONSOLIDATED STATEMENTS OF OPERATIONS (in millions, except per share data)",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3279,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:02c860cd3ed290a7d7b5390ec4157706ff18a5a4311bb1b2b88bb34acee8e5da",
+     "text": "Note 3 — PROPERTY AND EQUIPMENT Property and equipment, at cost, consisted of the following (in millions):",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3279,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:019d886af51ace88c7f57e715bd17c942dbaa02f9c098b6d5606b0fe68f66a65",
+     "text": "___________________ (1) Segment amounts exclude corporate facilities. Shared facilities are allocated among the segments based on usage and primarily relate to facilities that hold our technology infrastructure. See Item 8 of Part II, “Financial Statements and Supplementary Data — Note 10 — Segment Information.” We own and lease our corporate headquarters in Washington’s Puget Sound region and Arlington, Virginia. See Item 8 of Part II, “Financial Statements and Supplementary Data — Note 7 — Commitments and Contingencies — Legal Proceedings.” Not applicable. 18 Table of Contents PART II Market Information Our common stock is traded on the Nasdaq Global Select Market under the symbol “AMZN.” Holders As of January 28, 2026, there were 12,165 shareholders of record of our common stock, although there is a much larger number of beneficial owners. Recent Sales of Unregistered Securities None. Issuer Purchases of Equity Securities None. 19 Table of Contents Forward-Looking Statements This Annual Report on Form 10-K includes forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995. All statements other than statements of historical fact, including statements regarding guidance, industry prospects, or future results of operations or financial position, made in this Annual Report on Form 10-K are forward-looking. We use words such as anticipates, believes, expects, future, intends, and similar expressions to identify forward-looking statements. Forward-looking statements reflect management’s current expectations and are inherently uncertain.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3279,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:031e3324b0d13aa304a59901a8ce3e540157a5d8fa62d9e4ee9412f97e878df8",
+     "text": "Additionally, under our A-to-z Guarantee, we may reimburse customers for certain product liability claims up to certain limits in these situations, and as our third-party seller sales grow, the cost of this program will increase and could negatively affect our operating results. Although we maintain liability insurance, we cannot be certain that our coverage will be adequate for liabilities actually incurred or that insurance will continue to be available to us on economically reasonable terms, or at all. Although we impose contractual terms on sellers that are intended to prohibit sales of certain type of products, we may not be able to detect, enforce, or collect sufficient damages for breaches of such agreements. In addition, some of our agreements with our vendors and sellers do not indemnify us from product liability. We Face Additional Tax Liabilities and Collection Obligations We are subject to a variety of taxes and tax collection obligations in the U.S. (federal and state) and numerous foreign jurisdictions. We may recognize additional tax expense and be subject to additional tax liabilities, including other liabilities for tax collection obligations due to changes in laws, regulations, administrative practices, principles, and interpretations related to tax, including changes to the global tax framework, competition, and other laws and accounting rules in various jurisdictions. Such changes could come about as a result of economic, political, and other conditions. An increasing number of jurisdictions are considering or have adopted laws or administrative practices that impose new tax measures, including revenue-based taxes, targeting online commerce and the remote selling of goods and services. These include new obligations to withhold or collect sales, consumption, value added, or other taxes on online marketplaces and remote sellers, or other requirements that may result in liability for third party obligations. For example, non-U.S. jurisdictions have proposed or enacted taxes on online advertising and marketplace service revenues. Proliferation of these or similar unilateral tax measures may continue unless broader international tax reform is implemented. In addition, the European Union and other countries (including those in which we operate) have enacted or may enact global minimum taxes, which may increase our tax expense. Our results of operations and cash flows could be adversely affected by additional taxes imposed on us prospectively or retroactively or additional taxes or penalties resulting from the failure to comply with any collection obligations or failure to provide information about our customers, suppliers, and other third parties for tax reporting purposes to various government agencies.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3279,
+      "ticker": "AMZN",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 81800
+}

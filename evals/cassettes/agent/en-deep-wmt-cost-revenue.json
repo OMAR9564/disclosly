@@ -1,0 +1,263 @@
+{
+ "case_id": "en-deep-wmt-cost-revenue",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "1da5dc0989bc88ee02c4ad2660441b65c2b874e32b3989b3e961ba3f6d83602c",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2589971",
+      "name": "get_financial_facts",
+      "arguments": {
+       "ticker": "WMT",
+       "metrics": [
+        "revenue"
+       ],
+       "periods": [
+        "2025-FY"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TGbPdt1xIoVnernz7IpL1zH4t+YoRVtbq9Ie1U1AYvRCa25IEOG5EmpQQ3Rk5QiU5odjVOkT5eQOI816rQ8boX/CWjReW+QlAJe3dxWYBG9PYt+e+QVA9Lr4="
+       }
+      }
+     },
+     {
+      "id": "call_2589972",
+      "name": "get_financial_facts",
+      "arguments": {
+       "metrics": [
+        "revenue"
+       ],
+       "periods": [
+        "2025-FY"
+       ],
+       "ticker": "COST"
+      },
+      "extra": null
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1486,
+    "tokens_out": 71,
+    "latency_ms": 737.915,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "9ea92460798b8f2cd44adfd54287c50eeed84e52c36ecacc61549df1c7186168",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In fiscal 2025, Walmart reported a revenue of 680,985,000,000 USD [1], while Costco reported a revenue of 275,235,000,000 USD [2].\",\n  \"points\": [\n    {\n      \"text\": \"Walmart fiscal 2025 revenue: 680,985,000,000 USD\",\n      \"cite_ids\": [\n        \"f:1105\"\n      ]\n    },\n    {\n      \"text\": \"Costco fiscal 2025 revenue: 275,235,000,000 USD\",\n      \"cite_ids\": [\n        \"f:1776\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:1105\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:1776\"\n    }\n  ]\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2062,
+    "tokens_out": 287,
+    "latency_ms": 1793.53,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"WMT\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:1105\">Revenue (2025-FY): 680,985,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4434\">Revenue (2025-FY): 680,985,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17470\">Revenue (2025-FY): 680,985,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1106\">Revenue (2025-FY; 2026-FY report): 680,985,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4435\">Revenue (2025-FY; 2026-FY report): 680,985,000,000 USD</untrusted_document>",
+   "summary": "WMT 2025-FY revenue",
+   "count": 5,
+   "items": [
+    {
+     "cite_id": "f:1105",
+     "text": "Revenue (2025-FY): 680,985,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 189,
+      "ticker": "WMT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000104169-25-000021",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000021/wmt-20250131.htm"
+     },
+     "value": "680985000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4434",
+     "text": "Revenue (2025-FY): 680,985,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2398,
+      "ticker": "WMT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000104169-25-000021",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000021/wmt-20250131.htm"
+     },
+     "value": "680985000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:17470",
+     "text": "Revenue (2025-FY): 680,985,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3348,
+      "ticker": "WMT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000104169-25-000021",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000021/wmt-20250131.htm"
+     },
+     "value": "680985000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1106",
+     "text": "Revenue (2025-FY; 2026-FY report): 680,985,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 185,
+      "ticker": "WMT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000104169-26-000055",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm"
+     },
+     "value": "680985000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4435",
+     "text": "Revenue (2025-FY; 2026-FY report): 680,985,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2394,
+      "ticker": "WMT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000104169-26-000055",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm"
+     },
+     "value": "680985000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"COST\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:1776\">Revenue (2025-FY): 275,235,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:5180\">Revenue (2025-FY): 275,235,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1781\">Revenue (2025-FY; 2026-FY report): 275,235,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:5185\">Revenue (2025-FY; 2026-FY report): 275,235,000,000 USD</untrusted_document>",
+   "summary": "COST 2025-FY revenue",
+   "count": 4,
+   "items": [
+    {
+     "cite_id": "f:1776",
+     "text": "Revenue (2025-FY): 275,235,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 235,
+      "ticker": "COST",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000909832-25-000101",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm"
+     },
+     "value": "275235000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:5180",
+     "text": "Revenue (2025-FY): 275,235,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2452,
+      "ticker": "COST",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000909832-25-000101",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm"
+     },
+     "value": "275235000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1781",
+     "text": "Revenue (2025-FY; 2026-FY report): 275,235,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 231,
+      "ticker": "COST",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000909832-26-000093",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm"
+     },
+     "value": "275235000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:5185",
+     "text": "Revenue (2025-FY; 2026-FY report): 275,235,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2448,
+      "ticker": "COST",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000909832-26-000093",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm"
+     },
+     "value": "275235000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 2976
+}

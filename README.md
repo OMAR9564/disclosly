@@ -41,7 +41,14 @@ below `evals/baselines/retrieval.json`:
 uv run python -m evals.retrieval --cassettes-only
 ```
 
-<!-- Agent answer evals: later phase (PROJECT_SPEC.md §19.3). -->
+Answers, single agent against the multi-agent graph, measured 2026-10-26 on the same 87 cases
+(replayed recordings). Method, losses and how to rerun:
+[docs/evals/single-vs-multi.md](docs/evals/single-vs-multi.md).
+
+| Engine | Date | Numeric match (simple) | Numeric match (deep) | Citation coverage | Verified derived numbers | Model calls / run |
+|---|---|---|---|---|---|---|
+| single | 2026-10-26 | 0.625 | 0.476 | 1.0 | 0.0 | 2.6 |
+| graph | 2026-10-26 | 0.625 | 0.805 | 1.0 | 1.0 | 4.32 |
 
 ## Cost and latency
 

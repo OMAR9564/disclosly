@@ -1,0 +1,258 @@
+{
+ "case_id": "en-deep-aapl-revenue-growth",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "90de65557d2f7a4212fb0037877d5fec5fabe10482d3b4ab6df37be69f43730d",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2083441",
+      "name": "get_financial_facts",
+      "arguments": {
+       "metrics": [
+        "revenue"
+       ],
+       "ticker": "AAPL",
+       "periods": [
+        "2024-FY",
+        "2025-FY"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TEA2BsJ6ZzxTls629MZNcPg1q66g3cTNbL2yNfnKZj/hcil/1Jr58pavLvBrMSkIM6v8e88bTwtyU7Ahocw4ZIYPIpmVakEo7mn91iuTRgcX5Nanpe27o0xA="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1499,
+    "tokens_out": 44,
+    "latency_ms": 654.81,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "dd7c7b881d81b113f44ac20877fd4b0d4ce0a27a0fb7ea9a78737a34b7c5e1e9",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2678415",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "AAPL",
+       "period_from": "2025-FY",
+       "query": "percentage increase revenue 2024 2025",
+       "period_to": "2025-FY"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TZg4yaojZ5ITTYFqbv6KMqvymhO557FbOZQKZ0Unkk+4Ijo2w7URU5k0Daik6arZBxxCN0pDpqmGtEbIvNdSxK/+6SV/5+zG3NkQe3fpTuKq5GjbDVn4g3BM="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1866,
+    "tokens_out": 60,
+    "latency_ms": 1056.776,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "7fd3cbf6a76290ac619021a97670bf513431eaa281e763e447038e433f0aa552",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Apple's revenue grew from 391,035,000,000 USD in fiscal 2024 to 416,161,000,000 USD in fiscal 2025 [f:103, f:111], representing an increase of approximately 6.43%.\",\n  \"points\": [\n    {\n      \"text\": \"Apple's revenue for fiscal 2024 was 391,035,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:103\"\n      ]\n    },\n    {\n      \"text\": \"Apple's revenue for fiscal 2025 was 416,161,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:111\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:103\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:111\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2781,
+    "tokens_out": 327,
+    "latency_ms": 1272.824,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "fd74cee2fc8c580f7478d3f13f909243c2097f917ec0508c79b550b26ee8c816",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Apple's revenue grew from 391,035,000,000 USD in fiscal 2024 [1] to 416,161,000,000 USD in fiscal 2025 [2], representing an increase of approximately 6.43%.\",\n  \"points\": [\n    {\n      \"text\": \"Apple's revenue for fiscal 2024 was 391,035,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:103\"\n      ]\n    },\n    {\n      \"text\": \"Apple's revenue for fiscal 2025 was 416,161,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:111\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:103\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:111\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash",
+    "model": "gemini-3.8-flash",
+    "tokens_in": 2663,
+    "tokens_out": 315,
+    "latency_ms": 13505.087,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2024-FY\",\"2025-FY\"],\"ticker\":\"AAPL\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:103\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3613\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:104\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3614\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:111\">Revenue (2025-FY): 416,161,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3621\">Revenue (2025-FY): 416,161,000,000 USD</untrusted_document>",
+   "summary": "AAPL 2024-FY to 2025-FY revenue",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "f:103",
+     "text": "Revenue (2024-FY): 391,035,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 114,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "391035000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3613",
+     "text": "Revenue (2024-FY): 391,035,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2331,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "391035000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:104",
+     "text": "Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "391035000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3614",
+     "text": "Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "391035000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:111",
+     "text": "Revenue (2025-FY): 416,161,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "416161000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3621",
+     "text": "Revenue (2025-FY): 416,161,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "416161000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-FY\",\"period_to\":\"2025-FY\",\"query\":\"percentage increase revenue 2024 2025\",\"ticker\":\"AAPL\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:03adfd5004c72732ac95bdf2c5e49ca53e576b0a875b7e73c4a4fd4b0e9c9eb5\"> | Incorporated by Reference |  |  | \n10.6* | Apple Inc. 2022 Employee Stock Plan. | 8-K | 10.1 | 3/4/22\n10.7* | Form of Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of March 4, 2022. | 8-K | 10.2 | 3/4/22\n10.8* | Form of Performance Award Agreement under 2022 Employee Stock Plan effective as of March 4, 2022. | 8-K | 10.3 | 3/4/22\n10.9* | Apple Inc. Executive Cash Incentive Plan. | 8-K | 10.1 | 8/19/22\n10.10* | Form of CEO Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 25, 2022. | 10-Q | 10.1 | 12/31/22\n10.11* | Form of CEO Performance Award Agreement under 2022 Employee Stock Plan effective as of September 25, 2022. | 10-Q | 10.2 | 12/31/22\n10.12* | Form of Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.19 | 9/28/24\n10.13* | Form of Performance Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.20 | 9/28/24\n10.14* | Form of CEO Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.21 | 9/28/24\n10.15* | Form of CEO Performance Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.22 | 9/28/24\n19.1 | Insider Trading Policy. | 10-K | 19.1 | 9/28/24\n21.1** | Subsidiaries of the Registrant. |  |  | \n23.1** | Consent of Independent Registered Public Accounting Firm. |  |  | \n24.1** | Power of Attorney (included on the Signatures page of this Annual Report on Form 10-K). |  |  | \n31.1** | Rule 13a-14(a) / 15d-14(a) Certification of Chief Executive Officer. |  |  | \n31.2** | Rule 13a-14(a) / 15d-14(a) Certification of Chief Financial Officer. |  |  | \n32.1*** | Section 1350 Certifications of Chief Executive Officer and Chief Financial Officer. |  |  | </untrusted_document>",
+   "summary": "AAPL percentage increase revenue 2024 2025",
+   "count": 1,
+   "items": [
+    {
+     "cite_id": "c:03adfd5004c72732ac95bdf2c5e49ca53e576b0a875b7e73c4a4fd4b0e9c9eb5",
+     "text": " | Incorporated by Reference |  |  | \n10.6* | Apple Inc. 2022 Employee Stock Plan. | 8-K | 10.1 | 3/4/22\n10.7* | Form of Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of March 4, 2022. | 8-K | 10.2 | 3/4/22\n10.8* | Form of Performance Award Agreement under 2022 Employee Stock Plan effective as of March 4, 2022. | 8-K | 10.3 | 3/4/22\n10.9* | Apple Inc. Executive Cash Incentive Plan. | 8-K | 10.1 | 8/19/22\n10.10* | Form of CEO Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 25, 2022. | 10-Q | 10.1 | 12/31/22\n10.11* | Form of CEO Performance Award Agreement under 2022 Employee Stock Plan effective as of September 25, 2022. | 10-Q | 10.2 | 12/31/22\n10.12* | Form of Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.19 | 9/28/24\n10.13* | Form of Performance Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.20 | 9/28/24\n10.14* | Form of CEO Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.21 | 9/28/24\n10.15* | Form of CEO Performance Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.22 | 9/28/24\n19.1 | Insider Trading Policy. | 10-K | 19.1 | 9/28/24\n21.1** | Subsidiaries of the Registrant. |  |  | \n23.1** | Consent of Independent Registered Public Accounting Firm. |  |  | \n24.1** | Power of Attorney (included on the Signatures page of this Annual Report on Form 10-K). |  |  | \n31.1** | Rule 13a-14(a) / 15d-14(a) Certification of Chief Executive Officer. |  |  | \n31.2** | Rule 13a-14(a) / 15d-14(a) Certification of Chief Financial Officer. |  |  | \n32.1*** | Section 1350 Certifications of Chief Executive Officer and Chief Financial Officer. |  |  | ",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3264,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 18829
+}

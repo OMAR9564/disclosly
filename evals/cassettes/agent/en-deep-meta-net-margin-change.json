@@ -1,0 +1,734 @@
+{
+ "case_id": "en-deep-meta-net-margin-change",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "6b426409981ec898e600a260bbf85964e753c6022731d4664bc67a8c98d2aca7",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2667297",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "META",
+       "period_from": "2025-Q1",
+       "query": "net income revenue margin 2025",
+       "period_to": "2025-Q3"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0Tq9ah703aP8QjlUp8u4GtPKJI0V1hLpxD9piqvePd+Jc+1m8dU7rNw/qbS1syqSaainecABuDRJllZCMJVvjVVq5X28+s8zP+7NDla6QpFjljEYVNMuct6aM="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1498,
+    "tokens_out": 58,
+    "latency_ms": 1806.295,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "4a61ef1edc9fa4956a6c9e98c9e8e6fce5cb1afc7366cd84517a6814831d7e69",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1910571",
+      "name": "get_financial_facts",
+      "arguments": {
+       "metrics": [
+        "net_income",
+        "revenue"
+       ],
+       "periods": [
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3"
+       ],
+       "ticker": "META"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TaQORafz3ahXxQnaU4By2AQe8FWBCE7LTjwCXDPPwco6pFo/pG9L57C3Q38CunCTtL+Zwk18+t+LzOeu6QhOuWNZJfM7R+WcrNh/DLIXmpiefvXXFlHJnGPI="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2599,
+    "tokens_out": 62,
+    "latency_ms": 778.126,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "a6bc5f778550b3138fab51b918937e07e6b3d0d0f90ba6b80ea9ab8118834009",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"$defs\": {\n    \"CitationRef\": {\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"marker\": {\n          \"minimum\": 1,\n          \"title\": \"Marker\",\n          \"type\": \"integer\"\n        },\n        \"cite_id\": {\n          \"title\": \"Cite Id\",\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"marker\",\n        \"cite_id\"\n      ],\n      \"title\": \"CitationRef\",\n      \"type\": \"object\"\n    },\n    \"Point\": {\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"text\": {\n          \"minLength\": 1,\n          \"title\": \"Text\",\n          \"type\": \"string\"\n        },\n        \"cite_ids\": {\n          \"items\": {\n            \"type\": \"string\"\n          },\n          \"title\": \"Cite Ids\",\n          \"type\": \"array\"\n        }\n      },\n      \"required\": [\n        \"text\"\n      ],\n      \"title\": \"Point\",\n      \"type\": \"object\"\n    }\n  },\n  \"additionalProperties\": false,\n  \"properties\": {\n    \"language\": {\n      \"enum\": [\n        \"tr\",\n        \"en\"\n      ],\n      \"title\": \"Language\",\n      \"type\": \"string\"\n    },\n    \"status\": {\n      \"enum\": [\n        \"completed\",\n        \"partial\",\n        \"refused\",\n        \"no_evidence\"\n      ],\n      \"title\": \"Status\",\n      \"type\": \"string\"\n    },\n    \"summary\": {\n      \"title\": \"Summary\",\n      \"type\": \"string\"\n    },\n    \"points\": {\n      \"items\": {\n        \"$ref\": \"#/$defs/Point\"\n      },\n      \"title\": \"Points\",\n      \"type\": \"array\"\n    },\n    \"citations\": {\n      \"items\": {\n        \"$ref\": \"#/$defs/CitationRef\"\n      },\n      \"title\": \"Citations\",\n      \"type\": \"array\"\n    },\n    \"disclaimer\": {\n      \"default\": \"Yatırım tavsiyesi değildir / Not investment advice\",\n      \"title\": \"Disclaimer\",\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"language\",\n    \"status\",\n    \"summary\"\n  ],\n  \"title\": \"Answer\",\n  \"type\": \"object\"\n}\n```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In Q1 2025, Meta reported revenue of $42,314,000,000 [f:741] and net income of $16,644,000,000 [f:759], resulting in a net margin of approximately 39.33%. In Q3 2025, Meta reported revenue of $51,242,000,000 [f:745] and net income of $2,709,000,000 [f:763], resulting in a net margin of approximately 5.29%. Consequently, Meta's net margin decreased by 34.04 percentage points from Q1 to Q3 of 2025.\",\n  \"points\": [\n    {\n      \"text\": \"In Q1 2025, Meta reported a revenue of $42,314,000,000 and net income of $16,644,000,000, giving a net margin of 39.33%.\",\n      \"cite_ids\": [\n        \"f:741\",\n        \"f:759\"\n      ]\n    },\n    {\n      \"text\": \"In Q3 2025, Meta reported a revenue of $51,242,000,000 and net income of $2,709,000,000, giving a net margin of 5.29%.\",\n      \"cite_ids\": [\n        \"f:745\",\n        \"f:763\"\n      ]\n    },\n    {\n      \"text\": \"The",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 4314,
+    "tokens_out": 1020,
+    "latency_ms": 2717.292,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "c48749823a8ea1113849157539ea76e33e955de3c129618a677e61a4518d9476",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In Q1 2025, Meta reported revenue of $42,314,000,000 [1] and net income of $16,644,000,000 [2], resulting in a net margin of approximately 39.33%. In Q3 2025, Meta reported revenue of $51,242,000,000 [3] and net income of $2,709,000,000 [4], resulting in a net margin of approximately 5.29%. Consequently, Meta's net margin decreased by 34.04 percentage points from Q1 to Q3 of 2025.\",\n  \"points\": [\n    {\n      \"text\": \"In Q1 2025, Meta reported a revenue of $42,314,000,000 and net income of $16,644,000,000, giving a net margin of 39.33%.\",\n      \"cite_ids\": [\n        \"f:741\",\n        \"f:759\"\n      ]\n    },\n    {\n      \"text\": \"In Q3 2025, Meta reported a revenue of $51,242,000,000 and net income of $2,709,000,000, giving a net margin of 5.29%.\",\n      \"cite_ids\": [\n        \"f:745\",\n        \"f:763\"\n      ]\n    },\n    {\n      \"text\": \"The net margin decreased by 34.04 percentage points from Q1 to Q3 2025.\",\n      \"cite_ids\": [\n        \"f:741\",\n        \"f:759\",\n        \"f:745\",\n        \"f:763\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:741\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:759\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:745\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:763\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 4665,
+    "tokens_out": 897,
+    "latency_ms": 13701.719,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q1\",\"period_to\":\"2025-Q3\",\"query\":\"net income revenue margin 2025\",\"ticker\":\"META\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:025aae890f94e15e9a0d37c16b4424e99d4eac5507aca36aef5a37d10ef7af62\" amounts_in=\"millions\">____________________________________ (1) Includes 2,175 million and 2,189 million shares of Class A common stock and 343 million and 345 million shares of Class B common stock, for the three months ended June 30, 2025 and 2024, respectively; and 2,179 million and 2,193 million shares of Class A common stock and 343 million and 347 million shares of Class B common stock, for the six months ended June 30, 2025 and 2024, respectively. EPS for Class B common stock is not presented separately as under the two-class method Class A and Class B EPS is not meaningfully different. 14 Table of Contents Note 4. Financial Instruments Fair Value Measurements Our cash equivalents, marketable securities, and restricted cash equivalents are classified within Level 1 or Level 2 of the fair value hierarchy because their fair values are derived from quoted market prices or alternative pricing sources and models utilizing market observable inputs. Certain other assets are classified within Level 3 because factors used to develop the estimated fair value are unobservable inputs that are not supported by market activity. The following tables summarize our assets measured at fair value on a recurring basis and the classification by level of input within the fair value hierarchy (in millions):</untrusted_document>\n<untrusted_document cite_id=\"c:00f1e6a8ee40324589d41846c0590146ce6555dfcfc62e12fd9b2b5cf5f12fe1\" amounts_in=\"millions\">v. Comm'r of Internal Revenue (2011-2013 tax years)). On May 22, 2025, the Tax Court issued its opinion in Facebook, Inc. v. Comm'r of Internal Revenue (2010 tax year). The Tax Court opinion provided a value of $ 7.79 billion for the intellectual property transferred to our international subsidiary, which is $ 1.48 billion higher than we reported. We estimated the net tax effects based on the revised value, and our provision for income taxes increased due to the remeasurement of unrecognized tax benefits. The Tax Court will review tax estimates submitted by both parties and determine the tax due in its forthcoming Tax Court decision. We will reassess any remeasurement of unrecognized tax benefits in the period in which the Tax Court decision is entered. At that time, we and the IRS will each have the option to file an appeal to the Ninth Circuit U.S. Court of Appeals. In September 2025, we received a Statutory Notice of Deficiency (\"2017-2019 Notice\") from the IRS, asserting an additional $ 15.89 billion in tax, plus interest and penalties for our 2017 through 2019 tax years. This 2017-2019 Notice primarily relates to transfer pricing with our foreign subsidiaries and other international tax adjustments. The largest issue in the 2017-2019 Notice relates to the same underlying transfer pricing transaction that we litigated in the 2010 tax year trial and for which we received a Tax Court opinion in May 2025. The IRS' proposed adjustments do not represent a final determination and do not reflect offsets, including reduction in tax we would owe under the mandatory transition tax on 29 Table of Contents accumulated foreign earnings, global intangible low-taxed income tax, and foreign-derived intangible income deduction from the 2017 Tax Cuts and Jobs Act. We do not agree with the IRS' position and are evaluating our options to challenge the 2017-2019 Notice. As of September 30, 2025, we believe our accrual for unrecognized tax benefits is adequate. Note 12. Segment Information We report our financial results for our two reportable segments: Family of Apps (FoA) and Reality Labs (RL). FoA includes Facebook, Instagram, Messenger, WhatsApp, and other services. RL includes our virtual, augmented, and mixed reality related consumer hardware, software, and content. Our operating segments are the same as our reportable segments. The following table sets forth our segment information of revenue, expenses, and income (loss) from operations (in millions):</untrusted_document>",
+   "summary": "META net income revenue margin 2025",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "c:025aae890f94e15e9a0d37c16b4424e99d4eac5507aca36aef5a37d10ef7af62",
+     "text": "____________________________________ (1) Includes 2,175 million and 2,189 million shares of Class A common stock and 343 million and 345 million shares of Class B common stock, for the three months ended June 30, 2025 and 2024, respectively; and 2,179 million and 2,193 million shares of Class A common stock and 343 million and 347 million shares of Class B common stock, for the six months ended June 30, 2025 and 2024, respectively. EPS for Class B common stock is not presented separately as under the two-class method Class A and Class B EPS is not meaningfully different. 14 Table of Contents Note 4. Financial Instruments Fair Value Measurements Our cash equivalents, marketable securities, and restricted cash equivalents are classified within Level 1 or Level 2 of the fair value hierarchy because their fair values are derived from quoted market prices or alternative pricing sources and models utilizing market observable inputs. Certain other assets are classified within Level 3 because factors used to develop the estimated fair value are unobservable inputs that are not supported by market activity. The following tables summarize our assets measured at fair value on a recurring basis and the classification by level of input within the fair value hierarchy (in millions):",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3306,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q2",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:00f1e6a8ee40324589d41846c0590146ce6555dfcfc62e12fd9b2b5cf5f12fe1",
+     "text": "v. Comm'r of Internal Revenue (2011-2013 tax years)). On May 22, 2025, the Tax Court issued its opinion in Facebook, Inc. v. Comm'r of Internal Revenue (2010 tax year). The Tax Court opinion provided a value of $ 7.79 billion for the intellectual property transferred to our international subsidiary, which is $ 1.48 billion higher than we reported. We estimated the net tax effects based on the revised value, and our provision for income taxes increased due to the remeasurement of unrecognized tax benefits. The Tax Court will review tax estimates submitted by both parties and determine the tax due in its forthcoming Tax Court decision. We will reassess any remeasurement of unrecognized tax benefits in the period in which the Tax Court decision is entered. At that time, we and the IRS will each have the option to file an appeal to the Ninth Circuit U.S. Court of Appeals. In September 2025, we received a Statutory Notice of Deficiency (\"2017-2019 Notice\") from the IRS, asserting an additional $ 15.89 billion in tax, plus interest and penalties for our 2017 through 2019 tax years. This 2017-2019 Notice primarily relates to transfer pricing with our foreign subsidiaries and other international tax adjustments. The largest issue in the 2017-2019 Notice relates to the same underlying transfer pricing transaction that we litigated in the 2010 tax year trial and for which we received a Tax Court opinion in May 2025. The IRS' proposed adjustments do not represent a final determination and do not reflect offsets, including reduction in tax we would owe under the mandatory transition tax on 29 Table of Contents accumulated foreign earnings, global intangible low-taxed income tax, and foreign-derived intangible income deduction from the 2017 Tax Cuts and Jobs Act. We do not agree with the IRS' position and are evaluating our options to challenge the 2017-2019 Notice. As of September 30, 2025, we believe our accrual for unrecognized tax benefits is adequate. Note 12. Segment Information We report our financial results for our two reportable segments: Family of Apps (FoA) and Reality Labs (RL). FoA includes Facebook, Instagram, Messenger, WhatsApp, and other services. RL includes our virtual, augmented, and mixed reality related consumer hardware, software, and content. Our operating segments are the same as our reportable segments. The following table sets forth our segment information of revenue, expenses, and income (loss) from operations (in millions):",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3305,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\"],\"periods\":[\"2025-Q1\",\"2025-Q2\",\"2025-Q3\"],\"ticker\":\"META\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:759\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4163\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17090\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:760\">Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4164\">Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:761\">Net income (2025-Q2): 18,337,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4165\">Net income (2025-Q2): 18,337,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:762\">Net income (2025-Q2; 2026-Q2 report): 18,337,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4166\">Net income (2025-Q2; 2026-Q2 report): 18,337,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:763\">Net income (2025-Q3): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4167\">Net income (2025-Q3): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:11503\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:13367\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:15147\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17095\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:741\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4145\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17070\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:742\">Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4146\">Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:743\">Revenue (2025-Q2): 47,516,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4147\">Revenue (2025-Q2): 47,516,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:744\">Revenue (2025-Q2; 2026-Q2 report): 47,516,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4148\">Revenue (2025-Q2; 2026-Q2 report): 47,516,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:745\">Revenue (2025-Q3): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4149\">Revenue (2025-Q3): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:11483\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:13347\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:15127\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17075\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>",
+   "summary": "META 2025-Q1 to 2025-Q3 net_income, revenue",
+   "count": 30,
+   "items": [
+    {
+     "cite_id": "f:759",
+     "text": "Net income (2025-Q1): 16,644,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 152,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "16644000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4163",
+     "text": "Net income (2025-Q1): 16,644,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2369,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "16644000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:17090",
+     "text": "Net income (2025-Q1): 16,644,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3307,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "16644000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:760",
+     "text": "Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 148,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-028526",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm"
+     },
+     "value": "16644000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4164",
+     "text": "Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2365,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-028526",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm"
+     },
+     "value": "16644000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:761",
+     "text": "Net income (2025-Q2): 18,337,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 151,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q2",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-25-036791",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm"
+     },
+     "value": "18337000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4165",
+     "text": "Net income (2025-Q2): 18,337,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2368,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q2",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-25-036791",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm"
+     },
+     "value": "18337000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:762",
+     "text": "Net income (2025-Q2; 2026-Q2 report): 18,337,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 147,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q2",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-050705",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm"
+     },
+     "value": "18337000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4166",
+     "text": "Net income (2025-Q2; 2026-Q2 report): 18,337,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2364,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q2",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-050705",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm"
+     },
+     "value": "18337000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:763",
+     "text": "Net income (2025-Q3): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 150,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-25-047240",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4167",
+     "text": "Net income (2025-Q3): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2367,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-25-047240",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:11503",
+     "text": "Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2835,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:13367",
+     "text": "Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2995,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:15147",
+     "text": "Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3140,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:17095",
+     "text": "Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3301,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:741",
+     "text": "Revenue (2025-Q1): 42,314,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 152,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "42314000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4145",
+     "text": "Revenue (2025-Q1): 42,314,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2369,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "42314000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:17070",
+     "text": "Revenue (2025-Q1): 42,314,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3307,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "42314000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:742",
+     "text": "Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 148,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-028526",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm"
+     },
+     "value": "42314000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4146",
+     "text": "Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2365,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-028526",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm"
+     },
+     "value": "42314000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:743",
+     "text": "Revenue (2025-Q2): 47,516,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 151,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q2",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-25-036791",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm"
+     },
+     "value": "47516000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4147",
+     "text": "Revenue (2025-Q2): 47,516,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2368,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q2",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-25-036791",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm"
+     },
+     "value": "47516000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:744",
+     "text": "Revenue (2025-Q2; 2026-Q2 report): 47,516,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 147,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q2",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-050705",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm"
+     },
+     "value": "47516000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4148",
+     "text": "Revenue (2025-Q2; 2026-Q2 report): 47,516,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2364,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q2",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-050705",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm"
+     },
+     "value": "47516000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:745",
+     "text": "Revenue (2025-Q3): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 150,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-25-047240",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4149",
+     "text": "Revenue (2025-Q3): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2367,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-25-047240",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:11483",
+     "text": "Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2835,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:13347",
+     "text": "Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2995,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:15127",
+     "text": "Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3140,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:17075",
+     "text": "Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3301,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 36771
+}

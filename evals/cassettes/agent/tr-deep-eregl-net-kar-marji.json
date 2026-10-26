@@ -1,0 +1,278 @@
+{
+ "case_id": "tr-deep-eregl-net-kar-marji",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "ee06aeb5a27d347601c3952b4c98062d422e433597b499cdad64d84d24cb3536",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1784050",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "EREGL"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TTFV5XSmNoor7X62D/LbZlFKVn49iU6OXSMtaPofTx5HwSrtHBvjgAA2Ghzg3SAneu3RJ5zF++Q995eCaBLe2MbgaQ9KF+RSBRIVNsyYkgEg0zTAP99olhkI="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1626,
+    "tokens_out": 17,
+    "latency_ms": 1179.169,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "3d6ece05b9c6d025afb25d63119324a5a4ce4da0e7fbb58aaa87ed3790525c6a",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2362773",
+      "name": "get_financial_facts",
+      "arguments": {
+       "metrics": [
+        "revenue",
+        "net_income"
+       ],
+       "periods": [
+        "2025-Q1",
+        "2025-Q3"
+       ],
+       "ticker": "EREGL"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0Tqmv3cqeKbYMj2qDJ4E1gRoZtEaGsktaFeJJXtEj7e/GN+6dJb0KceGWAeYMhy09AO9gcvEP4/QUn6ErAcHkkT7OlpUydu+xD+hRc+ykE2Kn78h+A1zMuTwo="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 8208,
+    "tokens_out": 53,
+    "latency_ms": 1084.611,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "04883a8fbf96be890a61f0a68be6002411de593e9feb56edb11cf5bd4a357b36",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"$defs\": {\n    \"CitationRef\": {\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"marker\": {\n          \"minimum\": 1,\n          \"title\": \"Marker\",\n          \"type\": \"integer\"\n        },\n        \"cite_id\": {\n          \"title\": \"Cite Id\",\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\n        \"marker\",\n        \"cite_id\"\n      ],\n      \"title\": \"CitationRef\",\n      \"type\": \"object\"\n    },\n    \"Point\": {\n      \"additionalProperties\": false,\n      \"properties\": {\n        \"text\": {\n          \"minLength\": 1,\n          \"title\": \"Text\",\n          \"type\": \"string\"\n        },\n        \"cite_ids\": {\n          \"items\": {\n            \"type\": \"string\"\n          },\n          \"title\": \"Cite Ids\",\n          \"type\": \"array\"\n        }\n      },\n      \"required\": [\n        \"text\"\n      ],\n      \"title\": \"Point\",\n      \"type\": \"object\"\n    }\n  },\n  \"additionalProperties\": false,\n  \"properties\": {\n    \"language\": {\n      \"enum\": [\n        \"tr\",\n        \"en\"\n      ],\n      \"title\": \"Language\",\n      \"type\": \"string\"\n    },\n    \"status\": {\n      \"enum\": [\n        \"completed\",\n        \"partial\",\n        \"refused\",\n        \"no_evidence\"\n      ],\n      \"title\": \"Status\",\n      \"type\": \"string\"\n    },\n    \"summary\": {\n      \"title\": \"Summary\",\n      \"type\": \"string\"\n    },\n    \"points\": {\n      \"items\": {\n        \"$ref\": \"#/$defs/Point\"\n      },\n      \"title\": \"Points\",\n      \"type\": \"array\"\n    },\n    \"citations\": {\n      \"items\": {\n        \"$ref\": \"#/$defs/CitationRef\"\n      },\n      \"title\": \"Citations\",\n      \"type\": \"array\"\n    },\n    \"disclaimer\": {\n      \"default\": \"Yatırım tavsiyesi değildir / Not investment advice\",\n      \"title\": \"Disclaimer\",\n      \"type\": \"string\"\n    }\n  },\n  \"required\": [\n    \"language\",\n    \"status\",\n    \"summary\"\n  ],\n  \"title\": \"Answer\",\n  \"type\": \"object\"\n}\n```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Ereğli'nin 2025 ilk çeyreğinde hasılatı 53.544.627.000 TRY [f:2755], net dönem kârı 447.904.000 TRY [f:2759] olarak gerçekleşmiştir (net kâr marjı yaklaşık %0.84). 2025 üçüncü çeyreğinde ise hasılat 52.957.615.000 TRY [f:2779], net dönem kârı 700.347.000 TRY [f:2783] olmuştur (3 aylık dönemsel net kâr marjı yaklaşık %1.32).\",\n  \"points\": [\n    {\n      \"text\": \"2025 ilk çeyrekte hasılat 53.544.627.000 TRY, net dönem kârı 447.904.000 TRY'dir.\",\n      \"cite_ids\": [\n        \"f:2755\",\n        \"f:2759\"\n      ]\n    },\n    {\n      \"text\": \"2025 üçüncü çeyrekte (3 aylık) hasılat 52.957.615.000 TRY, net dönem kârı 700.347.000 TRY'dir.\",\n      \"cite_ids\": [\n        \"f:2779\",\n        \"f:2783\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\":",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 8965,
+    "tokens_out": 1020,
+    "latency_ms": 2992.921,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "ff4668a3c62871621b0fcc9dc61d36ac44d84baac757533f17e59fc6c4116af4",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Ereğli'nin 2025 ilk çeyreğinde hasılatı 53.544.627.000 TRY, net dönem kârı 447.904.000 TRY olarak gerçekleşmiştir (net kâr marjı yaklaşık %0,84). 2025 üçüncü çeyreğinde ise hasılat 52.957.615.000 TRY, net dönem kârı 700.347.000 TRY olmuştur (3 aylık dönemsel net kâr marjı yaklaşık %1,32).\",\n  \"points\": [\n    {\n      \"text\": \"2025 ilk çeyrekte hasılat 53.544.627.000 TRY, net dönem kârı 447.904.000 TRY'dir.\",\n      \"cite_ids\": [\n        \"f:2755\",\n        \"f:2759\"\n      ]\n    },\n    {\n      \"text\": \"2025 üçüncü çeyrekte (3 aylık) hasılat 52.957.615.000 TRY, net dönem kârı 700.347.000 TRY'dir.\",\n      \"cite_ids\": [\n        \"f:2779\",\n        \"f:2783\"\n      ]\n    },\n    {\n      \"text\": \"İlk çeyrek net kâr marjı yaklaşık %0,84, üçüncü çeyrek net kâr marjı yaklaşık %1,32 olarak hesaplanmıştır.\",\n      \"cite_ids\": [\n        \"f:2755\",\n        \"f:2759\",\n        \"f:2779\",\n        \"f:2783\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2755\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2759\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:2779\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:2783\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 8985,
+    "tokens_out": 1038,
+    "latency_ms": 19654.303,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash",
+     "nvidia-large"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"EREGL\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 2790, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-22T16:01:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1686050\"}, {\"document_id\": 2789, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-22T16:01:11Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1686049\"}, {\"document_id\": 1566, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-06T15:16:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1644585\"}, {\"document_id\": 1565, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-06T15:16:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1644583\"}, {\"document_id\": 1564, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-24T06:30:21Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1636318\"}, {\"document_id\": 1563, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-21T18:30:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1635535\"}, {\"document_id\": 1562, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-08T15:12:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1614893\"}, {\"document_id\": 1561, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-22T12:30:29Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1610422\"}, {\"document_id\": 1560, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-19T16:42:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1608801\"}, {\"document_id\": 1559, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-28T19:37:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1598432\"}, {\"document_id\": 1558, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-28T17:12:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1598406\"}, {\"document_id\": 1557, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-28T17:12:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1598405\"}, {\"document_id\": 1556, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-09T15:13:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1590295\"}, {\"document_id\": 1555, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-09T15:12:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1590294\"}, {\"document_id\": 1554, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-26T17:41:03Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1576835\"}, {\"document_id\": 1553, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-26T17:40:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1576834\"}, {\"document_id\": 1552, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-23T15:12:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1574808\"}, {\"document_id\": 1551, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-23T15:12:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1574807\"}, {\"document_id\": 1550, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-16T15:11:55Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1573141\"}, {\"document_id\": 1549, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-02T15:12:46Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1563894\"}, {\"document_id\": 1548, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-25T15:13:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1561508\"}, {\"document_id\": 1547, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-24T15:11:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1561004\"}, {\"document_id\": 1546, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-17T15:19:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1557669\"}, {\"document_id\": 1545, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-17T15:18:42Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1557666\"}, {\"document_id\": 1544, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-17T15:18:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1557665\"}, {\"document_id\": 1543, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-04T15:11:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511242\"}, {\"document_id\": 1542, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-24T12:44:54Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1507787\"}, {\"document_id\": 1541, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-24T12:25:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1507771\"}, {\"document_id\": 1540, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-20T15:12:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1506135\"}, {\"document_id\": 1539, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-20T15:12:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1506134\"}, {\"document_id\": 1538, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-03T15:12:01Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1496018\"}, {\"document_id\": 1537, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-23T14:01:29Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1482165\"}, {\"document_id\": 1536, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-06T15:12:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1473204\"}, {\"document_id\": 1535, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-06T15:12:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1473202\"}, {\"document_id\": 1534, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-05T15:31:35Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1472576\"}, {\"document_id\": 1533, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-25T06:00:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1466397\"}, {\"document_id\": 1532, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-18T16:42:42Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1464825\"}, {\"document_id\": 1531, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-18T06:03:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1464502\"}, {\"document_id\": 1530, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-27T17:15:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1452961\"}, {\"document_id\": 1529, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-11T15:11:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1447725\"}, {\"document_id\": 1528, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-27T16:59:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1442589\"}, {\"document_id\": 1527, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-22T15:15:21Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1441185\"}, {\"document_id\": 1526, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-22T15:14:05Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1441180\"}, {\"document_id\": 1525, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-22T12:34:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1441060\"}, {\"document_id\": 1524, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-29T15:12:41Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431041\"}, {\"document_id\": 1523, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-29T15:12:29Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431038\"}, {\"document_id\": 1522, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-17T16:09:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1427276\"}, {\"document_id\": 1521, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-17T16:09:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1427275\"}, {\"document_id\": 1520, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-26T17:36:21Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1412522\"}, {\"document_id\": 1519, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-21T15:12:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1409891\"}, {\"document_id\": 1518, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-03T15:12:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1398733\"}, {\"document_id\": 1517, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-24T15:11:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1395221\"}, {\"document_id\": 1516, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-12T16:01:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1392336\"}, {\"document_id\": 1515, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-12T15:20:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1392295\"}, {\"document_id\": 1514, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-12T15:20:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1392293\"}, {\"document_id\": 1513, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-12T15:19:41Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1392292\"}, {\"document_id\": 1512, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-20T15:55:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1382804\"}, {\"document_id\": 1511, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-27T15:20:21Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1369322\"}, {\"document_id\": 1510, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-18T15:12:01Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1358654\"}, {\"document_id\": 1509, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-10-25T15:29:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1351034\"}, {\"document_id\": 1508, \"ticker\": \"EREGL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-10-25T15:16:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1350994\"}, {\"document_id\": 1507, \"ticker\": \"EREGL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-22T15:16:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1350041\"}, {\"document_id\": 1506, \"ticker\": \"EREGL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-22T15:16:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1350040\"}]}",
+   "summary": "EREGL documents",
+   "count": 63,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\",\"net_income\"],\"periods\":[\"2025-Q1\",\"2025-Q3\"],\"ticker\":\"EREGL\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2759\">Net dönem kârı (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 447.904.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2808\">Net dönem kârı (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 447.904.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2783\">Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 700.347.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:10937\">Net dönem kârı (2025-Q3; Önceki Dönem 3 Aylık 01.07.2025 - 30.09.2025; 2026-Q3 raporu): 700.347.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2755\">Hasılat (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 53.544.627.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2804\">Hasılat (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 53.544.627.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2779\">Hasılat (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 52.957.615.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:10933\">Hasılat (2025-Q3; Önceki Dönem 3 Aylık 01.07.2025 - 30.09.2025; 2026-Q3 raporu): 52.957.615.000 TRY</untrusted_document>",
+   "summary": "EREGL 2025-Q1 to 2025-Q3 revenue, net_income",
+   "count": 8,
+   "items": [
+    {
+     "cite_id": "f:2759",
+     "text": "Net dönem kârı (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 447.904.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1523,
+      "ticker": "EREGL",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.03.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1431038"
+     },
+     "value": "447904000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2808",
+     "text": "Net dönem kârı (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 447.904.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1557,
+      "ticker": "EREGL",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Önceki Dönem 01.01.2025 - 31.03.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1598405"
+     },
+     "value": "447904000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2783",
+     "text": "Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 700.347.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1539,
+      "ticker": "EREGL",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1506134"
+     },
+     "value": "700347000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:10937",
+     "text": "Net dönem kârı (2025-Q3; Önceki Dönem 3 Aylık 01.07.2025 - 30.09.2025; 2026-Q3 raporu): 700.347.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 2789,
+      "ticker": "EREGL",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Önceki Dönem 3 Aylık 01.07.2025 - 30.09.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1686049"
+     },
+     "value": "700347000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2755",
+     "text": "Hasılat (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 53.544.627.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1523,
+      "ticker": "EREGL",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Cari Dönem 01.01.2025 - 31.03.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1431038"
+     },
+     "value": "53544627000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2804",
+     "text": "Hasılat (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 53.544.627.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1557,
+      "ticker": "EREGL",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Önceki Dönem 01.01.2025 - 31.03.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1598405"
+     },
+     "value": "53544627000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2779",
+     "text": "Hasılat (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 52.957.615.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1539,
+      "ticker": "EREGL",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1506134"
+     },
+     "value": "52957615000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:10933",
+     "text": "Hasılat (2025-Q3; Önceki Dönem 3 Aylık 01.07.2025 - 30.09.2025; 2026-Q3 raporu): 52.957.615.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 2789,
+      "ticker": "EREGL",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / Hasılat / Önceki Dönem 3 Aylık 01.07.2025 - 30.09.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1686049"
+     },
+     "value": "52957615000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 56375
+}

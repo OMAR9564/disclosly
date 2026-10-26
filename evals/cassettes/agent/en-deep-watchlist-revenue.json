@@ -1,0 +1,260 @@
+{
+ "case_id": "en-deep-watchlist-revenue",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "9d3a8c7c9e70e33f4722dbfd4503edfc74f79d62b2d639820de223ed36a2d507",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_1900806",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "AAPL"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TpXxwzWOmEX83lFTzSDO3oiUwjAz/MkIUZNUMkCARx4azkNBu6SmBQ8w6Bb0qAp5zAgNQWNiq1VlShdw+267+9zSsLTI3QFQ42tFIrPd1FUccVA7kCVB1kIM="
+       }
+      }
+     },
+     {
+      "id": "call_1900807",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "MSFT"
+      },
+      "extra": null
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1488,
+    "tokens_out": 33,
+    "latency_ms": 1481.244,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "7f6baea2f16b47df8911d78480e4a22bc0f6de7041172af42121a46ca6fb1c06",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2854271",
+      "name": "get_financial_facts",
+      "arguments": {
+       "ticker": "AAPL",
+       "metrics": [
+        "revenue"
+       ],
+       "periods": [
+        "2025-FY"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TJDQOV3702QUANxxTyQqUbPgNvqw9suZEfsGOrnUjPscLeqEYPa7JJ66PvTir6BUEmKrZ3Igv0wjoS3e6H+/tEWB+AKdJqotBH+cgIIgmsByoEta4MqahRx4="
+       }
+      }
+     },
+     {
+      "id": "call_2854272",
+      "name": "get_financial_facts",
+      "arguments": {
+       "periods": [
+        "2025-FY"
+       ],
+       "metrics": [
+        "revenue"
+       ],
+       "ticker": "MSFT"
+      },
+      "extra": null
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 3702,
+    "tokens_out": 71,
+    "latency_ms": 1853.969,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "ea992b092a1a7601cddeff17b645aaa81f8c78b1644931b44b692425fef5937f",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In fiscal 2025, Apple Inc. (AAPL) reported revenue of 416,161,000,000 USD [f:111], while Microsoft Corporation (MSFT) reported revenue of 281,724,000,000 USD [f:321].\",\n  \"points\": [\n    {\n      \"text\": \"Apple Inc. (AAPL) fiscal 2025 revenue was 416,161,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:111\"\n      ]\n    },\n    {\n      \"text\": \"Microsoft Corporation (MSFT) fiscal 2025 revenue was 281,724,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:321\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:111\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:321\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 4109,
+    "tokens_out": 327,
+    "latency_ms": 2362.198,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"AAPL\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 3261, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm\"}, {\"document_id\": 3262, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm\"}, {\"document_id\": 3263, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2026-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000006/aapl-20251227.htm\"}, {\"document_id\": 3264, \"ticker\": \"AAPL\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm\"}, {\"document_id\": 3265, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000073/aapl-20250628.htm\"}, {\"document_id\": 3266, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-02T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000057/aapl-20250329.htm\"}, {\"document_id\": 3267, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2025-01-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000008/aapl-20241228.htm\"}, {\"document_id\": 3268, \"ticker\": \"AAPL\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2024-11-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm\"}]}",
+   "summary": "AAPL documents",
+   "count": 8,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"MSFT\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 3269, \"ticker\": \"MSFT\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-07-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm\"}, {\"document_id\": 3270, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm\"}, {\"document_id\": 3271, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2026-01-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312526027207/msft-20251231.htm\"}, {\"document_id\": 3272, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm\"}, {\"document_id\": 3273, \"ticker\": \"MSFT\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-07-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm\"}, {\"document_id\": 3274, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017025061046/msft-20250331.htm\"}, {\"document_id\": 3275, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2025-01-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017025010491/msft-20241231.htm\"}, {\"document_id\": 3276, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017024118967/msft-20240930.htm\"}]}",
+   "summary": "MSFT documents",
+   "count": 8,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"AAPL\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:111\">Revenue (2025-FY): 416,161,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3621\">Revenue (2025-FY): 416,161,000,000 USD</untrusted_document>",
+   "summary": "AAPL 2025-FY revenue",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "f:111",
+     "text": "Revenue (2025-FY): 416,161,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "416161000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3621",
+     "text": "Revenue (2025-FY): 416,161,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "416161000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"MSFT\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:321\">Revenue (2025-FY): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3725\">Revenue (2025-FY): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:322\">Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3726\">Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD</untrusted_document>",
+   "summary": "MSFT 2025-FY revenue",
+   "count": 4,
+   "items": [
+    {
+     "cite_id": "f:321",
+     "text": "Revenue (2025-FY): 281,724,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 119,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000950170-25-100235",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
+     },
+     "value": "281724000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3725",
+     "text": "Revenue (2025-FY): 281,724,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2336,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000950170-25-100235",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
+     },
+     "value": "281724000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:322",
+     "text": "Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 115,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001193125-26-323660",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm"
+     },
+     "value": "281724000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3726",
+     "text": "Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2332,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001193125-26-323660",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm"
+     },
+     "value": "281724000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 7681
+}

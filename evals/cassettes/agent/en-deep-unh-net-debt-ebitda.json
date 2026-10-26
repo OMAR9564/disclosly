@@ -1,0 +1,460 @@
+{
+ "case_id": "en-deep-unh-net-debt-ebitda",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "1e0017b0638102c7c3cc83129942302ce0dc9d65125eda15a0dc20667f815eec",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2844540",
+      "name": "get_financial_facts",
+      "arguments": {
+       "ticker": "UNH",
+       "periods": [
+        "2024-FY"
+       ],
+       "metrics": [
+        "cash",
+        "total_debt",
+        "ebitda"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T5zPcNa4cGjVZKtgzdyexncdPkb9bFonCj/ZaE9iZDMR+1slBxRi6i5HGxYHfFiD5L6Y1zw1gWiOfjxFjk7CD+8Mb008C+MptPOV4jE36NlUUPWWWW/Z6BUs="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1490,
+    "tokens_out": 48,
+    "latency_ms": 908.612,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "40216e486f68f056802d7dfe3b98c82f1b889c4ff3ba1dbcd5d7879bc8a92eda",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2661014",
+      "name": "search_documents",
+      "arguments": {
+       "period_to": "2024-FY",
+       "ticker": "UNH",
+       "query": "net debt EBITDA",
+       "period_from": "2024-FY"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TiU/2IFgsvYVYM72byHRouKggSVy6yoqMLprABkBcsTBWZOMrXYIT+or4ncNmLVXbFXFYPfqK1RxrFOYYmrtng3uD6CJMk1npO2hnWiuMav36KNq547x8vc0="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2206,
+    "tokens_out": 51,
+    "latency_ms": 979.103,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "c8e594ef3299844175db8ef437b8f6012db4a8b71cabcfb22c961db6fabae95e",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"For fiscal year 2024, UnitedHealth Group's total debt was $72,359,000,000 [f:1378], cash and cash equivalents were $25,312,000,000 [f:1412], resulting in a net debt of $47,047,000,000. EBITDA for fiscal 2024 was $36,386,000,000 [f:1433]. Consequently, the net debt to EBITDA ratio for fiscal 2024 is approximately 1.29.\",\n  \"points\": [\n    {\n      \"text\": \"Total debt for fiscal 2024 was $72,359,000,000.\",\n      \"cite_ids\": [\n        \"f:1378\"\n      ]\n    },\n    {\n      \"text\": \"Cash and cash equivalents for fiscal 2024 were $25,312,000,000.\",\n      \"cite_ids\": [\n        \"f:1412\"\n      ]\n    },\n    {\n      \"text\": \"EBITDA for fiscal 2024 was $36,386,000,000.\",\n      \"cite_ids\": [\n        \"f:1433\"\n      ]\n    },\n    {\n      \"text\": \"Net debt (Total debt minus Cash and cash equivalents) is $47,047,000,000.\",\n      \"cite_ids\": [\n        \"f:1378\",\n        \"f:1412\"\n      ]\n    },\n    {\n      \"text\": \"Net debt to EBITDA ratio for fiscal 2024 is approximately 1.29.\",\n      \"cite_ids\": [\n        \"f:1378\",\n        \"f:1412\",\n        \"f:1433\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:1378\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:1412\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:1433\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 4310,
+    "tokens_out": 623,
+    "latency_ms": 2094.591,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "f0a586226925e397c5373d8f4d2244cd5ccb92cdfbc70ade01527e655f289849",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n {\"language\": \"en\", \"status\": \"completed\", \"summary\": \"For fiscal year 2024, UnitedHealth Group reported total debt of $72,359,000,000 [1], cash and cash equivalents of $25,312,000,000 [2], and EBITDA of $36,386,000,000 [3]. Net debt to EBITDA is calculated as (Total debt - Cash and cash equivalents) / EBITDA.\", \"points\": [{\"text\": \"Total debt for fiscal 2024 was $72,359,000,000.\", \"cite_ids\": [\"f:1378\"]}, {\"text\": \"Cash and cash equivalents for fiscal 2024 were $25,312,000,00",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 4477,
+    "tokens_out": 2048,
+    "latency_ms": 30615.845,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash",
+     "nvidia-large"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"cash\",\"total_debt\",\"ebitda\"],\"periods\":[\"2024-FY\"],\"ticker\":\"UNH\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:1412\">Cash and cash equivalents (2024-FY): 25,312,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4816\">Cash and cash equivalents (2024-FY): 25,312,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1416\">Cash and cash equivalents (2024-FY; 2025-FY report): 25,312,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4820\">Cash and cash equivalents (2024-FY; 2025-FY report): 25,312,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1433\">EBITDA (2024-FY): 36,386,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4837\">EBITDA (2024-FY): 36,386,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1434\">EBITDA (2024-FY; 2025-FY report): 36,386,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4838\">EBITDA (2024-FY; 2025-FY report): 36,386,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1378\">Total debt (2024-FY): 72,359,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4782\">Total debt (2024-FY): 72,359,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1382\">Total debt (2024-FY; 2025-FY report): 72,359,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4786\">Total debt (2024-FY; 2025-FY report): 72,359,000,000 USD</untrusted_document>",
+   "summary": "UNH 2024-FY cash, total_debt, ebitda",
+   "count": 12,
+   "items": [
+    {
+     "cite_id": "f:1412",
+     "text": "Cash and cash equivalents (2024-FY): 25,312,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 205,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000731766-25-000063",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": "25312000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4816",
+     "text": "Cash and cash equivalents (2024-FY): 25,312,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2422,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000731766-25-000063",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": "25312000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1416",
+     "text": "Cash and cash equivalents (2024-FY; 2025-FY report): 25,312,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 201,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000731766-26-000062",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm"
+     },
+     "value": "25312000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4820",
+     "text": "Cash and cash equivalents (2024-FY; 2025-FY report): 25,312,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2418,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cash",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000731766-26-000062",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm"
+     },
+     "value": "25312000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1433",
+     "text": "EBITDA (2024-FY): 36,386,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 205,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000731766-25-000063 + us-gaap:DepreciationAndAmortization 0000731766-25-000063",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": "36386000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4837",
+     "text": "EBITDA (2024-FY): 36,386,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2422,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000731766-25-000063 + us-gaap:DepreciationAndAmortization 0000731766-25-000063",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": "36386000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1434",
+     "text": "EBITDA (2024-FY; 2025-FY report): 36,386,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 201,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000731766-26-000062 + us-gaap:DepreciationAndAmortization 0000731766-26-000062",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm"
+     },
+     "value": "36386000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4838",
+     "text": "EBITDA (2024-FY; 2025-FY report): 36,386,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2418,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "ebitda",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0000731766-26-000062 + us-gaap:DepreciationAndAmortization 0000731766-26-000062",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm"
+     },
+     "value": "36386000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1378",
+     "text": "Total debt (2024-FY): 72,359,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 205,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebtNoncurrent 0000731766-25-000063",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": "72359000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4782",
+     "text": "Total debt (2024-FY): 72,359,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2422,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebtNoncurrent 0000731766-25-000063",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": "72359000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:1382",
+     "text": "Total debt (2024-FY; 2025-FY report): 72,359,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 201,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebtNoncurrent 0000731766-26-000062",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm"
+     },
+     "value": "72359000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4786",
+     "text": "Total debt (2024-FY; 2025-FY report): 72,359,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2418,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "total_debt",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:LongTermDebtNoncurrent 0000731766-26-000062",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176626000062/unh-20251231.htm"
+     },
+     "value": "72359000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2024-FY\",\"period_to\":\"2024-FY\",\"query\":\"net debt EBITDA\",\"ticker\":\"UNH\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:003abd2a41a84d4d72401472e2b5d5722bce5fb375caab3d92a3ecce3a456363\" amounts_in=\"millions\">Amortization expense relating to intangible assets for the years ended December 31, 2024, 2023 and 2022 was $ 1.7 billion, $ 1.6 billion and $ 1.3 billion, respectively. 7. Medical Costs Payable</untrusted_document>\n<untrusted_document cite_id=\"c:0380f100c35072464283703fd6a0b599e507133eb33eb34b4429bc62ffb4f9ea\">68 Table of Contents</untrusted_document>\n<untrusted_document cite_id=\"c:0156abc7f3aa9a33680171a8e77d99e834ca1c1ed073aca95096d6bee6f12e9a\">and (iii) provide reasonable assurance regarding prevention or timely detection of unauthorized acquisition, use or disposition of the Company’s assets that could have a material effect on the consolidated financial statements. Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate. Management assessed the effectiveness of the Company’s internal control over financial reporting as of December 31, 2024. In making this assessment, we used the criteria set forth by the Committee of Sponsoring Organizations of the Treadway Commission (COSO) in Internal Control-Integrated Framework (2013). Based on our assessment and the COSO criteria, we believe that, as of December 31, 2024, the Company maintained effective internal control over financial reporting. The Company’s independent registered public accounting firm has audited the Company’s internal control over financial reporting as of December 31, 2024, as stated in the Report of Independent Registered Public Accounting Firm , appearing under Item 9A. 67 Table of Contents REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM To the shareholders and the Board of Directors of UnitedHealth Group Incorporated and Subsidiaries: Opinion on Internal Control over Financial Reporting We have audited the internal control over financial reporting of UnitedHealth Group Incorporated and subsidiaries (the “Company”) as of December 31, 2024, based on criteria established in Internal Control — Integrated Framework (2013) issued by the Committee of Sponsoring Organizations of the Treadway Commission (COSO). In our opinion, the Company maintained, in all material respects, effective internal control over financial reporting as of December 31, 2024, based on criteria established in Internal Control — Integrated Framework (2013) issued by COSO. We have also audited, in accordance with the standards of the Public Company Accounting Oversight Board (United States) (PCAOB), the consolidated financial statements as of and for the year ended December 31, 2024, of the Company and our report dated February 27, 2025, expressed an unqualified opinion on those financial statements. Basis for Opinion The Company’s management is responsible for maintaining effective internal control over financial reporting and for its assessment of the effectiveness of internal control over financial reporting, included in the accompanying Report of Management on Internal Control Over Financial Reporting as of December 31, 2024.</untrusted_document>\n<untrusted_document cite_id=\"c:01405708cb5de82ab8d9af5eda0bd15f3b92cc1bf080ea03656ecba10491b7da\" amounts_in=\"millions\">(in millions) | UnitedHealthcare |  | Optum Health |  | Optum Insight |  | Optum Rx | Consolidated |  |  |  | \nBalance at January 1, 2023 |  | 27,395 |  |  |  | 29,238 |  |  | 17,244 |  | 19,475 | 93,352\nAcquisitions | 296 |  |  | 8,023 |  |  | 1,802 |  | — | 10,121 |  | \nForeign currency effects and other adjustments, net | 187 |  |  | ( 182 ) |  |  | 261 |  | ( 7 ) | 259 |  | \nBalance at December 31, 2023 | 27,878 |  |  | 37,079 |  |  | 19,307 |  | 19,468 | 103,732 |  | \nAcquisitions | — |  |  | 2,071 |  |  | — |  | 2,305 | 4,376 |  | \nDispositions, foreign currency effects and other adjustments, net | ( 717 ) |  |  | ( 324 ) |  |  | ( 327 ) |  | ( 6 ) | ( 1,374 ) |  | \nBalance at December 31, 2024 |  | 27,161 |  |  |  | 38,826 |  |  | 18,980 |  | 21,767 | 106,734</untrusted_document>\n<untrusted_document cite_id=\"c:002e6317c03e11fa203cac360738679078bd8815192d2ccc854fe833a3d84aa3\">See Notes to the Consolidated Financial Statements 43 Table of Contents UnitedHealth Group</untrusted_document>\n<untrusted_document cite_id=\"c:0198b6de6ab3c7ab5fb12804e7ccf5ab30a3e12943ece17ee55903ae0b63bbe0\">Aged, Blind and Disabled; and other federal, state and community health care programs. As of December 31, 2024, UnitedHealthcare Community & State participated in programs in 33 states and the District of Columbia, and served more than 7.4 million people; including 1.2 million people through Medicaid expansion programs in 20 states under the Patient Protection and Affordable Care Act (ACA). States using managed care services for Medicaid beneficiaries select health plans by using a formal bid process or by awarding individual contracts. These health plans and care programs are designed to address the complex needs of the populations they serve, including the chronically ill, people with disabilities and people with a higher risk of medical, behavioral and social conditions. UnitedHealthcare Community & State administers benefits for the unique needs of children, pregnant women, adults, seniors and those who are institutionalized or are nursing home eligible. These individuals often live in medically underserved areas and are less likely to have a consistent relationship with the medical community or a care provider. They also often face significant social and economic challenges. GOVERNMENT REGULATION Our businesses are subject to comprehensive U.S. federal and state and international laws and regulations. We are regulated by agencies which generally have discretion to issue regulations and interpret and enforce laws and rules. U.S. federal and state and international governments continue to consider and enact various legislative and regulatory proposals which could materially impact certain aspects of the health care system. New laws, regulations and rules, or changes in the interpretation of existing laws, regulations and rules, including as a result of changes in the political environment, could adversely affect our businesses. See Part I, Item 1A, “Risk Factors” for a discussion of the risks related to our compliance with U.S. federal and state and international laws and regulations. U.S. Federal Laws and Regulation When we contract with the federal government, we are subject to federal laws and regulations relating to the award, administration and performance of U.S. government contracts. CMS regulates our UnitedHealthcare businesses and certain aspects of our Optum businesses. Payments by CMS to our businesses are subject to regulations, including those governing fee-for-service and the submission of information relating to the health status of enrollees for purposes of determining the amounts of certain payments to us. CMS also has the right to audit our performance to determine our compliance with CMS contracts and regulations and the quality of care we provide to Medicare beneficiaries. Our commercial business is further subject to CMS audits related to medical loss ratios (MLRs) and risk adjustment data.</untrusted_document>",
+   "summary": "UNH net debt EBITDA",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:003abd2a41a84d4d72401472e2b5d5722bce5fb375caab3d92a3ecce3a456363",
+     "text": "Amortization expense relating to intangible assets for the years ended December 31, 2024, 2023 and 2022 was $ 1.7 billion, $ 1.6 billion and $ 1.3 billion, respectively. 7. Medical Costs Payable",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3365,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 7A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:0380f100c35072464283703fd6a0b599e507133eb33eb34b4429bc62ffb4f9ea",
+     "text": "68 Table of Contents",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3365,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 9A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:0156abc7f3aa9a33680171a8e77d99e834ca1c1ed073aca95096d6bee6f12e9a",
+     "text": "and (iii) provide reasonable assurance regarding prevention or timely detection of unauthorized acquisition, use or disposition of the Company’s assets that could have a material effect on the consolidated financial statements. Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate. Management assessed the effectiveness of the Company’s internal control over financial reporting as of December 31, 2024. In making this assessment, we used the criteria set forth by the Committee of Sponsoring Organizations of the Treadway Commission (COSO) in Internal Control-Integrated Framework (2013). Based on our assessment and the COSO criteria, we believe that, as of December 31, 2024, the Company maintained effective internal control over financial reporting. The Company’s independent registered public accounting firm has audited the Company’s internal control over financial reporting as of December 31, 2024, as stated in the Report of Independent Registered Public Accounting Firm , appearing under Item 9A. 67 Table of Contents REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM To the shareholders and the Board of Directors of UnitedHealth Group Incorporated and Subsidiaries: Opinion on Internal Control over Financial Reporting We have audited the internal control over financial reporting of UnitedHealth Group Incorporated and subsidiaries (the “Company”) as of December 31, 2024, based on criteria established in Internal Control — Integrated Framework (2013) issued by the Committee of Sponsoring Organizations of the Treadway Commission (COSO). In our opinion, the Company maintained, in all material respects, effective internal control over financial reporting as of December 31, 2024, based on criteria established in Internal Control — Integrated Framework (2013) issued by COSO. We have also audited, in accordance with the standards of the Public Company Accounting Oversight Board (United States) (PCAOB), the consolidated financial statements as of and for the year ended December 31, 2024, of the Company and our report dated February 27, 2025, expressed an unqualified opinion on those financial statements. Basis for Opinion The Company’s management is responsible for maintaining effective internal control over financial reporting and for its assessment of the effectiveness of internal control over financial reporting, included in the accompanying Report of Management on Internal Control Over Financial Reporting as of December 31, 2024.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3365,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 9A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:01405708cb5de82ab8d9af5eda0bd15f3b92cc1bf080ea03656ecba10491b7da",
+     "text": "(in millions) | UnitedHealthcare |  | Optum Health |  | Optum Insight |  | Optum Rx | Consolidated |  |  |  | \nBalance at January 1, 2023 |  | 27,395 |  |  |  | 29,238 |  |  | 17,244 |  | 19,475 | 93,352\nAcquisitions | 296 |  |  | 8,023 |  |  | 1,802 |  | — | 10,121 |  | \nForeign currency effects and other adjustments, net | 187 |  |  | ( 182 ) |  |  | 261 |  | ( 7 ) | 259 |  | \nBalance at December 31, 2023 | 27,878 |  |  | 37,079 |  |  | 19,307 |  | 19,468 | 103,732 |  | \nAcquisitions | — |  |  | 2,071 |  |  | — |  | 2,305 | 4,376 |  | \nDispositions, foreign currency effects and other adjustments, net | ( 717 ) |  |  | ( 324 ) |  |  | ( 327 ) |  | ( 6 ) | ( 1,374 ) |  | \nBalance at December 31, 2024 |  | 27,161 |  |  |  | 38,826 |  |  | 18,980 |  | 21,767 | 106,734",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3365,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 7A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:002e6317c03e11fa203cac360738679078bd8815192d2ccc854fe833a3d84aa3",
+     "text": "See Notes to the Consolidated Financial Statements 43 Table of Contents UnitedHealth Group",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3365,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 7A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:0198b6de6ab3c7ab5fb12804e7ccf5ab30a3e12943ece17ee55903ae0b63bbe0",
+     "text": "Aged, Blind and Disabled; and other federal, state and community health care programs. As of December 31, 2024, UnitedHealthcare Community & State participated in programs in 33 states and the District of Columbia, and served more than 7.4 million people; including 1.2 million people through Medicaid expansion programs in 20 states under the Patient Protection and Affordable Care Act (ACA). States using managed care services for Medicaid beneficiaries select health plans by using a formal bid process or by awarding individual contracts. These health plans and care programs are designed to address the complex needs of the populations they serve, including the chronically ill, people with disabilities and people with a higher risk of medical, behavioral and social conditions. UnitedHealthcare Community & State administers benefits for the unique needs of children, pregnant women, adults, seniors and those who are institutionalized or are nursing home eligible. These individuals often live in medically underserved areas and are less likely to have a consistent relationship with the medical community or a care provider. They also often face significant social and economic challenges. GOVERNMENT REGULATION Our businesses are subject to comprehensive U.S. federal and state and international laws and regulations. We are regulated by agencies which generally have discretion to issue regulations and interpret and enforce laws and rules. U.S. federal and state and international governments continue to consider and enact various legislative and regulatory proposals which could materially impact certain aspects of the health care system. New laws, regulations and rules, or changes in the interpretation of existing laws, regulations and rules, including as a result of changes in the political environment, could adversely affect our businesses. See Part I, Item 1A, “Risk Factors” for a discussion of the risks related to our compliance with U.S. federal and state and international laws and regulations. U.S. Federal Laws and Regulation When we contract with the federal government, we are subject to federal laws and regulations relating to the award, administration and performance of U.S. government contracts. CMS regulates our UnitedHealthcare businesses and certain aspects of our Optum businesses. Payments by CMS to our businesses are subject to regulations, including those governing fee-for-service and the submission of information relating to the health status of enrollees for purposes of determining the amounts of certain payments to us. CMS also has the right to audit our performance to determine our compliance with CMS contracts and regulations and the quality of care we provide to Medicare beneficiaries. Our commercial business is further subject to CMS audits related to medical loss ratios (MLRs) and risk adjustment data.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3365,
+      "ticker": "UNH",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/731766/000073176625000063/unh-20241231.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 66983
+}

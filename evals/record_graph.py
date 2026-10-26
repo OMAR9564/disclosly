@@ -18,6 +18,7 @@ import argparse
 import asyncio
 import os
 import sys
+import time
 from collections.abc import Mapping, Sequence
 from decimal import Decimal
 from typing import Any
@@ -147,6 +148,7 @@ async def record(
                     poison = case if isinstance(case, InjectionCase) else None
                     toolbox = RecordingToolbox(registry, poison)
                     recording = RecordingSandbox(calculations)
+                    started = time.perf_counter()
                     try:
                         if name == SEEDED:
                             verdict = await run_seeded_case(case, router, recording)
@@ -176,6 +178,7 @@ async def record(
                         tools=toolbox.recorded,
                         sandbox=recording.records,
                         decision=decision,
+                        elapsed_ms=round((time.perf_counter() - started) * 1000),
                     )
                 )
                 written += 1

@@ -1,0 +1,369 @@
+{
+ "case_id": "tr-deep-froto-net-kar-trend",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "621ab5886999c0b0dcc7ddc9b71a0a75e76c00212d12a8796b3be6cafefc8162",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2434459",
+      "name": "list_documents",
+      "arguments": {
+       "ticker": "FROTO"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TFjg3PHblUucT1HMq/8YPmYOXTn8t2+D5MuSwNY0eOqmNHYIk7ipO5NKwlVPtYGhqUpd99k2xHwNezFBjZsc1wtOU+jOi89YECYMAasXCxo2WTgA1gkHLFOI="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1627,
+    "tokens_out": 18,
+    "latency_ms": 654.689,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "aa2ce67965c2111775364902b377407b1db499d50d2f4fb6033f2801c325c94b",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2212080",
+      "name": "get_financial_facts",
+      "arguments": {
+       "periods": [
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2025-FY"
+       ],
+       "ticker": "FROTO",
+       "metrics": [
+        "net_income"
+       ]
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TdXJbbWNND4SQN3j7fcNd20OztHPkq7upottvVCk/VBaGvoGIB6p5/hhx2fPuMVTf3Y52YbgtqC8K1TiTPpoOXrK3LUjI54Q7IIw8czFFfo/4T9OMRmBT9mI="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 8903,
+    "tokens_out": 79,
+    "latency_ms": 1038.56,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "63daa8233c51e5ad342c9950c132ec88cc50ea6ae8ffadaec04dc90e29d122af",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_3101103",
+      "name": "search_documents",
+      "arguments": {
+       "period_from": "2025-FY",
+       "ticker": "FROTO",
+       "query": "net kâr 4. çeyrek 2025",
+       "period_to": "2026-Q1"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TmctsHTvyifWHVpHSbW3tXAtPz0J5P6kG5+VdTMjkh8d2ras8LNXPu5a3WDzdhnKKqtbNBEnssHS6/ktzv8ZNVA1AsW6dkmVxIvo/aneNVxLOVYUo6sr9Vrw="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 9508,
+    "tokens_out": 64,
+    "latency_ms": 915.245,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "289ef96fc045e2ef26352dd87006e2c815293bf7716b40df4003fd22c5721667",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Ford Otosan (FROTO) 2025 yılı çeyreklik net kârları: Q1 6,487,096,000 TL, Q2 6,110,784,000 TL, Q3 8,401,456,000 TL, Q4 (yıllık rapor ve ilk üç çeyrekten hesaplanarak) 12,986,799,000 TL. Çeyrekten çeyreğe değişimler: Q1→Q2 -5,8%, Q2→Q3 +37,5%, Q3→Q4 +54,6%. Q4 rakamı, 2025 yıllık net kâr (33,986,135,000 TL) ile Q1+Q2+Q3 toplamı (20,999,336,000 TL) farkından elde edilmiştir.\",\n  \"points\": [\n    {\n      \"text\": \"2025-Q1 net kâr: 6,487,096,000 TL\",\n      \"cite_ids\": [\"f:2855\"]\n    },\n    {\n      \"text\": \"2025-Q2 net kâr: 6,110,784,000 TL (Q1'e göre -376,312,000 TL, -5,8%)\",\n      \"cite_ids\": [\"f:2869\", \"f:2855\"]\n    },\n    {\n      \"text\": \"2025-Q3 net kâr: 8,401,456,000 TL (Q2'ye göre +2,290,672,000 TL, +37,5%)\",\n      \"cite_ids\": [\"f:2879\", \"f:2869\"]\n    },\n    {\n      \"text\": \"2025-Q4 net kâr (hesaplanan): 12,986,799,000 TL (Q3'e göre +4,585,343,000 TL, +54,6%)\",\n      \"cite_ids\": [\"f:2889\", \"f:2855\", \"f:2869\", \"f:2879\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2855\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2869\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:2879\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:2889\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 13935,
+    "tokens_out": 1313,
+    "latency_ms": 14770.73,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"ticker\":\"FROTO\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 1635, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-29T17:35:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1669809\"}, {\"document_id\": 1634, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-21T16:31:56Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1666320\"}, {\"document_id\": 1633, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-01T15:28:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1656923\"}, {\"document_id\": 1632, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-04T18:45:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643223\"}, {\"document_id\": 1631, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-04T18:39:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643220\"}, {\"document_id\": 1630, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-04T18:38:53Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643218\"}, {\"document_id\": 1629, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-04T18:38:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643217\"}, {\"document_id\": 1628, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-03T15:30:56Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1624116\"}, {\"document_id\": 1627, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-26T15:20:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1621199\"}, {\"document_id\": 1626, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-16T17:10:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1617911\"}, {\"document_id\": 1625, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-15T16:07:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1617463\"}, {\"document_id\": 1624, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-14T15:30:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1607506\"}, {\"document_id\": 1623, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-05T16:29:07Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1601425\"}, {\"document_id\": 1622, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-05T16:27:58Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1601423\"}, {\"document_id\": 1621, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-05T16:26:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1601422\"}, {\"document_id\": 1620, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-17T15:18:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1594926\"}, {\"document_id\": 1619, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-10T15:30:11Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1590995\"}, {\"document_id\": 1618, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-31T15:23:46Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1580892\"}, {\"document_id\": 1617, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-30T12:24:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1578319\"}, {\"document_id\": 1616, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-30T07:54:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1578055\"}, {\"document_id\": 1615, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-12T12:05:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1571684\"}, {\"document_id\": 1614, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-12T12:00:53Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1571680\"}, {\"document_id\": 1613, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-12T10:42:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1571603\"}, {\"document_id\": 1612, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-12T10:37:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1571601\"}, {\"document_id\": 1611, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-18T20:50:10Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1558661\"}, {\"document_id\": 1610, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-16T15:43:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1557063\"}, {\"document_id\": 1609, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-09T22:11:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1555149\"}, {\"document_id\": 1608, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-09T22:10:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1555147\"}, {\"document_id\": 1607, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-09T22:09:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1555145\"}, {\"document_id\": 1606, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-06T16:25:46Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1554179\"}, {\"document_id\": 1605, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-22T06:47:43Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1545584\"}, {\"document_id\": 1604, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-20T13:56:58Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1545066\"}, {\"document_id\": 1603, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-30T15:36:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1531303\"}, {\"document_id\": 1602, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-29T15:32:25Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1530799\"}, {\"document_id\": 1601, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-29T15:19:11Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1530783\"}, {\"document_id\": 1600, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-05T15:34:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511821\"}, {\"document_id\": 1599, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-05T15:34:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511819\"}, {\"document_id\": 1598, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-05T15:33:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511818\"}, {\"document_id\": 1597, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-30T16:59:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1469127\"}, {\"document_id\": 1596, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-30T16:57:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1469125\"}, {\"document_id\": 1595, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-30T16:56:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1469124\"}, {\"document_id\": 1594, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-18T06:09:40Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1464504\"}, {\"document_id\": 1593, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-09T15:45:03Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1461324\"}, {\"document_id\": 1592, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-23T05:35:40Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1450741\"}, {\"document_id\": 1591, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-13T15:24:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1448819\"}, {\"document_id\": 1590, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-29T16:30:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431197\"}, {\"document_id\": 1589, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-29T15:43:56Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431135\"}, {\"document_id\": 1588, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-29T15:43:25Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431134\"}, {\"document_id\": 1587, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-18T15:54:07Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1427728\"}, {\"document_id\": 1586, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-11T15:40:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1424537\"}, {\"document_id\": 1585, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-04T06:19:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1417363\"}, {\"document_id\": 1584, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-28T15:22:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1414955\"}, {\"document_id\": 1583, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-26T16:29:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1412496\"}, {\"document_id\": 1582, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-26T10:57:38Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1411959\"}, {\"document_id\": 1581, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-11T06:00:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1403966\"}, {\"document_id\": 1580, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-10T16:44:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1403742\"}, {\"document_id\": 1579, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-03-04T20:29:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1400503\"}, {\"document_id\": 1578, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-28T21:00:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1397832\"}, {\"document_id\": 1577, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-18T15:59:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393844\"}, {\"document_id\": 1576, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-17T20:16:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393513\"}, {\"document_id\": 1575, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-17T19:45:30Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393509\"}, {\"document_id\": 1574, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-17T19:32:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393507\"}, {\"document_id\": 1573, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-13T16:01:05Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1392685\"}, {\"document_id\": 1572, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-14T12:34:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1380185\"}, {\"document_id\": 1571, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-27T15:33:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1369340\"}, {\"document_id\": 1570, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-27T15:15:05Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1369300\"}, {\"document_id\": 1569, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-05T17:43:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353879\"}, {\"document_id\": 1568, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-05T17:42:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353877\"}, {\"document_id\": 1567, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-05T17:41:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353876\"}]}",
+   "summary": "FROTO documents",
+   "count": 69,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2025-Q1\",\"2025-Q2\",\"2025-Q3\",\"2025-Q4\",\"2025-FY\"],\"ticker\":\"FROTO\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2889\">Net dönem kârı (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 33.986.135.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2855\">Net dönem kârı (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 6.487.096.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2904\">Net dönem kârı (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 8.489.338.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2869\">Net dönem kârı (2025-Q2; Cari Dönem 3 Aylık 01.04.2025 - 30.06.2025): 6.110.784.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2918\">Net dönem kârı (2025-Q2; Önceki Dönem 3 Aylık 01.04.2025 - 30.06.2025; 2026-Q2 raporu): 8.072.957.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2879\">Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 8.401.456.000 TRY</untrusted_document>",
+   "summary": "FROTO 2025-Q1 to 2025-FY net_income",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "f:2889",
+     "text": "Net dönem kârı (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 33.986.135.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1607,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1555145"
+     },
+     "value": "33986135000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2855",
+     "text": "Net dönem kârı (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 6.487.096.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1588,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.03.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1431134"
+     },
+     "value": "6487096000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2904",
+     "text": "Net dönem kârı (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 8.489.338.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1621,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Önceki Dönem 01.01.2025 - 31.03.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1601422"
+     },
+     "value": "8489338000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2869",
+     "text": "Net dönem kârı (2025-Q2; Cari Dönem 3 Aylık 01.04.2025 - 30.06.2025): 6.110.784.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1595,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q2",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 3 Aylık 01.04.2025 - 30.06.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1469124"
+     },
+     "value": "6110784000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2918",
+     "text": "Net dönem kârı (2025-Q2; Önceki Dönem 3 Aylık 01.04.2025 - 30.06.2025; 2026-Q2 raporu): 8.072.957.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1629,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q2",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Önceki Dönem 3 Aylık 01.04.2025 - 30.06.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1643217"
+     },
+     "value": "8072957000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:2879",
+     "text": "Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 8.401.456.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1598,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511818"
+     },
+     "value": "8401456000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"period_from\":\"2025-FY\",\"period_to\":\"2026-Q1\",\"query\":\"net kâr 4. çeyrek 2025\",\"ticker\":\"FROTO\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:c8557a2eeb2075cbf9e74cb98013d957797a0b9f4a040ba8260c2d3226335996\">31 Aralık 2025 tarihi itibarıyla, 89.305 TL (31 Aralık 2024: 50.896 TL) tutarındaki cari dönemde ortaya çıkan ertelenmiş vergi etkisi netlenmiş gerçeğe uygun değer farkı, diğer kapsamlı gelir tablosu içinde gösterilmiştir. Diğer kapsamlı gelir altında gerçekleşen değişimlerin ertelenmiş vergi etkisi netlenmiş olarak etkileri ve özkaynaklar altındaki birikmiş gelir ve giderlerin değişimi: 18. HASILAT VE SATIŞLARIN MALİYETİ (*) Yurt dışı satışlar ve yurt dışı satış adetleri Grup’un ihracatının yanı sıra Ford Otosan Romania SRL’nin satışlarını da içermektedir.</untrusted_document>\n<untrusted_document cite_id=\"c:3d52002a1b95383e5483e4a5ca66d23c41ceeca65bd19f288cd9a2c2f18e8185\">31 Aralık 2025 31 Aralık 2024 Net iskonto oranı (%) 3,66 2,90 Emeklilik olasılığına ilişkin sirkülasyon oranı (%) 91,21 94,56 31 Aralık 2025 31 Aralık 2024 İadeye tabi indirilecek KDV (*) 13.487.494 19.859.891 Peşin ödenen vergi ve stopajlar 711.994 278.509 Diğer 1.592.507 604.320 15.791.995 20.742.720 2025 2024 1 Ocak 2.208.330 2.883.348 Faiz maliyeti 393.884 575.386 Cari dönem hizmet maliyeti 189.374 212.052 Dönem içinde ödenen (233.080) (1.494.963) Tanımlanmış fayda planları yeniden ölçüm (kazançları)/kayıpları 412.100 816.728 Yabancı para çevrim farkı 11.845 (30.037) Parasal (kazanç)/kayıp (542.874) (754.184) 31 Aralık 2.439.579 2.208.330 Emeklilik olasılığına Net İskonto Oranı ilişkin sirkülasyon (%) 0,5 baz (%) 0,5 baz (%) 0,5 baz (%) 0,5 baz Duyarlılık seviyesi puan azalış puan artış puan azalış puan artış Oran (%) (3,2) (4,2) 90,7 91,7 Kıdem tazminatı yükümlülüğü değişimi 169.776 (157.637) (55.098) 56.726 165 Ford Otosan 2025 Faaliyet Raporu Bir Bakışta Ford Otosan Yönetim ve Değerlendirmeler Sürdürülebilirlik Kurumsal Beyanlar Genel Kurul Finansal Raporlar ve Bilgilendirmeler Ekler FORD OTOMOTİV SANAYİ ANONİM ŞİRKETİ 1 OCAK - 31 ARALIK 2025 HESAP DÖNEMİNE AİT KONSOLİDE FİNANSAL TABLOLARA İLİŞKİN AÇIKLAYICI NOTLAR (Tutarlar, aksi belirtilmedikçe, bin Türk Lirası (“TL”) olarak Türk Lirasının 31 Aralık 2025 tarihindeki alım gücü ile ifade edilmiştir.) 17. ÖZKAYNAKLAR (Devamı) Grup’un 31 Aralık 2025 ve 2024 tarihlerindeki hissedarları ve sermaye içindeki payları tarihi değerlerle aşağıdaki gibidir: Esas sözleşme uyarınca Yönetim Kurulu’na seçilecek üyelerin yarısı B grubu ve diğer yarısı da C grubu pay sahipleri tarafından gösterilecek adaylar arasından seçilir. Yönetim Kurulu üyelerinin sayısının tespiti ve üyelerin seçimi bakımından Genel Kurul yetkilidir. B ve C grubu pay sahipleri tarafından gösterilen adaylardan birer tanesinin SPK düzenlemelerinde tanımlanan bağımsız niteliklerine haiz olmaları zorunludur. Sermaye düzeltme farkları ödenmiş sermayeye yapılan nakit ve nakit benzeri ilavelerin enflasyona göre düzeltilmiş toplam tutarları ile enflasyon düzeltmesi öncesindeki farkı ifade eder.</untrusted_document>\n<untrusted_document cite_id=\"c:03c1536d53f2a79fbe830cda8565c12aeab808933c96dae2baca630c07a8099d\" amounts_in=\"1.000 TL\">Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 31.12.2025 | Önceki Dönem 01.01.2024 - 31.12.2024\nYABANCI PARA ÇEVRİM FARKLARININ ETKİSİNDEN ÖNCE NAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges |  | 46600645 | 12191698\nYabancı Para Çevrim Farklarının Nakit ve Nakit Benzerleri Üzerindeki Etkisi | ifrs-full_EffectOfExchangeRateChangesOnCashAndCashEquivalents |  | 423719 | 58467\nNAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalents |  | 47024364 | 12250165\nDÖNEM BAŞI NAKİT VE NAKİT BENZERLERİ | kap-fr_CashAndCashEquivalentsForCashFlowStatement |  | 29217645 | 28713309\nNAKİT VE NAKİT BENZERLERİNE İLİŞKİN ENFLASYON ETKİSİ | kap-fr_InflationEffectOnCashAndCashEquivalents |  | -12285825 | -11745829\nDÖNEM SONU NAKİT VE NAKİT BENZERLERİ | kap-fr_CashAndCashEquivalentsForCashFlowStatement | 4 | 63956184 | 29217645</untrusted_document>\n<untrusted_document cite_id=\"c:94a7eee1e58c9ab7902dbebc132dc9bd9f67f3b1b411cab6cc835ba03f245c34\">Kâr dağıtımında, Kurumsal Yönetim İlkeleri’ne uygun olarak pay sahipleri ve Şirket menfaatleri arasında dengeli ve tutarlı bir politika izlenmektedir. 25 Ford Otosan 2025 Faaliyet Raporu Bir Bakışta Ford Otosan Yönetim ve Değerlendirmeler Sürdürülebilirlik Kurumsal Beyanlar Genel Kurul Finansal Raporlar ve Bilgilendirmeler Ekler Kâr Dağıtım Politikamızın tam metni raporumuzun 117. sayfasında ve kurumsal internet sitemizde (www.fordotosan.com.tr) bulunmaktadır. Borsa İstanbul’un en düzenli temettü ödeyen şirketleri arasında bulunan Ford Otosan, yatırımlarını sürdürdüğü bu dönemde de kârını hissedarları ile paylaşmıştır. Şirket yıl içinde iki seferde olmak üzere toplam 27 Milyar 231 Milyon TL temettü ödemesi gerçekleştirmiştir (Temettü ödemesinin 31 Aralık 2025 tarihi itibarıyla satın alım gücü esasına göre hesaplanmış tutarı 28 Milyar 555 Milyon TL’dir). Böylece dağıtılan kâr payı 2004 yılından bu yana toplam 6,8 milyar ABD dolarına ulaşmıştır. Kâr Dağıtım Politikamızda belirtildiği üzere, yatırım ve finansman politikalarımıza uygun olarak ve nakit akış durumunu da dikkate alarak, ortaklarımıza 2025 yılı net dönem kârından yasal yükümlülükler düşüldükten sonra, beher 1 TL’lik paya brüt 3,64 TL (net 3,0940 TL) olmak üzere brüt %364 (net %309,40) oranında ve toplam 12.773.124.000 TL brüt nakit temettü dağıtılmasını ve dağıtım işlemlerine 16 Mart 2026 tarihinde başlanmasını öneriyoruz. Kâr dağıtım önerimize ilişkin ayrıntılar, raporun 117. sayfasında bilgilerinize sunulmaktadır. Bağımsız Denetim Kuruluşu Seçimi Yönetim Kurulumuzun 10 Şubat 2026 tarihli toplantısında, Denetimden Sorumlu Komite’nin görüşü alınarak, 6102 sayılı Türk Ticaret Kanunu ve 6362 sayılı Sermaye Piyasası Kanunu uyarınca belirlenen esaslara uygun olarak, Şirketimizin 2026 yılı hesap dönemindeki finansal raporlarının denetlenmesi ile bu kanunlardaki ilgili düzenlemeler kapsamındaki diğer faaliyetleri yürütmek üzere, Güney Bağımsız Denetim ve Serbest Muhasebeci Mali Müşavirlik A.Ş’nin seçilmesine karar verilmiştir. Bu seçimi Genel Kurul’un onayına sunuyoruz. 2026 Yılına Bakış ve Beklentilerimiz 2026 yılına yönelik senaryolarımızı kapsamlı şekilde değerlendirerek yılı temkinli ancak güçlü bir operasyonel planlama yaklaşımıyla kurguladık. Türkiye ve global otomotiv sektörlerinde yaşanan dalgalanmalara karşın, pazarlardaki yapısal dinamikler ve yenilenen ürün portföyümüzün desteğiyle istikrarlı bir performans sergilemeyi hedeflemekteyiz.</untrusted_document>\n<untrusted_document cite_id=\"c:b8fb6e3b54706eeef3d355dd55f7a9f6e76d3ec570df08a92b1afa26ef0dca90\">Devam eden Geliştirme geliştirme 1 Ocak 2025 Haklar maliyetleri maliyetleri Diğer Toplam Maliyet 3.308.864 24.792.953 9.328.470 9.356.244 46.786.531 İtfa payları (2.405.371) (15.901.663) - (1.103.444) (19.410.478) Net defter değeri 903.493 8.891.290 9.328.470 8.252.800 27.376.053 31 Aralık 2025 tarihinde sona eren dönem için Açılış net defter değeri 903.493 8.891.290 9.328.470 8.252.800 27.376.053 Girişler 965.644 871.827 3.859.045 64.630 5.761.146 Transferler 285.808 1.406.160 (1.353.066) (4.948) 333.954 Çıkışlar (7.014) (420.822) - - (427.836) Yabancı para çevrim farkı - 542.446 - 162.854 705.300 Cari dönem itfa payı (476.655) (2.480.512) - (414.242) (3.371.409) Birikmiş amortismanlardan çıkışlar 3.682 44.640 - - 48.322 Kapanış net defter değeri 1.674.958 8.855.029 11.834.449 8.061.094 30.425.530 31 Aralık 2025 Maliyet 4.553.302 27.192.564 11.834.449 9.578.780 53.159.095 İtfa payları (2.878.344) (18.337.535) - (1.517.686) (22.733.565) Net defter değeri 1.674.958 8.855.029 11.834.449 8.061.094 30.425.530 Devam eden Geliştirme geliştirme 1 Ocak 2024 Haklar maliyetleri maliyetleri Diğer Toplam Maliyet 2.732.056 29.144.935 6.782.492 11.667.514 50.326.997 İtfa payları (2.009.690) (13.703.848) - (674.337) (16.387.875) Net defter değeri 722.366 15.441.087 6.782.492 10.993.177 33.939.122 31 Aralık 2024 tarihinde sona eren dönem için Açılış net defter değeri 722.366 15.441.087 6.782.492 10.993.177 33.939.122 Girişler 533.734 1.377.331 3.488.069 4.391 5.403.525 Transferler 44.210 (1.794.266) (942.091) 111.410 (2.580.737) Çıkışlar (1.136) (326.722) - - (327.858) Yabancı para çevrim farkı - (3.608.325) - (2.427.071) (6.035.396) Cari dönem itfa payı (396.633) (2.226.995) - (429.107)</untrusted_document>\n<untrusted_document cite_id=\"c:1d82d3250f032be2a8235344a081fa9f9521f7e885cb809378c91cb4628a3f6b\">31 Aralık 2025 31 Aralık 2024 Cari dönem kurumlar vergisi gideri (1.102.418) (1.646.214) Peşin ödenen vergi ve stopaj 922.846 997.668 Cari dönem vergisi ile ilgili varlıklar/(yükümlülükler) (179.572) (648.546) Ertelenmiş vergi varlıkları 24.356.354 28.258.598 Ertelenmiş vergi yükümlülükleri (1.665.311) (1.717.143) Ertelenmiş vergi varlıkları (net) 22.691.043 26.541.455 2025 2024 Cari dönem kurumlar vergisi gideri (1.102.418) (1.646.214) Nakit akış riskinden korunma işlemine ilişkin cari yıl ertelenmiş vergi etkisi (*) (163.520) 944.968 Diğer ertelenmiş vergi (4.214.716) 3.131.035 Ertelenmiş vergi geliri / (gideri) (4.378.236) 4.076.003 Sürdürülen faaliyetler vergi geliri / (gideri) (5.480.654) 2.429.789 Birikmiş Ertelenmiş vergi geçici farklar varlıkları / (yükümlülükleri) 31 Aralık 31 Aralık 31 Aralık 31 Aralık 2025 2024 2025 2024 Ertelenmiş vergi varlıkları Yatırım teşviği vergi varlığı (Not 33) (129.197.115) (134.310.522) 36.768.779 34.208.413 Gider tahakkukları ve diğer karşılıklar (17.252.858) (17.166.295) 4.325.799 4.304.127 Garanti gider karşılığı (4.775.854) (3.352.481) 1.384.735 838.120 Kıdem tazminatı karşılığı (2.439.579) (2.208.330) 600.025 543.267 Stoklar 8.540.867 8.748.383 (2.137.545) (2.187.455) (145.124.539) (148.289.245) 40.941.793 37.706.472 Ertelenmiş vergi yükümlülükleri Maddi ve maddi olmayan duran varlıklar 51.531.376 23.022.556 (11.932.578) (4.761.877) Gelir tahakkukları ve diğer 25.212.510 25.521.432 (6.318.172) (6.403.140) 76.743.886 48.543.988 (18.250.750) (11.165.017) Net ertelenmiş vergi varlığı 22.691.043 26.541.455 31 Aralık 2025 31 Aralık 2024 Vergi öncesi kar 39.466.789 48.439.510 Efektif vergi oranı %25 %25 Cari dönem vergi gideri (9.866.697) (12.109.878) Arge indirimi 2.306.250 2.797.614 Yatırım teşviği istisnası 14.342.592 21.153.265 Parasal kazanç/(kayıp) ve diğer (12.262.799) (9.411.212)</untrusted_document>",
+   "summary": "FROTO net kâr 4. çeyrek 2025",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:c8557a2eeb2075cbf9e74cb98013d957797a0b9f4a040ba8260c2d3226335996",
+     "text": "31 Aralık 2025 tarihi itibarıyla, 89.305 TL (31 Aralık 2024: 50.896 TL) tutarındaki cari dönemde ortaya çıkan ertelenmiş vergi etkisi netlenmiş gerçeğe uygun değer farkı, diğer kapsamlı gelir tablosu içinde gösterilmiştir. Diğer kapsamlı gelir altında gerçekleşen değişimlerin ertelenmiş vergi etkisi netlenmiş olarak etkileri ve özkaynaklar altındaki birikmiş gelir ve giderlerin değişimi: 18. HASILAT VE SATIŞLARIN MALİYETİ (*) Yurt dışı satışlar ve yurt dışı satış adetleri Grup’un ihracatının yanı sıra Ford Otosan Romania SRL’nin satışlarını da içermektedir.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1611,
+      "ticker": "FROTO",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 166,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1558661"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:3d52002a1b95383e5483e4a5ca66d23c41ceeca65bd19f288cd9a2c2f18e8185",
+     "text": "31 Aralık 2025 31 Aralık 2024 Net iskonto oranı (%) 3,66 2,90 Emeklilik olasılığına ilişkin sirkülasyon oranı (%) 91,21 94,56 31 Aralık 2025 31 Aralık 2024 İadeye tabi indirilecek KDV (*) 13.487.494 19.859.891 Peşin ödenen vergi ve stopajlar 711.994 278.509 Diğer 1.592.507 604.320 15.791.995 20.742.720 2025 2024 1 Ocak 2.208.330 2.883.348 Faiz maliyeti 393.884 575.386 Cari dönem hizmet maliyeti 189.374 212.052 Dönem içinde ödenen (233.080) (1.494.963) Tanımlanmış fayda planları yeniden ölçüm (kazançları)/kayıpları 412.100 816.728 Yabancı para çevrim farkı 11.845 (30.037) Parasal (kazanç)/kayıp (542.874) (754.184) 31 Aralık 2.439.579 2.208.330 Emeklilik olasılığına Net İskonto Oranı ilişkin sirkülasyon (%) 0,5 baz (%) 0,5 baz (%) 0,5 baz (%) 0,5 baz Duyarlılık seviyesi puan azalış puan artış puan azalış puan artış Oran (%) (3,2) (4,2) 90,7 91,7 Kıdem tazminatı yükümlülüğü değişimi 169.776 (157.637) (55.098) 56.726 165 Ford Otosan 2025 Faaliyet Raporu Bir Bakışta Ford Otosan Yönetim ve Değerlendirmeler Sürdürülebilirlik Kurumsal Beyanlar Genel Kurul Finansal Raporlar ve Bilgilendirmeler Ekler FORD OTOMOTİV SANAYİ ANONİM ŞİRKETİ 1 OCAK - 31 ARALIK 2025 HESAP DÖNEMİNE AİT KONSOLİDE FİNANSAL TABLOLARA İLİŞKİN AÇIKLAYICI NOTLAR (Tutarlar, aksi belirtilmedikçe, bin Türk Lirası (“TL”) olarak Türk Lirasının 31 Aralık 2025 tarihindeki alım gücü ile ifade edilmiştir.) 17. ÖZKAYNAKLAR (Devamı) Grup’un 31 Aralık 2025 ve 2024 tarihlerindeki hissedarları ve sermaye içindeki payları tarihi değerlerle aşağıdaki gibidir: Esas sözleşme uyarınca Yönetim Kurulu’na seçilecek üyelerin yarısı B grubu ve diğer yarısı da C grubu pay sahipleri tarafından gösterilecek adaylar arasından seçilir. Yönetim Kurulu üyelerinin sayısının tespiti ve üyelerin seçimi bakımından Genel Kurul yetkilidir. B ve C grubu pay sahipleri tarafından gösterilen adaylardan birer tanesinin SPK düzenlemelerinde tanımlanan bağımsız niteliklerine haiz olmaları zorunludur. Sermaye düzeltme farkları ödenmiş sermayeye yapılan nakit ve nakit benzeri ilavelerin enflasyona göre düzeltilmiş toplam tutarları ile enflasyon düzeltmesi öncesindeki farkı ifade eder.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1611,
+      "ticker": "FROTO",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 164,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1558661"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:03c1536d53f2a79fbe830cda8565c12aeab808933c96dae2baca630c07a8099d",
+     "text": "Kalem | Kavram | Dipnot | Cari Dönem 01.01.2025 - 31.12.2025 | Önceki Dönem 01.01.2024 - 31.12.2024\nYABANCI PARA ÇEVRİM FARKLARININ ETKİSİNDEN ÖNCE NAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalentsBeforeEffectOfExchangeRateChanges |  | 46600645 | 12191698\nYabancı Para Çevrim Farklarının Nakit ve Nakit Benzerleri Üzerindeki Etkisi | ifrs-full_EffectOfExchangeRateChangesOnCashAndCashEquivalents |  | 423719 | 58467\nNAKİT VE NAKİT BENZERLERİNDEKİ NET ARTIŞ (AZALIŞ) | ifrs-full_IncreaseDecreaseInCashAndCashEquivalents |  | 47024364 | 12250165\nDÖNEM BAŞI NAKİT VE NAKİT BENZERLERİ | kap-fr_CashAndCashEquivalentsForCashFlowStatement |  | 29217645 | 28713309\nNAKİT VE NAKİT BENZERLERİNE İLİŞKİN ENFLASYON ETKİSİ | kap-fr_InflationEffectOnCashAndCashEquivalents |  | -12285825 | -11745829\nDÖNEM SONU NAKİT VE NAKİT BENZERLERİ | kap-fr_CashAndCashEquivalentsForCashFlowStatement | 4 | 63956184 | 29217645",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1607,
+      "ticker": "FROTO",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "section": "Tablo 4",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1555145"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "1.000 TL"
+    },
+    {
+     "cite_id": "c:94a7eee1e58c9ab7902dbebc132dc9bd9f67f3b1b411cab6cc835ba03f245c34",
+     "text": "Kâr dağıtımında, Kurumsal Yönetim İlkeleri’ne uygun olarak pay sahipleri ve Şirket menfaatleri arasında dengeli ve tutarlı bir politika izlenmektedir. 25 Ford Otosan 2025 Faaliyet Raporu Bir Bakışta Ford Otosan Yönetim ve Değerlendirmeler Sürdürülebilirlik Kurumsal Beyanlar Genel Kurul Finansal Raporlar ve Bilgilendirmeler Ekler Kâr Dağıtım Politikamızın tam metni raporumuzun 117. sayfasında ve kurumsal internet sitemizde (www.fordotosan.com.tr) bulunmaktadır. Borsa İstanbul’un en düzenli temettü ödeyen şirketleri arasında bulunan Ford Otosan, yatırımlarını sürdürdüğü bu dönemde de kârını hissedarları ile paylaşmıştır. Şirket yıl içinde iki seferde olmak üzere toplam 27 Milyar 231 Milyon TL temettü ödemesi gerçekleştirmiştir (Temettü ödemesinin 31 Aralık 2025 tarihi itibarıyla satın alım gücü esasına göre hesaplanmış tutarı 28 Milyar 555 Milyon TL’dir). Böylece dağıtılan kâr payı 2004 yılından bu yana toplam 6,8 milyar ABD dolarına ulaşmıştır. Kâr Dağıtım Politikamızda belirtildiği üzere, yatırım ve finansman politikalarımıza uygun olarak ve nakit akış durumunu da dikkate alarak, ortaklarımıza 2025 yılı net dönem kârından yasal yükümlülükler düşüldükten sonra, beher 1 TL’lik paya brüt 3,64 TL (net 3,0940 TL) olmak üzere brüt %364 (net %309,40) oranında ve toplam 12.773.124.000 TL brüt nakit temettü dağıtılmasını ve dağıtım işlemlerine 16 Mart 2026 tarihinde başlanmasını öneriyoruz. Kâr dağıtım önerimize ilişkin ayrıntılar, raporun 117. sayfasında bilgilerinize sunulmaktadır. Bağımsız Denetim Kuruluşu Seçimi Yönetim Kurulumuzun 10 Şubat 2026 tarihli toplantısında, Denetimden Sorumlu Komite’nin görüşü alınarak, 6102 sayılı Türk Ticaret Kanunu ve 6362 sayılı Sermaye Piyasası Kanunu uyarınca belirlenen esaslara uygun olarak, Şirketimizin 2026 yılı hesap dönemindeki finansal raporlarının denetlenmesi ile bu kanunlardaki ilgili düzenlemeler kapsamındaki diğer faaliyetleri yürütmek üzere, Güney Bağımsız Denetim ve Serbest Muhasebeci Mali Müşavirlik A.Ş’nin seçilmesine karar verilmiştir. Bu seçimi Genel Kurul’un onayına sunuyoruz. 2026 Yılına Bakış ve Beklentilerimiz 2026 yılına yönelik senaryolarımızı kapsamlı şekilde değerlendirerek yılı temkinli ancak güçlü bir operasyonel planlama yaklaşımıyla kurguladık. Türkiye ve global otomotiv sektörlerinde yaşanan dalgalanmalara karşın, pazarlardaki yapısal dinamikler ve yenilenen ürün portföyümüzün desteğiyle istikrarlı bir performans sergilemeyi hedeflemekteyiz.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1611,
+      "ticker": "FROTO",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 24,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1558661"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:b8fb6e3b54706eeef3d355dd55f7a9f6e76d3ec570df08a92b1afa26ef0dca90",
+     "text": "Devam eden Geliştirme geliştirme 1 Ocak 2025 Haklar maliyetleri maliyetleri Diğer Toplam Maliyet 3.308.864 24.792.953 9.328.470 9.356.244 46.786.531 İtfa payları (2.405.371) (15.901.663) - (1.103.444) (19.410.478) Net defter değeri 903.493 8.891.290 9.328.470 8.252.800 27.376.053 31 Aralık 2025 tarihinde sona eren dönem için Açılış net defter değeri 903.493 8.891.290 9.328.470 8.252.800 27.376.053 Girişler 965.644 871.827 3.859.045 64.630 5.761.146 Transferler 285.808 1.406.160 (1.353.066) (4.948) 333.954 Çıkışlar (7.014) (420.822) - - (427.836) Yabancı para çevrim farkı - 542.446 - 162.854 705.300 Cari dönem itfa payı (476.655) (2.480.512) - (414.242) (3.371.409) Birikmiş amortismanlardan çıkışlar 3.682 44.640 - - 48.322 Kapanış net defter değeri 1.674.958 8.855.029 11.834.449 8.061.094 30.425.530 31 Aralık 2025 Maliyet 4.553.302 27.192.564 11.834.449 9.578.780 53.159.095 İtfa payları (2.878.344) (18.337.535) - (1.517.686) (22.733.565) Net defter değeri 1.674.958 8.855.029 11.834.449 8.061.094 30.425.530 Devam eden Geliştirme geliştirme 1 Ocak 2024 Haklar maliyetleri maliyetleri Diğer Toplam Maliyet 2.732.056 29.144.935 6.782.492 11.667.514 50.326.997 İtfa payları (2.009.690) (13.703.848) - (674.337) (16.387.875) Net defter değeri 722.366 15.441.087 6.782.492 10.993.177 33.939.122 31 Aralık 2024 tarihinde sona eren dönem için Açılış net defter değeri 722.366 15.441.087 6.782.492 10.993.177 33.939.122 Girişler 533.734 1.377.331 3.488.069 4.391 5.403.525 Transferler 44.210 (1.794.266) (942.091) 111.410 (2.580.737) Çıkışlar (1.136) (326.722) - - (327.858) Yabancı para çevrim farkı - (3.608.325) - (2.427.071) (6.035.396) Cari dönem itfa payı (396.633) (2.226.995) - (429.107)",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1611,
+      "ticker": "FROTO",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 161,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1558661"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:1d82d3250f032be2a8235344a081fa9f9521f7e885cb809378c91cb4628a3f6b",
+     "text": "31 Aralık 2025 31 Aralık 2024 Cari dönem kurumlar vergisi gideri (1.102.418) (1.646.214) Peşin ödenen vergi ve stopaj 922.846 997.668 Cari dönem vergisi ile ilgili varlıklar/(yükümlülükler) (179.572) (648.546) Ertelenmiş vergi varlıkları 24.356.354 28.258.598 Ertelenmiş vergi yükümlülükleri (1.665.311) (1.717.143) Ertelenmiş vergi varlıkları (net) 22.691.043 26.541.455 2025 2024 Cari dönem kurumlar vergisi gideri (1.102.418) (1.646.214) Nakit akış riskinden korunma işlemine ilişkin cari yıl ertelenmiş vergi etkisi (*) (163.520) 944.968 Diğer ertelenmiş vergi (4.214.716) 3.131.035 Ertelenmiş vergi geliri / (gideri) (4.378.236) 4.076.003 Sürdürülen faaliyetler vergi geliri / (gideri) (5.480.654) 2.429.789 Birikmiş Ertelenmiş vergi geçici farklar varlıkları / (yükümlülükleri) 31 Aralık 31 Aralık 31 Aralık 31 Aralık 2025 2024 2025 2024 Ertelenmiş vergi varlıkları Yatırım teşviği vergi varlığı (Not 33) (129.197.115) (134.310.522) 36.768.779 34.208.413 Gider tahakkukları ve diğer karşılıklar (17.252.858) (17.166.295) 4.325.799 4.304.127 Garanti gider karşılığı (4.775.854) (3.352.481) 1.384.735 838.120 Kıdem tazminatı karşılığı (2.439.579) (2.208.330) 600.025 543.267 Stoklar 8.540.867 8.748.383 (2.137.545) (2.187.455) (145.124.539) (148.289.245) 40.941.793 37.706.472 Ertelenmiş vergi yükümlülükleri Maddi ve maddi olmayan duran varlıklar 51.531.376 23.022.556 (11.932.578) (4.761.877) Gelir tahakkukları ve diğer 25.212.510 25.521.432 (6.318.172) (6.403.140) 76.743.886 48.543.988 (18.250.750) (11.165.017) Net ertelenmiş vergi varlığı 22.691.043 26.541.455 31 Aralık 2025 31 Aralık 2024 Vergi öncesi kar 39.466.789 48.439.510 Efektif vergi oranı %25 %25 Cari dönem vergi gideri (9.866.697) (12.109.878) Arge indirimi 2.306.250 2.797.614 Yatırım teşviği istisnası 14.342.592 21.153.265 Parasal kazanç/(kayıp) ve diğer (12.262.799) (9.411.212)",
+     "source": {
+      "kind": "chunk",
+      "document_id": 1611,
+      "ticker": "FROTO",
+      "doc_type": "kap_annual_report",
+      "period": "2025-FY",
+      "section": "body",
+      "page": 171,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1558661"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 35544
+}

@@ -1,0 +1,468 @@
+{
+ "case_id": "en-deep-aapl-msft-revenue",
+ "dataset": "deep_golden",
+ "interactions": [
+  {
+   "key": "5faa99b3fcaa4435741f84ddc968f9bc7416522978e5d27387966b6104574f1e",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_2228403",
+      "name": "search_documents",
+      "arguments": {
+       "query": "Apple revenue fiscal 2025",
+       "ticker": "AAPL"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0TLT/7tgDQcufsFGj9iBZ19RWhheeMriqkKNeqAhGqLGm1NEmC2GqyjvRY7PRULcH5itWVoFys6n5HPIIqSKb9TLvDWcsidJLLOKkJ3HE1lkwU8JnzhYalpbk="
+       }
+      }
+     },
+     {
+      "id": "call_2228404",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "MSFT",
+       "query": "Microsoft revenue fiscal 2025"
+      },
+      "extra": null
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1486,
+    "tokens_out": 59,
+    "latency_ms": 870.022,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "6e62574ac94a663ebc5c5155f1927334aa1ed05e0e7d5d5b54df0f366db8aad3",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_3055402",
+      "name": "get_financial_facts",
+      "arguments": {
+       "metrics": [
+        "revenue"
+       ],
+       "periods": [
+        "2025-FY"
+       ],
+       "ticker": "AAPL"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T+18vQnyPswH5nDXlwe94FgHIVoBPfknCjspDVFrHJZawZcuruqaVEBDy+VMRth7e53bF5dLYs7Nb0wl1B4gjB8V8V/5ookZ+cSfEL37AMjoELKWj9wx6WLg="
+       }
+      }
+     },
+     {
+      "id": "call_3055403",
+      "name": "get_financial_facts",
+      "arguments": {
+       "periods": [
+        "2025-FY"
+       ],
+       "ticker": "MSFT",
+       "metrics": [
+        "revenue"
+       ]
+      },
+      "extra": null
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 8469,
+    "tokens_out": 71,
+    "latency_ms": 986.873,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "da1c7bee545cc8ecad6d0090c208535ad55e845827e2d04fe7f635c5b76bebed",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In fiscal year 2025, Apple reported total revenue of $416,161,000,000 [f:111], while Microsoft reported total revenue of $281,724,000,000 [f:321].\",\n  \"points\": [\n    {\n      \"text\": \"Apple fiscal 2025 revenue was $416,161,000,000.\",\n      \"cite_ids\": [\n        \"f:111\"\n      ]\n    },\n    {\n      \"text\": \"Microsoft fiscal 2025 revenue was $281,724,000,000.\",\n      \"cite_ids\": [\n        \"f:321\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:111\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:321\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 8876,
+    "tokens_out": 306,
+    "latency_ms": 1790.676,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  }
+ ],
+ "tools": [
+  {
+   "key": "{\"arguments\":{\"query\":\"Apple revenue fiscal 2025\",\"ticker\":\"AAPL\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:874b5505ab7752a5830dda3ec18d6731e501383c7d490f737943ee0d3336ef33\">See accompanying Notes to Consolidated Financial Statements. Apple Inc. | 2025 Form 10-K | 33 Apple Inc. Notes to Consolidated Financial Statements Note 1 – Summary of Significant Accounting Policies Basis of Presentation and Preparation The consolidated financial statements include the accounts of Apple Inc. and its wholly owned subsidiaries. The preparation of these consolidated financial statements and accompanying notes in conformity with GAAP requires the use of management estimates. Certain prior period amounts in the notes to consolidated financial statements have been reclassified to conform to the current period’s presentation. The Company’s fiscal year is the 52- or 53-week period that ends on the last Saturday of September. An additional week is included in the first fiscal quarter every five or six years to realign the Company’s fiscal quarters with calendar quarters, which occurred in the first fiscal quarter of 2023. The Company’s fiscal years 2025 and 2024 spanned 52 weeks each, whereas fiscal year 2023 spanned 53 weeks. Unless otherwise stated, references to particular years, quarters, months and periods refer to the Company’s fiscal years ended in September and the associated quarters, months and periods of those fiscal years. Recently Adopted Accounting Pronouncements Segment Reporting Beginning with the 2025 annual reporting period, the Company adopted the FASB’s ASU No. 2023-07, Segment Reporting (Topic 280): Improvements to Reportable Segment Disclosures (“ASU 2023-07”), which requires the Company to disclose segment expenses that are significant and regularly provided to the Company’s chief operating decision maker (“CODM”). In addition, ASU 2023-07 requires the Company to disclose the title and position of its CODM and how the CODM uses segment profit or loss information in assessing segment performance and deciding how to allocate resources. The Company adopted ASU 2023-07 using a retrospective transition method. Revenue The Company records revenue net of taxes collected from customers that are remitted to governmental authorities. Share-Based Compensation The Company recognizes share-based compensation expense on a straight-line basis for its estimate of equity awards that will ultimately vest. Cash Equivalents All highly liquid investments with maturities of three months or less at the date of purchase are treated as cash equivalents. Trade Receivables Trade receivables are stated at transaction price. Marketable Securities The cost of securities sold is determined using the specific identification method. Inventories Inventories are measured using the first-in, first-out method. Property, Plant and Equipment</untrusted_document>\n<untrusted_document cite_id=\"c:031b0097b8e1ecc56aba6cf6305e1f0874c00e9e436bb26c3847ecb807339955\" amounts_in=\"millions\">(1) On May 1, 2025, the Company announced a program to repurchase up to $100 billion of the Company’s common stock. As of June 27, 2026, remaining availability under the May 2025 program was $38.0 billion. On April 30, 2026, the Company announced an additional program to repurchase up to $100 billion of the Company’s common stock. The programs do not obligate the Company to acquire a minimum amount of shares. Under the programs, shares may be repurchased in privately negotiated or open market transactions, including under plans complying with Rule 10b5-1 under the Exchange Act. (2) In May 2026, the Company entered into new accelerated share repurchase agreements (“ASRs”). Under the terms of the ASRs, financial institutions committed to deliver shares of the Company’s common stock during the purchase periods in exchange for up-front payments totaling $10.0 billion. The total number of shares ultimately delivered under the ASRs, and therefore the average repurchase price paid per share, is determined based on the volume-weighted average price of the Company’s common stock during the ASRs’ purchase periods, which end in the fourth quarter of 2026.</untrusted_document>\n<untrusted_document cite_id=\"c:97d46fb163a814b58485454dac185b5a4c17e63f99d223abcd0663af7ad699bb\" amounts_in=\"millions\">See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q2 2025 Form 10-Q | 5 Apple Inc. Notes to Condensed Consolidated Financial Statements (Unaudited) Note 1 – Summary of Significant Accounting Policies Basis of Presentation and Preparation The condensed consolidated financial statements include the accounts of Apple Inc. and its wholly owned subsidiaries (collectively “Apple” or the “Company”). In the opinion of the Company’s management, the condensed consolidated financial statements reflect all adjustments, which are normal and recurring in nature, necessary for fair financial statement presentation. The preparation of these condensed consolidated financial statements and accompanying notes in conformity with U.S. generally accepted accounting principles (“GAAP”) requires the use of management estimates. These condensed consolidated financial statements and accompanying notes should be read in conjunction with the Company’s annual consolidated financial statements and accompanying notes included in its Annual Report on Form 10-K for the fiscal year ended September 28, 2024 (the “2024 Form 10-K”). The Company’s fiscal year is the 52- or 53-week period that ends on the last Saturday of September. An additional week is included in the first fiscal quarter every five or six years to realign the Company’s fiscal quarters with calendar quarters. The Company’s fiscal years 2025 and 2024 span 52 weeks each. Unless otherwise stated, references to particular years, quarters, months and periods refer to the Company’s fiscal years ended in September and the associated quarters, months and periods of those fiscal years. Note 2 – Revenue The following table shows disaggregated net sales, as well as the portion of total net sales that was previously deferred, for the three- and six-month periods ended March 29, 2025 and March 30, 2024 (in millions):</untrusted_document>\n<untrusted_document cite_id=\"c:d2c171e51ef724eb766060ae527208819bd7dd517966ad28ca96408bdc3e2499\" amounts_in=\"millions\">See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q3 2025 Form 10-Q | 5 Apple Inc. Notes to Condensed Consolidated Financial Statements (Unaudited) Note 1 – Summary of Significant Accounting Policies Basis of Presentation and Preparation The condensed consolidated financial statements include the accounts of Apple Inc. and its wholly owned subsidiaries (collectively “Apple” or the “Company”). In the opinion of the Company’s management, the condensed consolidated financial statements reflect all adjustments, which are normal and recurring in nature, necessary for fair financial statement presentation. The preparation of these condensed consolidated financial statements and accompanying notes in conformity with U.S. generally accepted accounting principles (“GAAP”) requires the use of management estimates. These condensed consolidated financial statements and accompanying notes should be read in conjunction with the Company’s annual consolidated financial statements and accompanying notes included in its Annual Report on Form 10-K for the fiscal year ended September 28, 2024 (the “2024 Form 10-K”). The Company’s fiscal year is the 52- or 53-week period that ends on the last Saturday of September. An additional week is included in the first fiscal quarter every five or six years to realign the Company’s fiscal quarters with calendar quarters. The Company’s fiscal years 2025 and 2024 span 52 weeks each. Unless otherwise stated, references to particular years, quarters, months and periods refer to the Company’s fiscal years ended in September and the associated quarters, months and periods of those fiscal years. Note 2 – Revenue The following table shows disaggregated net sales, as well as the portion of total net sales that was previously deferred, for the three- and nine-month periods ended June 28, 2025 and June 29, 2024 (in millions):</untrusted_document>\n<untrusted_document cite_id=\"c:03adfd5004c72732ac95bdf2c5e49ca53e576b0a875b7e73c4a4fd4b0e9c9eb5\"> | Incorporated by Reference |  |  | \n10.6* | Apple Inc. 2022 Employee Stock Plan. | 8-K | 10.1 | 3/4/22\n10.7* | Form of Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of March 4, 2022. | 8-K | 10.2 | 3/4/22\n10.8* | Form of Performance Award Agreement under 2022 Employee Stock Plan effective as of March 4, 2022. | 8-K | 10.3 | 3/4/22\n10.9* | Apple Inc. Executive Cash Incentive Plan. | 8-K | 10.1 | 8/19/22\n10.10* | Form of CEO Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 25, 2022. | 10-Q | 10.1 | 12/31/22\n10.11* | Form of CEO Performance Award Agreement under 2022 Employee Stock Plan effective as of September 25, 2022. | 10-Q | 10.2 | 12/31/22\n10.12* | Form of Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.19 | 9/28/24\n10.13* | Form of Performance Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.20 | 9/28/24\n10.14* | Form of CEO Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.21 | 9/28/24\n10.15* | Form of CEO Performance Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.22 | 9/28/24\n19.1 | Insider Trading Policy. | 10-K | 19.1 | 9/28/24\n21.1** | Subsidiaries of the Registrant. |  |  | \n23.1** | Consent of Independent Registered Public Accounting Firm. |  |  | \n24.1** | Power of Attorney (included on the Signatures page of this Annual Report on Form 10-K). |  |  | \n31.1** | Rule 13a-14(a) / 15d-14(a) Certification of Chief Executive Officer. |  |  | \n31.2** | Rule 13a-14(a) / 15d-14(a) Certification of Chief Financial Officer. |  |  | \n32.1*** | Section 1350 Certifications of Chief Executive Officer and Chief Financial Officer. |  |  | </untrusted_document>\n<untrusted_document cite_id=\"c:a0f23c066e5a278acc4f26cbc4755562d44c8e682dbf3647a5de4fbc7b50dbf5\" amounts_in=\"millions\">See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q1 2025 Form 10-Q | 5 Apple Inc. Notes to Condensed Consolidated Financial Statements (Unaudited) Note 1 – Summary of Significant Accounting Policies Basis of Presentation and Preparation The condensed consolidated financial statements include the accounts of Apple Inc. and its wholly owned subsidiaries (collectively “Apple” or the “Company”). In the opinion of the Company’s management, the condensed consolidated financial statements reflect all adjustments, which are normal and recurring in nature, necessary for fair financial statement presentation. The preparation of these condensed consolidated financial statements and accompanying notes in conformity with U.S. generally accepted accounting principles (“GAAP”) requires the use of management estimates. These condensed consolidated financial statements and accompanying notes should be read in conjunction with the Company’s annual consolidated financial statements and accompanying notes included in its Annual Report on Form 10-K for the fiscal year ended September 28, 2024 (the “2024 Form 10-K”). The Company’s fiscal year is the 52- or 53-week period that ends on the last Saturday of September. An additional week is included in the first fiscal quarter every five or six years to realign the Company’s fiscal quarters with calendar quarters. The Company’s fiscal years 2025 and 2024 span 52 weeks each. Unless otherwise stated, references to particular years, quarters, months and periods refer to the Company’s fiscal years ended in September and the associated quarters, months and periods of those fiscal years. Note 2 – Revenue Net sales disaggregated by significant products and services for the three months ended December 28, 2024 and December 30, 2023 were as follows (in millions):</untrusted_document>",
+   "summary": "AAPL Apple revenue fiscal 2025",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:874b5505ab7752a5830dda3ec18d6731e501383c7d490f737943ee0d3336ef33",
+     "text": "See accompanying Notes to Consolidated Financial Statements. Apple Inc. | 2025 Form 10-K | 33 Apple Inc. Notes to Consolidated Financial Statements Note 1 – Summary of Significant Accounting Policies Basis of Presentation and Preparation The consolidated financial statements include the accounts of Apple Inc. and its wholly owned subsidiaries. The preparation of these consolidated financial statements and accompanying notes in conformity with GAAP requires the use of management estimates. Certain prior period amounts in the notes to consolidated financial statements have been reclassified to conform to the current period’s presentation. The Company’s fiscal year is the 52- or 53-week period that ends on the last Saturday of September. An additional week is included in the first fiscal quarter every five or six years to realign the Company’s fiscal quarters with calendar quarters, which occurred in the first fiscal quarter of 2023. The Company’s fiscal years 2025 and 2024 spanned 52 weeks each, whereas fiscal year 2023 spanned 53 weeks. Unless otherwise stated, references to particular years, quarters, months and periods refer to the Company’s fiscal years ended in September and the associated quarters, months and periods of those fiscal years. Recently Adopted Accounting Pronouncements Segment Reporting Beginning with the 2025 annual reporting period, the Company adopted the FASB’s ASU No. 2023-07, Segment Reporting (Topic 280): Improvements to Reportable Segment Disclosures (“ASU 2023-07”), which requires the Company to disclose segment expenses that are significant and regularly provided to the Company’s chief operating decision maker (“CODM”). In addition, ASU 2023-07 requires the Company to disclose the title and position of its CODM and how the CODM uses segment profit or loss information in assessing segment performance and deciding how to allocate resources. The Company adopted ASU 2023-07 using a retrospective transition method. Revenue The Company records revenue net of taxes collected from customers that are remitted to governmental authorities. Share-Based Compensation The Company recognizes share-based compensation expense on a straight-line basis for its estimate of equity awards that will ultimately vest. Cash Equivalents All highly liquid investments with maturities of three months or less at the date of purchase are treated as cash equivalents. Trade Receivables Trade receivables are stated at transaction price. Marketable Securities The cost of securities sold is determined using the specific identification method. Inventories Inventories are measured using the first-in, first-out method. Property, Plant and Equipment",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3264,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:031b0097b8e1ecc56aba6cf6305e1f0874c00e9e436bb26c3847ecb807339955",
+     "text": "(1) On May 1, 2025, the Company announced a program to repurchase up to $100 billion of the Company’s common stock. As of June 27, 2026, remaining availability under the May 2025 program was $38.0 billion. On April 30, 2026, the Company announced an additional program to repurchase up to $100 billion of the Company’s common stock. The programs do not obligate the Company to acquire a minimum amount of shares. Under the programs, shares may be repurchased in privately negotiated or open market transactions, including under plans complying with Rule 10b5-1 under the Exchange Act. (2) In May 2026, the Company entered into new accelerated share repurchase agreements (“ASRs”). Under the terms of the ASRs, financial institutions committed to deliver shares of the Company’s common stock during the purchase periods in exchange for up-front payments totaling $10.0 billion. The total number of shares ultimately delivered under the ASRs, and therefore the average repurchase price paid per share, is determined based on the volume-weighted average price of the Company’s common stock during the ASRs’ purchase periods, which end in the fourth quarter of 2026.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3261,
+      "ticker": "AAPL",
+      "doc_type": "10-Q",
+      "period": "2026-Q2",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:97d46fb163a814b58485454dac185b5a4c17e63f99d223abcd0663af7ad699bb",
+     "text": "See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q2 2025 Form 10-Q | 5 Apple Inc. Notes to Condensed Consolidated Financial Statements (Unaudited) Note 1 – Summary of Significant Accounting Policies Basis of Presentation and Preparation The condensed consolidated financial statements include the accounts of Apple Inc. and its wholly owned subsidiaries (collectively “Apple” or the “Company”). In the opinion of the Company’s management, the condensed consolidated financial statements reflect all adjustments, which are normal and recurring in nature, necessary for fair financial statement presentation. The preparation of these condensed consolidated financial statements and accompanying notes in conformity with U.S. generally accepted accounting principles (“GAAP”) requires the use of management estimates. These condensed consolidated financial statements and accompanying notes should be read in conjunction with the Company’s annual consolidated financial statements and accompanying notes included in its Annual Report on Form 10-K for the fiscal year ended September 28, 2024 (the “2024 Form 10-K”). The Company’s fiscal year is the 52- or 53-week period that ends on the last Saturday of September. An additional week is included in the first fiscal quarter every five or six years to realign the Company’s fiscal quarters with calendar quarters. The Company’s fiscal years 2025 and 2024 span 52 weeks each. Unless otherwise stated, references to particular years, quarters, months and periods refer to the Company’s fiscal years ended in September and the associated quarters, months and periods of those fiscal years. Note 2 – Revenue The following table shows disaggregated net sales, as well as the portion of total net sales that was previously deferred, for the three- and six-month periods ended March 29, 2025 and March 30, 2024 (in millions):",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3266,
+      "ticker": "AAPL",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000057/aapl-20250329.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:d2c171e51ef724eb766060ae527208819bd7dd517966ad28ca96408bdc3e2499",
+     "text": "See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q3 2025 Form 10-Q | 5 Apple Inc. Notes to Condensed Consolidated Financial Statements (Unaudited) Note 1 – Summary of Significant Accounting Policies Basis of Presentation and Preparation The condensed consolidated financial statements include the accounts of Apple Inc. and its wholly owned subsidiaries (collectively “Apple” or the “Company”). In the opinion of the Company’s management, the condensed consolidated financial statements reflect all adjustments, which are normal and recurring in nature, necessary for fair financial statement presentation. The preparation of these condensed consolidated financial statements and accompanying notes in conformity with U.S. generally accepted accounting principles (“GAAP”) requires the use of management estimates. These condensed consolidated financial statements and accompanying notes should be read in conjunction with the Company’s annual consolidated financial statements and accompanying notes included in its Annual Report on Form 10-K for the fiscal year ended September 28, 2024 (the “2024 Form 10-K”). The Company’s fiscal year is the 52- or 53-week period that ends on the last Saturday of September. An additional week is included in the first fiscal quarter every five or six years to realign the Company’s fiscal quarters with calendar quarters. The Company’s fiscal years 2025 and 2024 span 52 weeks each. Unless otherwise stated, references to particular years, quarters, months and periods refer to the Company’s fiscal years ended in September and the associated quarters, months and periods of those fiscal years. Note 2 – Revenue The following table shows disaggregated net sales, as well as the portion of total net sales that was previously deferred, for the three- and nine-month periods ended June 28, 2025 and June 29, 2024 (in millions):",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3265,
+      "ticker": "AAPL",
+      "doc_type": "10-Q",
+      "period": "2025-Q2",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000073/aapl-20250628.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:03adfd5004c72732ac95bdf2c5e49ca53e576b0a875b7e73c4a4fd4b0e9c9eb5",
+     "text": " | Incorporated by Reference |  |  | \n10.6* | Apple Inc. 2022 Employee Stock Plan. | 8-K | 10.1 | 3/4/22\n10.7* | Form of Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of March 4, 2022. | 8-K | 10.2 | 3/4/22\n10.8* | Form of Performance Award Agreement under 2022 Employee Stock Plan effective as of March 4, 2022. | 8-K | 10.3 | 3/4/22\n10.9* | Apple Inc. Executive Cash Incentive Plan. | 8-K | 10.1 | 8/19/22\n10.10* | Form of CEO Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 25, 2022. | 10-Q | 10.1 | 12/31/22\n10.11* | Form of CEO Performance Award Agreement under 2022 Employee Stock Plan effective as of September 25, 2022. | 10-Q | 10.2 | 12/31/22\n10.12* | Form of Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.19 | 9/28/24\n10.13* | Form of Performance Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.20 | 9/28/24\n10.14* | Form of CEO Restricted Stock Unit Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.21 | 9/28/24\n10.15* | Form of CEO Performance Award Agreement under 2022 Employee Stock Plan effective as of September 29, 2024. | 10-K | 10.22 | 9/28/24\n19.1 | Insider Trading Policy. | 10-K | 19.1 | 9/28/24\n21.1** | Subsidiaries of the Registrant. |  |  | \n23.1** | Consent of Independent Registered Public Accounting Firm. |  |  | \n24.1** | Power of Attorney (included on the Signatures page of this Annual Report on Form 10-K). |  |  | \n31.1** | Rule 13a-14(a) / 15d-14(a) Certification of Chief Executive Officer. |  |  | \n31.2** | Rule 13a-14(a) / 15d-14(a) Certification of Chief Financial Officer. |  |  | \n32.1*** | Section 1350 Certifications of Chief Executive Officer and Chief Financial Officer. |  |  | ",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3264,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:a0f23c066e5a278acc4f26cbc4755562d44c8e682dbf3647a5de4fbc7b50dbf5",
+     "text": "See accompanying Notes to Condensed Consolidated Financial Statements. Apple Inc. | Q1 2025 Form 10-Q | 5 Apple Inc. Notes to Condensed Consolidated Financial Statements (Unaudited) Note 1 – Summary of Significant Accounting Policies Basis of Presentation and Preparation The condensed consolidated financial statements include the accounts of Apple Inc. and its wholly owned subsidiaries (collectively “Apple” or the “Company”). In the opinion of the Company’s management, the condensed consolidated financial statements reflect all adjustments, which are normal and recurring in nature, necessary for fair financial statement presentation. The preparation of these condensed consolidated financial statements and accompanying notes in conformity with U.S. generally accepted accounting principles (“GAAP”) requires the use of management estimates. These condensed consolidated financial statements and accompanying notes should be read in conjunction with the Company’s annual consolidated financial statements and accompanying notes included in its Annual Report on Form 10-K for the fiscal year ended September 28, 2024 (the “2024 Form 10-K”). The Company’s fiscal year is the 52- or 53-week period that ends on the last Saturday of September. An additional week is included in the first fiscal quarter every five or six years to realign the Company’s fiscal quarters with calendar quarters. The Company’s fiscal years 2025 and 2024 span 52 weeks each. Unless otherwise stated, references to particular years, quarters, months and periods refer to the Company’s fiscal years ended in September and the associated quarters, months and periods of those fiscal years. Note 2 – Revenue Net sales disaggregated by significant products and services for the three months ended December 28, 2024 and December 30, 2023 were as follows (in millions):",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3267,
+      "ticker": "AAPL",
+      "doc_type": "10-Q",
+      "period": "2024-Q4",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000008/aapl-20241228.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"Microsoft revenue fiscal 2025\",\"ticker\":\"MSFT\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:79badd4d05c19bec574c6f7aedd65119d9aaf7848fae732c1d795284c8ff44d6\" amounts_in=\"millions\">Reportable Segments Fiscal Year 2026 Compared with Fiscal Year 2025 Productivity and Business Processes Revenue increased $19.2 billion or 16%. Microsoft 365 Commercial products and cloud services revenue increased $14.2 billion or 16%. Microsoft 365 Commercial cloud revenue grew 17% with growth in revenue per user driven by Microsoft 365 Copilot and Microsoft 365 E5. Microsoft 365 Commercial seats grew 6% driven by small and medium businesses and frontline worker offerings. Microsoft 365 Commercial products revenue grew 13% driven by growth in the Windows Commercial on-premises components of Microsoft 365 suite sales, as well as an increase in Office 2024 transactional purchasing. Microsoft 365 Consumer products and cloud services revenue increased $1.8 billion or 24%. Microsoft 365 Consumer cloud revenue grew 28% driven by growth in revenue per user and Microsoft 365 Consumer subscriber growth of 7%. LinkedIn revenue increased $2.0 billion or 11% with growth across all lines of business. Dynamics products and cloud services revenue increased $1.2 billion or 15% driven by growth in Dynamics 365. Dynamics 365 revenue grew 18% with growth across all workloads. 38 PART II Item 7 Operating income increased $14.1 billion or 20%. Cost of revenue increased $2.6 billion or 12% driven by investments in AI infrastructure to support Microsoft 365 Copilot seat and usage growth. Gross margin increased $16.6 billion or 17% driven by growth in Microsoft 365 Commercial cloud. Gross margin percentage increased slightly primarily driven by efficiency gains in Microsoft 365 Commercial cloud, offset in part by continued investments in AI infrastructure and growing AI product usage. Operating expenses increased $2.5 billion or 9% driven by continued investments in research and development compute capacity, AI talent, and data to support product development that benefits the entire portfolio, as well as investments in commercial sales and higher Copilot advertising expenses. Revenue, gross margin, and operating income included a favorable foreign currency impact of 2%, 3%, and 3%, respectively. Intelligent Cloud Revenue increased $31.5 billion or 30%. Server products and cloud services revenue increased $31.0 billion or 31% driven by Azure and other cloud services. Azure and other cloud services revenue grew 41% driven by demand for services across the platform with continued growth across all workloads. Server products revenue increased 1% primarily driven by higher purchases of licenses running in multi-cloud environments, offset in part by continued customer shift to cloud. Enterprise and partner services revenue increased $500 million or 6% driven by growth in Enterprise Support Services. Operating income increased $12.4 billion or 28%. Cost of revenue increased $17.7 billion or 44% driven by investments in AI infrastructure to support growing customer demand. Gross margin increased $13.8 billion or 21% driven by growth in Azure.</untrusted_document>\n<untrusted_document cite_id=\"c:00d40a63ffb46fd21224c4c3aa384910b1519674fecffc57c9554412363e534c\" amounts_in=\"millions\">29 PART I Item 1 Revenue, classified by significant product and service offerings, was as follows: (In millions) Three Months Ended December 31, Six Months Ended December 31, 2024 2023 2024 2023 Server products and cloud services $ 23,641 $ 19,597 $ 45,796 $ 37,659 Microsoft 365 Commercial products and cloud services 21,117 18,321 41,566 36,365 Gaming 6,581 7,111 12,202 11,030 LinkedIn 4,587 4,195 8,879 8,108 Windows and Devices 4,512 4,363 8,841 8,703 Search and news advertising 3,558 3,168 6,783 6,186 Enterprise and partner services 1,892 1,917 3,820 3,861 Dynamics products and cloud services 1,913 1,659 3,762 3,285 Microsoft 365 Consumer products and cloud services 1,821 1,679 3,548 3,322 Other 10 10 20 18 Total $ 69,632 $ 62,020 $ 135,217 $ 118,537 Our Microsoft Cloud revenue, which includes Microsoft 365 Commercial cloud, Azure and other cloud services, the commercial portion of LinkedIn, and Dynamics 365, was $ 40.9 billion and $ 79.8 billion for the three and six months ended December 31, 2024, respectively, and $ 33.7 billion and $ 65.6 billion for the three and six months ended December 31, 2023, respectively. These amounts are included in Microsoft 365 Commercial products and cloud services, Server products and cloud services, LinkedIn, and Dynamics products and cloud services in the table above. Assets are not allocated to segments for internal reporting presentations. A portion of amortization and depreciation is included with various other costs in an overhead allocation to each segment. It is impracticable for us to separately identify the amount of amortization and depreciation by segment that is included in the measure of segment profit or loss. 30 PART I Item 1 REPORT OF INDEPENDENT REGIST ERED PUBLIC ACCOUNTING FIRM To the Stockholders and the Board of Directors of Microsoft Corporation Results of Review of Interim Financial Information We have reviewed the accompanying consolidated balance sheet of Microsoft Corporation and subsidiaries (the \"Company\") as of December 31, 2024, the related consolidated statements of income, comprehensive income, cash flows, and stockholders’ equity for the three-month and six-month periods ended December 31, 2024 and 2023, and the related notes (collectively referred to as the “interim financial information”). Based on our reviews, we are not aware of any material modifications that should be made to the accompanying interim financial information for it to be in conformity with accounting principles generally accepted in the United States of America.</untrusted_document>\n<untrusted_document cite_id=\"c:00d27cbb52d156f925853fae5bdc1e032317317ad58bee487017a883892a9bfe\"> |  |  | Incorporated by Reference |  |  |  | \n4.10 | Seventh Supplemental Indenture for 2.125% Notes due 2021 and 3.125% Notes due 2028, dated as of December 6, 2013, between Microsoft Corporation and The Bank of New York Mellon Trust Company, N.A., as Trustee, to the Indenture, dated as of May 18, 2009, between Microsoft Corporation and The Bank of New York Mellon Trust Company, N.A., as Trustee |  |  | 8-K |  | 4.1 | 12/6/2013</untrusted_document>\n<untrusted_document cite_id=\"c:0059c3c5f3b4a15d0a33ef3afe3def48d7224cb1b79778f8c18a69f87e649401\" amounts_in=\"millions\">(In millions, except per share amounts) |  |  |  |  |  | \nYear Ended June 30, | 2025 |  | 2024 |  | 2023 | \nCommon stock and paid-in capital |  |  |  |  |  | \nBalance, beginning of period |  | 100,923 |  | 93,718 |  | 86,939\nCommon stock issued |  | 2,056 |  | 2,002 |  | 1,866\nCommon stock repurchased |  | ( 5,856 |  | ( 5,712 |  | ( 4,696\nStock-based compensation expense |  | 11,974 |  | 10,734 |  | 9,611\nOther, net |  | ( 2 |  | 181 |  | ( 2\nBalance, end of period |  | 109,095 |  | 100,923 |  | 93,718\nRetained earnings |  |  |  |  |  | \nBalance, beginning of period |  | 173,144 |  | 118,848 |  | 84,281\nNet income |  | 101,832 |  | 88,136 |  | 72,361\nCommon stock cash dividends |  | ( 24,677 |  | ( 22,293 |  | ( 20,226\nCommon stock repurchased |  | ( 12,568 |  | ( 11,547 |  | ( 17,568\nBalance, end of period |  | 237,731 |  | 173,144 |  | 118,848\nAccumulated other comprehensive loss |  |  |  |  |  | \nBalance, beginning of period |  | ( 5,590 |  | ( 6,343 |  | ( 4,678\nOther comprehensive income (loss) |  | 2,243 |  | 753 |  | ( 1,665\nBalance, end of period |  | ( 3,347 |  | ( 5,590 |  | ( 6,343\nTotal stockholders’ equity |  | 343,479 |  | 268,477 |  | 206,223\nCash dividends declared per common share |  | 3.32 |  | 3.00 |  | 2.72</untrusted_document>\n<untrusted_document cite_id=\"c:00ed96f6b99172d62628313d0329cbfcadb7e3c6600a0d1a2d31813cc1983871\" amounts_in=\"millions\">As of March 31, 2026, our long-term unsecured debt rating was AAA , and cash investments were in excess of $ 1.0 billion. As a result, no collateral was required to be posted. The following table presents the notional amounts of our outstanding derivative instruments measured in U.S. dollar equivalents: (In millions) March 31, 2026 June 30, 2025 Designated as Hedging Instruments Foreign exchange contracts purchased $ 1,492 $ 1,492 Interest rate contracts purchased 1,180 1,150 Not Designated as Hedging Instruments Foreign exchange contracts purchased 14,050 15,214 Foreign exchange contracts sold 40,593 43,307 Equity contracts purchased 5,192 5,434 Equity contracts sold 2,546 2,189 Other contracts purchased 2,872 2,769 Other contracts sold 864 1,242 16 PART I Item 1 Fair Values of Derivative Instruments The following table presents our derivative instruments: Derivative Derivative Derivative Derivative (In millions) Assets Liabilities Assets Liabilities March 31, 2026 June 30, 2025 Designated as Hedging Instruments Foreign exchange contracts $ 56 $ ( 66 ) $ 89 $ ( 44 ) Interest rate contracts 4 0 15 0 Not Designated as Hedging Instruments Foreign exchange contracts 974 ( 427 ) 248 ( 809 ) Equity contracts 34 ( 160 ) 385 ( 983 ) Other contracts 12 ( 18 ) 21 ( 1 ) Gross amounts of derivatives 1,080 ( 671 ) 758 ( 1,837 ) Gross amounts of derivatives offset in the balance sheets ( 328 ) 329 ( 258 ) 260 Cash collateral received 0 ( 404 ) 0 ( 99 ) Net amounts of derivatives $ 752 $ ( 746 ) $ 500 $ ( 1,676 ) Reported as Short-term investments $ 44 $ 0 $ 10 $ 0 Other current assets 704 0 201 0 Equity and other investments 0 0 272 0 Other long-term assets 4 0 17 0 Other current liabilities 0 ( 630 ) 0 ( 1,639 ) Other long-term liabilities 0 ( 116 ) 0 ( 37 ) Total $ 752 $ ( 746 ) $ 500 $ ( 1,676 ) Gross derivative assets and liabilities subject to legally enforceable master netting agreements for which we have elected to offset were $ 1.1 billion and $ 663 million, respectively, as of March 31, 2026, and $ 452 million and $ 1.8 billion, respectively, as of June 30, 2025. The following table presents the fair value of our derivatives instruments on a gross basis:</untrusted_document>\n<untrusted_document cite_id=\"c:0383962fbd6c4dce77fce8ce42619fe50b1e9845069754dbf866a928f462e39b\" amounts_in=\"millions\">Sales and marketing expenses include payroll, employee benefits, stock-based compensation expense, and other headcount-related expenses associated with sales and marketing personnel, and the costs of advertising, promotions, trade shows, seminars, and other programs. Three Months Ended March 31, 2026 Compared with Three Months Ended March 31, 2025 Sales and marketing expenses increased $602 million or 10% primarily driven by higher Copilot advertising expenses, with headcount declining year-over-year. Sales and marketing included an unfavorable foreign currency impact of 3%. Nine Months Ended March 31, 2026 Compared with Nine Months Ended March 31, 2025 Sales and marketing expenses increased $746 million or 4% driven by higher Copilot advertising expenses, with headcount declining year-over-year. Sales and marketing included an unfavorable foreign currency impact of 2%. General and Administrative</untrusted_document>",
+   "summary": "MSFT Microsoft revenue fiscal 2025",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:79badd4d05c19bec574c6f7aedd65119d9aaf7848fae732c1d795284c8ff44d6",
+     "text": "Reportable Segments Fiscal Year 2026 Compared with Fiscal Year 2025 Productivity and Business Processes Revenue increased $19.2 billion or 16%. Microsoft 365 Commercial products and cloud services revenue increased $14.2 billion or 16%. Microsoft 365 Commercial cloud revenue grew 17% with growth in revenue per user driven by Microsoft 365 Copilot and Microsoft 365 E5. Microsoft 365 Commercial seats grew 6% driven by small and medium businesses and frontline worker offerings. Microsoft 365 Commercial products revenue grew 13% driven by growth in the Windows Commercial on-premises components of Microsoft 365 suite sales, as well as an increase in Office 2024 transactional purchasing. Microsoft 365 Consumer products and cloud services revenue increased $1.8 billion or 24%. Microsoft 365 Consumer cloud revenue grew 28% driven by growth in revenue per user and Microsoft 365 Consumer subscriber growth of 7%. LinkedIn revenue increased $2.0 billion or 11% with growth across all lines of business. Dynamics products and cloud services revenue increased $1.2 billion or 15% driven by growth in Dynamics 365. Dynamics 365 revenue grew 18% with growth across all workloads. 38 PART II Item 7 Operating income increased $14.1 billion or 20%. Cost of revenue increased $2.6 billion or 12% driven by investments in AI infrastructure to support Microsoft 365 Copilot seat and usage growth. Gross margin increased $16.6 billion or 17% driven by growth in Microsoft 365 Commercial cloud. Gross margin percentage increased slightly primarily driven by efficiency gains in Microsoft 365 Commercial cloud, offset in part by continued investments in AI infrastructure and growing AI product usage. Operating expenses increased $2.5 billion or 9% driven by continued investments in research and development compute capacity, AI talent, and data to support product development that benefits the entire portfolio, as well as investments in commercial sales and higher Copilot advertising expenses. Revenue, gross margin, and operating income included a favorable foreign currency impact of 2%, 3%, and 3%, respectively. Intelligent Cloud Revenue increased $31.5 billion or 30%. Server products and cloud services revenue increased $31.0 billion or 31% driven by Azure and other cloud services. Azure and other cloud services revenue grew 41% driven by demand for services across the platform with continued growth across all workloads. Server products revenue increased 1% primarily driven by higher purchases of licenses running in multi-cloud environments, offset in part by continued customer shift to cloud. Enterprise and partner services revenue increased $500 million or 6% driven by growth in Enterprise Support Services. Operating income increased $12.4 billion or 28%. Cost of revenue increased $17.7 billion or 44% driven by investments in AI infrastructure to support growing customer demand. Gross margin increased $13.8 billion or 21% driven by growth in Azure.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3269,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:00d40a63ffb46fd21224c4c3aa384910b1519674fecffc57c9554412363e534c",
+     "text": "29 PART I Item 1 Revenue, classified by significant product and service offerings, was as follows: (In millions) Three Months Ended December 31, Six Months Ended December 31, 2024 2023 2024 2023 Server products and cloud services $ 23,641 $ 19,597 $ 45,796 $ 37,659 Microsoft 365 Commercial products and cloud services 21,117 18,321 41,566 36,365 Gaming 6,581 7,111 12,202 11,030 LinkedIn 4,587 4,195 8,879 8,108 Windows and Devices 4,512 4,363 8,841 8,703 Search and news advertising 3,558 3,168 6,783 6,186 Enterprise and partner services 1,892 1,917 3,820 3,861 Dynamics products and cloud services 1,913 1,659 3,762 3,285 Microsoft 365 Consumer products and cloud services 1,821 1,679 3,548 3,322 Other 10 10 20 18 Total $ 69,632 $ 62,020 $ 135,217 $ 118,537 Our Microsoft Cloud revenue, which includes Microsoft 365 Commercial cloud, Azure and other cloud services, the commercial portion of LinkedIn, and Dynamics 365, was $ 40.9 billion and $ 79.8 billion for the three and six months ended December 31, 2024, respectively, and $ 33.7 billion and $ 65.6 billion for the three and six months ended December 31, 2023, respectively. These amounts are included in Microsoft 365 Commercial products and cloud services, Server products and cloud services, LinkedIn, and Dynamics products and cloud services in the table above. Assets are not allocated to segments for internal reporting presentations. A portion of amortization and depreciation is included with various other costs in an overhead allocation to each segment. It is impracticable for us to separately identify the amount of amortization and depreciation by segment that is included in the measure of segment profit or loss. 30 PART I Item 1 REPORT OF INDEPENDENT REGIST ERED PUBLIC ACCOUNTING FIRM To the Stockholders and the Board of Directors of Microsoft Corporation Results of Review of Interim Financial Information We have reviewed the accompanying consolidated balance sheet of Microsoft Corporation and subsidiaries (the \"Company\") as of December 31, 2024, the related consolidated statements of income, comprehensive income, cash flows, and stockholders’ equity for the three-month and six-month periods ended December 31, 2024 and 2023, and the related notes (collectively referred to as the “interim financial information”). Based on our reviews, we are not aware of any material modifications that should be made to the accompanying interim financial information for it to be in conformity with accounting principles generally accepted in the United States of America.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3275,
+      "ticker": "MSFT",
+      "doc_type": "10-Q",
+      "period": "2024-Q4",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025010491/msft-20241231.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:00d27cbb52d156f925853fae5bdc1e032317317ad58bee487017a883892a9bfe",
+     "text": " |  |  | Incorporated by Reference |  |  |  | \n4.10 | Seventh Supplemental Indenture for 2.125% Notes due 2021 and 3.125% Notes due 2028, dated as of December 6, 2013, between Microsoft Corporation and The Bank of New York Mellon Trust Company, N.A., as Trustee, to the Indenture, dated as of May 18, 2009, between Microsoft Corporation and The Bank of New York Mellon Trust Company, N.A., as Trustee |  |  | 8-K |  | 4.1 | 12/6/2013",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3273,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:0059c3c5f3b4a15d0a33ef3afe3def48d7224cb1b79778f8c18a69f87e649401",
+     "text": "(In millions, except per share amounts) |  |  |  |  |  | \nYear Ended June 30, | 2025 |  | 2024 |  | 2023 | \nCommon stock and paid-in capital |  |  |  |  |  | \nBalance, beginning of period |  | 100,923 |  | 93,718 |  | 86,939\nCommon stock issued |  | 2,056 |  | 2,002 |  | 1,866\nCommon stock repurchased |  | ( 5,856 |  | ( 5,712 |  | ( 4,696\nStock-based compensation expense |  | 11,974 |  | 10,734 |  | 9,611\nOther, net |  | ( 2 |  | 181 |  | ( 2\nBalance, end of period |  | 109,095 |  | 100,923 |  | 93,718\nRetained earnings |  |  |  |  |  | \nBalance, beginning of period |  | 173,144 |  | 118,848 |  | 84,281\nNet income |  | 101,832 |  | 88,136 |  | 72,361\nCommon stock cash dividends |  | ( 24,677 |  | ( 22,293 |  | ( 20,226\nCommon stock repurchased |  | ( 12,568 |  | ( 11,547 |  | ( 17,568\nBalance, end of period |  | 237,731 |  | 173,144 |  | 118,848\nAccumulated other comprehensive loss |  |  |  |  |  | \nBalance, beginning of period |  | ( 5,590 |  | ( 6,343 |  | ( 4,678\nOther comprehensive income (loss) |  | 2,243 |  | 753 |  | ( 1,665\nBalance, end of period |  | ( 3,347 |  | ( 5,590 |  | ( 6,343\nTotal stockholders’ equity |  | 343,479 |  | 268,477 |  | 206,223\nCash dividends declared per common share |  | 3.32 |  | 3.00 |  | 2.72",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3273,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:00ed96f6b99172d62628313d0329cbfcadb7e3c6600a0d1a2d31813cc1983871",
+     "text": "As of March 31, 2026, our long-term unsecured debt rating was AAA , and cash investments were in excess of $ 1.0 billion. As a result, no collateral was required to be posted. The following table presents the notional amounts of our outstanding derivative instruments measured in U.S. dollar equivalents: (In millions) March 31, 2026 June 30, 2025 Designated as Hedging Instruments Foreign exchange contracts purchased $ 1,492 $ 1,492 Interest rate contracts purchased 1,180 1,150 Not Designated as Hedging Instruments Foreign exchange contracts purchased 14,050 15,214 Foreign exchange contracts sold 40,593 43,307 Equity contracts purchased 5,192 5,434 Equity contracts sold 2,546 2,189 Other contracts purchased 2,872 2,769 Other contracts sold 864 1,242 16 PART I Item 1 Fair Values of Derivative Instruments The following table presents our derivative instruments: Derivative Derivative Derivative Derivative (In millions) Assets Liabilities Assets Liabilities March 31, 2026 June 30, 2025 Designated as Hedging Instruments Foreign exchange contracts $ 56 $ ( 66 ) $ 89 $ ( 44 ) Interest rate contracts 4 0 15 0 Not Designated as Hedging Instruments Foreign exchange contracts 974 ( 427 ) 248 ( 809 ) Equity contracts 34 ( 160 ) 385 ( 983 ) Other contracts 12 ( 18 ) 21 ( 1 ) Gross amounts of derivatives 1,080 ( 671 ) 758 ( 1,837 ) Gross amounts of derivatives offset in the balance sheets ( 328 ) 329 ( 258 ) 260 Cash collateral received 0 ( 404 ) 0 ( 99 ) Net amounts of derivatives $ 752 $ ( 746 ) $ 500 $ ( 1,676 ) Reported as Short-term investments $ 44 $ 0 $ 10 $ 0 Other current assets 704 0 201 0 Equity and other investments 0 0 272 0 Other long-term assets 4 0 17 0 Other current liabilities 0 ( 630 ) 0 ( 1,639 ) Other long-term liabilities 0 ( 116 ) 0 ( 37 ) Total $ 752 $ ( 746 ) $ 500 $ ( 1,676 ) Gross derivative assets and liabilities subject to legally enforceable master netting agreements for which we have elected to offset were $ 1.1 billion and $ 663 million, respectively, as of March 31, 2026, and $ 452 million and $ 1.8 billion, respectively, as of June 30, 2025. The following table presents the fair value of our derivatives instruments on a gross basis:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3270,
+      "ticker": "MSFT",
+      "doc_type": "10-Q",
+      "period": "2026-Q1",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:0383962fbd6c4dce77fce8ce42619fe50b1e9845069754dbf866a928f462e39b",
+     "text": "Sales and marketing expenses include payroll, employee benefits, stock-based compensation expense, and other headcount-related expenses associated with sales and marketing personnel, and the costs of advertising, promotions, trade shows, seminars, and other programs. Three Months Ended March 31, 2026 Compared with Three Months Ended March 31, 2025 Sales and marketing expenses increased $602 million or 10% primarily driven by higher Copilot advertising expenses, with headcount declining year-over-year. Sales and marketing included an unfavorable foreign currency impact of 3%. Nine Months Ended March 31, 2026 Compared with Nine Months Ended March 31, 2025 Sales and marketing expenses increased $746 million or 4% driven by higher Copilot advertising expenses, with headcount declining year-over-year. Sales and marketing included an unfavorable foreign currency impact of 2%. General and Administrative",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3270,
+      "ticker": "MSFT",
+      "doc_type": "10-Q",
+      "period": "2026-Q1",
+      "section": "Item 2",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"AAPL\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:111\">Revenue (2025-FY): 416,161,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3621\">Revenue (2025-FY): 416,161,000,000 USD</untrusted_document>",
+   "summary": "AAPL 2025-FY revenue",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "f:111",
+     "text": "Revenue (2025-FY): 416,161,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "416161000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3621",
+     "text": "Revenue (2025-FY): 416,161,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "416161000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"MSFT\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:321\">Revenue (2025-FY): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3725\">Revenue (2025-FY): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:322\">Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3726\">Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD</untrusted_document>",
+   "summary": "MSFT 2025-FY revenue",
+   "count": 4,
+   "items": [
+    {
+     "cite_id": "f:321",
+     "text": "Revenue (2025-FY): 281,724,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 119,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000950170-25-100235",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
+     },
+     "value": "281724000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3725",
+     "text": "Revenue (2025-FY): 281,724,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2336,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000950170-25-100235",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
+     },
+     "value": "281724000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:322",
+     "text": "Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 115,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001193125-26-323660",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm"
+     },
+     "value": "281724000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3726",
+     "text": "Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2332,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001193125-26-323660",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm"
+     },
+     "value": "281724000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  }
+ ],
+ "elapsed_ms": 9981
+}
