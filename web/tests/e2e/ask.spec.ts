@@ -68,6 +68,13 @@ test("ask → timeline → answer → citation → disclaimer", async ({ page })
   const disclaimer = page.getByTestId("disclaimer").filter({ visible: true });
   await expect(disclaimer).toBeVisible();
   await expect(disclaimer).toContainText("Yatırım tavsiyesi değildir");
+
+  // Back on the board for the next question, the box is empty again.
+  await page.getByRole("link", { name: "Yeni soru" }).click();
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.getByLabel("Soru").filter({ visible: true })).toHaveValue(
+    "",
+  );
 });
 
 test("reloading a run replays it", async ({ page }) => {

@@ -22,6 +22,9 @@ export default function Home() {
   const [busy, setBusy] = useState(false);
   const [askError, setAskError] = useState<string | null>(null);
   const [quota, setQuota] = useState<Quotas | null>(null);
+  // Bumped after a question is sent: the page stays mounted while hidden, so a new key gives
+  // the visitor an empty box when they come back for the next question.
+  const [askKey, setAskKey] = useState(0);
   const exhausted = quota !== null && quota.simple.remaining <= 0;
 
   const ask = async (question: string) => {
@@ -30,6 +33,7 @@ export default function Home() {
     try {
       const { run_id, quota: next } = await startResearch(question, language);
       if (next) setQuota(next);
+      setAskKey((key) => key + 1);
       router.push(`/runs/${encodeURIComponent(run_id)}`);
     } catch (error) {
       const code = error instanceof ApiError ? error.code : "internal_error";
@@ -92,6 +96,7 @@ export default function Home() {
       </div>
 
       <AskBox
+        key={askKey}
         t={t}
         onAsk={(question) => void ask(question)}
         busy={busy}

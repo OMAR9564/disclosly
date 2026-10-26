@@ -233,7 +233,11 @@ def resolve_periods(period_range: PeriodRange | None, latest_available: str | No
 
 
 def latest_period(engine: Engine, tickers: list[str]) -> str | None:
-    """The latest period with financial facts for any of `tickers` (None when there are none)."""
+    """The latest period with financial facts for any of `tickers` (None when there are none).
+
+    A quarter wins over a fiscal year: a fiscal year that ends mid-year (Microsoft's ends in
+    June) would otherwise count as that year's Q4 and send the default range to quarters that
+    have not been reported yet."""
     if not tickers:
         return None
     with engine.connect() as conn:
@@ -244,7 +248,8 @@ def latest_period(engine: Engine, tickers: list[str]) -> str | None:
             .where(corpus.companies.c.ticker.in_([t.upper() for t in tickers]))
         ).scalars()
         parsed = [Period.parse(p) for p in periods]
-    return str(max(parsed)) if parsed else None
+    quarters = [p for p in parsed if p.quarter is not None]
+    return str(max(quarters or parsed)) if parsed else None
 
 
 def search_companies(engine: Engine, query: str | None, limit: int) -> list[dict[str, Any]]:

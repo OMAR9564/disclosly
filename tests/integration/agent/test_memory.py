@@ -2,6 +2,7 @@
 
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
+from decimal import Decimal
 
 import pytest
 from sqlalchemy import Engine, insert
@@ -143,3 +144,20 @@ def test_latest_period(engine: Engine, facts_corpus: Corpus) -> None:
 )  # fmt: skip
 def test_resolve_periods(period_range: str | None, latest: str | None, expected: list[str]) -> None:
     assert memory.resolve_periods(period_range, latest) == expected  # type: ignore[arg-type]
+
+
+def test_latest_period_prefers_a_quarter_to_a_mid_year_fiscal_year(
+    engine: Engine, facts_corpus: Corpus
+) -> None:
+    # A fiscal year ending in June 2026 must not send the default range to 2026-Q4.
+    with engine.begin() as conn:
+        conn.execute(
+            insert(corpus.financial_facts),
+            [{"id": 602, "company_id": 2, "metric": "revenue", "period": "2026-FY",
+              "value": Decimal("280"), "unit": "billion", "currency": "USD",
+              "source_document_id": 22, "source_ref": "Item 8"}],
+        )  # fmt: skip
+    assert memory.latest_period(engine, ["AAPL"]) == "2025-Q3"
+    assert memory.resolve_periods("last_4q", memory.latest_period(engine, ["AAPL"]))[-1] == (
+        "2025-Q3"
+    )
