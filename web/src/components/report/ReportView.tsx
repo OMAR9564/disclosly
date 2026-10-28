@@ -6,7 +6,7 @@ import { CitationPopover } from "@/components/CitationPopover";
 import { FlapRow } from "@/components/FlapRow";
 import type { Dictionary } from "@/i18n";
 import { type Citation, type Report, asReport } from "@/lib/api";
-import { leadFigure, sourceCode } from "@/lib/runState";
+import { boardFigure, leadFigure, sourceCode } from "@/lib/runState";
 
 import { ReportChart } from "./ReportChart";
 import { ReportTable } from "./ReportTable";
@@ -181,7 +181,8 @@ export function ReportView({
       {report.points.length > 0 && (
         <ol className="arrivals" aria-label={t.figuresLabel}>
           {report.points.map((point, index) => {
-            const figure = leadFigure(point.text);
+            const lead = leadFigure(point.text);
+            const figure = lead && boardFigure(lead, FIGURE_TILES, t.locale);
             const citeId = point.cite_ids.find((c) => byId.has(c));
             const citation = citeId ? byId.get(citeId) : undefined;
             const where = `point-${index}`;
