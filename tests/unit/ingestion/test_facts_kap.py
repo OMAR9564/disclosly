@@ -1,7 +1,15 @@
 from decimal import Decimal
 from pathlib import Path
 
-from ingestion.facts import FactDraft, _kap_period, _kap_unit, extract_kap_facts
+from ingestion.facts import (
+    FactDraft,
+    Span,
+    _kap_period,
+    derive_quarters,
+    extract_kap_facts,
+    kap_spans,
+    kap_unit,
+)
 from ingestion.parse.kap import parse_kap_detail
 from ingestion.parse.types import ExtractedTable, Paragraph, ParsedDocument, ParsedSection
 
@@ -76,6 +84,35 @@ def test_period_and_unit_helpers() -> None:
     assert _kap_period("Cari Dönem 30.06.2025") == "2025-Q2"
     assert _kap_period("Cari Dönem 01.01.2025 - 30.06.2025") is None
     assert _kap_period("") is None
-    assert _kap_unit(["Sunum Para Birimi: 1.000 TL"]) == (Decimal(1000), "TRY")
-    assert _kap_unit(["Sunum Para Birimi: USD"]) == (Decimal(1), "USD")
-    assert _kap_unit([]) == (Decimal(1), "TRY")
+    assert kap_unit(["Sunum Para Birimi: 1.000 TL"]) == (Decimal(1000), "TRY")
+    assert kap_unit(["Sunum Para Birimi: USD"]) == (Decimal(1), "USD")
+    assert kap_unit([]) == (Decimal(1), "TRY")
+
+
+def test_kap_quarters_come_from_year_to_date_spans_across_reports() -> None:
+    def table(start: str, end: str, value: str, document_id: int) -> list[Span]:
+        header = ["Kalem", "Kavram", "Dipnot", f"Cari Dönem {start} - {end}"]
+        rows = [["Amortisman ve İtfa Gideri ile İlgili Düzeltmeler", "", "", value]]
+        return kap_spans(header, rows, Decimal(1000), "TRY", document_id)
+
+    spans = [
+        *table("01.01.2025", "31.03.2025", "10", 1),
+        *table("01.01.2025", "30.06.2025", "25", 2),
+        *table("01.01.2025", "30.09.2025", "45", 3),
+        *table("01.01.2025", "31.12.2025", "70", 4),
+    ]
+    reported = [
+        FactDraft("depreciation_amortization", "2025-Q1", Decimal(10000), "TRY", "TRY", 1, "x")
+    ]
+
+    derived = {f.period: f for f in derive_quarters(spans, reported)}
+
+    assert {p: f.value for p, f in derived.items()} == {
+        "2025-Q2": Decimal(15000),
+        "2025-Q3": Decimal(20000),
+        "2025-Q4": Decimal(25000),
+        "2025-FY": Decimal(70000),  # a year as given
+    }
+    assert derived["2025-FY"].derived is False
+    assert derived["2025-Q4"].source_document_id == 4
+    assert kap_unit(["Sunum Para Birimi: 1.000 TL"]) == (Decimal(1000), "TRY")

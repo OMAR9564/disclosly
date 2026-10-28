@@ -57,3 +57,26 @@ def test_year_to_date_spans_are_skipped() -> None:
 def test_derive_ebitda_needs_both_parts() -> None:
     op = FactDraft("operating_income", "2025-FY", Decimal(1), "USD", "USD", 1, "x")
     assert derive_ebitda([op]) == []
+
+
+def test_fiscal_q4_and_year_to_date_lines_are_derived() -> None:
+    raw = {"facts": {"us-gaap": {
+        "RevenueFromContractWithCustomerExcludingAssessedTax": {"units": {"USD": [
+            {"start": "2024-09-29", "end": "2025-06-28", "val": 300, "accn": "q", "form": "10-Q"},
+            {"start": "2024-09-29", "end": "2025-09-27", "val": 416, "accn": "k", "form": "10-K"},
+        ]}},
+        "DepreciationDepletionAndAmortization": {"units": {"USD": [
+            {"start": "2024-09-29", "end": "2024-12-28", "val": 3, "accn": "q1", "form": "10-Q"},
+            {"start": "2024-09-29", "end": "2025-03-29", "val": 7, "accn": "q2", "form": "10-Q"},
+        ]}},
+        "OperatingIncomeLoss": {"units": {"USD": [
+            {"start": "2024-12-29", "end": "2025-03-29", "val": 20, "accn": "q2", "form": "10-Q"},
+        ]}},
+    }}}  # fmt: skip
+    facts = {(f.metric, f.period): f for f in extract_sec_facts(raw, {"k": 1, "q2": 2})}
+
+    q4 = facts[("revenue", "2025-Q3")]  # Apple's fiscal Q4 ends in calendar Q3
+    assert (q4.value, q4.source_document_id, q4.derived) == (Decimal(116), 1, True)
+    assert facts[("depreciation_amortization", "2025-Q1")].value == Decimal(4)
+    assert facts[("ebitda", "2025-Q1")].value == Decimal(24)
+    assert ("depreciation_amortization", "2024-Q4") not in facts  # its filing is not stored
