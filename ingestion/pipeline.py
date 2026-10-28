@@ -27,6 +27,7 @@ from ingestion.facts import (
     Span,
     derive_ebitda,
     derive_quarters,
+    derive_ttm,
     kap_spans,
     kap_unit,
 )
@@ -563,6 +564,7 @@ class Pipeline:
         quarters = derive_quarters(spans, stored)
         stored_keys = {f.key for f in stored}
         new = [*quarters, *derive_ebitda([*stored, *quarters])]
+        new += derive_ttm([*stored, *new])
         with self._engine.begin() as conn:
             insert_facts(conn, company_id, [f for f in new if f.key not in stored_keys])
 

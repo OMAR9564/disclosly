@@ -2,7 +2,7 @@ import json
 from decimal import Decimal
 from pathlib import Path
 
-from ingestion.facts import FactDraft, derive_ebitda, extract_sec_facts
+from ingestion.facts import FactDraft, derive_ebitda, derive_ttm, extract_sec_facts
 
 FIXTURE = Path(__file__).parents[2] / "fixtures" / "sec" / "companyfacts_CIK0000320193.json"
 ACCESSIONS = {"0000320193-25-000079": 11, "0000320193-25-000073": 12}
@@ -80,3 +80,17 @@ def test_fiscal_q4_and_year_to_date_lines_are_derived() -> None:
     assert facts[("depreciation_amortization", "2025-Q1")].value == Decimal(4)
     assert facts[("ebitda", "2025-Q1")].value == Decimal(24)
     assert ("depreciation_amortization", "2024-Q4") not in facts  # its filing is not stored
+
+
+def test_ebitda_ttm_sums_four_quarters() -> None:
+    def ebitda(period: str, value: int, doc: int = 1) -> FactDraft:
+        return FactDraft("ebitda", period, Decimal(value), "TRY", "TRY", doc, "x", derived=True)
+
+    facts = [ebitda("2025-Q1", 10), ebitda("2025-Q2", 20), ebitda("2025-Q3", 30)]
+    facts += [ebitda("2025-Q4", 40, 4), ebitda("2026-Q1", 50, 5), ebitda("2025-FY", 100)]
+
+    ttm = {f.period: f for f in derive_ttm(facts)}
+
+    assert {p: f.value for p, f in ttm.items()} == {"2025-Q4": 100, "2026-Q1": 140}
+    assert ttm["2026-Q1"].source_document_id == 5
+    assert ttm["2026-Q1"].metric == "ebitda_ttm" and ttm["2026-Q1"].derived

@@ -137,7 +137,8 @@ def extract_sec_facts(
                 )
                 facts.setdefault(draft.key, draft)
     found = [*facts.values(), *derive_quarters(spans.values(), facts.values())]
-    return [*found, *derive_ebitda(found)]
+    with_ebitda = [*found, *derive_ebitda(found)]
+    return [*with_ebitda, *derive_ttm(with_ebitda)]
 
 
 def _quarter(end: date) -> str:
@@ -206,6 +207,48 @@ def derive_quarters(spans: Iterable[Span], reported: Iterable[FactDraft]) -> lis
                     derived=True,
                 )
     return list(found.values())
+
+
+def _previous_quarters(period: str, count: int) -> list[str] | None:
+    year, _, part = period.partition("-")
+    if not part.startswith("Q"):
+        return None
+    y, q = int(year), int(part[1:])
+    periods = []
+    for _ in range(count):
+        periods.append(f"{y}-Q{q}")
+        y, q = (y, q - 1) if q > 1 else (y - 1, 4)
+    return periods
+
+
+def derive_ttm(facts: Iterable[FactDraft]) -> list[FactDraft]:
+    """`ebitda_ttm` for a quarter: EBITDA of that quarter and the three before it (the
+    trailing twelve months that debt ratios use). Cites the latest quarter's document."""
+    quarterly: dict[str, FactDraft] = {}
+    for fact in facts:
+        if fact.metric == "ebitda":
+            quarterly.setdefault(fact.period, fact)
+    derived = []
+    for period, latest in quarterly.items():
+        window = _previous_quarters(period, 4)
+        if window is None or any(p not in quarterly for p in window):
+            continue
+        parts = [quarterly[p] for p in window]
+        if any(p.unit != latest.unit for p in parts):
+            continue
+        derived.append(
+            FactDraft(
+                metric="ebitda_ttm",
+                period=period,
+                value=sum((p.value for p in parts), Decimal(0)),
+                unit=latest.unit,
+                currency=latest.currency,
+                source_document_id=latest.source_document_id,
+                source_ref="derived: EBITDA " + " + ".join(window),
+                derived=True,
+            )
+        )
+    return derived
 
 
 def derive_ebitda(facts: Iterable[FactDraft]) -> list[FactDraft]:
