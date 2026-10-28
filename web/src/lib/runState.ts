@@ -288,6 +288,40 @@ export function leadFigure(text: string): string | null {
   return match ? match[0].replace(/\s/g, "").replace(/[.,]+$/, "") : null;
 }
 
+const SCALES: [number, Record<"tr" | "en", string>][] = [
+  [1e12, { tr: "TRN", en: "T" }],
+  [1e9, { tr: "MR", en: "B" }],
+  [1e6, { tr: "MN", en: "M" }],
+  [1e3, { tr: "B", en: "K" }],
+];
+
+/**
+ * A lead figure that fits `tiles` board tiles: a long amount is shortened with a scale word
+ * ("544.290.000.000" becomes "544,3 MR"), never cut. The full figure stays in the point text.
+ */
+export function boardFigure(
+  figure: string,
+  tiles: number,
+  locale: string,
+): string {
+  if (figure.length <= tiles) return figure;
+  const lang = locale.startsWith("tr") ? "tr" : "en";
+  const [thousands, decimal] = lang === "tr" ? [".", ","] : [",", "."];
+  const match = /^(\D*)([\d.,]+)(\D*)$/.exec(figure);
+  if (!match) return figure.slice(0, tiles);
+  const [, before, digits, after] = match as unknown as [
+    string,
+    string,
+    string,
+    string,
+  ];
+  const value = Number(digits.split(thousands).join("").replace(decimal, "."));
+  const scale = SCALES.find(([size]) => Math.abs(value) >= size);
+  if (!Number.isFinite(value) || !scale) return figure.slice(0, tiles);
+  const short = (value / scale[0]).toFixed(1).replace(".", decimal);
+  return `${before}${short} ${scale[1][lang]}${after}`.slice(0, tiles);
+}
+
 /** Board code for a source, like a flight number: "THYAO 2025-Q3 S.3". */
 export function sourceCode(citation: Citation): string {
   if (citation.source.kind === "calculation") return citation.source.name;

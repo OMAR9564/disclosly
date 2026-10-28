@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { leadFigure, sourceCode } from "@/lib/runState";
+import { boardFigure, leadFigure, sourceCode } from "@/lib/runState";
 import { errorMessage } from "@/lib/messages";
 import { tr } from "@/i18n/tr";
 
@@ -18,6 +18,19 @@ describe("leadFigure", () => {
     ["30.10.2025 tarihli ihaleye 17 şirket katıldı", "17"],
   ])("%s", (text, figure) => {
     expect(leadFigure(text)).toBe(figure);
+  });
+});
+
+describe("boardFigure", () => {
+  it.each([
+    ["544.290.000.000", "tr", "544,3 MR"],
+    ["833.888.000.000", "tr", "833,9 MR"],
+    ["$416,161,000,000", "en", "$416.2 B"],
+    ["25.907.000", "tr", "25,9 MN"],
+    ["1.234,5", "tr", "1.234,5"],
+    ["%23,5", "tr", "%23,5"],
+  ])("%s (%s)", (figure, locale, shown) => {
+    expect(boardFigure(figure, 9, locale)).toBe(shown);
   });
 });
 
