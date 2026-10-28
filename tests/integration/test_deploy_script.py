@@ -31,6 +31,9 @@ fi
 if [[ "$*" == *"up -d --no-deps api"* ]]; then
   grep '^API_IMAGE_TAG=' "$FAKE_ENV_FILE" | cut -d= -f2- > "$FAKE_RUNNING"
 fi
+if [[ "$1" == "images" ]]; then
+  printf '%s\n' ${FAKE_IMAGES:-}
+fi
 exit 0
 """
 
@@ -114,7 +117,9 @@ def test_success_switches_to_new_version(sandbox: Sandbox) -> None:
     assert "--profile migrate run --rm migrate" in docker_calls[1]
     assert docker_calls[2] == "docker pull ghcr.io/omar9564/disclosly-sandbox:main"
     assert docker_calls[3].endswith("up -d --no-deps api sandbox")
-    assert len(docker_calls) == 4
+    assert docker_calls[4].startswith("docker images")
+    assert docker_calls[5] == "docker image prune -f"
+    assert len(docker_calls) == 6
     assert any("https://api.example.test/healthz" in c for c in calls if c.startswith("curl"))
 
 
@@ -201,3 +206,31 @@ def test_only_the_sandbox_service_holds_the_docker_socket() -> None:
     assert sorted(joined) == ["api", "sandbox"]
     assert "ports" not in services["sandbox"]
     assert services["sandbox"]["entrypoint"][:2] == ["uvicorn", "sandbox.service:app"]
+
+
+def test_success_removes_old_api_and_worker_images(sandbox: Sandbox) -> None:
+    sandbox.env_file.write_text(sandbox.env_file.read_text() + "WORKER_IMAGE_TAG=w2\n")
+    repo = "ghcr.io/omar9564/disclosly"
+    images = [
+        f"{repo}-api:{NEW_SHA}",
+        f"{repo}-api:{OLD_SHA}",
+        f"{repo}-api:0000000",
+        f"{repo}-worker:w1",
+        f"{repo}-worker:w2",
+        f"{repo}-sandbox:main",
+        "caddy:2",
+    ]
+
+    assert sandbox.run(NEW_SHA, FAKE_IMAGES=" ".join(images)).returncode == 0
+
+    removed = [c.removeprefix("docker rmi ") for c in sandbox.calls() if c.startswith("docker rmi")]
+    assert removed == [f"{repo}-api:0000000", f"{repo}-worker:w1"]
+
+
+def test_a_rollback_removes_no_images(sandbox: Sandbox) -> None:
+    result = sandbox.run(
+        NEW_SHA, FAKE_HEALTH_DOWN="1", FAKE_IMAGES="ghcr.io/omar9564/disclosly-api:0000000"
+    )
+
+    assert result.returncode == 2
+    assert not any(c.startswith(("docker rmi", "docker images")) for c in sandbox.calls())

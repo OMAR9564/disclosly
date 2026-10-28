@@ -48,6 +48,26 @@ healthy_version() {
   sed -n 's/.*"version":"\([^"]*\)".*/\1/p' <<< "$body"
 }
 
+# Old API and worker images fill the disk (a worker image is about 4 GB). Kept: the new and
+# the previous API image (for a rollback) and the worker image the .env names. The sandbox
+# image is never removed: the sandbox service starts it per batch, so no container holds it.
+remove_old_images() {
+  local worker_tag image tag
+  worker_tag="$(read_env WORKER_IMAGE_TAG)"
+  docker images --format '{{.Repository}}:{{.Tag}}' | while read -r image; do
+    tag="${image##*:}"
+    case "$image" in
+      ghcr.io/omar9564/disclosly-api:*)
+        [[ "$tag" == "$new_tag" || "$tag" == "$previous_tag" ]] && continue ;;
+      ghcr.io/omar9564/disclosly-worker:*)
+        [[ "$tag" == "${worker_tag:-main}" ]] && continue ;;
+      *) continue ;;
+    esac
+    docker rmi "$image" > /dev/null 2>&1 || log "warning: could not remove $image"
+  done
+  docker image prune -f > /dev/null || true
+}
+
 api_domain="$(read_env API_DOMAIN)"
 if [[ -z "$api_domain" ]]; then
   log "API_DOMAIN is not set in $DEPLOY_DIR/$env_file"
@@ -92,6 +112,7 @@ deadline=$((SECONDS + ${HEALTH_TIMEOUT_S%.*}))
 while ((SECONDS < deadline)); do
   if [[ "$(healthy_version || true)" == "$new_tag" ]]; then
     log "live: $new_tag"
+    remove_old_images
     exit 0
   fi
   sleep "$POLL_INTERVAL_S"
