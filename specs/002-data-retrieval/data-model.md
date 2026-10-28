@@ -66,9 +66,15 @@ Indexes: HNSW on `embedding vector_cosine_ops`; GIN on `tsv`; btree on
 ## financial_facts
 
 `id`, `company_id`, `metric` (canonical name: `revenue`, `net_income`, `total_debt`,
-`operating_income`, `depreciation_amortization`, `ebitda`, ...), `period`, `value` numeric,
+`operating_income`, `depreciation_amortization`, `ebitda`, `gross_profit`, `cost_of_revenue`,
+...), `period`, `value` numeric,
 `unit`, `currency`, `source_document_id` FK, `source_ref` (XBRL concept + accession, or KAP
 section/page), `derived` bool. Unique `(company_id, metric, period, source_document_id)`.
+
+A flow metric's quarter that the filings give only inside a longer span (the fiscal Q4, a
+cash-flow line reported year to date) is derived as the longer span minus the span with the same
+start that ends one quarter earlier (`derived = true`, cites the longer span's document). KAP
+quarters are derived across a company's stored financial report tables after each run.
 
 ## ingestion_runs
 
