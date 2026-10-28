@@ -67,7 +67,7 @@ Indexes: HNSW on `embedding vector_cosine_ops`; GIN on `tsv`; btree on
 
 `id`, `company_id`, `metric` (canonical name: `revenue`, `net_income`, `total_debt`,
 `operating_income`, `depreciation_amortization`, `ebitda`, `gross_profit`, `cost_of_revenue`,
-...), `period`, `value` numeric,
+`ebitda_ttm` (the quarter's EBITDA plus the three before it), ...), `period`, `value` numeric,
 `unit`, `currency`, `source_document_id` FK, `source_ref` (XBRL concept + accession, or KAP
 section/page), `derived` bool. Unique `(company_id, metric, period, source_document_id)`.
 
