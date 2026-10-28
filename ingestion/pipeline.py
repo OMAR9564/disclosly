@@ -22,7 +22,14 @@ from ingestion import schema
 from ingestion.chunk import ChunkDraft, ChunkerConfig, TokenCounter, chunk_document
 from ingestion.config import Company
 from ingestion.db import database_size_bytes
-from ingestion.facts import FactDraft
+from ingestion.facts import (
+    FactDraft,
+    Span,
+    derive_ebitda,
+    derive_quarters,
+    kap_spans,
+    kap_unit,
+)
 from ingestion.models import DocType, DocumentStatus, Language
 from ingestion.parse.html import parse_html
 from ingestion.parse.kap import parse_kap_detail
@@ -198,6 +205,8 @@ class Pipeline:
             await self._document(adapter, company_id, remote, summary)
         if adapter.company_facts is not None:
             await self._company_facts(adapter.company_facts, company, company_id, summary)
+        if adapter.name == "kap":
+            self._kap_quarters(company_id)
 
     async def _document(
         self, adapter: SourceAdapter, company_id: int, remote: RemoteDocument, summary: RunSummary
@@ -508,6 +517,54 @@ class Pipeline:
             return
         with self._engine.begin() as conn:
             insert_facts(conn, company_id, facts)
+
+    def _kap_quarters(self, company_id: int) -> None:
+        """Quarters KAP reports only inside a longer span (the Q4 income statement, cash-flow
+        lines given year to date), derived across the company's stored financial reports."""
+        docs, facts = schema.documents, schema.financial_facts
+        spans: list[Span] = []
+        with self._engine.connect() as conn:
+            reports = conn.execute(
+                select(docs.c.id).where(
+                    docs.c.company_id == company_id,
+                    docs.c.doc_type == DocType.KAP_FINANCIAL_REPORT.value,
+                    docs.c.status.in_(DONE_STATUSES),
+                )
+            ).scalars()
+            for document_id in reports:
+                texts = conn.execute(
+                    select(schema.chunks.c.text)
+                    .where(
+                        schema.chunks.c.document_id == document_id,
+                        schema.chunks.c.text.contains("Sunum Para Birimi"),
+                    )
+                    .limit(1)
+                ).scalars()
+                scale, currency = kap_unit(texts)
+                for header, rows in conn.execute(
+                    select(schema.tables.c.header, schema.tables.c.rows).where(
+                        schema.tables.c.document_id == document_id
+                    )
+                ):
+                    spans += kap_spans(header, rows, scale, currency, int(document_id))
+            stored = [
+                FactDraft(
+                    metric=r.metric,
+                    period=r.period,
+                    value=r.value,
+                    unit=r.unit,
+                    currency=r.currency,
+                    source_document_id=r.source_document_id,
+                    source_ref=r.source_ref,
+                    derived=r.derived,
+                )
+                for r in conn.execute(select(facts).where(facts.c.company_id == company_id))
+            ]
+        quarters = derive_quarters(spans, stored)
+        stored_keys = {f.key for f in stored}
+        new = [*quarters, *derive_ebitda([*stored, *quarters])]
+        with self._engine.begin() as conn:
+            insert_facts(conn, company_id, [f for f in new if f.key not in stored_keys])
 
 
 def _accession(source_url: str) -> str | None:
