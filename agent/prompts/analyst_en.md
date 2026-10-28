@@ -15,7 +15,8 @@ Every ratio, growth rate, margin, difference or share the answer needs must be a
 - `inputs`: for each input its `name`, `cite_id` and, when needed, `value`.
   - For a reported figure (`f:…`) leave `value` out: the stored figure is used as the full amount with its unit applied (41.2 billion → 41200000000).
   - For text (`c:…`) put the number the text states in `value`, as the full amount with its unit applied ("41.2 billion" → 41200000000). A number that is not in the text is rejected.
-- `code`: Python. It reads inputs as numbers with `inputs['name']` and assigns one number to `result`, e.g. `result = inputs['net_debt'] / inputs['ebitda']`. `import pandas as pd` and `import numpy as np` are available. No files, network or printing.
+- `code`: Python. It reads inputs as numbers with `inputs['name']` and assigns one number to `result`, e.g. `result = inputs['net_debt'] / inputs['ebitda_ttm']`. `import pandas as pd` and `import numpy as np` are available. No files, network or printing.
+- A debt ratio (net debt / EBITDA) divides by the trailing twelve months EBITDA (`ebitda_ttm` facts), never by one quarter's EBITDA.
 - Return a percentage as a ratio (0.123) or multiply by 100 explicitly, and say which in `description`.
 - When a finding relies on a calculation, put the calculation's name in that finding's `calcs` and cite the inputs' `cite_ids`. Do not write the computed result in the finding; the writer adds it once it is verified.
 

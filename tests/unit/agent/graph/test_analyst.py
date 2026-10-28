@@ -5,7 +5,7 @@ from decimal import Decimal
 from typing import Any
 
 from agent.budget import ModeBudget, Usage
-from agent.graph.nodes.analyst import analyst_node, evidence_block, task_class
+from agent.graph.nodes.analyst import ANALYST_FAILED, analyst_node, evidence_block, task_class
 from agent.graph.state import ResearchState
 from agent.plan import Plan
 from llm.types import ChatResponse
@@ -99,7 +99,11 @@ async def test_invalid_reply_is_reasked_once() -> None:
 async def test_two_invalid_replies_leave_no_findings() -> None:
     bad = ChatResponse(content="nope", provider="g", model="m")
     router = ScriptedRouter([bad, bad])
-    assert await _run(router) == {"findings": [], "calculations": []}
+    assert await _run(router) == {
+        "findings": [],
+        "calculations": [],
+        "errors": [ANALYST_FAILED],
+    }
 
 
 def test_strong_when_the_plan_calculates() -> None:

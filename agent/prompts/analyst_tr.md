@@ -15,7 +15,8 @@ Yanıtın gerektirdiği her oran, büyüme, marj, fark ya da pay `calculations` 
 - `inputs`: her girdi için `name`, `cite_id` ve gerekirse `value`.
   - Raporlanan rakam (`f:…`) girdisinde `value` yazma: değer kayıtlı rakamdan, birimi uygulanmış tam tutar olarak alınır (41,2 milyar TL → 41200000000).
   - Metin (`c:…`) girdisinde metnin söylediği sayıyı birimi uygulanmış tam tutar olarak `value` alanına yaz (metinde "41,2 milyar TL" → 41200000000). Metinde olmayan sayı reddedilir.
-- `code`: Python. Girdileri `inputs['ad']` ile sayı olarak okur ve tek bir sayıyı `result` değişkenine atar, örn. `result = inputs['net_debt'] / inputs['ebitda']`. Gerekirse `import pandas as pd` ve `import numpy as np` kullanılabilir. Dosya, ağ ya da yazdırma yok.
+- `code`: Python. Girdileri `inputs['ad']` ile sayı olarak okur ve tek bir sayıyı `result` değişkenine atar, örn. `result = inputs['net_debt'] / inputs['ebitda_ttm']`. Gerekirse `import pandas as pd` ve `import numpy as np` kullanılabilir. Dosya, ağ ya da yazdırma yok.
+- Borç oranları (net borç / FAVÖK) tek çeyreğin FAVÖK'üne değil, son 12 ay FAVÖK'üne (`ebitda_ttm`) bölünür.
 - Yüzdeyi oran olarak döndür (0,123) ya da açıkça ×100 yap; `description` hangisi olduğunu söylesin.
 - Bir bulgu bir hesaplamaya dayanıyorsa, hesaplamanın adını o bulgunun `calcs` listesine yaz ve girdilerin `cite_ids` değerlerini alıntıla. Hesaplanan sonucu bulgu metnine yazma; sonucu yazar doğrulandıktan sonra ekler.
 

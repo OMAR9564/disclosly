@@ -16,6 +16,7 @@ from pydantic import ValidationError
 
 from agent.answer import Language
 from agent.graph.context import NodeContext
+from agent.graph.nodes.analyst import ANALYST_FAILED
 from agent.graph.nodes.memory import with_memory_note
 from agent.graph.state import Calculation, Finding, ResearchState
 from agent.prompts import node_prompt, with_schema
@@ -38,6 +39,10 @@ from tools.types import SeenItem
 MAX_TOKENS = 3000
 EVIDENCE_ITEM_CHARS = 1500
 _FENCE = re.compile(r"^```(?:json)?\s*|\s*```$")
+_DISPLAY_HINT = {
+    "tr": "Hesaplama değerlerini tam olarak şöyle yaz (yuvarlama yapma): ",
+    "en": "Write calculation values exactly as shown (do not round them again): ",
+}
 _REASK = {
     "tr": "Rapor doğrulamadan geçmedi. Şu hataları düzelt ve JSON'u yeniden ver:\n",
     "en": "The report failed validation. Fix these errors and return the JSON again:\n",
@@ -67,6 +72,20 @@ def with_unverified(report: Report, unverified: list[str], language: Language) -
             "unverified": list(dict.fromkeys([*report.unverified, *unverified]))[:MAX_UNVERIFIED],
         }
     )
+
+
+def reask_message(errors: list[str], calculations: list[Calculation], language: Language) -> str:
+    """The errors, plus every verified calculation's display value when a number did not
+    match: a model that rounds 8.021 to "8.01" gets the value to copy."""
+    text = _REASK[language] + "\n".join(errors)
+    shown = [
+        f"{c.cite_id} = {display_number(c.output, language)}"
+        for c in calculations
+        if c.verified and c.output is not None
+    ]
+    if shown and any("numbers not found" in e for e in errors):
+        text += "\n" + _DISPLAY_HINT[language] + "; ".join(shown)
+    return text
 
 
 def parse_report(content: str | None) -> tuple[Report | None, list[str]]:
@@ -144,6 +163,8 @@ async def writer_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
     findings = state.get("findings") or []
     evidence = {item.cite_id: item for item in state.get("evidence") or []}
     calculations = state.get("calculations") or []
+    if not findings and ANALYST_FAILED in (state.get("errors") or []):
+        return {"draft": None}  # evidence was found but not analysed: a partial report
     if not findings and not evidence:
         empty = Report(language=language, status="no_evidence", summary=NO_EVIDENCE[language])
         return {"draft": finalize_report(with_memory_note(empty, state))}
@@ -190,7 +211,7 @@ async def writer_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
         messages = [
             *messages,
             ChatMessage(role="assistant", content=response.content or ""),
-            ChatMessage(role="user", content=_REASK[language] + "\n".join(errors)),
+            ChatMessage(role="user", content=reask_message(errors, calculations, language)),
         ]
 
     if last is None:

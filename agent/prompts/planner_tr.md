@@ -9,8 +9,9 @@ En az adımla başlayarak 1 ile {max_steps} arasında adım yaz. Her adımda şu
 - `goal`: adımın neyi bulacağını anlatan tek bir Türkçe cümle. Sade bir dil kullan; kullanıcı bunu okur.
 - `tickers`: en çok 4 borsa kodu, büyük harfle.
 - `periods`: en çok 8 dönem, `YYYY-Qn` ya da `YYYY-FY` biçiminde.
-- `metrics`: `facts` adımları için yalnızca şunlardan: net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization, gross_profit, cost_of_revenue.
+- `metrics`: `facts` adımları için yalnızca şunlardan: net_income, revenue, operating_income, ebitda, ebitda_ttm, cash, total_debt, depreciation_amortization, gross_profit, cost_of_revenue.
   Bu listede olmayan bir rakam (bir marj, faaliyet giderleri) için metriksiz `facts` adımı yazma; `search` adımı ya da listedeki metriklerden `calculate` adımı yaz.
+  Borç oranları (net borç / FAVÖK, borç / FAVÖK) tek çeyreğin `ebitda` değerini değil, son 12 ayı veren `ebitda_ttm` değerini kullanır.
 
 İşleri grupla: tek bir `facts` adımı birden çok şirketi ve dönemi kapsayabilir. `calculate` adımını yalnızca soru türetilmiş bir rakam istiyorsa ekle. Yanıt metin gerektiriyorsa (nedenler, riskler, olaylar) `search` adımı ekle.
 
