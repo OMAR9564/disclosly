@@ -6,18 +6,17 @@
    "key": "2dce9369692247922fa2b220cc39dc4a950b303d47af4965caa4e59699e04a2c",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":true,\"reason\":\"Numbers and calculation match cited evidence.\"}]}",
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Toplam borç, nakit ve FAVÖK rakamları alıntılanan belgelerle birebir eşleşiyor; net borç/FAVÖK hesaplaması (32.562,3-16.637,3)/30.615,2 = 0,5202 doğrudur.\"\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "groq-large",
-    "model": "openai/gpt-oss-120b",
-    "tokens_in": 1051,
-    "tokens_out": 404,
-    "latency_ms": 1293.39,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 903,
+    "tokens_out": 739,
+    "latency_ms": 15388.081,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
-     "gemini-flash",
-     "openrouter-large"
+     "gemini-flash"
     ]
    }
   }
@@ -38,5 +37,6 @@
    }
   }
  ],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 16376
 }

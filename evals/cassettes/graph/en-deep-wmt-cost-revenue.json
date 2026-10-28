@@ -3,96 +3,118 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "47b5b8110a635ab119be6b4f00f6f35f8b240b3c78628ac709655f07eca6987f",
+   "key": "19e1079f4629e319778f969bffe96abaf00262f0335fbf5c6a86bdd0ee0dac14",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"WMT\",\n    \"COST\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 926,
+    "tokens_in": 936,
     "tokens_out": 81,
-    "latency_ms": 1203.65,
+    "latency_ms": 1768.336,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "dddf9c4afb746638abaf1fc31af24412e8ff02e1e328f8c9fb8168bb439c5fcb",
+   "key": "b6d77b61122ce5f50f0260347060406c297dad36d019c4b7bc1cf66a9b51a821",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Get revenue for Walmart and Costco for fiscal year 2025\", \"tickers\": [\"WMT\", \"COST\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"revenue\"]}]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Get reported revenue for Walmart and Costco for fiscal year 2025\",\n      \"tickers\": [\"WMT\", \"COST\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": [\"revenue\"]\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1012,
-    "tokens_out": 181,
-    "latency_ms": 11375.161,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "12cdb46b4cad302e4c32766e61ebc77a2227274415319e4da295047a44620bf8",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": null}]}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 677,
-    "tokens_out": 25,
-    "latency_ms": 800.351,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "97a6669fbbd1e6c3b1b6f087102974013a7ed5aa830a956e57b4e81e58a7026a",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\"findings\":[{\"id\":\"F1\",\"text\":\"Walmart reported revenue of 680,985,000,000 USD for fiscal 2025.\",\"cite_ids\":[\"f:1105\",\"f:4434\",\"f:1106\",\"f:4435\"]},{\"id\":\"F2\",\"text\":\"Costco reported revenue of 275,235,000,000 USD for fiscal 2025.\",\"cite_ids\":[\"f:1776\",\"f:5180\",\"f:1781\",\"f:5185\"]},{\"id\":\"F3\",\"text\":\"Walmart’s fiscal 2025 revenue exceeded Costco’s by 405,750,000,000 USD.\",\"cite_ids\":[\"f:1105\",\"f:1776\"],\"calcs\":[\"revenue_difference\"]}],\"calculations\":[{\"name\":\"revenue_difference\",\"description\":\"Difference between Walmart and Costco revenue for fiscal 2025\",\"inputs\":[{\"name\":\"walmart_revenue\",\"cite_id\":\"f:1105\"},{\"name\":\"costco_revenue\",\"cite_id\":\"f:1776\"}],\"code\":\"result = inputs['walmart_revenue'] - inputs['costco_revenue']\"}]}",
-    "tool_calls": [],
-    "provider": "groq-llama",
-    "model": "openai/gpt-oss-20b",
-    "tokens_in": 2432,
-    "tokens_out": 969,
-    "latency_ms": 1583.581,
+    "tokens_in": 1061,
+    "tokens_out": 199,
+    "latency_ms": 7451.101,
     "cache_hit": false,
     "fallback_from": [
-     "gemini-flash-lite"
+     "gemini-flash-stable",
+     "gemini-flash"
     ]
    }
   },
   {
-   "key": "5e5c3cad9ab872d7a8d584097d394cc8ac940ca0810a9b59752842a346400c96",
-   "task_class": "strong",
+   "key": "80f81202c15414020c87e6510ed4dd08d9c16ef2c5816f374109ceaaf74c2ec7",
+   "task_class": "cheap",
    "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"All four cited documents show Walmart revenue of 680,985,000,000 USD for fiscal 2025, matching the finding exactly.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"All four cited documents show Costco revenue of 275,235,000,000 USD for fiscal 2025, matching the finding exactly.\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"The calculation 680,985,000,000 - 275,235,000,000 = 405,750,000,000 is correct and supported by the cited revenue figures for both companies.\"}]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1211,
-    "tokens_out": 871,
-    "latency_ms": 14998.888,
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 671,
+    "tokens_out": 45,
+    "latency_ms": 990.182,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "bed652b352d444327fb6d3e464f9ecdd48ffa872c8e183269fdbe86d06dac27a",
+   "key": "2a4ab512a58e31862918e5bf7de2f0904408ad65a28778fe502bb639e091232e",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Walmart reported revenue of 680,985,000,000 USD for fiscal year 2025.\",\n      \"cite_ids\": [\n        \"f:1105\"\n      ]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Costco reported revenue of 275,235,000,000 USD for fiscal year 2025.\",\n      \"cite_ids\": [\n        \"f:1776\"\n      ]\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2381,
+    "tokens_out": 157,
+    "latency_ms": 1176.408,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "090f0d1c5fe8355f5649f13eea25d2dc771dcd0c08daccf4b5af7a3e26ff9fc0",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"For fiscal 2025, Walmart reported revenue of 680,985,000,000 USD, while Costco reported revenue of 275,235,000,000 USD. Walmart's revenue exceeded Costco's by 405,750,000,000 USD.[1][2][3]\",\n  \"points\": [\n    {\n      \"text\": \"Walmart's fiscal 2025 revenue was 680,985,000,000 USD.\",\n      \"cite_ids\": [\"f:1105\", \"f:4434\"]\n    },\n    {\n      \"text\": \"Costco's fiscal 2025 revenue was 275,235,000,000 USD.\",\n      \"cite_ids\": [\"f:1776\", \"f:5180\"]\n    },\n    {\n      \"text\": \"Walmart's revenue was 405,750,000,000 USD higher than Costco's.\",\n      \"cite_ids\": [\"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Revenue Comparison for Fiscal 2025\",\n      \"columns\": [\"Company\", \"Revenue (USD)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Walmart\", \"cite_id\": null},\n          {\"text\": \"680,985,000,000\", \"cite_id\": \"f:1105\"}\n        ],\n        [\n          {\"text\": \"Costco\", \"cite_id\": null},\n          {\"text\": \"275,235,000,000\", \"cite_id\": \"f:1776\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Company\",\n    \"series\": [\"Revenue (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Both companies' fiscal 2025 revenue figures are directly sourced from SEC filings.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:1105\"},\n    {\"marker\": 2, \"cite_id\": \"f:1776\"},\n    {\"marker\": 3, \"cite_id\": \"k:1\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Evidence f:1105 shows Revenue (2025-FY): 680,985,000,000 USD, matching the finding.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Evidence f:1776 shows Revenue (2025-FY): 275,235,000,000 USD, matching the finding.\"}]}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2725,
-    "tokens_out": 890,
-    "latency_ms": 9861.326,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 716,
+    "tokens_out": 346,
+    "latency_ms": 7399.796,
     "cache_hit": false,
     "fallback_from": [
-     "nvidia-large",
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "c1578653ac1055655952f28d82fc1021eeacd80b28431bf5e83cd07fbf925aa2",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"For fiscal year 2025, Walmart reported revenue of $680.985 billion, while Costco reported revenue of $275.235 billion. Walmart's revenue was approximately 2.5 times larger than Costco's.[1][2]\",\n  \"points\": [\n    {\n      \"text\": \"Walmart reported revenue of $680,985,000,000 for fiscal year 2025.\",\n      \"cite_ids\": [\"f:1105\"]\n    },\n    {\n      \"text\": \"Costco reported revenue of $275,235,000,000 for fiscal year 2025.\",\n      \"cite_ids\": [\"f:1776\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Revenue Comparison for Fiscal Year 2025\",\n      \"columns\": [\"Company\", \"Revenue (USD)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Walmart\", \"cite_id\": null},\n          {\"text\": \"680,985,000,000\", \"cite_id\": \"f:1105\"}\n        ],\n        [\n          {\"text\": \"Costco\", \"cite_id\": null},\n          {\"text\": \"275,235,000,000\", \"cite_id\": \"f:1776\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Company\",\n    \"series\": [\"Revenue (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Both companies' fiscal 2025 revenue figures are directly provided in the evidence.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:1105\"},\n    {\"marker\": 2, \"cite_id\": \"f:1776\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2199,
+    "tokens_out": 641,
+    "latency_ms": 27805.827,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "8cd158e68be4081c1b2b02fbb8b29aec9011b71d67186889f74409d510da9ee8",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"For fiscal year 2025, Walmart reported revenue of $680.985 billion, while Costco reported revenue of $275.235 billion.[1][2]\",\n  \"points\": [\n    {\n      \"text\": \"Walmart reported revenue of $680,985,000,000 for fiscal year 2025.\",\n      \"cite_ids\": [\"f:1105\"]\n    },\n    {\n      \"text\": \"Costco reported revenue of $275,235,000,000 for fiscal year 2025.\",\n      \"cite_ids\": [\"f:1776\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Revenue Comparison for Fiscal Year 2025\",\n      \"columns\": [\"Company\", \"Revenue (USD)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Walmart\", \"cite_id\": null},\n          {\"text\": \"680,985,000,000\", \"cite_id\": \"f:1105\"}\n        ],\n        [\n          {\"text\": \"Costco\", \"cite_id\": null},\n          {\"text\": \"275,235,000,000\", \"cite_id\": \"f:1776\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Company\",\n    \"series\": [\"Revenue (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Both companies' fiscal 2025 revenue figures are directly provided in the evidence.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:1105\"},\n    {\"marker\": 2, \"cite_id\": \"f:1776\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2736,
+    "tokens_out": 725,
+    "latency_ms": 56779.01,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
      "gemini-flash"
     ]
    }
@@ -102,7 +124,7 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"WMT\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3189, \"ticker\": \"WMT\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731.htm\"}, {\"document_id\": 3190, \"ticker\": \"WMT\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416926000102/wmt-20260430.htm\"}, {\"document_id\": 3191, \"ticker\": \"WMT\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-03-13T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm\"}, {\"document_id\": 3192, \"ticker\": \"WMT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-03T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416925000191/wmt-20251031.htm\"}, {\"document_id\": 3193, \"ticker\": \"WMT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416925000137/wmt-20250731.htm\"}, {\"document_id\": 3194, \"ticker\": \"WMT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-06T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416925000090/wmt-20250430.htm\"}, {\"document_id\": 3195, \"ticker\": \"WMT\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-03-14T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416925000021/wmt-20250131.htm\"}, {\"document_id\": 3196, \"ticker\": \"WMT\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-06T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416924000178/wmt-20241031.htm\"}]}",
+   "content": "{\"documents\": [{\"document_id\": 3663, \"ticker\": \"WMT\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731.htm\"}, {\"document_id\": 3664, \"ticker\": \"WMT\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416926000102/wmt-20260430.htm\"}, {\"document_id\": 3665, \"ticker\": \"WMT\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-03-13T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm\"}, {\"document_id\": 3666, \"ticker\": \"WMT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-03T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416925000191/wmt-20251031.htm\"}, {\"document_id\": 3667, \"ticker\": \"WMT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416925000137/wmt-20250731.htm\"}, {\"document_id\": 3668, \"ticker\": \"WMT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-06T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416925000090/wmt-20250430.htm\"}, {\"document_id\": 3669, \"ticker\": \"WMT\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-03-14T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416925000021/wmt-20250131.htm\"}, {\"document_id\": 3670, \"ticker\": \"WMT\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-06T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/104169/000010416924000178/wmt-20241031.htm\"}]}",
    "summary": "WMT documents",
    "count": 8,
    "items": [],
@@ -111,7 +133,7 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"COST\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3237, \"ticker\": \"COST\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-10-07T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm\"}, {\"document_id\": 3238, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-03T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983226000051/cost-20260510.htm\"}, {\"document_id\": 3239, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-11T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983226000029/cost-20260215.htm\"}, {\"document_id\": 3240, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-17T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983225000169/cost-20251123.htm\"}, {\"document_id\": 3241, \"ticker\": \"COST\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-10-08T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm\"}, {\"document_id\": 3242, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm\"}, {\"document_id\": 3243, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-13T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983225000015/cost-20250216.htm\"}, {\"document_id\": 3244, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-19T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983224000079/cost-20241124.htm\"}]}",
+   "content": "{\"documents\": [{\"document_id\": 3711, \"ticker\": \"COST\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-10-07T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm\"}, {\"document_id\": 3712, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-03T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983226000051/cost-20260510.htm\"}, {\"document_id\": 3713, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-11T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983226000029/cost-20260215.htm\"}, {\"document_id\": 3714, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-17T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983225000169/cost-20251123.htm\"}, {\"document_id\": 3715, \"ticker\": \"COST\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-10-08T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm\"}, {\"document_id\": 3716, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm\"}, {\"document_id\": 3717, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-13T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983225000015/cost-20250216.htm\"}, {\"document_id\": 3718, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-19T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983224000079/cost-20241124.htm\"}]}",
    "summary": "COST documents",
    "count": 8,
    "items": [],
@@ -120,9 +142,9 @@
   {
    "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"WMT\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:1105\">Revenue (2025-FY): 680,985,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4434\">Revenue (2025-FY): 680,985,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1106\">Revenue (2025-FY; 2026-FY report): 680,985,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4435\">Revenue (2025-FY; 2026-FY report): 680,985,000,000 USD</untrusted_document>",
+   "content": "<untrusted_document cite_id=\"f:1105\">Revenue (2025-FY): 680,985,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4434\">Revenue (2025-FY): 680,985,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17470\">Revenue (2025-FY): 680,985,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1106\">Revenue (2025-FY; 2026-FY report): 680,985,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4435\">Revenue (2025-FY; 2026-FY report): 680,985,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:19335\">Revenue (2025-FY; 2026-FY report): 680,985,000,000 USD</untrusted_document>",
    "summary": "WMT 2025-FY revenue",
-   "count": 4,
+   "count": 6,
    "items": [
     {
      "cite_id": "f:1105",
@@ -149,6 +171,25 @@
      "source": {
       "kind": "fact",
       "document_id": 2398,
+      "ticker": "WMT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000104169-25-000021",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416925000021/wmt-20250131.htm"
+     },
+     "value": "680985000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:17470",
+     "text": "Revenue (2025-FY): 680,985,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3348,
       "ticker": "WMT",
       "doc_type": "10-K",
       "period": "2025-FY",
@@ -199,6 +240,25 @@
      "value": "680985000000",
      "scale": "1",
      "unit_note": null
+    },
+    {
+     "cite_id": "f:19335",
+     "text": "Revenue (2025-FY; 2026-FY report): 680,985,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3038,
+      "ticker": "WMT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000104169-26-000055",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/wmt-20260131.htm"
+     },
+     "value": "680985000000",
+     "scale": "1",
+     "unit_note": null
     }
    ],
    "error": null
@@ -206,9 +266,9 @@
   {
    "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"COST\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:1776\">Revenue (2025-FY): 275,235,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:5180\">Revenue (2025-FY): 275,235,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1781\">Revenue (2025-FY; 2026-FY report): 275,235,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:5185\">Revenue (2025-FY; 2026-FY report): 275,235,000,000 USD</untrusted_document>",
+   "content": "<untrusted_document cite_id=\"f:1776\">Revenue (2025-FY): 275,235,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:5180\">Revenue (2025-FY): 275,235,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:20017\">Revenue (2025-FY): 275,235,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1781\">Revenue (2025-FY; 2026-FY report): 275,235,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:5185\">Revenue (2025-FY; 2026-FY report): 275,235,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:20022\">Revenue (2025-FY; 2026-FY report): 275,235,000,000 USD</untrusted_document>",
    "summary": "COST 2025-FY revenue",
-   "count": 4,
+   "count": 6,
    "items": [
     {
      "cite_id": "f:1776",
@@ -235,6 +295,25 @@
      "source": {
       "kind": "fact",
       "document_id": 2452,
+      "ticker": "COST",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0000909832-25-000101",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm"
+     },
+     "value": "275235000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:20017",
+     "text": "Revenue (2025-FY): 275,235,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3241,
       "ticker": "COST",
       "doc_type": "10-K",
       "period": "2025-FY",
@@ -285,38 +364,31 @@
      "value": "275235000000",
      "scale": "1",
      "unit_note": null
+    },
+    {
+     "cite_id": "f:20022",
+     "text": "Revenue (2025-FY; 2026-FY report): 275,235,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3237,
+      "ticker": "COST",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000909832-26-000093",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm"
+     },
+     "value": "275235000000",
+     "scale": "1",
+     "unit_note": null
     }
    ],
    "error": null
   }
  ],
- "sandbox": [
-  {
-   "key": "aab2a0b6386f74657d2f102785077f5828cb6d2e5e06413b6dd3c03e29421a72",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "revenue_difference": "405750000000.0"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  },
-  {
-   "key": "aab2a0b6386f74657d2f102785077f5828cb6d2e5e06413b6dd3c03e29421a72",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "revenue_difference": "405750000000.0"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  }
- ],
- "decision": "approve"
+ "sandbox": [],
+ "decision": "approve",
+ "elapsed_ms": 107916
 }

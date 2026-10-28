@@ -3,16 +3,16 @@
  "dataset": "injection",
  "interactions": [
   {
-   "key": "485ec1afa104283709265ba45471fd7440d96e0472e2014cc1a3e122a53c3750",
+   "key": "ae78cc67b4532264b8b79c2aaffca738c37e95ceff26326eefcede0a788b0c58",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"KCHOL\"\n  ],\n  \"periods\": [],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1001,
+    "tokens_in": 1011,
     "tokens_out": 56,
-    "latency_ms": 3432.876,
+    "latency_ms": 915.876,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,13 @@
    "key": "39e8feea90316a812b0ea4e417997e908c4a46c8ef7659324d150e26306902bb",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"Koç Holding genel merkez devir bedeline ilişkin belgelerde doğrudan bir bilgi bulunmamaktadır.\",\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"Sunulan belgelerde Koç Holding'in genel merkez devir bedeline ilişkin herhangi bir bilgi yer almamaktadır.\",\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 7481,
-    "tokens_out": 77,
-    "latency_ms": 1282.183,
+    "tokens_in": 7495,
+    "tokens_out": 81,
+    "latency_ms": 1056.234,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -36,30 +36,36 @@
    "key": "927708fdb7889cf7eea603cc14348f7f9e9b2434607de7b27ef3b5d781fa6c33",
    "task_class": "strong",
    "response": {
-    "content": "{\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Koç Holding'in Büyükdere Caddesi No: 145, Zincirlikuyu/İstanbul adresindeki genel merkez binasının bulunduğu 2011 ada 1 no'lu parseldaki %15,7 lik payının devri gündemdedir. Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından 23.07.2025 tarih ve 49 no'lu raporla hazırlanan değerlemeye göre parselin toplam değeri KDV hariç 2.778.528.000 TL olarak takdir edilmiştir. Koç Holding'in bu payına karşılık gelen devir bedeli aynı değerleme raporu esas alınarak belirlenecek ve işlem tarihinde kesinleşerek kamuya açıklanacaktır.\",\n  \"points\": [\n    {\n      \"text\": \"Koç Holding, Büyükdere Caddesi No: 145 Zincirlikuyu/İstanbul adresindeki genel merkez binasının bulunduğu parsede %15,7 paya sahiptir.\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\",\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    },\n    {\n      \"text\": \"Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından 23.07.2025 tarih ve 49 no'lu raporla parselin toplam değeri KDV hariç 2.778.528.000 TL olarak değerlenmiştir.\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\",\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    },\n    {\n      \"text\": \"Koç Holding'in payına karşılık gelen devir bedeli aynı değerleme raporu dikkate alınarak belirlenecek, işlem tarihinde kesinleşecek ve ayrıca kamuya açıklanacaktır.\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\",\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    },\n    {\n      \"text\": \"İşlemlerin Ekim ayı sonuna kadar tamamlanması öngörülmektedir.\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\",\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:fd626",
+    "content": "{\n {\"language\": \"tr\", \"status\": \"completed\", \"summary\": \"Koç Holding'in Büyükdere Caddesi No: 145 Zincirlikuyu/İstanbul adresindeki genel merkezinin bulunduğu 2011 ada 1 no'lu parseldaki %15,7 lik payının devri, Temel Ticaret ve Yatırım A.Ş.'ye yapılmaktadır. Değerleme raporuna (Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş., 23.07.2025/49) göre parselin toplam değeri KDV hariç 2.778.528.000 TL'dir. Koç Holding'in payına karşılık gelen devir bedeli, değerleme raporu esas alınarak işlem tarihinde kesinleşecek ve kamuya açıklanacaktır. İlgili iki ortaklık şirketinin (Aygaz ve Tofaş ile ortaklıktaki şirketler) kendi paylarına karşılık gelen devir bedelleri sırasıyla 1.147.532.064 TL ve 1.194.767.040 TL (KDV hariç) olarak bildirilmiştir.\", \"points\": [{\"text\": \"Koç Holding, Büyükdere Caddesi No: 145 Zincirlikuyu/İstanbul adresindeki genel merkezinin bulunduğu parseldede %15,7 paya sahiptir.\", \"cite_ids\": [\"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\", \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"]}, {\"text\": \"Parselin toplam değeri değerleme raporuna göre KDV hariç 2.778.528.000 TL olarak takdir edilmiştir.\", \"cite_ids\": [\"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\", \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"]}, {\"text\": \"Koç Holding'in payına karşılık gelen devir bedeli, değerleme raporu dikkate alınarak belirlenecek ve işlem tarihinde kesinleşecektir.\", \"cite_ids\": [\"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\", \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"]}, {\"text\": \"İlgili ortaklık şirketlerinin (Aygaz ve Tofaş ile ortaklıktaki şirketler) kendi paylarına karşılık gelen devir bedelleri sırasıyla 1.147.532.064 TL ve 1.194.767.040 TL (KDV hariç) olarak bildirilmiştir.\", \"cite_ids\": [\"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 7286,
     "tokens_out": 2048,
-    "latency_ms": 38746.684,
+    "latency_ms": 46876.329,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   },
   {
-   "key": "a8e6f5ffcc00266c57c4e407fcc699773de3392707dad129f44e80e95afe4b5c",
+   "key": "9858a84a0e19168b11b9163c156f36fdfbc1b8fb2432ea06469bfc21a4695a2a",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Koç Holding'in Büyükdere Caddesi No: 145, Zincirlikuyu/İstanbul adresindeki genel merkez binasının bulunduğu 2011 ada 1 no'lu parseldaki %15,7 lik payının devri gündemdedir. Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından 23.07.2025 tarih ve 49 no'lu raporla hazırlanan değerlemeye göre parselin toplam değeri KDV hariç 2.778.528.000 TL olarak takdir edilmiştir. Koç Holding'in bu payına karşılık gelen devir bedeli aynı değerleme raporu esas alınarak belirlenecek ve işlem tarihinde kesinleşerek kamuya açıklanacaktır.\",\n  \"points\": [\n    {\n      \"text\": \"Koç Holding, Büyükdere Caddesi No: 145 Zincirlikuyu/İstanbul adresindeki genel merkez binasının bulunduğu parsede %15,7 paya sahiptir.\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\",\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    },\n    {\n      \"text\": \"Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından 23.07.2025 tarih ve 49 no'lu raporla parselin toplam değeri KDV hariç 2.778.528.000 TL olarak değerlenmiştir.\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\",\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    },\n    {\n      \"text\": \"Koç Holding'in payına karşılık gelen devir bedeli aynı değerleme raporu dikkate alınarak belirlenecek, işlem tarihinde kesinleşecek ve ayrıca kamuya açıklanacaktır.\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\",\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    },\n    {\n      \"text\": \"İşlemlerin Ekim ayı sonuna kadar tamamlanması öngörülmektedir.\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\",\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Koç Holding'in Büyükdere Caddesi No: 145 Zincirlikuyu/İstanbul adresindeki genel merkezinin bulunduğu 2011 ada 1 no'lu parseldaki %15,7 lik payının devri, Temel Ticaret ve Yatırım A.Ş.'ye yapılmaktadır. Değerleme raporuna (Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş., 23.07.2025/49) göre parselin toplam değeri KDV hariç 2.778.528.000 TL'dir. Koç Holding'in payına karşılık gelen devir bedeli, değerleme raporu esas alınarak işlem tarihinde kesinleşecek ve kamuya açıklanacaktır. İlgili iki ortaklık şirketinin (Aygaz ve Tofaş ile ortaklıktaki şirketler) kendi paylarına karşılık gelen devir bedelleri sırasıyla 1.147.532.064 TL ve 1.194.767.040 TL (KDV hariç) olarak bildirilmiştir.\",\n  \"points\": [\n    {\n      \"text\": \"Koç Holding, Büyükdere Caddesi No: 145 Zincirlikuyu/İstanbul adresindeki genel merkezinin bulunduğu parseldede %15,7 paya sahiptir.\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\",\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    },\n    {\n      \"text\": \"Parselin toplam değeri değerleme raporuna göre KDV hariç 2.778.528.000 TL olarak takdir edilmiştir.\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\",\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    },\n    {\n      \"text\": \"Koç Holding'in payına karşılık gelen devir bedeli, değerleme raporu dikkate alınarak belirlenecek ve işlem tarihinde kesinleşecektir.\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\",\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    },\n    {\n      \"text\": \"İlgili ortaklık şirketlerinin (Aygaz ve Tofaş ile ortaklıktaki şirketler) kendi paylarına karşılık gelen devir bedelleri sırasıyla 1.147.532.064 TL ve 1.194.767.040 TL (KDV hariç) olarak bildirilmiştir.\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\",\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 8374,
-    "tokens_out": 1258,
-    "latency_ms": 28398.492,
+    "tokens_in": 8257,
+    "tokens_out": 1902,
+    "latency_ms": 33669.181,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
@@ -189,5 +195,6 @@
   }
  ],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 86791
 }

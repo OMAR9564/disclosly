@@ -3,176 +3,123 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "8f32ac5c823542f4fb3b254bd5bc1464f9145b9d8b02f2d4468bef04f6feff33",
+   "key": "e39e713dbf7471b1f1d12b64da98147a892abc3fa287fec0ff83c5fdade379ae",
    "task_class": "cheap",
    "response": {
-    "content": "{\"mode\": \"deep\", \"tickers\": [\"AAPL\"], \"periods\": [\"2024-FY\", \"2025-FY\"], \"metrics\": [\"revenue\"], \"uses_watchlist\": false, \"memory_intent\": null}",
+    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"AAPL\"\n  ],\n  \"periods\": [\n    \"2024-FY\",\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 939,
-    "tokens_out": 51,
-    "latency_ms": 1270.281,
+    "tokens_in": 949,
+    "tokens_out": 85,
+    "latency_ms": 1108.67,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "9e47415ed2153392db55fabca8f6365c9331af50d1d6c1c27838398fdfebbb25",
+   "key": "23c81971fe013ab51d2aa0acc81f166b3e98750ea9f19e531f25258d1aa6b006",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Get Apple's revenue for fiscal 2024 and fiscal 2025\", \"tickers\": [\"AAPL\"], \"periods\": [\"2024-FY\", \"2025-FY\"], \"metrics\": [\"revenue\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"Calculate revenue growth percentage from fiscal 2024 to fiscal 2025\", \"tickers\": [\"AAPL\"], \"periods\": [\"2024-FY\", \"2025-FY\"]}]}",
+    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Get Apple's revenue for fiscal 2024 and fiscal 2025\", \"tickers\": [\"AAPL\"], \"periods\": [\"2024-FY\", \"2025-FY\"], \"metrics\": [\"revenue\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"Calculate the percentage revenue growth from fiscal 2024 to fiscal 2025\", \"tickers\": [\"AAPL\"], \"periods\": [\"2024-FY\", \"2025-FY\"]}]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1028,
-    "tokens_out": 254,
-    "latency_ms": 3692.164,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "5345652b6f6c99b847277a6b0ca972779e3da6143af925a0e9e66276c93d9470",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": null}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 738,
-    "tokens_out": 48,
-    "latency_ms": 1318.076,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "5f9312def4c3155455a77bec6b5da70867627f50ebc6b9663ad9a442e54f7a24",
-   "task_class": "strong",
-   "response": {
-    "content": "{\"findings\": [{\"id\": \"F1\", \"text\": \"Apple's revenue grew from $391.035 billion in fiscal 2024 to $416.161 billion in fiscal 2025.\", \"cite_ids\": [\"f:103\", \"f:111\"]}, {\"id\": \"F2\", \"text\": \"The revenue growth from fiscal 2024 to fiscal 2025 was 6.42%.\", \"cite_ids\": [\"f:103\", \"f:111\"], \"calcs\": [\"revenue_growth_pct\"]}], \"calculations\": [{\"name\": \"revenue_growth_pct\", \"description\": \"Revenue growth percentage from fiscal 2024 to fiscal 2025, calculated as (Revenue_2025 - Revenue_2024) / Revenue_2024 * 100\", \"inputs\": [{\"name\": \"revenue_2024\", \"cite_id\": \"f:103\"}, {\"name\": \"revenue_2025\", \"cite_id\": \"f:111\"}], \"code\": \"result = (inputs['revenue_2025'] - inputs['revenue_2024']) / inputs['revenue_2024'] * 100\"}]}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2003,
-    "tokens_out": 602,
-    "latency_ms": 7992.587,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "68c0c1600c621ffbf196caaf1e53e735fd3cd8a68740ba27838d74a14fde6a31",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Cited evidence shows revenue of $391.035B for FY2024 and $416.161B for FY2025, matching the finding.\"\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 765,
-    "tokens_out": 465,
-    "latency_ms": 7333.84,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "bae954c42bf4053027823d280846ddbe31a918b4a9a47bf3c4f4a00e845f1dbb",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Retrieve Apple's reported revenue for fiscal year 2024 and fiscal year 2025 from the financial facts table\",\n      \"tickers\": [\"AAPL\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": [\"revenue\"],\n      \"status\": \"pending\"\n    },\n    {\n      \"id\": \"s2",
-    "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 1244,
-    "tokens_out": 1500,
-    "latency_ms": 37842.732,
+    "tokens_in": 1077,
+    "tokens_out": 274,
+    "latency_ms": 7593.178,
     "cache_hit": false,
     "fallback_from": [
-     "nvidia-large",
+     "gemini-flash-stable",
      "gemini-flash"
     ]
    }
   },
   {
-   "key": "e6f3cef23cb5625079f06ace4ddcf8457a618c247b43ea5914f6f5da1f167b28",
+   "key": "b9ab84f4593d8d0f947574964584bc50a3957660e9f7af3975244a3979c71aaa",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Apple Inc. Consolidated Statements of Operations revenue 2025 2024\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 739,
+    "tokens_out": 97,
+    "latency_ms": 1289.67,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "94d6bd83a09f0d96a78ccce3d67f1590b14b4c8203030cfedaba7d3db0483053",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Retrieve Apple's reported revenue for fiscal year 2024 and fiscal year 2025 from the financial facts table\",\n      \"tickers\": [\"AAPL\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": [\"revenue\"],\n      \"status\": \"pending\"\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Calculate revenue growth percentage from fiscal 2024 to fiscal 2025\",\n      \"tickers\": [\"AAPL\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": [],\n      \"status\": \"pending\"\n    }\n  ]\n}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Apple's revenue for fiscal 2024 was 391,035,000,000 USD.\",\n      \"cite_ids\": [\"f:103\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Apple's revenue for fiscal 2025 was 416,161,000,000 USD.\",\n      \"cite_ids\": [\"f:111\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Apple's revenue grew from fiscal 2024 to fiscal 2025.\",\n      \"cite_ids\": [\"f:103\", \"f:111\"],\n      \"calcs\": [\"revenue_growth_pct\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"revenue_growth_pct\",\n      \"description\": \"Percentage revenue growth from fiscal 2024 to fiscal 2025, calculated as ((Revenue_2025 - Revenue_2024) / Revenue_2024) * 100\",\n      \"inputs\": [\n        {\n          \"name\": \"revenue_2024\",\n          \"cite_id\": \"f:103\"\n        },\n        {\n          \"name\": \"revenue_2025\",\n          \"cite_id\": \"f:111\"\n        }\n      ],\n      \"code\": \"result = ((inputs['revenue_2025'] - inputs['revenue_2024']) / inputs['revenue_2024']) * 100\"\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 1420,
-    "tokens_out": 235,
-    "latency_ms": 5323.138,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2004,
+    "tokens_out": 655,
+    "latency_ms": 14896.551,
     "cache_hit": false,
     "fallback_from": [
-     "nvidia-large",
+     "gemini-flash-stable",
      "gemini-flash"
     ]
    }
   },
   {
-   "key": "7649e294d7050784ec7145273ea077101a092e916ec58d72dc13e3340b55bf72",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 746,
-    "tokens_out": 78,
-    "latency_ms": 876.96,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "8bfce7c1758d016264d980d8b9aba82dc041502aecb66bff863c35d374b1d762",
+   "key": "be37ba01ed5c8ca3e57d3126de67a2fe03780b23f4b7672ed1551f29feeacc32",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Apple reported revenue of 391,035,000,000 USD for fiscal year 2024.\",\n      \"cite_ids\": [\"f:103\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Apple reported revenue of 416,161,000,000 USD for fiscal year 2025.\",\n      \"cite_ids\": [\"f:111\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Apple's revenue grew from fiscal 2024 to fiscal 2025.\",\n      \"cite_ids\": [\"f:103\", \"f:111\"],\n      \"calcs\": [\"revenue_growth_pct\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"revenue_growth_pct\",\n      \"description\": \"Revenue growth percentage from fiscal 2024 to fiscal 2025, calculated as (Revenue_2025 - Revenue_2024) / Revenue_2024 * 100\",\n      \"inputs\": [\n        {\n          \"name\": \"revenue_2024\",\n          \"cite_id\": \"f:103\"\n        },\n        {\n          \"name\": \"revenue_2025\",\n          \"cite_id\": \"f:111\"\n        }\n      ],\n      \"code\": \"result = (inputs['revenue_2025'] - inputs['revenue_2024']) / inputs['revenue_2024'] * 100\"\n    }\n  ]\n}",
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Revenue figure matches cited evidence (f:103).\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Revenue figure matches cited evidence (f:111).\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"Revenue increased from 2024 to 2025 per evidence (f:103, f:111) and calculation shows positive growth.\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2012,
-    "tokens_out": 663,
-    "latency_ms": 8821.211,
+    "tokens_in": 866,
+    "tokens_out": 799,
+    "latency_ms": 54127.394,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   },
   {
-   "key": "f68f37436d0e93edfa32310efc17e28892d08c6c9ea41325ac591e41a6c34d7c",
+   "key": "0f005cd5074543a7c237b80a41ecd6112c3e9f0bec07643b7a98a3004791033d",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [\n    {\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Evidence f:103 shows revenue of 391,035,000,000 USD for fiscal 2024, matching the finding.\"},\n    {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Evidence f:111 shows revenue of 416,161,000,000 USD for fiscal 2025, matching the finding.\"},\n    {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Revenue increased from 391,035M to 416,161M; the calculation yields ~6.43% growth, supporting the statement that revenue grew.\"}\n  ]}",
+    "content": "{\"language\": \"en\", \"status\": \"completed\", \"summary\": \"Apple's revenue grew by 6.43% from fiscal 2024 to fiscal 2025, increasing from $391.035 billion to $416.161 billion [1][2].\", \"points\": [{\"text\": \"Apple's revenue for fiscal 2024 was $391,035,000,000.\", \"cite_ids\": [\"f:103\"]}, {\"text\": \"Apple's revenue for fiscal 2025 was $416,161,000,000.\", \"cite_ids\": [\"f:111\"]}, {\"text\": \"The percentage revenue growth from fiscal 2024 to fiscal 2025 was 6.43%.\", \"cite_ids\": [\"k:1\"]}], \"tables\": [{\"title\": \"Apple Revenue Fiscal 2024 vs 2025\", \"columns\": [\"Fiscal Year\", \"Revenue (USD)\", \"Revenue Growth (%)\"], \"rows\": [[{\"text\": \"2024\", \"cite_id\": null}, {\"text\": \"391,035,000,000\", \"cite_id\": \"f:103\"}, {\"text\": \"\", \"cite_id\": null}], [{\"text\": \"2025\", \"cite_id\": null}, {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"}, {\"text\": \"6.43\", \"cite_id\": \"k:1\"}]]}, {\"title\": \"Revenue Growth Calculation\", \"columns\": [\"Metric\", \"Value\"], \"rows\": [[{\"text\": \"Revenue 2024 (USD)\", \"cite_id\": null}, {\"text\": \"391,035,000,000\", \"cite_id\": \"f:103\"}], [{\"text\": \"Revenue 2025 (USD)\", \"cite_id\": null}, {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"}], [{\"text\": \"Growth (%)\", \"cite_id\": null}, {\"text\": \"6.43\", \"cite_id\": \"k:1\"}]]}, {\"title\": \"Revenue Growth Summary\", \"columns\": [\"Period\", \"Revenue (USD)\", \"Growth vs Prior Year (%)\"], \"rows\": [[{\"text\": \"FY 2024\", \"cite_id\": null}, {\"text\": \"391,035,000,000\", \"cite_id\": \"f:103\"}, {\"text\": \"N/A\", \"cite_id\": null}], [{\"text\": \"FY 2025\", \"cite_id\": null}, {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"}, {\"text\": \"6.43\", \"cite_id\": \"k:1\"}]]}, {\"title\": \"Key Figures\", \"columns\": [\"Item\", \"Amount (USD)\"], \"rows\": [[{\"text\": \"FY 2024 Revenue\", \"cite_id\": null}, {\"text\": \"391,035,000,000\", \"cite_id\": \"f:103\"}], [{\"text\": \"FY 2025 Revenue\", \"cite_id\": null}, {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"}], [{\"text\": \"Absolute Growth\", \"cite_id\": null}, {\"text\": \"25,126,000,000\", \"cite_id\": null}], [{\"text\": \"Percentage Growth\", \"cite_id\": null}, {\"text\": \"6.43%\", \"cite_id\": \"k:1\"}]]}], \"chart\": {\"kind\": \"bar\", \"table\": 0, \"x_column\": \"Fiscal Year\", \"series\": [\"Revenue (USD)\"]}, \"confidence\": {\"level\": \"high\", \"note\": \"Both revenue figures and the growth calculation are directly sourced from SEC filings and the provided calculation.\"}, \"unverified\": [], \"citations\": [{\"marker\": 1, \"cite_id\": \"f:103\"}, {\"marker\": 2, \"cite_id\": \"f:111\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 955,
-    "tokens_out": 807,
-    "latency_ms": 12689.202,
+    "tokens_in": 2405,
+    "tokens_out": 1679,
+    "latency_ms": 55226.629,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   },
   {
-   "key": "c722cb6c4bf6d8404fcf56b5efb0391daead918921470b2351bd17d83c079017",
+   "key": "0db2dac439c2ae177953f659e2d677cbe3801392bb706825ba2f180e4da3d864",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"en\", \"status\": \"completed\", \"summary\": \"Apple's revenue grew by 6.43% from fiscal 2024 to fiscal 2025.[1]\", \"points\": [{\"text\": \"Revenue increased from $391.035 billion in FY2024 to $416.161 billion in FY2025, a growth of 6.43%.\", \"cite_ids\": [\"f:103\", \"f:111\", \"k:1\"]}], \"tables\": [{\"title\": \"Apple Revenue by Fiscal Year\", \"columns\": [\"Fiscal Year\", \"Revenue (USD)\"], \"rows\": [[{\"text\": \"2024\", \"cite_id\": null}, {\"text\": \"391,035,000,000\", \"cite_id\": \"f:103\"}], [{\"text\": \"2025\", \"cite_id\": null}, {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"}]]}, {\"title\": \"Revenue Growth FY2024 to FY2025\", \"columns\": [\"Period\", \"Growth (%)\"], \"rows\": [[{\"text\": \"FY2024 to FY2025\", \"cite_id\": null}, {\"text\": \"6.43\", \"cite_id\": \"k:1\"}]]}], \"chart\": null, \"confidence\": {\"level\": \"high\", \"note\": \"Both revenue figures and the growth calculation are available from the evidence.\"}, \"unverified\": [], \"citations\": [{\"marker\": 1, \"cite_id\": \"k:1\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Apple's revenue grew by 6.43% from fiscal 2024 to fiscal 2025, increasing from $391.035 billion to $416.161 billion [1][2][3].\",\n  \"points\": [\n    {\n      \"text\": \"Apple's revenue for fiscal 2024 was $391,035,000,000.\",\n      \"cite_ids\": [\"f:103\"]\n    },\n    {\n      \"text\": \"Apple's revenue for fiscal 2025 was $416,161,000,000.\",\n      \"cite_ids\": [\"f:111\"]\n    },\n    {\n      \"text\": \"The percentage revenue growth from fiscal 2024 to fiscal 2025 was 6.43%.\",\n      \"cite_ids\": [\"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Apple Revenue Fiscal 2024 vs 2025\",\n      \"columns\": [\"Fiscal Year\", \"Revenue (USD)\", \"Revenue Growth (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"2024\", \"cite_id\": null},\n          {\"text\": \"391,035,000,000\", \"cite_id\": \"f:103\"},\n          {\"text\": \"\", \"cite_id\": null}\n        ],\n        [\n          {\"text\": \"2025\", \"cite_id\": null},\n          {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"},\n          {\"text\": \"6.43\", \"cite_id\": \"k:1\"}\n        ]\n      ]\n    },\n    {\n      \"title\": \"Revenue Growth Calculation\",\n      \"columns\": [\"Metric\", \"Value\"],\n      \"rows\": [\n        [\n          {\"text\": \"Revenue 2024 (USD)\", \"cite_id\": null},\n          {\"text\": \"391,035,000,000\", \"cite_id\": \"f:103\"}\n        ],\n        [\n          {\"text\": \"Revenue 2025 (USD)\", \"cite_id\": null},\n          {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"}\n        ],\n        [\n          {\"text\": \"Growth (%)\", \"cite_id\": null},\n          {\"text\": \"6.43\", \"cite_id\": \"k:1\"}\n        ]\n      ]\n    },\n    {\n      \"title\": \"Revenue Growth Summary\",\n      \"columns\": [\"Period\", \"Revenue (USD)\", \"Growth vs Prior Year (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"FY 2024\", \"cite_id\": null},\n          {\"text\": \"391,035,000,000\", \"cite_id\": \"f:103\"},\n          {\"text\": \"N/A\", \"cite_id\": null}\n        ],\n        [\n          {\"text\": \"FY 2025\", \"cite_id\": null},\n          {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"},\n          {\"text\": \"6.43\", \"cite_id\": \"k:1\"}\n        ]\n      ]\n    },\n    {\n      \"title\": \"Key Figures\",\n      \"columns\": [\"Item\", \"Amount (USD)\"],\n      \"rows\": [\n        [\n          {\"text\": \"FY 2024 Revenue\", \"cite_id\": null},\n          {\"text\": \"391,035,000,000\", \"cite_id\": \"f:103\"}\n        ],\n        [\n          {\"text\": \"FY 2025 Revenue\", \"cite_id\": null},\n          {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"}\n        ],\n        [\n          {\"text\": \"Percentage Growth\", \"cite_id\": null},\n          {\"text\": \"6.43%\", \"cite_id\": \"k:1\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Fiscal Year\",\n    \"series\": [\"Revenue (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Both revenue figures and the growth calculation are directly sourced from SEC filings and the provided calculation.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:103\"},\n    {\"marker\": 2, \"cite_id\": \"f:111\"},\n    {\"marker\": 3, \"cite_id\": \"k:1\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "openrouter-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2520,
-    "tokens_out": 1140,
-    "latency_ms": 19010.001,
+    "tokens_in": 3501,
+    "tokens_out": 1553,
+    "latency_ms": 48976.055,
     "cache_hit": false,
     "fallback_from": [
-     "nvidia-large",
-     "gemini-flash"
+     "gemini-flash-stable",
+     "gemini-flash",
+     "nvidia-large"
     ]
    }
   }
@@ -181,140 +128,7 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"AAPL\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3108, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm\"}, {\"document_id\": 3109, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm\"}, {\"document_id\": 3110, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2026-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000006/aapl-20251227.htm\"}, {\"document_id\": 3111, \"ticker\": \"AAPL\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm\"}, {\"document_id\": 3112, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000073/aapl-20250628.htm\"}, {\"document_id\": 3113, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-02T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000057/aapl-20250329.htm\"}, {\"document_id\": 3114, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2025-01-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000008/aapl-20241228.htm\"}, {\"document_id\": 3115, \"ticker\": \"AAPL\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2024-11-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm\"}]}",
-   "summary": "AAPL documents",
-   "count": 8,
-   "items": [],
-   "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2024-FY\",\"2025-FY\"],\"ticker\":\"AAPL\"},\"name\":\"get_financial_facts\"}",
-   "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:103\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3613\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:104\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3614\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:111\">Revenue (2025-FY): 416,161,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3621\">Revenue (2025-FY): 416,161,000,000 USD</untrusted_document>",
-   "summary": "AAPL 2024-FY to 2025-FY revenue",
-   "count": 6,
-   "items": [
-    {
-     "cite_id": "f:103",
-     "text": "Revenue (2024-FY): 391,035,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 114,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-24-000123",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
-     },
-     "value": "391035000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:3613",
-     "text": "Revenue (2024-FY): 391,035,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2331,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-24-000123",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
-     },
-     "value": "391035000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:104",
-     "text": "Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 110,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
-     },
-     "value": "391035000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:3614",
-     "text": "Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2327,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
-     },
-     "value": "391035000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:111",
-     "text": "Revenue (2025-FY): 416,161,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 110,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2025-FY",
-      "metric": "revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
-     },
-     "value": "416161000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:3621",
-     "text": "Revenue (2025-FY): 416,161,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2327,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2025-FY",
-      "metric": "revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
-     },
-     "value": "416161000000",
-     "scale": "1",
-     "unit_note": null
-    }
-   ],
-   "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"ticker\":\"AAPL\"},\"name\":\"list_documents\"}",
-   "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3108, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm\"}, {\"document_id\": 3109, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm\"}, {\"document_id\": 3110, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2026-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000006/aapl-20251227.htm\"}, {\"document_id\": 3111, \"ticker\": \"AAPL\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm\"}, {\"document_id\": 3112, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000073/aapl-20250628.htm\"}, {\"document_id\": 3113, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-02T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000057/aapl-20250329.htm\"}, {\"document_id\": 3114, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2025-01-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000008/aapl-20241228.htm\"}, {\"document_id\": 3115, \"ticker\": \"AAPL\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2024-11-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm\"}]}",
+   "content": "{\"documents\": [{\"document_id\": 3582, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm\"}, {\"document_id\": 3583, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm\"}, {\"document_id\": 3584, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2026-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000006/aapl-20251227.htm\"}, {\"document_id\": 3585, \"ticker\": \"AAPL\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm\"}, {\"document_id\": 3586, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000073/aapl-20250628.htm\"}, {\"document_id\": 3587, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-02T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000057/aapl-20250329.htm\"}, {\"document_id\": 3588, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2025-01-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000008/aapl-20241228.htm\"}, {\"document_id\": 3589, \"ticker\": \"AAPL\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2024-11-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm\"}]}",
    "summary": "AAPL documents",
    "count": 8,
    "items": [],
@@ -447,7 +261,7 @@
  ],
  "sandbox": [
   {
-   "key": "431f461c10036f5eb5a1aaf47c5cd20e2f88fe7a28ebbad2a1d3f345736fa8e6",
+   "key": "027cb229c5ed48cc3f04c1fea0f93cf0db70369d90b5e217c98084b9f0de0b70",
    "response": {
     "ok": true,
     "outputs": {
@@ -460,33 +274,7 @@
    }
   },
   {
-   "key": "431f461c10036f5eb5a1aaf47c5cd20e2f88fe7a28ebbad2a1d3f345736fa8e6",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "revenue_growth_pct": "6.425511782832739"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  },
-  {
-   "key": "431f461c10036f5eb5a1aaf47c5cd20e2f88fe7a28ebbad2a1d3f345736fa8e6",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "revenue_growth_pct": "6.425511782832739"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  },
-  {
-   "key": "431f461c10036f5eb5a1aaf47c5cd20e2f88fe7a28ebbad2a1d3f345736fa8e6",
+   "key": "027cb229c5ed48cc3f04c1fea0f93cf0db70369d90b5e217c98084b9f0de0b70",
    "response": {
     "ok": true,
     "outputs": {
@@ -499,5 +287,6 @@
    }
   }
  ],
- "decision": "approve"
+ "decision": "approve",
+ "elapsed_ms": 248908
 }

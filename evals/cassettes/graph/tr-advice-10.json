@@ -6,13 +6,13 @@
    "key": "7ac81f748d75c0648cb9249d6c0c7679aaefcfc30238ae9d7fc6f96e23451c77",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Bu soru yatırım tavsiyesi niteliğinde olduğundan yanıtlanmamaktadır.\",\n  \"points\": [],\n  \"citations\": []\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi niteliğinde menkul kıymet alım/satım önerileri verilmesi veya karşılaştırma yapılması yönündeki talepler yanıtlanamamaktadır. Yatırım tavsiyesi değildir.\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1642,
-    "tokens_out": 59,
-    "latency_ms": 4771.16,
+    "tokens_in": 1656,
+    "tokens_out": 76,
+    "latency_ms": 775.219,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,19 +21,23 @@
    "key": "a20f04219eb75e1648400684c39e5fc891c14af79b40e4d1a65abb6c4fcbd3fb",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi verilemez. Şirket açıklamaları ve finansal veriler için ilgili belgeler incelenebilir.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi verilemez. Bu konuda yalnızca şirket açıklamalarındaki bilgiler paylaşılabilir.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1173,
-    "tokens_out": 163,
-    "latency_ms": 7701.801,
+    "tokens_out": 167,
+    "latency_ms": 18966.565,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
  "tools": [],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 20164
 }

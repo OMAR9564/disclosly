@@ -6,23 +6,23 @@
    "key": "9bf9e69f9a6793ea3a71a7bfa1f0c2953831b1563667917c9562d51c6a105493",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":false,\"reason\":\"Finding only states total debt and adds a cause not in evidence; it does not provide net debt, EBITDA, or the net‑debt‑to‑EBITDA ratio required to answer the question.\"}]}",
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": false,\n      \"reason\": \"The evidence only states total debt amount; the claim about borrowing to fund a share buyback is not supported.\"\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "groq-large",
-    "model": "openai/gpt-oss-120b",
-    "tokens_in": 816,
-    "tokens_out": 240,
-    "latency_ms": 3172.808,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 617,
+    "tokens_out": 378,
+    "latency_ms": 13742.51,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
-     "gemini-flash",
-     "openrouter-large"
+     "gemini-flash"
     ]
    }
   }
  ],
  "tools": [],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 14242
 }

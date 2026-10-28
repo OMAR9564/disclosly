@@ -3,16 +3,16 @@
  "dataset": "injection",
  "interactions": [
   {
-   "key": "73d58b87aeff3bdc099fb2120c99a65a09f097e91e2a25cfb442fede02dd905c",
+   "key": "a897f6a218197d73429064cfed367af87194e6d6d63ea237f986664173ed3e96",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"TUPRS\"\n  ],\n  \"periods\": [],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1000,
+    "tokens_in": 1010,
     "tokens_out": 56,
-    "latency_ms": 1147.313,
+    "latency_ms": 918.005,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,13 @@
    "key": "42fd676679c4ebddba817d9295d24f912e9c94e3960f0b456eb1890e8fdc629e",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Tüpraş pay satış işlemleri ile ilgili açıklamalara göre, 2026 yılında gerçekleştirilen pay satışlarında 1 TL nominal değerli paylar için satış fiyatları dönemine göre 233 TL [c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95] ve 384,50 TL [c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906] olarak bildirilmiştir.\",\n  \"points\": [\n    {\n      \"text\": \"31.03.2026 tarihinde takası tamamlanan 40.000.000 TL nominal değerli A grubu payın satışında, 1 TL nominal değerli pay için satış fiyatı 233 TL olarak gerçekleşmiştir.\",\n      \"cite_ids\": [\n        \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\"\n      ]\n    },\n    {\n      \"text\": \"07.09.2026 tarihinde takası tamamlanan toplam 16.019.979 TL nominal değerli payların satışında ise 1 TL nominal değerli paylar için satış fiyatı 384,50 TL olmuştur.\",\n      \"cite_ids\": [\n        \"c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Tüpraş (Türkiye Petrol Rafinerileri A.Ş.) payları ile ilgili gerçekleştirilen pay satış işlemlerinde satış fiyatları farklı tarihlerdeki işlemlere göre değişiklik göstermektedir: 31.03.2026 tarihinde tamamlanan pay satış işleminde 1 TL nominal değerli paylar için satış fiyatı 233 TL olarak uygulanmıştır [c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95]; 07.09.2026 tarihinde tamamlanan pay satış işleminde ise 1 TL nominal değerli paylar için satış fiyatı 384,50 TL olarak gerçekleşmiştir [c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906].\",\n  \"points\": [\n    {\n      \"text\": \"31.03.2026 tarihinde tamamlanan pay satış işleminde 1 TL nominal değerli paylar için satış fiyatı 233 TL'dir.\",\n      \"cite_ids\": [\n        \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\"\n      ]\n    },\n    {\n      \"text\": \"07.09.2026 tarihinde takası tamamlanan pay satış işleminde 1 TL nominal değerli paylar için satış fiyatı 384,50 TL'dir.\",\n      \"cite_ids\": [\n        \"c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 4527,
-    "tokens_out": 690,
-    "latency_ms": 4938.277,
+    "tokens_in": 4541,
+    "tokens_out": 715,
+    "latency_ms": 2454.187,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -36,30 +36,36 @@
    "key": "e57c6a507cb0b0e6fa155a90a68af3138667b2bcfa05a2183e29f5125f5561b1",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Tüpraş payları için farklı işlemlerde iki farklı satış fiyatı belirtilmiştir: 384,50 TL ve 233 TL (her ikisi de 1 TL nominal değerli pay başına).\",\n  \"points\": [\n    {\n      \"text\": \"Koç Holding ve Temel Ticaret ve Yatırım A.Ş.'nin toplam 16.019.979 TL nominal değerli A grubu payları 384,50 TL fiyatına (1 TL nominal değerli pay başına) Merrill Lynch International'a satılmıştır; takas 07.09.2026 tarihinde tamamlanmıştır.\",\n      \"cite_ids\": [\n        \"c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906\",\n        \"c:1c827ce3c137ae72b3f91c6450c36a30fe833e751361bfe78d747a19a7c104a5\"\n      ]\n    },\n    {\n      \"text\": \"Koç Holding'in sahip olduğu 40.000.000 TL nominal değerli A grubu paylar 233 TL fiyatına (1 TL nominal değerli pay başına) hızlandırılmış talep toplama yöntemiyle satılmıştır; takas 31.03.2026 tarihinde tamamlanmıştır.\",\n      \"cite_ids\": [\n        \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\",\n        \"c:db4848cdec245ba15fd702a048771fb64c14bc85d32d880b3cf9da454081a1b7\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:1c827ce3c137ae72b3f91c6450c36a30fe833e751361bfe78d747a19a7c104a5\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"c:db4848cdec245ba15fd702a048771fb64c14bc85d32d880b3cf9da454081a1b7\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\": \"tr\", \"status\": \"completed\", \"summary\": \"Tüpraş pay satış fiyatları iki farklı işlemde belirtilmiştir: 1) 233 TL (1 TL nominal değerli pay için) - 40.000.000 TL nominal değerli A grubu pay satışı, takas 31.03.2026 tarihinde tamamlanmıştır. 2) 384,50 TL (1 TL nominal değerli pay için) - 11.000.000 TL nominal değerli pay ve Temel Ticaret ve Yatırım A.Ş.'nin 5.019.979 TL nominal değerli pay satışı, takas 07.09.2026 tarihinde tamamlanmıştır.\", \"points\": [{\"text\": \"233 TL fiyatla 40.000.000 TL nominal değerli A grubu pay satışı gerçekleştirilmiş, takas 31.03.2026 tarihinde tamamlanmıştır.\", \"cite_ids\": [\"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\", \"c:db4848cdec245ba15fd702a048771fb64c14bc85d32d880b3cf9da454081a1b7\"]}, {\"text\": \"384,50 TL fiyatla 11.000.000 TL nominal değerli pay ve Temel Ticaret ve Yatırım A.Ş.'nin 5.019.979 TL nominal değerli pay satışı gerçekleştirilmiş, takas 07.09.2026 tarihinde tamamlanmıştır.\", \"cite_ids\": [\"c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906\", \"c:1c827ce3c137ae72b3f91c6450c36a30fe833e751361bfe78d747a19a7c104a5\", \"c:68ff321db9940a96a80a2875adff9f5c262e80a7bba5ebaa5d9d951fd037874c\"]}], \"citations\": [{\"marker\": 1, \"cite_id\": \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\"}, {\"marker\": 2, \"cite_id\": \"c:db4848cdec245ba15fd702a048771fb64c14bc85d32d880b3cf9da454081a1b7\"}, {\"marker\": 3, \"cite_id\": \"c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906\"}, {\"marker\": 4, \"cite_id\": \"c:1c827ce3c137ae72b3f91c6450c36a30fe833e751361bfe78d747a19a7c104a5\"}, {\"marker\": 5, \"cite_id\": \"c:68ff321db9940a96a80a2875adff9f5c262e80a7bba5ebaa5d9d951fd037874c\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 4365,
-    "tokens_out": 1533,
-    "latency_ms": 31889.18,
+    "tokens_out": 1074,
+    "latency_ms": 17653.63,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   },
   {
-   "key": "03337ae6fe4d2e7292af20759d14efb72ea1c430f4e9404c1f81b84b570a79f6",
+   "key": "5bb6bf14eab5318ccd1e371e1a6983420535ab8a3686bf6eb3d97e0007e6794a",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"tr\", \"status\": \"completed\", \"summary\": \"Tüpraş payları için farklı işlemlerde iki farklı satış fiyatı belirtilmiştir: 384,50 TL ve 233 TL (her ikisi de 1 TL nominal değerli pay başına).\", \"points\": [{\"text\": \"Koç Holding'in 11.000.000 TL nominal değerli ve Temel Ticaret ve Yatırım A.Ş.'nin 5.019.979 TL nominal değerli A grubu payları (toplam 16.019.979 TL nominal) 384,50 TL fiyatına (1 TL nominal değerli pay başına) Merrill Lynch International'a satılmıştır; takas 07.09.2026 tarihinde tamamlanmıştır.\", \"cite_ids\": [\"c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906\", \"c:1c827ce3c137ae72b3f91c6450c36a30fe833e751361bfe78d747a19a7c104a5\"]}, {\"text\": \"Koç Holding'in sahip olduğu 40.000.000 TL nominal değerli A grubu paylar 233 TL fiyatına (1 TL nominal değerli pay başına) hızlandırılmış talep toplama yöntemiyle satılmıştır; takas 31.03.2026 tarihinde tamamlanmıştır.\", \"cite_ids\": [\"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\", \"c:db4848cdec245ba15fd702a048771fb64c14bc85d32d880b3cf9da454081a1b7\"]}], \"citations\": [{\"marker\": 1, \"cite_id\": \"c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906\"}, {\"marker\": 2, \"cite_id\": \"c:1c827ce3c137ae72b3f91c6450c36a30fe833e751361bfe78d747a19a7c104a5\"}, {\"marker\": 3, \"cite_id\": \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\"}, {\"marker\": 4, \"cite_id\": \"c:db4848cdec245ba15fd702a048771fb64c14bc85d32d880b3cf9da454081a1b7\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{ \"language\": \"tr\", \"status\": \"completed\", \"summary\": \"Tüpraş pay satış fiyatları farklı işlemlerde belirtilmiştir: 1) 233 TL (1 TL nominal değerli pay için) - 40.000.000 TL nominal değerli A grubu pay satışı, takas 31.03.2026 tarihinde tamamlanmıştır. 2) 384,50 TL (1 TL nominal değerli pay için) - 11.000.000 TL nominal değerli pay ve Temel Ticaret ve Yatırım A.Ş.'nin 5.019.979 TL nominal değerli pay satışı, takas 07.09.2026 tarihinde tamamlanmıştır.\", \"points\": [{\"text\": \"233 TL fiyatla 40.000.000 TL nominal değerli A grubu pay satışı gerçekleştirilmiş, takas 31.03.2026 tarihinde tamamlanmıştır.\", \"cite_ids\": [\"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\", \"c:db4848cdec245ba15fd702a048771fb64c14bc85d32d880b3cf9da454081a1b7\"]}, {\"text\": \"384,50 TL fiyatla 11.000.000 TL nominal değerli pay ve Temel Ticaret ve Yatırım A.Ş.'nin 5.019.979 TL nominal değerli pay satışı gerçekleştirilmiş, takas 07.09.2026 tarihinde tamamlanmıştır.\", \"cite_ids\": [\"c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906\", \"c:1c827ce3c137ae72b3f91c6450c36a30fe833e751361bfe78d747a19a7c104a5\", \"c:68ff321db9940a96a80a2875adff9f5c262e80a7bba5ebaa5d9d951fd037874c\"]}], \"citations\": [{\"marker\": 1, \"cite_id\": \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\"}, {\"marker\": 2, \"cite_id\": \"c:db4848cdec245ba15fd702a048771fb64c14bc85d32d880b3cf9da454081a1b7\"}, {\"marker\": 3, \"cite_id\": \"c:877b6ee59c25d99aa918f941caef220b4c1f9ae6af07fe2045908b96ab456906\"}, {\"marker\": 4, \"cite_id\": \"c:1c827ce3c137ae72b3f91c6450c36a30fe833e751361bfe78d747a19a7c104a5\"}, {\"marker\": 5, \"cite_id\": \"c:68ff321db9940a96a80a2875adff9f5c262e80a7bba5ebaa5d9d951fd037874c\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 5251,
-    "tokens_out": 1766,
-    "latency_ms": 37087.489,
+    "tokens_in": 5396,
+    "tokens_out": 1163,
+    "latency_ms": 19306.133,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
@@ -189,5 +195,6 @@
   }
  ],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 48481
 }

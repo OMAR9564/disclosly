@@ -3,123 +3,117 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "bed51fe6126d15084adabff2fae95970eb4f584a55f1a79f4a92c68bc111eac9",
+   "key": "ea885d81d7c4edbda5bf6e6941512f5574000d290463bafe405bd7653fb1653f",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"NVDA\"\n  ],\n  \"periods\": [\n    \"2026-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\"mode\":\"deep\",\"tickers\":[\"NVDA\"],\"periods\":[\"2026-FY\"],\"metrics\":[\"revenue\"],\"uses_watchlist\":false,\"memory_intent\":null}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 935,
-    "tokens_out": 76,
-    "latency_ms": 1205.584,
+    "tokens_in": 945,
+    "tokens_out": 35,
+    "latency_ms": 1229.235,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "373744d30b59edb9143020c28585c6623a85fd98dcacef14dcb16bf15304c703",
+   "key": "b2228318cb37e97788ae66de80342de2efaca216af8eb00c206be1431453f073",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\": [\n    {\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Get Nvidia's total revenue for fiscal year 2026\", \"tickers\": [\"NVDA\"], \"periods\": [\"2026-FY\"], \"metrics\": [\"revenue\"]},\n    {\"id\": \"s2\", \"kind\": \"search\", \"goal\": \"Find geographic revenue breakdown showing revenue from customers outside the United States for fiscal 2026\", \"tickers\": [\"NVDA\"], \"periods\": [\"2026-FY\"]},\n    {\"id\": \"s3\", \"kind\": \"calculate\", \"goal\": \"Calculate the percentage of fiscal 2026 revenue from non-US customers\", \"tickers\": [\"NVDA\"], \"periods\": [\"2026-FY\"]}\n  ]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"search\",\n      \"goal\": \"Find Nvidia's fiscal 2026 revenue breakdown by geographic region (US vs non-US customers) from the 10-K filing\",\n      \"tickers\": [\"NVDA\"],\n      \"periods\": [\"2026-FY\"]\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1018,
-    "tokens_out": 361,
-    "latency_ms": 4992.902,
+    "tokens_in": 1067,
+    "tokens_out": 293,
+    "latency_ms": 4556.342,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   },
   {
-   "key": "baf684f010fcd243a7e0024f933649547ffcbef46a40a24d5f3714d2993b0304",
+   "key": "d24cc5e50cc6efbdeac3f25be33274fc4ca2a497b9951928bffad652aa2c16d4",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Nvidia geographic revenue United States long-lived assets revenue by country fiscal 2026\"\n    },\n    {\n      \"step_id\": \"s3\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"NVIDIA revenue by geographic area country US United States\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1102,
-    "tokens_out": 131,
-    "latency_ms": 1266.713,
+    "tokens_in": 1120,
+    "tokens_out": 56,
+    "latency_ms": 879.959,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "4eb3bd57951809c34a50a6bf01f0f5339950ff8d18d3527ad968a5d357c6ba17",
+   "key": "fdf1e8ae91cb386ea6e7e31e8538830591b5bceaf6b6de6fbc5bc0839ae498a6",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Nvidia geographic revenue United States Taiwan China 2026\"\n    },\n    {\n      \"step_id\": \"s3\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"NVIDIA revenue by geographic region country customer United States\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1306,
-    "tokens_out": 125,
-    "latency_ms": 805.41,
+    "tokens_in": 1120,
+    "tokens_out": 56,
+    "latency_ms": 664.369,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "ea18fe14d23814ebf5b3ce8caaecf9c94ccf588c18c4ff590490b8b762ed132a",
-   "task_class": "strong",
+   "key": "52226a6cca759e4f679195cd03c3baad09ee9698ab9e38a80d51d5140c74be1b",
+   "task_class": "cheap",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Nvidia's total revenue for fiscal year 2026 (year ended January 25, 2026) was 215,938,000,000 USD.\",\n      \"cite_ids\": [\"f:410\", \"f:3814\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"The provided evidence does not contain a geographic revenue breakdown showing revenue from customers headquartered outside the United States for fiscal 2026.\",\n      \"cite_ids\": [\"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\", \"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\"]\n    }\n  ],\n  \"calculations\": []\n}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"The provided documents do not contain the geographic breakdown of Nvidia's fiscal 2026 revenue by region of customer headquarters.\",\n      \"cite_ids\": [\n        \"c:01652f22e224957b7652d5e4628557ee9b90db4468cbacb98ddd9c9b550e004c\"\n      ]\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2755,
-    "tokens_out": 1229,
-    "latency_ms": 30352.749,
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 3647,
+    "tokens_out": 134,
+    "latency_ms": 1108.539,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "01843514ca5f1b503b2c69153547a3a90c7d3200e88bf2cadd74fb2a457baf87",
+   "key": "cb6a13c7e35d1830ef2897607b530a33a8c06d256b455012a2071773fb7ed8d6",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [\n    {\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Revenue figure matches cited documents f:410 and f:3814.\"},\n    {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Cited documents (c:00e96dab... and c:0121aae4...) do not contain geographic revenue breakdown.\"}\n  ]}",
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"The cited excerpt discusses segment revenue and customer concentration but does not provide a geographic breakdown of revenue by customer headquarters.\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1776,
-    "tokens_out": 1014,
-    "latency_ms": 32450.432,
+    "tokens_in": 936,
+    "tokens_out": 431,
+    "latency_ms": 12293.822,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   },
   {
-   "key": "6fe9a059891927025225cf904341e9946d28563f495976591b610fc107b7f0b4",
+   "key": "073420beac50c522a25c7f50dea9f4c11fb6ce9fa954084e93d0827014404f66",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"partial\",\n  \"summary\": \"Nvidia's total revenue for fiscal year 2026 (year ended January 25, 2026) was 215,938,000,000 USD. However, the available evidence does not include a geographic revenue breakdown showing revenue from customers headquartered outside the United States, so the share of revenue from non-US customers cannot be determined.\",\n  \"points\": [\n    {\n      \"text\": \"Nvidia's total revenue for fiscal year 2026 was 215,938,000,000 USD.\",\n      \"cite_ids\": [\"f:410\", \"f:3814\"]\n    },\n    {\n      \"text\": \"No geographic revenue breakdown for fiscal 2026 is available in the provided evidence to determine revenue from customers outside the United States.\",\n      \"cite_ids\": [\"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\", \"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Nvidia Fiscal 2026 Revenue and Missing Geographic Breakdown\",\n      \"columns\": [\"Period\", \"Total Revenue (USD)\", \"Non-US Revenue (USD)\", \"Non-US Share (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"FY2026 (ended Jan 25, 2026)\", \"cite_id\": null},\n          {\"text\": \"215,938,000,000\", \"cite_id\": \"f:410\"},\n          {\"text\": \"Not available\", \"cite_id\": null},\n          {\"text\": \"Cannot be calculated\", \"cite_id\": null}\n        ]\n      ]\n    }\n  ],\n  \"chart\": null,\n  \"confidence\": {\n    \"level\": \"low\",\n    \"note\": \"Total revenue for fiscal 2026 is known, but the geographic breakdown required to compute the non-US share is missing from the evidence.\"\n  },\n  \"unverified\": [\n    \"Revenue from customers headquartered outside the United States for fiscal 2026\",\n    \"Percentage share of fiscal 2026 revenue from non-US customers\"\n  ],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:410\"},\n    {\"marker\": 2, \"cite_id\": \"f:3814\"},\n    {\"marker\": 3, \"cite_id\": \"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\"},\n    {\"marker\": 4, \"cite_id\": \"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\": \"en\", \"status\": \"no_evidence\", \"summary\": \"The provided documents do not contain a geographic breakdown of Nvidia's fiscal 2026 revenue by customer headquarters location, so the share from customers outside the United States cannot be determined.\", \"points\": [{\"text\": \"No geographic revenue breakdown by customer headquarters (US vs non-US) is disclosed in the available Nvidia fiscal 2026 filings.\", \"cite_ids\": [\"c:01652f22e224957b7652d5e4628557ee9b90db4468cbacb98ddd9c9b550e004c\"]}], \"tables\": [], \"chart\": null, \"confidence\": {\"level\": \"low\", \"note\": \"The evidence does not include any geographic segmentation of revenue by customer headquarters.\"}, \"unverified\": [\"Share of fiscal 2026 revenue from customers headquartered outside the United States\"], \"citations\": [{\"marker\": 1, \"cite_id\": \"c:01652f22e224957b7652d5e4628557ee9b90db4468cbacb98ddd9c9b550e004c\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 3326,
-    "tokens_out": 1363,
-    "latency_ms": 38225.852,
+    "tokens_in": 2486,
+    "tokens_out": 482,
+    "latency_ms": 9423.197,
     "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "c920eeeb5aed7b5ebf5cbd6197ae7f0717a2d55b427aef272e7d450646fc7717",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"partial\",\n  \"summary\": \"Nvidia's total revenue for fiscal year 2026 (year ended January 25, 2026) was 215,938,000,000 USD. However, the available evidence does not include a geographic revenue breakdown showing revenue from customers headquartered outside the United States, so the share of revenue from non-US customers cannot be determined.\",\n  \"points\": [\n    {\n      \"text\": \"Nvidia's total revenue for fiscal year 2026 was 215,938,000,000 USD.\",\n      \"cite_ids\": [\"f:410\", \"f:3814\"]\n    },\n    {\n      \"text\": \"No geographic revenue breakdown for fiscal 2026 is available in the provided evidence to determine revenue from customers outside the United States.\",\n      \"cite_ids\": [\"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\", \"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Nvidia Fiscal 2026 Revenue and Missing Geographic Breakdown\",\n      \"columns\": [\"Period\", \"Total Revenue (USD)\", \"Non-US Revenue (USD)\", \"Non-US Share (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"FY2026 (ended Jan 25, 2026)\", \"cite_id\": \"f:410\"},\n          {\"text\": \"215,938,000,000\", \"cite_id\": \"f:410\"},\n          {\"text\": \"Not available\", \"cite_id\": null},\n          {\"text\": \"Cannot be calculated\", \"cite_id\": null}\n        ]\n      ]\n    }\n  ],\n  \"chart\": null,\n  \"confidence\": {\n    \"level\": \"low\",\n    \"note\": \"Total revenue for fiscal 2026 is known, but the geographic breakdown required to compute the non-US share is missing from the evidence.\"\n  },\n  \"unverified\": [\n    \"Revenue from customers headquartered outside the United States for fiscal 2026\",\n    \"Percentage share of fiscal 2026 revenue from non-US customers\"\n  ],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:410\"},\n    {\"marker\": 2, \"cite_id\": \"f:3814\"},\n    {\"marker\": 3, \"cite_id\": \"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\"},\n    {\"marker\": 4, \"cite_id\": \"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 4171,
-    "tokens_out": 1451,
-    "latency_ms": 45691.513,
-    "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
@@ -127,73 +121,120 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"NVDA\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3124, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm\"}, {\"document_id\": 3125, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm\"}, {\"document_id\": 3126, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-02-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm\"}, {\"document_id\": 3127, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-19T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm\"}, {\"document_id\": 3128, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-27T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm\"}, {\"document_id\": 3129, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm\"}, {\"document_id\": 3130, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-02-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm\"}, {\"document_id\": 3131, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm\"}]}",
+   "content": "{\"documents\": [{\"document_id\": 3598, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm\"}, {\"document_id\": 3599, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm\"}, {\"document_id\": 3600, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-02-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm\"}, {\"document_id\": 3601, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-19T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm\"}, {\"document_id\": 3602, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-27T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm\"}, {\"document_id\": 3603, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm\"}, {\"document_id\": 3604, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-02-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm\"}, {\"document_id\": 3605, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm\"}]}",
    "summary": "NVDA documents",
    "count": 8,
    "items": [],
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2026-FY\"],\"ticker\":\"NVDA\"},\"name\":\"get_financial_facts\"}",
-   "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:410\">Revenue (2026-FY): 215,938,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3814\">Revenue (2026-FY): 215,938,000,000 USD</untrusted_document>",
-   "summary": "NVDA 2026-FY revenue",
-   "count": 2,
+   "key": "{\"arguments\":{\"period_from\":\"2026-FY\",\"period_to\":\"2026-FY\",\"query\":\"Find Nvidia's fiscal 2026 revenue breakdown by geographic region (US vs non-US customers) from the 10-K filing\",\"ticker\":\"NVDA\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "<untrusted_document cite_id=\"c:023aeded0151f0c4186d22895bb56c44446cb5e966e643aaa471dc29d1a72317\">See accompanying Notes to the Consolidated Financial Statements. 55 Table of Contents NVIDIA Corporation and Subsidiaries Notes to the Consolidated Financial Statements Note 1 - Organization and Summary of Significant Accounting Policies Our Company Headquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998. All references to “NVIDIA,” “we,” “us,” “our” or the “Company” mean NVIDIA Corporation and its subsidiaries. Certain prior fiscal year balances have been reclassified to conform to the current fiscal year presentation. Non-marketable equity securities, previously presented within other assets, were reclassified to be presented separately on our consolidated balance sheets and had no impact to total assets or consolidated statement of cash flows. Fiscal Year We operate on a 52- or 53-week year, ending on the last Sunday in January. Fiscal years 2026, 2025 and 2024 were all 52-week years. Fiscal year 2027 will be a 53-week year with the fourth quarter consisting of 14 weeks. Principles of Consolidation Our consolidated financial statements include the accounts of NVIDIA Corporation and our wholly-owned subsidiaries. All intercompany balances and transactions have been eliminated in consolidation. Use of Estimates The preparation of financial statements in conformity with U.S. GAAP requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosures of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenue and expenses during the reporting period. Actual results could differ materially from our estimates. On an on-going basis, we evaluate our estimates, including those related to accounts receivable, cash equivalents and marketable securities, goodwill, income taxes, inventories and product purchase commitments, investigation and settlement costs, litigation, non-marketable equity securities, other contingencies, property, plant, and equipment, revenue recognition, and stock-based compensation. These estimates are based on historical facts and various other assumptions that we believe are reasonable. Revenue Recognition We derive our revenue primarily from product sales including hardware and systems. We determine revenue recognition through the following steps: (1) identification of the contract with a customer; (2) identification of the performance obligations in the contract; (3) determination of the transaction price;</untrusted_document>\n<untrusted_document cite_id=\"c:02ca1bcb9e7502d2756ec2a7ab04e9aa06232f30dc297d360cae4686bed3a8af\" amounts_in=\"millions\"> | Year Ended |  |  |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024 |  |  | \n | (In millions) |  |  |  |  |  |  | \nSegment operating income |  | 139,297 |  |  |  | 87,960 |  | 37,862\nStock-based compensation expense | ( 6,386 ) |  |  | ( 4,737 ) |  |  | ( 3,549 ) | \nUnallocated operating expenses | ( 1,997 ) |  |  | ( 1,171 ) |  |  | ( 728 ) | \nAcquisition-related and other costs | ( 527 ) |  |  | ( 599 ) |  |  | ( 613 ) | \nInterest income | 2,300 |  |  | 1,786 |  |  | 866 | \nInterest expense | ( 259 ) |  |  | ( 247 ) |  |  | ( 257 ) | \nOther income, net | 9,022 |  |  | 1,034 |  |  | 237 | \nConsolidated income before income tax |  | 141,450 |  |  |  | 84,026 |  | 33,818</untrusted_document>\n<untrusted_document cite_id=\"c:02240bb96658cc5875469fa5fbf287e7ddcdcc91d9f5cafb7660f69b0c3b0abf\" amounts_in=\"millions\"> | Jan 26, 2025 |  |  |  |  |  |  |  |  |  |  |  |  |  | \n | Pricing Category | Cost or Amortized Cost |  | Unrealized Gain |  | Unrealized Loss |  | Estimated Fair Value | Reported as |  |  |  |  |  | \n |  |  |  |  | Cash Equivalents |  | Marketable Securities |  |  |  |  |  |  |  | \n | (In millions) |  |  |  |  |  |  |  |  |  |  |  |  |  | \nCorporate debt securities | Level 2 |  | 18,504 |  |  |  | 51 |  |  | ( 29 ) |  | 18,526 |  | 2,071 | 16,455\nDebt securities issued by the U.S. Treasury | Level 2 | 16,749 |  |  | 42 |  |  | ( 22 ) |  | 16,769 | 1,801 |  | 14,968 |  | \nDebt securities issued by U.S. government agencies | Level 2 | 2,775 |  |  | 7 |  |  | ( 5 ) |  | 2,777 | — |  | 2,777 |  | \nForeign government bonds | Level 2 | 177 |  |  | — |  |  | — |  | 177 | 137 |  | 40 |  | \nCertificates of deposit | Level 2 | 97 |  |  | — |  |  | — |  | 97 | 97 |  | — |  | \nMoney market funds | Level 1 | 3,760 |  |  | — |  |  | — |  | 3,760 | 3,760 |  | — |  | \nPublicly-held equity securities | Level 1 |  |  |  |  |  |  | 381 |  | — | 381 |  |  |  | \nTotal |  |  | 42,062 |  |  |  | 100 |  |  | ( 56 ) |  | 42,487 |  | 7,866 | 34,621</untrusted_document>\n<untrusted_document cite_id=\"c:01652f22e224957b7652d5e4628557ee9b90db4468cbacb98ddd9c9b550e004c\">Compute & Networking revenue – The year over year increase was driven by the major platform shifts – accelerated computing and AI. Revenue from Data Center computing grew 59% driven by demand for our Blackwell computing platform. Revenue from Data Center networking grew 142% driven by the introduction and continued ramp of NVLink compute fabric for GB200 and GB300 systems and the growth of Ethernet and InfiniBand platforms. Graphics revenue – The year over year increase was driven by sales of our Blackwell architecture. Reportable segment operating income – The year over year increase in Compute & Networking segment operating income was driven by growth in revenue, partially offset by a $4.5 billion charge associated with H20 excess inventory and purchase obligations in the first quarter of fiscal year 2026. The year over year increase in Graphics segment operating income was driven by the growth in revenue. 40 Table of Contents Concentration of Revenue We refer to customers who purchase products directly from NVIDIA as direct customers, such as AIBs, distributors, ODMs, OEMs, CSPs, AI model makers, and system integrators. Certain direct customers may use either internal resources or third-party system integrators to complete their build. We refer to indirect customers as those who purchase products through our direct customers; indirect customers include CSPs, Neocloud builders, AI model makers, enterprises, and public sector entities. Our revenue is concentrated among a limited number of direct and indirect customers and this trend may continue. Direct Customers – For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue, all of which were primarily attributable to the Compute & Networking segment. For fiscal year 2025, sales to one direct customer represented 12% of total revenue and sales to two direct customers each represented 11% of total revenue, all of which were primarily attributable to the Compute & Networking segment. For fiscal year 2024, sales to one direct customer represented 13% of total revenue, and were primarily attributable to the Compute & Networking segment. Indirect Customers – Indirect customer revenue is an estimation based upon multiple factors including customer purchase order information, product specifications, internal sales data, and other sources. Indirect customers primarily purchase our products through system integrators and distributors. We generate a significant amount of our revenue from a limited number of indirect customers, some individually representing 10% or more of our revenue. Certain companies purchase cloud and related services through various direct and indirect customers. We estimate that one AI research and deployment company contributed to a meaningful amount of our revenue purchasing cloud services from our customers in fiscal year 2026.</untrusted_document>",
+   "summary": "NVDA Find Nvidia's fiscal 2026 revenue breakdown by geographic region (US vs non-US customers) from the 10-K filing",
+   "count": 4,
    "items": [
     {
-     "cite_id": "f:410",
-     "text": "Revenue (2026-FY): 215,938,000,000 USD",
+     "cite_id": "c:023aeded0151f0c4186d22895bb56c44446cb5e966e643aaa471dc29d1a72317",
+     "text": "See accompanying Notes to the Consolidated Financial Statements. 55 Table of Contents NVIDIA Corporation and Subsidiaries Notes to the Consolidated Financial Statements Note 1 - Organization and Summary of Significant Accounting Policies Our Company Headquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998. All references to “NVIDIA,” “we,” “us,” “our” or the “Company” mean NVIDIA Corporation and its subsidiaries. Certain prior fiscal year balances have been reclassified to conform to the current fiscal year presentation. Non-marketable equity securities, previously presented within other assets, were reclassified to be presented separately on our consolidated balance sheets and had no impact to total assets or consolidated statement of cash flows. Fiscal Year We operate on a 52- or 53-week year, ending on the last Sunday in January. Fiscal years 2026, 2025 and 2024 were all 52-week years. Fiscal year 2027 will be a 53-week year with the fourth quarter consisting of 14 weeks. Principles of Consolidation Our consolidated financial statements include the accounts of NVIDIA Corporation and our wholly-owned subsidiaries. All intercompany balances and transactions have been eliminated in consolidation. Use of Estimates The preparation of financial statements in conformity with U.S. GAAP requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosures of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenue and expenses during the reporting period. Actual results could differ materially from our estimates. On an on-going basis, we evaluate our estimates, including those related to accounts receivable, cash equivalents and marketable securities, goodwill, income taxes, inventories and product purchase commitments, investigation and settlement costs, litigation, non-marketable equity securities, other contingencies, property, plant, and equipment, revenue recognition, and stock-based compensation. These estimates are based on historical facts and various other assumptions that we believe are reasonable. Revenue Recognition We derive our revenue primarily from product sales including hardware and systems. We determine revenue recognition through the following steps: (1) identification of the contract with a customer; (2) identification of the performance obligations in the contract; (3) determination of the transaction price;",
      "source": {
-      "kind": "fact",
-      "document_id": 125,
+      "kind": "chunk",
+      "document_id": 3600,
       "ticker": "NVDA",
       "doc_type": "10-K",
       "period": "2026-FY",
-      "metric": "revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:Revenues 0001045810-26-000021",
+      "section": "Item 15",
+      "page": null,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
      },
-     "value": "215938000000",
-     "scale": "1",
+     "value": null,
+     "scale": null,
      "unit_note": null
     },
     {
-     "cite_id": "f:3814",
-     "text": "Revenue (2026-FY): 215,938,000,000 USD",
+     "cite_id": "c:02ca1bcb9e7502d2756ec2a7ab04e9aa06232f30dc297d360cae4686bed3a8af",
+     "text": " | Year Ended |  |  |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024 |  |  | \n | (In millions) |  |  |  |  |  |  | \nSegment operating income |  | 139,297 |  |  |  | 87,960 |  | 37,862\nStock-based compensation expense | ( 6,386 ) |  |  | ( 4,737 ) |  |  | ( 3,549 ) | \nUnallocated operating expenses | ( 1,997 ) |  |  | ( 1,171 ) |  |  | ( 728 ) | \nAcquisition-related and other costs | ( 527 ) |  |  | ( 599 ) |  |  | ( 613 ) | \nInterest income | 2,300 |  |  | 1,786 |  |  | 866 | \nInterest expense | ( 259 ) |  |  | ( 247 ) |  |  | ( 257 ) | \nOther income, net | 9,022 |  |  | 1,034 |  |  | 237 | \nConsolidated income before income tax |  | 141,450 |  |  |  | 84,026 |  | 33,818",
      "source": {
-      "kind": "fact",
-      "document_id": 2342,
+      "kind": "chunk",
+      "document_id": 3600,
       "ticker": "NVDA",
       "doc_type": "10-K",
       "period": "2026-FY",
-      "metric": "revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:Revenues 0001045810-26-000021",
+      "section": "Item 15",
+      "page": null,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
      },
-     "value": "215938000000",
-     "scale": "1",
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:02240bb96658cc5875469fa5fbf287e7ddcdcc91d9f5cafb7660f69b0c3b0abf",
+     "text": " | Jan 26, 2025 |  |  |  |  |  |  |  |  |  |  |  |  |  | \n | Pricing Category | Cost or Amortized Cost |  | Unrealized Gain |  | Unrealized Loss |  | Estimated Fair Value | Reported as |  |  |  |  |  | \n |  |  |  |  | Cash Equivalents |  | Marketable Securities |  |  |  |  |  |  |  | \n | (In millions) |  |  |  |  |  |  |  |  |  |  |  |  |  | \nCorporate debt securities | Level 2 |  | 18,504 |  |  |  | 51 |  |  | ( 29 ) |  | 18,526 |  | 2,071 | 16,455\nDebt securities issued by the U.S. Treasury | Level 2 | 16,749 |  |  | 42 |  |  | ( 22 ) |  | 16,769 | 1,801 |  | 14,968 |  | \nDebt securities issued by U.S. government agencies | Level 2 | 2,775 |  |  | 7 |  |  | ( 5 ) |  | 2,777 | — |  | 2,777 |  | \nForeign government bonds | Level 2 | 177 |  |  | — |  |  | — |  | 177 | 137 |  | 40 |  | \nCertificates of deposit | Level 2 | 97 |  |  | — |  |  | — |  | 97 | 97 |  | — |  | \nMoney market funds | Level 1 | 3,760 |  |  | — |  |  | — |  | 3,760 | 3,760 |  | — |  | \nPublicly-held equity securities | Level 1 |  |  |  |  |  |  | 381 |  | — | 381 |  |  |  | \nTotal |  |  | 42,062 |  |  |  | 100 |  |  | ( 56 ) |  | 42,487 |  | 7,866 | 34,621",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3600,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:01652f22e224957b7652d5e4628557ee9b90db4468cbacb98ddd9c9b550e004c",
+     "text": "Compute & Networking revenue – The year over year increase was driven by the major platform shifts – accelerated computing and AI. Revenue from Data Center computing grew 59% driven by demand for our Blackwell computing platform. Revenue from Data Center networking grew 142% driven by the introduction and continued ramp of NVLink compute fabric for GB200 and GB300 systems and the growth of Ethernet and InfiniBand platforms. Graphics revenue – The year over year increase was driven by sales of our Blackwell architecture. Reportable segment operating income – The year over year increase in Compute & Networking segment operating income was driven by growth in revenue, partially offset by a $4.5 billion charge associated with H20 excess inventory and purchase obligations in the first quarter of fiscal year 2026. The year over year increase in Graphics segment operating income was driven by the growth in revenue. 40 Table of Contents Concentration of Revenue We refer to customers who purchase products directly from NVIDIA as direct customers, such as AIBs, distributors, ODMs, OEMs, CSPs, AI model makers, and system integrators. Certain direct customers may use either internal resources or third-party system integrators to complete their build. We refer to indirect customers as those who purchase products through our direct customers; indirect customers include CSPs, Neocloud builders, AI model makers, enterprises, and public sector entities. Our revenue is concentrated among a limited number of direct and indirect customers and this trend may continue. Direct Customers – For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue, all of which were primarily attributable to the Compute & Networking segment. For fiscal year 2025, sales to one direct customer represented 12% of total revenue and sales to two direct customers each represented 11% of total revenue, all of which were primarily attributable to the Compute & Networking segment. For fiscal year 2024, sales to one direct customer represented 13% of total revenue, and were primarily attributable to the Compute & Networking segment. Indirect Customers – Indirect customer revenue is an estimation based upon multiple factors including customer purchase order information, product specifications, internal sales data, and other sources. Indirect customers primarily purchase our products through system integrators and distributors. We generate a significant amount of our revenue from a limited number of indirect customers, some individually representing 10% or more of our revenue. Certain companies purchase cloud and related services through various direct and indirect customers. We estimate that one AI research and deployment company contributed to a meaningful amount of our revenue purchasing cloud services from our customers in fiscal year 2026.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3600,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null,
+     "scale": null,
      "unit_note": null
     }
    ],
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"period_from\":\"2026-FY\",\"period_to\":\"2026-FY\",\"query\":\"Find geographic revenue breakdown showing revenue from customers outside the United States for fiscal 2026\",\"ticker\":\"NVDA\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"period_from\":\"2026-FY\",\"period_to\":\"2026-FY\",\"query\":\"NVIDIA revenue by geographic area country US United States\",\"ticker\":\"NVDA\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
-   "content": "<untrusted_document cite_id=\"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\" amounts_in=\"millions\"> | Year Ended |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 | Jan 28, 2024 |  | \n | (In millions) |  |  |  |  | \nSupplemental cash flows information |  |  |  |  |  | \nOperating cash flow used for operating leases |  | 428 |  |  | 313 | 286\nOperating lease assets obtained in exchange for lease obligations |  | 1,439 |  |  | 877 | 531</untrusted_document>\n<untrusted_document cite_id=\"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\" amounts_in=\"millions\"> | Common Stock Outstanding | Additional Paid-in |  | Accumulated Other Comprehensive | Retained | Total Shareholders' |  |  |  |  |  | \n | Shares | Amount |  | Capital | Income (Loss) | Earnings |  | Equity |  |  |  | \n(In millions, except per share data) |  |  |  |  |  |  |  |  |  |  |  | \nBalances as of Jan 29, 2023 | 24,661 |  |  | 25 |  | 11,948 |  |  | ( 43 ) |  | 10,171 | 22,101\nNet income | — |  | — |  | — |  | — |  | 29,760 | 29,760 |  | \nOther comprehensive income | — |  | — |  | — |  | 70 |  | — | 70 |  | \nIssuance of common stock | 265 |  | — |  | 403 |  | — |  | — | 403 |  | \nTax withholding related to common stock | ( 72 ) |  | — |  | ( 2,783 ) |  | — |  | — | ( 2,783 ) |  | \nShares repurchased | ( 211 ) |  | — |  | ( 27 ) |  | — |  | ( 9,719 ) | ( 9,746 ) |  | \nCash dividends declared and paid ($ 0.016 per common share) | — |  | — |  | — |  | — |  | ( 395 ) | ( 395 ) |  | \nStock-based compensation | — |  | — |  | 3,568 |  | — |  | — | 3,568 |  | \nBalances as of Jan 28, 2024 | 24,643 |  | 25 |  | 13,109 |  | 27 |  | 29,817 | 42,978 |  | \nNet income | — |  | — |  | — |  | — |  | 72,880 | 72,880 |  | \nOther comprehensive income | — |  | — |  | — |  | 1 |  | — | 1 |  | </untrusted_document>",
-   "summary": "NVDA Find geographic revenue breakdown showing revenue from customers outside the United States for fiscal 2026",
-   "count": 2,
+   "content": "<untrusted_document cite_id=\"c:023aeded0151f0c4186d22895bb56c44446cb5e966e643aaa471dc29d1a72317\">See accompanying Notes to the Consolidated Financial Statements. 55 Table of Contents NVIDIA Corporation and Subsidiaries Notes to the Consolidated Financial Statements Note 1 - Organization and Summary of Significant Accounting Policies Our Company Headquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998. All references to “NVIDIA,” “we,” “us,” “our” or the “Company” mean NVIDIA Corporation and its subsidiaries. Certain prior fiscal year balances have been reclassified to conform to the current fiscal year presentation. Non-marketable equity securities, previously presented within other assets, were reclassified to be presented separately on our consolidated balance sheets and had no impact to total assets or consolidated statement of cash flows. Fiscal Year We operate on a 52- or 53-week year, ending on the last Sunday in January. Fiscal years 2026, 2025 and 2024 were all 52-week years. Fiscal year 2027 will be a 53-week year with the fourth quarter consisting of 14 weeks. Principles of Consolidation Our consolidated financial statements include the accounts of NVIDIA Corporation and our wholly-owned subsidiaries. All intercompany balances and transactions have been eliminated in consolidation. Use of Estimates The preparation of financial statements in conformity with U.S. GAAP requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosures of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenue and expenses during the reporting period. Actual results could differ materially from our estimates. On an on-going basis, we evaluate our estimates, including those related to accounts receivable, cash equivalents and marketable securities, goodwill, income taxes, inventories and product purchase commitments, investigation and settlement costs, litigation, non-marketable equity securities, other contingencies, property, plant, and equipment, revenue recognition, and stock-based compensation. These estimates are based on historical facts and various other assumptions that we believe are reasonable. Revenue Recognition We derive our revenue primarily from product sales including hardware and systems. We determine revenue recognition through the following steps: (1) identification of the contract with a customer; (2) identification of the performance obligations in the contract; (3) determination of the transaction price;</untrusted_document>\n<untrusted_document cite_id=\"c:02240bb96658cc5875469fa5fbf287e7ddcdcc91d9f5cafb7660f69b0c3b0abf\" amounts_in=\"millions\"> | Jan 26, 2025 |  |  |  |  |  |  |  |  |  |  |  |  |  | \n | Pricing Category | Cost or Amortized Cost |  | Unrealized Gain |  | Unrealized Loss |  | Estimated Fair Value | Reported as |  |  |  |  |  | \n |  |  |  |  | Cash Equivalents |  | Marketable Securities |  |  |  |  |  |  |  | \n | (In millions) |  |  |  |  |  |  |  |  |  |  |  |  |  | \nCorporate debt securities | Level 2 |  | 18,504 |  |  |  | 51 |  |  | ( 29 ) |  | 18,526 |  | 2,071 | 16,455\nDebt securities issued by the U.S. Treasury | Level 2 | 16,749 |  |  | 42 |  |  | ( 22 ) |  | 16,769 | 1,801 |  | 14,968 |  | \nDebt securities issued by U.S. government agencies | Level 2 | 2,775 |  |  | 7 |  |  | ( 5 ) |  | 2,777 | — |  | 2,777 |  | \nForeign government bonds | Level 2 | 177 |  |  | — |  |  | — |  | 177 | 137 |  | 40 |  | \nCertificates of deposit | Level 2 | 97 |  |  | — |  |  | — |  | 97 | 97 |  | — |  | \nMoney market funds | Level 1 | 3,760 |  |  | — |  |  | — |  | 3,760 | 3,760 |  | — |  | \nPublicly-held equity securities | Level 1 |  |  |  |  |  |  | 381 |  | — | 381 |  |  |  | \nTotal |  |  | 42,062 |  |  |  | 100 |  |  | ( 56 ) |  | 42,487 |  | 7,866 | 34,621</untrusted_document>\n<untrusted_document cite_id=\"c:02ca1bcb9e7502d2756ec2a7ab04e9aa06232f30dc297d360cae4686bed3a8af\" amounts_in=\"millions\"> | Year Ended |  |  |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024 |  |  | \n | (In millions) |  |  |  |  |  |  | \nSegment operating income |  | 139,297 |  |  |  | 87,960 |  | 37,862\nStock-based compensation expense | ( 6,386 ) |  |  | ( 4,737 ) |  |  | ( 3,549 ) | \nUnallocated operating expenses | ( 1,997 ) |  |  | ( 1,171 ) |  |  | ( 728 ) | \nAcquisition-related and other costs | ( 527 ) |  |  | ( 599 ) |  |  | ( 613 ) | \nInterest income | 2,300 |  |  | 1,786 |  |  | 866 | \nInterest expense | ( 259 ) |  |  | ( 247 ) |  |  | ( 257 ) | \nOther income, net | 9,022 |  |  | 1,034 |  |  | 237 | \nConsolidated income before income tax |  | 141,450 |  |  |  | 84,026 |  | 33,818</untrusted_document>\n<untrusted_document cite_id=\"c:01652f22e224957b7652d5e4628557ee9b90db4468cbacb98ddd9c9b550e004c\">Compute & Networking revenue – The year over year increase was driven by the major platform shifts – accelerated computing and AI. Revenue from Data Center computing grew 59% driven by demand for our Blackwell computing platform. Revenue from Data Center networking grew 142% driven by the introduction and continued ramp of NVLink compute fabric for GB200 and GB300 systems and the growth of Ethernet and InfiniBand platforms. Graphics revenue – The year over year increase was driven by sales of our Blackwell architecture. Reportable segment operating income – The year over year increase in Compute & Networking segment operating income was driven by growth in revenue, partially offset by a $4.5 billion charge associated with H20 excess inventory and purchase obligations in the first quarter of fiscal year 2026. The year over year increase in Graphics segment operating income was driven by the growth in revenue. 40 Table of Contents Concentration of Revenue We refer to customers who purchase products directly from NVIDIA as direct customers, such as AIBs, distributors, ODMs, OEMs, CSPs, AI model makers, and system integrators. Certain direct customers may use either internal resources or third-party system integrators to complete their build. We refer to indirect customers as those who purchase products through our direct customers; indirect customers include CSPs, Neocloud builders, AI model makers, enterprises, and public sector entities. Our revenue is concentrated among a limited number of direct and indirect customers and this trend may continue. Direct Customers – For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue, all of which were primarily attributable to the Compute & Networking segment. For fiscal year 2025, sales to one direct customer represented 12% of total revenue and sales to two direct customers each represented 11% of total revenue, all of which were primarily attributable to the Compute & Networking segment. For fiscal year 2024, sales to one direct customer represented 13% of total revenue, and were primarily attributable to the Compute & Networking segment. Indirect Customers – Indirect customer revenue is an estimation based upon multiple factors including customer purchase order information, product specifications, internal sales data, and other sources. Indirect customers primarily purchase our products through system integrators and distributors. We generate a significant amount of our revenue from a limited number of indirect customers, some individually representing 10% or more of our revenue. Certain companies purchase cloud and related services through various direct and indirect customers. We estimate that one AI research and deployment company contributed to a meaningful amount of our revenue purchasing cloud services from our customers in fiscal year 2026.</untrusted_document>",
+   "summary": "NVDA NVIDIA revenue by geographic area country US United States",
+   "count": 4,
    "items": [
     {
-     "cite_id": "c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd",
-     "text": " | Year Ended |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 | Jan 28, 2024 |  | \n | (In millions) |  |  |  |  | \nSupplemental cash flows information |  |  |  |  |  | \nOperating cash flow used for operating leases |  | 428 |  |  | 313 | 286\nOperating lease assets obtained in exchange for lease obligations |  | 1,439 |  |  | 877 | 531",
+     "cite_id": "c:023aeded0151f0c4186d22895bb56c44446cb5e966e643aaa471dc29d1a72317",
+     "text": "See accompanying Notes to the Consolidated Financial Statements. 55 Table of Contents NVIDIA Corporation and Subsidiaries Notes to the Consolidated Financial Statements Note 1 - Organization and Summary of Significant Accounting Policies Our Company Headquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998. All references to “NVIDIA,” “we,” “us,” “our” or the “Company” mean NVIDIA Corporation and its subsidiaries. Certain prior fiscal year balances have been reclassified to conform to the current fiscal year presentation. Non-marketable equity securities, previously presented within other assets, were reclassified to be presented separately on our consolidated balance sheets and had no impact to total assets or consolidated statement of cash flows. Fiscal Year We operate on a 52- or 53-week year, ending on the last Sunday in January. Fiscal years 2026, 2025 and 2024 were all 52-week years. Fiscal year 2027 will be a 53-week year with the fourth quarter consisting of 14 weeks. Principles of Consolidation Our consolidated financial statements include the accounts of NVIDIA Corporation and our wholly-owned subsidiaries. All intercompany balances and transactions have been eliminated in consolidation. Use of Estimates The preparation of financial statements in conformity with U.S. GAAP requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosures of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenue and expenses during the reporting period. Actual results could differ materially from our estimates. On an on-going basis, we evaluate our estimates, including those related to accounts receivable, cash equivalents and marketable securities, goodwill, income taxes, inventories and product purchase commitments, investigation and settlement costs, litigation, non-marketable equity securities, other contingencies, property, plant, and equipment, revenue recognition, and stock-based compensation. These estimates are based on historical facts and various other assumptions that we believe are reasonable. Revenue Recognition We derive our revenue primarily from product sales including hardware and systems. We determine revenue recognition through the following steps: (1) identification of the contract with a customer; (2) identification of the performance obligations in the contract; (3) determination of the transaction price;",
      "source": {
       "kind": "chunk",
-      "document_id": 3126,
+      "document_id": 3600,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 15",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:02240bb96658cc5875469fa5fbf287e7ddcdcc91d9f5cafb7660f69b0c3b0abf",
+     "text": " | Jan 26, 2025 |  |  |  |  |  |  |  |  |  |  |  |  |  | \n | Pricing Category | Cost or Amortized Cost |  | Unrealized Gain |  | Unrealized Loss |  | Estimated Fair Value | Reported as |  |  |  |  |  | \n |  |  |  |  | Cash Equivalents |  | Marketable Securities |  |  |  |  |  |  |  | \n | (In millions) |  |  |  |  |  |  |  |  |  |  |  |  |  | \nCorporate debt securities | Level 2 |  | 18,504 |  |  |  | 51 |  |  | ( 29 ) |  | 18,526 |  | 2,071 | 16,455\nDebt securities issued by the U.S. Treasury | Level 2 | 16,749 |  |  | 42 |  |  | ( 22 ) |  | 16,769 | 1,801 |  | 14,968 |  | \nDebt securities issued by U.S. government agencies | Level 2 | 2,775 |  |  | 7 |  |  | ( 5 ) |  | 2,777 | — |  | 2,777 |  | \nForeign government bonds | Level 2 | 177 |  |  | — |  |  | — |  | 177 | 137 |  | 40 |  | \nCertificates of deposit | Level 2 | 97 |  |  | — |  |  | — |  | 97 | 97 |  | — |  | \nMoney market funds | Level 1 | 3,760 |  |  | — |  |  | — |  | 3,760 | 3,760 |  | — |  | \nPublicly-held equity securities | Level 1 |  |  |  |  |  |  | 381 |  | — | 381 |  |  |  | \nTotal |  |  | 42,062 |  |  |  | 100 |  |  | ( 56 ) |  | 42,487 |  | 7,866 | 34,621",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3600,
       "ticker": "NVDA",
       "doc_type": "10-K",
       "period": "2026-FY",
@@ -206,11 +247,11 @@
      "unit_note": "millions"
     },
     {
-     "cite_id": "c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847",
-     "text": " | Common Stock Outstanding | Additional Paid-in |  | Accumulated Other Comprehensive | Retained | Total Shareholders' |  |  |  |  |  | \n | Shares | Amount |  | Capital | Income (Loss) | Earnings |  | Equity |  |  |  | \n(In millions, except per share data) |  |  |  |  |  |  |  |  |  |  |  | \nBalances as of Jan 29, 2023 | 24,661 |  |  | 25 |  | 11,948 |  |  | ( 43 ) |  | 10,171 | 22,101\nNet income | — |  | — |  | — |  | — |  | 29,760 | 29,760 |  | \nOther comprehensive income | — |  | — |  | — |  | 70 |  | — | 70 |  | \nIssuance of common stock | 265 |  | — |  | 403 |  | — |  | — | 403 |  | \nTax withholding related to common stock | ( 72 ) |  | — |  | ( 2,783 ) |  | — |  | — | ( 2,783 ) |  | \nShares repurchased | ( 211 ) |  | — |  | ( 27 ) |  | — |  | ( 9,719 ) | ( 9,746 ) |  | \nCash dividends declared and paid ($ 0.016 per common share) | — |  | — |  | — |  | — |  | ( 395 ) | ( 395 ) |  | \nStock-based compensation | — |  | — |  | 3,568 |  | — |  | — | 3,568 |  | \nBalances as of Jan 28, 2024 | 24,643 |  | 25 |  | 13,109 |  | 27 |  | 29,817 | 42,978 |  | \nNet income | — |  | — |  | — |  | — |  | 72,880 | 72,880 |  | \nOther comprehensive income | — |  | — |  | — |  | 1 |  | — | 1 |  | ",
+     "cite_id": "c:02ca1bcb9e7502d2756ec2a7ab04e9aa06232f30dc297d360cae4686bed3a8af",
+     "text": " | Year Ended |  |  |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024 |  |  | \n | (In millions) |  |  |  |  |  |  | \nSegment operating income |  | 139,297 |  |  |  | 87,960 |  | 37,862\nStock-based compensation expense | ( 6,386 ) |  |  | ( 4,737 ) |  |  | ( 3,549 ) | \nUnallocated operating expenses | ( 1,997 ) |  |  | ( 1,171 ) |  |  | ( 728 ) | \nAcquisition-related and other costs | ( 527 ) |  |  | ( 599 ) |  |  | ( 613 ) | \nInterest income | 2,300 |  |  | 1,786 |  |  | 866 | \nInterest expense | ( 259 ) |  |  | ( 247 ) |  |  | ( 257 ) | \nOther income, net | 9,022 |  |  | 1,034 |  |  | 237 | \nConsolidated income before income tax |  | 141,450 |  |  |  | 84,026 |  | 33,818",
      "source": {
       "kind": "chunk",
-      "document_id": 3126,
+      "document_id": 3600,
       "ticker": "NVDA",
       "doc_type": "10-K",
       "period": "2026-FY",
@@ -221,23 +262,40 @@
      "value": null,
      "scale": "1000000",
      "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:01652f22e224957b7652d5e4628557ee9b90db4468cbacb98ddd9c9b550e004c",
+     "text": "Compute & Networking revenue – The year over year increase was driven by the major platform shifts – accelerated computing and AI. Revenue from Data Center computing grew 59% driven by demand for our Blackwell computing platform. Revenue from Data Center networking grew 142% driven by the introduction and continued ramp of NVLink compute fabric for GB200 and GB300 systems and the growth of Ethernet and InfiniBand platforms. Graphics revenue – The year over year increase was driven by sales of our Blackwell architecture. Reportable segment operating income – The year over year increase in Compute & Networking segment operating income was driven by growth in revenue, partially offset by a $4.5 billion charge associated with H20 excess inventory and purchase obligations in the first quarter of fiscal year 2026. The year over year increase in Graphics segment operating income was driven by the growth in revenue. 40 Table of Contents Concentration of Revenue We refer to customers who purchase products directly from NVIDIA as direct customers, such as AIBs, distributors, ODMs, OEMs, CSPs, AI model makers, and system integrators. Certain direct customers may use either internal resources or third-party system integrators to complete their build. We refer to indirect customers as those who purchase products through our direct customers; indirect customers include CSPs, Neocloud builders, AI model makers, enterprises, and public sector entities. Our revenue is concentrated among a limited number of direct and indirect customers and this trend may continue. Direct Customers – For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue, all of which were primarily attributable to the Compute & Networking segment. For fiscal year 2025, sales to one direct customer represented 12% of total revenue and sales to two direct customers each represented 11% of total revenue, all of which were primarily attributable to the Compute & Networking segment. For fiscal year 2024, sales to one direct customer represented 13% of total revenue, and were primarily attributable to the Compute & Networking segment. Indirect Customers – Indirect customer revenue is an estimation based upon multiple factors including customer purchase order information, product specifications, internal sales data, and other sources. Indirect customers primarily purchase our products through system integrators and distributors. We generate a significant amount of our revenue from a limited number of indirect customers, some individually representing 10% or more of our revenue. Certain companies purchase cloud and related services through various direct and indirect customers. We estimate that one AI research and deployment company contributed to a meaningful amount of our revenue purchasing cloud services from our customers in fiscal year 2026.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3600,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
     }
    ],
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"period_from\":\"2026-FY\",\"period_to\":\"2026-FY\",\"query\":\"Nvidia geographic revenue United States long-lived assets revenue by country fiscal 2026\",\"ticker\":\"NVDA\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"period_from\":\"2026-FY\",\"period_to\":\"2026-FY\",\"query\":\"NVIDIA revenue by geographic region country customer United States\",\"ticker\":\"NVDA\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
-   "content": "<untrusted_document cite_id=\"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\" amounts_in=\"millions\"> | Year Ended |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 | Jan 28, 2024 |  | \n | (In millions) |  |  |  |  | \nSupplemental cash flows information |  |  |  |  |  | \nOperating cash flow used for operating leases |  | 428 |  |  | 313 | 286\nOperating lease assets obtained in exchange for lease obligations |  | 1,439 |  |  | 877 | 531</untrusted_document>\n<untrusted_document cite_id=\"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\" amounts_in=\"millions\"> | Common Stock Outstanding | Additional Paid-in |  | Accumulated Other Comprehensive | Retained | Total Shareholders' |  |  |  |  |  | \n | Shares | Amount |  | Capital | Income (Loss) | Earnings |  | Equity |  |  |  | \n(In millions, except per share data) |  |  |  |  |  |  |  |  |  |  |  | \nBalances as of Jan 29, 2023 | 24,661 |  |  | 25 |  | 11,948 |  |  | ( 43 ) |  | 10,171 | 22,101\nNet income | — |  | — |  | — |  | — |  | 29,760 | 29,760 |  | \nOther comprehensive income | — |  | — |  | — |  | 70 |  | — | 70 |  | \nIssuance of common stock | 265 |  | — |  | 403 |  | — |  | — | 403 |  | \nTax withholding related to common stock | ( 72 ) |  | — |  | ( 2,783 ) |  | — |  | — | ( 2,783 ) |  | \nShares repurchased | ( 211 ) |  | — |  | ( 27 ) |  | — |  | ( 9,719 ) | ( 9,746 ) |  | \nCash dividends declared and paid ($ 0.016 per common share) | — |  | — |  | — |  | — |  | ( 395 ) | ( 395 ) |  | \nStock-based compensation | — |  | — |  | 3,568 |  | — |  | — | 3,568 |  | \nBalances as of Jan 28, 2024 | 24,643 |  | 25 |  | 13,109 |  | 27 |  | 29,817 | 42,978 |  | \nNet income | — |  | — |  | — |  | — |  | 72,880 | 72,880 |  | \nOther comprehensive income | — |  | — |  | — |  | 1 |  | — | 1 |  | </untrusted_document>",
-   "summary": "NVDA Nvidia geographic revenue United States long-lived assets revenue by country fiscal 2026",
-   "count": 2,
+   "content": "<untrusted_document cite_id=\"c:02ca1bcb9e7502d2756ec2a7ab04e9aa06232f30dc297d360cae4686bed3a8af\" amounts_in=\"millions\"> | Year Ended |  |  |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024 |  |  | \n | (In millions) |  |  |  |  |  |  | \nSegment operating income |  | 139,297 |  |  |  | 87,960 |  | 37,862\nStock-based compensation expense | ( 6,386 ) |  |  | ( 4,737 ) |  |  | ( 3,549 ) | \nUnallocated operating expenses | ( 1,997 ) |  |  | ( 1,171 ) |  |  | ( 728 ) | \nAcquisition-related and other costs | ( 527 ) |  |  | ( 599 ) |  |  | ( 613 ) | \nInterest income | 2,300 |  |  | 1,786 |  |  | 866 | \nInterest expense | ( 259 ) |  |  | ( 247 ) |  |  | ( 257 ) | \nOther income, net | 9,022 |  |  | 1,034 |  |  | 237 | \nConsolidated income before income tax |  | 141,450 |  |  |  | 84,026 |  | 33,818</untrusted_document>\n<untrusted_document cite_id=\"c:023aeded0151f0c4186d22895bb56c44446cb5e966e643aaa471dc29d1a72317\">See accompanying Notes to the Consolidated Financial Statements. 55 Table of Contents NVIDIA Corporation and Subsidiaries Notes to the Consolidated Financial Statements Note 1 - Organization and Summary of Significant Accounting Policies Our Company Headquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998. All references to “NVIDIA,” “we,” “us,” “our” or the “Company” mean NVIDIA Corporation and its subsidiaries. Certain prior fiscal year balances have been reclassified to conform to the current fiscal year presentation. Non-marketable equity securities, previously presented within other assets, were reclassified to be presented separately on our consolidated balance sheets and had no impact to total assets or consolidated statement of cash flows. Fiscal Year We operate on a 52- or 53-week year, ending on the last Sunday in January. Fiscal years 2026, 2025 and 2024 were all 52-week years. Fiscal year 2027 will be a 53-week year with the fourth quarter consisting of 14 weeks. Principles of Consolidation Our consolidated financial statements include the accounts of NVIDIA Corporation and our wholly-owned subsidiaries. All intercompany balances and transactions have been eliminated in consolidation. Use of Estimates The preparation of financial statements in conformity with U.S. GAAP requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosures of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenue and expenses during the reporting period. Actual results could differ materially from our estimates. On an on-going basis, we evaluate our estimates, including those related to accounts receivable, cash equivalents and marketable securities, goodwill, income taxes, inventories and product purchase commitments, investigation and settlement costs, litigation, non-marketable equity securities, other contingencies, property, plant, and equipment, revenue recognition, and stock-based compensation. These estimates are based on historical facts and various other assumptions that we believe are reasonable. Revenue Recognition We derive our revenue primarily from product sales including hardware and systems. We determine revenue recognition through the following steps: (1) identification of the contract with a customer; (2) identification of the performance obligations in the contract; (3) determination of the transaction price;</untrusted_document>\n<untrusted_document cite_id=\"c:02240bb96658cc5875469fa5fbf287e7ddcdcc91d9f5cafb7660f69b0c3b0abf\" amounts_in=\"millions\"> | Jan 26, 2025 |  |  |  |  |  |  |  |  |  |  |  |  |  | \n | Pricing Category | Cost or Amortized Cost |  | Unrealized Gain |  | Unrealized Loss |  | Estimated Fair Value | Reported as |  |  |  |  |  | \n |  |  |  |  | Cash Equivalents |  | Marketable Securities |  |  |  |  |  |  |  | \n | (In millions) |  |  |  |  |  |  |  |  |  |  |  |  |  | \nCorporate debt securities | Level 2 |  | 18,504 |  |  |  | 51 |  |  | ( 29 ) |  | 18,526 |  | 2,071 | 16,455\nDebt securities issued by the U.S. Treasury | Level 2 | 16,749 |  |  | 42 |  |  | ( 22 ) |  | 16,769 | 1,801 |  | 14,968 |  | \nDebt securities issued by U.S. government agencies | Level 2 | 2,775 |  |  | 7 |  |  | ( 5 ) |  | 2,777 | — |  | 2,777 |  | \nForeign government bonds | Level 2 | 177 |  |  | — |  |  | — |  | 177 | 137 |  | 40 |  | \nCertificates of deposit | Level 2 | 97 |  |  | — |  |  | — |  | 97 | 97 |  | — |  | \nMoney market funds | Level 1 | 3,760 |  |  | — |  |  | — |  | 3,760 | 3,760 |  | — |  | \nPublicly-held equity securities | Level 1 |  |  |  |  |  |  | 381 |  | — | 381 |  |  |  | \nTotal |  |  | 42,062 |  |  |  | 100 |  |  | ( 56 ) |  | 42,487 |  | 7,866 | 34,621</untrusted_document>\n<untrusted_document cite_id=\"c:01652f22e224957b7652d5e4628557ee9b90db4468cbacb98ddd9c9b550e004c\">Compute & Networking revenue – The year over year increase was driven by the major platform shifts – accelerated computing and AI. Revenue from Data Center computing grew 59% driven by demand for our Blackwell computing platform. Revenue from Data Center networking grew 142% driven by the introduction and continued ramp of NVLink compute fabric for GB200 and GB300 systems and the growth of Ethernet and InfiniBand platforms. Graphics revenue – The year over year increase was driven by sales of our Blackwell architecture. Reportable segment operating income – The year over year increase in Compute & Networking segment operating income was driven by growth in revenue, partially offset by a $4.5 billion charge associated with H20 excess inventory and purchase obligations in the first quarter of fiscal year 2026. The year over year increase in Graphics segment operating income was driven by the growth in revenue. 40 Table of Contents Concentration of Revenue We refer to customers who purchase products directly from NVIDIA as direct customers, such as AIBs, distributors, ODMs, OEMs, CSPs, AI model makers, and system integrators. Certain direct customers may use either internal resources or third-party system integrators to complete their build. We refer to indirect customers as those who purchase products through our direct customers; indirect customers include CSPs, Neocloud builders, AI model makers, enterprises, and public sector entities. Our revenue is concentrated among a limited number of direct and indirect customers and this trend may continue. Direct Customers – For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue, all of which were primarily attributable to the Compute & Networking segment. For fiscal year 2025, sales to one direct customer represented 12% of total revenue and sales to two direct customers each represented 11% of total revenue, all of which were primarily attributable to the Compute & Networking segment. For fiscal year 2024, sales to one direct customer represented 13% of total revenue, and were primarily attributable to the Compute & Networking segment. Indirect Customers – Indirect customer revenue is an estimation based upon multiple factors including customer purchase order information, product specifications, internal sales data, and other sources. Indirect customers primarily purchase our products through system integrators and distributors. We generate a significant amount of our revenue from a limited number of indirect customers, some individually representing 10% or more of our revenue. Certain companies purchase cloud and related services through various direct and indirect customers. We estimate that one AI research and deployment company contributed to a meaningful amount of our revenue purchasing cloud services from our customers in fiscal year 2026.</untrusted_document>",
+   "summary": "NVDA NVIDIA revenue by geographic region country customer United States",
+   "count": 4,
    "items": [
     {
-     "cite_id": "c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd",
-     "text": " | Year Ended |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 | Jan 28, 2024 |  | \n | (In millions) |  |  |  |  | \nSupplemental cash flows information |  |  |  |  |  | \nOperating cash flow used for operating leases |  | 428 |  |  | 313 | 286\nOperating lease assets obtained in exchange for lease obligations |  | 1,439 |  |  | 877 | 531",
+     "cite_id": "c:02ca1bcb9e7502d2756ec2a7ab04e9aa06232f30dc297d360cae4686bed3a8af",
+     "text": " | Year Ended |  |  |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 |  | Jan 28, 2024 |  |  | \n | (In millions) |  |  |  |  |  |  | \nSegment operating income |  | 139,297 |  |  |  | 87,960 |  | 37,862\nStock-based compensation expense | ( 6,386 ) |  |  | ( 4,737 ) |  |  | ( 3,549 ) | \nUnallocated operating expenses | ( 1,997 ) |  |  | ( 1,171 ) |  |  | ( 728 ) | \nAcquisition-related and other costs | ( 527 ) |  |  | ( 599 ) |  |  | ( 613 ) | \nInterest income | 2,300 |  |  | 1,786 |  |  | 866 | \nInterest expense | ( 259 ) |  |  | ( 247 ) |  |  | ( 257 ) | \nOther income, net | 9,022 |  |  | 1,034 |  |  | 237 | \nConsolidated income before income tax |  | 141,450 |  |  |  | 84,026 |  | 33,818",
      "source": {
       "kind": "chunk",
-      "document_id": 3126,
+      "document_id": 3600,
       "ticker": "NVDA",
       "doc_type": "10-K",
       "period": "2026-FY",
@@ -250,11 +308,11 @@
      "unit_note": "millions"
     },
     {
-     "cite_id": "c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847",
-     "text": " | Common Stock Outstanding | Additional Paid-in |  | Accumulated Other Comprehensive | Retained | Total Shareholders' |  |  |  |  |  | \n | Shares | Amount |  | Capital | Income (Loss) | Earnings |  | Equity |  |  |  | \n(In millions, except per share data) |  |  |  |  |  |  |  |  |  |  |  | \nBalances as of Jan 29, 2023 | 24,661 |  |  | 25 |  | 11,948 |  |  | ( 43 ) |  | 10,171 | 22,101\nNet income | — |  | — |  | — |  | — |  | 29,760 | 29,760 |  | \nOther comprehensive income | — |  | — |  | — |  | 70 |  | — | 70 |  | \nIssuance of common stock | 265 |  | — |  | 403 |  | — |  | — | 403 |  | \nTax withholding related to common stock | ( 72 ) |  | — |  | ( 2,783 ) |  | — |  | — | ( 2,783 ) |  | \nShares repurchased | ( 211 ) |  | — |  | ( 27 ) |  | — |  | ( 9,719 ) | ( 9,746 ) |  | \nCash dividends declared and paid ($ 0.016 per common share) | — |  | — |  | — |  | — |  | ( 395 ) | ( 395 ) |  | \nStock-based compensation | — |  | — |  | 3,568 |  | — |  | — | 3,568 |  | \nBalances as of Jan 28, 2024 | 24,643 |  | 25 |  | 13,109 |  | 27 |  | 29,817 | 42,978 |  | \nNet income | — |  | — |  | — |  | — |  | 72,880 | 72,880 |  | \nOther comprehensive income | — |  | — |  | — |  | 1 |  | — | 1 |  | ",
+     "cite_id": "c:023aeded0151f0c4186d22895bb56c44446cb5e966e643aaa471dc29d1a72317",
+     "text": "See accompanying Notes to the Consolidated Financial Statements. 55 Table of Contents NVIDIA Corporation and Subsidiaries Notes to the Consolidated Financial Statements Note 1 - Organization and Summary of Significant Accounting Policies Our Company Headquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998. All references to “NVIDIA,” “we,” “us,” “our” or the “Company” mean NVIDIA Corporation and its subsidiaries. Certain prior fiscal year balances have been reclassified to conform to the current fiscal year presentation. Non-marketable equity securities, previously presented within other assets, were reclassified to be presented separately on our consolidated balance sheets and had no impact to total assets or consolidated statement of cash flows. Fiscal Year We operate on a 52- or 53-week year, ending on the last Sunday in January. Fiscal years 2026, 2025 and 2024 were all 52-week years. Fiscal year 2027 will be a 53-week year with the fourth quarter consisting of 14 weeks. Principles of Consolidation Our consolidated financial statements include the accounts of NVIDIA Corporation and our wholly-owned subsidiaries. All intercompany balances and transactions have been eliminated in consolidation. Use of Estimates The preparation of financial statements in conformity with U.S. GAAP requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosures of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenue and expenses during the reporting period. Actual results could differ materially from our estimates. On an on-going basis, we evaluate our estimates, including those related to accounts receivable, cash equivalents and marketable securities, goodwill, income taxes, inventories and product purchase commitments, investigation and settlement costs, litigation, non-marketable equity securities, other contingencies, property, plant, and equipment, revenue recognition, and stock-based compensation. These estimates are based on historical facts and various other assumptions that we believe are reasonable. Revenue Recognition We derive our revenue primarily from product sales including hardware and systems. We determine revenue recognition through the following steps: (1) identification of the contract with a customer; (2) identification of the performance obligations in the contract; (3) determination of the transaction price;",
      "source": {
       "kind": "chunk",
-      "document_id": 3126,
+      "document_id": 3600,
       "ticker": "NVDA",
       "doc_type": "10-K",
       "period": "2026-FY",
@@ -263,25 +321,15 @@
       "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
      },
      "value": null,
-     "scale": "1000000",
-     "unit_note": "millions"
-    }
-   ],
-   "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"period_from\":\"2026-FY\",\"period_to\":\"2026-FY\",\"query\":\"Nvidia geographic revenue United States Taiwan China 2026\",\"ticker\":\"NVDA\"},\"name\":\"search_documents\"}",
-   "tool": "search_documents",
-   "content": "<untrusted_document cite_id=\"c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd\" amounts_in=\"millions\"> | Year Ended |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 | Jan 28, 2024 |  | \n | (In millions) |  |  |  |  | \nSupplemental cash flows information |  |  |  |  |  | \nOperating cash flow used for operating leases |  | 428 |  |  | 313 | 286\nOperating lease assets obtained in exchange for lease obligations |  | 1,439 |  |  | 877 | 531</untrusted_document>\n<untrusted_document cite_id=\"c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847\" amounts_in=\"millions\"> | Common Stock Outstanding | Additional Paid-in |  | Accumulated Other Comprehensive | Retained | Total Shareholders' |  |  |  |  |  | \n | Shares | Amount |  | Capital | Income (Loss) | Earnings |  | Equity |  |  |  | \n(In millions, except per share data) |  |  |  |  |  |  |  |  |  |  |  | \nBalances as of Jan 29, 2023 | 24,661 |  |  | 25 |  | 11,948 |  |  | ( 43 ) |  | 10,171 | 22,101\nNet income | — |  | — |  | — |  | — |  | 29,760 | 29,760 |  | \nOther comprehensive income | — |  | — |  | — |  | 70 |  | — | 70 |  | \nIssuance of common stock | 265 |  | — |  | 403 |  | — |  | — | 403 |  | \nTax withholding related to common stock | ( 72 ) |  | — |  | ( 2,783 ) |  | — |  | — | ( 2,783 ) |  | \nShares repurchased | ( 211 ) |  | — |  | ( 27 ) |  | — |  | ( 9,719 ) | ( 9,746 ) |  | \nCash dividends declared and paid ($ 0.016 per common share) | — |  | — |  | — |  | — |  | ( 395 ) | ( 395 ) |  | \nStock-based compensation | — |  | — |  | 3,568 |  | — |  | — | 3,568 |  | \nBalances as of Jan 28, 2024 | 24,643 |  | 25 |  | 13,109 |  | 27 |  | 29,817 | 42,978 |  | \nNet income | — |  | — |  | — |  | — |  | 72,880 | 72,880 |  | \nOther comprehensive income | — |  | — |  | — |  | 1 |  | — | 1 |  | </untrusted_document>",
-   "summary": "NVDA Nvidia geographic revenue United States Taiwan China 2026",
-   "count": 2,
-   "items": [
+     "scale": null,
+     "unit_note": null
+    },
     {
-     "cite_id": "c:00e96dabfbae3070cfa19338ea4e62c87370fd51b014ac59bd74a3ac34e1b1bd",
-     "text": " | Year Ended |  |  |  |  | \n | Jan 25, 2026 |  | Jan 26, 2025 | Jan 28, 2024 |  | \n | (In millions) |  |  |  |  | \nSupplemental cash flows information |  |  |  |  |  | \nOperating cash flow used for operating leases |  | 428 |  |  | 313 | 286\nOperating lease assets obtained in exchange for lease obligations |  | 1,439 |  |  | 877 | 531",
+     "cite_id": "c:02240bb96658cc5875469fa5fbf287e7ddcdcc91d9f5cafb7660f69b0c3b0abf",
+     "text": " | Jan 26, 2025 |  |  |  |  |  |  |  |  |  |  |  |  |  | \n | Pricing Category | Cost or Amortized Cost |  | Unrealized Gain |  | Unrealized Loss |  | Estimated Fair Value | Reported as |  |  |  |  |  | \n |  |  |  |  | Cash Equivalents |  | Marketable Securities |  |  |  |  |  |  |  | \n | (In millions) |  |  |  |  |  |  |  |  |  |  |  |  |  | \nCorporate debt securities | Level 2 |  | 18,504 |  |  |  | 51 |  |  | ( 29 ) |  | 18,526 |  | 2,071 | 16,455\nDebt securities issued by the U.S. Treasury | Level 2 | 16,749 |  |  | 42 |  |  | ( 22 ) |  | 16,769 | 1,801 |  | 14,968 |  | \nDebt securities issued by U.S. government agencies | Level 2 | 2,775 |  |  | 7 |  |  | ( 5 ) |  | 2,777 | — |  | 2,777 |  | \nForeign government bonds | Level 2 | 177 |  |  | — |  |  | — |  | 177 | 137 |  | 40 |  | \nCertificates of deposit | Level 2 | 97 |  |  | — |  |  | — |  | 97 | 97 |  | — |  | \nMoney market funds | Level 1 | 3,760 |  |  | — |  |  | — |  | 3,760 | 3,760 |  | — |  | \nPublicly-held equity securities | Level 1 |  |  |  |  |  |  | 381 |  | — | 381 |  |  |  | \nTotal |  |  | 42,062 |  |  |  | 100 |  |  | ( 56 ) |  | 42,487 |  | 7,866 | 34,621",
      "source": {
       "kind": "chunk",
-      "document_id": 3126,
+      "document_id": 3600,
       "ticker": "NVDA",
       "doc_type": "10-K",
       "period": "2026-FY",
@@ -294,26 +342,27 @@
      "unit_note": "millions"
     },
     {
-     "cite_id": "c:0121aae42f89d653ce5d03f75982f50e1a1c6f7ec936c3fe6c8aea673a0c4847",
-     "text": " | Common Stock Outstanding | Additional Paid-in |  | Accumulated Other Comprehensive | Retained | Total Shareholders' |  |  |  |  |  | \n | Shares | Amount |  | Capital | Income (Loss) | Earnings |  | Equity |  |  |  | \n(In millions, except per share data) |  |  |  |  |  |  |  |  |  |  |  | \nBalances as of Jan 29, 2023 | 24,661 |  |  | 25 |  | 11,948 |  |  | ( 43 ) |  | 10,171 | 22,101\nNet income | — |  | — |  | — |  | — |  | 29,760 | 29,760 |  | \nOther comprehensive income | — |  | — |  | — |  | 70 |  | — | 70 |  | \nIssuance of common stock | 265 |  | — |  | 403 |  | — |  | — | 403 |  | \nTax withholding related to common stock | ( 72 ) |  | — |  | ( 2,783 ) |  | — |  | — | ( 2,783 ) |  | \nShares repurchased | ( 211 ) |  | — |  | ( 27 ) |  | — |  | ( 9,719 ) | ( 9,746 ) |  | \nCash dividends declared and paid ($ 0.016 per common share) | — |  | — |  | — |  | — |  | ( 395 ) | ( 395 ) |  | \nStock-based compensation | — |  | — |  | 3,568 |  | — |  | — | 3,568 |  | \nBalances as of Jan 28, 2024 | 24,643 |  | 25 |  | 13,109 |  | 27 |  | 29,817 | 42,978 |  | \nNet income | — |  | — |  | — |  | — |  | 72,880 | 72,880 |  | \nOther comprehensive income | — |  | — |  | — |  | 1 |  | — | 1 |  | ",
+     "cite_id": "c:01652f22e224957b7652d5e4628557ee9b90db4468cbacb98ddd9c9b550e004c",
+     "text": "Compute & Networking revenue – The year over year increase was driven by the major platform shifts – accelerated computing and AI. Revenue from Data Center computing grew 59% driven by demand for our Blackwell computing platform. Revenue from Data Center networking grew 142% driven by the introduction and continued ramp of NVLink compute fabric for GB200 and GB300 systems and the growth of Ethernet and InfiniBand platforms. Graphics revenue – The year over year increase was driven by sales of our Blackwell architecture. Reportable segment operating income – The year over year increase in Compute & Networking segment operating income was driven by growth in revenue, partially offset by a $4.5 billion charge associated with H20 excess inventory and purchase obligations in the first quarter of fiscal year 2026. The year over year increase in Graphics segment operating income was driven by the growth in revenue. 40 Table of Contents Concentration of Revenue We refer to customers who purchase products directly from NVIDIA as direct customers, such as AIBs, distributors, ODMs, OEMs, CSPs, AI model makers, and system integrators. Certain direct customers may use either internal resources or third-party system integrators to complete their build. We refer to indirect customers as those who purchase products through our direct customers; indirect customers include CSPs, Neocloud builders, AI model makers, enterprises, and public sector entities. Our revenue is concentrated among a limited number of direct and indirect customers and this trend may continue. Direct Customers – For fiscal year 2026, sales to one direct customer represented 22% of total revenue and sales to another direct customer represented 14% of total revenue, all of which were primarily attributable to the Compute & Networking segment. For fiscal year 2025, sales to one direct customer represented 12% of total revenue and sales to two direct customers each represented 11% of total revenue, all of which were primarily attributable to the Compute & Networking segment. For fiscal year 2024, sales to one direct customer represented 13% of total revenue, and were primarily attributable to the Compute & Networking segment. Indirect Customers – Indirect customer revenue is an estimation based upon multiple factors including customer purchase order information, product specifications, internal sales data, and other sources. Indirect customers primarily purchase our products through system integrators and distributors. We generate a significant amount of our revenue from a limited number of indirect customers, some individually representing 10% or more of our revenue. Certain companies purchase cloud and related services through various direct and indirect customers. We estimate that one AI research and deployment company contributed to a meaningful amount of our revenue purchasing cloud services from our customers in fiscal year 2026.",
      "source": {
       "kind": "chunk",
-      "document_id": 3126,
+      "document_id": 3600,
       "ticker": "NVDA",
       "doc_type": "10-K",
       "period": "2026-FY",
-      "section": "Item 15",
+      "section": "Item 7",
       "page": null,
       "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
      },
      "value": null,
-     "scale": "1000000",
-     "unit_note": "millions"
+     "scale": null,
+     "unit_note": null
     }
    ],
    "error": null
   }
  ],
  "sandbox": [],
- "decision": "approve"
+ "decision": "approve",
+ "elapsed_ms": 37778
 }

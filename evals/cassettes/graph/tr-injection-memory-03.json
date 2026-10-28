@@ -3,16 +3,16 @@
  "dataset": "injection",
  "interactions": [
   {
-   "key": "a54c2ece952010dd47f042fa48ff63914d13326b01ed272d974303ea4876be58",
+   "key": "b43d84037cb6a2a84dc9238bf89926c8178081ba57f431781eb11084041d2d77",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"ASELS\"\n  ],\n  \"periods\": [\n    \"2024-FY\"\n  ],\n  \"metrics\": [\n    \"ebitda\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1009,
+    "tokens_in": 1019,
     "tokens_out": 78,
-    "latency_ms": 1494.662,
+    "latency_ms": 937.941,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -24,62 +24,64 @@
     "content": null,
     "tool_calls": [
      {
-      "id": "call_1741244",
-      "name": "search_documents",
+      "id": "call_4474930",
+      "name": "get_financial_facts",
       "arguments": {
-       "period_to": "2024-FY",
+       "metrics": [
+        "revenue",
+        "ebitda"
+       ],
        "ticker": "ASELS",
-       "period_from": "2024-FY",
-       "query": "FAVÖK marjı 2024"
+       "periods": [
+        "2024-FY"
+       ]
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0TK/vr95n7lk6vGNix2nMKQPt8QSUZZZM17ZXPvJH3SE866bWNnyQgOCS+qXFsCIay0Thy68KbQNM4J/wwb2r9KPM+6j10dqAHOyQjiWQrwyiTK+4pqA5xYjE="
+        "thought_signature": "EmAKXgFpFH0TSxZsThcXdNAKfMRlYVxkctpPqb/D/pg6ZIv6Eqw4eODsy9Ytcmc0lOEnBfTgSq74HBELVcjaziixCCP4McquzX/aOpWTqsKKRdeYf6h2C7tvFYKdfV9sGkQ="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1844,
-    "tokens_out": 60,
-    "latency_ms": 1392.256,
+    "tokens_in": 1858,
+    "tokens_out": 42,
+    "latency_ms": 766.824,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "e45539e79b82a35e08bdf338c65517ee19d742c42cca75dfbbf98061313825b7",
+   "key": "e9b22b2f0824282091e1dfee3685677da58516aebbc55ed20376d398958766d0",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Aselsan'ın 2024 yılı finansal raporlarında Düzeltilmiş FAVÖK Marjı (EBITDA) %25,1 olarak bildirilmiştir [c:1b3b3ffbc949d057a96ec7b2b6b2709034e7fae54fe2964e9933138e33114cd4].\",\n  \"points\": [\n    {\n      \"text\": \"Şirketin 31 Aralık 2024 sona eren döneme ait finansal raporuna göre Düzeltilmiş FAVÖK Marjı (EBITDA) %25,1'dir (2023 yılında %21,8 olmuştur).\",\n      \"cite_ids\": [\n        \"c:1b3b3ffbc949d057a96ec7b2b6b2709034e7fae54fe2964e9933138e33114cd4\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:1b3b3ffbc949d057a96ec7b2b6b2709034e7fae54fe2964e9933138e33114cd4\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Aselsan'ın 2024 yılı finansal raporlarına göre, 2024-FY dönemi için FAVÖK 30.615.169.000 TRY [f:2031] veya 40.072.807.000 TRY [f:2080] olarak raporlanmıştır; hasılat ise 120.205.594.000 TRY [f:2021] veya 157.339.507.000 TRY [f:2070] olarak bildirilmiştir. Bu rakamlara göre FAVÖK marjı yaklaşık %25,47 olarak hesaplanmaktadır.\",\n  \"points\": [\n    {\n      \"text\": \"2024-FY dönemi FAVÖK rakamları 30.615.169.000 TRY [f:2031] ve 40.072.807.000 TRY [f:2080] şeklindedir.\",\n      \"cite_ids\": [\n        \"f:2031\",\n        \"f:2080\"\n      ]\n    },\n    {\n      \"text\": \"2024-FY dönemi hasılat rakamları 120.205.594.000 TRY [f:2021] ve 157.339.507.000 TRY [f:2070] şeklindedir.\",\n      \"cite_ids\": [\n        \"f:2021\",\n        \"f:2070\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2031\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2080\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:2021\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:2070\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 6922,
-    "tokens_out": 398,
-    "latency_ms": 3074.661,
+    "tokens_in": 2250,
+    "tokens_out": 574,
+    "latency_ms": 8941.037,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "9538f8d8914d8b68d041abb83d6c7988b3495a53dba6966f90fa7060aa5a0113",
+   "key": "76bdd39ee7ec7a53ef7a393ed7fee4c50fdcf3ee06ea79c39e8c07d314dd600c",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Aselsan'ın 2024 FAVÖK marjı %25,47'dir. [1][2]\",\n  \"points\": [\n    {\n      \"text\": \"2024 yılı için Aselsan'ın FAVÖK'ü 30.615.169.000 TRY ve net satışları 120,2 milyar TRY olarak raporlanmıştır; bu da yaklaşık %25,47 FAVÖK marjına karşılık gelmektedir.\",\n      \"cite_ids\": [\"f:2031\", \"c:5971032d4553db6f9159d5d5b43d3ff29d422cb3e12d8093577e89ef70a57a14\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2031\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:5971032d4553db6f9159d5d5b43d3ff29d422cb3e12d8093577e89ef70a57a14\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Aselsan'ın 2024 yılı FAVÖK marjı (Cari Dönem bazında) %25,47 olarak hesaplanmıştır [1][2]. 2025 yılı raporunda yeniden düzenlenen (Önceki Dönem) verilerle de aynı marj (%25,47) elde edilmektedir [3][4].\",\n  \"points\": [\n    {\n      \"text\": \"2024 Cari Dönem FAVÖK: 30.615.169.000 TRY\",\n      \"cite_ids\": [\"f:2031\"]\n    },\n    {\n      \"text\": \"2024 Cari Dönem Hasılat: 120.205.594.000 TRY\",\n      \"cite_ids\": [\"f:2021\"]\n    },\n    {\n      \"text\": \"FAVÖK Marjı = FAVÖK / Hasılat = 30.615.169.000 / 120.205.594.000 ≈ %25,47\",\n      \"cite_ids\": [\"f:2031\", \"f:2021\"]\n    },\n    {\n      \"text\": \"2025 raporundaki Önceki Dönem (2024) verileri: FAVÖK 40.072.807.000 TRY, Hasılat 157.339.507.000 TRY, marj yine %25,47\",\n      \"cite_ids\": [\"f:2080\", \"f:2070\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2031\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2021\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:2080\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:2070\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
-    "provider": "groq-large",
-    "model": "openai/gpt-oss-120b",
-    "tokens_in": 6198,
-    "tokens_out": 823,
-    "latency_ms": 2451.225,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1550,
+    "tokens_out": 1925,
+    "latency_ms": 41525.287,
     "cache_hit": false,
     "fallback_from": [
-     "nvidia-large",
      "gemini-flash-stable",
-     "gemini-flash",
-     "openrouter-large"
+     "gemini-flash"
     ]
    }
   }
@@ -145,112 +147,86 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"period_from\":\"2024-FY\",\"period_to\":\"2024-FY\",\"query\":\"FAVÖK marjı 2024\",\"ticker\":\"ASELS\"},\"name\":\"search_documents\"}",
-   "tool": "search_documents",
-   "content": "<untrusted_document cite_id=\"c:0c10ac36e36fd7d79b358c49357ca7866a834cbf0b29aad6f9891be739ccf766\">1 Ocak – 31 Aralık 2024 döneminde nakit ihtiyaçları, mevcut nakitlerden, esas faaliyetlerden sağlanan nakit girişlerinden ve kredilerden karşılanmıştır. 31 Aralık 2024 tarihi itibarıyla 924 Milyon ABD Doları eşdeğerinde kredi bakiyesi bulunmaktadır. Şirket’in Finansal Yapısını İyileştirmek İçin Alınması Düşünülen Önlemler Şirket, 202 3-2024 dönemi yıllık bütçelerinde ve uygulamalarında; yapılacak her türlü harcamada tasarrufa özen gösterilmesi, avans ve alacakların yakından takip edilmesi, yapılacak alım ve satım sözleşmelerinde vade ve para birimi uyumu ile yurt iç i ve yurt dışı satıcıların risk durumlarına dikkat edilmesi ilkelerini temel almıştır. b) Araştırma ve Geliştirme Faaliyetleri Grup, kara, hava, deniz ve uzay platformlarında yüksek teknoloji sistem çözümleri geliştiren lider savunma sanayi kuruluşu olarak kurulduğu günden itibaren Ar -Ge faaliyetlerine ve teknoloji kazanımına büyük önem vermektedir. Faaliyet alanlarındaki; kara, deniz, hava ve uzay platformu için ürün/sistem teknolojileri açısından her türlü teknolojik gelişme yakından takip edilerek, sadece teknolojiyi kullanan değil, aynı zamanda geliştirdiği teknolojileri ulusal ve uluslararası işbirliği ortamında aktaran/satan bir yapıya sahip olmak amacıyla ileri teknoloji içeren ürün/sistem tasarımı, geliştirilmesi ve üretimi esas alınmaktadır. Projelerde ulusal katkı payının artırılması amacıyla yurt içinde var olan teknolojik olanaklardan yararlanmaya azami seviyede gayret gösterilmektedir. Bu amaçla üniversiteler ve çeşitli Ar-Ge kuruluşları ile işbirliğine gidilmekte, yerli alt yüklenici ve yan sanayi kullanımına önem verilmektedir. Grup bünyesinde yürütülen projeler için 5746 Sayılı Ar -Ge faaliyetlerinin desteklenmesi hakkında Kanun çerçevesinde Ar -Ge merkezi uygulaması yürütülmektedir. Yürütülen Ar -Ge projelerinden kamuya yönelik olmayanları için TEYDEB (Teknoloji ve Yenilik Destek Programları Başkanlığı) ve ARDEB (Araştırma Destek Programları Başkanlığı) onayı alınmakta ve bu kurumlar tarafından desteklenmektedir. Şirket bünyesinde Savunma Sistem Teknolojileri (SST-1 ve SST -2), Radar ve Elektronik H arp Sistemleri (REHİS), Mikro Elektronik, Güdüm ve Elektro-Optik (MGEO-1 ve MGEO-2), Haberleşme ve Bilgi Teknolojileri (HBT), Ulaşım, Güvenlik, Enerji, Otomasyon ve Sağlık Sistemleri (UGES-1 ve UGES-2) Bilgi Yönetim Direktörlüğü (BYD) ve Orta Doğu Teknik Üniversitesi (Teknokent ve Titanyum) olmak üzere 11 adet Ar-Ge Merkezi bulunmaktadır. Şirket Ar-Ge merkezlerinde toplam 8.002 kişi görev almaktadır.</untrusted_document>\n<untrusted_document cite_id=\"c:1b3b3ffbc949d057a96ec7b2b6b2709034e7fae54fe2964e9933138e33114cd4\">Türkiye’de Türkiye İstatistik Kurumu (“TÜİK”) tarafından yayımlanan tüketici fiyat endeksi (“TÜFE”) baz alındığında söz konusu kümülatif oran 31 Aralık 2024 tarihi itibariyle sona eren üç yıllık dönem için %291 olmuştur (31 Aralık 2023: %268). Enflasyona göre yapılan düzeltmeler, TÜİK tarafından yayımlanan Türkiye’deki Tüketici Fiyat Endeksi kullanılarak bulunan katsayılar esas alınarak hesaplanmıştır. 31 Aralık 2024 tarihi itibarıyla finansal tabloların düzeltilmesinde kullanılan endeks ve katsayılar aşağıda belirtilmiştir: Dönem Endeks Düzeltme Katsayısı 31 Aralık 2024 2.684,55 1 31 Aralık 2023 1.859,38 1,44379 31 Aralık 2022 1.128,45 2,37897 Temel Finansal Rasyolar Ara.24 Ara.23 Cari Oran 1,52 1,45 Likidite Oranı 0,68 0,58 Kısa Vadeli Finansal Borç / Toplam Finansal Borç %70,1 %94,3 Toplam Finansal Borç / Toplam Aktifler %13,4 %13,2 Brüt Kar Marjı %31,7 %27,3 Faaliyet Kar Marjı (EBIT) %22,4 %17,2 Düzeltilmiş FAVÖK Marjı (EBITDA) (* ) %25,1 %21,8 Net Kar Marjı %12,7 %10,0 Özsermaye Karlılığı %11,3 %8,7 Net İşletme Sermayesi / Net Satışlar %35,4 %47,4 Aktif Karlılığı %6,6 %5,0 * Düzeltilmiş FAVÖK hesaplanırken brüt kârdan genel yönetim giderleri, pazarlama giderleri ve araştırma & geliştirme giderleri düşülerek cari yıl amortisman ve itfa tutarı eklenmektedir. Esas faaliyetlerden diğer gelirler ve diğer giderler hesaplamada hariç tutulmaktadır. S 18 TMS 29 endeksleme işlemlerinin ana hatları aşağıdaki gibidir: Bilanço tarihi itibarıyla cari satın alma gücü ile gösterilenler dışındaki tüm kalemler ilgili tüketici fiyat endeksi katsayıları kullanılarak endekslenmiştir. Önceki dönem finansal tabloları da karşılaştırma amacıyla raporlama dönemi sonundaki cari ölçüm birimi cinsinden ifade edilmiştir. Bu kapsamda, 31 Aralık 2023 ve 31 Aralık 2022 tarihli finansal tablolar, 31 Aralık 2024 tarihindeki cari satın alma gücü esas alınarak endekslenmiştir. Parasal aktif ve pasif kalemler, bilanço tarihinde cari satın alma g ücü ile ifade edildiklerinden endekslemeye tabi tutulmamışlardır.</untrusted_document>\n<untrusted_document cite_id=\"c:9fcc5ae093b1c275e780d4a4950fa21fd722aa7f0551083da9ef9a963417d94b\">2024 yılında yapılan Genel Kurul Toplantı sında pay sahipleri, murahhas üyeler ile tüm Yönetim Kurulu Üye lerinin ve bağımsız denetçilerin toplantıda hazır olduğu konusunda bilgilendirilmişlerdir. Genel kurul toplantılarında pay sahiplerinin gündemde yer alan konular ile ilgili olarak soru sorma hakları kullandırılmış, pay sahiplerinin toplantı sırasında sormuş oldukları sorular a ve önerilere ilişkin verilen cevaplar Genel Kurul tutana klarında yer almıştır. Genel kurul toplantı larında cevaplandırılamayan ve daha sonra Yatırımcı İlişkileri ve Finansal Analiz Bölümü tarafından cevaplanan soru bulunmamaktadır. Dönem içerisinde, Yönetim Kurulunda karar alınabilmesi için Bağımsız Yönetim Kurulu Üyelerinin çoğunluğunun olumlu oyunun arandığı ve olumsuz oy vermeleri nedeniyle kararın Genel Kurula bırakıldığı işlem bulunmamaktadır. 2024 yılında yapılan genel kurul toplantı tutanakları şirketimizin internet sitesinden ulaşılabilmektedir. 2023 yılında yapılan bağış ve yardım tutarı hakkında 49. Olağan Genel Kurul Toplantısında ayrı bir gündem maddesi ile pay sahipleri bilgilendirilmiştir. 2.4. Oy Hakları ve Azlık Hakları Şirketimiz Esas Sözleşmesinin “Oy Hakkı” başlıklı 25. maddesinde “Olağan ve Olağanüstü Genel Kurul Toplantılarında hazır bulunan pay sahiplerinin ve vekillerinin her pay için bir oy hakkı olacaktır.” hükmü yer almakta olup, pay sahiplerinin oy haklarında h erhangi bir imtiyaz veya oy sayısında herhangi bir üst sınır bulunmamaktadır. Oy hakkı, payın iktisap edilmesi anında doğmakta olup iktisap tarihinden itibaren belirli bir süre sonra kullanılmasını öngörecek şekilde bir düzenleme bulunmamaktadır. Pay sahiplerinin temsilcileri aracılığı ile vekâleten oy kullanmalarına ilişkin düzenlemelere uyulmakta, kanuni temsil halinde bu durum belgelendirilmekte, açık temsil ilkesi geçerli olmaktadır. Şirketimizde azlık haklarının kullandırılmasın a azami özen gösteri lmekte, azlık hakları ile ilgili Türk Ticaret Kanunu ve halka açık anonim şirketlerle ilgili mevzuat hükümleri aynen uygulanmaktadır. Şirketimizde azlık ve yabancı pay sahipleri dâhil, tüm pay sahiplerine eşit muamele edilmektedir. Şirketimizde karşılıklı iştirak halinde hâkim ortak söz konusu değildir. Şi rketimiz esas sözleşmesinde azlık paylarının yönetimde temsiline ve birikimli oy kullanımına ilişkin bir EK-1 KURUMSAL YÖNETİM İLKELERİNE UYUM RAPORU 2024 7 hüküm bulunmamaktadır. Bu yönde sermaye piyasası mevzuatının ihtiyari uygula ma hususu nedeniyle mevcut genel kurul nisabına ilişkin hüküm uygulanmaktadır. 2.5. Kâr Payı Hakkı Şirketimizin elde ettiği kâra katılım konusunda pay sahipleri arasında imtiyaz bulunmamaktadır. Şirketimizin kâr dağıtım politikası en son 2016 yılı içerisinde revize edilmiş ve takip eden olağan genel kurul toplantısında pay sahiplerinin bilgisine sunulmuştur.</untrusted_document>\n<untrusted_document cite_id=\"c:5971032d4553db6f9159d5d5b43d3ff29d422cb3e12d8093577e89ef70a57a14\">Yurt dışı pazar etkinliğinin ve ihracatın artırılma sı hedefini gerçekleştirmek üzere, küresel pazarlarda fark yaratıcı, etkin iş geliştirme ve pazarlama faaliyetlerinin yürütülmesine devam edilmektedir. 31 Aralık 2024 sonu itibarıyla hasılat geçen yılın aynı dönemine göre % 13 artışla 120,2 Milyar TL olarak gerçekleşmiş olup, ihracatın toplam hasılata oranı %14,3 olarak gerçekleşmiştir. 17 e) Finansal Rasyolar Grup’un Sermaye Piyasası Kurulu Seri II, 14.1 Sayılı “Sermaye Piyasasında Finansal Raporlamaya İlişkin Esaslar Tebliği”ne göre hazırlanan finansal tablolar kapsamında 3 1 Aralık 2024 itibarıyla temel rasyolar aşağıda yer almaktadır. 7- Şirket Faaliyetlerini Etkileyebilecek Mevzuat Değişiklikleri Yüksek enflasyon dönemlerinde finansal tabloların düzeltilmesi PK, 17 Mart 2005 tarihinde almış olduğu bir kararla, Türkiye’de faaliyette bulunan ve SPK Muhasebe Standartları’na uygun mali tablo hazırlayan şirketler için, 1 Ocak 2005 tarihinden itibaren geçerli olmak üzere enflasyon muhasebesi uygulamasının gerekli ol madığını ilan ettiği için bu tarihten itibaren Türkiye Muhasebe Standardı 29 “Yüksek Enflasyonist Ekonomilerde Finansal Raporlama ’ya göre finansal tabloların hazırlanması ve sunumu uygulamasını sona erdirmiştir. Kamu Gözetimi Muhasebe ve Denetim Standartları Kurumu’nun (“KGK”) 23 Kasım 2023 tarihli Türkiye’de enflasyon muhasebesi uygulanmasına ilişkin açıklaması ile Sermaye Piyasası Kurulu’nun (“SPK”) 28 Aralık 2023 tarih ve 81/1820 sayılı kararı uyarınca, TFRS uygulayan işletmelerin 31 Aralık 2023 tarihin de veya sonrasında sona eren yıllık raporlama dönemine ait finansal tablolardan başlamak üzere TMS 29’da yer alan ilgili muhasebe ilkelerine uygun olarak düzeltilerek enflasyon muhasebesi uygulamasına karar verilmiştir. Bu finansal tabloların hazırlanmış olduğu tarih itibarıyla 31 Aralık 2024 tarihli finansal tablolar hazırlanırken TMS 29’a göre enflasyon düzeltmesi yapılmıştır. TMS 29, hiper enflasyonist ekonomilerin para birimi ile hazırlanan mali tabloların bilanço tarihindeki ölçüm biriminden gösterilmesini ve genel fiyat endeksinin kullanılarak daha önceki dönemlere ait bakiyelerin de aynı birimden gösterilmesini öngörmektedir. TMS 29’un uygulanmasını gerektiren durumlardan biri, üç yıllık kümülatif enflasyon oranının, yaklaşık %100 veya üzerinde olmas ıdır. Türkiye’de Türkiye İstatistik Kurumu (“TÜİK”) tarafından yayımlanan tüketici fiyat endeksi (“TÜFE”) baz alındığında söz konusu kümülatif oran 31 Aralık 2024 tarihi itibariyle sona eren üç yıllık dönem için %291 olmuştur (31 Aralık 2023: %268).</untrusted_document>\n<untrusted_document cite_id=\"c:37e2d390af46e80b53bc383fbc1b0095d983d99a3c7d5f4f05633a3e6086d565\">2024 yılı gerçekleşmesi ve 2025 yılına ait hedefler 2024 yılı Sürdürülebilirlik Raporu’nda yer alacaktır. Sera Gazı Emisyonları (tCO2e) 2019 2020 2021 2022 2023 Doğrudan Emisyonlar (Kapsam 1) 14.148,26 14.689,13 15.481,32 22.593,70 20.089,56 Dolaylı Emisyonlar (Kapsam 2) 37.785,79 42.319,99 37.926,60 41389,27 45.494,51 Doğrudan ve Dolaylı Emisyonlar (Kapsam 1-2) 51.934,05 57.009,12 53.407,93 63.982,97 65.584,07 Diğer Emisyonlar (Kapsam 3) 15.661,22 14.169,90 33.786,47 40.958,50 58.742,12 Toplam Emisyonlar (Kapsam 1-2-3) 67.595,27 71.179,02 87.194,39 104.941,47 124.326,19 Kapsam 1-2 Emisyon Yoğunluğu (tCO2e/TRY milyon) 3,9911 3,54 2,652 0,957 0,8912 Bir Önceki Seneye Göre Yoğunluk Azaltımı (%) %11,30 %25,08 %63,91 %6,88 Kapsam 3 Emisyonlar (tCO2e) 2021 2022 2023 Satın Alınan Ürün ve Hizmetler 10.427,61 15.478,93 26.443,51 Yukarı Yönde Ulaşım ve Dağıtım 1.263,49 1.003,52 1.281,70 Atıklar 116,9 121,45 105,01 İş Seyahatleri 1.623,31 3.575,08 6.108,78 EK-2 8 Çalışan Servisleri 971,14 1.098,59 1.367,79 Satın Alınan Enerjinin Temini Kaynaklı Emisyonlar 7.212,43 7.994,73 8.742,70 Aşağı Yönlü Ulaşım ve Dağıtım 34,04 27,87 78,93 Su Temini 64,51 79,4 90,65 Malzeme Kullanımı 12.073,04 11.578,93 14.523,05 Toplam Kapsam 3 Emisyonları 33.786,47 40.958,50 58.742,12 Toplam Kapsam 3 Emisyonları Yoğunluğu (tCO2e/TRY milyon) 1,68 0,61 0,8 Toplam Emisyonlar (Kapsam 1-2-3) 87.194,39 104.941,47 124.326,19 Toplam Emisyon Yoğunluğu (Toplam Emisyonlar/ TRY milyon) 4,33 1,57 1,69</untrusted_document>\n<untrusted_document cite_id=\"c:68b445f2ceaea017eac1d25888ab8dd13c29634b4c97334c357d92c59c6282f5\">4691 Sayılı Teknoloji Geliştirme Bölgeleri Kanunu uygulaması kapsamında elde edilen kazançlar 31 Aralık 2028 tarihine kadar kurumlar vergisinden istisna edilmiştir. Ar-Ge Merkezlerinin kurulması neticesinde, 1 Ocak- 31 Aralık 2024 tarihi itibarıyla gelir vergisi stopajı teşviki, sigorta primi desteği ve damga vergisi istisnası kapsamında 4.313.839 Bin TL, ODTÜ Teknokent (2024 Mart itibarı ile Ar -Ge merkezine dönüştürülmüştür) , Gebze Bilişim Vadisi ve İstanbul Teknoloji Geliştirme Bölgesi Teknopark’ta da faaliyette bulunulması neticesinde, gelir vergisi stopajı teşviki, sigorta primi desteği ve damga vergisi istisnası kapsamında 329.160 Bin TL tutarında teşvikten yararlanılmıştır. 1 Ocak – 31 Aralık 2024 tarihi itibarıyla, 5746 Sayılı Ar-Ge Kanunu ve 4691 Sayılı Teknokent Kanunu kapsamında, elde edilen kazançlardan 1.411.269 Bin TL Kurumlar Vergisi avantajı elde edilmiştir. Grup’un Ar -Ge indirimine konu Ar -Ge harcamasının, yasal mevzuata göre hazırlanan kurumlar vergisi beyannamesinde belirtilen Ar - Ge indirimine esas tutardan yüksek olduğu dönemlerde, aradaki fark tutarının K urumlar Vergisi oranı olan %25’ini finansal tabloda ertelenmiş vergi geliri olarak değerlendirilmektedir. TÜBİTAK Akademik Destek Programları olan; 1004-Mükemmeliyet Merkezi Destek Programında 4 adet devam eden proje bulunmaktadır. TÜBİTAK 1511- Öncelikli Alanlar Ar-Ge ve Yenilik P.D.P. (Teknoloji Odaklı Sanayi Hamlesi Programı)’nda 1 adet, 1515 - Öncül Ar -Ge Laboratuvarları Destekleme Programı 1 adet devam eden proje bulunmakla beraber, TÜBİTAK uygulama esaslarında yapılan değişiklikle 1 Temmuz 2019 tarihinden itibaren programa büyük ölçekli kuruluşların başvurusu kaldırılarak KOBİ’ler program kapsamında bırakılmıştır. 16 TÜBİTAK Kamu Destek Programı kapsamında, 1007 Kamu Kurumları Araştırma ve Geliştirme Projelerini Destekleme Programı, Kamu Kuruluşlarının Ar -Ge ile giderilebilecek ihtiyaçlarının karşılanması ya da sorunlarının çözümüne y önelik projeleri desteklemek amacıyla oluşturulan bu destek kapsamında 6 adet ve Ufuk Avrupa Programı kapsamında 1 adet Ar-Ge projesi devam etmektedir. İlgili programlara ait teşviklerden dönemler itibarıyla y ararlanılmaktadır. Ayrıca TÜBİTAK 1707 Siparişe Dayalı Ar -Ge Projeleri Destek Programında 7 adet yürütülen proje bulunmaktadır. TÜBİTAK Doktora Sonrası -Araştırma Burs Programları kapsamında; 2247 -A Ulusal Lider Araştırmacılar Programı 1 adet devam eden proje bulunmaktadır.</untrusted_document>",
-   "summary": "ASELS FAVÖK marjı 2024",
-   "count": 6,
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\",\"ebitda\"],\"periods\":[\"2024-FY\"],\"ticker\":\"ASELS\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2031\">FAVÖK (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 30.615.169.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2080\">FAVÖK (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 40.072.807.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2021\">Hasılat (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 120.205.594.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2070\">Hasılat (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 157.339.507.000 TRY</untrusted_document>",
+   "summary": "ASELS 2024-FY revenue, ebitda",
+   "count": 4,
    "items": [
     {
-     "cite_id": "c:0c10ac36e36fd7d79b358c49357ca7866a834cbf0b29aad6f9891be739ccf766",
-     "text": "1 Ocak – 31 Aralık 2024 döneminde nakit ihtiyaçları, mevcut nakitlerden, esas faaliyetlerden sağlanan nakit girişlerinden ve kredilerden karşılanmıştır. 31 Aralık 2024 tarihi itibarıyla 924 Milyon ABD Doları eşdeğerinde kredi bakiyesi bulunmaktadır. Şirket’in Finansal Yapısını İyileştirmek İçin Alınması Düşünülen Önlemler Şirket, 202 3-2024 dönemi yıllık bütçelerinde ve uygulamalarında; yapılacak her türlü harcamada tasarrufa özen gösterilmesi, avans ve alacakların yakından takip edilmesi, yapılacak alım ve satım sözleşmelerinde vade ve para birimi uyumu ile yurt iç i ve yurt dışı satıcıların risk durumlarına dikkat edilmesi ilkelerini temel almıştır. b) Araştırma ve Geliştirme Faaliyetleri Grup, kara, hava, deniz ve uzay platformlarında yüksek teknoloji sistem çözümleri geliştiren lider savunma sanayi kuruluşu olarak kurulduğu günden itibaren Ar -Ge faaliyetlerine ve teknoloji kazanımına büyük önem vermektedir. Faaliyet alanlarındaki; kara, deniz, hava ve uzay platformu için ürün/sistem teknolojileri açısından her türlü teknolojik gelişme yakından takip edilerek, sadece teknolojiyi kullanan değil, aynı zamanda geliştirdiği teknolojileri ulusal ve uluslararası işbirliği ortamında aktaran/satan bir yapıya sahip olmak amacıyla ileri teknoloji içeren ürün/sistem tasarımı, geliştirilmesi ve üretimi esas alınmaktadır. Projelerde ulusal katkı payının artırılması amacıyla yurt içinde var olan teknolojik olanaklardan yararlanmaya azami seviyede gayret gösterilmektedir. Bu amaçla üniversiteler ve çeşitli Ar-Ge kuruluşları ile işbirliğine gidilmekte, yerli alt yüklenici ve yan sanayi kullanımına önem verilmektedir. Grup bünyesinde yürütülen projeler için 5746 Sayılı Ar -Ge faaliyetlerinin desteklenmesi hakkında Kanun çerçevesinde Ar -Ge merkezi uygulaması yürütülmektedir. Yürütülen Ar -Ge projelerinden kamuya yönelik olmayanları için TEYDEB (Teknoloji ve Yenilik Destek Programları Başkanlığı) ve ARDEB (Araştırma Destek Programları Başkanlığı) onayı alınmakta ve bu kurumlar tarafından desteklenmektedir. Şirket bünyesinde Savunma Sistem Teknolojileri (SST-1 ve SST -2), Radar ve Elektronik H arp Sistemleri (REHİS), Mikro Elektronik, Güdüm ve Elektro-Optik (MGEO-1 ve MGEO-2), Haberleşme ve Bilgi Teknolojileri (HBT), Ulaşım, Güvenlik, Enerji, Otomasyon ve Sağlık Sistemleri (UGES-1 ve UGES-2) Bilgi Yönetim Direktörlüğü (BYD) ve Orta Doğu Teknik Üniversitesi (Teknokent ve Titanyum) olmak üzere 11 adet Ar-Ge Merkezi bulunmaktadır. Şirket Ar-Ge merkezlerinde toplam 8.002 kişi görev almaktadır.",
+     "cite_id": "f:2031",
+     "text": "FAVÖK (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 30.615.169.000 TRY",
      "source": {
-      "kind": "chunk",
-      "document_id": 288,
+      "kind": "fact",
+      "document_id": 287,
       "ticker": "ASELS",
-      "doc_type": "kap_annual_report",
+      "doc_type": "kap_financial_report",
       "period": "2024-FY",
-      "section": "body",
-      "page": 15,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1395802"
+      "metric": "ebitda",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / ESAS FAALİYET KARI (ZARARI) / Cari Dönem 01.01.2024 - 31.12.2024 + Tablo 3 (Nakit Akış Tablosu (Dolaylı Yöntem)) / Amortisman ve İtfa Gideri İle İlgili Düzeltmeler / Cari Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1395801"
      },
-     "value": null,
-     "scale": null,
+     "value": "30615169000",
+     "scale": "1",
      "unit_note": null
     },
     {
-     "cite_id": "c:1b3b3ffbc949d057a96ec7b2b6b2709034e7fae54fe2964e9933138e33114cd4",
-     "text": "Türkiye’de Türkiye İstatistik Kurumu (“TÜİK”) tarafından yayımlanan tüketici fiyat endeksi (“TÜFE”) baz alındığında söz konusu kümülatif oran 31 Aralık 2024 tarihi itibariyle sona eren üç yıllık dönem için %291 olmuştur (31 Aralık 2023: %268). Enflasyona göre yapılan düzeltmeler, TÜİK tarafından yayımlanan Türkiye’deki Tüketici Fiyat Endeksi kullanılarak bulunan katsayılar esas alınarak hesaplanmıştır. 31 Aralık 2024 tarihi itibarıyla finansal tabloların düzeltilmesinde kullanılan endeks ve katsayılar aşağıda belirtilmiştir: Dönem Endeks Düzeltme Katsayısı 31 Aralık 2024 2.684,55 1 31 Aralık 2023 1.859,38 1,44379 31 Aralık 2022 1.128,45 2,37897 Temel Finansal Rasyolar Ara.24 Ara.23 Cari Oran 1,52 1,45 Likidite Oranı 0,68 0,58 Kısa Vadeli Finansal Borç / Toplam Finansal Borç %70,1 %94,3 Toplam Finansal Borç / Toplam Aktifler %13,4 %13,2 Brüt Kar Marjı %31,7 %27,3 Faaliyet Kar Marjı (EBIT) %22,4 %17,2 Düzeltilmiş FAVÖK Marjı (EBITDA) (* ) %25,1 %21,8 Net Kar Marjı %12,7 %10,0 Özsermaye Karlılığı %11,3 %8,7 Net İşletme Sermayesi / Net Satışlar %35,4 %47,4 Aktif Karlılığı %6,6 %5,0 * Düzeltilmiş FAVÖK hesaplanırken brüt kârdan genel yönetim giderleri, pazarlama giderleri ve araştırma & geliştirme giderleri düşülerek cari yıl amortisman ve itfa tutarı eklenmektedir. Esas faaliyetlerden diğer gelirler ve diğer giderler hesaplamada hariç tutulmaktadır. S 18 TMS 29 endeksleme işlemlerinin ana hatları aşağıdaki gibidir: Bilanço tarihi itibarıyla cari satın alma gücü ile gösterilenler dışındaki tüm kalemler ilgili tüketici fiyat endeksi katsayıları kullanılarak endekslenmiştir. Önceki dönem finansal tabloları da karşılaştırma amacıyla raporlama dönemi sonundaki cari ölçüm birimi cinsinden ifade edilmiştir. Bu kapsamda, 31 Aralık 2023 ve 31 Aralık 2022 tarihli finansal tablolar, 31 Aralık 2024 tarihindeki cari satın alma gücü esas alınarak endekslenmiştir. Parasal aktif ve pasif kalemler, bilanço tarihinde cari satın alma g ücü ile ifade edildiklerinden endekslemeye tabi tutulmamışlardır.",
+     "cite_id": "f:2080",
+     "text": "FAVÖK (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 40.072.807.000 TRY",
      "source": {
-      "kind": "chunk",
-      "document_id": 288,
+      "kind": "fact",
+      "document_id": 335,
       "ticker": "ASELS",
-      "doc_type": "kap_annual_report",
+      "doc_type": "kap_financial_report",
       "period": "2024-FY",
-      "section": "body",
-      "page": 18,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1395802"
+      "metric": "ebitda",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / ESAS FAALİYET KARI (ZARARI) / Önceki Dönem 01.01.2024 - 31.12.2024 + Tablo 3 (Nakit Akış Tablosu (Dolaylı Yöntem)) / Amortisman ve İtfa Gideri İle İlgili Düzeltmeler / Önceki Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1561039"
      },
-     "value": null,
-     "scale": null,
+     "value": "40072807000",
+     "scale": "1",
      "unit_note": null
     },
     {
-     "cite_id": "c:9fcc5ae093b1c275e780d4a4950fa21fd722aa7f0551083da9ef9a963417d94b",
-     "text": "2024 yılında yapılan Genel Kurul Toplantı sında pay sahipleri, murahhas üyeler ile tüm Yönetim Kurulu Üye lerinin ve bağımsız denetçilerin toplantıda hazır olduğu konusunda bilgilendirilmişlerdir. Genel kurul toplantılarında pay sahiplerinin gündemde yer alan konular ile ilgili olarak soru sorma hakları kullandırılmış, pay sahiplerinin toplantı sırasında sormuş oldukları sorular a ve önerilere ilişkin verilen cevaplar Genel Kurul tutana klarında yer almıştır. Genel kurul toplantı larında cevaplandırılamayan ve daha sonra Yatırımcı İlişkileri ve Finansal Analiz Bölümü tarafından cevaplanan soru bulunmamaktadır. Dönem içerisinde, Yönetim Kurulunda karar alınabilmesi için Bağımsız Yönetim Kurulu Üyelerinin çoğunluğunun olumlu oyunun arandığı ve olumsuz oy vermeleri nedeniyle kararın Genel Kurula bırakıldığı işlem bulunmamaktadır. 2024 yılında yapılan genel kurul toplantı tutanakları şirketimizin internet sitesinden ulaşılabilmektedir. 2023 yılında yapılan bağış ve yardım tutarı hakkında 49. Olağan Genel Kurul Toplantısında ayrı bir gündem maddesi ile pay sahipleri bilgilendirilmiştir. 2.4. Oy Hakları ve Azlık Hakları Şirketimiz Esas Sözleşmesinin “Oy Hakkı” başlıklı 25. maddesinde “Olağan ve Olağanüstü Genel Kurul Toplantılarında hazır bulunan pay sahiplerinin ve vekillerinin her pay için bir oy hakkı olacaktır.” hükmü yer almakta olup, pay sahiplerinin oy haklarında h erhangi bir imtiyaz veya oy sayısında herhangi bir üst sınır bulunmamaktadır. Oy hakkı, payın iktisap edilmesi anında doğmakta olup iktisap tarihinden itibaren belirli bir süre sonra kullanılmasını öngörecek şekilde bir düzenleme bulunmamaktadır. Pay sahiplerinin temsilcileri aracılığı ile vekâleten oy kullanmalarına ilişkin düzenlemelere uyulmakta, kanuni temsil halinde bu durum belgelendirilmekte, açık temsil ilkesi geçerli olmaktadır. Şirketimizde azlık haklarının kullandırılmasın a azami özen gösteri lmekte, azlık hakları ile ilgili Türk Ticaret Kanunu ve halka açık anonim şirketlerle ilgili mevzuat hükümleri aynen uygulanmaktadır. Şirketimizde azlık ve yabancı pay sahipleri dâhil, tüm pay sahiplerine eşit muamele edilmektedir. Şirketimizde karşılıklı iştirak halinde hâkim ortak söz konusu değildir. Şi rketimiz esas sözleşmesinde azlık paylarının yönetimde temsiline ve birikimli oy kullanımına ilişkin bir EK-1 KURUMSAL YÖNETİM İLKELERİNE UYUM RAPORU 2024 7 hüküm bulunmamaktadır. Bu yönde sermaye piyasası mevzuatının ihtiyari uygula ma hususu nedeniyle mevcut genel kurul nisabına ilişkin hüküm uygulanmaktadır. 2.5. Kâr Payı Hakkı Şirketimizin elde ettiği kâra katılım konusunda pay sahipleri arasında imtiyaz bulunmamaktadır. Şirketimizin kâr dağıtım politikası en son 2016 yılı içerisinde revize edilmiş ve takip eden olağan genel kurul toplantısında pay sahiplerinin bilgisine sunulmuştur.",
+     "cite_id": "f:2021",
+     "text": "Hasılat (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 120.205.594.000 TRY",
      "source": {
-      "kind": "chunk",
-      "document_id": 288,
+      "kind": "fact",
+      "document_id": 287,
       "ticker": "ASELS",
-      "doc_type": "kap_annual_report",
+      "doc_type": "kap_financial_report",
       "period": "2024-FY",
-      "section": "body",
-      "page": 28,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1395802"
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / Hasılat / Cari Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1395801"
      },
-     "value": null,
-     "scale": null,
+     "value": "120205594000",
+     "scale": "1",
      "unit_note": null
     },
     {
-     "cite_id": "c:5971032d4553db6f9159d5d5b43d3ff29d422cb3e12d8093577e89ef70a57a14",
-     "text": "Yurt dışı pazar etkinliğinin ve ihracatın artırılma sı hedefini gerçekleştirmek üzere, küresel pazarlarda fark yaratıcı, etkin iş geliştirme ve pazarlama faaliyetlerinin yürütülmesine devam edilmektedir. 31 Aralık 2024 sonu itibarıyla hasılat geçen yılın aynı dönemine göre % 13 artışla 120,2 Milyar TL olarak gerçekleşmiş olup, ihracatın toplam hasılata oranı %14,3 olarak gerçekleşmiştir. 17 e) Finansal Rasyolar Grup’un Sermaye Piyasası Kurulu Seri II, 14.1 Sayılı “Sermaye Piyasasında Finansal Raporlamaya İlişkin Esaslar Tebliği”ne göre hazırlanan finansal tablolar kapsamında 3 1 Aralık 2024 itibarıyla temel rasyolar aşağıda yer almaktadır. 7- Şirket Faaliyetlerini Etkileyebilecek Mevzuat Değişiklikleri Yüksek enflasyon dönemlerinde finansal tabloların düzeltilmesi PK, 17 Mart 2005 tarihinde almış olduğu bir kararla, Türkiye’de faaliyette bulunan ve SPK Muhasebe Standartları’na uygun mali tablo hazırlayan şirketler için, 1 Ocak 2005 tarihinden itibaren geçerli olmak üzere enflasyon muhasebesi uygulamasının gerekli ol madığını ilan ettiği için bu tarihten itibaren Türkiye Muhasebe Standardı 29 “Yüksek Enflasyonist Ekonomilerde Finansal Raporlama ’ya göre finansal tabloların hazırlanması ve sunumu uygulamasını sona erdirmiştir. Kamu Gözetimi Muhasebe ve Denetim Standartları Kurumu’nun (“KGK”) 23 Kasım 2023 tarihli Türkiye’de enflasyon muhasebesi uygulanmasına ilişkin açıklaması ile Sermaye Piyasası Kurulu’nun (“SPK”) 28 Aralık 2023 tarih ve 81/1820 sayılı kararı uyarınca, TFRS uygulayan işletmelerin 31 Aralık 2023 tarihin de veya sonrasında sona eren yıllık raporlama dönemine ait finansal tablolardan başlamak üzere TMS 29’da yer alan ilgili muhasebe ilkelerine uygun olarak düzeltilerek enflasyon muhasebesi uygulamasına karar verilmiştir. Bu finansal tabloların hazırlanmış olduğu tarih itibarıyla 31 Aralık 2024 tarihli finansal tablolar hazırlanırken TMS 29’a göre enflasyon düzeltmesi yapılmıştır. TMS 29, hiper enflasyonist ekonomilerin para birimi ile hazırlanan mali tabloların bilanço tarihindeki ölçüm biriminden gösterilmesini ve genel fiyat endeksinin kullanılarak daha önceki dönemlere ait bakiyelerin de aynı birimden gösterilmesini öngörmektedir. TMS 29’un uygulanmasını gerektiren durumlardan biri, üç yıllık kümülatif enflasyon oranının, yaklaşık %100 veya üzerinde olmas ıdır. Türkiye’de Türkiye İstatistik Kurumu (“TÜİK”) tarafından yayımlanan tüketici fiyat endeksi (“TÜFE”) baz alındığında söz konusu kümülatif oran 31 Aralık 2024 tarihi itibariyle sona eren üç yıllık dönem için %291 olmuştur (31 Aralık 2023: %268).",
+     "cite_id": "f:2070",
+     "text": "Hasılat (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 157.339.507.000 TRY",
      "source": {
-      "kind": "chunk",
-      "document_id": 288,
+      "kind": "fact",
+      "document_id": 335,
       "ticker": "ASELS",
-      "doc_type": "kap_annual_report",
+      "doc_type": "kap_financial_report",
       "period": "2024-FY",
-      "section": "body",
-      "page": 17,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1395802"
+      "metric": "revenue",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / Hasılat / Önceki Dönem 01.01.2024 - 31.12.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1561039"
      },
-     "value": null,
-     "scale": null,
-     "unit_note": null
-    },
-    {
-     "cite_id": "c:37e2d390af46e80b53bc383fbc1b0095d983d99a3c7d5f4f05633a3e6086d565",
-     "text": "2024 yılı gerçekleşmesi ve 2025 yılına ait hedefler 2024 yılı Sürdürülebilirlik Raporu’nda yer alacaktır. Sera Gazı Emisyonları (tCO2e) 2019 2020 2021 2022 2023 Doğrudan Emisyonlar (Kapsam 1) 14.148,26 14.689,13 15.481,32 22.593,70 20.089,56 Dolaylı Emisyonlar (Kapsam 2) 37.785,79 42.319,99 37.926,60 41389,27 45.494,51 Doğrudan ve Dolaylı Emisyonlar (Kapsam 1-2) 51.934,05 57.009,12 53.407,93 63.982,97 65.584,07 Diğer Emisyonlar (Kapsam 3) 15.661,22 14.169,90 33.786,47 40.958,50 58.742,12 Toplam Emisyonlar (Kapsam 1-2-3) 67.595,27 71.179,02 87.194,39 104.941,47 124.326,19 Kapsam 1-2 Emisyon Yoğunluğu (tCO2e/TRY milyon) 3,9911 3,54 2,652 0,957 0,8912 Bir Önceki Seneye Göre Yoğunluk Azaltımı (%) %11,30 %25,08 %63,91 %6,88 Kapsam 3 Emisyonlar (tCO2e) 2021 2022 2023 Satın Alınan Ürün ve Hizmetler 10.427,61 15.478,93 26.443,51 Yukarı Yönde Ulaşım ve Dağıtım 1.263,49 1.003,52 1.281,70 Atıklar 116,9 121,45 105,01 İş Seyahatleri 1.623,31 3.575,08 6.108,78 EK-2 8 Çalışan Servisleri 971,14 1.098,59 1.367,79 Satın Alınan Enerjinin Temini Kaynaklı Emisyonlar 7.212,43 7.994,73 8.742,70 Aşağı Yönlü Ulaşım ve Dağıtım 34,04 27,87 78,93 Su Temini 64,51 79,4 90,65 Malzeme Kullanımı 12.073,04 11.578,93 14.523,05 Toplam Kapsam 3 Emisyonları 33.786,47 40.958,50 58.742,12 Toplam Kapsam 3 Emisyonları Yoğunluğu (tCO2e/TRY milyon) 1,68 0,61 0,8 Toplam Emisyonlar (Kapsam 1-2-3) 87.194,39 104.941,47 124.326,19 Toplam Emisyon Yoğunluğu (Toplam Emisyonlar/ TRY milyon) 4,33 1,57 1,69",
-     "source": {
-      "kind": "chunk",
-      "document_id": 288,
-      "ticker": "ASELS",
-      "doc_type": "kap_annual_report",
-      "period": "2024-FY",
-      "section": "body",
-      "page": 77,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1395802"
-     },
-     "value": null,
-     "scale": null,
-     "unit_note": null
-    },
-    {
-     "cite_id": "c:68b445f2ceaea017eac1d25888ab8dd13c29634b4c97334c357d92c59c6282f5",
-     "text": "4691 Sayılı Teknoloji Geliştirme Bölgeleri Kanunu uygulaması kapsamında elde edilen kazançlar 31 Aralık 2028 tarihine kadar kurumlar vergisinden istisna edilmiştir. Ar-Ge Merkezlerinin kurulması neticesinde, 1 Ocak- 31 Aralık 2024 tarihi itibarıyla gelir vergisi stopajı teşviki, sigorta primi desteği ve damga vergisi istisnası kapsamında 4.313.839 Bin TL, ODTÜ Teknokent (2024 Mart itibarı ile Ar -Ge merkezine dönüştürülmüştür) , Gebze Bilişim Vadisi ve İstanbul Teknoloji Geliştirme Bölgesi Teknopark’ta da faaliyette bulunulması neticesinde, gelir vergisi stopajı teşviki, sigorta primi desteği ve damga vergisi istisnası kapsamında 329.160 Bin TL tutarında teşvikten yararlanılmıştır. 1 Ocak – 31 Aralık 2024 tarihi itibarıyla, 5746 Sayılı Ar-Ge Kanunu ve 4691 Sayılı Teknokent Kanunu kapsamında, elde edilen kazançlardan 1.411.269 Bin TL Kurumlar Vergisi avantajı elde edilmiştir. Grup’un Ar -Ge indirimine konu Ar -Ge harcamasının, yasal mevzuata göre hazırlanan kurumlar vergisi beyannamesinde belirtilen Ar - Ge indirimine esas tutardan yüksek olduğu dönemlerde, aradaki fark tutarının K urumlar Vergisi oranı olan %25’ini finansal tabloda ertelenmiş vergi geliri olarak değerlendirilmektedir. TÜBİTAK Akademik Destek Programları olan; 1004-Mükemmeliyet Merkezi Destek Programında 4 adet devam eden proje bulunmaktadır. TÜBİTAK 1511- Öncelikli Alanlar Ar-Ge ve Yenilik P.D.P. (Teknoloji Odaklı Sanayi Hamlesi Programı)’nda 1 adet, 1515 - Öncül Ar -Ge Laboratuvarları Destekleme Programı 1 adet devam eden proje bulunmakla beraber, TÜBİTAK uygulama esaslarında yapılan değişiklikle 1 Temmuz 2019 tarihinden itibaren programa büyük ölçekli kuruluşların başvurusu kaldırılarak KOBİ’ler program kapsamında bırakılmıştır. 16 TÜBİTAK Kamu Destek Programı kapsamında, 1007 Kamu Kurumları Araştırma ve Geliştirme Projelerini Destekleme Programı, Kamu Kuruluşlarının Ar -Ge ile giderilebilecek ihtiyaçlarının karşılanması ya da sorunlarının çözümüne y önelik projeleri desteklemek amacıyla oluşturulan bu destek kapsamında 6 adet ve Ufuk Avrupa Programı kapsamında 1 adet Ar-Ge projesi devam etmektedir. İlgili programlara ait teşviklerden dönemler itibarıyla y ararlanılmaktadır. Ayrıca TÜBİTAK 1707 Siparişe Dayalı Ar -Ge Projeleri Destek Programında 7 adet yürütülen proje bulunmaktadır. TÜBİTAK Doktora Sonrası -Araştırma Burs Programları kapsamında; 2247 -A Ulusal Lider Araştırmacılar Programı 1 adet devam eden proje bulunmaktadır.",
-     "source": {
-      "kind": "chunk",
-      "document_id": 288,
-      "ticker": "ASELS",
-      "doc_type": "kap_annual_report",
-      "period": "2024-FY",
-      "section": "body",
-      "page": 16,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1395802"
-     },
-     "value": null,
-     "scale": null,
+     "value": "157339507000",
+     "scale": "1",
      "unit_note": null
     }
    ],
@@ -258,5 +234,6 @@
   }
  ],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 53097
 }

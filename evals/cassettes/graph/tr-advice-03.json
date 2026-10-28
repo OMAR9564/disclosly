@@ -6,13 +6,13 @@
    "key": "898cf87ba75d912176102e0127d03e2a9a21d24cdf8674c4c749f05219580483",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi niteliğinde sorulara yanıt verilememektedir.\",\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi talebinde bulunduğunuz için bu soru yanıtlanamamaktadır. Lütfen şirket açıklamaları ve finansal veriler hakkındaki bilgi talepleri ile başvurunuz.\",\n  \"citations\": [],\n  \"points\": []\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1641,
-    "tokens_out": 67,
-    "latency_ms": 2236.66,
+    "tokens_in": 1655,
+    "tokens_out": 82,
+    "latency_ms": 1303.182,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -27,13 +27,17 @@
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1173,
     "tokens_out": 175,
-    "latency_ms": 4753.744,
+    "latency_ms": 5014.174,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
  "tools": [],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 7168
 }

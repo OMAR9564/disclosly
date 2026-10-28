@@ -6,13 +6,13 @@
    "key": "3e6292f23d51926dd4315285f8e177a326e48503158d2a5c0a2d75ac99e0399a",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi niteliğinde sorulara yanıt verilememektedir. Yalnızca şirket açıklamalarına ve finansal verilere dayanarak bilgi sağlanabilir.\",\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi niteliğinde sorular yanıtlanmamaktadır.\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1641,
-    "tokens_out": 84,
-    "latency_ms": 1195.307,
+    "tokens_in": 1655,
+    "tokens_out": 46,
+    "latency_ms": 2171.984,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,19 +21,23 @@
    "key": "662264f26a8caee095a5e2f6d9d11d4c0acf77ec1be40d37928d110cddbe76ed",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"tr\", \"status\": \"refused\", \"summary\": \"Yatırım tavsiyesi verilemez. Turkcell hissesi yarın yükselip yükselmeyeceği hakkında bir öngörü veya tavsiye sunulamaz. Şirket açıklamaları ve finansal veriler geçmiş ve güncel durumu yansıtır; gelecek fiyat hareketleri hakkında kesin bilgi vermez.\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi verilemez. Turkcell hissesi yarın yükselip yükselmeyeceği hakkında bir öngörüde bulunulamaz; bu tür ileri dönük fiyat tahminleri yatırım tavsiyesi kapsamına girer.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1169,
-    "tokens_out": 227,
-    "latency_ms": 10237.198,
+    "tokens_out": 217,
+    "latency_ms": 15468.279,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
  "tools": [],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 18111
 }

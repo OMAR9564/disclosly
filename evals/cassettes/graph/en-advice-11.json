@@ -6,13 +6,13 @@
    "key": "9dadae624484ed8577176426747a6b58a5e9ec98279e3c244e2594877274e085",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice or recommend whether to buy, sell, or hold securities.\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice or recommend whether to buy, sell, or hold Apple stock.\",\n  \"points\": [],\n  \"citations\": []\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1506,
-    "tokens_out": 48,
-    "latency_ms": 1162.617,
+    "tokens_in": 1520,
+    "tokens_out": 61,
+    "latency_ms": 849.987,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -26,14 +26,18 @@
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 970,
-    "tokens_out": 229,
-    "latency_ms": 8813.11,
+    "tokens_out": 226,
+    "latency_ms": 12332.443,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
  "tools": [],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 13629
 }

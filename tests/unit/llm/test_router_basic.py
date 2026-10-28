@@ -9,7 +9,13 @@ from pydantic import SecretStr
 
 from llm.config import Price, Provider, RouterConfig
 from llm.router import ModelRouter
-from llm.testing import CassetteMiss, FakeRouter, cassette_key, interaction
+from llm.testing import (
+    CassetteMiss,
+    FakeRouter,
+    cassette_key,
+    interaction,
+    unavailable_interaction,
+)
 from llm.types import ChatMessage, ChatRequest, ChatResponse, ProvidersUnavailable
 
 
@@ -123,3 +129,13 @@ async def test_fake_router_loads_cassette(tmp_path: Path) -> None:
 
     assert await fake.chat(REQUEST, task_class="cheap") == response
     assert cassette_key(REQUEST, "cheap") != cassette_key(REQUEST, "strong")
+
+
+async def test_fake_router_replays_unavailable_providers() -> None:
+    entry = unavailable_interaction(REQUEST, "strong", ProvidersUnavailable("strong", ["a", "b"]))
+    fake = FakeRouter().load_interactions([json.loads(json.dumps(entry))])
+
+    with pytest.raises(ProvidersUnavailable) as caught:
+        await fake.chat(REQUEST, task_class="strong")
+
+    assert caught.value.attempted == ["a", "b"]

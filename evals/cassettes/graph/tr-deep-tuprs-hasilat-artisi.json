@@ -3,100 +3,104 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "31f48fd786258782481aebc13db0e1ca9999e7e355528cce5a9e16da163f67d2",
+   "key": "b8a842db4aa875655f19f8c1cbbd2bb19a06050892fa54396192e70bf1998c5a",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"TUPRS\"\n  ],\n  \"periods\": [\n    \"2025-Q1\",\n    \"2025-Q3\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1021,
+    "tokens_in": 1031,
     "tokens_out": 89,
-    "latency_ms": 1222.972,
+    "latency_ms": 1367.517,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "f3afd3bd255085292ae6e56d185fddb9ca9a69fe91be796c49be440ba8a87a17",
+   "key": "b33a5bdeacf60693c94c3334df4cbdac3311ad8ee918783cc9860b7a39acd619",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Tüpraş'ın 2025-Q1 ve 2025-Q3 hasılatını getir.\",\n      \"tickers\": [\"TUPRS\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [\"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"2025-Q1'den 2025-Q3'e hasılat yüzde değişimini hesapla.\",\n      \"tickers\": [\"TUPRS\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": []\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Tüpraş'ın 2025 yılı ilk ve üçüncü çeyrek hasılat (revenue) rakamlarını getir\",\n      \"tickers\": [\"TUPRS\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [\"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"2025-Q1'den 2025-Q3'e hasılat yüzde değişimini hesapla\",\n      \"tickers\": [\"TUPRS\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"]\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1201,
-    "tokens_out": 512,
-    "latency_ms": 4742.846,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "b8e1fe9e243ddceb1d0916df70a0bfdb9296a460d38d57b1852c8cee9d2a9ee3",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Tüpraş 2025 9 aylık konsolide bilançosu 3 aylık ve 9 aylık hasılat rakamları\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 899,
-    "tokens_out": 113,
-    "latency_ms": 1107.89,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "74d95282f4e8afbbc9a5b8279ac62d1a14cc9572433c586dbb3271a74bb328b3",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Tüpraş'ın 2025-Q1'den 2025-Q3'e hasılatı yaklaşık %39,1 artmıştır.\",\n      \"cite_ids\": [\"f:2131\", \"f:2155\"],\n      \"calcs\": [\"revenue_change_q1_q3\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"revenue_change_q1_q3\",\n      \"description\": \"Revenue percentage change from Q1 2025 to Q3 2025 as decimal (Q3 - Q1) / Q1\",\n      \"inputs\": [\n        {\n          \"name\": \"q1_rev\",\n          \"cite_id\": \"f:2131\",\n          \"value\": 158623387000\n        },\n        {\n          \"name\": \"q3_rev\",\n          \"cite_id\": \"f:2155\",\n          \"value\": 220665829000\n        }\n      ],\n      \"code\": \"result = (inputs['q3_rev'] - inputs['q1_rev']) / inputs['q1_rev']\"\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "groq-large",
-    "model": "openai/gpt-oss-120b",
-    "tokens_in": 2602,
-    "tokens_out": 856,
-    "latency_ms": 2238.108,
+    "tokens_in": 1262,
+    "tokens_out": 291,
+    "latency_ms": 9754.825,
     "cache_hit": false,
     "fallback_from": [
-     "nvidia-large",
-     "gemini-flash",
-     "openrouter-large"
+     "gemini-flash-stable",
+     "gemini-flash"
     ]
    }
   },
   {
-   "key": "38253afed5bf2b4747268446032e6217a3e46345508c899bfe0cd99222ba8621",
-   "task_class": "strong",
+   "key": "97e3a2e6c590fb66f404d4a11e12f07a43171564f18460fa46aeca429e81cb63",
+   "task_class": "cheap",
    "response": {
-    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Kanıtlar Tüpraş 2025-Q1 hasılatını 158.623.387.000 TRY, 2025-Q3 hasılatını 220.665.829.000 TRY olarak gösteriyor. Hesaplama (220.665.829.000 - 158.623.387.000) / 158.623.387.000 = 0,39113 ≈ %39,1, bulguyu destekliyor.\"\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 919,
-    "tokens_out": 561,
-    "latency_ms": 7326.37,
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 899,
+    "tokens_out": 78,
+    "latency_ms": 865.32,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "7cf61b473a861805b0c3be0a9f84eac88790f8c1946b716a274312308370b292",
+   "key": "d8e5791e890cfa7f87aff6133f929e113e9ca4e64bd490ed3a83d3ec0149f8a3",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\":\"tr\",\"status\":\"completed\",\"summary\":\"Tüpraş'ın 2025 ilk çeyrek (Q1) hasılatı 158.623.387.000 TRY, üçüncü çeyrek (Q3) ise 220.665.829.000 TRY olarak gerçekleşmiştir[1][2]. Bu iki dönem arasındaki yüzde artış %39,11 olarak hesaplanmıştır[3].\",\"points\":[{\"text\":\"2025 Q1'den Q3'e hasılat %39,11 artmıştır[3].\",\"cite_ids\":[\"k:1\"]}],\"tables\":[{\"title\":\"Tüpraş 2025 Hasılatı\",\"columns\":[\"Dönem\",\"Hasılat (TRY)\"],\"rows\":[[{\"text\":\"Q1 2025\",\"cite_id\":null},{\"text\":\"158.623.387.000\",\"cite_id\":\"f:2131\"}],[{\"text\":\"Q3 2025\",\"cite_id\":null},{\"text\":\"220.665.829.000\",\"cite_id\":\"f:2155\"}]]}],\"chart\":null,\"confidence\":{\"level\":\"high\",\"note\":\"\"},\"unverified\":[],\"citations\":[{\"marker\":1,\"cite_id\":\"f:2131\"},{\"marker\":2,\"cite_id\":\"f:2155\"},{\"marker\":3,\"cite_id\":\"k:1\"}]}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Tüpraş'ın 2025 yılı ilk çeyrek hasılatı 158.623.387.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2131\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Tüpraş'ın 2025 yılı üçüncü çeyrek hasılatı 220.665.829.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2155\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"2025 yılı ilk çeyrekten üçüncü çeyreğe hasılat %39,1 artmıştır.\",\n      \"cite_ids\": [\"f:2131\", \"f:2155\"],\n      \"calcs\": [\"revenue_q1_to_q3_pct_change\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"revenue_q1_to_q3_pct_change\",\n      \"description\": \"2025-Q3 hasılatından 2025-Q1 hasılatını çıkar, 2025-Q1 hasılatına böl ve 100 ile çarp (yüzde değişim)\",\n      \"inputs\": [\n        {\n          \"name\": \"revenue_q1\",\n          \"cite_id\": \"f:2131\"\n        },\n        {\n          \"name\": \"revenue_q3\",\n          \"cite_id\": \"f:2155\"\n        }\n      ],\n      \"code\": \"result = (inputs['revenue_q3'] - inputs['revenue_q1']) / inputs['revenue_q1'] * 100\"\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "groq-large",
-    "model": "openai/gpt-oss-120b",
-    "tokens_in": 3231,
-    "tokens_out": 1411,
-    "latency_ms": 3406.497,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2200,
+    "tokens_out": 720,
+    "latency_ms": 21512.926,
     "cache_hit": false,
     "fallback_from": [
-     "nvidia-large",
-     "gemini-flash",
-     "openrouter-large"
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "92d2761a3fa11d4af559a15147d98fb42f0cd8a9720982f36a86fbd19c4a9d78",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Kanıt f:2131, 2025-Q1 hasılatını 158.623.387.000 TL olarak doğruluyor.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Kanıt f:2155, 2025-Q3 hasılatını 220.665.829.000 TL olarak doğruluyor.\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"Hesaplama (revenue_q1_to_q3_pct_change) 39.113% sonucunu veriyor; bulgu %39,1 olarak yuvarlanmış, kanıtla uyumlu.\"\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1078,
+    "tokens_out": 496,
+    "latency_ms": 20637.019,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "4af7196b9c722fe05aa239ee04f1bf6e5f8b1083ca36b79bf9bb5ff4ef9e92f7",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Tüpraş'ın hasılatı 2025 yılı ilk çeyrekten üçüncü çeyreğe %39,1 artmıştır. İlk çeyrek hasılatı 158,6 milyar TL'den, üçüncü çeyrekte 220,7 milyar TL'ye yükselmiştir [1][2][3].\",\n  \"points\": [\n    {\n      \"text\": \"2025-Q1 hasılatı 158.623.387.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2131\"]\n    },\n    {\n      \"text\": \"2025-Q3 hasılatı 220.665.829.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2155\"]\n    },\n    {\n      \"text\": \"İlk çeyrekten üçüncü çeyreğe hasılat %39,11 artmıştır.\",\n      \"cite_ids\": [\"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Tüpraş 2025 Çeyrek Hasılatları\",\n      \"columns\": [\"Dönem\", \"Hasılat (TL)\"],\n      \"rows\": [\n        [\n          {\"text\": \"2025-Q1\", \"cite_id\": \"f:2131\"},\n          {\"text\": \"158.623.387.000\", \"cite_id\": \"f:2131\"}\n        ],\n        [\n          {\"text\": \"2025-Q3\", \"cite_id\": \"f:2155\"},\n          {\"text\": \"220.665.829.000\", \"cite_id\": \"f:2155\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Dönem\",\n    \"series\": [\"Hasılat (TL)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Her iki çeyrek hasılat rakamı ve yüzde değişim hesaplaması kanıtlanmıştır.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:2131\"},\n    {\"marker\": 2, \"cite_id\": \"f:2155\"},\n    {\"marker\": 3, \"cite_id\": \"k:1\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2715,
+    "tokens_out": 1434,
+    "latency_ms": 21997.589,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
     ]
    }
   }
@@ -181,11 +185,11 @@
  ],
  "sandbox": [
   {
-   "key": "e82484e866628999afd7c33510ec28f780066127a49d98c2aca036bab9d5671e",
+   "key": "59168085f347b0594fa1de7c1775eb0d82b125104f3347e4422c93b4e4f32d84",
    "response": {
     "ok": true,
     "outputs": {
-     "revenue_change_q1_q3": "0.3911304831739597"
+     "revenue_q1_to_q3_pct_change": "39.11304831739597"
     },
     "stdout": "",
     "error": null,
@@ -194,11 +198,11 @@
    }
   },
   {
-   "key": "e82484e866628999afd7c33510ec28f780066127a49d98c2aca036bab9d5671e",
+   "key": "59168085f347b0594fa1de7c1775eb0d82b125104f3347e4422c93b4e4f32d84",
    "response": {
     "ok": true,
     "outputs": {
-     "revenue_change_q1_q3": "0.3911304831739597"
+     "revenue_q1_to_q3_pct_change": "39.11304831739597"
     },
     "stdout": "",
     "error": null,
@@ -207,5 +211,6 @@
    }
   }
  ],
- "decision": "approve"
+ "decision": "approve",
+ "elapsed_ms": 80061
 }

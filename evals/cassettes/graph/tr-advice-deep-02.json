@@ -6,13 +6,13 @@
    "key": "f965927c3954eb6ea57ffb5d81f2733bc8e39334fe9dd4bb425f802354f588dd",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi niteliğinde soru sorulduğu için talep reddedilmiştir. Sadece şirketlerin finansal borç durumlarına ilişkin resmi belgelerdeki verilere değinebiliriz.\",\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi niteliğinde sorulara (fiyat tahmini, hisse yönü vb.) yanıt verilememektedir. Bu nedenle Aselsan'ın hisse senedinin yükselip yükselmeyeceğine dair yorum yapılmamaktadır.\",\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1653,
-    "tokens_out": 92,
-    "latency_ms": 1157.531,
+    "tokens_in": 1667,
+    "tokens_out": 104,
+    "latency_ms": 979.877,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,34 +21,23 @@
    "key": "f2106795a58fa647e6bd3e58c383871ef6c623b709793da1d6f3c3ca8f5dd52d",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi istendiği için yanıt reddedildi. Aşağıda şirketlerin borç bilgileri belgelerden sunulmuştur.\",\n  \"points\": [\n    {\n      \"text\": \"Aselsan (ASELS) için 2023 yılı finansal tablolarında uzun vadeli borçlar 1.2 milyar TL, kısa vadeli borçlar 2.8 milyar TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"c:aselsan_2023_debt\"]\n    },\n    {\n      \"text\": \"Ereğli Demir Çelik (EREGL) için 2023 yılı finansal tablolarında uzun vadeli borçlar 15.4 milyar TL, kısa vadeli borçlar 8.7 milyar TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"c:eregli_2023_debt\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:aselsan_2023_debt\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:eregli_2023_debt\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\": \"tr\", \"status\": \"refused\", \"summary\": \"Yatırım tavsiyesi verilemez. Şirketlerin borç bilgileri için belge araması yapılıyor.\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1182,
-    "tokens_out": 421,
-    "latency_ms": 14355.135,
+    "tokens_out": 153,
+    "latency_ms": 4314.93,
     "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "f3221732b4ff0d58bc5164915f73a9f529bf946fb75a7411c7b1fc3607601715",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi istendiği için yanıt reddedildi. Şirketlerin borç bilgileri için belge araması yapılıyor.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1546,
-    "tokens_out": 192,
-    "latency_ms": 5114.63,
-    "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
  "tools": [],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 5770
 }

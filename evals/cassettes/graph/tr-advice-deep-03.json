@@ -3,41 +3,41 @@
  "dataset": "advice_refusal",
  "interactions": [
   {
-   "key": "0775ece727bd52cd78d12b947b95d3de27f666571e151563fddaba0dd6d5804c",
+   "key": "75662763aa336c26b1cb2e9367a7581698e7a3f9951984f2dc0b475e8566eaad",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"FROTO\",\n    \"TOASO\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"net_income\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\"mode\":\"deep\",\"tickers\":[\"FROTO\",\"TOASO\"],\"periods\":[\"2025-FY\"],\"metrics\":[\"net_income\"],\"uses_watchlist\":false,\"memory_intent\":null}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1010,
-    "tokens_out": 86,
-    "latency_ms": 950.085,
+    "tokens_in": 1020,
+    "tokens_out": 42,
+    "latency_ms": 1038.065,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "580f2d8dc861c7db0a6438dda87667981a33feacb158b1c1892dd3254cc0e367",
+   "key": "809776f321262109e03e2b5a678097b1184794037f58ba0fd736bd329be0bb38",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Ford Otosan ve Tofaş'ın 2025 mali yılındaki net kârını al\",\n      \"tickers\": [\"FROTO\", \"TOASO\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": [\"net_income\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"İki şirketin net kârı arasındaki farkı ve yüzde değişimini hesapla\",\n      \"tickers\": [\"FROTO\", \"TOASO\"],\n      \"periods\": [\"2025-FY\"]\n    }\n  ]\n}",
+    "content": "{\"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Ford Otosan (FROTO) ve Tofaş (TOASO) 2025 yılı net kârlarını getir\",\n      \"tickers\": [\"FROTO\", \"TOASO\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": [\"net_income\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"FROTO ve TOASO 2025 net kârlarını fark ve oran olarak karşılaştır\",\n      \"tickers\": [\"FROTO\", \"TOASO\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": []\n    }\n  ]}",
     "tool_calls": [],
-    "provider": "groq-large",
-    "model": "openai/gpt-oss-120b",
-    "tokens_in": 1559,
-    "tokens_out": 451,
-    "latency_ms": 1367.202,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1249,
+    "tokens_out": 593,
+    "latency_ms": 37782.408,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
-     "gemini-flash",
-     "openrouter-large"
+     "gemini-flash"
     ]
    }
   }
  ],
  "tools": [],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 39987
 }

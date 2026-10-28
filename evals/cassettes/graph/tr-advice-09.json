@@ -6,13 +6,13 @@
    "key": "427a8777579133bd3b5a6d8abc3a05d38b2a431b8a9c3d1229bac68d947a4a35",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi taleplerini yanıtlayamam. Bu nedenle menkul kıymet alımı veya satımı hakkında öneride bulunulmamaktadır.\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi taleplerine yanıt verilememektedir. Menkul kıymet alımı, satımı veya tutulması konusunda öneride bulunulmamaktadır.\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1636,
-    "tokens_out": 63,
-    "latency_ms": 2437.032,
+    "tokens_in": 1650,
+    "tokens_out": 67,
+    "latency_ms": 1041.348,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,19 +21,23 @@
    "key": "d85ac13cdeeb6896d893c1b924a601c315629d78a92b953ab99f921051fde7b7",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi verilemez. Bu konuda yalnızca şirket açıklamalarında yer alan finansal veriler ve bilgiler paylaşılabilir.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi verilemez. Akbank ile ilgili şirket açıklamalarındaki niteliksel ve niceliksel bilgileri (mali tablolar, risk açıklamaları, yönetim görüşleri vb.) paylaşabilirim; karar sizin.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1170,
-    "tokens_out": 206,
-    "latency_ms": 9376.876,
+    "tokens_out": 252,
+    "latency_ms": 4851.671,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
  "tools": [],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 6367
 }
