@@ -3,16 +3,16 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "2f09c4bc46fbd182298e556f2ca108867e51027ccc3df9f40a338e223edddf4e",
+   "key": "383f1aa754acd69d5f057287465f984e6cf6c74f5c8d39097908642595e9c5bf",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"ISCTR\"\n  ],\n  \"periods\": [],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1008,
+    "tokens_in": 1018,
     "tokens_out": 55,
-    "latency_ms": 1114.259,
+    "latency_ms": 3193.208,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,13 @@
    "key": "4f700e8abd0b9f31567b094bac228e439c80b26c449ddac821a0260ebf9d3ff6",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Greeneco Enerji işleminde KPMG Yönetim Danışmanlığı A.Ş. değerleme raporu sonucunda bulunan tutar 100.000.000 USD'dir [c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e].\",\n  \"points\": [\n    {\n      \"text\": \"KPMG Yönetim Danışmanlığı A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: 100.000.000 USD\",\n      \"cite_ids\": [\n        \"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"İş Bankası'nın Greeneco Enerji işlemine ilişkin değerleme raporunda bulunan tutar 100.000.000 USD'dir [c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e].\",\n  \"points\": [\n    {\n      \"text\": \"KPMG Yönetim Danışmanlığı A.Ş. Değerleme Raporu Sonucu Bulunan Tutar: 100.000.000 USD\",\n      \"cite_ids\": [\n        \"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 5004,
-    "tokens_out": 383,
-    "latency_ms": 1608.062,
+    "tokens_in": 5018,
+    "tokens_out": 377,
+    "latency_ms": 1506.35,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -36,15 +36,18 @@
    "key": "b98563f7e4e41f04cef1774e4a35b983a6fedb9a7ffc3667c6df2963dd073ae4",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"İş Bankası Greeneco Enerji işleminde KPMG Yönetim Danışmanlığı A.Ş. tarafından hazırlanan değerleme raporunda bulunan tutar 100.000.000 USD olarak belirtilmiştir.\",\n  \"points\": [\n    {\n      \"text\": \"Greeneco Enerji Elektrik Üretim A.Ş. işlemi için KPMG değerleme raporu sonucu bulunan tutar 100.000.000 USD'dir.\",\n      \"cite_ids\": [\"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\": \"tr\", \"status\": \"completed\", \"summary\": \"İş Bankası'nın Greeneco Enerji Elektrik Üretim A.Ş. işleminde değerleme raporunda bulunan tutar 100.000.000 USD olarak belirtilmiştir. Bu tutar, KPMG Yönetim Danışmanlığı A.Ş. tarafından hazırlanan değerleme raporu sonucunda bulunmuştur.\", \"points\": [{\"text\": \"Greeneco Enerji Elektrik Üretim A.Ş.'nin %50 oranındaki paylarının İş Bankası'na devri işleminde KPMG Yönetim Danışmanlığı A.Ş. tarafından hazırlanan değerleme raporunda bulunan tutar 100.000.000 USD'dir.\", \"cite_ids\": [\"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"]}], \"citations\": [{\"marker\": 1, \"cite_id\": \"c:7fe7769cb12bd89032ed9c367e3290876e43e603c5a2e89d4360c191b5ee095e\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\" }",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 4830,
-    "tokens_out": 581,
-    "latency_ms": 24508.063,
+    "tokens_out": 401,
+    "latency_ms": 16559.843,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
@@ -163,5 +166,6 @@
   }
  ],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 24524
 }

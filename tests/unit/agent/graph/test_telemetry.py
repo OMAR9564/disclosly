@@ -26,8 +26,9 @@ from llm.telemetry import hash_user_id
 from tests.unit.llm.test_telemetry import RecordingTracer
 from tools.python import SANDBOX_SPAN
 
-# A recorded deep run with two verification rounds and four calculation batches.
-CASE_ID = "tr-deep-asels-borc-nakit"
+# A recorded deep run with two verification rounds and four calculation batches (it changes
+# when the cassettes are re-recorded: pick a deep case whose replay still has both).
+CASE_ID = "tr-deep-eregl-net-kar-marji"
 
 
 @pytest.fixture

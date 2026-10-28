@@ -3,16 +3,16 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "5502d4235cb7a6ceaac3c686f61e1bd8e883f50e1747e8f87a4a1efd0cfb08f7",
+   "key": "235943779e6f3154e6de470b22d5a770ad6abc3d6cb17f9009ba0ac52ddd75c2",
    "task_class": "cheap",
    "response": {
-    "content": "{\"mode\": \"simple\", \"tickers\": [\"BRK.A\"], \"periods\": [], \"metrics\": [], \"uses_watchlist\": false, \"memory_intent\": null}",
+    "content": "{\"mode\":\"simple\",\"tickers\":[\"BRK.A\"],\"periods\":[],\"metrics\":[],\"uses_watchlist\":false,\"memory_intent\":null}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 927,
-    "tokens_out": 37,
-    "latency_ms": 1559.16,
+    "tokens_in": 937,
+    "tokens_out": 30,
+    "latency_ms": 828.923,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -24,52 +24,53 @@
     "content": null,
     "tool_calls": [
      {
-      "id": "call_2181057",
+      "id": "call_5170269",
       "name": "search_documents",
       "arguments": {
-       "query": "real estate agents HomeServices Berkshire Hathaway",
-       "ticker": "BRK-A"
+       "query": "HomeServices real estate agents number employees count",
+       "ticker": "BRK.A"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0T+fiLLMsXDRdew2QeBESepLrHNfgXsDvX/XGct5u18jnYHxjuH1ele1JDhHN72D4ucI+YpkcKipN9x4BuYrPLymIAgMZbgW9uCbZk63u3G6UBJ0bZGLHyMG8="
+        "thought_signature": "EmAKXgFpFH0Tf2KmVYb6EbqeLPplAp86zLJmbk6gqsQASpy71jCDFrbzK7b8dn/kHLR81gGz0inId6AtDnkeAwbhfKN9esIX1iGwp+2GXhyclZcROimwoM7mw4al1422zVU="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1487,
-    "tokens_out": 31,
-    "latency_ms": 788.838,
+    "tokens_in": 1501,
+    "tokens_out": 32,
+    "latency_ms": 1032.203,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "eab633f8adaebada39677c643b73b4d4a7aa1b9b1690729fbd56ed87469cb2d5",
+   "key": "6351b09d534642164c1c4549c56df1812524d362f09bc3f6510ab07d979eeb7f",
    "task_class": "cheap",
    "response": {
     "content": null,
     "tool_calls": [
      {
-      "id": "call_1731811",
-      "name": "list_documents",
+      "id": "call_2883265",
+      "name": "search_documents",
       "arguments": {
-       "ticker": "BRK-A"
+       "ticker": "BRK.B",
+       "query": "HomeServices agents real estate"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0Tz89+usVUTmmfRRmYECRty1IitsCLQIkpZqmaQzD0hkBYHN1v3LhFLZtOumgdpI6Mzw7D4mQbApDWmPt02qvqM85xqyRuv4y0jrKYdVwj3S1xjczEjvTMr44="
+        "thought_signature": "EmAKXgFpFH0Ti1LDbmhKaykhRfGDoylxGsmKH04lK675ojTPGEoOUfQiO+zF8mocxffovTzonXtGYKP1y3BXdQo7hdide5SMCREY9uUXWqOS1pzs/Xa3UkUU5p5QXSGqxKM="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1534,
-    "tokens_out": 19,
-    "latency_ms": 500.29,
+    "tokens_in": 1549,
+    "tokens_out": 29,
+    "latency_ms": 514.014,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -86,24 +87,25 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"query\":\"real estate agents HomeServices Berkshire Hathaway\",\"ticker\":\"BRK-A\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"query\":\"HomeServices real estate agents number employees count\",\"ticker\":\"BRK.A\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
    "content": "No results.",
-   "summary": "BRK-A real estate agents HomeServices Berkshire Hathaway",
+   "summary": "BRK.A HomeServices real estate agents number employees count",
    "count": 0,
    "items": [],
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"ticker\":\"BRK-A\"},\"name\":\"list_documents\"}",
-   "tool": "list_documents",
-   "content": "{\"documents\": []}",
-   "summary": "BRK-A documents",
+   "key": "{\"arguments\":{\"query\":\"HomeServices agents real estate\",\"ticker\":\"BRK.B\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "BRK.B HomeServices agents real estate",
    "count": 0,
    "items": [],
    "error": null
   }
  ],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 4232
 }

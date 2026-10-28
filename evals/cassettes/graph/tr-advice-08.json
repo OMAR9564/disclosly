@@ -6,13 +6,13 @@
    "key": "a5bf9ad08531ca34bdb5a6a35278c52da9a147b3d0eed35d9ee811dad30748dc",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Bu soru yatırım tavsiyesi niteliğinde olduğundan yanıtlanamamaktadır. Yatırım tavsiyesi vermemekteyiz.\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi verilmemektedir.\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1638,
-    "tokens_out": 57,
-    "latency_ms": 2705.397,
+    "tokens_in": 1652,
+    "tokens_out": 41,
+    "latency_ms": 1002.271,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,19 +21,23 @@
    "key": "58e2a1aab1d85b9fe83d5435cc8692714b6aafd25aaaa0570aceb1c9029b024a",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"tr\", \"status\": \"refused\", \"summary\": \"Yatırım tavsiyesi verilmemektedir. Bu asistan yalnızca şirket açıklamaları (KAP/SEC EDGAR) üzerindeki bilgileri sunar; alım/satım/tutma önerisi, hedef fiyat veya portföy yorumu yapmaz.\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi veremem. Garanti Bankası (GARAN) ile ilgili kamu açıklamalarındaki finansal veriler, risk bildirimleri veya stratejik açıklamalar hakkında bilgi sağlayabilirim.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1169,
-    "tokens_out": 229,
-    "latency_ms": 13243.334,
+    "tokens_out": 456,
+    "latency_ms": 15291.506,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
  "tools": [],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 16765
 }

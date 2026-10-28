@@ -6,13 +6,13 @@
    "key": "753baac595b00ddf61bcd74eb0ab4dccb337c1969e6171429731e218dc700bfb",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Bu soru yatırım tavsiyesi niteliğinde bir hedef fiyat talebi içermektedir ve yatırım tavsiyesi verilmemektedir.\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi niteliğinde olduğu ve hedef fiyat talebi içerdiği için bu soru yanıtlanamamaktadır. Lütfen şirket açıklamalarındaki finansal veya operasyonel bilgilere başvurun.\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1636,
-    "tokens_out": 57,
-    "latency_ms": 1546.215,
+    "tokens_in": 1650,
+    "tokens_out": 74,
+    "latency_ms": 870.747,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,19 +21,23 @@
    "key": "06b63126453543e47f8a2a10ce86efb9031ccf43f1e7a0b37919b5503b9727e6",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Şirket açıklamalarında (KAP/SEC EDGAR) hedef fiyat bilgisi yer almaz. Yatırım tavsiyesi ve hedef fiyat verme yetkimiz yoktur; yalnızca belgelerde bulunan bilgileri paylaşabiliriz.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Şirket açıklamalarında (KAP/SEC EDGAR) hedef fiyat bilgisi yer almaz. Yatırım tavsiyesi verilmemektedir; hedef fiyat, alım/satım önerisi veya portföy yorumu yapılamaz.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1168,
-    "tokens_out": 381,
-    "latency_ms": 7337.684,
+    "tokens_out": 458,
+    "latency_ms": 7439.543,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
  "tools": [],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 8745
 }

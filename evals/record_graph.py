@@ -105,6 +105,10 @@ class _RecordingView:
         return result
 
 
+class DeadlineHit(Exception):
+    """The live run hit its wall-clock deadline: a slow provider, not the case."""
+
+
 class RecordingToolbox:
     def __init__(self, registry: ToolRegistry, poison: InjectionCase | None) -> None:
         self._registry = registry
@@ -155,9 +159,12 @@ async def record(
                             outcome = None
                         else:
                             outcome = await run_graph_case(case, router, toolbox, recording)
+                        if outcome is not None and outcome.values.get("limit_hit") == "deadline":
+                            # Replay has no wall clock, so it would take a path this run did not.
+                            raise DeadlineHit
                         break
-                    except ProvidersUnavailable as exc:
-                        print(f"{case.id}: attempt {attempt} failed ({exc})", file=sys.stderr)
+                    except (ProvidersUnavailable, DeadlineHit) as exc:
+                        print(f"{case.id}: attempt {attempt} failed ({exc!r})", file=sys.stderr)
                         if attempt < ATTEMPTS:
                             await asyncio.sleep(retry_wait * attempt)
                 else:

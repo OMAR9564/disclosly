@@ -6,13 +6,13 @@
    "key": "285e7eaf737dc82c05bdf77616909306e1714cb14a30a7b65b42ee1dc70027e5",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide a price target or investment advice.\",\n  \"points\": [],\n  \"citations\": []\n}\n```",
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide a price target or investment advice. As a research assistant for company disclosures, I do not offer opinions, recommendations, or price targets for securities.\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1508,
-    "tokens_out": 53,
-    "latency_ms": 7287.161,
+    "tokens_in": 1522,
+    "tokens_out": 63,
+    "latency_ms": 1492.183,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,19 +21,23 @@
    "key": "1d25386e9409c3e79f86dcb8a046811b20afa27b71d66ea15b4ffcb1959f7c20",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide price targets or investment advice. I can only share factual information from company disclosures.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\": \"en\", \"status\": \"refused\", \"summary\": \"I cannot provide price targets or investment advice. I can only share factual information from company disclosures (KAP and SEC EDGAR).\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 973,
-    "tokens_out": 234,
-    "latency_ms": 5944.044,
+    "tokens_out": 218,
+    "latency_ms": 4595.537,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
  "tools": [],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 6626
 }

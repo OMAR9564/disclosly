@@ -3,92 +3,82 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "34daddda4df824462e9df7e84f760257369a4fac174c9818208f81317005346b",
+   "key": "bc5473b1fd6bb3f93514f1adb7edb31caffbd636144fc9ffffba6f20e94fb171",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"MSFT\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 933,
+    "tokens_in": 943,
     "tokens_out": 76,
-    "latency_ms": 1241.544,
+    "latency_ms": 961.996,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "156e91b798fa4bd99d08e2bdcc707ed58db5f24dabd5378ca038fbf7eb0958e3",
+   "key": "57c6ad1580735fc8a17e5fed44397f70321c501cbd1d80ed24ecbcad34835c75",
    "task_class": "cheap",
    "response": {
     "content": null,
     "tool_calls": [
      {
-      "id": "call_1997182",
-      "name": "list_documents",
-      "arguments": {
-       "ticker": "MSFT"
-      },
-      "extra": {
-       "google": {
-        "thought_signature": "EmAKXgFpFH0TnJh9CDLh+myoXIzYfmsgSzDCF41IotIZrvnVQW8bhdhuTrztcxA/k5EnwhHHuKUWpXU6oxe8Py46m2OZweCBbQO9MsnttNlajYgemtnjX3omhEvJ6V5u8kk="
-       }
-      }
-     }
-    ],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1705,
-    "tokens_out": 17,
-    "latency_ms": 829.766,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "7a86446e17005124bc24d0646aa72c4105c9a8285efedfa9c57b4435faee079a",
-   "task_class": "cheap",
-   "response": {
-    "content": null,
-    "tool_calls": [
-     {
-      "id": "call_1969106",
+      "id": "call_4603374",
       "name": "search_documents",
       "arguments": {
-       "query": "Productivity and Business Processes revenue fiscal 2025",
        "period_from": "2025-FY",
-       "period_to": "2025-FY",
-       "ticker": "MSFT"
+       "query": "Productivity and Business Processes revenue fiscal 2025 growth",
+       "ticker": "MSFT",
+       "period_to": "2025-FY"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0T5Tm3Rwf8HbF4yHDJvd+RtSvvfyabqZj68YqmhFQCpEA+8FEdq/XunDaASUFnMs/tgOvRNI+nkjEGtUZxxpXVCz8g6gn0IEq1QqXUjZy1n/qHuFQcn4a37rE="
+        "thought_signature": "EmAKXgFpFH0T7HLpSO8da3UbOqUCI28Xoto7BaqrFYgNQv5J8NPBJ9zHWPOLRnk7dlcGf/LrKUY7goxhy9wsN3S25KSfzGwGNVDlpVzPbRs8bPneOgeeLVjjgQM9hmYw9Ks="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 2817,
-    "tokens_out": 60,
-    "latency_ms": 768.726,
+    "tokens_in": 1828,
+    "tokens_out": 61,
+    "latency_ms": 516.337,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "f6b43357d4a73e4a2c14ebb0452099cbda0a7cff70d26e4bc5f2af3029722d03",
+   "key": "422f323c89c387579fa3159217d49157fbe2c134d3085b8e8f65662d153559a0",
+   "task_class": "cheap",
+   "response": {
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In fiscal 2025, Microsoft's Productivity and Business Processes revenue increased by $14.0 billion or 13% compared to fiscal 2024 [c:49d320aa0c49b7246089d7a795b298d3886d39a17bf8a9b15859145821acf276].\",\n  \"points\": [\n    {\n      \"text\": \"Productivity and Business Processes revenue increased $14.0 billion or 13% in fiscal 2025 compared with fiscal 2024.\",\n      \"cite_ids\": [\n        \"c:49d320aa0c49b7246089d7a795b298d3886d39a17bf8a9b15859145821acf276\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:49d320aa0c49b7246089d7a795b298d3886d39a17bf8a9b15859145821acf276\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 4128,
+    "tokens_out": 377,
+    "latency_ms": 1725.8,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "2fa2e820f5386a5a0e21b95bfa6786e00da7e73dc5068332231e88f47c0b80dd",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"en\", \"status\": \"completed\", \"summary\": \"Microsoft's Productivity and Business Processes revenue grew by $14.0 billion, or 13%, in fiscal year 2025 compared to fiscal year 2024.\", \"points\": [{\"text\": \"Productivity and Business Processes revenue increased $14.0 billion or 13% in fiscal 2025 versus fiscal 2024.\", \"cite_ids\": [\"c:2979cc91a3aa70b35643ed3c607b2c6d4f811d52fbf94de0408848a5339beca1\", \"c:d8455ac8b882c093c974c8f2e078a54a0663fcfb90f49324b1d4a2034052621a\"]}], \"citations\": [{\"marker\": 1, \"cite_id\": \"c:2979cc91a3aa70b35643ed3c607b2c6d4f811d52fbf94de0408848a5339beca1\"}, {\"marker\": 2, \"cite_id\": \"c:d8455ac8b882c093c974c8f2e078a54a0663fcfb90f49324b1d4a2034052621a\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Microsoft's Productivity and Business Processes revenue grew by $14.0 billion, or 13%, in fiscal year 2025 compared to fiscal year 2024.\",\n  \"points\": [\n    {\n      \"text\": \"Productivity and Business Processes revenue increased by $14.0 billion in fiscal 2025 versus fiscal 2024.\",\n      \"cite_ids\": [\"c:49d320aa0c49b7246089d7a795b298d3886d39a17bf8a9b15859145821acf276\"]\n    },\n    {\n      \"text\": \"This represents a 13% year-over-year growth rate for the segment.\",\n      \"cite_ids\": [\"c:49d320aa0c49b7246089d7a795b298d3886d39a17bf8a9b15859145821acf276\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:49d320aa0c49b7246089d7a795b298d3886d39a17bf8a9b15859145821acf276\"\n    }\n  ],\n  \"disclaimer\": \"Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 4955,
-    "tokens_out": 790,
-    "latency_ms": 47477.942,
+    "tokens_in": 3535,
+    "tokens_out": 665,
+    "latency_ms": 26935.14,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
@@ -96,9 +86,9 @@
   {
    "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"MSFT\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:321\">Revenue (2025-FY): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3725\">Revenue (2025-FY): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:322\">Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3726\">Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD</untrusted_document>",
+   "content": "<untrusted_document cite_id=\"f:321\">Revenue (2025-FY): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3725\">Revenue (2025-FY): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18514\">Revenue (2025-FY): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:322\">Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3726\">Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18515\">Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD</untrusted_document>",
    "summary": "MSFT 2025-FY revenue",
-   "count": 4,
+   "count": 6,
    "items": [
     {
      "cite_id": "f:321",
@@ -125,6 +115,25 @@
      "source": {
       "kind": "fact",
       "document_id": 2336,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000950170-25-100235",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
+     },
+     "value": "281724000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:18514",
+     "text": "Revenue (2025-FY): 281,724,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3273,
       "ticker": "MSFT",
       "doc_type": "10-K",
       "period": "2025-FY",
@@ -175,32 +184,42 @@
      "value": "281724000000",
      "scale": "1",
      "unit_note": null
+    },
+    {
+     "cite_id": "f:18515",
+     "text": "Revenue (2025-FY; 2026-FY report): 281,724,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3269,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001193125-26-323660",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm"
+     },
+     "value": "281724000000",
+     "scale": "1",
+     "unit_note": null
     }
    ],
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"ticker\":\"MSFT\"},\"name\":\"list_documents\"}",
-   "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3116, \"ticker\": \"MSFT\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-07-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm\"}, {\"document_id\": 3117, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm\"}, {\"document_id\": 3118, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2026-01-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312526027207/msft-20251231.htm\"}, {\"document_id\": 3119, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm\"}, {\"document_id\": 3120, \"ticker\": \"MSFT\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-07-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm\"}, {\"document_id\": 3121, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017025061046/msft-20250331.htm\"}, {\"document_id\": 3122, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2025-01-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017025010491/msft-20241231.htm\"}, {\"document_id\": 3123, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017024118967/msft-20240930.htm\"}]}",
-   "summary": "MSFT documents",
-   "count": 8,
-   "items": [],
-   "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"period_from\":\"2025-FY\",\"period_to\":\"2025-FY\",\"query\":\"Productivity and Business Processes revenue fiscal 2025\",\"ticker\":\"MSFT\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"period_from\":\"2025-FY\",\"period_to\":\"2025-FY\",\"query\":\"Productivity and Business Processes revenue fiscal 2025 growth\",\"ticker\":\"MSFT\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
-   "content": "<untrusted_document cite_id=\"c:2979cc91a3aa70b35643ed3c607b2c6d4f811d52fbf94de0408848a5339beca1\" amounts_in=\"millions\">Reportable Segments Fiscal Year 2025 Compared with Fiscal Year 2024 Productivity and Business Processes Revenue increased $14.0 billion or 13%. Microsoft 365 Commercial products and cloud services revenue increased $10.8 billion or 14%. Microsoft 365 Commercial cloud revenue grew 15% with Microsoft 365 Commercial seat growth of 6% driven by small and medium businesses and frontline worker offerings, as well as growth in revenue per user. Microsoft 365 Commercial products revenue grew 7% driven by the Windows Commercial on-premises components of Microsoft 365 suite sales and an increase in Office transactional purchasing with the launch of Office 2024. Microsoft 365 Consumer products and cloud services revenue increased $756 million or 11%. Microsoft 365 Consumer cloud revenue grew 11% driven by Microsoft 365 Consumer subscriber growth of 8% to 89.0 million, as well as growth in revenue per user from the price increase announced in January 2025. LinkedIn revenue increased $1.4 billion or 9% with growth across all lines of business. Dynamics products and cloud services revenue increased $996 million or 15% driven by growth in Dynamics 365, offset in part by a decline in Dynamics on-premises products. Dynamics 365 revenue grew 19% with growth across all workloads. Operating income increased $10.1 billion or 17%. Cost of revenue increased $2.8 billion or 14% driven by growth in Microsoft 365 Commercial cloud. Gross margin increased $11.2 billion or 13% driven by growth in Microsoft 365 Commercial cloud. Gross margin percentage decreased slightly primarily driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Microsoft 365 Commercial cloud. Operating expenses increased $1.1 billion or 4% driven by investments in cloud and AI engineering and commercial sales. 39 PART II Item 7 Intelligent Cloud Revenue increased $18.8 billion or 21%. Server products and cloud services revenue increased $18.6 billion or 23% driven by Azure and other cloud services. Azure and other cloud services revenue grew 34% driven by demand for our portfolio of services. Server products revenue decreased 3% driven by a decrease in transactional purchasing with continued customer shift to cloud offerings. Enterprise and partner services revenue increased $166 million or 2% driven by growth in Enterprise Support Services, offset in part by a decline in Industry Solutions. Operating income increased $6.8 billion or 18%. Cost of revenue increased $10.6 billion or 36% driven by growth in Azure. Gross margin increased $8.2 billion or 14% driven by growth in Azure. Gross margin percentage decreased driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure. Operating expenses increased $1.5 billion or 7% driven by investments in cloud and AI engineering. More Personal Computing Revenue increased $3.8 billion or 7%.</untrusted_document>\n<untrusted_document cite_id=\"c:08afb328fc9088419a09db8adfcd16cffbc8523ef723d172e34951781e6ae246\" amounts_in=\"millions\">Fiscal Year 2025 Compared with Fiscal Year 2024 Revenue increased $36.6 billion or 15% with growth across each of our segments. Intelligent Cloud revenue increased driven by Azure. Productivity and Business Processes revenue increased driven by Microsoft 365 Commercial cloud. More Personal Computing revenue increased driven by Gaming and Search and news advertising. Cost of revenue increased $13.7 billion or 19% driven by growth in Microsoft Cloud. Gross margin increased $22.9 billion or 13% with growth across each of our segments. Gross margin percentage decreased slightly driven by Intelligent Cloud, offset in part by More Personal Computing. Microsoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure. Operating expenses increased $3.8 billion or 6% driven by investments in cloud and AI engineering and Gaming, including the impact of the Activision Blizzard acquisition. Operating income increased $19.1 billion or 17% with growth across each of our segments. 38 PART II Item 7 SEGMENT RESULTS OF OPERATIONS</untrusted_document>\n<untrusted_document cite_id=\"c:d8455ac8b882c093c974c8f2e078a54a0663fcfb90f49324b1d4a2034052621a\" amounts_in=\"millions\">83 PART II Item 8 Segment revenue, cost of revenue, operating expenses, and operating income were as follows during the periods presented: (In millions) Year Ended June 30, 2025 2024 2023 Productivity and Business Processes Revenue $ 120,810 $ 106,820 $ 94,151 Cost of revenue 22,422 19,611 17,202 Operating expenses 28,615 27,548 26,875 Operating Income $ 69,773 $ 59,661 $ 50,074 Intelligent Cloud Revenue $ 106,265 $ 87,464 $ 72,944 Cost of revenue 40,171 29,611 24,109 Operating expenses 21,505 20,040 20,424 Operating Income $ 44,589 $ 37,813 $ 28,411 More Personal Computing Revenue $ 54,649 $ 50,838 $ 44,820 Cost of revenue 25,238 24,892 24,552 Operating expenses 15,245 13,987 10,230 Operating Income $ 14,166 $ 11,959 $ 10,038 Total Revenue $ 281,724 $ 245,122 $ 211,915 Cost of revenue 87,831 74,114 65,863 Operating expenses 65,365 61,575 57,529 Operating Income $ 128,528 $ 109,433 $ 88,523 No sales to an individual customer or country other than the United States accounted for more than 10% of revenue for fiscal years 2025, 2024, or 2023. Revenue, classified by the major geographic areas in which our customers were located, was as follows: (In millions) Year Ended June 30, 2025 2024 2023 United States (a) $ 144,546 $ 124,704 $ 106,744 Other countries 137,178 120,418 105,171 Total $ 281,724 $ 245,122 $ 211,915 (a) Includes billings to OEMs and certain multinational organizations because of the nature of these businesses and the impracticability of determining the geographic source of the revenue. 84 PART II Item 8 Revenue, classified by significant product and service offerings, was as follows:</untrusted_document>\n<untrusted_document cite_id=\"c:530e53de2743da19dddda97b5d232066761f4f63f6c858fca70ac4d8ebd9780f\" amounts_in=\"millions\">The weighted average grant-date fair value of stock awards granted was $ 413.90 , $ 339.46 , and $ 252.59 for fiscal years 2025, 2024, and 2023, respectively. The fair value of stock awards vested was $ 16.2 billion, $ 16.0 billion, and $ 11.9 billion, for fiscal years 2025, 2024, and 2023, respectively. As of June 30, 2025, an aggregate of 98 million shares were authorized for future grant under our stock plans. 81 PART II Item 8 Employee Stock Purchase Plan We have an ESPP for all eligible employees. Shares of our common stock may be purchased by employees at three-month intervals at 90 % of the fair market value on the last trading day of each three-month period. Employees may purchase shares having a value not exceeding 15 % of their gross compensation during an offering period. Employees purchased the following shares during the periods presented: (Shares in millions) Year Ended June 30, 2025 2024 2023 Shares purchased 6 6 7 Average price per share $ 385.10 $ 339.46 $ 245.59 As of June 30, 2025, 62 million shares of our common stock were reserved for future issuance through the ESPP. Savings Plans We have savings plans in the U.S. that qualify under Section 401(k) of the Internal Revenue Code, and a number of savings plans in international locations. Eligible U.S. employees may contribute a portion of their salary into the savings plans, subject to certain limitations. We match a portion of each dollar a participant contributes into the plans. Employer-funded retirement benefits for all plans were $ 1.8 billion, $ 1.7 billion, and $ 1.6 billion in fiscal years 2025, 2024, and 2023, respectively, and were expensed as contributed. NOTE 18 — SEGMENT INFORMATION AND GEOGRAPHIC DATA In its operation of the business, management, including our chief operating decision maker (“CODM”), who is also our Chief Executive Officer , reviews certain financial information, including segmented internal profit and loss statements. The primary profitability measure used by the CODM to review segment operating results is operating income. The CODM uses operating income to allocate resources during our annual planning process and throughout the year, as well as to assess the performance of our segments, primarily by monitoring actual results compared to prior periods and expected results. During the periods presented, we reported our financial performance based on the following segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.</untrusted_document>\n<untrusted_document cite_id=\"c:a1d1d41ef3541db45a5ea551bb279b3a17736ee692e56ba6d482b632009a4712\">Extended disruptions at these suppliers could impact our ability to manufacture devices on time to meet consumer demand. Our success is highly dependent on our ability to attract and retain qualified employees. We hire a mix of university and industry talent worldwide. We compete for talented individuals globally by offering an exceptional working environment, broad customer reach, scale in resources, the ability to grow one’s career across many different products and businesses, and competitive compensation and benefits. Our international operations provide a significant portion of our total revenue and expenses. Many of these revenue and expenses are denominated in currencies other than the U.S. dollar. As a result, changes in foreign exchange rates may significantly affect revenue and expenses. Fluctuations in the U.S. dollar relative to certain foreign currencies did not have a material impact on reported revenue and expenses from our international operations in fiscal year 2025. Further, global, regional, and local economic developments and changes in global trade policies such as restrictions on international trade, including tariffs and other controls on imports or exports, could result in increased supply chain challenges, cost volatility, and consumer and economic uncertainty which may adversely affect our results of operations. Refer to Risk Factors (Part I, Item 1A of this Form 10-K) for a discussion of these factors and other risks. Seasonality Our revenue fluctuates quarterly and is generally higher in the fourth quarter of our fiscal year. Fourth quarter revenue is driven by a higher volume of multi-year contracts executed during the period. Reportable Segments We report our financial performance based on the following segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. The segment amounts included in MD&A are presented on a basis consistent with our internal management reporting. In August 2024, we announced changes to the composition of our segments. These changes align our segments with how we currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the Productivity and Business Processes segment. Beginning in fiscal year 2025, the information that our chief operating decision maker is regularly provided and reviews for purposes of allocating resources and assessing performance reflects these segment changes. Prior period segment information has been recast to conform to the way we internally manage and monitor our business during fiscal year 2025. Additional information on our reportable segments is contained in Note 18 – Segment Information and Geographic Data of the Notes to Financial Statements (Part II, Item 8 of this Form 10-K). 36 PART II Item 7 Metrics We use metrics in assessing the performance of our business and to make informed decisions regarding the allocation of resources.</untrusted_document>\n<untrusted_document cite_id=\"c:016d014303c8a1388480029bc25991cd09412184553212dd83da3c5dd8674eaf\">Industry Trends and Opportunities Our industry is dynamic and highly competitive, with frequent changes in both technologies and business models. Each industry shift is an opportunity to conceive new products, new technologies, or new ideas that can further transform the industry and our business. At Microsoft, we push the boundaries of what is possible through a broad range of research and development activities that seek to identify and address the changing demands of customers and users, industry trends, and competitive forces. Microsoft and OpenAI maintain a long-term strategic partnership originally established in 2019. Microsoft is a major investor in OpenAI, and the companies have reciprocal revenue-sharing arrangements. We hold rights to OpenAI’s intellectual property, including models and infrastructure, for integration into our products. The OpenAI API is exclusive to Azure, runs on Azure, and is available through the Azure OpenAI Service. We also have a right of first refusal on OpenAI's new capacity needs. 35 PART II Item 7 Economic Conditions, Challenges, and Risks The markets for software, devices, and cloud-based services are dynamic and highly competitive. Our competitors are developing new software and devices, while also deploying competing cloud-based services for consumers and businesses. The devices and form factors customers prefer evolve rapidly, influencing how users access services in the cloud and, in some cases, the user’s choice of which suite of cloud-based services to use. Aggregate demand for our software, services, and devices is also correlated to global macroeconomic and geopolitical factors, which remain dynamic. We must continue to evolve and adapt over an extended time in pace with this changing environment. The investments we are making in cloud and AI infrastructure and devices will continue to increase our operating costs and may decrease our operating margins. We continue to identify and evaluate opportunities to expand our datacenter locations and increase our server capacity to meet the evolving needs of our customers, particularly given the growing demand for AI services. Our datacenters depend on the availability of permitted and buildable land, predictable energy, networking supplies, and servers, including graphics processing units (“GPUs”) and other components. Our devices are primarily manufactured by third-party contract manufacturers. For the majority of our products, we have the ability to use other manufacturers if a current vendor becomes unavailable or unable to meet our requirements. However, some of our products contain certain components for which there are very few qualified suppliers. Extended disruptions at these suppliers could impact our ability to manufacture devices on time to meet consumer demand. Our success is highly dependent on our ability to attract and retain qualified employees. We hire a mix of university and industry talent worldwide.</untrusted_document>",
-   "summary": "MSFT Productivity and Business Processes revenue fiscal 2025",
+   "content": "<untrusted_document cite_id=\"c:49d320aa0c49b7246089d7a795b298d3886d39a17bf8a9b15859145821acf276\" amounts_in=\"millions\">Reportable Segments Fiscal Year 2025 Compared with Fiscal Year 2024 Productivity and Business Processes Revenue increased $14.0 billion or 13%. Microsoft 365 Commercial products and cloud services revenue increased $10.8 billion or 14%. Microsoft 365 Commercial cloud revenue grew 15% with Microsoft 365 Commercial seat growth of 6% driven by small and medium businesses and frontline worker offerings, as well as growth in revenue per user. Microsoft 365 Commercial products revenue grew 7% driven by the Windows Commercial on-premises components of Microsoft 365 suite sales and an increase in Office transactional purchasing with the launch of Office 2024. Microsoft 365 Consumer products and cloud services revenue increased $756 million or 11%. Microsoft 365 Consumer cloud revenue grew 11% driven by Microsoft 365 Consumer subscriber growth of 8% to 89.0 million, as well as growth in revenue per user from the price increase announced in January 2025. LinkedIn revenue increased $1.4 billion or 9% with growth across all lines of business. Dynamics products and cloud services revenue increased $996 million or 15% driven by growth in Dynamics 365, offset in part by a decline in Dynamics on-premises products. Dynamics 365 revenue grew 19% with growth across all workloads. Operating income increased $10.1 billion or 17%. Cost of revenue increased $2.8 billion or 14% driven by growth in Microsoft 365 Commercial cloud. Gross margin increased $11.2 billion or 13% driven by growth in Microsoft 365 Commercial cloud. Gross margin percentage decreased slightly primarily driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Microsoft 365 Commercial cloud. Operating expenses increased $1.1 billion or 4% driven by investments in cloud and AI engineering and commercial sales. 39 PART II Item 7 Intelligent Cloud Revenue increased $18.8 billion or 21%. Server products and cloud services revenue increased $18.6 billion or 23% driven by Azure and other cloud services. Azure and other cloud services revenue grew 34% driven by demand for our portfolio of services. Server products revenue decreased 3% driven by a decrease in transactional purchasing with continued customer shift to cloud offerings. Enterprise and partner services revenue increased $166 million or 2% driven by growth in Enterprise Support Services, offset in part by a decline in Industry Solutions. Operating income increased $6.8 billion or 18%. Cost of revenue increased $10.6 billion or 36% driven by growth in Azure. Gross margin increased $8.2 billion or 14% driven by growth in Azure. Gross margin percentage decreased driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure. Operating expenses increased $1.5 billion or 7% driven by investments in cloud and AI engineering. More Personal Computing Revenue increased $3.8 billion or 7%.</untrusted_document>\n<untrusted_document cite_id=\"c:e49751799bc5a96ecae01246f19fe4d82781968090f18f7b4b60c4b8b473075d\" amounts_in=\"millions\">Fiscal Year 2025 Compared with Fiscal Year 2024 Revenue increased $36.6 billion or 15% with growth across each of our segments. Intelligent Cloud revenue increased driven by Azure. Productivity and Business Processes revenue increased driven by Microsoft 365 Commercial cloud. More Personal Computing revenue increased driven by Gaming and Search and news advertising. Cost of revenue increased $13.7 billion or 19% driven by growth in Microsoft Cloud. Gross margin increased $22.9 billion or 13% with growth across each of our segments. Gross margin percentage decreased slightly driven by Intelligent Cloud, offset in part by More Personal Computing. Microsoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure. Operating expenses increased $3.8 billion or 6% driven by investments in cloud and AI engineering and Gaming, including the impact of the Activision Blizzard acquisition. Operating income increased $19.1 billion or 17% with growth across each of our segments. 38 PART II Item 7 SEGMENT RESULTS OF OPERATIONS</untrusted_document>\n<untrusted_document cite_id=\"c:029d6304224a9aee48e283def3558e5ba5d61c766ff489222ee4f0416ea5d81e\" amounts_in=\"millions\">(In millions) |  | \nYear Ended June 30, | 2025 | 2024\nInterest and dividends income | 2,647 | 3,157\nInterest expense | (2,385 | (2,935\nNet recognized losses on investments | (349 | (118\nNet losses on derivatives | (260 | (187\nNet gains (losses) on foreign currency remeasurements | 171 | (244\nOther, net | (4,725 | (1,319\nTotal | (4,901 | (1,646</untrusted_document>\n<untrusted_document cite_id=\"c:03f0dcb524aea4ca22dbbfc2244a566f821cc174bc5939bfefa5d676351e43ab\" amounts_in=\"millions\">This segment primarily comprises: • Windows and Devices, including Windows OEM licensing (Windows Pro and non-Pro licenses sold through the OEM channel) and Devices, comprising Surface and PC accessories. • Gaming, including Xbox hardware and Xbox content and services, comprising first- and third-party content (including games and in-game content), Xbox Game Pass and other subscriptions, Xbox Cloud Gaming, advertising, and other cloud services. • Search and news advertising, comprising Bing and Copilot, Microsoft News, Microsoft Edge, and third-party affiliates. Revenue and costs are generally directly attributed to our segments. However, due to the integrated structure of our business, certain revenue recognized and costs incurred by one segment may benefit other segments. Revenue from certain contracts is allocated among the segments based on the relative value of the underlying products and services, which can include allocation based on actual prices charged, prices when sold separately, or estimated costs plus a profit margin. Cost of revenue is allocated in certain cases based on a relative revenue methodology. Operating expenses that are allocated primarily include those relating to marketing of products and services from which multiple segments benefit and are generally allocated based on relative gross margin. In addition, certain costs are incurred at a corporate level and allocated to our segments. These allocated costs generally include legal, including settlements and fines, information technology, human resources, finance, excise taxes, field selling, shared facilities services, customer service and support, and severance incurred as part of a corporate program. Each allocation is measured differently based on the specific facts and circumstances of the costs being allocated and is generally based on relative gross margin or relative headcount. 83 PART II Item 8 Segment revenue, cost of revenue, operating expenses, and operating income were as follows during the periods presented:</untrusted_document>\n<untrusted_document cite_id=\"c:023b80b0b906e758a544239ff17050cfe3818761515fec18a665639c4f22707d\">A list of our executive officers and biographical information appears in Part I, Item 1 of this Form 10-K. Information about our directors may be found under the caption “Our Director Nominees” in our Proxy Statement for the Annual Meeting of Shareholders to be held December 5, 2025 (the “Proxy Statement”). Information about our Audit Committee may be found under the caption “Board Committees” in the Proxy Statement. Information about our trading policies and procedures can be found under the caption “Insider Trading Policies and Procedures” in the Proxy Statement. That information is incorporated herein by reference. We have adopted the Microsoft Finance Code of Professional Conduct (the “finance code of ethics”), a code of ethics that applies to our Chief Executive Officer, Chief Financial Officer, Chief Accounting Officer, and other finance organization employees. The finance code of ethics is publicly available on our website at https://aka.ms/FinanceCodeProfessionalConduct . If we make any substantive amendments to the finance code of ethics or grant any waiver, including any implicit waiver, from a provision of the code to our Chief Executive Officer, Chief Financial Officer, or Chief Accounting Officer, we will disclose the nature of the amendment or waiver on that website or in a report on Form 8-K. We will provide disclosure of delinquent Section 16(a) reports, if any, in our Proxy Statement under the caption “Delinquent Section 16(a) Reports,” and such disclosure, if any, is incorporated herein by reference.</untrusted_document>\n<untrusted_document cite_id=\"c:02d7573c47a7dc65832f6055159d9583c18ad2834644898fd55c9dac63908d37\">Large Accelerated Filer ☒ | Accelerated Filer ☐\nNon-accelerated Filer ☐ | Smaller Reporting Company ☐\n | Emerging Growth Company ☐</untrusted_document>",
+   "summary": "MSFT Productivity and Business Processes revenue fiscal 2025 growth",
    "count": 6,
    "items": [
     {
-     "cite_id": "c:2979cc91a3aa70b35643ed3c607b2c6d4f811d52fbf94de0408848a5339beca1",
+     "cite_id": "c:49d320aa0c49b7246089d7a795b298d3886d39a17bf8a9b15859145821acf276",
      "text": "Reportable Segments Fiscal Year 2025 Compared with Fiscal Year 2024 Productivity and Business Processes Revenue increased $14.0 billion or 13%. Microsoft 365 Commercial products and cloud services revenue increased $10.8 billion or 14%. Microsoft 365 Commercial cloud revenue grew 15% with Microsoft 365 Commercial seat growth of 6% driven by small and medium businesses and frontline worker offerings, as well as growth in revenue per user. Microsoft 365 Commercial products revenue grew 7% driven by the Windows Commercial on-premises components of Microsoft 365 suite sales and an increase in Office transactional purchasing with the launch of Office 2024. Microsoft 365 Consumer products and cloud services revenue increased $756 million or 11%. Microsoft 365 Consumer cloud revenue grew 11% driven by Microsoft 365 Consumer subscriber growth of 8% to 89.0 million, as well as growth in revenue per user from the price increase announced in January 2025. LinkedIn revenue increased $1.4 billion or 9% with growth across all lines of business. Dynamics products and cloud services revenue increased $996 million or 15% driven by growth in Dynamics 365, offset in part by a decline in Dynamics on-premises products. Dynamics 365 revenue grew 19% with growth across all workloads. Operating income increased $10.1 billion or 17%. Cost of revenue increased $2.8 billion or 14% driven by growth in Microsoft 365 Commercial cloud. Gross margin increased $11.2 billion or 13% driven by growth in Microsoft 365 Commercial cloud. Gross margin percentage decreased slightly primarily driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Microsoft 365 Commercial cloud. Operating expenses increased $1.1 billion or 4% driven by investments in cloud and AI engineering and commercial sales. 39 PART II Item 7 Intelligent Cloud Revenue increased $18.8 billion or 21%. Server products and cloud services revenue increased $18.6 billion or 23% driven by Azure and other cloud services. Azure and other cloud services revenue grew 34% driven by demand for our portfolio of services. Server products revenue decreased 3% driven by a decrease in transactional purchasing with continued customer shift to cloud offerings. Enterprise and partner services revenue increased $166 million or 2% driven by growth in Enterprise Support Services, offset in part by a decline in Industry Solutions. Operating income increased $6.8 billion or 18%. Cost of revenue increased $10.6 billion or 36% driven by growth in Azure. Gross margin increased $8.2 billion or 14% driven by growth in Azure. Gross margin percentage decreased driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure. Operating expenses increased $1.5 billion or 7% driven by investments in cloud and AI engineering. More Personal Computing Revenue increased $3.8 billion or 7%.",
      "source": {
       "kind": "chunk",
-      "document_id": 3120,
+      "document_id": 3594,
       "ticker": "MSFT",
       "doc_type": "10-K",
       "period": "2025-FY",
@@ -213,11 +232,11 @@
      "unit_note": "millions"
     },
     {
-     "cite_id": "c:08afb328fc9088419a09db8adfcd16cffbc8523ef723d172e34951781e6ae246",
+     "cite_id": "c:e49751799bc5a96ecae01246f19fe4d82781968090f18f7b4b60c4b8b473075d",
      "text": "Fiscal Year 2025 Compared with Fiscal Year 2024 Revenue increased $36.6 billion or 15% with growth across each of our segments. Intelligent Cloud revenue increased driven by Azure. Productivity and Business Processes revenue increased driven by Microsoft 365 Commercial cloud. More Personal Computing revenue increased driven by Gaming and Search and news advertising. Cost of revenue increased $13.7 billion or 19% driven by growth in Microsoft Cloud. Gross margin increased $22.9 billion or 13% with growth across each of our segments. Gross margin percentage decreased slightly driven by Intelligent Cloud, offset in part by More Personal Computing. Microsoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI infrastructure, offset in part by efficiency gains in Azure. Operating expenses increased $3.8 billion or 6% driven by investments in cloud and AI engineering and Gaming, including the impact of the Activision Blizzard acquisition. Operating income increased $19.1 billion or 17% with growth across each of our segments. 38 PART II Item 7 SEGMENT RESULTS OF OPERATIONS",
      "source": {
       "kind": "chunk",
-      "document_id": 3120,
+      "document_id": 3594,
       "ticker": "MSFT",
       "doc_type": "10-K",
       "period": "2025-FY",
@@ -230,49 +249,49 @@
      "unit_note": "millions"
     },
     {
-     "cite_id": "c:d8455ac8b882c093c974c8f2e078a54a0663fcfb90f49324b1d4a2034052621a",
-     "text": "83 PART II Item 8 Segment revenue, cost of revenue, operating expenses, and operating income were as follows during the periods presented: (In millions) Year Ended June 30, 2025 2024 2023 Productivity and Business Processes Revenue $ 120,810 $ 106,820 $ 94,151 Cost of revenue 22,422 19,611 17,202 Operating expenses 28,615 27,548 26,875 Operating Income $ 69,773 $ 59,661 $ 50,074 Intelligent Cloud Revenue $ 106,265 $ 87,464 $ 72,944 Cost of revenue 40,171 29,611 24,109 Operating expenses 21,505 20,040 20,424 Operating Income $ 44,589 $ 37,813 $ 28,411 More Personal Computing Revenue $ 54,649 $ 50,838 $ 44,820 Cost of revenue 25,238 24,892 24,552 Operating expenses 15,245 13,987 10,230 Operating Income $ 14,166 $ 11,959 $ 10,038 Total Revenue $ 281,724 $ 245,122 $ 211,915 Cost of revenue 87,831 74,114 65,863 Operating expenses 65,365 61,575 57,529 Operating Income $ 128,528 $ 109,433 $ 88,523 No sales to an individual customer or country other than the United States accounted for more than 10% of revenue for fiscal years 2025, 2024, or 2023. Revenue, classified by the major geographic areas in which our customers were located, was as follows: (In millions) Year Ended June 30, 2025 2024 2023 United States (a) $ 144,546 $ 124,704 $ 106,744 Other countries 137,178 120,418 105,171 Total $ 281,724 $ 245,122 $ 211,915 (a) Includes billings to OEMs and certain multinational organizations because of the nature of these businesses and the impracticability of determining the geographic source of the revenue. 84 PART II Item 8 Revenue, classified by significant product and service offerings, was as follows:",
+     "cite_id": "c:029d6304224a9aee48e283def3558e5ba5d61c766ff489222ee4f0416ea5d81e",
+     "text": "(In millions) |  | \nYear Ended June 30, | 2025 | 2024\nInterest and dividends income | 2,647 | 3,157\nInterest expense | (2,385 | (2,935\nNet recognized losses on investments | (349 | (118\nNet losses on derivatives | (260 | (187\nNet gains (losses) on foreign currency remeasurements | 171 | (244\nOther, net | (4,725 | (1,319\nTotal | (4,901 | (1,646",
      "source": {
       "kind": "chunk",
-      "document_id": 3120,
-      "ticker": "MSFT",
-      "doc_type": "10-K",
-      "period": "2025-FY",
-      "section": "Item 8",
-      "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
-     },
-     "value": null,
-     "scale": "1000000",
-     "unit_note": "millions"
-    },
-    {
-     "cite_id": "c:530e53de2743da19dddda97b5d232066761f4f63f6c858fca70ac4d8ebd9780f",
-     "text": "The weighted average grant-date fair value of stock awards granted was $ 413.90 , $ 339.46 , and $ 252.59 for fiscal years 2025, 2024, and 2023, respectively. The fair value of stock awards vested was $ 16.2 billion, $ 16.0 billion, and $ 11.9 billion, for fiscal years 2025, 2024, and 2023, respectively. As of June 30, 2025, an aggregate of 98 million shares were authorized for future grant under our stock plans. 81 PART II Item 8 Employee Stock Purchase Plan We have an ESPP for all eligible employees. Shares of our common stock may be purchased by employees at three-month intervals at 90 % of the fair market value on the last trading day of each three-month period. Employees may purchase shares having a value not exceeding 15 % of their gross compensation during an offering period. Employees purchased the following shares during the periods presented: (Shares in millions) Year Ended June 30, 2025 2024 2023 Shares purchased 6 6 7 Average price per share $ 385.10 $ 339.46 $ 245.59 As of June 30, 2025, 62 million shares of our common stock were reserved for future issuance through the ESPP. Savings Plans We have savings plans in the U.S. that qualify under Section 401(k) of the Internal Revenue Code, and a number of savings plans in international locations. Eligible U.S. employees may contribute a portion of their salary into the savings plans, subject to certain limitations. We match a portion of each dollar a participant contributes into the plans. Employer-funded retirement benefits for all plans were $ 1.8 billion, $ 1.7 billion, and $ 1.6 billion in fiscal years 2025, 2024, and 2023, respectively, and were expensed as contributed. NOTE 18 — SEGMENT INFORMATION AND GEOGRAPHIC DATA In its operation of the business, management, including our chief operating decision maker (“CODM”), who is also our Chief Executive Officer , reviews certain financial information, including segmented internal profit and loss statements. The primary profitability measure used by the CODM to review segment operating results is operating income. The CODM uses operating income to allocate resources during our annual planning process and throughout the year, as well as to assess the performance of our segments, primarily by monitoring actual results compared to prior periods and expected results. During the periods presented, we reported our financial performance based on the following segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.",
-     "source": {
-      "kind": "chunk",
-      "document_id": 3120,
-      "ticker": "MSFT",
-      "doc_type": "10-K",
-      "period": "2025-FY",
-      "section": "Item 8",
-      "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
-     },
-     "value": null,
-     "scale": "1000000",
-     "unit_note": "millions"
-    },
-    {
-     "cite_id": "c:a1d1d41ef3541db45a5ea551bb279b3a17736ee692e56ba6d482b632009a4712",
-     "text": "Extended disruptions at these suppliers could impact our ability to manufacture devices on time to meet consumer demand. Our success is highly dependent on our ability to attract and retain qualified employees. We hire a mix of university and industry talent worldwide. We compete for talented individuals globally by offering an exceptional working environment, broad customer reach, scale in resources, the ability to grow one’s career across many different products and businesses, and competitive compensation and benefits. Our international operations provide a significant portion of our total revenue and expenses. Many of these revenue and expenses are denominated in currencies other than the U.S. dollar. As a result, changes in foreign exchange rates may significantly affect revenue and expenses. Fluctuations in the U.S. dollar relative to certain foreign currencies did not have a material impact on reported revenue and expenses from our international operations in fiscal year 2025. Further, global, regional, and local economic developments and changes in global trade policies such as restrictions on international trade, including tariffs and other controls on imports or exports, could result in increased supply chain challenges, cost volatility, and consumer and economic uncertainty which may adversely affect our results of operations. Refer to Risk Factors (Part I, Item 1A of this Form 10-K) for a discussion of these factors and other risks. Seasonality Our revenue fluctuates quarterly and is generally higher in the fourth quarter of our fiscal year. Fourth quarter revenue is driven by a higher volume of multi-year contracts executed during the period. Reportable Segments We report our financial performance based on the following segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. The segment amounts included in MD&A are presented on a basis consistent with our internal management reporting. In August 2024, we announced changes to the composition of our segments. These changes align our segments with how we currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the Productivity and Business Processes segment. Beginning in fiscal year 2025, the information that our chief operating decision maker is regularly provided and reviews for purposes of allocating resources and assessing performance reflects these segment changes. Prior period segment information has been recast to conform to the way we internally manage and monitor our business during fiscal year 2025. Additional information on our reportable segments is contained in Note 18 – Segment Information and Geographic Data of the Notes to Financial Statements (Part II, Item 8 of this Form 10-K). 36 PART II Item 7 Metrics We use metrics in assessing the performance of our business and to make informed decisions regarding the allocation of resources.",
-     "source": {
-      "kind": "chunk",
-      "document_id": 3120,
+      "document_id": 3594,
       "ticker": "MSFT",
       "doc_type": "10-K",
       "period": "2025-FY",
       "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:03f0dcb524aea4ca22dbbfc2244a566f821cc174bc5939bfefa5d676351e43ab",
+     "text": "This segment primarily comprises: • Windows and Devices, including Windows OEM licensing (Windows Pro and non-Pro licenses sold through the OEM channel) and Devices, comprising Surface and PC accessories. • Gaming, including Xbox hardware and Xbox content and services, comprising first- and third-party content (including games and in-game content), Xbox Game Pass and other subscriptions, Xbox Cloud Gaming, advertising, and other cloud services. • Search and news advertising, comprising Bing and Copilot, Microsoft News, Microsoft Edge, and third-party affiliates. Revenue and costs are generally directly attributed to our segments. However, due to the integrated structure of our business, certain revenue recognized and costs incurred by one segment may benefit other segments. Revenue from certain contracts is allocated among the segments based on the relative value of the underlying products and services, which can include allocation based on actual prices charged, prices when sold separately, or estimated costs plus a profit margin. Cost of revenue is allocated in certain cases based on a relative revenue methodology. Operating expenses that are allocated primarily include those relating to marketing of products and services from which multiple segments benefit and are generally allocated based on relative gross margin. In addition, certain costs are incurred at a corporate level and allocated to our segments. These allocated costs generally include legal, including settlements and fines, information technology, human resources, finance, excise taxes, field selling, shared facilities services, customer service and support, and severance incurred as part of a corporate program. Each allocation is measured differently based on the specific facts and circumstances of the costs being allocated and is generally based on relative gross margin or relative headcount. 83 PART II Item 8 Segment revenue, cost of revenue, operating expenses, and operating income were as follows during the periods presented:",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3594,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 8",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:023b80b0b906e758a544239ff17050cfe3818761515fec18a665639c4f22707d",
+     "text": "A list of our executive officers and biographical information appears in Part I, Item 1 of this Form 10-K. Information about our directors may be found under the caption “Our Director Nominees” in our Proxy Statement for the Annual Meeting of Shareholders to be held December 5, 2025 (the “Proxy Statement”). Information about our Audit Committee may be found under the caption “Board Committees” in the Proxy Statement. Information about our trading policies and procedures can be found under the caption “Insider Trading Policies and Procedures” in the Proxy Statement. That information is incorporated herein by reference. We have adopted the Microsoft Finance Code of Professional Conduct (the “finance code of ethics”), a code of ethics that applies to our Chief Executive Officer, Chief Financial Officer, Chief Accounting Officer, and other finance organization employees. The finance code of ethics is publicly available on our website at https://aka.ms/FinanceCodeProfessionalConduct . If we make any substantive amendments to the finance code of ethics or grant any waiver, including any implicit waiver, from a provision of the code to our Chief Executive Officer, Chief Financial Officer, or Chief Accounting Officer, we will disclose the nature of the amendment or waiver on that website or in a report on Form 8-K. We will provide disclosure of delinquent Section 16(a) reports, if any, in our Proxy Statement under the caption “Delinquent Section 16(a) Reports,” and such disclosure, if any, is incorporated herein by reference.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3594,
+      "ticker": "MSFT",
+      "doc_type": "10-K",
+      "period": "2025-FY",
+      "section": "Item 10",
       "page": null,
       "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
      },
@@ -281,15 +300,15 @@
      "unit_note": null
     },
     {
-     "cite_id": "c:016d014303c8a1388480029bc25991cd09412184553212dd83da3c5dd8674eaf",
-     "text": "Industry Trends and Opportunities Our industry is dynamic and highly competitive, with frequent changes in both technologies and business models. Each industry shift is an opportunity to conceive new products, new technologies, or new ideas that can further transform the industry and our business. At Microsoft, we push the boundaries of what is possible through a broad range of research and development activities that seek to identify and address the changing demands of customers and users, industry trends, and competitive forces. Microsoft and OpenAI maintain a long-term strategic partnership originally established in 2019. Microsoft is a major investor in OpenAI, and the companies have reciprocal revenue-sharing arrangements. We hold rights to OpenAI’s intellectual property, including models and infrastructure, for integration into our products. The OpenAI API is exclusive to Azure, runs on Azure, and is available through the Azure OpenAI Service. We also have a right of first refusal on OpenAI's new capacity needs. 35 PART II Item 7 Economic Conditions, Challenges, and Risks The markets for software, devices, and cloud-based services are dynamic and highly competitive. Our competitors are developing new software and devices, while also deploying competing cloud-based services for consumers and businesses. The devices and form factors customers prefer evolve rapidly, influencing how users access services in the cloud and, in some cases, the user’s choice of which suite of cloud-based services to use. Aggregate demand for our software, services, and devices is also correlated to global macroeconomic and geopolitical factors, which remain dynamic. We must continue to evolve and adapt over an extended time in pace with this changing environment. The investments we are making in cloud and AI infrastructure and devices will continue to increase our operating costs and may decrease our operating margins. We continue to identify and evaluate opportunities to expand our datacenter locations and increase our server capacity to meet the evolving needs of our customers, particularly given the growing demand for AI services. Our datacenters depend on the availability of permitted and buildable land, predictable energy, networking supplies, and servers, including graphics processing units (“GPUs”) and other components. Our devices are primarily manufactured by third-party contract manufacturers. For the majority of our products, we have the ability to use other manufacturers if a current vendor becomes unavailable or unable to meet our requirements. However, some of our products contain certain components for which there are very few qualified suppliers. Extended disruptions at these suppliers could impact our ability to manufacture devices on time to meet consumer demand. Our success is highly dependent on our ability to attract and retain qualified employees. We hire a mix of university and industry talent worldwide.",
+     "cite_id": "c:02d7573c47a7dc65832f6055159d9583c18ad2834644898fd55c9dac63908d37",
+     "text": "Large Accelerated Filer ☒ | Accelerated Filer ☐\nNon-accelerated Filer ☐ | Smaller Reporting Company ☐\n | Emerging Growth Company ☐",
      "source": {
       "kind": "chunk",
-      "document_id": 3120,
+      "document_id": 3594,
       "ticker": "MSFT",
       "doc_type": "10-K",
       "period": "2025-FY",
-      "section": "Item 7",
+      "section": "body",
       "page": null,
       "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm"
      },
@@ -302,5 +321,6 @@
   }
  ],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 33102
 }

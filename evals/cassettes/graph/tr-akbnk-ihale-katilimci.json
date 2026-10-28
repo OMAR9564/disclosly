@@ -3,134 +3,234 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "3f9c5d813729f8d04b8461cb680b08148d484f2ee8c18aaae380062fd6f7665f",
+   "key": "4bab42b3f3b05d7845cbeb80cfd8f4784be5a4c7f581c6006ddd3e9961bdd1c8",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"AKBNK\"\n  ],\n  \"periods\": [],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"AKBNK\"\n  ],\n  \"periods\": [\n    \"2025-Q4\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1015,
-    "tokens_out": 56,
-    "latency_ms": 1906.406,
+    "tokens_in": 1025,
+    "tokens_out": 70,
+    "latency_ms": 4055.644,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "4084fa493c5ad08055b113c0c96fa8412ce0189f7a372d92387504bb06afd1e2",
+   "key": "c5fd3c82453915afb8d8181f3df689f321101e4dcfe9bfa1ac43e4ecf6e63127",
    "task_class": "cheap",
    "response": {
     "content": null,
     "tool_calls": [
      {
-      "id": "call_1529335",
+      "id": "call_3402756",
       "name": "search_documents",
       "arguments": {
-       "query": "Akbank Ekim 2025 alacak satışı ihale varlık yönetim şirketi",
-       "ticker": "AKBNK"
+       "ticker": "AKBNK",
+       "query": "alacak satışı ihale varlık yönetim şirketi"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0TLp67oPqP3WpeyTY6FxIJWVPY3A+cYOEi3Uh4+TtEnnJBmkZjbir1C83DcpXsOqTpYOqfTTkBFtFyN25sYaXLMSWzd0xQiIRfDZSUT4f43WvbzdN9ya+nfEg="
+        "thought_signature": "EmAKXgFpFH0TofwNFu4stqM2EVrzgkgX9blFsuwKTNxuzpyxsG77ES3wiHRXamtJgQGSY8CvaDY6FpfEGrLjlUf4IxV0FXuhRTUuwrg/xPyxRXI9xRb65uY15q8A4tnJBkU="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 3024,
-    "tokens_out": 42,
-    "latency_ms": 845.459,
+    "tokens_in": 1808,
+    "tokens_out": 34,
+    "latency_ms": 1019.585,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "724f40695bbf786226541ed242e808b05d4f569ccf28860f9c882962d5b8ddc3",
+   "key": "91c4467c0aa99105f30a4c887533d43180957c2f8164ef57d0317dffaa9a409e",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Akbank'ın 30.10.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satış ihalesine toplam 17 varlık yönetim şirketi katılmıştır [3c00a97325f24f475d82e37c764bbff3dc300c1f201a0705b54a2f2945322fcc].\",\n  \"points\": [\n    {\n      \"text\": \"Akbank'ın 30.10.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında, satışa çıkarılan 8 portföyden 397,5 milyon TL anapara büyüklüğündeki 2 bireysel portföyün ihalesine toplam 17 varlık yönetim şirketi katılmıştır.\",\n      \"cite_ids\": [\n        \"3c00a97325f24f475d82e37c764bbff3dc300c1f201a0705b54a2f2945322fcc\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"3c00a97325f24f475d82e37c764bbff3dc300c1f201a0705b54a2f2945322fcc\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
-    "tool_calls": [],
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_4956349",
+      "name": "search_documents",
+      "arguments": {
+       "query": "Akbank 2025 Ekim alacak satışı",
+       "ticker": "AKBNK"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T5yo8wcsJFfcWFf4B6WcfNFlvkyL2Yc1QNSDOvr/y0p4erAEQVKlM+bIBVRKSafippmIT8cBPMr0jv2Wo46PUkIP4p016xeFcGZ2e7V+25YVzJ7J/eGG7Vms="
+       }
+      }
+     }
+    ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 4478,
-    "tokens_out": 419,
-    "latency_ms": 2023.434,
+    "tokens_in": 3306,
+    "tokens_out": 35,
+    "latency_ms": 744.074,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "47a5bfeadfd6cb50264020106cdb9a70c6c1b2ceb453957c950465c3548ee591",
+   "key": "41cc1fe48b465f8b5b33b8cf7559e79d50dabb9550a16f16815b4859b684da7c",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Akbank T.A.Ş.'nin 30 Ekim 2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışı ihalesine toplam 17 varlık yönetim şirketi katılmıştır.\",\n  \"points\": [\n    {\n      \"text\": \"30.10.2025 tarihinde yapılan ihaleye 17 varlık yönetim şirketi katılmış.\",\n      \"cite_ids\": [\"c:3c00a97325f24f475d82e37c764bbff3dc300c1f201a0705b54a2f2945322fcc\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:3c00a97325f24f475d82e37c764bbff3dc300c1f201a0705b54a2f2945322fcc\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Akbank'ın 30 Ekim 2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satış ihalesine toplam 17 varlık yönetim şirketi katılmıştır.\",\n  \"points\": [\n    {\n      \"text\": \"Akbank T.A.Ş.'nin 30.10.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında, satışa çıkarılan 8 portföyden toplamda 397,5 milyon TL anapara büyüklüğündeki 2 bireysel portföy ihale edilmiştir.\",\n      \"cite_ids\": [\"c:3c00a97325f24f475d82e37c764bbff3dc300c1f201a0705b54a2f2945322fcc\"]\n    },\n    {\n      \"text\": \"Bu ihaleye toplam 17 varlık yönetim şirketi katılmıştır.\",\n      \"cite_ids\": [\"c:3c00a97325f24f475d82e37c764bbff3dc300c1f201a0705b54a2f2945322fcc\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:3c00a97325f24f475d82e37c764bbff3dc300c1f201a0705b54a2f2945322fcc\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2954,
-    "tokens_out": 723,
-    "latency_ms": 32228.312,
+    "tokens_in": 4434,
+    "tokens_out": 820,
+    "latency_ms": 16951.823,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
  "tools": [
   {
-   "key": "{\"arguments\":{\"query\":\"Akbank'ın Ekim 2025 alacak satışı ihalesine kaç varlık yönetim şirketi katıldı?\",\"ticker\":\"AKBNK\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\",\"gross_profit\",\"cost_of_revenue\"],\"periods\":[\"2025-Q4\"],\"ticker\":\"AKBNK\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2565\">Nakit ve nakit benzerleri (2025-Q4; 2025-FY yıl sonu bilançosu; 2025-FY raporu): 297.052.253.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:24955\">Net dönem kârı (2025-Q4; Cari Dönem 01.01.2025 - 30.09.2025; 2025-FY raporu): 18.316.624.000 TRY</untrusted_document>",
+   "summary": "AKBNK 2025-Q4 net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization, gross_profit, ",
+   "count": 2,
+   "items": [
+    {
+     "cite_id": "f:2565",
+     "text": "Nakit ve nakit benzerleri (2025-Q4; 2025-FY yıl sonu bilançosu; 2025-FY raporu): 297.052.253.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 917,
+      "ticker": "AKBNK",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q4",
+      "year_end": "2025-FY",
+      "metric": "cash",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "Tablo 1 (Bilanço (Finansal Durum Tablosu) (TFRS 9'a Göre Karşılık Ayrılmış)) / Nakit ve Nakit Benzerleri / Cari Dönem 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1551575"
+     },
+     "value": "297052253000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:24955",
+     "text": "Net dönem kârı (2025-Q4; Cari Dönem 01.01.2025 - 30.09.2025; 2025-FY raporu): 18.316.624.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 917,
+      "ticker": "AKBNK",
+      "doc_type": "kap_financial_report",
+      "period": "2025-Q4",
+      "metric": "net_income",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.12.2025 - DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2025 - 30.09.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1551575"
+     },
+     "value": "18316624000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"alacak satışı ihale varlık yönetim şirketi\",\"ticker\":\"AKBNK\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
-   "content": "<untrusted_document cite_id=\"c:7cd565c1e289e616eb5890b7d79b568b026a36091eda76073b1925833de268b6\">Şirketimiz, Akbank T.A.Ş.'nin 26.08.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 4 portföyden toplamda 289,5 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 17 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .</untrusted_document>\n<untrusted_document cite_id=\"c:84d9ce37f7f309c5e809464a89b7beb3ac885fc24266f9471a316b4e48d2ce73\">Şirketimiz, Akbank T.A.Ş.'nin 26.05.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 7 portföyden toplamda 1 milyar 483,4 milyon TL anapara büyüklüğündeki 3 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 15 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .</untrusted_document>\n<untrusted_document cite_id=\"c:783633b2214142777cc6aee103084f425e36b7a6d041cfcca38a0d995d8fa7ec\">Şirketimiz, 17.12.2025 tarihinde Akbank T.A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplamda 484.361.825 TL anapara büyüklüğündeki 2 adet bireysel portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 29.12.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:0b960c28fa8c4a41476a4aa6a11cdea8afafcb27d2b1bc63b9d4b27259c74286\">Şirketimiz, Akbank T.A.Ş ' nin 17.12.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak ihalesinde; satılan 484.361.825 TL anapara büyüklüğündeki 2 adet bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. İhaleye toplam 17 adet varlık yönetim şirketi katılmıştır. Kamuoyunun bilgilerine sunarız.</untrusted_document>\n<untrusted_document cite_id=\"c:3c00a97325f24f475d82e37c764bbff3dc300c1f201a0705b54a2f2945322fcc\">Şirketimiz, Akbank T.A.Ş.'nin 30.10.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 8 portföyden toplamda 397,5 milyon TL anapara büyüklüğündeki 2 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 17 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .</untrusted_document>\n<untrusted_document cite_id=\"c:775cba9f01f7009fe83c5aedec5022d9aa33995172c31b3e218e15b1f8f56ea5\">Şirketimiz, Akbank T.A.Ş.'nin gerçekleştirdiği tahsili gecikmiş alacak satışında, 26/08/2025 tarihinde satışa çıkarılan toplam 299 milyon TL anaparaya sahip 1 perakende nitelikli portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 17 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan finansal kuruluş Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>",
-   "summary": "AKBNK Akbank'ın Ekim 2025 alacak satışı ihalesine kaç varlık yönetim şirketi katıldı?",
+   "content": "<untrusted_document cite_id=\"c:14714abe16d9103774e2744fb770e556b33cceae2f5c971db1f0fa730e3dddaa\">Sermayesine %100 iştirak ettiğimiz Denge Varlık Yönetim A.Ş. tarafından, AKBANK T.A.Ş .'nin 10 .0 6 .2026 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında, satışa çıkarılan 8 adet portföyden 407 , 7 milyon TL anapara büyüklüğünde olan 1 ADET PERAKENDE nitelikli portföyün ihalesi, katılım sağlayan 17 varlık yönetim şirketi içinde en yüksek teklifi verilmek suretiyle kazanılmıştır. İhale sonucunun kesinlik kazanması ihaleyi açan AKBANK T.A.Ş.'nin Yönetim Kurulu onayına bağlı olup, onay sonrasında portföy satın alım bedeli ödemesi ile devir işlemleri başlatılacaktır.</untrusted_document>\n<untrusted_document cite_id=\"c:6db92954e2547856d68ba6f58edce03d69eddaa35c79760a043668313f1f6153\">Sermayesine %100 iştirak ettiğimiz Denge Varlık Yönetim A.Ş. tarafından, AKBANK T.A.Ş.'nin 24.02.2026 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında, satışa çıkarılan 5 adet portföyden 314,6 milyon TL anapara büyüklüğünde olan 1 ADET PERAKENDE nitelikli portföyün ihalesi, katılım sağlayan 17 varlık yönetim şirketi içinde en yüksek teklifi verilmek suretiyle kazanılmıştır. İhale sonucunun kesinlik kazanması ihaleyi açan AKBANK T.A.Ş.'nin Yönetim Kurulu onayına bağlı olup, onay sonrasında portföy satın alım bedeli ödemesi ile devir işlemleri başlatılacaktır.</untrusted_document>\n<untrusted_document cite_id=\"c:254fdd30fcbee8a47971e85fc71eac0ca967c254d2440f7a27106e24431cb3d6\">Şirketimiz, Akbank T.A.Ş'nin 24.02.2026 tarihinde gerçekleştirdiği tahsili gecikmiş alacak ihalesinde; satılan 314.621.120,00 TL anapara büyüklüğündeki 1 adet bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. İhaleye toplam 17 adet varlık yönetim şirketi katılmıştır. Kamuoyunun bilgilerine sunarız.</untrusted_document>\n<untrusted_document cite_id=\"c:a2522c6f919fe19799448cf5279446a6bfe3dc2513c63c2a088a29260a8ef6dc\">Şirketimiz, Akbank T.A.Ş.'nin 17.03.2026 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 5 bireysel ağırlıklı portföyden toplamda 892,3 milyon TL anapara büyüklüğündeki 3 bireysel ağırlıklı portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 16 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .</untrusted_document>\n<untrusted_document cite_id=\"c:8370ecfdd6d7a8ccff5fe2ab3bb1ac45a86ab60a9f37f11bdb4d1c74f4b4adb2\">Şirketimiz, Akbank T.A.Ş.'nin 09.09.2026 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 6 karma portföyden toplamda 1.548 milyon TL anapara büyüklüğündeki 3 bireysel ağırlıklı karma portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 15 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız.</untrusted_document>\n<untrusted_document cite_id=\"c:0b960c28fa8c4a41476a4aa6a11cdea8afafcb27d2b1bc63b9d4b27259c74286\">Şirketimiz, Akbank T.A.Ş ' nin 17.12.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak ihalesinde; satılan 484.361.825 TL anapara büyüklüğündeki 2 adet bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. İhaleye toplam 17 adet varlık yönetim şirketi katılmıştır. Kamuoyunun bilgilerine sunarız.</untrusted_document>",
+   "summary": "AKBNK alacak satışı ihale varlık yönetim şirketi",
    "count": 6,
    "items": [
     {
-     "cite_id": "c:7cd565c1e289e616eb5890b7d79b568b026a36091eda76073b1925833de268b6",
-     "text": "Şirketimiz, Akbank T.A.Ş.'nin 26.08.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 4 portföyden toplamda 289,5 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 17 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .",
+     "cite_id": "c:14714abe16d9103774e2744fb770e556b33cceae2f5c971db1f0fa730e3dddaa",
+     "text": "Sermayesine %100 iştirak ettiğimiz Denge Varlık Yönetim A.Ş. tarafından, AKBANK T.A.Ş .'nin 10 .0 6 .2026 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında, satışa çıkarılan 8 adet portföyden 407 , 7 milyon TL anapara büyüklüğünde olan 1 ADET PERAKENDE nitelikli portföyün ihalesi, katılım sağlayan 17 varlık yönetim şirketi içinde en yüksek teklifi verilmek suretiyle kazanılmıştır. İhale sonucunun kesinlik kazanması ihaleyi açan AKBANK T.A.Ş.'nin Yönetim Kurulu onayına bağlı olup, onay sonrasında portföy satın alım bedeli ödemesi ile devir işlemleri başlatılacaktır.",
      "source": {
       "kind": "chunk",
-      "document_id": 892,
+      "document_id": 948,
       "ticker": "AKBNK",
       "doc_type": "kap_material_event",
-      "period": "2025-Q3",
+      "period": "2026-Q2",
       "section": "body",
       "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1482876"
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1615924"
      },
      "value": null,
      "scale": null,
      "unit_note": null
     },
     {
-     "cite_id": "c:84d9ce37f7f309c5e809464a89b7beb3ac885fc24266f9471a316b4e48d2ce73",
-     "text": "Şirketimiz, Akbank T.A.Ş.'nin 26.05.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 7 portföyden toplamda 1 milyar 483,4 milyon TL anapara büyüklüğündeki 3 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 15 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .",
+     "cite_id": "c:6db92954e2547856d68ba6f58edce03d69eddaa35c79760a043668313f1f6153",
+     "text": "Sermayesine %100 iştirak ettiğimiz Denge Varlık Yönetim A.Ş. tarafından, AKBANK T.A.Ş.'nin 24.02.2026 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında, satışa çıkarılan 5 adet portföyden 314,6 milyon TL anapara büyüklüğünde olan 1 ADET PERAKENDE nitelikli portföyün ihalesi, katılım sağlayan 17 varlık yönetim şirketi içinde en yüksek teklifi verilmek suretiyle kazanılmıştır. İhale sonucunun kesinlik kazanması ihaleyi açan AKBANK T.A.Ş.'nin Yönetim Kurulu onayına bağlı olup, onay sonrasında portföy satın alım bedeli ödemesi ile devir işlemleri başlatılacaktır.",
      "source": {
       "kind": "chunk",
-      "document_id": 880,
+      "document_id": 928,
       "ticker": "AKBNK",
       "doc_type": "kap_material_event",
-      "period": "2025-Q2",
+      "period": "2026-Q1",
       "section": "body",
       "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1442185"
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1561160"
      },
      "value": null,
      "scale": null,
      "unit_note": null
     },
     {
-     "cite_id": "c:783633b2214142777cc6aee103084f425e36b7a6d041cfcca38a0d995d8fa7ec",
-     "text": "Şirketimiz, 17.12.2025 tarihinde Akbank T.A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplamda 484.361.825 TL anapara büyüklüğündeki 2 adet bireysel portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 29.12.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.",
+     "cite_id": "c:254fdd30fcbee8a47971e85fc71eac0ca967c254d2440f7a27106e24431cb3d6",
+     "text": "Şirketimiz, Akbank T.A.Ş'nin 24.02.2026 tarihinde gerçekleştirdiği tahsili gecikmiş alacak ihalesinde; satılan 314.621.120,00 TL anapara büyüklüğündeki 1 adet bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. İhaleye toplam 17 adet varlık yönetim şirketi katılmıştır. Kamuoyunun bilgilerine sunarız.",
      "source": {
       "kind": "chunk",
-      "document_id": 912,
+      "document_id": 927,
       "ticker": "AKBNK",
       "doc_type": "kap_material_event",
-      "period": "2025-Q4",
+      "period": "2026-Q1",
       "section": "body",
       "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1530762"
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1561007"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:a2522c6f919fe19799448cf5279446a6bfe3dc2513c63c2a088a29260a8ef6dc",
+     "text": "Şirketimiz, Akbank T.A.Ş.'nin 17.03.2026 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 5 bireysel ağırlıklı portföyden toplamda 892,3 milyon TL anapara büyüklüğündeki 3 bireysel ağırlıklı portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 16 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .",
+     "source": {
+      "kind": "chunk",
+      "document_id": 936,
+      "ticker": "AKBNK",
+      "doc_type": "kap_material_event",
+      "period": "2026-Q1",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1573589"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:8370ecfdd6d7a8ccff5fe2ab3bb1ac45a86ab60a9f37f11bdb4d1c74f4b4adb2",
+     "text": "Şirketimiz, Akbank T.A.Ş.'nin 09.09.2026 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 6 karma portföyden toplamda 1.548 milyon TL anapara büyüklüğündeki 3 bireysel ağırlıklı karma portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 15 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 966,
+      "ticker": "AKBNK",
+      "doc_type": "kap_material_event",
+      "period": "2026-Q3",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1661241"
      },
      "value": null,
      "scale": null,
@@ -148,40 +248,6 @@
       "section": "body",
       "page": null,
       "source_url": "https://www.kap.org.tr/tr/Bildirim/1527495"
-     },
-     "value": null,
-     "scale": null,
-     "unit_note": null
-    },
-    {
-     "cite_id": "c:3c00a97325f24f475d82e37c764bbff3dc300c1f201a0705b54a2f2945322fcc",
-     "text": "Şirketimiz, Akbank T.A.Ş.'nin 30.10.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 8 portföyden toplamda 397,5 milyon TL anapara büyüklüğündeki 2 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 17 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .",
-     "source": {
-      "kind": "chunk",
-      "document_id": 901,
-      "ticker": "AKBNK",
-      "doc_type": "kap_material_event",
-      "period": "2025-Q4",
-      "section": "body",
-      "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1509114"
-     },
-     "value": null,
-     "scale": null,
-     "unit_note": null
-    },
-    {
-     "cite_id": "c:775cba9f01f7009fe83c5aedec5022d9aa33995172c31b3e218e15b1f8f56ea5",
-     "text": "Şirketimiz, Akbank T.A.Ş.'nin gerçekleştirdiği tahsili gecikmiş alacak satışında, 26/08/2025 tarihinde satışa çıkarılan toplam 299 milyon TL anaparaya sahip 1 perakende nitelikli portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 17 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan finansal kuruluş Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.",
-     "source": {
-      "kind": "chunk",
-      "document_id": 891,
-      "ticker": "AKBNK",
-      "doc_type": "kap_material_event",
-      "period": "2025-Q3",
-      "section": "body",
-      "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1482779"
      },
      "value": null,
      "scale": null,
@@ -191,24 +257,24 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"query\":\"Akbank Ekim 2025 alacak satışı ihale varlık yönetim şirketi\",\"ticker\":\"AKBNK\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"query\":\"Akbank 2025 Ekim alacak satışı\",\"ticker\":\"AKBNK\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
-   "content": "<untrusted_document cite_id=\"c:0b960c28fa8c4a41476a4aa6a11cdea8afafcb27d2b1bc63b9d4b27259c74286\">Şirketimiz, Akbank T.A.Ş ' nin 17.12.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak ihalesinde; satılan 484.361.825 TL anapara büyüklüğündeki 2 adet bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. İhaleye toplam 17 adet varlık yönetim şirketi katılmıştır. Kamuoyunun bilgilerine sunarız.</untrusted_document>\n<untrusted_document cite_id=\"c:775cba9f01f7009fe83c5aedec5022d9aa33995172c31b3e218e15b1f8f56ea5\">Şirketimiz, Akbank T.A.Ş.'nin gerçekleştirdiği tahsili gecikmiş alacak satışında, 26/08/2025 tarihinde satışa çıkarılan toplam 299 milyon TL anaparaya sahip 1 perakende nitelikli portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 17 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan finansal kuruluş Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:7ac59983019a167a915adad19078b731676b793bdc8b8f36861391e41ae9c682\">Şirketimiz, Akbank T.A.Ş.'nin gerçekleştirdiği tahsili gecikmiş alacak satışında, 25/11/2025 tarihinde satışa çıkarılan toplam 249,8 milyon TL anaparaya sahip 1 perakende nitelikli portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 18 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan finansal kuruluş Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:7cd565c1e289e616eb5890b7d79b568b026a36091eda76073b1925833de268b6\">Şirketimiz, Akbank T.A.Ş.'nin 26.08.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 4 portföyden toplamda 289,5 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 17 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .</untrusted_document>\n<untrusted_document cite_id=\"c:783633b2214142777cc6aee103084f425e36b7a6d041cfcca38a0d995d8fa7ec\">Şirketimiz, 17.12.2025 tarihinde Akbank T.A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplamda 484.361.825 TL anapara büyüklüğündeki 2 adet bireysel portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 29.12.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:84d9ce37f7f309c5e809464a89b7beb3ac885fc24266f9471a316b4e48d2ce73\">Şirketimiz, Akbank T.A.Ş.'nin 26.05.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 7 portföyden toplamda 1 milyar 483,4 milyon TL anapara büyüklüğündeki 3 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 15 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .</untrusted_document>",
-   "summary": "AKBNK Akbank Ekim 2025 alacak satışı ihale varlık yönetim şirketi",
+   "content": "<untrusted_document cite_id=\"c:0b4477e4809a6ae3827003a2e16f0944d4f7052a50e1ff93495098f27ab08da6\">26.05.2025 tarihinde yapmış olduğumuz Özel Durum Açıklamamızda, Akbank T.A.Ş.'nin 26.05.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında, satışa çıkarılan 7 portföyden toplamda 1 milyar 483,4 milyon TL anapara büyüklüğündeki 3 bireysel portföyün ihalesini şirketimizin kazandığı duyurulmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri 13.06.2025 tarihi itibarıyla tamamlanmıştır. Kamuoyunun bilgilerine sunarız.</untrusted_document>\n<untrusted_document cite_id=\"c:775cba9f01f7009fe83c5aedec5022d9aa33995172c31b3e218e15b1f8f56ea5\">Şirketimiz, Akbank T.A.Ş.'nin gerçekleştirdiği tahsili gecikmiş alacak satışında, 26/08/2025 tarihinde satışa çıkarılan toplam 299 milyon TL anaparaya sahip 1 perakende nitelikli portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 17 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan finansal kuruluş Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:7ac59983019a167a915adad19078b731676b793bdc8b8f36861391e41ae9c682\">Şirketimiz, Akbank T.A.Ş.'nin gerçekleştirdiği tahsili gecikmiş alacak satışında, 25/11/2025 tarihinde satışa çıkarılan toplam 249,8 milyon TL anaparaya sahip 1 perakende nitelikli portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 18 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan finansal kuruluş Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:3c00a97325f24f475d82e37c764bbff3dc300c1f201a0705b54a2f2945322fcc\">Şirketimiz, Akbank T.A.Ş.'nin 30.10.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 8 portföyden toplamda 397,5 milyon TL anapara büyüklüğündeki 2 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 17 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .</untrusted_document>\n<untrusted_document cite_id=\"c:6825b23a8ba37402c03f30e735adc9efe4da8622d04f54029b1e2000dedb6d07\">27.08.2025 tarihinde yapmış olduğumuz Özel Durum Açıklamamızda, Akbank T.A.Ş.'nin 26.08.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında, satışa çıkarılan 4 portföyden toplamda 289,5 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini şirketimizin kazandığı duyurulmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri 05.09.2025 tarihi itibarıyla tamamlanmıştır. Kamuoyunun bilgilerine sunarız.</untrusted_document>\n<untrusted_document cite_id=\"c:783633b2214142777cc6aee103084f425e36b7a6d041cfcca38a0d995d8fa7ec\">Şirketimiz, 17.12.2025 tarihinde Akbank T.A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplamda 484.361.825 TL anapara büyüklüğündeki 2 adet bireysel portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 29.12.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>",
+   "summary": "AKBNK Akbank 2025 Ekim alacak satışı",
    "count": 6,
    "items": [
     {
-     "cite_id": "c:0b960c28fa8c4a41476a4aa6a11cdea8afafcb27d2b1bc63b9d4b27259c74286",
-     "text": "Şirketimiz, Akbank T.A.Ş ' nin 17.12.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak ihalesinde; satılan 484.361.825 TL anapara büyüklüğündeki 2 adet bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. İhaleye toplam 17 adet varlık yönetim şirketi katılmıştır. Kamuoyunun bilgilerine sunarız.",
+     "cite_id": "c:0b4477e4809a6ae3827003a2e16f0944d4f7052a50e1ff93495098f27ab08da6",
+     "text": "26.05.2025 tarihinde yapmış olduğumuz Özel Durum Açıklamamızda, Akbank T.A.Ş.'nin 26.05.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında, satışa çıkarılan 7 portföyden toplamda 1 milyar 483,4 milyon TL anapara büyüklüğündeki 3 bireysel portföyün ihalesini şirketimizin kazandığı duyurulmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri 13.06.2025 tarihi itibarıyla tamamlanmıştır. Kamuoyunun bilgilerine sunarız.",
      "source": {
       "kind": "chunk",
-      "document_id": 910,
+      "document_id": 884,
       "ticker": "AKBNK",
       "doc_type": "kap_material_event",
-      "period": "2025-Q4",
+      "period": "2025-Q2",
       "section": "body",
       "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1527495"
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1448862"
      },
      "value": null,
      "scale": null,
@@ -249,17 +315,34 @@
      "unit_note": null
     },
     {
-     "cite_id": "c:7cd565c1e289e616eb5890b7d79b568b026a36091eda76073b1925833de268b6",
-     "text": "Şirketimiz, Akbank T.A.Ş.'nin 26.08.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 4 portföyden toplamda 289,5 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 17 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .",
+     "cite_id": "c:3c00a97325f24f475d82e37c764bbff3dc300c1f201a0705b54a2f2945322fcc",
+     "text": "Şirketimiz, Akbank T.A.Ş.'nin 30.10.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 8 portföyden toplamda 397,5 milyon TL anapara büyüklüğündeki 2 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 17 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .",
      "source": {
       "kind": "chunk",
-      "document_id": 892,
+      "document_id": 901,
+      "ticker": "AKBNK",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q4",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1509114"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:6825b23a8ba37402c03f30e735adc9efe4da8622d04f54029b1e2000dedb6d07",
+     "text": "27.08.2025 tarihinde yapmış olduğumuz Özel Durum Açıklamamızda, Akbank T.A.Ş.'nin 26.08.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında, satışa çıkarılan 4 portföyden toplamda 289,5 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini şirketimizin kazandığı duyurulmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri 05.09.2025 tarihi itibarıyla tamamlanmıştır. Kamuoyunun bilgilerine sunarız.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 894,
       "ticker": "AKBNK",
       "doc_type": "kap_material_event",
       "period": "2025-Q3",
       "section": "body",
       "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1482876"
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1487322"
      },
      "value": null,
      "scale": null,
@@ -281,28 +364,12 @@
      "value": null,
      "scale": null,
      "unit_note": null
-    },
-    {
-     "cite_id": "c:84d9ce37f7f309c5e809464a89b7beb3ac885fc24266f9471a316b4e48d2ce73",
-     "text": "Şirketimiz, Akbank T.A.Ş.'nin 26.05.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 7 portföyden toplamda 1 milyar 483,4 milyon TL anapara büyüklüğündeki 3 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 15 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .",
-     "source": {
-      "kind": "chunk",
-      "document_id": 880,
-      "ticker": "AKBNK",
-      "doc_type": "kap_material_event",
-      "period": "2025-Q2",
-      "section": "body",
-      "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1442185"
-     },
-     "value": null,
-     "scale": null,
-     "unit_note": null
     }
    ],
    "error": null
   }
  ],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 29479
 }

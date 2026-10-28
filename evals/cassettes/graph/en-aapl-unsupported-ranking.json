@@ -6,18 +6,17 @@
    "key": "d5f96d0123ee3dc752f54652c90687bbe97cbe3f8d8a3bef87d549477a0a4297",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":true},{\"finding_id\":\"F2\",\"supported\":false,\"reason\":\"No evidence provided that the EBITDA is the highest in its industry\"}]}",
+    "content": "{\"claims\": [\n    {\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"All numbers match cited evidence and calculation is correct.\"},\n    {\"finding_id\": \"F2\", \"supported\": false, \"reason\": \"No industry comparison evidence provided; only Apple's EBITDA is cited.\"}\n  ]}",
     "tool_calls": [],
-    "provider": "groq-large",
-    "model": "openai/gpt-oss-120b",
-    "tokens_in": 994,
-    "tokens_out": 287,
-    "latency_ms": 1060.439,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 849,
+    "tokens_out": 529,
+    "latency_ms": 12896.382,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
-     "gemini-flash",
-     "openrouter-large"
+     "gemini-flash"
     ]
    }
   }
@@ -38,5 +37,6 @@
    }
   }
  ],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 13722
 }

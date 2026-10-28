@@ -3,104 +3,191 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "b562df05377e1d4a762f3606810e54035a7d9f58898fa24691c43c9d943e3bc8",
+   "key": "7ba2923d109aa3f34731323b2bf431e9cfa805a1d976caa97ff7a2673b888d45",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"META\"\n  ],\n  \"periods\": [\n    \"2025-Q1\",\n    \"2025-Q3\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 938,
+    "tokens_in": 948,
     "tokens_out": 79,
-    "latency_ms": 1183.923,
+    "latency_ms": 929.829,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "233f49acae4e49715a8bb3c5dcbffb5d7d77336a46e89923a569e21cc5f9a7df",
+   "key": "3f98df75e54cfe44d95c5092505a86e920aaa40b2f05469e399a779565f38fa6",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Fetch net income and revenue for Meta (META) for Q1 2025 and Q3 2025\",\n      \"tickers\": [\"META\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [\"net_income\", \"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Calculate net margin for each quarter and the change in percentage points from Q1 to Q3 2025\",\n      \"tickers\": [\"META\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": []\n    }\n  ]\n}",
+    "content": "{\"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Fetch net income and revenue for Meta in Q1 and Q3 2025\",\n      \"tickers\": [\"META\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [\"net_income\", \"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Calculate net margin for each quarter and the change in percentage points from Q1 to Q3 2025\",\n      \"tickers\": [\"META\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"]\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1025,
-    "tokens_out": 451,
-    "latency_ms": 7534.341,
+    "tokens_in": 1074,
+    "tokens_out": 497,
+    "latency_ms": 12626.658,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   },
   {
-   "key": "2e8947de1f41c5064d6938cac9513877d74d01375695d831ac909f723af88424",
+   "key": "56a8176e52cc012ed4df85cfebd380d617c724c1410d316654ec9ff80fb4a3cd",
    "task_class": "cheap",
    "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"Meta Q1 2025 Q3 2025 revenue net income\"}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
+    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"Meta Q3 2025 net income revenue\"}, {\"step_id\": \"s2\", \"sufficient\": false}]}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 754,
-    "tokens_out": 65,
-    "latency_ms": 1556.929,
+    "tokens_in": 738,
+    "tokens_out": 50,
+    "latency_ms": 890.358,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "fecb85a00e13d066121f5cf061ac56889973b4ce9b1e7d0a05dd000fbc3ca325",
+   "key": "59baa0f99c400da0c073393051341537bb184b4b9a5bb1f036d2b4a129daf20c",
    "task_class": "strong",
    "response": {
-    "content": "{\"findings\":[{\"id\":\"F1\",\"text\":\"Meta's net margin changed by percentage points from Q1 to Q3 2025.\",\"cite_ids\":[\"f:759\",\"f:741\",\"f:763\",\"f:745\"],\"calcs\":[\"margin_change\"]}],\"calculations\":[{\"name\":\"margin_change\",\"description\":\"Change in net margin from Q1 2025 to Q3 2025 in percentage points\",\"inputs\":[{\"name\":\"net_income_q1\",\"cite_id\":\"f:759\"},{\"name\":\"revenue_q1\",\"cite_id\":\"f:741\"},{\"name\":\"net_income_q3\",\"cite_id\":\"f:763\"},{\"name\":\"revenue_q3\",\"cite_id\":\"f:745\"}],\"code\":\"result = (inputs['net_income_q3'] / inputs['revenue_q3'] - inputs['net_income_q1'] / inputs['revenue_q1']) * 100\"}]}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Meta reported net income of 16,644,000,000 USD and revenue of 42,314,000,000 USD for Q1 2025.\",\n      \"cite_ids\": [\"f:759\", \"f:741\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Meta reported net income of 2,709,000,000 USD and revenue of 51,242,000,000 USD for Q3 2025.\",\n      \"cite_ids\": [\"f:763\", \"f:745\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Meta's net margin decreased from Q1 to Q3 2025.\",\n      \"cite_ids\": [\"f:759\", \"f:741\", \"f:763\", \"f:745\"],\n      \"calcs\": [\"net_margin_q1\", \"net_margin_q3\", \"net_margin_change_pp\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_margin_q1\",\n      \"description\": \"Net margin for Q1 2025 = Net income Q1 / Revenue Q1, expressed as a percentage\",\n      \"inputs\": [\n        {\"name\": \"net_income_q1\", \"cite_id\": \"f:759\"},\n        {\"name\": \"revenue_q1\", \"cite_id\": \"f:741\"}\n      ],\n      \"code\": \"result = (inputs['net_income_q1'] / inputs['revenue_q1']) * 100\"\n    },\n    {\n      \"name\": \"net_margin_q3\",\n      \"description\": \"Net margin for Q3 2025 = Net income Q3 / Revenue Q3, expressed as a percentage\",\n      \"inputs\": [\n        {\"name\": \"net_income_q3\", \"cite_id\": \"f:763\"},\n        {\"name\": \"revenue_q3\", \"cite_id\": \"f:745\"}\n      ],\n      \"code\": \"result = (inputs['net_income_q3'] / inputs['revenue_q3']) * 100\"\n    },\n    {\n      \"name\": \"net_margin_change_pp\",\n      \"description\": \"Change in net margin from Q1 to Q3 2025 in percentage points = Q3 net margin % - Q1 net margin %\",\n      \"inputs\": [\n        {\"name\": \"net_margin_q1\", \"cite_id\": \"k:net_margin_q1\"},\n        {\"name\": \"net_margin_q3\", \"cite_id\": \"k:net_margin_q3\"}\n      ],\n      \"code\": \"result = inputs['net_margin_q3'] - inputs['net_margin_q1']\"\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "groq-large",
-    "model": "openai/gpt-oss-120b",
-    "tokens_in": 2897,
-    "tokens_out": 1174,
-    "latency_ms": 2930.298,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2842,
+    "tokens_out": 1066,
+    "latency_ms": 21468.659,
     "cache_hit": false,
     "fallback_from": [
-     "nvidia-large",
-     "gemini-flash",
-     "openrouter-large"
+     "gemini-flash-stable",
+     "gemini-flash"
     ]
    }
   },
   {
-   "key": "2c0c433d3e187b7a7c546385d08100a18c2f274afeba421ce4f3f0981fe8ae99",
+   "key": "b3d0e444345539c14b2935b1a50034824a8a6664391dc133644018efaa20326e",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":true,\"reason\":\"Net income and revenue figures for Q1 and Q3 2025 are provided; computed margins (≈39.35% and ≈5.29%) give a change of about -34.05 percentage points, matching the cited calculation.\"}]}",
+    "content": "{\"claims\": [\n    {\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Matches evidence\"},\n    {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Matches evidence\"}\n  ]}",
     "tool_calls": [],
-    "provider": "groq-large",
-    "model": "openai/gpt-oss-120b",
-    "tokens_in": 961,
-    "tokens_out": 384,
-    "latency_ms": 1195.875,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 979,
+    "tokens_out": 596,
+    "latency_ms": 16070.306,
     "cache_hit": false,
     "fallback_from": [
-     "nvidia-large",
-     "gemini-flash",
-     "openrouter-large"
+     "gemini-flash-stable",
+     "gemini-flash"
     ]
    }
   },
   {
-   "key": "aad27b5fe9ce581b262b6c179790d8be1b67ad8916e629f9275ab05ad9660993",
+   "key": "d47bc3ce33c860b4e04442a8884c44eab243b4ff1cb361ba17891e99e50c237e",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\":\"en\",\"status\":\"completed\",\"summary\":\"Meta's net margin fell sharply between Q1 and Q3 2025. The margin decreased by 34.05 percentage points from Q1 to Q3 2025[1].\",\"points\":[{\"text\":\"Net margin change: -34.05 percentage points[1].\",\"cite_ids\":[\"k:1\"]}],\"tables\":[],\"chart\":null,\"confidence\":{\"level\":\"high\",\"note\":\"\"},\"unverified\":[],\"citations\":[{\"marker\":1,\"cite_id\":\"k:1\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n {\"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Fetch net income and revenue for Meta in Q1 and Q3 2025\",\n      \"tickers\": [\"META\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [\"net_income\", \"revenue\"],\n      \"status\": \"pending\"\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal",
     "tool_calls": [],
-    "provider": "groq-large",
-    "model": "openai/gpt-oss-120b",
-    "tokens_in": 3078,
-    "tokens_out": 459,
-    "latency_ms": 2097.636,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1355,
+    "tokens_out": 1500,
+    "latency_ms": 48541.876,
     "cache_hit": false,
     "fallback_from": [
-     "nvidia-large",
-     "gemini-flash",
-     "openrouter-large"
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "cd76d5e392f7a44cc256f40c1a36f9eb6c54e33960e24b0b0de0585bf1167d08",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Fetch net income and revenue for Meta in Q1 and Q3 2025\",\n      \"tickers\": [\"META\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [\"net_income\", \"revenue\"],\n      \"status\": \"pending\"\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Calculate net margin for each quarter and the change in percentage points from Q1 to Q3 2025\",\n      \"tickers\": [\"META\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [],\n      \"status\": \"pending\"\n    }\n  ]}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1518,
+    "tokens_out": 1088,
+    "latency_ms": 16440.561,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "56a8176e52cc012ed4df85cfebd380d617c724c1410d316654ec9ff80fb4a3cd",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Meta Platforms Q1 2025 Q3 2025 revenue net income\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 738,
+    "tokens_out": 98,
+    "latency_ms": 1244.193,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "59baa0f99c400da0c073393051341537bb184b4b9a5bb1f036d2b4a129daf20c",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Meta reported net income of 16,644,000,000 USD and revenue of 42,314,000,000 USD for Q1 2025.\",\n      \"cite_ids\": [\"f:759\", \"f:741\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Meta reported net income of 2,709,000,000 USD and revenue of 51,242,000,000 USD for Q3 2025.\",\n      \"cite_ids\": [\"f:763\", \"f:745\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Meta's net margin in Q1 2025 was calculated as net income divided by revenue.\",\n      \"cite_ids\": [\"f:759\", \"f:741\"],\n      \"calcs\": [\"net_margin_q1\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"Meta's net margin in Q3 2025 was calculated as net income divided by revenue.\",\n      \"cite_ids\": [\"f:763\", \"f:745\"],\n      \"calcs\": [\"net_margin_q3\"]\n    },\n    {\n      \"id\": \"F5\",\n      \"text\": \"The change in net margin from Q1 to Q3 2025, expressed in percentage points, was calculated as the difference between Q3 and Q1 net margins multiplied by 100.\",\n      \"cite_ids\": [\"f:759\", \"f:741\", \"f:763\", \"f:745\"],\n      \"calcs\": [\"net_margin_change_pp\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_margin_q1\",\n      \"description\": \"Net margin for Q1 2025 = Net income Q1 / Revenue Q1 (ratio)\",\n      \"inputs\": [\n        {\"name\": \"net_income_q1\", \"cite_id\": \"f:759\"},\n        {\"name\": \"revenue_q1\", \"cite_id\": \"f:741\"}\n      ],\n      \"code\": \"result = inputs['net_income_q1'] / inputs['revenue_q1']\"\n    },\n    {\n      \"name\": \"net_margin_q3\",\n      \"description\": \"Net margin for Q3 2025 = Net income Q3 / Revenue Q3 (ratio)\",\n      \"inputs\": [\n        {\"name\": \"net_income_q3\", \"cite_id\": \"f:763\"},\n        {\"name\": \"revenue_q3\", \"cite_id\": \"f:745\"}\n      ],\n      \"code\": \"result = inputs['net_income_q3'] / inputs['revenue_q3']\"\n    },\n    {\n      \"name\": \"net_margin_change_pp\",\n      \"description\": \"Change in net margin from Q1 to Q3 2025 in percentage points = (Net margin Q3 - Net margin Q1) * 100\",\n      \"inputs\": [\n        {\"name\": \"net_margin_q1\", \"cite_id\": \"f:759\"},\n        {\"name\": \"net_margin_q3\", \"cite_id\": \"f:763\"}\n      ],\n      \"code\": \"result = (inputs['net_margin_q3'] - inputs['net_margin_q1']) * 100\"\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2842,
+    "tokens_out": 1209,
+    "latency_ms": 37538.778,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "0365b7152245a3a4ea4765b1ef395e40069c407291328f5a404c864fd7afe016",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Net income and revenue figures match the cited evidence for Q1 2025.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Net income and revenue figures match the cited evidence for Q3 2025.\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"The net margin calculation for Q1 2025 uses the correct formula and cited data.\"\n    },\n    {\n      \"finding_id\": \"F4\",\n      \"supported\": true,\n      \"reason\": \"The net margin calculation for Q3 2025 uses the correct formula and cited data.\"\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1288,
+    "tokens_out": 1101,
+    "latency_ms": 21456.906,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "c039811ef5239ab659e480ee0a4a3191ebe4bdbe0a2fa826089cda0a07acc818",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"partial\",\n  \"summary\": \"Meta's net margin was 39.33% in Q1 2025 and 5.29% in Q3 2025. The change in percentage points from Q1 to Q3 2025 is not available from the provided calculations.\",\n  \"points\": [\n    {\n      \"text\": \"Meta's net margin in Q1 2025 was 39.33%.\",\n      \"cite_ids\": [\"k:1\"]\n    },\n    {\n      \"text\": \"Meta's net margin in Q3 2025 was 5.29%.\",\n      \"cite_ids\": [\"k:2\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Meta Net Margin Q1 vs Q3 2025\",\n      \"columns\": [\"Period\", \"Net Margin (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Q1 2025\", \"cite_id\": null},\n          {\"text\": \"39.33\", \"cite_id\": \"k:1\"}\n        ],\n        [\n          {\"text\": \"Q3 2025\", \"cite_id\": null},\n          {\"text\": \"5.29\", \"cite_id\": \"k:2\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Period\",\n    \"series\": [\"Net Margin (%)\"]\n  },\n  \"confidence\": {\n    \"level\": \"low\",\n    \"note\": \"The net margins for Q1 and Q3 2025 are available from calculations, but the change in percentage points is not provided by any correct calculation.\"\n  },\n  \"unverified\": [\n    \"Change in net margin from Q1 to Q3 2025 in percentage points\"\n  ],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"k:1\"},\n    {\"marker\": 2, \"cite_id\": \"k:2\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2943,
+    "tokens_out": 2384,
+    "latency_ms": 38748.531,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
     ]
    }
   }
@@ -109,7 +196,7 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"META\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3140, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-22T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm\"}, {\"document_id\": 3141, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm\"}, {\"document_id\": 3142, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm\"}, {\"document_id\": 3143, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-01-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm\"}, {\"document_id\": 3144, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm\"}, {\"document_id\": 3145, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm\"}, {\"document_id\": 3146, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm\"}, {\"document_id\": 3147, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm\"}, {\"document_id\": 3148, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm\"}]}",
+   "content": "{\"documents\": [{\"document_id\": 3622, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-22T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm\"}, {\"document_id\": 3623, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm\"}, {\"document_id\": 3624, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm\"}, {\"document_id\": 3625, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-01-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm\"}, {\"document_id\": 3626, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm\"}, {\"document_id\": 3627, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm\"}, {\"document_id\": 3628, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm\"}, {\"document_id\": 3629, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm\"}, {\"document_id\": 3630, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm\"}]}",
    "summary": "META documents",
    "count": 9,
    "items": [],
@@ -118,9 +205,9 @@
   {
    "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\"],\"periods\":[\"2025-Q1\",\"2025-Q3\"],\"ticker\":\"META\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:759\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4163\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:760\">Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4164\">Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:763\">Net income (2025-Q3): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4167\">Net income (2025-Q3): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:11503\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:13367\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:15147\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:741\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4145\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:742\">Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4146\">Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:745\">Revenue (2025-Q3): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4149\">Revenue (2025-Q3): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:11483\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:13347\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:15127\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>",
+   "content": "<untrusted_document cite_id=\"f:759\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4163\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17090\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:760\">Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4164\">Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:763\">Net income (2025-Q3): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4167\">Net income (2025-Q3): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:11503\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:13367\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:15147\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17095\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:741\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4145\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17070\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:742\">Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4146\">Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:745\">Revenue (2025-Q3): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4149\">Revenue (2025-Q3): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:11483\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:13347\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:15127\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17075\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>",
    "summary": "META 2025-Q1 to 2025-Q3 net_income, revenue",
-   "count": 18,
+   "count": 22,
    "items": [
     {
      "cite_id": "f:759",
@@ -147,6 +234,25 @@
      "source": {
       "kind": "fact",
       "document_id": 2369,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "16644000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:17090",
+     "text": "Net income (2025-Q1): 16,644,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3307,
       "ticker": "META",
       "doc_type": "10-Q",
       "period": "2025-Q1",
@@ -294,6 +400,25 @@
      "unit_note": null
     },
     {
+     "cite_id": "f:17095",
+     "text": "Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3301,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
      "cite_id": "f:741",
      "text": "Revenue (2025-Q1): 42,314,000,000 USD",
      "source": {
@@ -318,6 +443,25 @@
      "source": {
       "kind": "fact",
       "document_id": 2369,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "42314000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:17070",
+     "text": "Revenue (2025-Q1): 42,314,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3307,
       "ticker": "META",
       "doc_type": "10-Q",
       "period": "2025-Q1",
@@ -463,6 +607,462 @@
      "value": "51242000000",
      "scale": "1",
      "unit_note": null
+    },
+    {
+     "cite_id": "f:17075",
+     "text": "Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3301,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"ticker\":\"META\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 3622, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-22T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm\"}, {\"document_id\": 3623, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm\"}, {\"document_id\": 3624, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm\"}, {\"document_id\": 3625, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-01-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm\"}, {\"document_id\": 3626, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm\"}, {\"document_id\": 3627, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm\"}, {\"document_id\": 3628, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm\"}, {\"document_id\": 3629, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm\"}, {\"document_id\": 3630, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm\"}]}",
+   "summary": "META documents",
+   "count": 9,
+   "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\"],\"periods\":[\"2025-Q1\",\"2025-Q3\"],\"ticker\":\"META\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:759\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4163\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17090\">Net income (2025-Q1): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:760\">Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4164\">Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:763\">Net income (2025-Q3): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4167\">Net income (2025-Q3): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:11503\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:13367\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:15147\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17095\">Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:741\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4145\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17070\">Revenue (2025-Q1): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:742\">Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4146\">Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:745\">Revenue (2025-Q3): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4149\">Revenue (2025-Q3): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:11483\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:13347\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:15127\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:17075\">Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD</untrusted_document>",
+   "summary": "META 2025-Q1 to 2025-Q3 net_income, revenue",
+   "count": 22,
+   "items": [
+    {
+     "cite_id": "f:759",
+     "text": "Net income (2025-Q1): 16,644,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 152,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "16644000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4163",
+     "text": "Net income (2025-Q1): 16,644,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2369,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "16644000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:17090",
+     "text": "Net income (2025-Q1): 16,644,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3307,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "16644000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:760",
+     "text": "Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 148,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-028526",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm"
+     },
+     "value": "16644000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4164",
+     "text": "Net income (2025-Q1; 2026-Q1 report): 16,644,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2365,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-028526",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm"
+     },
+     "value": "16644000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:763",
+     "text": "Net income (2025-Q3): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 150,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-25-047240",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4167",
+     "text": "Net income (2025-Q3): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2367,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-25-047240",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:11503",
+     "text": "Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2835,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:13367",
+     "text": "Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2995,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:15147",
+     "text": "Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3140,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:17095",
+     "text": "Net income (2025-Q3; 2026-Q3 report): 2,709,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3301,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "net_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "2709000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:741",
+     "text": "Revenue (2025-Q1): 42,314,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 152,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "42314000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4145",
+     "text": "Revenue (2025-Q1): 42,314,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2369,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "42314000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:17070",
+     "text": "Revenue (2025-Q1): 42,314,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3307,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001326801-25-000054",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+     },
+     "value": "42314000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:742",
+     "text": "Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 148,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-028526",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm"
+     },
+     "value": "42314000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4146",
+     "text": "Revenue (2025-Q1; 2026-Q1 report): 42,314,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2365,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q1",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-028526",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm"
+     },
+     "value": "42314000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:745",
+     "text": "Revenue (2025-Q3): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 150,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-25-047240",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:4149",
+     "text": "Revenue (2025-Q3): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2367,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-25-047240",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:11483",
+     "text": "Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2835,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:13347",
+     "text": "Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2995,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:15127",
+     "text": "Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3140,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:17075",
+     "text": "Revenue (2025-Q3; 2026-Q3 report): 51,242,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3301,
+      "ticker": "META",
+      "doc_type": "10-Q",
+      "period": "2025-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0001628280-26-066773",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm"
+     },
+     "value": "51242000000",
+     "scale": "1",
+     "unit_note": null
     }
    ],
    "error": null
@@ -470,11 +1070,12 @@
  ],
  "sandbox": [
   {
-   "key": "ea6edfe7b963676dfb000a1586f44684059c5dbe6fa57b5e007cc817043f1346",
+   "key": "c05fdc0267dd99c1c66b0a249e08f959b6b3b8b06ea06a5fb273621a88f13c5c",
    "response": {
     "ok": true,
     "outputs": {
-     "margin_change": "-34.04782032389833"
+     "net_margin_q1": "39.33449922011628",
+     "net_margin_q3": "5.286678896217946"
     },
     "stdout": "",
     "error": null,
@@ -483,11 +1084,42 @@
    }
   },
   {
-   "key": "ea6edfe7b963676dfb000a1586f44684059c5dbe6fa57b5e007cc817043f1346",
+   "key": "c05fdc0267dd99c1c66b0a249e08f959b6b3b8b06ea06a5fb273621a88f13c5c",
    "response": {
     "ok": true,
     "outputs": {
-     "margin_change": "-34.04782032389833"
+     "net_margin_q1": "39.33449922011628",
+     "net_margin_q3": "5.286678896217946"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "9dfe9e52e01c2de7177c4a67bb40cd9256331a78787b5d3ea7a653c5570efa97",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_margin_q1": "0.39334499220116276",
+     "net_margin_q3": "0.05286678896217946",
+     "net_margin_change_pp": "-1393500000000.0"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "9dfe9e52e01c2de7177c4a67bb40cd9256331a78787b5d3ea7a653c5570efa97",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_margin_q1": "0.39334499220116276",
+     "net_margin_q3": "0.05286678896217946",
+     "net_margin_change_pp": "-1393500000000.0"
     },
     "stdout": "",
     "error": null,
@@ -496,5 +1128,6 @@
    }
   }
  ],
- "decision": "approve"
+ "decision": "approve",
+ "elapsed_ms": 224417
 }

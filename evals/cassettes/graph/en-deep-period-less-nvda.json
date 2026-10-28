@@ -3,113 +3,105 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "6469c279487457b32419ffb6c18f44d60820f6ab1f669354e83ed7a95be99f01",
+   "key": "07912a3b6c62a5d352451fb300c63bb8c0f2dcdbaa6f6946434475c2505b9867",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"NVDA\"\n  ],\n  \"periods\": [],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\"mode\": \"deep\", \"tickers\": [\"NVDA\"], \"periods\": [], \"metrics\": [\"revenue\"], \"uses_watchlist\": false, \"memory_intent\": null}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 922,
-    "tokens_out": 63,
-    "latency_ms": 1851.698,
+    "tokens_in": 932,
+    "tokens_out": 37,
+    "latency_ms": 1511.086,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "ad7e9d8e5bfcb2860c2f7b5e5766d05280b8faefaecbfedbbd228e9bca040d59",
+   "key": "eb7095ba4da322be4143b5870800636f41796b51fb5ea2a269c1ffea0bcb3fd1",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\":[{\"id\":\"s1\",\"kind\":\"facts\",\"goal\":\"Retrieve NVIDIA's quarterly revenue for the specified periods.\",\"tickers\":[\"NVDA\"],\"periods\":[\"2025-Q4\",\"2026-Q1\",\"2026-Q2\",\"2026-Q3\"],\"metrics\":[\"revenue\"]},{\"id\":\"s2\",\"kind\":\"calculate\",\"goal\":\"Calculate the quarter‑over‑quarter revenue change percentages for NVIDIA.\",\"tickers\":[\"NVDA\"],\"periods\":[\"2025-Q4\",\"2026-Q1\",\"2026-Q2\",\"2026-Q3\"]}]}",
+    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Fetch NVIDIA's quarterly revenue for the last four quarters\", \"tickers\": [\"NVDA\"], \"periods\": [\"2025-Q4\", \"2026-Q1\", \"2026-Q2\", \"2026-Q3\"], \"metrics\": [\"revenue\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"Calculate quarter-over-quarter revenue changes and growth rates\", \"tickers\": [\"NVDA\"], \"periods\": [\"2025-Q4\", \"2026-Q1\", \"2026-Q2\", \"2026-Q3\"]}]}",
     "tool_calls": [],
-    "provider": "groq-large",
-    "model": "openai/gpt-oss-120b",
-    "tokens_in": 1449,
-    "tokens_out": 389,
-    "latency_ms": 1261.657,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1109,
+    "tokens_out": 381,
+    "latency_ms": 8552.229,
     "cache_hit": false,
     "fallback_from": [
-     "nvidia-large",
      "gemini-flash-stable",
-     "gemini-flash",
-     "openrouter-large"
+     "gemini-flash"
     ]
    }
   },
   {
-   "key": "46d926c2a0ea893926fb9a0b6d383e555f81e7aa56eae96d49b3c4d8a37e7ceb",
+   "key": "b741990c543ec6c062d60742cd532ebeb336d81b389f6dbac69fdb3e0e8f5540",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 697,
+    "tokens_in": 700,
     "tokens_out": 78,
-    "latency_ms": 959.695,
+    "latency_ms": 817.885,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "39108f004004da04d436687deb6edd38f3ff2109f0267578fba4347cbe019bd8",
+   "key": "00727de6d5d65d2c9cbb3728074c85448a4f548b7b62bf4bf425b39f6909b218",
    "task_class": "strong",
    "response": {
-    "content": "{\"findings\": [{\"id\": \"F1\", \"text\": \"NVIDIA's revenue for 2025-Q4 was 57,006,000,000 USD.\", \"cite_ids\": [\"f:409\", \"f:3813\"]}, {\"id\": \"F2\", \"text\": \"NVIDIA's revenue for 2026-Q2 was 81,615,000,000 USD.\", \"cite_ids\": [\"f:411\", \"f:3815\"]}, {\"id\": \"F3\", \"text\": \"NVIDIA's revenue for 2026-Q3 was 96,221,000,000 USD.\", \"cite_ids\": [\"f:412\", \"f:3816\"]}, {\"id\": \"F4\", \"text\": \"Revenue for 2026-Q1 is not available in the provided evidence.\", \"cite_ids\": [\"f:409\", \"f:3813\", \"f:411\", \"f:3815\", \"f:412\", \"f:3816\"]}], \"calculations\": [{\"name\": \"qoq_change_q2_q3\", \"description\": \"Quarter-over-quarter revenue change from 2026-Q2 to 2026-Q3 as a percentage\", \"inputs\": [{\"name\": \"revenue_q2\", \"cite_id\": \"f:411\"}, {\"name\": \"revenue_q3\", \"cite_id\": \"f:412\"}], \"code\": \"result = (inputs['revenue_q3'] - inputs['revenue_q2']) / inputs['revenue_q2'] * 100\"}]}",
+    "content": "{\"findings\": [\n    {\"id\": \"F1\", \"text\": \"NVIDIA's revenue in 2025-Q4 was 57,006,000,000 USD.\", \"cite_ids\": [\"f:409\", \"f:3813\", \"f:18602\"]},\n    {\"id\": \"F2\", \"text\": \"NVIDIA's revenue in 2026-Q1 was 68,127,000,000 USD.\", \"cite_ids\": [\"f:22573\"]},\n    {\"id\": \"F3\", \"text\": \"NVIDIA's revenue in 2026-Q2 was 81,615,000,000 USD.\", \"cite_ids\": [\"f:411\", \"f:3815\", \"f:18604\"]},\n    {\"id\": \"F4\", \"text\": \"NVIDIA's revenue in 2026-Q3 was 96,221,000,000 USD.\", \"cite_ids\": [\"f:412\", \"f:3816\", \"f:18605\"]},\n    {\"id\": \"F5\", \"text\": \"NVIDIA's revenue increased from 2025-Q4 to 2026-Q1.\", \"cite_ids\": [\"f:409\", \"f:22573\"], \"calcs\": [\"qoq_change_q4_q1\", \"qoq_growth_q4_q1\"]},\n    {\"id\": \"F6\", \"text\": \"NVIDIA's revenue increased from 2026-Q1 to 2026-Q2.\", \"cite_ids\": [\"f:22573\", \"f:411\"], \"calcs\": [\"qoq_change_q1_q2\", \"qoq_growth_q1_q2\"]},\n    {\"id\": \"F7\", \"text\": \"NVIDIA's revenue increased from 2026-Q2 to 2026-Q3.\", \"cite_ids\": [\"f:411\", \"f:412\"], \"calcs\": [\"qoq_change_q2_q3\", \"qoq_growth_q2_q3\"]}\n  ],\n  \"calculations\": [\n    {\"name\": \"qoq_change_q4_q1\", \"description\": \"Quarter-over-quarter revenue change from 2025-Q4 to 2026-Q1 in USD\", \"inputs\": [{\"name\": \"rev_q4\", \"cite_id\": \"f:409\"}, {\"name\": \"rev_q1\", \"cite_id\": \"f:22573\"}], \"code\": \"result = inputs['rev_q1'] - inputs['rev_q4']\"},\n    {\"name\": \"qoq_growth_q4_q1\", \"description\": \"Quarter-over-quarter revenue growth rate from 2025-Q4 to 2026-Q1 as a ratio\", \"inputs\": [{\"name\": \"rev_q4\", \"cite_id\": \"f:409\"}, {\"name\": \"rev_q1\", \"cite_id\": \"f:22573\"}], \"code\": \"result = (inputs['rev_q1'] - inputs['rev_q4']) / inputs['rev_q4']\"},\n    {\"name\": \"qoq_change_q1_q2\", \"description\": \"Quarter-over-quarter revenue change from 2026-Q1 to 2026-Q2 in USD\", \"inputs\": [{\"name\": \"rev_q1\", \"cite_id\": \"f:22573\"}, {\"name\": \"rev_q2\", \"cite_id\": \"f:411\"}], \"code\": \"result = inputs['rev_q2'] - inputs['rev_q1']\"},\n    {\"name\": \"qoq_growth_q1_q2\", \"description\": \"Quarter-over-quarter revenue growth rate from 2026-Q1 to 2026-Q2 as a ratio\", \"inputs\": [{\"name\": \"rev_q1\", \"cite_id\": \"f:22573\"}, {\"name\": \"rev_q2\", \"cite_id\": \"f:411\"}], \"code\": \"result = (inputs['rev_q2'] - inputs['rev_q1']) / inputs['rev_q1']\"},\n    {\"name\": \"qoq_change_q2_q3\", \"description\": \"Quarter-over-quarter revenue change from 2026-Q2 to 2026-Q3 in USD\", \"inputs\": [{\"name\": \"rev_q2\", \"cite_id\": \"f:411\"}, {\"name\": \"rev_q3\", \"cite_id\": \"f:412\"}], \"code\": \"result = inputs['rev_q3'] - inputs['rev_q2']\"},\n    {\"name\": \"qoq_growth_q2_q3\", \"description\": \"Quarter-over-quarter revenue growth rate from 2026-Q2 to 2026-Q3 as a ratio\", \"inputs\": [{\"name\": \"rev_q2\", \"cite_id\": \"f:411\"}, {\"name\": \"rev_q3\", \"cite_id\": \"f:412\"}], \"code\": \"result = (inputs['rev_q3'] - inputs['rev_q2']) / inputs['rev_q2']\"}\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1988,
-    "tokens_out": 1048,
-    "latency_ms": 22376.391,
+    "tokens_in": 2185,
+    "tokens_out": 1595,
+    "latency_ms": 44337.938,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   },
   {
-   "key": "693f4f7cee733ce1f32fae7655b2f76e81ed11708b13d525ad6569559f199ad5",
+   "key": "5863202e3f65d1681a85c57d4c7bbb3aa61d61a2bfc71ac8d9e5fb44051bb903",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [\n    {\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Evidence shows 57,006,000,000 USD; finding states 57,000,000,000 USD, a rounding difference within allowed tolerance.\"},\n    {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Evidence matches exactly: 81,615,000,000 USD for 2026-Q2.\"},\n    {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Evidence matches exactly: 96,221,000,000 USD for 2026-Q3.\"},\n    {\"finding_id\": \"F4\", \"supported\": true, \"reason\": \"Provided evidence includes only 2025-Q4, 2026-Q2, and 2026-Q3; no 2026-Q1 revenue is present.\"}\n  ]}",
+    "content": "{\"claims\": [\n    {\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Revenue figure matches cited evidence (57,006,000,000 USD).\"},\n    {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Revenue figure matches cited evidence (68,127,000,000 USD).\"},\n    {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Revenue figure matches cited evidence (81,615,000,000 USD).\"},\n    {\"finding_id\": \"F4\", \"supported\": true, \"reason\": \"Revenue figure matches cited evidence (96,221,000,000 USD).\"},\n    {\"finding_id\": \"F5\", \"supported\": true, \"reason\": \"Revenue increased from 57,006M to 68,127M; calculations show positive change and growth.\"},\n    {\"finding_id\": \"F6\", \"supported\": true, \"reason\": \"Revenue increased from 68,127M to 81,615M; calculations show positive change and growth.\"},\n    {\"finding_id\": \"F7\", \"supported\": true, \"reason\": \"Revenue increased from 81,615M to 96,221M; calculations show positive change and growth.\"}\n  ]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1125,
-    "tokens_out": 1125,
-    "latency_ms": 19213.494,
+    "tokens_in": 1876,
+    "tokens_out": 1109,
+    "latency_ms": 32745.127,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   },
   {
-   "key": "111777501772211cab0a731d6c3e1cd691ce76d6e7d7b83e371520bbc86dd5ae",
+   "key": "6f14453120b412ab154e4e5933fc7a1487ba1a6be5c39265d6710e268f090014",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"NVIDIA's quarterly revenue increased from $57.0 billion in 2025-Q4 to $81.6 billion in 2026-Q2 and $96.2 billion in 2026-Q3 [1][2][3]. The quarter-over-quarter growth from 2026-Q2 to 2026-Q3 was 17.90% [4]. Revenue for 2026-Q1 is not available in the provided evidence.\",\n  \"points\": [\n    {\n      \"text\": \"NVIDIA's revenue in 2025-Q4 was $57,006,000,000.\",\n      \"cite_ids\": [\"f:409\"]\n    },\n    {\n      \"text\": \"NVIDIA's revenue in 2026-Q2 was $81,615,000,000.\",\n      \"cite_ids\": [\"f:411\"]\n    },\n    {\n      \"text\": \"NVIDIA's revenue in 2026-Q3 was $96,221,000,000.\",\n      \"cite_ids\": [\"f:412\"]\n    },\n    {\n      \"text\": \"Quarter-over-quarter revenue growth from 2026-Q2 to 2026-Q3 was 17.90%.\",\n      \"cite_ids\": [\"k:1\"]\n    },\n    {\n      \"text\": \"Revenue for 2026-Q1 is not available in the provided evidence.\",\n      \"cite_ids\": [\"f:409\", \"f:3813\", \"f:411\", \"f:3815\", \"f:412\", \"f:3816\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"NVIDIA Quarterly Revenue and QoQ Change\",\n      \"columns\": [\"Quarter\", \"Revenue (USD)\", \"QoQ Change (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"2025-Q4\", \"cite_id\": null},\n          {\"text\": \"57,006,000,000\", \"cite_id\": \"f:409\"},\n          {\"text\": \"N/A\", \"cite_id\": null}\n        ],\n        [\n          {\"text\": \"2026-Q1\", \"cite_id\": null},\n          {\"text\": \"N/A\", \"cite_id\": null},\n          {\"text\": \"N/A\", \"cite_id\": null}\n        ],\n        [\n          {\"text\": \"2026-Q2\", \"cite_id\": null},\n          {\"text\": \"81,615,000,000\", \"cite_id\": \"f:411\"},\n          {\"text\": \"N/A\", \"cite_id\": null}\n        ],\n        [\n          {\"text\": \"2026-Q3\", \"cite_id\": null},\n          {\"text\": \"96,221,000,000\", \"cite_id\": \"f:412\"},\n          {\"text\": \"17.90\", \"cite_id\": \"k:1\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"line\",\n    \"table\": 0,\n    \"x_column\": \"Quarter\",\n    \"series\": [\"Revenue (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"medium\",\n    \"note\": \"",
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"NVIDIA's quarterly revenue has grown strongly across the last four reported quarters, rising from $57.0 billion in 2025-Q4 to $96.2 billion in 2026-Q3 [1][2][3][4]. Each quarter showed double-digit sequential growth: +19.5% in 2026-Q1, +19.8% in 2026-Q2, and +17.9% in 2026-Q3 [5][6][7].\",\n  \"points\": [\n    {\n      \"text\": \"Revenue in 2025-Q4 was $57,006,000,000.\",\n      \"cite_ids\": [\"f:409\", \"f:3813\", \"f:18602\"]\n    },\n    {\n      \"text\": \"Revenue in 2026-Q1 was $68,127,000,000, up $11.1 billion (+19.51%) from the prior quarter.\",\n      \"cite_ids\": [\"f:22573\", \"k:1\", \"k:2\"]\n    },\n    {\n      \"text\": \"Revenue in 2026-Q2 was $81,615,000,000, up $13.5 billion (+19.80%) from 2026-Q1.\",\n      \"cite_ids\": [\"f:411\", \"f:3815\", \"f:18604\", \"k:3\", \"k:4\"]\n    },\n    {\n      \"text\": \"Revenue in 2026-Q3 was $96,221,000,000, up $14.6 billion (+17.90%) from 2026-Q2.\",\n      \"cite_ids\": [\"f:412\", \"f:3816\", \"f:18605\", \"k:5\", \"k:6\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"NVIDIA Quarterly Revenue and Quarter-over-Quarter Changes\",\n      \"columns\": [\"Quarter\", \"Revenue (USD)\", \"QoQ Change (USD)\", \"QoQ Growth (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"2025-Q4\", \"cite_id\": null},\n          {\"text\": \"57,006,000,000\", \"cite_id\": \"f:409\"},\n          {\"text\": \"—\", \"cite_id\": null},\n          {\"text\": \"—\", \"cite_id\": null}\n        ],\n        [\n          {\"text\": \"2026-Q1\", \"cite_id\": null},\n          {\"text\": \"68,127,000,000\", \"cite_id\": \"f:22573\"},\n          {\"text\": \"11,121,000,000\", \"cite_id\": \"k:1\"},\n          {\"text\": \"19.51%\", \"cite_id\": \"k:2\"}\n        ],\n        [\n          {\"text\": \"2026-Q2\", \"cite_id\": null},\n          {\"text\": \"81,615,000,000\", \"cite_id\": \"f:411\"},\n          {\"text\": \"13,488,000,000\", \"cite_id\": \"k:3\"},\n          {\"text\": \"19.80%\", \"cite_id\": \"k:4\"}\n        ],\n        [\n          {\"text\": \"2026-Q3\", \"cite_id\": null},\n          {\"text\": \"96,221,000,000\", \"cite_id\": \"f:412\"},\n          {\"text\": \"14,606,000,000\", \"cite_id\": \"k:5\"},\n          {\"text\": \"17.90%\", \"cite_id\": \"k:6\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"line\",\n    \"table\": 0,\n    \"x_column\": \"Quarter\",\n    \"series\": [\"Revenue (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Revenue figures and QoQ changes are available for four consecutive quarters with supporting calculations.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:409\"},\n    {\"marker\": 2, \"cite_id\": \"f:22573\"},\n    {\"marker\": 3, \"cite_id\": \"f:411\"},\n    {\"marker\": 4, \"cite_id\": \"f:412\"},\n    {\"marker\": 5, \"cite_id\": \"k:2\"},\n    {\"marker\": 6, \"cite_id\": \"k:4\"},\n    {\"marker\": 7, \"cite_id\": \"k:6\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2655,
-    "tokens_out": 3000,
-    "latency_ms": 55156.831,
+    "tokens_in": 3565,
+    "tokens_out": 1801,
+    "latency_ms": 49935.66,
     "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "dcad0ed15bdeba4a98ebf5992ce4b632bdc59aeee6d06968510530f4c9b927d0",
-   "task_class": "strong",
-   "response": {
-    "content": "{\"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"NVIDIA's quarterly revenue increased from $57.0 billion in 2025-Q4 to $81.6 billion in 2026-Q2 and $96.2 billion in 2026-Q3 [1][2][3]. The quarter-over-quarter growth from 2026-Q2 to 2026-Q3 was 17.90% [4]. Revenue for 2026-Q1 is not available in the provided evidence.\",\n  \"points\": [\n    {\n      \"text\": \"NVIDIA's revenue in 2025-Q4 was $57,006,000,000.\",\n      \"cite_ids\": [\"f:409\"]\n    },\n    {\n      \"text\": \"NVIDIA's revenue in 2026-Q2 was $81,615,000,000.\",\n      \"cite_ids\": [\"f:411\"]\n    },\n    {\n      \"text\": \"NVIDIA's revenue in 2026-Q3 was $96,221,000,000.\",\n      \"cite_ids\": [\"f:412\"]\n    },\n    {\n      \"text\": \"Quarter-over-quarter revenue growth from 2026-Q2 to 2026-Q3 was 17.90%.\",\n      \"cite_ids\": [\"k:1\"]\n    },\n    {\n      \"text\": \"Revenue for 2026-Q1 is not available in the provided evidence.\",\n      \"cite_ids\": [\"f:409\", \"f:3813\", \"f:411\", \"f:3815\", \"f:412\", \"f:3816\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"NVIDIA Quarterly Revenue and QoQ Change\",\n      \"columns\": [\"Quarter\", \"Revenue (USD)\", \"QoQ Change (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"2025-Q4\", \"cite_id\": null},\n          {\"text\": \"57,006,000,000\", \"cite_id\": \"f:409\"},\n          {\"text\": \"N/A\", \"cite_id\": null}\n        ],\n        [\n          {\"text\": \"2026-Q1\", \"cite_id\": null},\n          {\"text\": \"N/A\", \"cite_id\": null},\n          {\"text\": \"N/A\", \"cite_id\": null}\n        ],\n        [\n          {\"text\": \"2026-Q2\", \"cite_id\": null},\n          {\"text\": \"81,615,000,000\", \"cite_id\": \"f:411\"},\n          {\"text\": \"N/A\", \"cite_id\": null}\n        ],\n        [\n          {\"text\": \"2026-Q3\", \"cite_id\": null},\n          {\"text\": \"96,221,000,000\", \"cite_id\": \"f:412\"},\n          {\"text\": \"17.90\", \"cite_id\": \"k:1\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"line\",\n    \"table\": 0,\n    \"x_column\": \"Quarter\",\n    \"series\": [\"Revenue (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"medium\",\n    \"note\": \"Revenue for 2026-Q1 is missing, so the trend is incomplete.\"\n  },\n  \"unverified\": [\"2026-Q1 revenue\"],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:409\"},\n    {\"marker\": 2, \"cite_id\": \"f:411\"},\n    {\"marker\": 3, \"cite_id\": \"f:412\"},\n    {\"marker\": 4, \"cite_id\": \"k:1\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 3485,
-    "tokens_out": 1273,
-    "latency_ms": 22175.678,
-    "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
@@ -117,7 +109,7 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"NVDA\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3124, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm\"}, {\"document_id\": 3125, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm\"}, {\"document_id\": 3126, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-02-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm\"}, {\"document_id\": 3127, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-19T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm\"}, {\"document_id\": 3128, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-27T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm\"}, {\"document_id\": 3129, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm\"}, {\"document_id\": 3130, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-02-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm\"}, {\"document_id\": 3131, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm\"}]}",
+   "content": "{\"documents\": [{\"document_id\": 3598, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm\"}, {\"document_id\": 3599, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm\"}, {\"document_id\": 3600, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-02-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm\"}, {\"document_id\": 3601, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-19T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm\"}, {\"document_id\": 3602, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-27T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000209/nvda-20250727.htm\"}, {\"document_id\": 3603, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm\"}, {\"document_id\": 3604, \"ticker\": \"NVDA\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-02-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581025000023/nvda-20250126.htm\"}, {\"document_id\": 3605, \"ticker\": \"NVDA\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-20T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1045810/000104581024000316/nvda-20241027.htm\"}]}",
    "summary": "NVDA documents",
    "count": 8,
    "items": [],
@@ -126,9 +118,9 @@
   {
    "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2025-Q4\",\"2026-Q1\",\"2026-Q2\",\"2026-Q3\"],\"ticker\":\"NVDA\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:409\">Revenue (2025-Q4): 57,006,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3813\">Revenue (2025-Q4): 57,006,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:411\">Revenue (2026-Q2): 81,615,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3815\">Revenue (2026-Q2): 81,615,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:412\">Revenue (2026-Q3): 96,221,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3816\">Revenue (2026-Q3): 96,221,000,000 USD</untrusted_document>",
+   "content": "<untrusted_document cite_id=\"f:409\">Revenue (2025-Q4): 57,006,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3813\">Revenue (2025-Q4): 57,006,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18602\">Revenue (2025-Q4): 57,006,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:22573\">Revenue (2026-Q1; 2026-FY report): 68,127,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:411\">Revenue (2026-Q2): 81,615,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3815\">Revenue (2026-Q2): 81,615,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18604\">Revenue (2026-Q2): 81,615,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:412\">Revenue (2026-Q3): 96,221,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3816\">Revenue (2026-Q3): 96,221,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18605\">Revenue (2026-Q3): 96,221,000,000 USD</untrusted_document>",
    "summary": "NVDA 2025-Q4 to 2026-Q3 revenue",
-   "count": 6,
+   "count": 10,
    "items": [
     {
      "cite_id": "f:409",
@@ -169,6 +161,44 @@
      "unit_note": null
     },
     {
+     "cite_id": "f:18602",
+     "text": "Revenue (2025-Q4): 57,006,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2974,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2025-Q4",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0001045810-25-000230",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000230/nvda-20251026.htm"
+     },
+     "value": "57006000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:22573",
+     "text": "Revenue (2026-Q1; 2026-FY report): 68,127,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3126,
+      "ticker": "NVDA",
+      "doc_type": "10-K",
+      "period": "2026-Q1",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "derived: us-gaap:Revenues 0001045810-26-000021 - us-gaap:Revenues 0001045810-25-000230",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+     },
+     "value": "68127000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
      "cite_id": "f:411",
      "text": "Revenue (2026-Q2): 81,615,000,000 USD",
      "source": {
@@ -193,6 +223,25 @@
      "source": {
       "kind": "fact",
       "document_id": 2341,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2026-Q2",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0001045810-26-000052",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000052/nvda-20260426.htm"
+     },
+     "value": "81615000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:18604",
+     "text": "Revenue (2026-Q2): 81,615,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3125,
       "ticker": "NVDA",
       "doc_type": "10-Q",
       "period": "2026-Q2",
@@ -243,6 +292,25 @@
      "value": "96221000000",
      "scale": "1",
      "unit_note": null
+    },
+    {
+     "cite_id": "f:18605",
+     "text": "Revenue (2026-Q3): 96,221,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 3124,
+      "ticker": "NVDA",
+      "doc_type": "10-Q",
+      "period": "2026-Q3",
+      "metric": "revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:Revenues 0001045810-26-000075",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
+     },
+     "value": "96221000000",
+     "scale": "1",
+     "unit_note": null
     }
    ],
    "error": null
@@ -250,11 +318,16 @@
  ],
  "sandbox": [
   {
-   "key": "06ab62c506d245afa64c77537393556a4a333ad6d9d37bbe5a06c1c6948943c1",
+   "key": "75c6f60b82d1ae1fe47a704c7b02646176dd4e3846901f572644a7cd450efb91",
    "response": {
     "ok": true,
     "outputs": {
-     "qoq_change_q2_q3": "17.896220057587453"
+     "qoq_change_q4_q1": "11121000000.0",
+     "qoq_growth_q4_q1": "0.1950847279233765",
+     "qoq_change_q1_q2": "13488000000.0",
+     "qoq_growth_q1_q2": "0.1979831784754943",
+     "qoq_change_q2_q3": "14606000000.0",
+     "qoq_growth_q2_q3": "0.17896220057587453"
     },
     "stdout": "",
     "error": null,
@@ -263,11 +336,16 @@
    }
   },
   {
-   "key": "06ab62c506d245afa64c77537393556a4a333ad6d9d37bbe5a06c1c6948943c1",
+   "key": "75c6f60b82d1ae1fe47a704c7b02646176dd4e3846901f572644a7cd450efb91",
    "response": {
     "ok": true,
     "outputs": {
-     "qoq_change_q2_q3": "17.896220057587453"
+     "qoq_change_q4_q1": "11121000000.0",
+     "qoq_growth_q4_q1": "0.1950847279233765",
+     "qoq_change_q1_q2": "13488000000.0",
+     "qoq_growth_q1_q2": "0.1979831784754943",
+     "qoq_change_q2_q3": "14606000000.0",
+     "qoq_growth_q2_q3": "0.17896220057587453"
     },
     "stdout": "",
     "error": null,
@@ -276,5 +354,6 @@
    }
   }
  ],
- "decision": "approve"
+ "decision": "approve",
+ "elapsed_ms": 141688
 }

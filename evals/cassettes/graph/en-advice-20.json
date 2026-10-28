@@ -6,13 +6,13 @@
    "key": "1d922d483b6a87278160a3be7bc8fa3ddb468bb0e366a4897b3579db793838c1",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice or recommend whether to hold or sell Berkshire Hathaway securities. Please consult official financial disclosures or a qualified advisor.\",\n  \"points\": [],\n  \"citations\": []\n}\n```",
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice or recommend whether to hold or sell Berkshire Hathaway securities. Please consult the company's official financial reports and disclosures for factual information.\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1508,
-    "tokens_out": 69,
-    "latency_ms": 1577.46,
+    "tokens_in": 1522,
+    "tokens_out": 62,
+    "latency_ms": 777.65,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,19 +21,23 @@
    "key": "3ecf22175d260ebd98493ed40221cea2cb6cccac046b37e355b91ef5ba4baabe",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice on whether to hold or sell Berkshire Hathaway shares. I can only provide factual information from company disclosures.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice on whether to hold or sell Berkshire Hathaway shares. This system only provides factual information from company disclosures.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 973,
-    "tokens_out": 194,
-    "latency_ms": 4100.073,
+    "tokens_out": 182,
+    "latency_ms": 7215.248,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
  "tools": [],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 8442
 }

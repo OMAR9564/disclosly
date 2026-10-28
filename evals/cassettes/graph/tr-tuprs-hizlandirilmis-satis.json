@@ -3,16 +3,16 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "808868afdf33499a870e0db8e819246f2ca0a97144689397cdfd8105768917ca",
+   "key": "e2ada699c8fc1d954ae8b6ba7383129dad490f493244cadeeb3033aaeda9c62d",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"TUPRS\"\n  ],\n  \"periods\": [],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1010,
+    "tokens_in": 1020,
     "tokens_out": 56,
-    "latency_ms": 1298.688,
+    "latency_ms": 831.034,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,13 @@
    "key": "61505d3936c37748807e2d035dacbaa11ba8ba4e4fc70e93fb514e5796bb616c",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Tüpraş payları ile ilgili gerçekleştirilen hızlandırılmış talep toplama işlemlerinde pay başına satış fiyatı 233 TL'dir [c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64].\",\n  \"points\": [\n    {\n      \"text\": \"Türkiye Petrol Rafinerileri A.Ş. (Tüpraş) paylarının hızlandırılmış talep toplama yöntemiyle satışı, pay başına 233 TL bedel üzerinden gerçekleşmiştir.\",\n      \"cite_ids\": [\n        \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Tüpraş payları ile ilgili gerçekleştirilen hızlandırılmış talep toplama işleminde 1 TL nominal değerli paylar için satış fiyatı 233 TL'dir [c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95, c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64].\",\n  \"points\": [\n    {\n      \"text\": \"Türkiye Petrol Rafinerileri A.Ş. payları ile ilgili olarak 1 TL nominal değerli paylar için satış fiyatı 233 TL olmak üzere hızlandırılmış talep toplama yöntemiyle satış işlemi gerçekleştirilmiştir.\",\n      \"cite_ids\": [\n        \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\",\n        \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 4403,
-    "tokens_out": 359,
-    "latency_ms": 4859.817,
+    "tokens_in": 4417,
+    "tokens_out": 571,
+    "latency_ms": 1743.241,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -36,15 +36,18 @@
    "key": "1c5f586c06d8e6afd230d89592d4f8b8388bddcacc78d41694c5a55a0378b613",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Tüpraş'ın hızlandırılmış talep toplama (accelerated bookbuilding) yöntemiyle gerçekleştirilen satış işleminde pay başına satış fiyatı 233 TL olarak belirlenmiştir.\",\n  \"points\": [\n    {\n      \"text\": \"1 TL nominal değerli paylar için satış fiyatı 233 TL olarak belirlenmiş, toplam 40.000.000 TL nominal değerli A grubu pay hızlandırılmış talep toplama yöntemiyle satılmıştır.\",\n      \"cite_ids\": [\n        \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\",\n        \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n      ]\n    },\n    {\n      \"text\": \"İşlem toplam 9.320.000.000 TL karşılığında gerçekleşmiş ve takası 31.03.2026 tarihinde tamamlanmıştır.\",\n      \"cite_ids\": [\n        \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\",\n        \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Tüpraş'ın hızlandırılmış talep toplama (accelerated bookbuilding) yöntemiyle gerçekleştirilen satış işleminde pay başına satış fiyatı 233 TL olarak belirlenmiştir.\",\n  \"points\": [\n    {\n      \"text\": \"1 TL nominal değerli paylar için satış fiyatı 233 TL olarak belirlenmiş, toplam 40.000.000 TL nominal değerli A grubu pay hızlandırılmış talep toplama yöntemiyle satılmıştır.\",\n      \"cite_ids\": [\n        \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\",\n        \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n      ]\n    },\n    {\n      \"text\": \"İşlem pay başına 233 TL bedel üzerinden toplam 9.320.000.000 TL karşılığında gerçekleşmiştir.\",\n      \"cite_ids\": [\n        \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:a296bb19827d1fb35b2aa2ce4fc1944cd4292700a110ef76476ac2f89a8f2c95\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:40ea3ce69ec820044bb9294af5878fbd8497cf257afda80fffd1961666f65d64\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 4277,
-    "tokens_out": 1174,
-    "latency_ms": 26745.577,
+    "tokens_out": 1114,
+    "latency_ms": 27669.59,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
@@ -163,5 +166,6 @@
   }
  ],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 35462
 }

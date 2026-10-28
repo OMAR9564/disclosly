@@ -3,89 +3,92 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "7c40f29b7fb4fe2f0953c632f9d2f01174d2c517bd3816829a32c19da221110b",
+   "key": "1124e64a6c0dfe8ec825659a0476344aa5f2eed940ed7971eb528f7e41eb44fb",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"AAPL\"\n  ],\n  \"periods\": [\n    \"2024-FY\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\"mode\":\"simple\",\"tickers\":[\"AAPL\"],\"periods\":[\"2024-FY\"],\"metrics\":[],\"uses_watchlist\":false,\"memory_intent\":null}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 933,
-    "tokens_out": 67,
-    "latency_ms": 1504.228,
+    "tokens_in": 943,
+    "tokens_out": 33,
+    "latency_ms": 1577.372,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "fc4b3188dc7f0fd3948e7d3ca6c9ebf7624acac7e6b1ab204e8461075a1988ff",
+   "key": "b31a9fbe4cd42caba8723d66b817760e857595a00e30955d3f9c170bc2b73937",
    "task_class": "cheap",
    "response": {
     "content": null,
     "tool_calls": [
      {
-      "id": "call_2054860",
+      "id": "call_733622",
       "name": "search_documents",
       "arguments": {
+       "period_from": "2024-FY",
        "period_to": "2024-FY",
        "ticker": "AAPL",
-       "query": "one-time income tax charge provision Ireland European Commission",
-       "period_from": "2024-FY"
+       "query": "one-time income tax charge OR tax charge OR EU State aid OR Commission OR Ireland"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0Tyi+f3o/o9yyjyTugaEQv1cDrzwM4qM8DeZUkavrkgKg4aSarmx5s6IYLH9NNzAK0w29cdDS43wxQFFYRoaBaIljl6iTEeEuwxHSz+8rfYkmZMAHGH2m9rr0="
+        "thought_signature": "EmAKXgFpFH0TYke526eeJkjUKruqRVxjKYwMsrDCqYaQe8f1F27eeltxz4bfh4nefxutdAuygFkOJvjWET09d1XJYtrcSWCc3V8LgfvUEFcJWWwJj15QidoN8n2Vx92IUNI="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 3005,
-    "tokens_out": 57,
-    "latency_ms": 833.478,
+    "tokens_in": 3243,
+    "tokens_out": 64,
+    "latency_ms": 757.196,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "d6e26385c9a9da3060234426c23b0d53f489f2111e59f8096efa2fc45940ac3d",
+   "key": "13ef9a289c2526f1bd216c972d4bebb11c0473caee8b1c627425f9d040b4d0ec",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"During the fourth quarter of fiscal 2024, Apple recorded a one-time income tax charge of $10.2 billion, net [c:f2503e97820362683a27ffd41487c3fdada1c5acd8cd79c799e7a092cecac3cf]. This charge resulted from the European Court of Justice confirming the European Commission's 2016 State Aid Decision regarding Ireland [c:f2503e97820362683a27ffd41487c3fdada1c5acd8cd79c799e7a092cecac3cf].\",\n  \"points\": [\n    {\n      \"text\": \"During the fourth quarter of 2024, Apple recorded a one-time income tax charge of $ 10.2 billion, net, following the European Court of Justice's confirmation of the European Commission's 2016 State Aid Decision regarding Ireland.\",\n      \"cite_ids\": [\n        \"c:f2503e97820362683a27ffd41487c3fdada1c5acd8cd79c799e7a092cecac3cf\"\n      ]\n    },\n    {\n      \"text\": \"The net $ 10.2 billion charge represents $ 15.8 billion payable to Ireland via release of the escrow, partially offset by a U.S. foreign tax credit of $ 4.8 billion and a decrease in unrecognized tax benefits of $ 823 million.\",\n      \"cite_ids\": [\n        \"c:f2503e97820362683a27ffd41487c3fdada1c5acd8cd79c799e7a092cecac3cf\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:f2503e97820362683a27ffd41487c3fdada1c5acd8cd79c799e7a092cecac3cf\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"During the fourth quarter of fiscal 2024, Apple recorded a one-time net income tax charge of $10.2 billion related to the European Commission's State Aid Decision [1]. This net charge represented $15.8 billion payable to Ireland via the release of escrow, which was partially offset by a U.S. foreign tax credit of $4.8 billion and a decrease in unrecognized tax benefits of $823 million [2].\",\n  \"points\": [\n    {\n      \"text\": \"Apple recorded a one-time income tax charge of $10.2 billion, net, during the fourth quarter of 2024 related to the European Commission's State Aid Decision.\",\n      \"cite_ids\": [\n        \"c:5c30b48d29c06bae90ce249d41666014d55e42b44e6f365de5d8cb1136297c57\"\n      ]\n    },\n    {\n      \"text\": \"The net charge of $10.2 billion represented $15.8 billion payable to Ireland via release of the escrow, partially offset by a U.S. foreign tax credit of $4.8 billion and a decrease in unrecognized tax benefits of $823 million.\",\n      \"cite_ids\": [\n        \"c:5c30b48d29c06bae90ce249d41666014d55e42b44e6f365de5d8cb1136297c57\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:5c30b48d29c06bae90ce249d41666014d55e42b44e6f365de5d8cb1136297c57\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:5c30b48d29c06bae90ce249d41666014d55e42b44e6f365de5d8cb1136297c57\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 6005,
-    "tokens_out": 591,
-    "latency_ms": 1927.258,
+    "tokens_in": 5574,
+    "tokens_out": 605,
+    "latency_ms": 1962.765,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "0b6565364e0eeaf1e94dcf9f59ddb4be8ab586faf3bc8d7f0e8a16be17b9c2bb",
+   "key": "a97b9d000471033beef187a56217b5ed8e9f0ea117ef4dd9e278dae16950af8f",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Apple recorded a one-time income tax charge of $10.2 billion (net) in the fourth quarter of fiscal 2024 related to the European Commission State Aid Decision.[1]\",\n  \"points\": [\n    {\n      \"text\": \"The one-time income tax charge was $10.2 billion net, representing $15.8 billion payable to Ireland via release of escrow, partially offset by a U.S. foreign tax credit of $4.8 billion and a decrease in unrecognized tax benefits of $823 million.\",\n      \"cite_ids\": [\n        \"c:f2503e97820362683a27ffd41487c3fdada1c5acd8cd79c799e7a092cecac3cf\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:f2503e97820362683a27ffd41487c3fdada1c5acd8cd79c799e7a092cecac3cf\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\": \"en\", \"status\": \"completed\", \"summary\": \"Apple recorded a one-time income tax charge of $10.2 billion, net, in fiscal 2024 related to the European Commission State Aid Decision.\", \"points\": [{\"text\": \"The one-time income tax charge was $10.2 billion, net, recorded during the fourth quarter of fiscal 2024.\", \"cite_ids\": [\"c:5c30b48d29c06bae90ce249d41666014d55e42b44e6f365de5d8cb1136297c57\", \"c:56917c078117d02f4e190635acb018614fecd18fe20fd3fb1fff2046a5b8d9e8\"]}], \"citations\": [{\"marker\": 1, \"cite_id\": \"c:5c30b48d29c06bae90ce249d41666014d55e42b44e6f365de5d8cb1136297c57\"}, {\"marker\": 2, \"cite_id\": \"c:56917c078117d02f4e190635acb018614fecd18fe20fd3fb1fff2046a5b8d9e8\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 5392,
-    "tokens_out": 689,
-    "latency_ms": 41087.303,
+    "tokens_in": 4949,
+    "tokens_out": 827,
+    "latency_ms": 10659.036,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
  "tools": [
   {
-   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\"],\"periods\":[\"2024-FY\"],\"ticker\":\"AAPL\"},\"name\":\"get_financial_facts\"}",
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\",\"gross_profit\",\"cost_of_revenue\"],\"periods\":[\"2024-FY\"],\"ticker\":\"AAPL\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:178\">Cash and cash equivalents (2024-FY): 29,943,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3688\">Cash and cash equivalents (2024-FY): 29,943,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:182\">Cash and cash equivalents (2024-FY; 2025-FY report): 29,943,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3692\">Cash and cash equivalents (2024-FY; 2025-FY report): 29,943,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:171\">Depreciation and amortization (2024-FY): 11,445,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3681\">Depreciation and amortization (2024-FY): 11,445,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:172\">Depreciation and amortization (2024-FY; 2025-FY report): 11,445,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3682\">Depreciation and amortization (2024-FY; 2025-FY report): 11,445,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:197\">EBITDA (2024-FY): 134,661,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3707\">EBITDA (2024-FY): 134,661,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:198\">EBITDA (2024-FY; 2025-FY report): 134,661,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3708\">EBITDA (2024-FY; 2025-FY report): 134,661,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:121\">Net income (2024-FY): 93,736,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3631\">Net income (2024-FY): 93,736,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:122\">Net income (2024-FY; 2025-FY report): 93,736,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3632\">Net income (2024-FY; 2025-FY report): 93,736,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:139\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3649\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:140\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3650\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:103\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3613\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:104\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3614\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:152\">Total debt (2024-FY): 96,662,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3662\">Total debt (2024-FY): 96,662,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:156\">Total debt (2024-FY; 2025-FY report): 96,662,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3666\">Total debt (2024-FY; 2025-FY report): 96,662,000,000 USD</untrusted_document>",
-   "summary": "AAPL 2024-FY net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization",
-   "count": 28,
+   "content": "<untrusted_document cite_id=\"f:178\">Cash and cash equivalents (2024-FY): 29,943,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3688\">Cash and cash equivalents (2024-FY): 29,943,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:182\">Cash and cash equivalents (2024-FY; 2025-FY report): 29,943,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3692\">Cash and cash equivalents (2024-FY; 2025-FY report): 29,943,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:22258\">Cost of revenue (2024-FY): 210,352,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:22259\">Cost of revenue (2024-FY; 2025-FY report): 210,352,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:171\">Depreciation and amortization (2024-FY): 11,445,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3681\">Depreciation and amortization (2024-FY): 11,445,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:172\">Depreciation and amortization (2024-FY; 2025-FY report): 11,445,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3682\">Depreciation and amortization (2024-FY; 2025-FY report): 11,445,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:197\">EBITDA (2024-FY): 134,661,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3707\">EBITDA (2024-FY): 134,661,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:198\">EBITDA (2024-FY; 2025-FY report): 134,661,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3708\">EBITDA (2024-FY; 2025-FY report): 134,661,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:22240\">Gross profit (2024-FY): 180,683,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:22241\">Gross profit (2024-FY; 2025-FY report): 180,683,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:121\">Net income (2024-FY): 93,736,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3631\">Net income (2024-FY): 93,736,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:122\">Net income (2024-FY; 2025-FY report): 93,736,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3632\">Net income (2024-FY; 2025-FY report): 93,736,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:139\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3649\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:140\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3650\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:103\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3613\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:104\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3614\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:152\">Total debt (2024-FY): 96,662,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3662\">Total debt (2024-FY): 96,662,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:156\">Total debt (2024-FY; 2025-FY report): 96,662,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3666\">Total debt (2024-FY; 2025-FY report): 96,662,000,000 USD</untrusted_document>",
+   "summary": "AAPL 2024-FY net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization, gross_profit, c",
+   "count": 32,
    "items": [
     {
      "cite_id": "f:178",
@@ -160,6 +163,44 @@
       "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
      },
      "value": "29943000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:22258",
+     "text": "Cost of revenue (2024-FY): 210,352,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2331,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cost_of_revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CostOfGoodsAndServicesSold 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "210352000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:22259",
+     "text": "Cost of revenue (2024-FY; 2025-FY report): 210,352,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "cost_of_revenue",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:CostOfGoodsAndServicesSold 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "210352000000",
      "scale": "1",
      "unit_note": null
     },
@@ -312,6 +353,44 @@
       "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
      },
      "value": "134661000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:22240",
+     "text": "Gross profit (2024-FY): 180,683,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2331,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "gross_profit",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:GrossProfit 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "180683000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:22241",
+     "text": "Gross profit (2024-FY; 2025-FY report): 180,683,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "gross_profit",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:GrossProfit 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "180683000000",
      "scale": "1",
      "unit_note": null
     },
@@ -623,18 +702,18 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"period_from\":\"2024-FY\",\"period_to\":\"2024-FY\",\"query\":\"one-time income tax charge provision Ireland European Commission\",\"ticker\":\"AAPL\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"period_from\":\"2024-FY\",\"period_to\":\"2024-FY\",\"query\":\"one-time income tax charge OR tax charge OR EU State aid OR Commission OR Ireland\",\"ticker\":\"AAPL\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
-   "content": "<untrusted_document cite_id=\"c:f2503e97820362683a27ffd41487c3fdada1c5acd8cd79c799e7a092cecac3cf\" amounts_in=\"millions\">Note 7 – Income Taxes European Commission State Aid Decision On August 30, 2016, the Commission announced its decision that Ireland granted state aid to the Company by providing tax opinions in 1991 and 2007 concerning the tax allocation of profits of the Irish branches of two subsidiaries of the Company (the “State Aid Decision”). The State Aid Decision ordered Ireland to calculate and recover additional taxes from the Company for the period June 2003 through December 2014. Irish legislative changes, effective as of January 2015, eliminated the application of the tax opinions from that date forward. The recovery amount was calculated to be € 13.1 billion, plus interest of € 1.2 billion. From time to time, the Company requested approval from the Irish Minister for Finance to reduce the recovery amount for certain taxes paid to other countries. As of September 28, 2024, the adjusted recovery amount of € 12.7 billion plus interest of € 1.2 billion was held in escrow and restricted from general use. The total balance of the escrow, including net unrealized investment gains, was € 14.2 billion or $ 15.8 billion as of September 28, 2024, of which $ 2.6 billion was classified as cash and cash equivalents and $ 13.2 billion was classified as current marketable securities in the Consolidated Balance Sheet. Refer to the Cash, Cash Equivalents and Marketable Securities section of Note 4, “Financial Instruments” for more information. Apple Inc. | 2024 Form 10-K | 39 The Company and Ireland appealed the State Aid Decision to the General Court of the Court of Justice of the European Union (the “General Court”). On July 15, 2020, the General Court annulled the State Aid Decision. On September 25, 2020, the Commission appealed the General Court’s decision to the European Court of Justice (the “ECJ”) and a hearing was held on May 23, 2023. On September 10, 2024, the ECJ announced that it had set aside the 2020 judgment of the General Court and confirmed the Commission’s 2016 State Aid Decision. As a result, during the fourth quarter of 2024 the Company recorded a one-time income tax charge of $ 10.2 billion, net, which represents $ 15.8 billion payable to Ireland via release of the escrow, partially offset by a U.S. foreign tax credit of $ 4.8 billion and a decrease in unrecognized tax benefits of $ 823 million. Provision for Income Taxes and Effective Tax Rate The provision for income taxes for 2024, 2023 and 2022, consisted of the following (in millions):</untrusted_document>\n<untrusted_document cite_id=\"c:01c0d12c734c63044a68f6fc6ea8c43764e0dea920b59cf71325e2a79ebeaaf4\" amounts_in=\"millions\"> | September 28, 2024 |  | September 30, 2023 |  | \nShareholders’ equity: |  |  |  |  | \nCommon stock and additional paid-in capital, $ 0.00001 par value: 50,400,000 shares authorized; 15,116,786 and 15,550,061 shares issued and outstanding, respectively | 83,276 |  |  | 73,812 | \nAccumulated deficit | ( 19,154 ) |  |  | ( 214 ) | \nAccumulated other comprehensive loss | ( 7,172 ) |  |  | ( 11,452 ) | \nTotal shareholders’ equity | 56,950 |  |  | 62,146 | \nTotal liabilities and shareholders’ equity |  | 364,980 |  |  | 352,583</untrusted_document>\n<untrusted_document cite_id=\"c:03b3431b182d1cb52eb6327d184eea4cd40ddd000a84c2d1b482080701ad9b69\">New and changing laws and regulations can also create uncertainty about how such laws and regulations will be interpreted and applied. These risks and costs may increase as the Company’s products and services are introduced into specialized applications, including health and financial services, or as the Company expands the use of technologies, such as machine learning and artificial intelligence features, and must navigate new legal, regulatory and ethical considerations relating to such technologies. The Company has implemented policies and procedures designed to ensure compliance with applicable laws and regulations, but there can be no assurance the Company’s employees, contractors or agents will not violate such laws and regulations or the Company’s policies and procedures. If the Company is found to have violated laws and regulations, it could materially adversely affect the Company’s business, reputation, results of operations and financial condition. Apple Inc. | 2024 Form 10-K | 13 Regulatory changes and other actions that materially adversely affect the Company’s business may be announced with little or no advance notice and the Company may not be able to effectively mitigate all adverse impacts from such measures. For example, the Company is subject to changing regulations relating to the export and import of its products. Although the Company has programs, policies and procedures in place that are designed to satisfy regulatory requirements, there can be no assurance that such policies and procedures will be effective in preventing a violation or a claim of a violation. As a result, the Company’s products could be banned, delayed or prohibited from importation, which could materially adversely affect the Company’s business, reputation, results of operations and financial condition. Expectations relating to environmental, social and governance considerations and related reporting obligations expose the Company to potential liabilities, increased costs, reputational harm, and other adverse effects on the Company’s business. Many governments, regulators, investors, employees, customers and other stakeholders are increasingly focused on environmental, social and governance considerations relating to businesses, including climate change and greenhouse gas emissions, human and civil rights, and diversity, equity and inclusion. In addition, the Company makes statements about its goals and initiatives through its various non-financial reports, information provided on its website, press statements and other communications. Responding to these environmental, social and governance considerations and implementation of the Company’s announced goals and initiatives involves risks and uncertainties, requires investments, and depends in part on third-party performance or data that is outside the Company’s control. The Company cannot guarantee that it will achieve its announced environmental, social and governance goals and initiatives.</untrusted_document>\n<untrusted_document cite_id=\"c:03c55db16a56c0e59756adc1ca7f4417e56ea1872f27cbcb317b587aa60f7e13\">Index to Consolidated Financial Statements | Page\nConsolidated Statements of Operations for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 29\nConsolidated Statements of Comprehensive Income for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 30\nConsolidated Balance Sheets as of September 28, 2024 and September 30, 2023 | 31\nConsolidated Statements of Shareholders’ Equity for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 32\nConsolidated Statements of Cash Flows for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 33\nNotes to Consolidated Financial Statements | 34\nReports of Independent Registered Public Accounting Firm | 48</untrusted_document>\n<untrusted_document cite_id=\"c:00187bed9794b4d58bf4d845e4b1032c749ac7bca8a136087a8d9d1012ef2260\">If requirements change, the Company may have to develop or license new technology to provide these solutions. There can be no assurance the Company will be able to develop or license such solutions at a reasonable cost and in a timely manner. Apple Inc. | 2024 Form 10-K | 10 The Company’s success depends largely on the talents and efforts of its team members, the continued service and availability of highly skilled employees, including key personnel, and the Company’s ability to nurture its distinctive and inclusive culture. Much of the Company’s future success depends on the talents and efforts of its team members and the continued availability and service of key personnel, including its Chief Executive Officer, executive team and other highly skilled employees. Experienced personnel in the technology industry are in high demand and competition for their talents is intense, especially in Silicon Valley, where most of the Company’s key personnel are located. In addition to intense competition for talent, workforce dynamics are constantly evolving. If the Company does not manage changing workforce dynamics effectively, it could materially adversely affect the Company’s culture, reputation and operational flexibility. The Company believes that its distinctive and inclusive culture is a significant driver of its success. If the Company is unable to nurture its culture, it could materially adversely affect the Company’s ability to recruit and retain the highly skilled employees who are critical to its success, and could otherwise materially adversely affect the Company’s business, reputation, results of operations and financial condition. The Company depends on the performance of carriers, wholesalers, retailers and other resellers. The Company distributes its products and certain of its services through cellular network carriers, wholesalers, retailers and resellers, many of which distribute products and services from competitors. The Company also sells its products and services and resells third-party products in most of its major markets directly to consumers, small and mid-sized businesses, and education, enterprise and government customers through its retail and online stores and its direct sales force. Some carriers providing cellular network service for the Company’s products offer financing, installment payment plans or subsidies for users’ purchases of the device. There can be no assurance such offers will be continued at all or in the same amounts. The Company has invested and will continue to invest in programs to enhance reseller sales, including staffing selected resellers’ stores with Company employees and contractors, and improving product placement displays. These programs can require a substantial investment while not assuring return or incremental sales.</untrusted_document>\n<untrusted_document cite_id=\"c:037ac4780cd54a54f58aebb30d66adb68655f796eb8a44e63847d781b0fd934e\">District Court for the Northern District of California (the “California District Court”) against the Company alleging violations of federal and state antitrust laws and California’s unfair competition law based upon the Company’s operation of its App Store. The California District Court found that certain provisions of the Company’s App Store Review Guidelines violate California’s unfair competition law and issued an injunction enjoining the Company from prohibiting developers from including in their apps external links that direct customers to purchasing mechanisms other than Apple in-app purchasing. The injunction applies to apps on the U.S. storefront of the iOS and iPadOS App Store. On January 16, 2024, the Company implemented a plan to comply with the injunction and filed a statement of compliance with the California District Court. A motion by Epic disputing the Company’s compliance plan and seeking to enforce the injunction, which the Company has opposed, is pending before the California District Court. On September 30, 2024, the Company filed a motion with the California District Court to narrow or vacate the injunction. The Company believes it has substantial defenses and intends to vigorously defend itself. Other Legal Proceedings The Company is subject to other legal proceedings and claims that have not been fully resolved and that have arisen in the ordinary course of business. The Company settled certain matters during the fourth quarter of 2024 that did not individually or in the aggregate have a material impact on the Company’s financial condition or operating results. The outcome of litigation is inherently uncertain. If one or more legal matters were resolved against the Company in a reporting period for amounts above management’s expectations, the Company’s financial condition and operating results for that reporting period could be materially adversely affected.</untrusted_document>",
-   "summary": "AAPL one-time income tax charge provision Ireland European Commission",
+   "content": "<untrusted_document cite_id=\"c:5c30b48d29c06bae90ce249d41666014d55e42b44e6f365de5d8cb1136297c57\" amounts_in=\"millions\">Note 7 – Income Taxes European Commission State Aid Decision On August 30, 2016, the Commission announced its decision that Ireland granted state aid to the Company by providing tax opinions in 1991 and 2007 concerning the tax allocation of profits of the Irish branches of two subsidiaries of the Company (the “State Aid Decision”). The State Aid Decision ordered Ireland to calculate and recover additional taxes from the Company for the period June 2003 through December 2014. Irish legislative changes, effective as of January 2015, eliminated the application of the tax opinions from that date forward. The recovery amount was calculated to be € 13.1 billion, plus interest of € 1.2 billion. From time to time, the Company requested approval from the Irish Minister for Finance to reduce the recovery amount for certain taxes paid to other countries. As of September 28, 2024, the adjusted recovery amount of € 12.7 billion plus interest of € 1.2 billion was held in escrow and restricted from general use. The total balance of the escrow, including net unrealized investment gains, was € 14.2 billion or $ 15.8 billion as of September 28, 2024, of which $ 2.6 billion was classified as cash and cash equivalents and $ 13.2 billion was classified as current marketable securities in the Consolidated Balance Sheet. Refer to the Cash, Cash Equivalents and Marketable Securities section of Note 4, “Financial Instruments” for more information. Apple Inc. | 2024 Form 10-K | 39 The Company and Ireland appealed the State Aid Decision to the General Court of the Court of Justice of the European Union (the “General Court”). On July 15, 2020, the General Court annulled the State Aid Decision. On September 25, 2020, the Commission appealed the General Court’s decision to the European Court of Justice (the “ECJ”) and a hearing was held on May 23, 2023. On September 10, 2024, the ECJ announced that it had set aside the 2020 judgment of the General Court and confirmed the Commission’s 2016 State Aid Decision. As a result, during the fourth quarter of 2024 the Company recorded a one-time income tax charge of $ 10.2 billion, net, which represents $ 15.8 billion payable to Ireland via release of the escrow, partially offset by a U.S. foreign tax credit of $ 4.8 billion and a decrease in unrecognized tax benefits of $ 823 million. Provision for Income Taxes and Effective Tax Rate The provision for income taxes for 2024, 2023 and 2022, consisted of the following (in millions):</untrusted_document>\n<untrusted_document cite_id=\"c:56917c078117d02f4e190635acb018614fecd18fe20fd3fb1fff2046a5b8d9e8\" amounts_in=\"millions\">The Company’s effective tax rate for 2024 was higher than the statutory federal income tax rate due primarily to a one-time income tax charge of $10.2 billion, net, related to the State Aid Decision (refer to Note 7, “Income Taxes” in the Notes to Consolidated Financial Statements in Part II, Item 8 of this Form 10-K) and state income taxes, partially offset by a lower effective tax rate on foreign earnings, the impact of the U.S. federal R&D credit, and tax benefits from share-based compensation. The Company’s effective tax rate for 2024 was higher compared to 2023 due primarily to a one-time income tax charge of $10.2 billion, net, related to the State Aid Decision, a higher effective tax rate on foreign earnings and lower tax benefits from share-based compensation. Liquidity and Capital Resources The Company believes its balances of unrestricted cash, cash equivalents and marketable securities, which totaled $140.8 billion as of September 28, 2024, along with cash generated by ongoing operations and continued access to debt markets, will be sufficient to satisfy its cash requirements and capital return program over the next 12 months and beyond. The Company’s material cash requirements include the following contractual obligations: Debt As of September 28, 2024, the Company had outstanding fixed-rate notes with varying maturities for an aggregate principal amount of $97.3 billion (collectively the “Notes”), with $10.9 billion payable within 12 months. Future interest payments associated with the Notes total $38.5 billion, with $2.6 billion payable within 12 months. The Company also issues unsecured short-term promissory notes pursuant to a commercial paper program. As of September 28, 2024, the Company had $10.0 billion of commercial paper outstanding, all of which was payable within 12 months. Leases The Company has lease arrangements for certain equipment and facilities, including corporate, data center, manufacturing and retail space. As of September 28, 2024, the Company had fixed lease payment obligations of $15.6 billion, with $2.0 billion payable within 12 months. Manufacturing Purchase Obligations The Company utilizes several outsourcing partners to manufacture subassemblies for the Company’s products and to perform final assembly and testing of finished products. The Company also obtains individual components for its products from a wide variety of individual suppliers. As of September 28, 2024, the Company had manufacturing purchase obligations of $53.0 billion, with $52.9 billion payable within 12 months. Other Purchase Obligations</untrusted_document>\n<untrusted_document cite_id=\"c:66d8f75a846e6059e3d3c5625dc57649c4a95941f7261504598041e463467353\">UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-K (Mark One) ☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the fiscal year ended September 28 , 2024 or ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the transition period from to . Commission File Number: 001-36743 Apple Inc. (Exact name of Registrant as specified in its charter)</untrusted_document>\n<untrusted_document cite_id=\"c:55ce11fc55ccee4fdc00fcf1a08079fb41ba498bc394ac92a3b60922a70f9ea0\" amounts_in=\"millions\">As of September 28, 2024, the Company had $ 5.1 billion in foreign tax credit carryforwards in Ireland and $ 3.6 billion in California R&D credit carryforwards, both of which can be carried forward indefinitely. A valuation allowance has been recorded for the credit carryforwards and a portion of other temporary differences. Uncertain Tax Positions As of September 28, 2024, the total amount of gross unrecognized tax benefits was $ 22.0 billion, of which $ 10.8 billion, if recognized, would impact the Company’s effective tax rate. As of September 30, 2023, the total amount of gross unrecognized tax benefits was $ 19.5 billion, of which $ 9.5 billion, if recognized, would have impacted the Company’s effective tax rate. The aggregate change in the balance of gross unrecognized tax benefits, which excludes interest and penalties, for 2024, 2023 and 2022, is as follows (in millions):</untrusted_document>\n<untrusted_document cite_id=\"c:01a6263e81be8a9a3bd6e7be45a4e773376593a1d860741f5260284bb2c18859\">The information required by this Item will be included in the 2025 Proxy Statement, and is incorporated herein by reference.</untrusted_document>\n<untrusted_document cite_id=\"c:3cca70fd95ce50ac016abcce150f8c424f9b3ff141ef1260d803221b504c80e0\">Power of Attorney KNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Timothy D. Cook and Luca Maestri, jointly and severally, his or her attorneys-in-fact, each with the power of substitution, for him or her in any and all capacities, to sign any amendments to this Annual Report on Form 10-K, and to file the same, with exhibits thereto and other documents in connection therewith, with the Securities and Exchange Commission, hereby ratifying and confirming all that each of said attorneys-in-fact, or his substitute or substitutes, may do or cause to be done by virtue hereof. Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated:</untrusted_document>",
+   "summary": "AAPL one-time income tax charge OR tax charge OR EU State aid OR Commission OR Ireland",
    "count": 6,
    "items": [
     {
-     "cite_id": "c:f2503e97820362683a27ffd41487c3fdada1c5acd8cd79c799e7a092cecac3cf",
+     "cite_id": "c:5c30b48d29c06bae90ce249d41666014d55e42b44e6f365de5d8cb1136297c57",
      "text": "Note 7 – Income Taxes European Commission State Aid Decision On August 30, 2016, the Commission announced its decision that Ireland granted state aid to the Company by providing tax opinions in 1991 and 2007 concerning the tax allocation of profits of the Irish branches of two subsidiaries of the Company (the “State Aid Decision”). The State Aid Decision ordered Ireland to calculate and recover additional taxes from the Company for the period June 2003 through December 2014. Irish legislative changes, effective as of January 2015, eliminated the application of the tax opinions from that date forward. The recovery amount was calculated to be € 13.1 billion, plus interest of € 1.2 billion. From time to time, the Company requested approval from the Irish Minister for Finance to reduce the recovery amount for certain taxes paid to other countries. As of September 28, 2024, the adjusted recovery amount of € 12.7 billion plus interest of € 1.2 billion was held in escrow and restricted from general use. The total balance of the escrow, including net unrealized investment gains, was € 14.2 billion or $ 15.8 billion as of September 28, 2024, of which $ 2.6 billion was classified as cash and cash equivalents and $ 13.2 billion was classified as current marketable securities in the Consolidated Balance Sheet. Refer to the Cash, Cash Equivalents and Marketable Securities section of Note 4, “Financial Instruments” for more information. Apple Inc. | 2024 Form 10-K | 39 The Company and Ireland appealed the State Aid Decision to the General Court of the Court of Justice of the European Union (the “General Court”). On July 15, 2020, the General Court annulled the State Aid Decision. On September 25, 2020, the Commission appealed the General Court’s decision to the European Court of Justice (the “ECJ”) and a hearing was held on May 23, 2023. On September 10, 2024, the ECJ announced that it had set aside the 2020 judgment of the General Court and confirmed the Commission’s 2016 State Aid Decision. As a result, during the fourth quarter of 2024 the Company recorded a one-time income tax charge of $ 10.2 billion, net, which represents $ 15.8 billion payable to Ireland via release of the escrow, partially offset by a U.S. foreign tax credit of $ 4.8 billion and a decrease in unrecognized tax benefits of $ 823 million. Provision for Income Taxes and Effective Tax Rate The provision for income taxes for 2024, 2023 and 2022, consisted of the following (in millions):",
      "source": {
       "kind": "chunk",
-      "document_id": 3115,
+      "document_id": 3589,
       "ticker": "AAPL",
       "doc_type": "10-K",
       "period": "2024-FY",
@@ -647,11 +726,45 @@
      "unit_note": "millions"
     },
     {
-     "cite_id": "c:01c0d12c734c63044a68f6fc6ea8c43764e0dea920b59cf71325e2a79ebeaaf4",
-     "text": " | September 28, 2024 |  | September 30, 2023 |  | \nShareholders’ equity: |  |  |  |  | \nCommon stock and additional paid-in capital, $ 0.00001 par value: 50,400,000 shares authorized; 15,116,786 and 15,550,061 shares issued and outstanding, respectively | 83,276 |  |  | 73,812 | \nAccumulated deficit | ( 19,154 ) |  |  | ( 214 ) | \nAccumulated other comprehensive loss | ( 7,172 ) |  |  | ( 11,452 ) | \nTotal shareholders’ equity | 56,950 |  |  | 62,146 | \nTotal liabilities and shareholders’ equity |  | 364,980 |  |  | 352,583",
+     "cite_id": "c:56917c078117d02f4e190635acb018614fecd18fe20fd3fb1fff2046a5b8d9e8",
+     "text": "The Company’s effective tax rate for 2024 was higher than the statutory federal income tax rate due primarily to a one-time income tax charge of $10.2 billion, net, related to the State Aid Decision (refer to Note 7, “Income Taxes” in the Notes to Consolidated Financial Statements in Part II, Item 8 of this Form 10-K) and state income taxes, partially offset by a lower effective tax rate on foreign earnings, the impact of the U.S. federal R&D credit, and tax benefits from share-based compensation. The Company’s effective tax rate for 2024 was higher compared to 2023 due primarily to a one-time income tax charge of $10.2 billion, net, related to the State Aid Decision, a higher effective tax rate on foreign earnings and lower tax benefits from share-based compensation. Liquidity and Capital Resources The Company believes its balances of unrestricted cash, cash equivalents and marketable securities, which totaled $140.8 billion as of September 28, 2024, along with cash generated by ongoing operations and continued access to debt markets, will be sufficient to satisfy its cash requirements and capital return program over the next 12 months and beyond. The Company’s material cash requirements include the following contractual obligations: Debt As of September 28, 2024, the Company had outstanding fixed-rate notes with varying maturities for an aggregate principal amount of $97.3 billion (collectively the “Notes”), with $10.9 billion payable within 12 months. Future interest payments associated with the Notes total $38.5 billion, with $2.6 billion payable within 12 months. The Company also issues unsecured short-term promissory notes pursuant to a commercial paper program. As of September 28, 2024, the Company had $10.0 billion of commercial paper outstanding, all of which was payable within 12 months. Leases The Company has lease arrangements for certain equipment and facilities, including corporate, data center, manufacturing and retail space. As of September 28, 2024, the Company had fixed lease payment obligations of $15.6 billion, with $2.0 billion payable within 12 months. Manufacturing Purchase Obligations The Company utilizes several outsourcing partners to manufacture subassemblies for the Company’s products and to perform final assembly and testing of finished products. The Company also obtains individual components for its products from a wide variety of individual suppliers. As of September 28, 2024, the Company had manufacturing purchase obligations of $53.0 billion, with $52.9 billion payable within 12 months. Other Purchase Obligations",
      "source": {
       "kind": "chunk",
-      "document_id": 3115,
+      "document_id": 3589,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:66d8f75a846e6059e3d3c5625dc57649c4a95941f7261504598041e463467353",
+     "text": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-K (Mark One) ☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the fiscal year ended September 28 , 2024 or ☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 For the transition period from to . Commission File Number: 001-36743 Apple Inc. (Exact name of Registrant as specified in its charter)",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3589,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:55ce11fc55ccee4fdc00fcf1a08079fb41ba498bc394ac92a3b60922a70f9ea0",
+     "text": "As of September 28, 2024, the Company had $ 5.1 billion in foreign tax credit carryforwards in Ireland and $ 3.6 billion in California R&D credit carryforwards, both of which can be carried forward indefinitely. A valuation allowance has been recorded for the credit carryforwards and a portion of other temporary differences. Uncertain Tax Positions As of September 28, 2024, the total amount of gross unrecognized tax benefits was $ 22.0 billion, of which $ 10.8 billion, if recognized, would impact the Company’s effective tax rate. As of September 30, 2023, the total amount of gross unrecognized tax benefits was $ 19.5 billion, of which $ 9.5 billion, if recognized, would have impacted the Company’s effective tax rate. The aggregate change in the balance of gross unrecognized tax benefits, which excludes interest and penalties, for 2024, 2023 and 2022, is as follows (in millions):",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3589,
       "ticker": "AAPL",
       "doc_type": "10-K",
       "period": "2024-FY",
@@ -664,15 +777,15 @@
      "unit_note": "millions"
     },
     {
-     "cite_id": "c:03b3431b182d1cb52eb6327d184eea4cd40ddd000a84c2d1b482080701ad9b69",
-     "text": "New and changing laws and regulations can also create uncertainty about how such laws and regulations will be interpreted and applied. These risks and costs may increase as the Company’s products and services are introduced into specialized applications, including health and financial services, or as the Company expands the use of technologies, such as machine learning and artificial intelligence features, and must navigate new legal, regulatory and ethical considerations relating to such technologies. The Company has implemented policies and procedures designed to ensure compliance with applicable laws and regulations, but there can be no assurance the Company’s employees, contractors or agents will not violate such laws and regulations or the Company’s policies and procedures. If the Company is found to have violated laws and regulations, it could materially adversely affect the Company’s business, reputation, results of operations and financial condition. Apple Inc. | 2024 Form 10-K | 13 Regulatory changes and other actions that materially adversely affect the Company’s business may be announced with little or no advance notice and the Company may not be able to effectively mitigate all adverse impacts from such measures. For example, the Company is subject to changing regulations relating to the export and import of its products. Although the Company has programs, policies and procedures in place that are designed to satisfy regulatory requirements, there can be no assurance that such policies and procedures will be effective in preventing a violation or a claim of a violation. As a result, the Company’s products could be banned, delayed or prohibited from importation, which could materially adversely affect the Company’s business, reputation, results of operations and financial condition. Expectations relating to environmental, social and governance considerations and related reporting obligations expose the Company to potential liabilities, increased costs, reputational harm, and other adverse effects on the Company’s business. Many governments, regulators, investors, employees, customers and other stakeholders are increasingly focused on environmental, social and governance considerations relating to businesses, including climate change and greenhouse gas emissions, human and civil rights, and diversity, equity and inclusion. In addition, the Company makes statements about its goals and initiatives through its various non-financial reports, information provided on its website, press statements and other communications. Responding to these environmental, social and governance considerations and implementation of the Company’s announced goals and initiatives involves risks and uncertainties, requires investments, and depends in part on third-party performance or data that is outside the Company’s control. The Company cannot guarantee that it will achieve its announced environmental, social and governance goals and initiatives.",
+     "cite_id": "c:01a6263e81be8a9a3bd6e7be45a4e773376593a1d860741f5260284bb2c18859",
+     "text": "The information required by this Item will be included in the 2025 Proxy Statement, and is incorporated herein by reference.",
      "source": {
       "kind": "chunk",
-      "document_id": 3115,
+      "document_id": 3589,
       "ticker": "AAPL",
       "doc_type": "10-K",
       "period": "2024-FY",
-      "section": "Item 1A",
+      "section": "Item 11",
       "page": null,
       "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
      },
@@ -681,49 +794,15 @@
      "unit_note": null
     },
     {
-     "cite_id": "c:03c55db16a56c0e59756adc1ca7f4417e56ea1872f27cbcb317b587aa60f7e13",
-     "text": "Index to Consolidated Financial Statements | Page\nConsolidated Statements of Operations for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 29\nConsolidated Statements of Comprehensive Income for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 30\nConsolidated Balance Sheets as of September 28, 2024 and September 30, 2023 | 31\nConsolidated Statements of Shareholders’ Equity for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 32\nConsolidated Statements of Cash Flows for the years ended September 28, 2024, September 30, 2023 and September 24, 2022 | 33\nNotes to Consolidated Financial Statements | 34\nReports of Independent Registered Public Accounting Firm | 48",
+     "cite_id": "c:3cca70fd95ce50ac016abcce150f8c424f9b3ff141ef1260d803221b504c80e0",
+     "text": "Power of Attorney KNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Timothy D. Cook and Luca Maestri, jointly and severally, his or her attorneys-in-fact, each with the power of substitution, for him or her in any and all capacities, to sign any amendments to this Annual Report on Form 10-K, and to file the same, with exhibits thereto and other documents in connection therewith, with the Securities and Exchange Commission, hereby ratifying and confirming all that each of said attorneys-in-fact, or his substitute or substitutes, may do or cause to be done by virtue hereof. Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated:",
      "source": {
       "kind": "chunk",
-      "document_id": 3115,
+      "document_id": 3589,
       "ticker": "AAPL",
       "doc_type": "10-K",
       "period": "2024-FY",
-      "section": "Item 8",
-      "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
-     },
-     "value": null,
-     "scale": null,
-     "unit_note": null
-    },
-    {
-     "cite_id": "c:00187bed9794b4d58bf4d845e4b1032c749ac7bca8a136087a8d9d1012ef2260",
-     "text": "If requirements change, the Company may have to develop or license new technology to provide these solutions. There can be no assurance the Company will be able to develop or license such solutions at a reasonable cost and in a timely manner. Apple Inc. | 2024 Form 10-K | 10 The Company’s success depends largely on the talents and efforts of its team members, the continued service and availability of highly skilled employees, including key personnel, and the Company’s ability to nurture its distinctive and inclusive culture. Much of the Company’s future success depends on the talents and efforts of its team members and the continued availability and service of key personnel, including its Chief Executive Officer, executive team and other highly skilled employees. Experienced personnel in the technology industry are in high demand and competition for their talents is intense, especially in Silicon Valley, where most of the Company’s key personnel are located. In addition to intense competition for talent, workforce dynamics are constantly evolving. If the Company does not manage changing workforce dynamics effectively, it could materially adversely affect the Company’s culture, reputation and operational flexibility. The Company believes that its distinctive and inclusive culture is a significant driver of its success. If the Company is unable to nurture its culture, it could materially adversely affect the Company’s ability to recruit and retain the highly skilled employees who are critical to its success, and could otherwise materially adversely affect the Company’s business, reputation, results of operations and financial condition. The Company depends on the performance of carriers, wholesalers, retailers and other resellers. The Company distributes its products and certain of its services through cellular network carriers, wholesalers, retailers and resellers, many of which distribute products and services from competitors. The Company also sells its products and services and resells third-party products in most of its major markets directly to consumers, small and mid-sized businesses, and education, enterprise and government customers through its retail and online stores and its direct sales force. Some carriers providing cellular network service for the Company’s products offer financing, installment payment plans or subsidies for users’ purchases of the device. There can be no assurance such offers will be continued at all or in the same amounts. The Company has invested and will continue to invest in programs to enhance reseller sales, including staffing selected resellers’ stores with Company employees and contractors, and improving product placement displays. These programs can require a substantial investment while not assuring return or incremental sales.",
-     "source": {
-      "kind": "chunk",
-      "document_id": 3115,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "section": "Item 1A",
-      "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
-     },
-     "value": null,
-     "scale": null,
-     "unit_note": null
-    },
-    {
-     "cite_id": "c:037ac4780cd54a54f58aebb30d66adb68655f796eb8a44e63847d781b0fd934e",
-     "text": "District Court for the Northern District of California (the “California District Court”) against the Company alleging violations of federal and state antitrust laws and California’s unfair competition law based upon the Company’s operation of its App Store. The California District Court found that certain provisions of the Company’s App Store Review Guidelines violate California’s unfair competition law and issued an injunction enjoining the Company from prohibiting developers from including in their apps external links that direct customers to purchasing mechanisms other than Apple in-app purchasing. The injunction applies to apps on the U.S. storefront of the iOS and iPadOS App Store. On January 16, 2024, the Company implemented a plan to comply with the injunction and filed a statement of compliance with the California District Court. A motion by Epic disputing the Company’s compliance plan and seeking to enforce the injunction, which the Company has opposed, is pending before the California District Court. On September 30, 2024, the Company filed a motion with the California District Court to narrow or vacate the injunction. The Company believes it has substantial defenses and intends to vigorously defend itself. Other Legal Proceedings The Company is subject to other legal proceedings and claims that have not been fully resolved and that have arisen in the ordinary course of business. The Company settled certain matters during the fourth quarter of 2024 that did not individually or in the aggregate have a material impact on the Company’s financial condition or operating results. The outcome of litigation is inherently uncertain. If one or more legal matters were resolved against the Company in a reporting period for amounts above management’s expectations, the Company’s financial condition and operating results for that reporting period could be materially adversely affected.",
-     "source": {
-      "kind": "chunk",
-      "document_id": 3115,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "section": "Item 3",
+      "section": "Item 16",
       "page": null,
       "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
      },
@@ -736,5 +815,6 @@
   }
  ],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 20934
 }

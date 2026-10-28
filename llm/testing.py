@@ -4,7 +4,9 @@ A cassette is a JSON file `{"interactions": [{"key", "task_class", "response"}]}
 `cassette_key(request, task_class)`, i.e. `llm.cache_key.cache_key` with the task class in
 place of the model id (the recorded provider is in `response`). Entries that share a key are
 replayed in recorded order, and the last one repeats once they run out. An unknown key raises
-`CassetteMiss` so a test can never fall through to a live call.
+`CassetteMiss` so a test can never fall through to a live call. An entry with `unavailable`
+(the providers tried) instead of `response` replays a `ProvidersUnavailable` the recorded run
+handled, such as a re-ask whose providers were all down.
 """
 
 import json
@@ -12,7 +14,7 @@ from pathlib import Path
 from typing import Any
 
 from llm.cache_key import cache_key
-from llm.types import ChatRequest, ChatResponse, TaskClass
+from llm.types import ChatRequest, ChatResponse, ProvidersUnavailable, TaskClass
 
 
 class CassetteMiss(LookupError):
@@ -25,7 +27,7 @@ def cassette_key(request: ChatRequest, task_class: TaskClass) -> str:
 
 class FakeRouter:
     def __init__(self) -> None:
-        self._responses: dict[str, list[ChatResponse]] = {}
+        self._responses: dict[str, list[ChatResponse | ProvidersUnavailable]] = {}
         self.calls: list[tuple[TaskClass, ChatRequest]] = []
 
     def add(self, request: ChatRequest, task_class: TaskClass, response: ChatResponse) -> str:
@@ -39,7 +41,11 @@ class FakeRouter:
 
     def load_interactions(self, interactions: list[dict[str, Any]]) -> "FakeRouter":
         for entry in interactions:
-            response = ChatResponse.model_validate(entry["response"])
+            response: ChatResponse | ProvidersUnavailable = (
+                ProvidersUnavailable(entry["task_class"], entry["unavailable"])
+                if "unavailable" in entry
+                else ChatResponse.model_validate(entry["response"])
+            )
             self._responses.setdefault(entry["key"], []).append(response)
         return self
 
@@ -54,6 +60,8 @@ class FakeRouter:
         if not responses:
             raise CassetteMiss(f"no cassette entry for {task_class} request {key}")
         response = responses.pop(0) if len(responses) > 1 else responses[0]
+        if isinstance(response, ProvidersUnavailable):
+            raise ProvidersUnavailable(response.task_class, response.attempted)
         return response.model_copy()
 
 
@@ -65,4 +73,15 @@ def interaction(
         "key": cassette_key(request, task_class),
         "task_class": task_class,
         "response": response.model_dump(mode="json"),
+    }
+
+
+def unavailable_interaction(
+    request: ChatRequest, task_class: TaskClass, error: ProvidersUnavailable
+) -> dict[str, Any]:
+    """A cassette entry for a call whose providers were all unavailable."""
+    return {
+        "key": cassette_key(request, task_class),
+        "task_class": task_class,
+        "unavailable": error.attempted,
     }

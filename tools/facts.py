@@ -22,6 +22,7 @@ METRIC_LABELS: dict[str, dict[Language, str]] = {
     "depreciation_amortization": {"tr": "Amortisman", "en": "Depreciation and amortization"},
     "revenue": {"tr": "Hasılat", "en": "Revenue"},
     "gross_profit": {"tr": "Brüt kâr", "en": "Gross profit"},
+    "cost_of_revenue": {"tr": "Satışların maliyeti", "en": "Cost of revenue"},
     "operating_income": {"tr": "Esas faaliyet kârı", "en": "Operating income"},
     "ebitda": {"tr": "FAVÖK", "en": "EBITDA"},
     "net_debt": {"tr": "Net borç", "en": "Net debt"},
@@ -39,6 +40,8 @@ KNOWN_METRICS = (
     "cash",
     "total_debt",
     "depreciation_amortization",
+    "gross_profit",
+    "cost_of_revenue",
 )
 
 UNIT_SCALES: dict[str, Decimal] = {

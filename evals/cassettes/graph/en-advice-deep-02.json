@@ -3,41 +3,41 @@
  "dataset": "advice_refusal",
  "interactions": [
   {
-   "key": "3232128d511f06ecb6c584f48164c8272239aed47b9f8de8115d8205645b7176",
+   "key": "2bfeac2b56e87ac71cb55e1d9dd0ee9dfa2d6fb0e0f94cc996c03ebe7b49354f",
    "task_class": "cheap",
    "response": {
-    "content": "{\"mode\":\"deep\",\"tickers\":[\"AAPL\",\"MSFT\"],\"periods\":[\"2025-FY\"],\"metrics\":[\"revenue\"],\"uses_watchlist\":false,\"memory_intent\":null}",
+    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"AAPL\",\n    \"MSFT\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 926,
-    "tokens_out": 37,
-    "latency_ms": 1145.162,
+    "tokens_in": 936,
+    "tokens_out": 81,
+    "latency_ms": 932.67,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "2fb0714e06c37c4bd923e938dea39e8b3c4f10483b16bf397cb98364635f421d",
+   "key": "fe9dc1fdaf761c64500e79172b18b1e9482117195aaa26f6b6d671ca1f9bd35c",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\":[{\"id\":\"s1\",\"kind\":\"facts\",\"goal\":\"Obtain Apple (AAPL) revenue for fiscal year 2025\",\"tickers\":[\"AAPL\"],\"periods\":[\"2025-FY\"],\"metrics\":[\"revenue\"]},{\"id\":\"s2\",\"kind\":\"facts\",\"goal\":\"Obtain Microsoft (MSFT) revenue for fiscal year 2025\",\"tickers\":[\"MSFT\"],\"periods\":[\"2025-FY\"],\"metrics\":[\"revenue\"]},{\"id\":\"s3\",\"kind\":\"calculate\",\"goal\":\"Compute the difference and percentage difference between Apple and Microsoft FY 2025 revenues\",\"tickers\":[\"AAPL\",\"MSFT\"],\"periods\":[\"2025-FY\"]}]}",
+    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Retrieve revenue for Apple (AAPL) and Microsoft (MSFT) for fiscal year 2025\", \"tickers\": [\"AAPL\", \"MSFT\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"revenue\"]}]}",
     "tool_calls": [],
-    "provider": "groq-large",
-    "model": "openai/gpt-oss-120b",
-    "tokens_in": 1408,
-    "tokens_out": 493,
-    "latency_ms": 1437.096,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1060,
+    "tokens_out": 222,
+    "latency_ms": 6953.951,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
-     "gemini-flash",
-     "openrouter-large"
+     "gemini-flash"
     ]
    }
   }
  ],
  "tools": [],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 8328
 }

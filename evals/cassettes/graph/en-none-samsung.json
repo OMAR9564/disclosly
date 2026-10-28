@@ -3,16 +3,16 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "5b57f7ad6c5de4dbaba11d2bdf5e217b4ff93bfa594e0c60a3609714e3357716",
+   "key": "62f515aedc1ea526c3fbc58d82af3ebc7388de3c34a0ec60839fd92b677af0c2",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"005930.KS\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 930,
+    "tokens_in": 940,
     "tokens_out": 74,
-    "latency_ms": 1216.148,
+    "latency_ms": 872.475,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -24,52 +24,52 @@
     "content": null,
     "tool_calls": [
      {
-      "id": "call_1313796",
+      "id": "call_4097172",
       "name": "list_documents",
       "arguments": {
        "ticker": "SSNLF"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0Ttnd347wOiXSRNhOuRZ5g9GADsEUv6FP3hgAK+qDTQXYcUdB10M9keu6ZF7Um9/s6xaR/WFaS01+OcCAPUszudUjPlQzac0YWXau1y3NCvGbNMMHhX4KXA9E="
+        "thought_signature": "EmAKXgFpFH0TX3VQHk4UgVIyq8uLJ99s6cBI1uXmLpAaeIRk5rTExptV0DXq6lW1M96gyUvCwmku1NfGjvffLfQ4pZlPi8sayX6jxVXmAQU2t9QjzMRYt0blmCVIZYDoGss="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1490,
+    "tokens_in": 1504,
     "tokens_out": 18,
-    "latency_ms": 480.939,
+    "latency_ms": 732.098,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "1479c16fcf8541aa909607ad254d0546ca589c7e60a342b8477fe39111b7303b",
+   "key": "b9d2518e6752fd7f06632eb030dbcfb24efe7a77b467580129edf9d15251275b",
    "task_class": "cheap",
    "response": {
     "content": null,
     "tool_calls": [
      {
-      "id": "call_1998392",
+      "id": "call_4438057",
       "name": "search_documents",
       "arguments": {
-       "query": "R&D research and development expense Samsung Electronics 2025",
-       "ticker": "SSNLF"
+       "ticker": "SSNLF",
+       "query": "Research and development expense 2025"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0T0y7RGrnwlKsrpwFapkLWi8N8GmTgeFM4Uvxa9PJ8Xfdz723MGO1ixCRImZB550Opk/I6AGC/ozyN7J6gNUhyBF2LmV8TTReVW0y/03W3Xqdk0AHvfaxIZwc="
+        "thought_signature": "EmAKXgFpFH0ToyNb7VkqZ+Uv9qqoJqSARdcvXiDjHuyNSNnLZ3JrdocfR/DgvkdBVH82TlAL4Kc55LzKO//qyM+ZLamNykx05vUmtAlBZSJD8AC/nEIQ4mtSleTWVS5jzUI="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1526,
-    "tokens_out": 37,
-    "latency_ms": 575.164,
+    "tokens_in": 1540,
+    "tokens_out": 32,
+    "latency_ms": 589.838,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -77,10 +77,10 @@
  ],
  "tools": [
   {
-   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\"],\"periods\":[\"2025-FY\"],\"ticker\":\"005930.KS\"},\"name\":\"get_financial_facts\"}",
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\",\"gross_profit\",\"cost_of_revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"005930.KS\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
    "content": "No results.",
-   "summary": "005930.KS 2025-FY net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization",
+   "summary": "005930.KS 2025-FY net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization, gross_prof",
    "count": 0,
    "items": [],
    "error": null
@@ -104,15 +104,16 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"query\":\"R&D research and development expense Samsung Electronics 2025\",\"ticker\":\"SSNLF\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"query\":\"Research and development expense 2025\",\"ticker\":\"SSNLF\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
-   "content": "Tool error: document search is temporarily unavailable",
-   "summary": "SSNLF R&D research and development expense Samsung Electronics 2025",
+   "content": "No results.",
+   "summary": "SSNLF Research and development expense 2025",
    "count": 0,
    "items": [],
-   "error": "document search is temporarily unavailable"
+   "error": null
   }
  ],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 4755
 }

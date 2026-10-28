@@ -3,16 +3,16 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "3aa91e74fada2a975eb1b6ace46d9d6b6a973dc80cc09d8365ba9c7fbd802da9",
+   "key": "086d44b305dc9ff3db0e07adfb77ad533eadfc6e9dbae22de689f8a729c7d0ff",
    "task_class": "cheap",
    "response": {
-    "content": "{\"mode\": \"simple\", \"tickers\": [], \"periods\": [], \"metrics\": [], \"uses_watchlist\": false, \"memory_intent\": null}",
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [],\n  \"periods\": [],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1009,
-    "tokens_out": 32,
-    "latency_ms": 962.417,
+    "tokens_in": 1019,
+    "tokens_out": 46,
+    "latency_ms": 944.711,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,13 @@
    "key": "a95da21e2d51174bec4ced695768a697f43f383a57f48bb06cef9c23bf43ad80",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Türk Altın Mollakara madeninde gerçekleştirilen ilk altın dökümünde 7.474 ons altın (veya 7.474,2 gram altın) elde edilmiştir [1, 2].\",\n  \"points\": [\n    {\n      \"text\": \"Mollakara Altın Madeni Projesi'nde gerçekleştirilen ilk üretim sonucunda 7.474 ons altın elde edilmiştir.\",\n      \"cite_ids\": [\n        \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n      ]\n    },\n    {\n      \"text\": \"Proje kapsamında gerçekleştirilen ilk üretim sonucunda 7.474,2 gram altın elde edilmiştir.\",\n      \"cite_ids\": [\n        \"c:d53f0edf5bfa08272c69128cf8061f86041d918159a9b5dfe736dd2bcd081f57\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:d53f0edf5bfa08272c69128cf8061f86041d918159a9b5dfe736dd2bcd081f57\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Türk Altın Mollakara madeninde gerçekleştirilen ilk altın dökümü sonucunda 7.474 ons altın elde edilmiştir [c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85].\",\n  \"points\": [\n    {\n      \"text\": \"Mollakara Altın Madeni Projesi'nde ilk üretim sonucunda 7.474 ons altın elde edilmiştir.\",\n      \"cite_ids\": [\n        \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 4995,
-    "tokens_out": 499,
-    "latency_ms": 2985.455,
+    "tokens_in": 5009,
+    "tokens_out": 351,
+    "latency_ms": 2087.778,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -36,15 +36,18 @@
    "key": "d7c2c625fa55dcb72646e1c5e7b5e12f9942872e2b3a6426f04ca6f746b60e81",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Türk Altın İşletmeleri'nin Ağrı ili Diyadin ilçesindeki Mollakara Altın Madeni'nde gerçekleştirilen ilk altın dökümünde 7.474 ons altın elde edilmiştir.\",\n  \"points\": [\n    {\n      \"text\": \"İlk dökümde 7.474 ons altın üretilmiştir.\",\n      \"cite_ids\": [\n        \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Türk Altın Mollakara madeninde ilk dökümde 7.474 ons altın üretilmiştir.\",\n  \"points\": [\n    {\n      \"text\": \"İlk altın dökümü sonucunda 7.474 ons altın elde edilmiştir.\",\n      \"cite_ids\": [\n        \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:11bf048addb149ef7d4a4cf3631b7065c762669d5f4a3cd3a2a65c1dda923c85\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 4873,
-    "tokens_out": 941,
-    "latency_ms": 19147.529,
+    "tokens_out": 813,
+    "latency_ms": 15562.299,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
@@ -163,5 +166,6 @@
   }
  ],
  "sandbox": [],
- "decision": null
+ "decision": null,
+ "elapsed_ms": 21715
 }

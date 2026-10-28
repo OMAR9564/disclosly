@@ -9,7 +9,8 @@ Write 1 to {max_steps} steps, fewest first. Each step has:
 - `goal`: one sentence in English saying what the step finds out. Plain language; the user reads it.
 - `tickers`: up to 4 exchange tickers, upper-case.
 - `periods`: up to 8 periods as `YYYY-Qn` or `YYYY-FY`.
-- `metrics`: for `facts` steps, only from: net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization.
+- `metrics`: for `facts` steps, only from: net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization, gross_profit, cost_of_revenue.
+  A figure not in this list (a margin, operating expenses) needs a `search` step or a `calculate` step over listed metrics, not a `facts` step without metrics.
 
 Group work: one `facts` step can cover several companies and periods. Add a `calculate` step only when the question needs a derived number. Add a `search` step when the answer needs text (reasons, risks, events).
 

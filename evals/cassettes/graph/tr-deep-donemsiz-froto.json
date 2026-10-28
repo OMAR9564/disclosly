@@ -3,173 +3,106 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "49ae60887e552619a5dc9db3920345c1ffaefb2ba6b1399d44c5940ee2f0e6d3",
+   "key": "dd5da1a11ce74b142f8570a05300998145b7403a65f9b584f694f838915c37f3",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"FROTO\"\n  ],\n  \"periods\": [],\n  \"metrics\": [\n    \"net_income\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1006,
+    "tokens_in": 1016,
     "tokens_out": 66,
-    "latency_ms": 1309.562,
+    "latency_ms": 916.835,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "7f3783345d4abcae18c790d44da18cf5417d5cccf766dbd39f4e45a198d5e102",
+   "key": "7ea3444c6a6f946d128b801ecd13f87d6d570ab8850d1282c772352027fae5d1",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Ford Otosan (FROTO) için 2024-Q4, 2025-Q1, 2025-Q2, 2025-Q3 dönemlerinin çeyreklik net kâr verilerini getir.\", \"tickers\": [\"FROTO\"], \"periods\": [\"2024-Q4\", \"2025-Q1\", \"2025-Q2\", \"2025-Q3\"], \"metrics\": [\"net_income\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"Çeyreklik net kâr verilerinden çeyrekler arası değişim oranlarını ve büyüme trendini hesapla.\", \"tickers\": [\"FROTO\"], \"periods\": [\"2024-Q4\", \"2025-Q1\", \"2025-Q2\", \"2025-Q3\"]}]}",
+    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Ford Otosan çeyreklik net kâr rakamlarını getir\", \"tickers\": [\"FROTO\"], \"periods\": [\"2024-Q4\", \"2025-Q1\", \"2025-Q2\", \"2025-Q3\"], \"metrics\": [\"net_income\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"Çeyreklik net kâr değişimlerini (artış/azalış) hesapla\", \"tickers\": [\"FROTO\"], \"periods\": [\"2024-Q4\", \"2025-Q1\",  \"2025-Q2\", \"2025-Q3\"]}]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1234,
-    "tokens_out": 432,
-    "latency_ms": 5719.903,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "ef74a64e6b1957b305db8b1ce022a9984fd9bb8784d152845f32d6c537baded4",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Ford Otosan FROTO 2024-Q4 2025-Q1 2025-Q2 2025-Q3 çeyreklik net kâr\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 910,
-    "tokens_out": 123,
-    "latency_ms": 1184.309,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "7e48391b1fc0d5d569a257a78a84b6ac82219073cd4e49fd1a5562ce7d2ba9a1",
-   "task_class": "strong",
-   "response": {
-    "content": "{\"findings\": [{\"id\": \"F1\", \"text\": \"Ford Otosan 2025 yılı birinci çeyreğinde (01.01.2025-31.03.2025) 6.487.096.000 TL net dönem kârı gerçekleştirmiştir.\", \"cite_ids\": [\"f:2855\"]}, {\"id\": \"F2\", \"text\": \"Ford Otosan 2025 yılı ikinci çeyreğinde (01.04.2025-30.06.2025) 6.110.784.000 TL net dönem kârı gerçekleştirmiştir.\", \"cite_ids\": [\"f:2869\"]}, {\"id\": \"F3\", \"text\": \"Ford Otosan 2025 yılı üçüncü çeyreğinde (01.07.2025-30.09.2025) 8.401.456.000 TL net dönem kârı gerçekleştirmiştir.\", \"cite_ids\": [\"f:2879\"]}, {\"id\": \"F4\", \"text\": \"2025-Q2 net kârı, 2025-Q1'e göre %5,8 azalmış, 376,3 milyon TL düşüş göstermiştir.\", \"cite_ids\": [\"f:2855\", \"f:2869\"], \"calcs\": [\"qoq_q2_vs_q1\"]}, {\"id\": \"F5\", \"text\": \"2025-Q3 net kârı, 2025-Q2'ye göre %37,5 artmış, 2,29 milyar TL yükseliş göstermiştir.\", \"cite_ids\": [\"f:2869\", \"f:2879\"], \"calcs\": [\"qoq_q3_vs_q2\"]}], \"calculations\": [{\"name\": \"qoq_q2_vs_q1\", \"description\": \"2025-Q2 net kârının 2025-Q1'e göre çeyrekler arası değişim oranı (oran olarak)\", \"inputs\": [{\"name\": \"net_profit_q1\", \"cite_id\": \"f:2855\", \"value\": 6487096000}, {\"name\": \"net_profit_q2\", \"cite_id\": \"f:2869\", \"value\": 6110784000}], \"code\": \"result = (inputs['net_profit_q2'] - inputs['net_profit_q1']) / inputs['net_profit_q1']\"}, {\"name\": \"qoq_q3_vs_q2\", \"description\": \"2025-Q3 net kârının 2025-Q2'ye göre çeyrekler arası değişim oranı (oran olarak)\", \"inputs\": [{\"name\": \"net_profit_q2\", \"cite_id\": \"f:2869\", \"value\": 6110784000}, {\"name\": \"net_profit_q3\", \"cite_id\": \"f:2879\", \"value\": 8401456000}], \"code\": \"result = (inputs['net_profit_q3'] - inputs['net_profit_q2']) / inputs['net_profit_q2']\"}]}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2429,
-    "tokens_out": 1877,
-    "latency_ms": 51948.811,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "53c517176e7e9523610923d0483984b2ad510f67191d8a3a26ff3b57434e8f55",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Kanıt (f:2855) ile birebir eşleşiyor: 2025-Q1 net dönem kârı 6.487.096.000 TRY.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Kanıt (f:2869) ile birebir eşleşiyor: 2025-Q2 net dönem kârı 6.110.784.000 TRY.\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"Kanıt (f:2879) ile birebir eşleşiyor: 2025-Q3 net dönem kârı 8.401.456.000 TRY.\"\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1257,
-    "tokens_out": 956,
-    "latency_ms": 17182.365,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "f4c2f0738f3d63613ebee8aaa2d74885fd07d32224d0dd5f5b76e3f2b39aa568",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Ford Otosan (FROTO) için 2024-Q4, 2025-Q1, 2025-Q2, 2025-Q3 dönemlerinin çeyreklik net kâr verilerini getir.\",\n      \"tickers\": [\"FROTO\"],\n      \"periods\": [\"2024-Q4\", \"2025-Q1\", \"2025-Q2\", \"2025-Q3\"],\n      \"metrics\": [\"net_income\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Çeyreklik net kâr verilerinden çeyrekler arası değişim oranlarını ve büyüme trendini hesapla (sadece s1'den gelen rakamları kullanarak).\",\n      \"tickers\": [\"FROTO\"],\n      \"periods\": [\"2024-Q4\", \"2025-Q1\", \"2025-Q2\", \"2025-Q3\"],\n      \"metrics\": []\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1568,
-    "tokens_out": 534,
-    "latency_ms": 8389.191,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "15047039d3e838ef41a61dc3846e98046c01f4dff21af9933c5c8ebc70cb452d",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Ford Otosan 2024-Q4 2025-Q1 2025-Q2 2025-Q3 net kar\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 923,
-    "tokens_out": 116,
-    "latency_ms": 1123.293,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "2d1d8cfb63844fe8e836a16b068916d094d6c35b30e3fbab166c325d22691001",
-   "task_class": "strong",
-   "response": {
-    "content": "{\"findings\": [{\"id\": \"F1\", \"text\": \"Ford Otosan 2025 yılı birinci çeyreğinde (01.01.2025-31.03.2025) 6.487.096.000 TL net dönem kârı gerçekleştirmiştir.\", \"cite_ids\": [\"f:2855\"]}, {\"id\": \"F2\", \"text\": \"Ford Otosan 2025 yılı ikinci çeyreğinde (01.04.2025-30.06.2025) 6.110.784.000 TL net dönem kârı gerçekleştirmiştir.\", \"cite_ids\": [\"f:2869\"]}, {\"id\": \"F3\", \"text\": \"Ford Otosan 2025 yılı üçüncü çeyreğinde (01.07.2025-30.09.2025) 8.401.456.000 TL net dönem kârı gerçekleştirmiştir.\", \"cite_ids\": [\"f:2879\"]}], \"calculations\": [{\"name\": \"qoq_change_q1_q2\", \"description\": \"2025-Q1'den 2025-Q2'ye çeyreklik net kâr değişim oranı (QoQ)\", \"inputs\": [{\"name\": \"net_profit_q1\", \"cite_id\": \"f:2855\", \"value\": 6487096000}, {\"name\": \"net_profit_q2\", \"cite_id\": \"f:2869\", \"value\": 6110784000}], \"code\": \"result = (inputs['net_profit_q2'] - inputs['net_profit_q1']) / inputs['net_profit_q1']\"}, {\"name\": \"qoq_change_q2_q3\", \"description\": \"2025-Q2'den 2025-Q3'e çeyreklik net kâr değişim oranı (QoQ)\", \"inputs\": [{\"name\": \"net_profit_q2\", \"cite_id\": \"f:2869\", \"value\": 6110784000}, {\"name\": \"net_profit_q3\", \"cite_id\": \"f:2879\", \"value\": 8401456000}], \"code\": \"result = (inputs['net_profit_q3'] - inputs['net_profit_q2']) / inputs['net_profit_q2']\"}]}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2442,
-    "tokens_out": 1125,
-    "latency_ms": 23113.876,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "820917a97504ae420e14e044c184cb54c4111f34653d2ff5694926a824e9b6a4",
-   "task_class": "strong",
-   "response": {
-    "content": "{\"claims\":[{\"finding_id\":\"F1\",\"supported\":true,\"reason\":\"\"},{\"finding_id\":\"F2\",\"supported\":true,\"reason\":\"\"},{\"finding_id\":\"F3\",\"supported\":true,\"reason\":\"\"}]}",
-    "tool_calls": [],
-    "provider": "groq-large",
-    "model": "openai/gpt-oss-120b",
-    "tokens_in": 1422,
-    "tokens_out": 245,
-    "latency_ms": 974.361,
+    "tokens_in": 1295,
+    "tokens_out": 352,
+    "latency_ms": 12689.622,
     "cache_hit": false,
     "fallback_from": [
-     "nvidia-large",
      "gemini-flash-stable",
-     "gemini-flash",
-     "openrouter-large"
+     "gemini-flash"
     ]
    }
   },
   {
-   "key": "5a4fc758e34050a88cac8b866c60d127b1620119f3c19324dab3269dce2ca915",
-   "task_class": "strong",
+   "key": "4c82a8364a64c9eb6ba7ddf6c28ed936f165b360a5fa04305849ff9b0e5f1d33",
+   "task_class": "cheap",
    "response": {
-    "content": "{\"language\": \"tr\", \"status\": \"partial\", \"summary\": \"Ford Otosan'ın 2025 yılında çeyreklik net kârı, birinci çeyrekte 6,49 milyar TL'den ikinci çeyrekte %5,8 düşüşle 6,11 milyar TL'ye, üçüncü çeyrekte ise %37,5 artışla 8,40 milyar TL'ye yükselmiştir.[1][2][3][4][5]\", \"points\": [{\"text\": \"2025-Q1 net dönem kârı 6.487.096.000 TL olarak gerçekleşmiştir.\", \"cite_ids\": [\"f:2855\"]}, {\"text\": \"2025-Q2 net dönem kârı 6.110.784.000 TL olarak gerçekleşmiş, bir önceki çeyreğe göre %5,80 azalmıştır.\", \"cite_ids\": [\"f:2869\", \"k:1\"]}, {\"text\": \"2025-Q3 net dönem kârı 8.401.456.000 TL olarak gerçekleşmiş, bir önceki çeyreğe göre %37,49 artmıştır.\", \"cite_ids\": [\"f:2879\", \"k:2\"]}], \"tables\": [{\"title\": \"Ford Otosan Çeyreklik Net Kârı (2025)\", \"columns\": [\"Dönem\", \"Net Kâr (TL)\", \"Çeyrekler Arası Değişim (%)\"], \"rows\": [[{\"text\": \"2025-Q1\", \"cite_id\": \"f:2855\"}, {\"text\": \"6.487.096.000\", \"cite_id\": \"f:2855\"}, {\"text\": \"—\", \"cite_id\": null}], [{\"text\": \"2025-Q2\", \"cite_id\": \"f:2869\"}, {\"text\": \"6.110.784.000\", \"cite_id\": \"f:2869\"}, {\"text\": \"-5,80\", \"cite_id\": \"k:1\"}], [{\"text\": \"2025-Q3\", \"cite_id\": \"f:2879\"}, {\"text\": \"8.401.456.000\", \"cite_id\": \"f:2879\"}, {\"text\": \"37,49\", \"cite_id\": \"k:2\"}]]}, {\"title\": \"Çeyreklik Net Kâr Değişim Oranları\", \"columns\": [\"Dönem Aralığı\", \"Değişim (%)\"], \"rows\": [[{\"text\": \"Q1 → Q2\", \"cite_id\": null}, {\"text\": \"-5,80\", \"cite_id\": \"k:1\"}], [{\"text\": \"Q2 → Q3\", \"cite_id\": null}, {\"text\": \"37,49\", \"cite_id\": \"k:2\"}]]}, {\"title\": \"Net Kâr Trendi (Milyar TL)\", \"columns\": [\"Dönem\", \"Net Kâr (Milyar TL)\"], \"rows\": [[{\"text\": \"2025-Q1\", \"cite_id\": \"f:2855\"}, {\"text\": \"6,49\", \"cite_id\": \"f:2855\"}], [{\"text\": \"2025-Q2\", \"cite_id\": \"f:2869\"}, {\"text\": \"6,11\", \"cite_id\": \"f:2869\"}], [{\"text\": \"2025-Q3\", \"cite_id\": \"f:2879\"}, {\"text\": \"8,40\", \"cite_id\": \"f:2879\"}]]}, {\"title\": \"Özet Göstergeler\", \"columns\": [\"Gösterge\", \"Değer\"], \"rows\": [[{\"text\": \"En Yüksek Çeyreklik Net Kâr (2025)\", \"cite_id\": null}, {\"text\": \"8,40 Milyar TL (Q3)\", \"cite_id\": \"f:2879\"}], [{\"text\": \"En Düşük Çeyreklik Net Kâr (2025)\", \"cite_id\": null}, {\"text\": \"6,11 Milyar TL (Q2)\", \"cite_id\": \"f:2869\"}], [{\"text\": \"Yıllık Toplam (İlk 9 Ay)\", \"cite_id\": null}, {\"text\": \"20,99 Milyar TL\", \"cite_id\": null}]]}], \"chart\": {\"kind\": \"line\", \"table\": 2, \"x_column\": \"Dönem\", \"series\": [\"Net Kâr (Milyar TL)\"]}, \"confidence\": {\"level\": \"medium\", \"note\": \"2024-Q4 verisi bulunamadığı için sadece 2025 çeyrekleri değerlendirildi; trend tam yıl için tam temsil edici olmayabilir.\"}, \"unverified\": [\"2024-Q4 çeyreklik net kâr verisi\"], \"citations\": [{\"marker\": 1, \"cite_id\": \"f:2855\"}, {\"marker\": 2, \"cite_id\": \"f:2869\"}, {\"marker\": 3, \"cite_id\": \"f:2879\"}, {\"marker\": 4, \"cite_id\": \"k:1\"}, {\"marker\": 5, \"cite_id\": \"k:2\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Ford Otosan çeyreklik net kâr rakamları bilançosu\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 3175,
-    "tokens_out": 2428,
-    "latency_ms": 48169.186,
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 869,
+    "tokens_out": 95,
+    "latency_ms": 1093.846,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "3c8f23b4a47f7bf1e3f65aeb55f340b14cae10c37e7aca44d71a07c33ad7f76c",
+   "key": "c4dda3375ab78b437915da9a0408297e55aaade6c2d18a3936b91b52b327e1d1",
    "task_class": "strong",
    "response": {
-    "content": "We need to fix the report according to the validation errors.\n\nErrors:\n1. Table 0 (first table) row 1 column 'Çeyrekler Arası Değişim (%)' has number '5,80' but not found in cited source. The cite_id for that cell is \"k:1\". The calculation k:1 has display \"-0,06\" and as_percent \"%-5,80\". The number in the table is \"5,80\" (positive) but the calculation shows negative. Also the format: the calculation's display is \"-0,06\" (maybe as decimal) and as_percent is \"%-5,80\". The table should use the as_percent value? The error says numbers not found in the cited source: ['5,80']. The cited source is k:1, which contains output -0.058..., display \"-0,06\", as_percent \"%-5,80\". The number \"5,80\" is not exactly in the source; the source has \"-5,80\" (with minus). The table shows \"-5,80\"? Actually in the previous report, the cell text was \"-5,80\". But the error says numbers not found in the cited source: ['5,80']. Possibly the validation expects the exact string from the calculation's display or as_percent. The calculation's as_percent is \"%-5,80\". The number \"5,80\" without minus and without percent sign. The cell text should be exactly the as_percent value? The rule: \"Rakam içeren her hücrede, rakamın geldiği kanıtın ya da hesaplamanın cite_id değeri olmalı.\" The cell text should be the number as it appears in the source. The source is the calculation, which has display \"-0,06\" and as_percent \"%-5,80\". Which one to use? The table column is \"Çeyrekler Arası Değişim (%)\". So we should use the percentage value. The calculation's as_percent is \"%-5,80\". That includes a percent sign and minus. The cell text should be \"%-5,80\" or \"-5,80\"? The error says numbers not found in the cited source: ['5,80']. It seems the validation extracts numbers from the cell text and checks if they appear in the cited source. The cited source (calculation) has as_percent \"%-5,80\". The number \"5,80\" appears there but with a minus and percent sign. The validation might be strict: the exact numeric string \"5,80\" must appear in the source. But the source has \"-5,80\". So we need to include the minus sign. In the previous table, the cell text was \"-5,80\". That includes minus. But the error says numbers not found: ['5,80']. Maybe the validation splits by non-numeric characters and expects \"5,80\" to be present in the source. The source has \"-5,80\". That contains \"5,80\". But maybe the validation expects the exact string \"5,80\" without minus. However, the error says numbers not found in the cited source: ['5,80']. That suggests the cell text had \"5,80\" (without minus). But in the previous report, the cell text was \"-5,80\". Let's check the previous report: In table 0 row 1 column 'Çeyrekler Arası Değişim (%)' the cell text was \"-5,80\". That includes minus. The error says numbers not found: ['5,80']. Could be that the validation extracts numbers ignoring sign? But it says not found. Maybe the cited source for that cell is \"k:1\" but the cell's cite_id is \"k:1\". The calculation k:1 has as_percent \"%-5,80\". The number \"5,80\" appears there. But the validation might be looking for the exact string \"5,80\" in the source text (the untrusted_document). However, the source for calculations is not an untrusted_document but a calculation object. The validation might only check untrusted_documents? The instruction: \"Rakam içeren her hücrede, rakamın geldiği kanıtın ya da hesaplamanın cite_id değeri olmalı.\" So calculations are allowed. The validation might check the calculation's output fields. The calculation has output \"-0.058...\", display \"-0,06\", as_percent \"%-5,80\". The number \"5,80\" appears in as_percent. But the validation might be looking for the exact numeric representation \"5,80\" in the calculation's display or output. The display is \"-0,06\". That's not \"5,80\". The as_percent is \"%-5,80\". That includes \"5,80\". But the validation might not parse the as_percent field. It might only check the display field. The display is \"-0,06\". That is a decimal, not percentage. The table column is percentage. So we should use the as_percent value. But the validation might not recognize as_percent. To be safe, we should use the display value? But the display is \"-0,06\" which is not a percentage. The user expects percentage. The calculation also has a name \"qoq_q2_vs_q1\" and description. The output is a ratio. The display is \"-0,06\". That is the ratio as decimal. The as_percent is \"%-5,80\". The table column is \"Çeyrekler Arası Değişim (%)\". So we should put the percentage value. The validation error indicates that the number \"5,80\" is not found in the cited source. The cited source is the calculation k:1. The calculation's as_percent contains \"5,80\". But maybe the validation only looks at the \"display\" field. The display is \"-0,06\". That does not contain \"5,80\". So we need to cite the calculation but also ensure the number appears in the calculation's display? But the display is \"-0,06\". That's not the percentage. However, the calculation's output is -0.058... The display is \"-0,06\". The as_percent is \"%-5,80\". The validation might not consider as_percent. To satisfy validation, we could put the display value \"-0,06\" in the table, but that would be confusing. Alternatively, we could create a new calculation that gives the percentage as display. But we cannot create new calculations; we must use existing ones. The existing calculations have as_percent. The validation might be updated to check as_percent. But the error says numbers not found in the cited source: ['5,80']. The cited source is k:1. The source text for k:1 is not an untrusted_document but a calculation object. The validation might have access to the calculation's fields. It might check the \"display\" field only. The display is \"-0,06\". So \"5,80\" not found. So we need to change the cell text to \"-0,06\" and adjust column header? But the column is percentage. Could change column to \"Çeyrekler Arası Değişim (Oran)\" and use display. But the user asked for percentage change. The previous report used percentage. The validation is strict: the number in the cell must appear in the cited source. So we must use a number that appears in the cited source. The cited source for the percentage change is the calculation k:1. The calculation's display is \"-0,06\". That is a number. The as_percent is \"%-5,80\". That is a string with percent sign. The validation might extract numbers from the cell text and check if they appear in the source's display or output. The output is \"-0.05800931572463241\". That contains \"05800931572463241\". Not \"5,80\". The display is \"-0,06\". That contains \"0,06\". Not \"5,80\". The as_percent is \"%-5,80\". That contains \"5,80\". But the validation might not look at as_percent. However, the error says numbers not found: ['5,80']. That suggests the cell text had \"5,80\". In the previous report, the cell text was \"-5,80\". That contains \"5,80\". The validation might have extracted \"5,80\" (ignoring minus) and looked for \"5,80\" in the source. The source's as_percent has \"5,80\". But maybe the validation only looks at the untrusted_document text, not calculations. The cite_id \"k:1\" refers to a calculation, not an untrusted_document. The validation might only check untrusted_documents. The instruction says \"Rakam içeren her hücrede, rakamın geldiği kanıtın ya da hesaplamanın cite_id değeri olmalı.\" So calculations are allowed. But the validation might not be implemented for calculations. However, the error messages indicate that the validation is checking the cited source (which could be a calculation) and not finding the number. The cited source for k:1 is a calculation object. The validation might have access to the calculation's fields. It might be checking the \"display\" field. The display is \"-0,06\". So \"5,80\" not found. So we need to use the display value \"-0,06\" in the table. But then the column should be \"Çeyrekler Arası Değişim (Oran)\" not percentage. However, the user asked \"nasıl değişti?\" which could be answered with both absolute and percentage. We can provide both tables: one with absolute net profit, one with quarterly change ratio (display). But the percentage is more intuitive. We could also cite the calculation's as_percent by using the as_percent string as the cell text, e.g., \"%-5,80\". That includes the percent sign and minus. The number \"5,80\" appears in that string. The validation might extract numbers from the cell text (including percent sign?) and check if that number appears in the source. The source's as_percent is \"%-5,80\". So \"5,80\" appears. But the validation might not consider as_percent. Let's examine the error for table 2: \"table 2 row 0 column 'Net Kâr (Milyar TL)': numbers not found in the cited source: ['6,49']\". The cited source is f:2855, which is an untrusted_document: \"Net dönem kârı (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 6.487.096.000 TRY\". The number in the cell is \"6,49\" (in billions). The source has \"6.487.096.000\". The validation expects the exact number as it appears in the source? The cell text \"6,49\" is not found in the source. The source has \"6.487.096.000\". So we must use the exact number from the source, not a rounded version. The rule: \"Rakamları orada göründükleri gibi, birimiyle birlikte aynen yaz.\" So we must write the number exactly as in the source, with the same formatting (including thousand separators). The source uses \"6.487.096.000\". So we should put \"6.487.096.000\" in the cell, not \"6,49\". Also the unit is TL. The column header \"Net Kâr (Milyar TL)\" suggests billions, but we should keep the original number and maybe add a note. But the rule says write the number as it appears, with its unit. So we should put \"6.487.096.000 TL\" in the cell. However, the column header says \"Milyar TL\". That's inconsistent. Better to change column header to \"Net Kâr (TL)\" and put the exact number. Or keep column header but put the exact number in TL (not billions). The validation checks the number in the cell against the source. So we must put the exact number string from the source. The source text: \"6.487.096.000 TRY\". The number is \"6.487.096.000\". The cell text should be \"6.487.096.000\". The cite_id should be f:2855. Similarly for Q2: \"6.110.784.000\", Q3: \"8.401.456.000\". The previous report used rounded billions. That caused errors.\n\nAlso for the percentage change cells: the source for percentage change is calculations k:1 and k:2. The calculations have display \"-0,06\" and \"0,37\". The as_percent \"%-5,80\" and \"%37,49\". The validation might expect the display value. But the display is a decimal ratio. The column is percentage. We could create a new calculation? But we cannot. We must use existing calculations. The calculations have as_percent. The validation might not check as_percent. But the error for table 0 row 1 column 'Çeyrekler Arası Değişim (%)' says numbers not found: ['5,80'].",
+    "content": "{\n  \"{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Ford Otosan 2024年第4季度（2024年1月1日-2024年9月30日，2024年年报）净利润为13,197,975,000土耳其里拉。\",\n      \"cite_ids\": [\"f:25073\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Ford Otosan 2025年第1季度（2025年1月1日-2025年3月31日，当期报告）净利润为6,487,096,000土耳其里拉。\",\n      \"cite_ids\": [\"f:2855\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Ford Otosan 2025年第1季度（2025年1月1日-2025年3月31日，2026年Q1报告中的前期重述）净利润为8,489,338,000土耳其里拉。\",\n      \"cite_ids\": [\"f:2904\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"Ford Otosan 2025年第2季度（2025年4月1日-2025年6月30日，当期报告）净利润为6,110,784,000土耳其里拉。\",\n      \"cite_ids\": [\"f:2869\"]\n    },\n    {\n      \"id\": \"F5\",\n      \"text\": \"Ford Otosan 2025年第2季度（2025年4月1日-2025年6月30日，2026年Q2报告中的前期重述）净利润为8,072,957,000土耳其里拉。\",\n      \"cite_ids\": [\"f:2918\"]\n    },\n    {\n      \"id\": \"F6\",\n      \"text\": \"Ford Otosan 2025年第3季度（2025年7月1日-2025年9月30日，当期报告）净利润为8,401,456,000土耳其里拉。\",\n      \"cite_ids\": [\"f:2879\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"q1_2025_vs_q4_2024_abs_change\",\n      \"description\": \"2025年Q1净利润与2024年Q4净利润的绝对变化（当期报告数值）\",\n      \"inputs\": [\n        {\"name\": \"q1_2025\", \"cite_id\": \"f:2855\", \"value\": 6487096000},\n        {\"name\": \"q4_2024\", \"cite_id\": \"f:25073\", \"value\": 13197975000}\n      ],\n      \"code\": \"result = inputs['q1_2025'] - inputs['q4_2024']\"\n    },\n    {\n      \"name\": \"q1_2025_vs_q4_2024_pct_change\",\n      \"description\": \"2025年Q1净利润与2024年Q4净利润的百分比变化（当期报告数值）\",\n      \"inputs\": [\n        {\"name\": \"q1_2025\", \"cite_id\": \"f:2855\", \"value\": 6487096000},\n        {\"name\": \"q4_2024\", \"cite_id\": \"f:25073\", \"value\": 13197975000}\n      ],\n      \"code\": \"result = (inputs['q1_2025'] - inputs['q4_2024']) / inputs['q4_2024']\"\n    },\n    {\n      \"name\": \"q2_2025_vs_q1_2025_abs_change\",\n      \"description\": \"2025年Q2净利润与2025年Q1净利润的绝对变化（当期报告数值）\",\n      \"inputs\": [\n        {\"name\": \"",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 2473,
+    "tokens_out": 2048,
+    "latency_ms": 45309.42,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash",
+     "nvidia-large"
+    ]
+   }
+  },
+  {
+   "key": "c9a771a867d677721560c2a5742a36682aca1c7dc2d2e72dcded0697dbe10569",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Ford Otosan 2024年第4季度（2024年1月1日-2024年9月30日，2024年年报）净利润为13,197,975,000土耳其里拉。\",\n      \"cite_ids\": [\"f:25073\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Ford Otosan 2025年第1季度（2025年1月1日-2025年3月31日，当期报告）净利润为6,487,096,000土耳其里拉。\",\n      \"cite_ids\": [\"f:2855\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Ford Otosan 2025年第1季度（2025年1月1日-2025年3月31日，2026年Q1报告中的前期重述）净利润为8,489,338,000土耳其里拉。\",\n      \"cite_ids\": [\"f:2904\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"Ford Otosan 2025年第2季度（2025年4月1日-2025年6月30日，当期报告）净利润为6,110,784,000土耳其里拉。\",\n      \"cite_ids\": [\"f:2869\"]\n    },\n    {\n      \"id\": \"F5\",\n      \"text\": \"Ford Otosan 2025年第2季度（2025年4月1日-2025年6月30日，2026年Q2报告中的前期重述）净利润为8,072,957,000土耳其里拉。\",\n      \"cite_ids\": [\"f:2918\"]\n    },\n    {\n      \"id\": \"F6\",\n      \"text\": \"Ford Otosan 2025年第3季度（2025年7月1日-2025年9月30日，当期报告）净利润为8,401,456,000土耳其里拉。\",\n      \"cite_ids\": [\"f:2879\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"q1_2025_vs_q4_2024_abs_change\",\n      \"description\": \"2025年Q1净利润与2024年Q4净利润的绝对变化（当期报告数值）\",\n      \"inputs\": [\n        {\"name\": \"q1_2025\", \"cite_id\": \"f:2855\", \"value\": 6487096000},\n        {\"name\": \"q4_2024\", \"cite_id\": \"f:25073\", \"value\": 13197975000}\n      ],\n      \"code\": \"result = inputs['q1_2025'] - inputs['q4_2024']\"\n    },\n    {\n      \"name\": \"q1_2025_vs_q4_2024_pct_change\",\n      \"description\": \"2025年Q1净利润与2024年Q4净利润的百分比变化（当期报告数值）\",\n      \"inputs\": [\n        {\"name\": \"q1_2025\", \"cite_id\": \"f:2855\", \"value\": 6487096000},\n        {\"name\": \"q4_2024\", \"cite_id\": \"f:25073\", \"value\": 13197975000}\n      ],\n      \"code\": \"result = (inputs['q1_2025'] - inputs['q4_2024']) / inputs['q4_2024']\"\n    },\n    {\n      \"name\": \"q2_2025_vs_q1_2025_abs_change\",\n      \"description\": \"2025年Q2净利润与2025年Q1净利润的绝对变化（当期报告数值）\",\n      \"inputs\": [\n        {\"name\": \"q2_2025\", \"cite_id\": \"f:2869\", \"value\": 6110784000},\n        {\"name\": \"q1_2025\", \"cite_id\": \"f:2855\", \"value\": 6487096000}\n      ],\n      \"code\": \"result = inputs['q2_2025'] - inputs['q1_2025']\"\n    },\n    {\n      \"name\": \"q2_2025_vs_q1_2025_pct_change\",\n      \"description\": \"2025年Q2净利润与2025年Q1净利润的百分比变化（当期报告数值）\",\n      \"inputs\": [\n        {\"name\": \"q2_2025\", \"cite_id\": \"f:2869\", \"value\": 6110784000},\n        {\"name\": \"q1_2025\", \"cite_id\": \"f:2855\", \"value\": 6487096000}\n      ],\n      \"code\": \"result = (inputs['q2_2025'] - inputs['q1_2025']) / inputs['q1_2025']\"\n    },\n    {\n      \"name\": \"q3_2025_vs_q2_2025_abs_change\",\n      \"description\": \"2025年Q3净利润与2025年Q2净利润的绝对变化（当期报告数值）\",\n      \"inputs\": [\n        {\"name\": \"q3_2025\", \"cite_id\": \"f:2879\", \"value\": 8401456000},\n        {\"name\": \"q2_2025\", \"cite_id\": \"f:2869\", \"value\": 6110784000}\n      ],\n      \"code\": \"result = inputs['q3_2025'] - inputs['q2_2025']\"\n    },\n    {\n      \"name\": \"q3_2025_vs_q2_2025_pct_change\",\n      \"description\": \"2025年Q3净利润与2025年Q2净利润的百分比变化（当期报告数值）\",\n      \"inputs\": [\n        {\"name\": \"q3_2025\", \"cite_id\": \"f:2879\", \"value\": 8401456000},\n        {\"name\": \"q2_20",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 4736,
-    "tokens_out": 3000,
-    "latency_ms": 70956.326,
+    "tokens_in": 3632,
+    "tokens_out": 2048,
+    "latency_ms": 42167.315,
     "cache_hit": false,
-    "fallback_from": []
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "86ce98293dc562fe810c49a20626e36c02c75e7a78ee93e33a82f7db23953cc5",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\": \"tr\", \"status\": \"no_evidence\", \"summary\": \"Ford Otosan çeyreklik net kâr verilerine ilişkan hiçbir kanıt veya hesaplama bulunamadı. Bu nedenle kâr değişimi analiz edilemedi.\", \"points\": [], \"tables\": [], \"chart\": null, \"confidence\": {\"level\": \"low\", \"note\": \"Bulgular ve hesaplamalar boş geldiği için herhangi bir rakam veya trend sunulamıyor.\"}, \"unverified\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2190,
+    "tokens_out": 285,
+    "latency_ms": 5407.167,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
    }
   }
  ],
@@ -186,124 +119,29 @@
   {
    "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2024-Q4\",\"2025-Q1\",\"2025-Q2\",\"2025-Q3\"],\"ticker\":\"FROTO\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:2855\">Net dönem kârı (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 6.487.096.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2904\">Net dönem kârı (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 8.489.338.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2869\">Net dönem kârı (2025-Q2; Cari Dönem 3 Aylık 01.04.2025 - 30.06.2025): 6.110.784.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2918\">Net dönem kârı (2025-Q2; Önceki Dönem 3 Aylık 01.04.2025 - 30.06.2025; 2026-Q2 raporu): 8.072.957.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2879\">Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 8.401.456.000 TRY</untrusted_document>",
+   "content": "<untrusted_document cite_id=\"f:25073\">Net dönem kârı (2024-Q4; Cari Dönem 01.01.2024 - 30.09.2024; 2024-FY raporu): 13.197.975.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2855\">Net dönem kârı (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 6.487.096.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2904\">Net dönem kârı (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 8.489.338.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2869\">Net dönem kârı (2025-Q2; Cari Dönem 3 Aylık 01.04.2025 - 30.06.2025): 6.110.784.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2918\">Net dönem kârı (2025-Q2; Önceki Dönem 3 Aylık 01.04.2025 - 30.06.2025; 2026-Q2 raporu): 8.072.957.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2879\">Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 8.401.456.000 TRY</untrusted_document>",
    "summary": "FROTO 2024-Q4 to 2025-Q3 net_income",
-   "count": 5,
+   "count": 6,
    "items": [
     {
-     "cite_id": "f:2855",
-     "text": "Net dönem kârı (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 6.487.096.000 TRY",
+     "cite_id": "f:25073",
+     "text": "Net dönem kârı (2024-Q4; Cari Dönem 01.01.2024 - 30.09.2024; 2024-FY raporu): 13.197.975.000 TRY",
      "source": {
       "kind": "fact",
-      "document_id": 1588,
+      "document_id": 1574,
       "ticker": "FROTO",
       "doc_type": "kap_financial_report",
-      "period": "2025-Q1",
+      "period": "2024-Q4",
       "metric": "net_income",
       "unit": "TRY",
       "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.03.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1431134"
+      "source_ref": "derived: DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2024 - 31.12.2024 - DÖNEM KARI (ZARARI) / Cari Dönem 01.01.2024 - 30.09.2024",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1393507"
      },
-     "value": "6487096000",
+     "value": "13197975000",
      "scale": "1",
      "unit_note": null
     },
-    {
-     "cite_id": "f:2904",
-     "text": "Net dönem kârı (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 8.489.338.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 1621,
-      "ticker": "FROTO",
-      "doc_type": "kap_financial_report",
-      "period": "2025-Q1",
-      "metric": "net_income",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Önceki Dönem 01.01.2025 - 31.03.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1601422"
-     },
-     "value": "8489338000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:2869",
-     "text": "Net dönem kârı (2025-Q2; Cari Dönem 3 Aylık 01.04.2025 - 30.06.2025): 6.110.784.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 1595,
-      "ticker": "FROTO",
-      "doc_type": "kap_financial_report",
-      "period": "2025-Q2",
-      "metric": "net_income",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 3 Aylık 01.04.2025 - 30.06.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1469124"
-     },
-     "value": "6110784000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:2918",
-     "text": "Net dönem kârı (2025-Q2; Önceki Dönem 3 Aylık 01.04.2025 - 30.06.2025; 2026-Q2 raporu): 8.072.957.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 1629,
-      "ticker": "FROTO",
-      "doc_type": "kap_financial_report",
-      "period": "2025-Q2",
-      "metric": "net_income",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Önceki Dönem 3 Aylık 01.04.2025 - 30.06.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1643217"
-     },
-     "value": "8072957000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:2879",
-     "text": "Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 8.401.456.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 1598,
-      "ticker": "FROTO",
-      "doc_type": "kap_financial_report",
-      "period": "2025-Q3",
-      "metric": "net_income",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "Tablo 2 (Kar veya Zarar Tablosu) / DÖNEM KARI (ZARARI) / Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1511818"
-     },
-     "value": "8401456000",
-     "scale": "1",
-     "unit_note": null
-    }
-   ],
-   "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"ticker\":\"FROTO\"},\"name\":\"list_documents\"}",
-   "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 1635, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-29T17:35:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1669809\"}, {\"document_id\": 1634, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-21T16:31:56Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1666320\"}, {\"document_id\": 1633, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-01T15:28:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1656923\"}, {\"document_id\": 1632, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-04T18:45:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643223\"}, {\"document_id\": 1631, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-04T18:39:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643220\"}, {\"document_id\": 1630, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-04T18:38:53Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643218\"}, {\"document_id\": 1629, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-04T18:38:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1643217\"}, {\"document_id\": 1628, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-07-03T15:30:56Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1624116\"}, {\"document_id\": 1627, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-26T15:20:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1621199\"}, {\"document_id\": 1626, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-16T17:10:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1617911\"}, {\"document_id\": 1625, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-15T16:07:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1617463\"}, {\"document_id\": 1624, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-14T15:30:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1607506\"}, {\"document_id\": 1623, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-05T16:29:07Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1601425\"}, {\"document_id\": 1622, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-05T16:27:58Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1601423\"}, {\"document_id\": 1621, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-05T16:26:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1601422\"}, {\"document_id\": 1620, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-17T15:18:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1594926\"}, {\"document_id\": 1619, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-10T15:30:11Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1590995\"}, {\"document_id\": 1618, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-31T15:23:46Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1580892\"}, {\"document_id\": 1617, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-30T12:24:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1578319\"}, {\"document_id\": 1616, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-30T07:54:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1578055\"}, {\"document_id\": 1615, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-12T12:05:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1571684\"}, {\"document_id\": 1614, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-12T12:00:53Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1571680\"}, {\"document_id\": 1613, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-12T10:42:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1571603\"}, {\"document_id\": 1612, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-12T10:37:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1571601\"}, {\"document_id\": 1611, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-18T20:50:10Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1558661\"}, {\"document_id\": 1610, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-16T15:43:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1557063\"}, {\"document_id\": 1609, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-09T22:11:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1555149\"}, {\"document_id\": 1608, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-09T22:10:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1555147\"}, {\"document_id\": 1607, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-09T22:09:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1555145\"}, {\"document_id\": 1606, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-06T16:25:46Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1554179\"}, {\"document_id\": 1605, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-22T06:47:43Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1545584\"}, {\"document_id\": 1604, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-20T13:56:58Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1545066\"}, {\"document_id\": 1603, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-30T15:36:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1531303\"}, {\"document_id\": 1602, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-29T15:32:25Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1530799\"}, {\"document_id\": 1601, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-29T15:19:11Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1530783\"}, {\"document_id\": 1600, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-05T15:34:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511821\"}, {\"document_id\": 1599, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-05T15:34:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511819\"}, {\"document_id\": 1598, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-05T15:33:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511818\"}, {\"document_id\": 1597, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-30T16:59:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1469127\"}, {\"document_id\": 1596, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-30T16:57:50Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1469125\"}, {\"document_id\": 1595, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-30T16:56:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1469124\"}, {\"document_id\": 1594, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-18T06:09:40Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1464504\"}, {\"document_id\": 1593, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-07-09T15:45:03Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1461324\"}, {\"document_id\": 1592, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-23T05:35:40Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1450741\"}, {\"document_id\": 1591, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-13T15:24:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1448819\"}, {\"document_id\": 1590, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-29T16:30:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431197\"}, {\"document_id\": 1589, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-29T15:43:56Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431135\"}, {\"document_id\": 1588, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-29T15:43:25Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431134\"}, {\"document_id\": 1587, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-18T15:54:07Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1427728\"}, {\"document_id\": 1586, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-11T15:40:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1424537\"}, {\"document_id\": 1585, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-04T06:19:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1417363\"}, {\"document_id\": 1584, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-28T15:22:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1414955\"}, {\"document_id\": 1583, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-26T16:29:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1412496\"}, {\"document_id\": 1582, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-26T10:57:38Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1411959\"}, {\"document_id\": 1581, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-11T06:00:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1403966\"}, {\"document_id\": 1580, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-10T16:44:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1403742\"}, {\"document_id\": 1579, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-03-04T20:29:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1400503\"}, {\"document_id\": 1578, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-28T21:00:17Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1397832\"}, {\"document_id\": 1577, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-18T15:59:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393844\"}, {\"document_id\": 1576, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-17T20:16:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393513\"}, {\"document_id\": 1575, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-17T19:45:30Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393509\"}, {\"document_id\": 1574, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-17T19:32:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1393507\"}, {\"document_id\": 1573, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-13T16:01:05Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1392685\"}, {\"document_id\": 1572, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-14T12:34:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1380185\"}, {\"document_id\": 1571, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-27T15:33:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1369340\"}, {\"document_id\": 1570, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-27T15:15:05Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1369300\"}, {\"document_id\": 1569, \"ticker\": \"FROTO\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-05T17:43:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353879\"}, {\"document_id\": 1568, \"ticker\": \"FROTO\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-05T17:42:34Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353877\"}, {\"document_id\": 1567, \"ticker\": \"FROTO\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-05T17:41:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1353876\"}]}",
-   "summary": "FROTO documents",
-   "count": 69,
-   "items": [],
-   "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"metrics\":[\"net_income\"],\"periods\":[\"2024-Q4\",\"2025-Q1\",\"2025-Q2\",\"2025-Q3\"],\"ticker\":\"FROTO\"},\"name\":\"get_financial_facts\"}",
-   "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:2855\">Net dönem kârı (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 6.487.096.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2904\">Net dönem kârı (2025-Q1; Önceki Dönem 01.01.2025 - 31.03.2025; 2026-Q1 raporu): 8.489.338.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2869\">Net dönem kârı (2025-Q2; Cari Dönem 3 Aylık 01.04.2025 - 30.06.2025): 6.110.784.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2918\">Net dönem kârı (2025-Q2; Önceki Dönem 3 Aylık 01.04.2025 - 30.06.2025; 2026-Q2 raporu): 8.072.957.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2879\">Net dönem kârı (2025-Q3; Cari Dönem 3 Aylık 01.07.2025 - 30.09.2025): 8.401.456.000 TRY</untrusted_document>",
-   "summary": "FROTO 2024-Q4 to 2025-Q3 net_income",
-   "count": 5,
-   "items": [
     {
      "cite_id": "f:2855",
      "text": "Net dönem kârı (2025-Q1; Cari Dönem 01.01.2025 - 31.03.2025): 6.487.096.000 TRY",
@@ -403,63 +241,7 @@
    "error": null
   }
  ],
- "sandbox": [
-  {
-   "key": "bcf307b51d9b7a1315eff40d3f7e573d85b8850d2c72dbf49bf65ff549a73e6e",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "qoq_q2_vs_q1": "-0.05800931572463241",
-     "qoq_q3_vs_q2": "0.374857301452645"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  },
-  {
-   "key": "bcf307b51d9b7a1315eff40d3f7e573d85b8850d2c72dbf49bf65ff549a73e6e",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "qoq_q2_vs_q1": "-0.05800931572463241",
-     "qoq_q3_vs_q2": "0.374857301452645"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  },
-  {
-   "key": "46049cd3ed34a920da88a596e1ba6cd7fe8fb5f8bf66622b73e24622ee2a9ea8",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "qoq_change_q1_q2": "-0.05800931572463241",
-     "qoq_change_q2_q3": "0.374857301452645"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  },
-  {
-   "key": "46049cd3ed34a920da88a596e1ba6cd7fe8fb5f8bf66622b73e24622ee2a9ea8",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "qoq_change_q1_q2": "-0.05800931572463241",
-     "qoq_change_q2_q3": "0.374857301452645"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  }
- ],
- "decision": "approve"
+ "sandbox": [],
+ "decision": "approve",
+ "elapsed_ms": 176564
 }

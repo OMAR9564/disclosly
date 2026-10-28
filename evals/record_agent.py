@@ -39,7 +39,7 @@ from ingestion.config import IngestionSettings
 from ingestion.db import make_engine
 from llm.config import load_providers
 from llm.router import ModelRouter, Router
-from llm.testing import interaction
+from llm.testing import interaction, unavailable_interaction
 from llm.types import (
     ChatRequest,
     ChatResponse,
@@ -59,7 +59,12 @@ class RecordingRouter:
         self.interactions: list[dict[str, Any]] = []
 
     async def chat(self, request: ChatRequest, *, task_class: TaskClass) -> ChatResponse:
-        response = await self._inner.chat(request, task_class=task_class)
+        try:
+            response = await self._inner.chat(request, task_class=task_class)
+        except ProvidersUnavailable as exc:
+            # A node may handle it (a re-ask falls back to a partial report): replayed as is.
+            self.interactions.append(unavailable_interaction(request, task_class, exc))
+            raise
         self.interactions.append(interaction(request, task_class, response))
         return response
 
