@@ -32,6 +32,8 @@ from agent.answer import (
     Language,
     Point,
     figures,
+    localize_decimals,
+    split_markers,
     unsupported_figures,
 )
 from tools.types import SeenItem
@@ -285,6 +287,32 @@ def _check_chart(report: Report, language: Language, result: ReportValidation) -
         if any(cell_number(row[column].text, language) is None for row in table.rows):
             result.errors.append(f"chart series {name!r} has a non-numeric cell")
             result.chart_ok = False
+
+
+def normalize_text(report: Report, language: Language) -> Report:
+    """Mechanical fixes before validation: one marker per bracket in the summary and decimals
+    in the report's style, so a "[1, 2]" or a "28.67" in a Turkish report is not dropped."""
+
+    def fix(text: str) -> str:
+        return localize_decimals(text, language)
+
+    return report.model_copy(
+        update={
+            "summary": fix(split_markers(report.summary)),
+            "points": [p.model_copy(update={"text": fix(p.text)}) for p in report.points],
+            "tables": [
+                t.model_copy(
+                    update={
+                        "rows": [
+                            [c.model_copy(update={"text": fix(c.text)}) for c in row]
+                            for row in t.rows
+                        ]
+                    }
+                )
+                for t in report.tables
+            ],
+        }
+    )
 
 
 def to_partial(report: Report, validation: ReportValidation, language: Language) -> Report:

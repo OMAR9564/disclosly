@@ -12,6 +12,7 @@ from agent.report import (
     Report,
     cell_number,
     finalize_report,
+    normalize_text,
     report_json_schema,
     to_partial,
     validate_report,
@@ -328,3 +329,33 @@ def test_to_partial_drops_a_table_left_with_placeholder_rows() -> None:
 
     assert partial.tables == []
     assert any("39,0 milyar TL" in u for u in partial.unverified)
+
+
+def test_grouped_markers_and_period_counts_keep_the_summary() -> None:
+    report = normalize_text(
+        _report(
+            summary="Son 4 çeyrekte net borç 38,5 milyar TL'den 41,2 milyar TL'ye çıktı [1, 2].",
+            citations=[{"marker": 1, "cite_id": "f:87"}, {"marker": 2, "cite_id": "f:88"}],
+        ),
+        "tr",
+    )
+
+    assert report.summary.endswith("[1][2].")
+    assert validate_report(report, SEEN, CALCS, "tr").summary_ok
+
+
+def test_an_english_decimal_in_a_turkish_report_is_localized() -> None:
+    report = normalize_text(
+        _report(points=[{"text": "Net borç / FAVÖK 1.90 oldu.", "cite_ids": ["k:1"]}]), "tr"
+    )
+
+    assert report.points[0].text == "Net borç / FAVÖK 1,90 oldu."
+    assert not validate_report(report, SEEN, CALCS, "tr").bad_points
+
+
+def test_thousands_and_dates_are_not_localized() -> None:
+    report = normalize_text(
+        _report(points=[{"text": "1.234 milyon TL, 31.12.2025", "cite_ids": ["f:88"]}]), "tr"
+    )
+
+    assert report.points[0].text == "1.234 milyon TL, 31.12.2025"

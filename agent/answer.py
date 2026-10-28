@@ -122,9 +122,11 @@ _MONTHS = (
     "january|february|march|april|may|june|july|august|september|october|november|december"
     "|ocak|şubat|mart|nisan|mayıs|haziran|temmuz|ağustos|eylül|ekim|kasım|aralık"
 )
-# Labels that contain digits but are not figures: citation markers, dates, years, quarters.
+# Labels that contain digits but are not figures: citation markers, dates, years, quarters,
+# and period counts ("son 4 çeyrek", "last 4 quarters").
 _NOT_FIGURES = re.compile(
-    r"\[\d+\]"
+    r"\[\d+(?:\s*,\s*\d+)*\]"
+    r"|\b\d{1,2}\s+(?:çeyre\w*|quarters?|yıl\w*|years?)\b"
     r"|\b\d{1,2}[./]\d{1,2}[./](?:19|20)\d{2}\b"
     r"|\b(?:19|20)\d{2}-\d{2}-\d{2}\b"
     rf"|\b(?:{_MONTHS})\s+\d{{1,2}}\b"
@@ -145,6 +147,32 @@ _CURRENCY_AFTER = re.compile(
     r"\s?(?:TL|TRY|USD|EUR|dolar|dollars?|lira|₺)(?![\wçğıöşü])", re.IGNORECASE
 )
 _CURRENCY_BEFORE = re.compile(r"(?:\$|€|₺|USD|TRY|TL|EUR)\s?$")
+
+
+_GROUPED_MARKERS = re.compile(r"\[(\d+(?:\s*,\s*\d+)+)\]")
+
+
+def split_markers(text: str) -> str:
+    """ "[1, 2]" to "[1][2]": one citation marker per bracket."""
+    return _GROUPED_MARKERS.sub(
+        lambda m: "".join(f"[{n.strip()}]" for n in m.group(1).split(",")), text
+    )
+
+
+def localize_decimals(text: str, language: Language) -> str:
+    """A decimal written in the other style ("28.67" in a Turkish text) in the text's style.
+
+    Only a token with one separator that is malformed in `language` changes, so "1.234"
+    (tr thousands) and dates stay as they are."""
+    wrong, right = (".", ",") if language == "tr" else (",", ".")
+
+    def fix(match: re.Match[str]) -> str:
+        token = match.group()
+        if token.count(wrong) != 1 or right in token or parse_number(token, language) is not None:
+            return token
+        return token.replace(wrong, right)
+
+    return _NUMBER.sub(fix, text)
 
 
 def parse_number(token: str, language: Language) -> Decimal | None:
