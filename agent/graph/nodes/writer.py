@@ -26,6 +26,7 @@ from agent.report import (
     Report,
     ReportValidation,
     finalize_report,
+    normalize_text,
     report_json_schema,
     to_partial,
     validate_report,
@@ -175,6 +176,7 @@ async def writer_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]:
         )
         report, errors = parse_report(response.content)
         if report is not None:
+            report = normalize_text(report, language)
             validation = validate_report(
                 report, evidence, outputs, language, limit_hit=limit_hit, derived_ok=False
             )

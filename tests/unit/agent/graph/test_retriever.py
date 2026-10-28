@@ -245,3 +245,16 @@ async def test_calculate_step_needs_no_tools_and_no_plan_means_nothing() -> None
 
     ctx = make_ctx(make_deps(ScriptedRouter([])), "retriever")
     assert await retriever_node({"question": "q"}, ctx) == {}
+
+
+async def test_a_facts_step_without_metrics_searches_the_text() -> None:
+    goal = "Apple brüt marjı"
+    step = {"id": "s1", "kind": "facts", "goal": goal, "tickers": ["THYAO"], "periods": ["2025-Q4"]}
+    toolbox = Toolbox({"THYAO"}, searches={goal: [_chunk("g", "Gross margin was 47.1%.")]})
+    router = ScriptedRouter([_verdicts({"step_id": "s1", "sufficient": True})])
+
+    update, _, _ = await _run(toolbox, router, _plan(step))
+
+    assert "get_financial_facts" not in toolbox.names()
+    assert [i.cite_id for i in update["evidence"]] == ["c:g"]
+    assert update["plan"].steps[0].status == "done"

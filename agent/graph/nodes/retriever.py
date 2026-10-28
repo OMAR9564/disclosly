@@ -21,7 +21,6 @@ from agent.graph.state import ResearchState
 from agent.plan import Plan, PlanStep, StepStatus
 from agent.prompts import node_prompt, with_schema
 from llm.types import ChatMessage, ChatRequest, ToolCall
-from tools.facts import KNOWN_METRICS
 from tools.registry import ToolResult, wrap
 from tools.types import SeenItem
 
@@ -101,13 +100,15 @@ class _Run:
             return "not_covered"
         if step.kind == "calculate":
             return "done"  # computed by the analyst from the other steps' figures
-        if step.kind == "facts" and step.periods:
-            metrics = step.metrics or list(KNOWN_METRICS)
+        # A facts step without metrics asks for a figure the facts table does not hold (gross
+        # margin, cost of revenue): the disclosure text is searched instead of returning every
+        # known metric.
+        if step.kind == "facts" and step.periods and step.metrics:
             for ticker in tickers:
                 await self.tool(
                     step.id,
                     "get_financial_facts",
-                    {"ticker": ticker, "metrics": metrics, "periods": step.periods},
+                    {"ticker": ticker, "metrics": step.metrics, "periods": step.periods},
                 )
         else:
             await self.search(step, step.goal, tickers)
