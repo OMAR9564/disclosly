@@ -3,16 +3,16 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "3ba47d57c223bcd8ff0e482b573179f9e341a9b1cda95172d9d83904b34756ca",
+   "key": "4facbcb17f64f7f8be1bd215876d927ed8dac604a01bbc2ceb006485eee100d2",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\"TM\"],\n  \"periods\": [\"2025-FY\"],\n  \"metrics\": [\"net_income\"],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"TM\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"net_income\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1015,
-    "tokens_out": 59,
-    "latency_ms": 848.828,
+    "tokens_in": 1022,
+    "tokens_out": 77,
+    "latency_ms": 5606.891,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -24,54 +24,52 @@
     "content": null,
     "tool_calls": [
      {
-      "id": "call_4689913",
-      "name": "search_documents",
-      "arguments": {
-       "period_to": "2025-Q4",
-       "period_from": "2025-Q1",
-       "ticker": "TM",
-       "query": "net income profit net kâr 2025 Toyota"
-      },
-      "extra": {
-       "google": {
-        "thought_signature": "EmAKXgFpFH0Tj9Dtch0NCle+PtTxDMYWVbHXieEAdTMAqIH4pjV/qqjt0eDH2e+axdTFvv9gfI3ue0qvP+W4txp6peEMTfJpqkPm1pqjLP++ca3wAm8M/Y4BO/0K8GrdrFs="
-       }
-      }
-     }
-    ],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1627,
-    "tokens_out": 61,
-    "latency_ms": 552.829,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "dcb03fa16972ceeef77a37c81c7f9a35b2fb7530a573a85f20058f0d0e6032e3",
-   "task_class": "cheap",
-   "response": {
-    "content": null,
-    "tool_calls": [
-     {
-      "id": "call_2482693",
+      "id": "call_263697",
       "name": "list_documents",
       "arguments": {
        "ticker": "TM"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0TDiYHuFDg3Ragc1pqNYRiUWz9+YlOzZCTIqnzPe5EBGEOZyCpS43mfGw5pcHc2q8bwY/OZRmzcd6KEMhHqfDmGyQY/IjcIuLKMf2Cjl2S6EGhBi+HcpF/XN8="
+        "thought_signature": "EmAKXgFpFH0Tf3s0zRJ9SjSYh3Gx3nBCUHfZOvYXYJcy/NQN4pc6z8G1XjuzHTn9L9441H0yruzt2Wr9ntLb7QJrMtHhlMSSOiwaDAAZ+kul7MILdBX9JLJ8N5+swIQPQuY="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1704,
+    "tokens_in": 1636,
     "tokens_out": 16,
-    "latency_ms": 649.867,
+    "latency_ms": 7502.366,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "04a688af23df20d065d7ec06bb288d37060194be76d739b5b816712d6383065a",
+   "task_class": "cheap",
+   "response": {
+    "content": null,
+    "tool_calls": [
+     {
+      "id": "call_295931",
+      "name": "search_documents",
+      "arguments": {
+       "ticker": "TM",
+       "query": "Toyota net income 2025"
+      },
+      "extra": {
+       "google": {
+        "thought_signature": "EmAKXgFpFH0T7UCFMzho2tPiLCQdbc0q6GZ5C4LNqL8rQc9L6Ho8BmxibpdnTnVz8zOevFq7bX0v/aQGE6cQH1OAKkIC+qnDr5k0ewgWoDoj1+DScloHm99nDs6T11jnEGc="
+       }
+      }
+     }
+    ],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 1670,
+    "tokens_out": 29,
+    "latency_ms": 4668.163,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -97,15 +95,6 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"period_from\":\"2025-Q1\",\"period_to\":\"2025-Q4\",\"query\":\"net income profit net kâr 2025 Toyota\",\"ticker\":\"TM\"},\"name\":\"search_documents\"}",
-   "tool": "search_documents",
-   "content": "No results.",
-   "summary": "TM net income profit net kâr 2025 Toyota",
-   "count": 0,
-   "items": [],
-   "error": null
-  },
-  {
    "key": "{\"arguments\":{\"ticker\":\"TM\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
    "content": "{\"documents\": []}",
@@ -113,9 +102,18 @@
    "count": 0,
    "items": [],
    "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"query\":\"Toyota net income 2025\",\"ticker\":\"TM\"},\"name\":\"search_documents\"}",
+   "tool": "search_documents",
+   "content": "No results.",
+   "summary": "TM Toyota net income 2025",
+   "count": 0,
+   "items": [],
+   "error": null
   }
  ],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 4147
+ "elapsed_ms": 21412
 }

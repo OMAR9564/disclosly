@@ -3,31 +3,31 @@
  "dataset": "advice_refusal",
  "interactions": [
   {
-   "key": "75662763aa336c26b1cb2e9367a7581698e7a3f9951984f2dc0b475e8566eaad",
+   "key": "385c68b8f4c3833888008da71d49f0acd73c3b37f4ac530a34833bd9b036332d",
    "task_class": "cheap",
    "response": {
-    "content": "{\"mode\":\"deep\",\"tickers\":[\"FROTO\",\"TOASO\"],\"periods\":[\"2025-FY\"],\"metrics\":[\"net_income\"],\"uses_watchlist\":false,\"memory_intent\":null}",
+    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"FROTO\",\n    \"TOASO\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"net_income\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1020,
-    "tokens_out": 42,
-    "latency_ms": 1038.065,
+    "tokens_in": 1027,
+    "tokens_out": 86,
+    "latency_ms": 3202.276,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "809776f321262109e03e2b5a678097b1184794037f58ba0fd736bd329be0bb38",
+   "key": "2a777c71340ed20c1f2217513ebfdbb6db9d0da9caca7eaa7b56a48e4eb6e644",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Ford Otosan (FROTO) ve Tofaş (TOASO) 2025 yılı net kârlarını getir\",\n      \"tickers\": [\"FROTO\", \"TOASO\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": [\"net_income\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"FROTO ve TOASO 2025 net kârlarını fark ve oran olarak karşılaştır\",\n      \"tickers\": [\"FROTO\", \"TOASO\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": []\n    }\n  ]}",
+    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Ford Otosan ve Tofaş'ın 2025 yılı net kârlarını getir\", \"tickers\": [\"FROTO\", \"TOASO\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"net_income\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"İki şirketin 2025 net kâr farkını ve oranını hesapla\", \"tickers\": [\"FROTO\", \"TOASO\"], \"periods\": [\"2025-FY\"]}]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1249,
-    "tokens_out": 593,
-    "latency_ms": 37782.408,
+    "tokens_in": 1315,
+    "tokens_out": 591,
+    "latency_ms": 17691.358,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -39,5 +39,5 @@
  "tools": [],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 39987
+ "elapsed_ms": 21421
 }

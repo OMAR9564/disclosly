@@ -3,31 +3,31 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "2bfeac2b56e87ac71cb55e1d9dd0ee9dfa2d6fb0e0f94cc996c03ebe7b49354f",
+   "key": "655a4c1afb3d5405f47558799b0606259a969ef9cf4d47d5af96813bce430257",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"AAPL\",\n    \"MSFT\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 936,
+    "tokens_in": 943,
     "tokens_out": 81,
-    "latency_ms": 1017.255,
+    "latency_ms": 1394.187,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "fe9dc1fdaf761c64500e79172b18b1e9482117195aaa26f6b6d671ca1f9bd35c",
+   "key": "d9367b880ed1b3be81b60124499fc4fcbd92349bd75d0930cf87b5a57194b65f",
    "task_class": "strong",
    "response": {
     "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Get fiscal 2025 revenue for Apple and Microsoft\", \"tickers\": [\"AAPL\", \"MSFT\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"revenue\"]}]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1060,
-    "tokens_out": 226,
-    "latency_ms": 7145.748,
+    "tokens_in": 1108,
+    "tokens_out": 411,
+    "latency_ms": 15961.952,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -39,43 +39,43 @@
    "key": "df7aefa47b949d6e357d49257af652cde9c3cd1aaa5a91682e2659fe96ce8fc5",
    "task_class": "cheap",
    "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": true, \"rewritten_query\": null}]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
     "tokens_in": 664,
-    "tokens_out": 25,
-    "latency_ms": 1382.414,
+    "tokens_out": 45,
+    "latency_ms": 1086.238,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "647367e352094a88bf1ccb17e2172d582af294b0a496e30f46c9e543e4d8d4c2",
+   "key": "19ffc7d46b0f7299d2df17effa107097a044c12d60d427081ae215c4a98d9bfe",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"For fiscal 2025, the reported revenue is 416,161,000,000 USD and 281,724,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:111\",\n        \"f:321\"\n      ]\n    }\n  ]\n}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Apple and Microsoft revenue for fiscal 2025.\",\n      \"cite_ids\": [\n        \"f:111\",\n        \"f:321\"\n      ]\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 2150,
-    "tokens_out": 110,
-    "latency_ms": 1105.197,
+    "tokens_in": 2189,
+    "tokens_out": 74,
+    "latency_ms": 922.582,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "eb3163f7109c03b8c1af717f832ec6345555736ab5f2fcf1117cdb5e163fe09c",
+   "key": "11df2b92332ca45c029746e0c92de1065d249eb07c286fea936897c0e1f1b01a",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"The two revenue figures match exactly the values in the cited evidence (f:111 and f:321).\"}]}",
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Evidence f:111 and f:321 both show Revenue (2025-FY) figures for two companies, supporting the statement about Apple and Microsoft revenue for fiscal 2025.\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 674,
-    "tokens_out": 463,
-    "latency_ms": 21347.084,
+    "tokens_in": 638,
+    "tokens_out": 564,
+    "latency_ms": 15966.379,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -84,35 +84,34 @@
    }
   },
   {
-   "key": "a70b83a9ef2e5c2703b1aabf6f20014e95086a55af3c828ae0f54427a6d4656b",
+   "key": "1e1c62f6ba14b8da721416df1a24b20b2bf51fc4e722b6f4d5bd6022bb12a6cc",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Apple's fiscal 2025 revenue was $416.161 billion, while Microsoft's fiscal 2025 revenue was $281.724 billion. Apple's revenue exceeded Microsoft's by approximately $134.4 billion. [1][2]\",\n  \"points\": [\n    {\n      \"text\": \"Apple reported fiscal 2025 revenue of $416,161,000,000 USD.\",\n      \"cite_ids\": [\"f:111\"]\n    },\n    {\n      \"text\": \"Microsoft reported fiscal 2025 revenue of $281,724,000,000 USD.\",\n      \"cite_ids\": [\"f:321\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Fiscal 2025 Revenue Comparison: Apple vs Microsoft\",\n      \"columns\": [\"Company\", \"Fiscal 2025 Revenue (USD)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Apple\", \"cite_id\": null},\n          {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"}\n        ],\n        [\n          {\"text\": \"Microsoft\", \"cite_id\": null},\n          {\"text\": \"281,724,000,000\", \"cite_id\": \"f:321\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Company\",\n    \"series\": [\"Fiscal 2025 Revenue (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"medium\",\n    \"note\": \"The evidence provides two revenue figures for fiscal 2025 but does not explicitly label which belongs to Apple and which to Microsoft. The assignment is based on the research plan targeting both companies.\"\n  },\n  \"unverified\": [\n    \"Explicit confirmation of which revenue figure corresponds to Apple and which to Microsoft\"\n  ],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:111\"},\n    {\"marker\": 2, \"cite_id\": \"f:321\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Apple's fiscal 2025 revenue was $416.161 billion, while Microsoft's fiscal 2025 revenue was $281.724 billion [1][2]. Apple's revenue exceeded Microsoft's by approximately $134.4 billion.\",\n  \"points\": [\n    {\n      \"text\": \"Apple reported revenue of $416,161,000,000 for fiscal year 2025.\",\n      \"cite_ids\": [\"f:111\"]\n    },\n    {\n      \"text\": \"Microsoft reported revenue of $281,724,000,000 for fiscal year 2025.\",\n      \"cite_ids\": [\"f:321\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Fiscal 2025 Revenue Comparison: Apple vs Microsoft\",\n      \"columns\": [\"Company\", \"Revenue (USD)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Apple\", \"cite_id\": null},\n          {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"}\n        ],\n        [\n          {\"text\": \"Microsoft\", \"cite_id\": null},\n          {\"text\": \"281,724,000,000\", \"cite_id\": \"f:321\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Company\",\n    \"series\": [\"Revenue (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Both companies' fiscal 2025 revenue figures are directly provided in the source documents.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:111\"},\n    {\"marker\": 2, \"cite_id\": \"f:321\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2152,
-    "tokens_out": 1743,
-    "latency_ms": 53273.185,
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 2116,
+    "tokens_out": 869,
+    "latency_ms": 29835.271,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
-     "gemini-flash",
-     "nvidia-large"
+     "gemini-flash"
     ]
    }
   },
   {
-   "key": "d9e9b27cec13a6e1fae96011ac9e1d76ff18461a8b6013c723562655f8b0bf1f",
+   "key": "b9eb7bc6b61004f90626bc5d72b5318633f4fb3a2079b5fb06483ac54b076e03",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"en\", \"status\": \"partial\", \"summary\": \"Two revenue figures for fiscal 2025 were found: $416.161 billion and $281.724 billion. However, the sources do not specify which figure corresponds to Apple and which to Microsoft. [1][2]\", \"points\": [{\"text\": \"A fiscal 2025 revenue figure of $416,161,000,000 USD was reported.\", \"cite_ids\": [\"f:111\"]}, {\"text\": \"A fiscal 2025 revenue figure of $281,724,000,000 USD was reported.\", \"cite_ids\": [\"f:321\"]}], \"tables\": [{\"title\": \"Fiscal 2025 Revenue Figures (Company Not Identified)\", \"columns\": [\"Figure\", \"Amount (USD)\"], \"rows\": [[{\"text\": \"Figure 1\", \"cite_id\": null}, {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"}], [{\"text\": \"Figure 2\", \"cite_id\": null}, {\"text\": \"281,724,000,000\", \"cite_id\": \"f:321\"}]]}, {\"title\": \"Fiscal 2025 Revenue Figures (Company Not Identified)\", \"columns\": [\"Figure\", \"Amount (USD)\"], \"rows\": [[{\"text\": \"Figure 1\", \"cite_id\": null}, {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"}], [{\"text\": \"Figure 2\", \"cite_id\": null}, {\"text\": \"281,724,000,000\", \"cite_id\": \"f:321\"}]]}], \"chart\": {\"kind\": \"bar\", \"table\": 0, \"x_column\": \"Figure\", \"series\": [\"Amount (USD)\"]}, \"confidence\": {\"level\": \"low\", \"note\": \"The evidence provides two revenue figures for fiscal 2025 but does not identify which belongs to Apple and which to Microsoft.\"}, \"unverified\": [\"Which revenue figure corresponds to Apple\", \"Which revenue figure corresponds to Microsoft\", \"Difference between Apple and Microsoft revenues\"], \"citations\": [{\"marker\": 1, \"cite_id\": \"f:111\"}, {\"marker\": 2, \"cite_id\": \"f:321\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Apple's fiscal 2025 revenue was $416.161 billion, while Microsoft's fiscal 2025 revenue was $281.724 billion [1][2].\",\n  \"points\": [\n    {\n      \"text\": \"Apple reported revenue of $416,161,000,000 for fiscal year 2025.\",\n      \"cite_ids\": [\"f:111\"]\n    },\n    {\n      \"text\": \"Microsoft reported revenue of $281,724,000,000 for fiscal year 2025.\",\n      \"cite_ids\": [\"f:321\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Fiscal 2025 Revenue Comparison: Apple vs Microsoft\",\n      \"columns\": [\"Company\", \"Revenue (USD)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Apple\", \"cite_id\": null},\n          {\"text\": \"416,161,000,000\", \"cite_id\": \"f:111\"}\n        ],\n        [\n          {\"text\": \"Microsoft\", \"cite_id\": null},\n          {\"text\": \"281,724,000,000\", \"cite_id\": \"f:321\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Company\",\n    \"series\": [\"Revenue (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Both companies' fiscal 2025 revenue figures are directly provided in the source documents.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:111\"},\n    {\"marker\": 2, \"cite_id\": \"f:321\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2732,
-    "tokens_out": 1579,
-    "latency_ms": 29716.014,
+    "tokens_in": 2645,
+    "tokens_out": 737,
+    "latency_ms": 14511.41,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -125,7 +124,7 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"AAPL\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3582, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm\"}, {\"document_id\": 3583, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm\"}, {\"document_id\": 3584, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2026-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000006/aapl-20251227.htm\"}, {\"document_id\": 3585, \"ticker\": \"AAPL\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm\"}, {\"document_id\": 3586, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000073/aapl-20250628.htm\"}, {\"document_id\": 3587, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-02T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000057/aapl-20250329.htm\"}, {\"document_id\": 3588, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2025-01-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000008/aapl-20241228.htm\"}, {\"document_id\": 3589, \"ticker\": \"AAPL\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2024-11-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm\"}]}",
+   "content": "{\"documents\": [{\"document_id\": 3738, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm\"}, {\"document_id\": 3739, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000013/aapl-20260328.htm\"}, {\"document_id\": 3740, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2026-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019326000006/aapl-20251227.htm\"}, {\"document_id\": 3741, \"ticker\": \"AAPL\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm\"}, {\"document_id\": 3742, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000073/aapl-20250628.htm\"}, {\"document_id\": 3743, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-02T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000057/aapl-20250329.htm\"}, {\"document_id\": 3744, \"ticker\": \"AAPL\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2025-01-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019325000008/aapl-20241228.htm\"}, {\"document_id\": 3745, \"ticker\": \"AAPL\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2024-11-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm\"}]}",
    "summary": "AAPL documents",
    "count": 8,
    "items": [],
@@ -134,9 +133,9 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"MSFT\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3590, \"ticker\": \"MSFT\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-07-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm\"}, {\"document_id\": 3591, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm\"}, {\"document_id\": 3592, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2026-01-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312526027207/msft-20251231.htm\"}, {\"document_id\": 3593, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm\"}, {\"document_id\": 3594, \"ticker\": \"MSFT\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-07-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm\"}, {\"document_id\": 3595, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017025061046/msft-20250331.htm\"}, {\"document_id\": 3596, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2025-01-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017025010491/msft-20241231.htm\"}, {\"document_id\": 3597, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017024118967/msft-20240930.htm\"}]}",
+   "content": "{\"documents\": [{\"document_id\": 3746, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm\"}, {\"document_id\": 3747, \"ticker\": \"MSFT\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-07-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm\"}, {\"document_id\": 3748, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312526191507/msft-20260331.htm\"}, {\"document_id\": 3749, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2026-01-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312526027207/msft-20251231.htm\"}, {\"document_id\": 3750, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000119312525256321/msft-20250930.htm\"}, {\"document_id\": 3751, \"ticker\": \"MSFT\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-07-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017025100235/msft-20250630.htm\"}, {\"document_id\": 3752, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017025061046/msft-20250331.htm\"}, {\"document_id\": 3753, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2025-01-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017025010491/msft-20241231.htm\"}, {\"document_id\": 3754, \"ticker\": \"MSFT\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017024118967/msft-20240930.htm\"}]}",
    "summary": "MSFT documents",
-   "count": 8,
+   "count": 9,
    "items": [],
    "error": null
   },
@@ -315,5 +314,5 @@
  ],
  "sandbox": [],
  "decision": "approve",
- "elapsed_ms": 200851
+ "elapsed_ms": 84702
 }

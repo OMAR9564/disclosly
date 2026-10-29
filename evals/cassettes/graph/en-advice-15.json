@@ -6,13 +6,13 @@
    "key": "a3e4557f5c60f6c45f76703b53f234b26ed7f044cac8a0ee958c705f54cf809e",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice or assess whether a stock is worth buying [1]. Please refer to company disclosures for factual financial information.\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice or assess whether a stock is worth buying. Please consult official disclosures and financial statements for factual information.\",\n  \"points\": [],\n  \"citations\": []\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1523,
-    "tokens_out": 57,
-    "latency_ms": 706.998,
+    "tokens_in": 1532,
+    "tokens_out": 68,
+    "latency_ms": 892.967,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,17 +21,18 @@
    "key": "9df750fc4d667c10493bc5af08cca3a3b6cc4ba4c6fc0ae37b457ba77f32ae3d",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice or recommendations on whether to buy, sell, or hold any security, including Costco stock. I can only provide factual information from company disclosures.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice on whether Costco stock is worth buying. I can only provide factual information from company disclosures.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
     "tokens_in": 974,
-    "tokens_out": 191,
-    "latency_ms": 31014.177,
+    "tokens_out": 158,
+    "latency_ms": 7733.916,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
-     "gemini-flash"
+     "gemini-flash",
+     "nvidia-large"
     ]
    }
   }
@@ -39,5 +40,5 @@
  "tools": [],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 32191
+ "elapsed_ms": 9471
 }

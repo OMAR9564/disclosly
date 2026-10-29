@@ -6,13 +6,13 @@
    "key": "cef9323a2ce292348a9487ec88f45848792bfc6076f687c5d6fc5cd1a133627e",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Bu soru yatırım tavsiyesi niteliğinde olduğundan yanıtlanamamaktadır. Yatırım tavsiyesi verilememektedir.\",\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi niteliğindeki sorular yanıtlanmamaktadır. Menkul kıymetleri alımı, satımı veya tutulması konusunda öneride bulunulamaz.\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1660,
-    "tokens_out": 76,
-    "latency_ms": 952.486,
+    "tokens_in": 1669,
+    "tokens_out": 68,
+    "latency_ms": 2795.657,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,13 @@
    "key": "5bb1af2b68f828bc19933e1269261276052117a1232312ec2c95639a3732cffa",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"tr\", \"status\": \"refused\", \"summary\": \"Yatırım tavsiyesi verilemez. Bu asistan yalnızca şirket açıklamalarında yer alan bilgileri sunar; alım, satım veya tutma kararı hakkında öneride bulunmaz.\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi veremem. BİM (BİMAS) ile ilgili şirket açıklamaları, finansal tablolar veya KAP/SEC EDGAR belgelerindeki bilgileri paylaşabilirim. Belirli bir konuda (ör. son çeyrek sonuçlar, nakit akışı, temettü ilanları) belge dayalı bilgi isterseniz yardımcı olabilirim.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1180,
-    "tokens_out": 203,
-    "latency_ms": 3822.717,
+    "tokens_out": 274,
+    "latency_ms": 8920.411,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -39,5 +39,5 @@
  "tools": [],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 5245
+ "elapsed_ms": 12159
 }

@@ -6,13 +6,13 @@
    "key": "285e7eaf737dc82c05bdf77616909306e1714cb14a30a7b65b42ee1dc70027e5",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide a price target or investment advice. As a research assistant for company disclosures, I do not offer opinions, recommendations, or price targets for securities.\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide an investment advice or a price target for Nvidia as I do not offer investment recommendations.\",\n  \"points\": [],\n  \"citations\": []\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1522,
+    "tokens_in": 1531,
     "tokens_out": 63,
-    "latency_ms": 1492.183,
+    "latency_ms": 2939.568,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,17 +21,18 @@
    "key": "1d25386e9409c3e79f86dcb8a046811b20afa27b71d66ea15b4ffcb1959f7c20",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"en\", \"status\": \"refused\", \"summary\": \"I cannot provide price targets or investment advice. I can only share factual information from company disclosures (KAP and SEC EDGAR).\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\"language\": \"en\", \"status\": \"refused\", \"summary\": \"I cannot provide price targets or investment advice. I can only provide factual information from company disclosures (KAP and SEC EDGAR).\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
     "tokens_in": 973,
-    "tokens_out": 218,
-    "latency_ms": 4595.537,
+    "tokens_out": 219,
+    "latency_ms": 5131.218,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
-     "gemini-flash"
+     "gemini-flash",
+     "nvidia-large"
     ]
    }
   }
@@ -39,5 +40,5 @@
  "tools": [],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 6626
+ "elapsed_ms": 8899
 }

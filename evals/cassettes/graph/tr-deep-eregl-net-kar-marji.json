@@ -3,31 +3,31 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "768838952bb68256cc58c892d7acbf668608689fdba865128f0293dbba3ad3b5",
+   "key": "a47d05c2d2c56a1df3f1dea39d7e81c1e51951209dd93d7b0a9716281011d0c4",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"EREGL\"\n  ],\n  \"periods\": [\n    \"2025-Q1\",\n    \"2025-Q3\"\n  ],\n  \"metrics\": [\n    \"net_income\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1028,
+    "tokens_in": 1035,
     "tokens_out": 90,
-    "latency_ms": 1050.661,
+    "latency_ms": 4481.474,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "209a6e33e51e02ea6af88d4115d25b7555cef82c322110a281983b8fa2882c46",
+   "key": "a277b47874d689612ee18f845ddcbdf0ad5168b2174bb9934a3670be7645bc66",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"EREGL için 2025-Q1 ve 2025-Q3 dönemlerinin net kâr ve gelir rakamlarını getir\",\n      \"tickers\": [\n        \"EREGL\"\n      ],\n      \"periods\": [\n        \"2025-Q1\",\n        \"2025-Q3\"\n      ],\n      \"metrics\": [\n        \"net_income\",\n        \"revenue\"\n      ],\n      \"status\": \"pending\"\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Her çeyrek için net kâr marjını (net_kâr / gelir) hesapla ve iki çeyreği karşılaştır\",\n      \"tickers\": [\n        \"EREGL\"\n      ],\n      \"periods\": [\n        \"2025-Q1\",\n        \"2025-Q3\"\n      ],\n      \"metrics\": [],\n      \"status\": \"pending\"\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"EREGL için 2025-Q1 ve 2025-Q3 dönemlerinin net kâr ve gelir rakamlarını getir\",\n      \"tickers\": [\"EREGL\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [\"net_income\", \"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Her çeyrek için net kâr marjını (net kâr / gelir) hesapla ve iki çeyreği karşılaştır\",\n      \"tickers\": [\"EREGL\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": []\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1260,
-    "tokens_out": 428,
-    "latency_ms": 13208.213,
+    "tokens_in": 1326,
+    "tokens_out": 416,
+    "latency_ms": 16782.654,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -36,31 +36,31 @@
    }
   },
   {
-   "key": "a7b178dad7e2a04fcad040962182709077f7ddc4243a46490bfe2841ec4d05f9",
+   "key": "16d086570de3fea55d13deec649782f8bcfb9fc3352ef0d751d7308caba96e02",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"EREGL 2025 Q1 Q3 net kar hasılat gelir\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"EREGL 2025 Q1 Q3 net kar gelir satis gelirleri\"}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 894,
-    "tokens_out": 97,
-    "latency_ms": 891.225,
+    "tokens_in": 893,
+    "tokens_out": 64,
+    "latency_ms": 4681.119,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "cff97a12da2cfcf6835691d8b7b1379dc29dac770f9e64b390c403efe6c33f2c",
+   "key": "2332065df0f6da8b65bd243c0b9c818e45515d44afe53f5e866c04ce0c7a658e",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"EREGL 2025-Q1 net dönem kârı 447.904.000 TRY, hasılatı 53.544.627.000 TRY olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2759\", \"f:2755\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"EREGL 2025-Q3 net dönem kârı 700.347.000 TRY, hasılatı 52.957.615.000 TRY olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2783\", \"f:2779\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"2025-Q1 net kâr marjı %8,36, 2025-Q3 net kâr marjı %13,23 olarak hesaplanmıştır; marj üçüncü çeyrekte 4,87 puan artmıştır.\",\n      \"cite_ids\": [\"f:2759\", \"f:2755\", \"f:2783\", \"f:2779\"],\n      \"calcs\": [\"net_margin_q1\", \"net_margin_q3\", \"margin_change_q1_q3\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_margin_q1\",\n      \"description\": \"2025-Q1 net kâr marjı (net kâr / hasılat) oranı\",\n      \"inputs\": [\n        {\"name\": \"net_profit_q1\", \"cite_id\": \"f:2759\"},\n        {\"name\": \"revenue_q1\", \"cite_id\": \"f:2755\"}\n      ],\n      \"code\": \"result = inputs['net_profit_q1'] / inputs['revenue_q1']\"\n    },\n    {\n      \"name\": \"net_margin_q3\",\n      \"description\": \"2025-Q3 net kâr marjı (net kâr / hasılat) oranı\",\n      \"inputs\": [\n        {\"name\": \"net_profit_q3\", \"cite_id\": \"f:2783\"},\n        {\"name\": \"revenue_q3\", \"cite_id\": \"f:2779\"}\n      ],\n      \"code\": \"result = inputs['net_profit_q3'] / inputs['revenue_q3']\"\n    },\n    {\n      \"name\": \"margin_change_q1_q3\",\n      \"description\": \"2025-Q3 ve 2025-Q1 net kâr marjı farkı (Q3 - Q1), oran cinsinden\",\n      \"inputs\": [\n        {\"name\": \"margin_q1\", \"cite_id\": \"k:net_margin_q1\"},\n        {\"name\": \"margin_q3\", \"cite_id\": \"k:net_margin_q3\"}\n      ],\n      \"code\": \"result = inputs['margin_q3'] - inputs['margin_q1']\"\n    }\n  ]\n}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Ereğli'nin 2025-Q1 net dönemi kârı 447.904.000 TL, hasılatı 53.544.627.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2759\", \"f:2755\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Ereğli'nin 2025-Q3 net dönemi kârı 700.347.000 TL, hasılatı 52.957.615.000 TL olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2783\", \"f:2779\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"2025-Q1 net kâr marjı %0,84, 2025-Q3 net kâr marjı %1,32 olarak hesaplanmıştır; marj üçüncü çeyrekte 48 baz puan artmıştır.\",\n      \"cite_ids\": [\"f:2759\", \"f:2755\", \"f:2783\", \"f:2779\"],\n      \"calcs\": [\"net_margin_q1_2025\", \"net_margin_q3_2025\", \"margin_change_q1_q3\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_margin_q1_2025\",\n      \"description\": \"2025-Q1 net kâr marjı (net kâr / hasılat)\",\n      \"inputs\": [\n        {\"name\": \"net_profit_q1\", \"cite_id\": \"f:2759\"},\n        {\"name\": \"revenue_q1\", \"cite_id\": \"f:2755\"}\n      ],\n      \"code\": \"result = inputs['net_profit_q1'] / inputs['revenue_q1']\"\n    },\n    {\n      \"name\": \"net_margin_q3_2025\",\n      \"description\": \"2025-Q3 net kâr marjı (net kâr / hasılat)\",\n      \"inputs\": [\n        {\"name\": \"net_profit_q3\", \"cite_id\": \"f:2783\"},\n        {\"name\": \"revenue_q3\", \"cite_id\": \"f:2779\"}\n      ],\n      \"code\": \"result = inputs['net_profit_q3'] / inputs['revenue_q3']\"\n    },\n    {\n      \"name\": \"margin_change_q1_q3\",\n      \"description\": \"2025-Q1 ile 2025-Q3 net kâr marjı farkı (baz puan cinsinden)\",\n      \"inputs\": [\n        {\"name\": \"margin_q1\", \"cite_id\": \"k:net_margin_q1_2025\"},\n        {\"name\": \"margin_q3\", \"cite_id\": \"k:net_margin_q3_2025\"}\n      ],\n      \"code\": \"result = (inputs['margin_q3'] - inputs['margin_q1']) * 10000\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2638,
-    "tokens_out": 1142,
-    "latency_ms": 23548.009,
+    "tokens_in": 2693,
+    "tokens_out": 992,
+    "latency_ms": 26908.071,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -69,16 +69,16 @@
    }
   },
   {
-   "key": "f7981144d01e513966562113f26933ed3b3c680fddc858ffaee2244676da1e82",
+   "key": "b7d570196c9b8fa36bf6a46781422130b1dd99575d398dee33157516c539993b",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Net dönem kârı ve hasılat rakamları alıntılanan belgelerle (f:2759, f:2755) birebir eşleşiyor.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Net dönem kârı ve hasılat rakamları alıntılanan belgelerle (f:2783, f:2779) birebir eşleşiyor.\"}]}",
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"2025-Q1 net kâr (447.904.000 TL) ve hasılat (53.544.627.000 TL) rakamları kanıt belgelerinde (f:2759, f:2755) birebir eşleşiyor.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"2025-Q3 net kâr (700.347.000 TL) ve hasılat (52.957.615.000 TL) rakamları kanıt belgelerinde (f:2783, f:2779) birebir eşleşiyor.\"}]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1229,
-    "tokens_out": 696,
-    "latency_ms": 8370.884,
+    "tokens_in": 1237,
+    "tokens_out": 766,
+    "latency_ms": 22614.396,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -87,16 +87,16 @@
    }
   },
   {
-   "key": "e503c858538986dfc7784e2f90e7e93d1b57da7d2634ae36f093d2740217f60e",
+   "key": "dc0c6c84f0a6e127eb3e7f59640850b31ba03614a098ac5e744b8911a0b91938",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"EREGL için 2025-Q1 ve 2025-Q3 dönemlerinin net kâr ve gelir rakamlarını getir\", \"tickers\": [\"EREGL\"], \"periods\": [\"2025-Q1\", \"2025-Q3\"], \"metrics\": [\"net_income\", \"revenue\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"Her çeyrek için net kâr marjını (net_kâr / gelir) hesapla ve iki çeyreği karşılaştır\", \"tickers\": [\"EREGL\"], \"periods\": [\"2025-Q1\", \"2025-Q3\"]}]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"EREGL için 2025-Q1 ve 2025-Q3 dönemlerinin net kâr ve gelir rakamlarını getir\",\n      \"tickers\": [\"EREGL\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [\"net_income\", \"revenue\"],\n      \"status\": \"pending\"\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Her çeyrek için net kâr marjını (net kâr / gelir) hesapla ve iki çeyreği karşılaştır\",\n      \"tickers\": [\"EREGL\"],\n      \"periods\": [\"2025-Q1\", \"2025-Q3\"],\n      \"metrics\": [],\n      \"status\": \"pending\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1559,
-    "tokens_out": 636,
-    "latency_ms": 12635.255,
+    "tokens_in": 1635,
+    "tokens_out": 946,
+    "latency_ms": 32064.192,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -105,31 +105,31 @@
    }
   },
   {
-   "key": "a7b178dad7e2a04fcad040962182709077f7ddc4243a46490bfe2841ec4d05f9",
+   "key": "16d086570de3fea55d13deec649782f8bcfb9fc3352ef0d751d7308caba96e02",
    "task_class": "cheap",
    "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": null}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
+    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"EREGL 2025 Q1 Q3 net kar gelir satislar\"}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 894,
-    "tokens_out": 48,
-    "latency_ms": 1037.896,
+    "tokens_in": 893,
+    "tokens_out": 63,
+    "latency_ms": 3240.518,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "cff97a12da2cfcf6835691d8b7b1379dc29dac770f9e64b390c403efe6c33f2c",
+   "key": "2332065df0f6da8b65bd243c0b9c818e45515d44afe53f5e866c04ce0c7a658e",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"EREGL 2025-Q1 net dönem kârı 447.904.000 TRY, hasılatı 53.544.627.000 TRY olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2759\", \"f:2755\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"EREGL 2025-Q3 net dönem kârı 700.347.000 TRY, hasılatı 52.957.615.000 TRY olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2783\", \"f:2779\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"2025-Q1 net kâr marjı %0,84, 2025-Q3 net kâr marjı %1,32 olarak hesaplanmıştır; marj üçüncü çeyrekte 48 baz puan artmıştır.\",\n      \"cite_ids\": [\"f:2759\", \"f:2755\", \"f:2783\", \"f:2779\"],\n      \"calcs\": [\"q1_net_margin\", \"q3_net_margin\", \"margin_change_bps\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"q1_net_margin\",\n      \"description\": \"2025-Q1 net kâr marjı (net kâr / hasılat)\",\n      \"inputs\": [\n        {\n          \"name\": \"net_profit_q1\",\n          \"cite_id\": \"f:2759\"\n        },\n        {\n          \"name\": \"revenue_q1\",\n          \"cite_id\": \"f:2755\"\n        }\n      ],\n      \"code\": \"result = inputs['net_profit_q1'] / inputs['revenue_q1']\"\n    },\n    {\n      \"name\": \"q3_net_margin\",\n      \"description\": \"2025-Q3 net kâr marjı (net kâr / hasılat)\",\n      \"inputs\": [\n        {\n          \"name\": \"net_profit_q3\",\n          \"cite_id\": \"f:2783\"\n        },\n        {\n          \"name\": \"revenue_q3\",\n          \"cite_id\": \"f:2779\"\n        }\n      ],\n      \"code\": \"result = inputs['net_profit_q3'] / inputs['revenue_q3']\"\n    },\n    {\n      \"name\": \"margin_change_bps\",\n      \"description\": \"İki çeyrek arası net kâr marjı farkı (baz puan cinsinden, Q3 - Q1)\",\n      \"inputs\": [\n        {\n          \"name\": \"q1_margin\",\n          \"cite_id\": \"k:q1_net_margin\"\n        },\n        {\n          \"name\": \"q3_margin\",\n          \"cite_id\": \"k:q3_net_margin\"\n        }\n      ],\n      \"code\": \"result = (inputs['q3_margin'] - inputs['q1_margin']) * 10000\"\n    }\n  ]\n}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Ereğli'nin 2025-Q1 net kâr marjı (net kâr / hasılat) hesaplanmıştır.\",\n      \"cite_ids\": [\"f:2759\", \"f:2755\"],\n      \"calcs\": [\"net_margin_q1\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Ereğli'nin 2025-Q3 net kâr marjı (net kâr / hasılat) hesaplanmıştır.\",\n      \"cite_ids\": [\"f:2783\", \"f:2779\"],\n      \"calcs\": [\"net_margin_q3\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"2025-Q3 net kâr marjı, 2025-Q1'e kıyasla değişim göstermiştir (fark hesaplanmıştır).\",\n      \"cite_ids\": [\"f:2759\", \"f:2755\", \"f:2783\", \"f:2779\"],\n      \"calcs\": [\"margin_change_q1_q3\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_margin_q1\",\n      \"description\": \"2025-Q1 net kâr marjı = net kâr / hasılat\",\n      \"inputs\": [\n        {\n          \"name\": \"net_profit_q1\",\n          \"cite_id\": \"f:2759\"\n        },\n        {\n          \"name\": \"revenue_q1\",\n          \"cite_id\": \"f:2755\"\n        }\n      ],\n      \"code\": \"result = inputs['net_profit_q1'] / inputs['revenue_q1']\"\n    },\n    {\n      \"name\": \"net_margin_q3\",\n      \"description\": \"2025-Q3 net kâr marjı = net kâr / hasılat\",\n      \"inputs\": [\n        {\n          \"name\": \"net_profit_q3\",\n          \"cite_id\": \"f:2783\"\n        },\n        {\n          \"name\": \"revenue_q3\",\n          \"cite_id\": \"f:2779\"\n        }\n      ],\n      \"code\": \"result = inputs['net_profit_q3'] / inputs['revenue_q3']\"\n    },\n    {\n      \"name\": \"margin_change_q1_q3\",\n      \"description\": \"2025-Q3 ve 2025-Q1 net kâr marjı farkı (Q3 - Q1), oran cinsinden\",\n      \"inputs\": [\n        {\n          \"name\": \"margin_q1\",\n          \"cite_id\": \"k:net_margin_q1\"\n        },\n        {\n          \"name\": \"margin_q3\",\n          \"cite_id\": \"k:net_margin_q3\"\n        }\n      ],\n      \"code\": \"result = inputs['margin_q3'] - inputs['margin_q1']\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2638,
-    "tokens_out": 1089,
-    "latency_ms": 36079.634,
+    "tokens_in": 2693,
+    "tokens_out": 1163,
+    "latency_ms": 25769.18,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -138,16 +138,16 @@
    }
   },
   {
-   "key": "e55b3075ce2ec78ae7130e18db433935df76bb346d11a19e4b19366463f9b099",
+   "key": "a0a4083f54e230140b618be120f7cbb44b2113755bc57087b322aa43d3b64daf",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Net dönem kârı 447.904.000 TRY ve hasılat 53.544.627.000 TRY kanıt belgelerinde (f:2759, f:2755) birebir eşleşiyor.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Net dönem kârı 700.347.000 TRY ve hasılat 52.957.615.000 TRY kanıt belgelerinde (f:2783, f:2779) birebir eşleşiyor.\"}]}",
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"2025-Q1 net kâr (447.904.000 TRY) ve hasılat (53.544.627.000 TRY) kanıtlarla eşleşiyor; net kâr marjı 447.904.000 / 53.544.627.000 = 0.008365... hesaplanmış ve bu değer calculation output ile birebir uyuşuyor.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"2025-Q3 net kâr (700.347.000 TRY) ve hasılat (52.957.615.000 TRY) kanıtlarla eşleşiyor; net kâr marjı 700.347.000 / 52.957.615.000 = 0.013224... hesaplanmış ve bu değer calculation output ile birebir uyuşuyor.\"}]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1346,
-    "tokens_out": 692,
-    "latency_ms": 17570.823,
+    "tokens_in": 1314,
+    "tokens_out": 616,
+    "latency_ms": 33193.531,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -156,38 +156,22 @@
    }
   },
   {
-   "key": "b34cc8392bfef5a2cee57d9d859bd5b380acf2ddf11e586c57dca2665a1a1c96",
+   "key": "2cd18b2201e9ebcfe80cbd1161898c2a3d4fe8331823ef98bafaa3137da289a7",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Ereğli'nin 2025 yılı ilk çeyreğinde net kâr marjı %0,84, üçüncü çeyreğinde ise %1,32 olarak gerçekleşmiştir [1][2]. Üçüncü çeyrek marjı, ilk çeyreğe göre yaklaşık 0,48 puan artış göstermektedir [3][4].\",\n  \"points\": [\n    {\n      \"text\": \"2025-Q1 net dönem kârı 447.904.000 TRY, hasılat 53.544.627.000 TRY olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2759\", \"f:2755\"]\n    },\n    {\n      \"text\": \"2025-Q3 net dönem kârı 700.347.000 TRY, hasılat 52.957.615.000 TRY olarak raporlanmıştır.\",\n      \"cite_ids\": [\"f:2783\", \"f:2779\"]\n    },\n    {\n      \"text\": \"2025-Q1 net kâr marjı %0,84 (net kâr / hasılat).\",\n      \"cite_ids\": [\"k:1\"]\n    },\n    {\n      \"text\": \"2025-Q3 net kâr marjı %1,32 (net kâr / hasılat).\",\n      \"cite_ids\": [\"k:2\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Ereğli 2025 Q1 ve Q3 Net Kâr Marjı Karşılaştırması\",\n      \"columns\": [\"Dönem\", \"Net Kâr (TRY)\", \"Hasılat (TRY)\", \"Net Kâr Marjı (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"2025-Q1\", \"cite_id\": null},\n          {\"text\": \"447.904.000\", \"cite_id\": \"f:2759\"},\n          {\"text\": \"53.544.627.000\", \"cite_id\": \"f:2755\"},\n          {\"text\": \"%0,84\", \"cite_id\": \"k:1\"}\n        ],\n        [\n          {\"text\": \"2025-Q3\", \"cite_id\": null},\n          {\"text\": \"700.347.000\", \"cite_id\": \"f:2783\"},\n          {\"text\": \"52.957.615.000\", \"cite_id\": \"f:2779\"},\n          {\"text\": \"%1,32\", \"cite_id\": \"k:2\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Dönem\",\n    \"series\": [\"Net Kâr Marjı (%)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Her iki çeyrek için de net kâr ve hasılat verileri KAP açıklamalarından elde edilmiş, marj hesaplamaları bu veriler üzerinden yapılmıştır.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"k:1\"},\n    {\"marker\": 2, \"cite_id\": \"k:2\"},\n    {\"marker\": 3, \"cite_id\": \"f:2759\"},\n    {\"marker\": 4, \"cite_id\": \"f:2783\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\":\"tr\",\"status\":\"completed\",\"summary\":\"Ereğli'nin 2025 ilk çeyrek net kâr marjı %0,84[1] iken üçüncü çeyrek %1,32[2]'dir. Üçüncü çeyrek marjı ilk çeyrekten daha yüksektir.\",\"points\":[{\"text\":\"2025-Q1 net kâr marjı %0,84'tir.\",\"cite_ids\":[\"k:1\"]},{\"text\":\"2025-Q3 net kâr marjı %1,32'dir ve Q1'den daha yüksektir.\",\"cite_ids\":[\"k:2\"]}],\"tables\":[{\"title\":\"2025 Net Kâr Marjları\",\"columns\":[\"Dönem\",\"Net Kâr Marjı (%)\"],\"rows\":[[{\"text\":\"2025-Q1\",\"cite_id\":null},{\"text\":\"%0,84\",\"cite_id\":\"k:1\"}],[{\"text\":\"2025-Q3\",\"cite_id\":null},{\"text\":\"%1,32\",\"cite_id\":\"k:2\"}]]}],\"chart\":null,\"confidence\":{\"level\":\"high\",\"note\":\"\"},\"unverified\":[],\"citations\":[{\"marker\":1,\"cite_id\":\"k:1\"},{\"marker\":2,\"cite_id\":\"k:2\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 3081,
-    "tokens_out": 1305,
-    "latency_ms": 32060.24,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 3625,
+    "tokens_out": 1183,
+    "latency_ms": 3046.017,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "9f5cd43defdc59e89aaf822fc6163a76df2b8600e5c6907516293e0b08f200e0",
-   "task_class": "strong",
-   "response": {
-    "content": "{\"language\": \"tr\", \"status\": \"completed\", \"summary\": \"Ereğli'nin 2025 yılı ilk çeyreğinde net kâr marjı %0,84, üçüncü çeyreğinde ise %1,32 olarak gerçekleşmiştir. Üçüncü çeyrek marjı, ilk çeyreğe göre artış göstermektedir.\", \"points\": [{\"text\": \"2025-Q1 net dönem kârı 447.904.000 TRY, hasılat 53.544.627.000 TRY olarak raporlanmıştır.\", \"cite_ids\": [\"f:2759\", \"f:2755\"]}, {\"text\": \"2025-Q3 net dönem kârı 700.347.000 TRY, hasılat 52.957.615.000 TRY olarak raporlanmıştır.\", \"cite_ids\": [\"f:2783\", \"f:2779\"]}, {\"text\": \"2025-Q1 net kâr marjı %0,84 (net kâr / hasılat).\", \"cite_ids\": [\"k:1\"]}, {\"text\": \"2025-Q3 net kâr marjı %1,32 (net kâr / hasılat).\", \"cite_ids\": [\"k:2\"]}], \"tables\": [{\"title\": \"Ereğli 2025 Q1 ve Q3 Net Kâr Marjı Karşılaştırması\", \"columns\": [\"Dönem\", \"Net Kâr (TRY)\", \"Hasılat (TRY)\", \"Net Kâr Marjı (%)\"], \"rows\": [[{\"text\": \"2025-Q1\", \"cite_id\": null}, {\"text\": \"447.904.000\", \"cite_id\": \"f:2759\"}, {\"text\": \"53.544.627.000\", \"cite_id\": \"f:2755\"}, {\"text\": \"%0,84\", \"cite_id\": \"k:1\"}], [{\"text\": \"2025-Q3\", \"cite_id\": null}, {\"text\": \"700.347.000\", \"cite_id\": \"f:2783\"}, {\"text\": \"52.957.615.000\", \"cite_id\": \"f:2779\"}, {\"text\": \"%1,32\", \"cite_id\": \"k:2\"}]]}, {\"title\": \"Ereğli 2025 Q1 ve Q3 Net Kâr Marjı Karşılaştırması\", \"columns\": [\"Dönem\", \"Net Kâr (TRY)\", \"Hasılat (TRY)\", \"Net Kâr Marjı (%)\"], \"rows\": [[{\"text\": \"2025-Q1\", \"cite_id\": null}, {\"text\": \"447.904.000\", \"cite_id\": \"f:2759\"}, {\"text\": \"53.544.627.000\", \"cite_id\": \"f:2755\"}, {\"text\": \"%0,84\", \"cite_id\": \"k:1\"}], [{\"text\": \"2025-Q3\", \"cite_id\": null}, {\"text\": \"700.347.000\", \"cite_id\": \"f:2783\"}, {\"text\": \"52.957.615.000\", \"cite_id\": \"f:2779\"}, {\"text\": \"%1,32\", \"cite_id\": \"k:2\"}]]}, {\"title\": \"Ereğli 2025 Q1 ve Q3 Net Kâr Marjı Karşılaştırması\", \"columns\": [\"Dönem\", \"Net Kâr (TRY)\", \"Hasılat (TRY)\", \"Net Kâr Marjı (%)\"], \"rows\": [[{\"text\": \"2025-Q1\", \"cite_id\": null}, {\"text\": \"447.904.000\", \"cite_id\": \"f:2759\"}, {\"text\": \"53.544.627.000\", \"cite_id\": \"f:2755\"}, {\"text\": \"%0,84\", \"cite_id\": \"k:1\"}], [{\"text\": \"2025-Q3\", \"cite_id\": null}, {\"text\": \"700.347.000\", \"cite_id\": \"f:2783\"}, {\"text\": \"52.957.615.000\", \"cite_id\": \"f:2779\"}, {\"text\": \"%1,32\", \"cite_id\": \"k:2\"}]]}, {\"title\": \"Ereğli 2025 Q1 ve Q3 Net Kâr Marjı Karşılaştırması\", \"columns\": [\"Dönem\", \"Net Kâr (TRY)\", \"Hasılat (TRY)\", \"Net Kâr Marjı (%)\"], \"rows\": [[{\"text\": \"2025-Q1\", \"cite_id\": null}, {\"text\": \"447.904.000\", \"cite_id\": \"f:2759\"}, {\"text\": \"53.544.627.000\", \"cite_id\": \"f:2755\"}, {\"text\": \"%0,84\", \"cite_id\": \"k:1\"}], [{\"text\": \"2025-Q3\", \"cite_id\": null}, {\"text\": \"700.347.000\", \"cite_id\": \"f:2783\"}, {\"text\": \"52.957.615.000\", \"cite_id\": \"f:2779\"}, {\"text\": \"%1,32\", \"cite_id\": \"k:2\"}]]}], \"chart\": {\"kind\": \"bar\", \"table\": 0, \"x_column\": \"Dönem\", \"series\": [\"Net Kâr Marjı (%)\"]}, \"confidence\": {\"level\": \"high\", \"note\": \"Her iki çeyrek için de net kâr ve hasılat verileri KAP açıklamalarından elde edilmiş, marj hesaplamaları bu veriler üzerinden yapılmıştır.\"}, \"unverified\": [], \"citations\": [{\"marker\": 1, \"cite_id\": \"k:1\"}, {\"marker\": 2, \"cite_id\": \"k:2\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 3989,
-    "tokens_out": 2114,
-    "latency_ms": 37501.533,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
+     "gemini-flash",
+     "nvidia-large",
+     "openrouter-large"
     ]
    }
   }
@@ -538,12 +522,26 @@
  ],
  "sandbox": [
   {
-   "key": "9857bdcf1d46476f4423495078905c02c032c5b83177026e464c49c63516f16c",
+   "key": "ae06d61b5709cc6c0d3d34950656929763df28626f7e014cab487eb0aa67844c",
    "response": {
     "ok": true,
     "outputs": {
-     "net_margin_q1": "0.00836505967256061",
-     "net_margin_q3": "0.013224670333057862"
+     "net_margin_q1_2025": "0.00836505967256061",
+     "net_margin_q3_2025": "0.013224670333057862"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "ae06d61b5709cc6c0d3d34950656929763df28626f7e014cab487eb0aa67844c",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "net_margin_q1_2025": "0.00836505967256061",
+     "net_margin_q3_2025": "0.013224670333057862"
     },
     "stdout": "",
     "error": null,
@@ -566,26 +564,12 @@
    }
   },
   {
-   "key": "3421ba9ab63878f878eee7fb96f710c48596d45f49bc305607ed122599211008",
+   "key": "9857bdcf1d46476f4423495078905c02c032c5b83177026e464c49c63516f16c",
    "response": {
     "ok": true,
     "outputs": {
-     "q1_net_margin": "0.00836505967256061",
-     "q3_net_margin": "0.013224670333057862"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  },
-  {
-   "key": "3421ba9ab63878f878eee7fb96f710c48596d45f49bc305607ed122599211008",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "q1_net_margin": "0.00836505967256061",
-     "q3_net_margin": "0.013224670333057862"
+     "net_margin_q1": "0.00836505967256061",
+     "net_margin_q3": "0.013224670333057862"
     },
     "stdout": "",
     "error": null,
@@ -595,5 +579,5 @@
   }
  ],
  "decision": "approve",
- "elapsed_ms": 195100
+ "elapsed_ms": 240893
 }

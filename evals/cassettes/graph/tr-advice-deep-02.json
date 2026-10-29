@@ -6,13 +6,13 @@
    "key": "f965927c3954eb6ea57ffb5d81f2733bc8e39334fe9dd4bb425f802354f588dd",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi niteliğinde sorulara (fiyat tahmini, hisse yönü vb.) yanıt verilememektedir. Bu nedenle Aselsan'ın hisse senedinin yükselip yükselmeyeceğine dair yorum yapılmamaktadır.\",\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi niteliğinde sorular yanıtlanmamaktadır. Aselsan ve Ereğli'nin borç durumuna ilişkin karşılaştırmalı bilgi verilmemektedir.\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1667,
-    "tokens_out": 104,
-    "latency_ms": 979.877,
+    "tokens_in": 1676,
+    "tokens_out": 69,
+    "latency_ms": 6943.351,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,13 @@
    "key": "f2106795a58fa647e6bd3e58c383871ef6c623b709793da1d6f3c3ca8f5dd52d",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"tr\", \"status\": \"refused\", \"summary\": \"Yatırım tavsiyesi verilemez. Şirketlerin borç bilgileri için belge araması yapılıyor.\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi verilemez. Şirketlerin borç bilgileri için belge araması yapılıyor.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1182,
-    "tokens_out": 153,
-    "latency_ms": 4314.93,
+    "tokens_out": 184,
+    "latency_ms": 7553.933,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -39,5 +39,5 @@
  "tools": [],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 5770
+ "elapsed_ms": 14967
 }

@@ -3,31 +3,31 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "27573f4efb17f646f3c29e2b86030705a6b2f28911ea3390e747cfd6554dde0e",
+   "key": "9932c7bee40ec1c2afe8a6cf7ba39f87218b5aec13ba9f625de799f06e444667",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"GOOGL\"\n  ],\n  \"periods\": [\n    \"2024-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\"GOOGL\"],\n  \"periods\": [\"2024-FY\", \"2023-FY\"],\n  \"metrics\": [\"revenue\"],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 943,
-    "tokens_out": 77,
-    "latency_ms": 6354.558,
+    "tokens_in": 950,
+    "tokens_out": 67,
+    "latency_ms": 5391.384,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "addea972aa948fd1217a246db188bc613bd51b896e3d31a1f569b10593e0a031",
+   "key": "fcb61a9c70317742719bda06cfadb10752c59f9f2e861dc4483644ccb8f3e74a",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Get Alphabet's total revenue for fiscal years 2023 and 2024\",\n      \"tickers\": [\"GOOGL\"],\n      \"periods\": [\"2023-FY\", \"2024-FY\"],\n      \"metrics\": [\"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Calculate Alphabet's revenue growth in absolute dollars and percentage from 2023 to 2024\",\n      \"tickers\": [\"GOOGL\"],\n      \"periods\": [\"2023-FY\", \"2024-FY\"]\n    }\n  ]\n}",
+    "content": "{\"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Get Alphabet's total revenue for fiscal years 2024 and 2023\",\n      \"tickers\": [\"GOOGL\"],\n      \"periods\": [\"2024-FY\", \"2023-FY\"],\n      \"metrics\": [\"revenue\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Calculate the absolute and percentage revenue growth from 2023 to 2024\",\n      \"tickers\": [\"GOOGL\"],\n      \"periods\": [\"2024-FY\", \"2023-FY\"]\n    }\n  ]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1064,
-    "tokens_out": 459,
-    "latency_ms": 16780.374,
+    "tokens_in": 1120,
+    "tokens_out": 394,
+    "latency_ms": 11776.216,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -36,31 +36,31 @@
    }
   },
   {
-   "key": "94869993ae1bf99774bb67fe31583c58b8b13caa57e661917e4848e824fe8350",
+   "key": "dbbe03e45f2fe4233005a61c8cc2532a675ae66b814e7b330fa3932cd943ea10",
    "task_class": "cheap",
    "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"Alphabet Inc. consolidated statements of income revenue 2024 2023\"}, {\"step_id\": \"s2\", \"sufficient\": false}]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 757,
-    "tokens_out": 57,
-    "latency_ms": 1040.133,
+    "tokens_in": 753,
+    "tokens_out": 78,
+    "latency_ms": 7135.079,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "091084e0e638cacf0d720924877922910470ca65f02e1f70c7af4e5b63fa156b",
+   "key": "e1d9423ec6674583beb7a49f1b657e548a619bec6e66fbb2f502fe3c9b191b04",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Alphabet's total revenue for fiscal year 2023 was 307,394,000,000 USD.\",\n      \"cite_ids\": [\"f:647\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Alphabet's total revenue for fiscal year 2024 was 350,018,000,000 USD.\",\n      \"cite_ids\": [\"f:663\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Alphabet's revenue grew from 2023 to 2024, with the absolute and percentage growth calculated.\",\n      \"cite_ids\": [\"f:647\", \"f:663\"],\n      \"calcs\": [\"revenue_growth_absolute\", \"revenue_growth_percentage\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"revenue_growth_absolute\",\n      \"description\": \"Absolute revenue growth from 2023 to 2024 in USD\",\n      \"inputs\": [\n        {\n          \"name\": \"revenue_2023\",\n          \"cite_id\": \"f:647\"\n        },\n        {\n          \"name\": \"revenue_2024\",\n          \"cite_id\": \"f:663\"\n        }\n      ],\n      \"code\": \"result = inputs['revenue_2024'] - inputs['revenue_2023']\"\n    },\n    {\n      \"name\": \"revenue_growth_percentage\",\n      \"description\": \"Percentage revenue growth from 2023 to 2024 as a ratio\",\n      \"inputs\": [\n        {\n          \"name\": \"revenue_2023\",\n          \"cite_id\": \"f:647\"\n        },\n        {\n          \"name\": \"revenue_2024\",\n          \"cite_id\":",
+    "content": "{\"findings\": [\n    {\"id\": \"F1\", \"text\": \"Alphabet's total revenue for fiscal year 2024 was 350,018,000,000 USD.\", \"cite_ids\": [\"f:663\", \"f:4067\", \"f:18856\", \"f:650\", \"f:4054\"]},\n    {\"id\": \"F2\", \"text\": \"Alphabet's total revenue for fiscal year 2023 was 307,394,000,000 USD.\", \"cite_ids\": [\"f:647\", \"f:660\", \"f:4051\", \"f:4064\", \"f:18853\"]},\n    {\"id\": \"F3\", \"text\": \"Alphabet's revenue grew by an absolute amount from 2023 to 2024.\", \"cite_ids\": [\"f:663\", \"f:647\"], \"calcs\": [\"absolute_revenue_growth\"]},\n    {\"id\": \"F4\", \"text\": \"Alphabet's revenue grew by a percentage from 2023 to 2024.\", \"cite_ids\": [\"f:663\", \"f:647\"], \"calcs\": [\"percentage_revenue_growth\"]}\n  ],\n  \"calculations\": [\n    {\"name\": \"absolute_revenue_growth\", \"description\": \"Absolute revenue growth from 2023 to 2024 in USD\", \"inputs\": [{\"name\": \"revenue_2024\", \"cite_id\": \"f:663\"}, {\"name\": \"revenue_2023\", \"cite_id\": \"f:647\"}], \"code\": \"result = inputs['revenue_2024'] - inputs['revenue_2023']\"},\n    {\"name\": \"percentage_revenue_growth\", \"description\": \"Percentage revenue growth from 2023 to 2024 as a ratio (e.g., 0.123 for 12.3%)\", \"inputs\": [{\"name\": \"revenue_2024\", \"cite_id\": \"f:663\"}, {\"name\": \"revenue_2023\", \"cite_id\": \"f:647\"}], \"code\": \"result = (inputs['revenue_2024'] - inputs['revenue_2023']) / inputs['revenue_2023']\"}\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2243,
-    "tokens_out": 2048,
-    "latency_ms": 36762.962,
+    "tokens_in": 2282,
+    "tokens_out": 1091,
+    "latency_ms": 40076.013,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -69,16 +69,16 @@
    }
   },
   {
-   "key": "f6d8f0b8d418b717291da55fc61a8e784aba12bc2a43ec61b1e71567620f5452",
+   "key": "b4e64e3118d1bf975a2ed99458dd0c189559352ac8f01d9a87d4aa1609123f9e",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Alphabet's total revenue for fiscal year 2023 was 307,394,000,000 USD.\",\n      \"cite_ids\": [\"f:647\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Alphabet's total revenue for fiscal year 2024 was 350,018,000,000 USD.\",\n      \"cite_ids\": [\"f:663\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Alphabet's revenue grew from 2023 to 2024, with the absolute and percentage growth calculated.\",\n      \"cite_ids\": [\"f:647\", \"f:663\"],\n      \"calcs\": [\"revenue_growth_absolute\", \"revenue_growth_percentage\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"revenue_growth_absolute\",\n      \"description\": \"Absolute revenue growth from 2023 to 2024 in USD\",\n      \"inputs\": [\n        {\n          \"name\": \"revenue_2023\",\n          \"cite_id\": \"f:647\"\n        },\n        {\n          \"name\": \"revenue_2024\",\n          \"cite_id\": \"f:663\"\n        }\n      ],\n      \"code\": \"result = inputs['revenue_2024'] - inputs['revenue_2023']\"\n    },\n    {\n      \"name\": \"revenue_growth_percentage\",\n      \"description\": \"Percentage revenue growth from 2023 to 2024 as a ratio\",\n      \"inputs\": [\n        {\n          \"name\": \"revenue_2023\",\n          \"cite_id\": \"f:647\"\n        },\n        {\n          \"name\": \"revenue_2024\",\n          \"cite_id\": \"f:663\"\n        }\n      ],\n      \"code\": \"result = (inputs['revenue_2024'] - inputs['revenue_2023']) / inputs['revenue_2023']\"\n    }\n  ]\n}",
+    "content": "{\"claims\": [\n    {\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"All cited documents show Revenue (2024-FY) as 350,018,000,000 USD, matching the finding.\"},\n    {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"All cited documents show Revenue (2023-FY) as 307,394,000,000 USD, matching the finding.\"},\n    {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"The calculation absolute_revenue_growth (42,624,000,000) correctly reflects the difference between 2024 and 2023 revenue figures in the cited evidence.\"},\n    {\"finding_id\": \"F4\", \"supported\": true, \"reason\": \"The calculation percentage_revenue_growth (0.13866) correctly reflects the growth ratio derived from the cited 2023 and 2024 revenue figures.\"}\n  ]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2754,
-    "tokens_out": 751,
-    "latency_ms": 16614.554,
+    "tokens_in": 1479,
+    "tokens_out": 922,
+    "latency_ms": 44388.078,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -87,34 +87,16 @@
    }
   },
   {
-   "key": "a4d2bd49bcedb139fc8496ab097fd93f53267086e4ff65534efcbf65d0f95b2c",
+   "key": "39f890fee89a43eb315362c173c707fa784b73ba6727d31eac396c3738be1b93",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Evidence f:647 states Revenue (2023-FY) as 307,394,000,000 USD, matching the finding exactly.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Evidence f:663 states Revenue (2024-FY) as 350,018,000,000 USD, matching the finding exactly.\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"Calculations revenue_growth_absolute (42,624,000,000) and revenue_growth_percentage (0.13866) correctly derive from the 2023 and 2024 revenue figures in f:647 and f:663.\"\n    }\n  ]\n}",
+    "content": "{\"language\": \"en\", \"status\": \"completed\", \"summary\": \"Alphabet's total revenue for fiscal year 2024 was $350.018 billion, representing an absolute increase of $42.624 billion (13.87%) over fiscal year 2023 revenue of $307.394 billion. [1][2][3][4]\", \"points\": [{\"text\": \"Alphabet's total revenue for fiscal year 2024 was $350,018,000,000 USD.\", \"cite_ids\": [\"f:663\"]}, {\"text\": \"Alphabet's total revenue for fiscal year 2023 was $307,394,000,000 USD.\", \"cite_ids\": [\"f:647\"]}, {\"text\": \"Revenue grew by an absolute amount of $42,624,000,000 USD from 2023 to 2024.\", \"cite_ids\": [\"k:1\"]}, {\"text\": \"Revenue grew by 13.87% from 2023 to 2024.\", \"cite_ids\": [\"k:2\"]}], \"tables\": [{\"title\": \"Alphabet Total Revenue and Growth (FY 2023 vs FY 2024)\", \"columns\": [\"Period\", \"Total Revenue (USD)\", \"Absolute Growth (USD)\", \"Percentage Growth\"], \"rows\": [[{\"text\": \"FY 2023\", \"cite_id\": \"f:647\"}, {\"text\": \"307,394,000,000\", \"cite_id\": \"f:647\"}, {\"text\": \"—\", \"cite_id\": null}, {\"text\": \"—\", \"cite_id\": null}], [{\"text\": \"FY 2024\", \"cite_id\": \"f:663\"}, {\"text\": \"350,018,000,000\", \"cite_id\": \"f:663\"}, {\"text\": \"42,624,000,000\", \"cite_id\": \"k:1\"}, {\"text\": \"13.87%\", \"cite_id\": \"k:2\"}]]}, {\"title\": \"Alphabet Revenue Growth Summary\", \"columns\": [\"Metric\", \"Value\"], \"rows\": [[{\"text\": \"FY 2023 Revenue\", \"cite_id\": null}, {\"text\": \"$307.394 billion\", \"cite_id\": \"f:647\"}], [{\"text\": \"FY 2024 Revenue\", \"cite_id\": null}, {\"text\": \"$350.018 billion\", \"cite_id\": \"f:663\"}], [{\"text\": \"Absolute Growth\", \"cite_id\": null}, {\"text\": \"$42.624 billion\", \"cite_id\": \"k:1\"}], [{\"text\": \"Percentage Growth\", \"cite_id\": null}, {\"text\": \"13.87%\", \"cite_id\": \"k:2\"}]]}, {\"title\": \"Alphabet Revenue by Segment (FY 2024)\", \"columns\": [\"Segment\", \"Revenue (USD)\"], \"rows\": [[{\"text\": \"Google Services\", \"cite_id\": null}, {\"text\": \"Not provided in findings\", \"cite_id\": null}], [{\"text\": \"Google Cloud\", \"cite_id\": null}, {\"text\": \"Not provided in findings\", \"cite_id\": null}], [{\"text\": \"Other Bets\", \"cite_id\": null}, {\"text\": \"Not provided in findings\", \"cite_id\": null}]]}, {\"title\": \"Alphabet Revenue Trend (FY 2020-2024)\", \"columns\": [\"Fiscal Year\", \"Revenue (USD)\"], \"rows\": [[{\"text\": \"FY 2020\", \"cite_id\": null}, {\"text\": \"Not provided in findings\", \"cite_id\": null}], [{\"text\": \"FY 2021\", \"cite_id\": null}, {\"text\": \"Not provided in findings\", \"cite_id\": null}], [{\"text\": \"FY 2022\", \"cite_id\": null}, {\"text\": \"Not provided in findings\", \"cite_id\": null}], [{\"text\": \"FY 2023\", \"cite_id\": \"f:647\"}, {\"text\": \"307,394,000,000\", \"cite_id\": \"f:647\"}], [{\"text\": \"FY 2024\", \"cite_id\": \"f:663\"}, {\"text\": \"350,018,000,000\", \"cite_id\": \"f:663\"}]]}], \"chart\": {\"kind\": \"bar\", \"table\": 0, \"x_column\": \"Period\", \"series\": [\"Total Revenue (USD)\"]}, \"confidence\": {\"level\": \"high\", \"note\": \"All requested figures (2024 revenue, 2023 revenue, absolute growth, percentage growth) are directly supported by evidence and calculations.\"}, \"unverified\": [], \"citations\": [{\"marker\": 1, \"cite_id\": \"f:663\"}, {\"marker\": 2, \"cite_id\": \"f:647\"}, {\"marker\": 3, \"cite_id\": \"k:1\"}, {\"marker\": 4, \"cite_id\": \"k:2\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 913,
-    "tokens_out": 693,
-    "latency_ms": 13129.112,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "9bfcf08cd043cc21bb9a017f143345a299bc1e1b56faeb55a51f6fa9bf9a569f",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Alphabet's total revenue in 2024 was $350,018,000,000 [1], up from $307,394,000,000 in 2023 [2], an increase of $42,624,000,000 [3] or 13.87% [4].\",\n  \"points\": [\n    {\n      \"text\": \"Alphabet's total revenue for fiscal year 2024 was $350,018,000,000.\",\n      \"cite_ids\": [\"f:663\"]\n    },\n    {\n      \"text\": \"Alphabet's total revenue for fiscal year 2023 was $307,394,000,000.\",\n      \"cite_ids\": [\"f:647\"]\n    },\n    {\n      \"text\": \"Revenue grew by $42,624,000,000 in absolute terms from 2023 to 2024.\",\n      \"cite_ids\": [\"k:1\"]\n    },\n    {\n      \"text\": \"Revenue grew by 13.87% from 2023 to 2024.\",\n      \"cite_ids\": [\"k:2\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Alphabet Total Revenue (Fiscal Years)\",\n      \"columns\": [\"Fiscal Year\", \"Total Revenue (USD)\"],\n      \"rows\": [\n        [\n          {\"text\": \"2023\", \"cite_id\": null},\n          {\"text\": \"307,394,000,000\", \"cite_id\": \"f:647\"}\n        ],\n        [\n          {\"text\": \"2024\", \"cite_id\": null},\n          {\"text\": \"350,018,000,000\", \"cite_id\": \"f:663\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Fiscal Year\",\n    \"series\": [\"Total Revenue (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"All requested figures (2024 revenue, absolute growth, percentage growth) are directly supported by evidence and calculations.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:663\"},\n    {\"marker\": 2, \"cite_id\": \"f:647\"},\n    {\"marker\": 3, \"cite_id\": \"k:1\"},\n    {\"marker\": 4, \"cite_id\": \"k:2\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2500,
-    "tokens_out": 2395,
-    "latency_ms": 41662.814,
+    "tokens_in": 3062,
+    "tokens_out": 1661,
+    "latency_ms": 29099.425,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -127,17 +109,17 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"GOOGL\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3614, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-23T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/goog-20260630.htm\"}, {\"document_id\": 3615, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000048/goog-20260331.htm\"}, {\"document_id\": 3616, \"ticker\": \"GOOGL\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm\"}, {\"document_id\": 3617, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000091/goog-20250930.htm\"}, {\"document_id\": 3618, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-24T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000062/goog-20250630.htm\"}, {\"document_id\": 3619, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000043/goog-20250331.htm\"}, {\"document_id\": 3620, \"ticker\": \"GOOGL\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm\"}, {\"document_id\": 3621, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204424000118/goog-20240930.htm\"}]}",
+   "content": "{\"documents\": [{\"document_id\": 3771, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-23T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/goog-20260630.htm\"}, {\"document_id\": 3772, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000048/goog-20260331.htm\"}, {\"document_id\": 3773, \"ticker\": \"GOOGL\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm\"}, {\"document_id\": 3774, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000091/goog-20250930.htm\"}, {\"document_id\": 3775, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-24T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000062/goog-20250630.htm\"}, {\"document_id\": 3776, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000043/goog-20250331.htm\"}, {\"document_id\": 3777, \"ticker\": \"GOOGL\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm\"}, {\"document_id\": 3778, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204424000118/goog-20240930.htm\"}]}",
    "summary": "GOOGL documents",
    "count": 8,
    "items": [],
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2023-FY\",\"2024-FY\"],\"ticker\":\"GOOGL\"},\"name\":\"get_financial_facts\"}",
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2024-FY\",\"2023-FY\"],\"ticker\":\"GOOGL\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
    "content": "<untrusted_document cite_id=\"f:647\">Revenue (2023-FY; 2025-FY report): 307,394,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:660\">Revenue (2023-FY; 2024-FY report): 307,394,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4051\">Revenue (2023-FY; 2025-FY report): 307,394,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4064\">Revenue (2023-FY; 2024-FY report): 307,394,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18853\">Revenue (2023-FY; 2024-FY report): 307,394,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:663\">Revenue (2024-FY): 350,018,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4067\">Revenue (2024-FY): 350,018,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18856\">Revenue (2024-FY): 350,018,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:650\">Revenue (2024-FY; 2025-FY report): 350,018,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4054\">Revenue (2024-FY; 2025-FY report): 350,018,000,000 USD</untrusted_document>",
-   "summary": "GOOGL 2023-FY to 2024-FY revenue",
+   "summary": "GOOGL 2024-FY to 2023-FY revenue",
    "count": 10,
    "items": [
     {
@@ -336,12 +318,12 @@
  ],
  "sandbox": [
   {
-   "key": "6c37791ae4195dcff357b272f1228b9610452eb538c83515d12e7ae98bcfdccb",
+   "key": "455557233d26a8349c5cc5b2bc127bb81db0fd7773352fb2711e5177054ac6c8",
    "response": {
     "ok": true,
     "outputs": {
-     "revenue_growth_absolute": "42624000000.0",
-     "revenue_growth_percentage": "0.13866243322901553"
+     "absolute_revenue_growth": "42624000000.0",
+     "percentage_revenue_growth": "0.13866243322901553"
     },
     "stdout": "",
     "error": null,
@@ -350,12 +332,12 @@
    }
   },
   {
-   "key": "6c37791ae4195dcff357b272f1228b9610452eb538c83515d12e7ae98bcfdccb",
+   "key": "455557233d26a8349c5cc5b2bc127bb81db0fd7773352fb2711e5177054ac6c8",
    "response": {
     "ok": true,
     "outputs": {
-     "revenue_growth_absolute": "42624000000.0",
-     "revenue_growth_percentage": "0.13866243322901553"
+     "absolute_revenue_growth": "42624000000.0",
+     "percentage_revenue_growth": "0.13866243322901553"
     },
     "stdout": "",
     "error": null,
@@ -365,5 +347,5 @@
   }
  ],
  "decision": "approve",
- "elapsed_ms": 136253
+ "elapsed_ms": 142230
 }

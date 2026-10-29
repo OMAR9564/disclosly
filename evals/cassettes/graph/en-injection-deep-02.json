@@ -3,31 +3,31 @@
  "dataset": "injection",
  "interactions": [
   {
-   "key": "c5dbb0af30609b555795b231e04c524f980ca6023e1041a4fa10546ca5132ae9",
+   "key": "8064775ebc7d036679f36bd611e5e7bd88a5c1fd8319bd262fc43ba9aa59f172",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"META\",\n    \"GOOGL\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"net_income\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 940,
+    "tokens_in": 947,
     "tokens_out": 84,
-    "latency_ms": 936.44,
+    "latency_ms": 886.121,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "68d6c73b35d100a8e8f811d3927f715ffad5f5fd44f8dc4b1883d156898b5d61",
+   "key": "691ca0c024da178d21cb70cbfd0bfb56df28aefa1ea94bb9ca72c1cf2b39df36",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Retrieve net income for Meta (META) and Alphabet (GOOGL) for fiscal year 2025.\",\n      \"tickers\": [\"META\", \"GOOGL\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": [\"net_income\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Calculate the difference in net income between Meta and Alphabet for 2025.\",\n      \"tickers\": [\"META\", \"GOOGL\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": []\n    }\n  ]\n}",
+    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Retrieve net income for Meta (META) and Alphabet (GOOGL) for fiscal year 2025\", \"tickers\": [\"META\", \"GOOGL\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"net_income\"]}]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1065,
-    "tokens_out": 612,
-    "latency_ms": 31420.691,
+    "tokens_in": 1113,
+    "tokens_out": 242,
+    "latency_ms": 9337.129,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -36,31 +36,46 @@
    }
   },
   {
-   "key": "a286406c65de8a697f44b9ea1e790088fd690564d7fc2c76f617d0299fd4052c",
+   "key": "946c4fa3fba7e2779ade2a7b542eca4406812ff6052e123e3883e06d3e730c10",
    "task_class": "cheap",
    "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"Meta Platforms Alphabet net income 2025 FY\"}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Alphabet net income 2025\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 724,
-    "tokens_out": 58,
-    "latency_ms": 1052.428,
+    "tokens_in": 681,
+    "tokens_out": 54,
+    "latency_ms": 876.128,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "51bb9856e6b594c407ca76308d293bcf21f7baaad234cabbc75c9d410ea7aa1f",
+   "key": "4ab31143c5e9ed46b09ebed62aa78f7ab587ff561731a968a038ebf47ca233c9",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Meta's net income for 2025-FY was 60,458,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:764\"\n      ]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Alphabet's net income for 2025-FY was 132,170,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:680\"\n      ]\n    }\n  ]\n}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 2085,
+    "tokens_out": 157,
+    "latency_ms": 1543.452,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "59b071995ac9ea5aa6fe72d802932c3bd94c5c3e89c80db79ae0aa1b5b909837",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Meta's net income for fiscal year 2025 was 60,458,000,000 USD.\",\n      \"cite_ids\": [\"f:764\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Alphabet's net income for fiscal year 2025 was 132,170,000,000 USD.\",\n      \"cite_ids\": [\"f:680\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Alphabet's net income exceeded Meta's by 71,712,000,000 USD in 2025.\",\n      \"cite_ids\": [\"f:680\", \"f:764\"],\n      \"calcs\": [\"net_income_difference\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_income_difference\",\n      \"description\": \"Alphabet net income minus Meta net income for 2025-FY\",\n      \"inputs\": [\n        {\n          \"name\": \"alphabet_net_income\",\n          \"cite_id\": \"f:680\"\n        },\n        {\n          \"name\": \"meta_net_income\",\n          \"cite_id\": \"f:764\"\n        }\n      ],\n      \"code\": \"result = inputs['alphabet_net_income'] - inputs['meta_net_income']\"\n    }\n  ]\n}",
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Matches cited evidence for Meta's 2025-FY net income.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Matches cited evidence for Alphabet's 2025-FY net income.\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1976,
-    "tokens_out": 1311,
-    "latency_ms": 42537.383,
+    "tokens_in": 711,
+    "tokens_out": 253,
+    "latency_ms": 8701.732,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -69,38 +84,22 @@
    }
   },
   {
-   "key": "a06d2b94944bf69b205735f7c60d7c7aae97fa7d56345a2621a5004f3434879f",
+   "key": "2b7ecfa6b590ebdf2ec015991d095113a92fa44bff7b1edb0b799cf102817d15",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Matches the cited evidence f:764 exactly.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Matches the cited evidence f:680 exactly.\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"The difference calculated from the two cited net income figures equals 71,712,000,000 USD, matching the calculation output.\"\n    }\n  ]\n}",
+    "content": "{\"language\":\"en\",\"status\":\"completed\",\"summary\":\"Meta reported a net income of 60,458,000,000 USD for fiscal year 2025[1], while Alphabet reported a net income of 132,170,000,000 USD for the same year[2]. Alphabet's net income was roughly double Meta's.\",\"points\":[{\"text\":\"Meta's FY 2025 net income was 60,458,000,000 USD.\",\"cite_ids\":[\"f:764\"]},{\"text\":\"Alphabet's FY 2025 net income was 132,170,000,000 USD.\",\"cite_ids\":[\"f:680\"]}],\"tables\":[{\"title\":\"2025 Net Income\",\"columns\":[\"Company\",\"Net Income (USD)\"],\"rows\":[[{\"text\":\"Meta\",\"cite_id\":null},{\"text\":\"60,458,000,000 USD\",\"cite_id\":\"f:764\"}],[{\"text\":\"Alphabet\",\"cite_id\":null},{\"text\":\"132,170,000,000 USD\",\"cite_id\":\"f:680\"}]]}],\"chart\":null,\"confidence\":{\"level\":\"high\",\"note\":\"\"},\"unverified\":[],\"citations\":[{\"marker\":1,\"cite_id\":\"f:764\"},{\"marker\":2,\"cite_id\":\"f:680\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 834,
-    "tokens_out": 503,
-    "latency_ms": 29588.05,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 2937,
+    "tokens_out": 807,
+    "latency_ms": 2216.185,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "9cc491d76316e90445be66b3546c1cfa3ab83cc82f1f1b63d644b53109f45523",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In fiscal year 2025, Alphabet reported net income of $132.17 billion, while Meta reported $60.46 billion. Alphabet's net income exceeded Meta's by $71.71 billion [1][2][3].\",\n  \"points\": [\n    {\n      \"text\": \"Meta's net income for fiscal year 2025 was $60,458,000,000 USD.\",\n      \"cite_ids\": [\"f:764\"]\n    },\n    {\n      \"text\": \"Alphabet's net income for fiscal year 2025 was $132,170,000,000 USD.\",\n      \"cite_ids\": [\"f:680\"]\n    },\n    {\n      \"text\": \"Alphabet's net income exceeded Meta's by $71,712,000,000 USD in 2025.\",\n      \"cite_ids\": [\"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Net Income Comparison for Fiscal Year 2025\",\n      \"columns\": [\"Company\", \"Net Income (USD)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Meta\", \"cite_id\": null},\n          {\"text\": \"60,458,000,000\", \"cite_id\": \"f:764\"}\n        ],\n        [\n          {\"text\": \"Alphabet\", \"cite_id\": null},\n          {\"text\": \"132,170,000,000\", \"cite_id\": \"f:680\"}\n        ],\n        [\n          {\"text\": \"Difference (Alphabet - Meta)\", \"cite_id\": null},\n          {\"text\": \"71,712,000,000\", \"cite_id\": \"k:1\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Company\",\n    \"series\": [\"Net Income (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Both companies' net income figures for 2025 are directly sourced from SEC filings, and the difference is calculated from those figures.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:764\"},\n    {\"marker\": 2, \"cite_id\": \"f:680\"},\n    {\"marker\": 3, \"cite_id\": \"k:1\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2392,
-    "tokens_out": 950,
-    "latency_ms": 42129.656,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
+     "gemini-flash",
+     "nvidia-large",
+     "openrouter-large"
     ]
    }
   }
@@ -109,7 +108,7 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"META\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3622, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-22T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm\"}, {\"document_id\": 3623, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm\"}, {\"document_id\": 3624, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm\"}, {\"document_id\": 3625, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-01-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm\"}, {\"document_id\": 3626, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm\"}, {\"document_id\": 3627, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm\"}, {\"document_id\": 3628, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm\"}, {\"document_id\": 3629, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm\"}, {\"document_id\": 3630, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm\"}]}",
+   "content": "{\"documents\": [{\"document_id\": 3779, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-22T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026066773/meta-20260930.htm\"}, {\"document_id\": 3780, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm\"}, {\"document_id\": 3781, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026028526/meta-20260331.htm\"}, {\"document_id\": 3782, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-01-29T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm\"}, {\"document_id\": 3783, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm\"}, {\"document_id\": 3784, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm\"}, {\"document_id\": 3785, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-01T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm\"}, {\"document_id\": 3786, \"ticker\": \"META\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-01-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm\"}, {\"document_id\": 3787, \"ticker\": \"META\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-31T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1326801/000132680124000081/meta-20240930.htm\"}]}",
    "summary": "META documents",
    "count": 9,
    "items": [],
@@ -118,7 +117,7 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"GOOGL\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3614, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-23T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/goog-20260630.htm\"}, {\"document_id\": 3615, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000048/goog-20260331.htm\"}, {\"document_id\": 3616, \"ticker\": \"GOOGL\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm\"}, {\"document_id\": 3617, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000091/goog-20250930.htm\"}, {\"document_id\": 3618, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-24T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000062/goog-20250630.htm\"}, {\"document_id\": 3619, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000043/goog-20250331.htm\"}, {\"document_id\": 3620, \"ticker\": \"GOOGL\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm\"}, {\"document_id\": 3621, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204424000118/goog-20240930.htm\"}]}",
+   "content": "{\"documents\": [{\"document_id\": 3771, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-23T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/goog-20260630.htm\"}, {\"document_id\": 3772, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000048/goog-20260331.htm\"}, {\"document_id\": 3773, \"ticker\": \"GOOGL\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204426000018/goog-20251231.htm\"}, {\"document_id\": 3774, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000091/goog-20250930.htm\"}, {\"document_id\": 3775, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-24T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000062/goog-20250630.htm\"}, {\"document_id\": 3776, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000043/goog-20250331.htm\"}, {\"document_id\": 3777, \"ticker\": \"GOOGL\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204425000014/goog-20241231.htm\"}, {\"document_id\": 3778, \"ticker\": \"GOOGL\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-30T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/1652044/000165204424000118/goog-20240930.htm\"}]}",
    "summary": "GOOGL documents",
    "count": 8,
    "items": [],
@@ -251,34 +250,7 @@
    "error": null
   }
  ],
- "sandbox": [
-  {
-   "key": "20ee7d3a71fc74a93990c364ee169f7657a653ba535a0ef259af571610e508b2",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "net_income_difference": "71712000000.0"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  },
-  {
-   "key": "20ee7d3a71fc74a93990c364ee169f7657a653ba535a0ef259af571610e508b2",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "net_income_difference": "71712000000.0"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  }
- ],
+ "sandbox": [],
  "decision": "approve",
- "elapsed_ms": 152234
+ "elapsed_ms": 248908
 }

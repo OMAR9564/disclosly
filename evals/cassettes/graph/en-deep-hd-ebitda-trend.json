@@ -3,100 +3,121 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "417e97e30d9e3a3e01732d35f12afeab77859ae6bacbb14fc9da5b46239eca51",
+   "key": "4aaac36102e83a925cb90aa9b714c75fac0e76526f09496320571468a2922e4a",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"HD\"\n  ],\n  \"periods\": [\n    \"2026-Q2\",\n    \"2026-Q3\"\n  ],\n  \"metrics\": [\n    \"ebitda\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 945,
+    "tokens_in": 952,
     "tokens_out": 89,
-    "latency_ms": 1126.916,
+    "latency_ms": 2747.517,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "e55f5d006b1e67e0c5ee69a074ddc85eff824a7d83ca820861ebea6be37245fc",
+   "key": "86cb3c0aacded9603142b3233274cb6f2845042a4e974f589f6ef370ad7e7d06",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Get Home Depot's EBITDA for fiscal Q2 and Q3 2026\",\n      \"tickers\": [\"HD\"],\n      \"periods\": [\"2026-Q2\", \"2026-Q3\"],\n      \"metrics\": [\"ebitda\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Calculate the change in EBITDA from Q2 to Q3 of fiscal 2026\",\n      \"tickers\": [\"HD\"],\n      \"periods\": [\"2026-Q2\", \"2026-Q3\"]\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1075,
-    "tokens_out": 312,
-    "latency_ms": 4154.962,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "cbcbf56c2fb84cccd2321d16285cb87c983879210813136a85a441defabbb045",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"Home Depot EBITDA Q3 2026\"}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 730,
-    "tokens_out": 57,
-    "latency_ms": 1561.752,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "e0e0a30535d6dcdb517c0e1f9e115b91d2f14d3d99c43fbc4f834aaff16e86e8",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Home Depot's EBITDA for fiscal Q2 2026 was 5,891,000,000 USD.\",\n      \"cite_ids\": [\"f:1549\", \"f:4953\", \"f:17926\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Home Depot's EBITDA for fiscal Q3 2026 was 7,691,000,000 USD.\",\n      \"cite_ids\": [\"f:1550\", \"f:4954\", \"f:19791\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Home Depot's EBITDA increased from fiscal Q2 2026 to fiscal Q3 2026.\",\n      \"cite_ids\": [\"f:1549\", \"f:1550\"],\n      \"calcs\": [\"ebitda_change_abs\", \"ebitda_change_pct\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"ebitda_change_abs\",\n      \"description\": \"Absolute change in EBITDA from Q2 to Q3 of fiscal 2026 (Q3 EBITDA minus Q2 EBITDA) in USD\",\n      \"inputs\": [\n        {\n          \"name\": \"ebitda_q2\",\n          \"cite_id\": \"f:1549\"\n        },\n        {\n          \"name\": \"ebitda_q3\",\n          \"cite_id\": \"f:1550\"\n        }\n      ],\n      \"code\": \"result = inputs['ebitda_q3'] - inputs['ebitda_q2']\"\n    },\n    {\n      \"name\": \"ebitda_change_pct\",\n      \"description\": \"Percentage change in EBITDA from Q2 to Q3 of fiscal 2026 ((Q3 EBITDA - Q2 EBITDA) / Q2 EBITDA) * 100\",\n      \"inputs\": [\n        {\n          \"name\": \"ebitda_q2\",\n          \"cite_id\": \"f:1549\"\n        },\n        {\n          \"name\": \"ebitda_q3\",\n          \"cite_id\": \"f:1550\"\n        }\n      ],\n      \"code\": \"result = ((inputs['ebitda_q3'] - inputs['ebitda_q2']) / inputs['ebitda_q2']) * 100\"\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1981,
-    "tokens_out": 823,
-    "latency_ms": 45067.92,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "59874ab57b6d4bd3c9915b90662acb995ebf658faad20e99e186d92bc05b9320",
-   "task_class": "strong",
-   "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"All cited documents show EBITDA (2026-Q2) as 5,891,000,000 USD.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"All cited documents show EBITDA (2026-Q3) as 7,691,000,000 USD.\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Q3 EBITDA (7,691,000,000) exceeds Q2 EBITDA (5,891,000,000); calculations confirm absolute increase of 1,800,000,000 and ~30.56% increase.\"}]}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1176,
-    "tokens_out": 1063,
-    "latency_ms": 16213.185,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "bd5eb69274de5a69c4457bcdefd7e1e55868858e68602a500897d28db4278367",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Home Depot's EBITDA increased from $5.891 billion in fiscal Q2 2026 to $7.691 billion in fiscal Q3 2026, representing an absolute increase of $1.8 billion (30.56%) [1][2][3][4].\",\n  \"points\": [\n    {\n      \"text\": \"Home Depot's EBITDA for fiscal Q2 2026 was $5,891,000,000.\",\n      \"cite_ids\": [\"f:1549\"]\n    },\n    {\n      \"text\": \"Home Depot's EBITDA for fiscal Q3 2026 was $7,691,000,000.\",\n      \"cite_ids\": [\"f:1550\"]\n    },\n    {\n      \"text\": \"EBITDA increased by $1,800,000,000 in absolute terms from Q2 to Q3.\",\n      \"cite_ids\": [\"k:1\"]\n    },\n    {\n      \"text\": \"EBITDA grew by 30.56% from Q2 to Q3 of fiscal 2026.\",\n      \"cite_ids\": [\"k:2\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Home Depot EBITDA: Fiscal Q2 vs Q3 2026\",\n      \"columns\": [\"Period\", \"EBITDA (USD)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Fiscal Q2 2026\", \"cite_id\": null},\n          {\"text\": \"5,891,000,000\", \"cite_id\": \"f:1549\"}\n        ],\n        [\n          {\"text\": \"Fiscal Q3 2026\", \"cite_id\": null},\n          {\"text\": \"7,691,000,000\", \"cite_id\": \"f:1550\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Period\",\n    \"series\": [\"EBITDA (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"All required EBITDA figures for both quarters and the calculated changes are directly supported by the evidence and calculations.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:1549\"},\n    {\"marker\": 2, \"cite_id\": \"f:1550\"},\n    {\"marker\": 3, \"cite_id\": \"k:1\"},\n    {\"marker\": 4, \"cite_id\": \"k:2\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Get Home Depot's EBITDA for fiscal Q2 and Q3 2026\", \"tickers\": [\"HD\"], \"periods\": [\"2026-Q2\", \"2026-Q3\"], \"metrics\": [\"ebitda\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"Calculate the change in EBITDA from Q2 to Q3 2026 (absolute and percentage)\", \"tickers\": [\"HD\"], \"periods\": [\"2026-Q2\", \"2026-Q3\"]}]}",
     "tool_calls": [],
     "provider": "openrouter-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 2748,
-    "tokens_out": 1573,
-    "latency_ms": 53030.067,
+    "tokens_in": 1123,
+    "tokens_out": 333,
+    "latency_ms": 11022.205,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash",
+     "nvidia-large"
+    ]
+   }
+  },
+  {
+   "key": "7d77f2f2398dd29dce51d46e6f6043e133dfb205e8cbbce98a51e72f28db2b00",
+   "task_class": "cheap",
+   "response": {
+    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": null}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
+    "tool_calls": [],
+    "provider": "gemini-flash-lite",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 732,
+    "tokens_out": 48,
+    "latency_ms": 2684.405,
+    "cache_hit": false,
+    "fallback_from": []
+   }
+  },
+  {
+   "key": "92e9e70bd14132d08ab9aa0573eb50f6e25b7a7870a6241dee1a74b85affd324",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"findings\": [\n    {\"id\": \"F1\", \"text\": \"Home Depot's EBITDA for fiscal Q2 2026 was 5,891,000,000 USD.\", \"cite_ids\": [\"f:1549\"]},\n    {\"id\": \"F2\", \"text\": \"Home Depot's EBITDA for fiscal Q3 2026 was 7,691,000,000 USD.\", \"cite_ids\": [\"f:1550\"]},\n    {\"id\": \"F3\", \"text\": \"Home Depot's EBITDA increased from Q2 to Q3 of fiscal 2026.\", \"cite_ids\": [\"f:1549\", \"f:1550\"], \"calcs\": [\"ebitda_absolute_change\", \"ebitda_percentage_change\"]}\n  ],\n  \"calculations\": [\n    {\"name\": \"ebitda_absolute_change\", \"description\": \"Absolute change in EBITDA from Q2 to Q3 2026 (Q3 EBITDA minus Q2 EBITDA) in USD\", \"inputs\": [{\"name\": \"ebitda_q2\", \"cite_id\": \"f:1549\"}, {\"name\": \"ebitda_q3\", \"cite_id\": \"f:1550\"}], \"code\": \"result = inputs['ebitda_q3'] - inputs['ebitda_q2']\"},\n    {\"name\": \"ebitda_percentage_change\", \"description\": \"Percentage change in EBITDA from Q2 to Q3 2026 ((Q3 EBITDA - Q2 EBITDA) / Q2 EBITDA) * 100\", \"inputs\": [{\"name\": \"ebitda_q2\", \"cite_id\": \"f:1549\"}, {\"name\": \"ebitda_q3\", \"cite_id\": \"f:1550\"}], \"code\": \"result = ((inputs['ebitda_q3'] - inputs['ebitda_q2']) / inputs['ebitda_q2']) * 100\"}\n  ]\n}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 2026,
+    "tokens_out": 769,
+    "latency_ms": 58579.648,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash",
+     "nvidia-large"
+    ]
+   }
+  },
+  {
+   "key": "eeae29d6e1867a5f1b07e214d18a1dad244231ba064c89f0f1b3f328e476fe22",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"claims\": [\n    {\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Matches cited evidence f:1549 exactly.\"},\n    {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Matches cited evidence f:1550 exactly.\"},\n    {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Q3 EBITDA (7,691,000,000) exceeds Q2 EBITDA (5,891,000,000); absolute and percentage change calculations confirm increase.\"}\n  ]}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 943,
+    "tokens_out": 663,
+    "latency_ms": 21324.29,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "53ae17a9eb487483d80eca85d93dfc426bcc20c66aa50fe78e9f98ceb42a2e51",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\": \"en\", \"status\": \"completed\", \"summary\": \"Home Depot's EBITDA increased from $5.891 billion in fiscal Q2 2026 to $7.691 billion in fiscal Q3 2026, representing an absolute increase of $1.8 billion [1] and a percentage increase of 30.56% [2].\", \"points\": [{\"text\": \"Fiscal Q2 2026 EBITDA was $5,891,000,000 USD.\", \"cite_ids\": [\"f:1549\"]}, {\"text\": \"Fiscal Q3 2026 EBITDA was $7,691,000,000 USD.\", \"cite_ids\": [\"f:1550\"]}, {\"text\": \"EBITDA increased by $1,800,000,000 USD (absolute change) from Q2 to Q3.\", \"cite_ids\": [\"k:1\"]}, {\"text\": \"EBITDA increased by 30.56% (percentage change) from Q2 to Q3.\", \"cite_ids\": [\"k:2\"]}], \"tables\": [{\"title\": \"Home Depot EBITDA: Fiscal Q2 vs Q3 2026\", \"columns\": [\"Period\", \"EBITDA (USD)\"], \"rows\": [[{\"text\": \"Fiscal Q2 2026\", \"cite_id\": \"f:1549\"}, {\"text\": \"5,891,000,000\", \"cite_id\": \"f:1549\"}], [{\"text\": \"Fiscal Q3 2026\", \"cite_id\": \"f:1550\"}, {\"text\": \"7,691,000,000\", \"cite_id\": \"f:1550\"}]]}, {\"title\": \"EBITDA Change from Q2 to Q3 2026\", \"columns\": [\"Metric\", \"Value\"], \"rows\": [[{\"text\": \"Absolute Change (USD)\", \"cite_id\": null}, {\"text\": \"1,800,000,000\", \"cite_id\": \"k:1\"}], [{\"text\": \"Percentage Change (%)\", \"cite_id\": null}, {\"text\": \"30.56\", \"cite_id\": \"k:2\"}]]}, {\"title\": \"EBITDA Values with Change\", \"columns\": [\"Period\", \"EBITDA (USD)\", \"Absolute Change (USD)\", \"Percentage Change (%)\"], \"rows\": [[{\"text\": \"Fiscal Q2 2026\", \"cite_id\": \"f:1549\"}, {\"text\": \"5,891,000,000\", \"cite_id\": \"f:1549\"}, {\"text\": \"—\", \"cite_id\": null}, {\"text\": \"—\", \"cite_id\": null}], [{\"text\": \"Fiscal Q3 2026\", \"cite_id\": \"f:1550\"}, {\"text\": \"7,691,000,000\", \"cite_id\": \"f:1550\"}, {\"text\": \"1,800,000,000\", \"cite_id\": \"k:1\"}, {\"text\": \"30.56\", \"cite_id\": \"k:2\"}]]}, {\"title\": \"Quarterly EBITDA Comparison\", \"columns\": [\"Quarter\", \"EBITDA (Billions USD)\"], \"rows\": [[{\"text\": \"Q2 2026\", \"cite_id\": \"f:1549\"}, {\"text\": \"5.891\", \"cite_id\": \"f:1549\"}], [{\"text\": \"Q3 2026\", \"cite_id\": \"f:1550\"}, {\"text\": \"7.691\", \"cite_id\": \"f:1550\"}]]}], \"chart\": {\"kind\": \"bar\", \"table\": 3, \"x_column\": \"Quarter\", \"series\": [\"EBITDA (Billions USD)\"]}, \"confidence\": {\"level\": \"high\", \"note\": \"Both quarterly EBITDA figures and the calculated changes are directly sourced from the evidence and calculations.\"}, \"unverified\": [], \"citations\": [{\"marker\": 1, \"cite_id\": \"k:1\"}, {\"marker\": 2, \"cite_id\": \"k:2\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 2517,
+    "tokens_out": 1390,
+    "latency_ms": 52004.552,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash",
+     "nvidia-large"
+    ]
+   }
+  },
+  {
+   "key": "a4bb72ba8d3ff3d21b866752095a0e53180b9f698534183a0ed5b822dc3231b5",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Home Depot's EBITDA increased from 5,891,000,000 USD in fiscal Q2 2026 to 7,691,000,000 USD in fiscal Q3 2026, representing an absolute increase of 1,800,000,000.00 USD [1] and a percentage increase of 30.56% [2].\",\n  \"points\": [\n    {\n      \"text\": \"Fiscal Q2 2026 EBITDA was 5,891,000,000 USD.\",\n      \"cite_ids\": [\"f:1549\"]\n    },\n    {\n      \"text\": \"Fiscal Q3 2026 EBITDA was 7,691,000,000 USD.\",\n      \"cite_ids\": [\"f:1550\"]\n    },\n    {\n      \"text\": \"EBITDA increased by 1,800,000,000.00 USD (absolute change) from Q2 to Q3.\",\n      \"cite_ids\": [\"k:1\"]\n    },\n    {\n      \"text\": \"EBITDA increased by 30.56% (percentage change) from Q2 to Q3.\",\n      \"cite_ids\": [\"k:2\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Home Depot EBITDA: Fiscal Q2 vs Q3 2026\",\n      \"columns\": [\"Period\", \"EBITDA (USD)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Fiscal Q2 2026\", \"cite_id\": \"f:1549\"},\n          {\"text\": \"5,891,000,000\", \"cite_id\": \"f:1549\"}\n        ],\n        [\n          {\"text\": \"Fiscal Q3 2026\", \"cite_id\": \"f:1550\"},\n          {\"text\": \"7,691,000,000\", \"cite_id\": \"f:1550\"}\n        ]\n      ]\n    },\n    {\n      \"title\": \"EBITDA Change from Q2 to Q3 2026\",\n      \"columns\": [\"Metric\", \"Value\"],\n      \"rows\": [\n        [\n          {\"text\": \"Absolute Change (USD)\", \"cite_id\": null},\n          {\"text\": \"1,800,000,000.00\", \"cite_id\": \"k:1\"}\n        ],\n        [\n          {\"text\": \"Percentage Change (%)\", \"cite_id\": null},\n          {\"text\": \"30.56\", \"cite_id\": \"k:2\"}\n        ]\n      ]\n    },\n    {\n      \"title\": \"EBITDA Values with Change\",\n      \"columns\": [\"Period\", \"EBITDA (USD)\", \"Absolute Change (USD)\", \"Percentage Change (%)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Fiscal Q2 2026\", \"cite_id\": \"f:1549\"},\n          {\"text\": \"5,891,000,000\", \"cite_id\": \"f:1549\"},\n          {\"text\": \"—\", \"cite_id\": null},\n          {\"text\": \"—\", \"cite_id\": null}\n        ],\n        [\n          {\"text\": \"Fiscal Q3 2026\", \"cite_id\": \"f:1550\"},\n          {\"text\": \"7,691,000,000\", \"cite_id\": \"f:1550\"},\n          {\"text\": \"1,800,000,000.00\", \"cite_id\": \"k:1\"},\n          {\"text\": \"30.56\", \"cite_id\": \"k:2\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Period\",\n    \"series\": [\"EBITDA (USD)\"]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Both quarterly EBITDA figures and the calculated changes are directly sourced from the evidence and calculations.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"k:1\"},\n    {\"marker\": 2, \"cite_id\": \"k:2\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "tokens_in": 3697,
+    "tokens_out": 2612,
+    "latency_ms": 58765.554,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -110,7 +131,7 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"HD\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3688, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000162828026058715/hd-20260802.htm\"}, {\"document_id\": 3689, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-27T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000162828026038247/hd-20260503.htm\"}, {\"document_id\": 3690, \"ticker\": \"HD\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-03-18T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000162828026019436/hd-20260201.htm\"}, {\"document_id\": 3691, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000162828025053868/hd-20251102.htm\"}, {\"document_id\": 3692, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000035495025000217/hd-20250803.htm\"}, {\"document_id\": 3693, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000035495025000165/hd-20250504.htm\"}, {\"document_id\": 3694, \"ticker\": \"HD\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-03-21T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000035495025000085/hd-20250202.htm\"}, {\"document_id\": 3695, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-19T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000035495024000240/hd-20241027.htm\"}]}",
+   "content": "{\"documents\": [{\"document_id\": 3845, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000162828026058715/hd-20260802.htm\"}, {\"document_id\": 3846, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-27T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000162828026038247/hd-20260503.htm\"}, {\"document_id\": 3847, \"ticker\": \"HD\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-03-18T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000162828026019436/hd-20260201.htm\"}, {\"document_id\": 3848, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-25T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000162828025053868/hd-20251102.htm\"}, {\"document_id\": 3849, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-26T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000035495025000217/hd-20250803.htm\"}, {\"document_id\": 3850, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-28T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000035495025000165/hd-20250504.htm\"}, {\"document_id\": 3851, \"ticker\": \"HD\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-03-21T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000035495025000085/hd-20250202.htm\"}, {\"document_id\": 3852, \"ticker\": \"HD\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-19T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/354950/000035495024000240/hd-20241027.htm\"}]}",
    "summary": "HD documents",
    "count": 8,
    "items": [],
@@ -243,12 +264,12 @@
  ],
  "sandbox": [
   {
-   "key": "b2c1df349cd8de5911c2e38cf3518af87057671a4b425429037ceabe2882dc0b",
+   "key": "8dfe9d5cd912075b5d5586d98b125b103fecb3e467c1ff3bf698e0546d2d6d0c",
    "response": {
     "ok": true,
     "outputs": {
-     "ebitda_change_abs": "1800000000.0",
-     "ebitda_change_pct": "30.555084026481072"
+     "ebitda_absolute_change": "1800000000.0",
+     "ebitda_percentage_change": "30.555084026481072"
     },
     "stdout": "",
     "error": null,
@@ -257,12 +278,12 @@
    }
   },
   {
-   "key": "b2c1df349cd8de5911c2e38cf3518af87057671a4b425429037ceabe2882dc0b",
+   "key": "8dfe9d5cd912075b5d5586d98b125b103fecb3e467c1ff3bf698e0546d2d6d0c",
    "response": {
     "ok": true,
     "outputs": {
-     "ebitda_change_abs": "1800000000.0",
-     "ebitda_change_pct": "30.555084026481072"
+     "ebitda_absolute_change": "1800000000.0",
+     "ebitda_percentage_change": "30.555084026481072"
     },
     "stdout": "",
     "error": null,
@@ -272,5 +293,5 @@
   }
  ],
  "decision": "approve",
- "elapsed_ms": 192752
+ "elapsed_ms": 276593
 }

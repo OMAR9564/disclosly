@@ -6,13 +6,13 @@
    "key": "b917739c3f751789968fae22375af598a03dcf03624c6a5765405305c7acc52e",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi talebi içerdiği ve portföy önerisinde bulunulmayacağı için bu soru reddedilmiştir.\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi talebi içeren sorular yanıtlanmamaktadır. Portföy tavsiyesi verilmemektedir.\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1675,
-    "tokens_out": 58,
-    "latency_ms": 869.003,
+    "tokens_in": 1684,
+    "tokens_out": 56,
+    "latency_ms": 2763.27,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,31 @@
    "key": "f407e81809e31849185ece3f1431cb99240796d9128066f2377410910d3f8279",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"tr\", \"status\": \"refused\", \"summary\": \"Yatırım tavsiyesi istendiği için yanıt reddedildi. 2025 net kâr verileri henüz açıklanmamış olabilir; mevcut belgelerde 2025 için gerçekleşmiş net kâr rakamı bulunamadı.\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\"language\":\"tr\",\"status\":\"refused\",\"summary\":\"Yatırım tavsiyesi verilemez. Ford Otosan (FROTO) ve Tofaş (TOASO) için 2025 net kâr verileri henüz resmi açıklamalarda yer almayabilir; mevcut belgelerde 2025 yılına ait net kâr rakamı bulunamadı.\",\"points\":[{\"text\":\"Ford Otosan (FROTO) için 2025 net kâr verisi mevcut belgelerde bulunamadı.\",\"cite_ids\":[]},{\"text\":\"Tofaş (TOASO) için 2025 net kâr verisi mevcut belgelerde bulunamadı.\",\"cite_ids\":[]},{\"text\":\"Yatırım kararı vermeyin; sadece resmi açıklamaları ve finansal tabloları inceleyin.\",\"cite_ids\":[]}],\"citations\":[],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1192,
-    "tokens_out": 293,
-    "latency_ms": 21977.596,
+    "tokens_out": 415,
+    "latency_ms": 18266.863,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "643e8aff9f072e5a97ed6048200f92707a3a5f041f4432df6c29c902597440df",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"language\":\"tr\",\"status\":\"refused\",\"summary\":\"Yatırım tavsiyesi verilemez. Ford Otosan (FROTO) ve Tofaş (TOASO) için 2025 net kâr verileri henüz resmi açıklamalarda yer almayabilir; mevcut belgelerde 2025 yılına ait net kâr rakamı bulunamadı.\",\"points\":[{\"text\":\"Ford Otosan (FROTO) için 2025 net kâr verisi mevcut belgelerde bulunamadı.\",\"cite_ids\":[]},{\"text\":\"Tofaş (TOASO) için 2025 net kâr verisi mevcut belgelerde bulunamadı.\",\"cite_ids\":[]},{\"text\":\"Yatırım kararı vermeyin; sadece resmi açıklamaları ve finansal tabloları inceleyin.\",\"cite_ids\":[]}],\"citations\":[],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1445,
+    "tokens_out": 361,
+    "latency_ms": 7486.585,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -39,5 +57,5 @@
  "tools": [],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 23261
+ "elapsed_ms": 29581
 }

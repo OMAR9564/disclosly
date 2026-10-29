@@ -6,13 +6,13 @@
    "key": "72b1220c47233a2a4174ce3207bd86cb7e240de24f4477e84f53b7e0fab22fc7",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide price targets or investment advice. Please consult official disclosures and financial statements for factual margin and performance data.\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide price targets or investment advice. Please refer to official company disclosures for financial information.\",\n  \"points\": [],\n  \"citations\": []\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1528,
-    "tokens_out": 54,
-    "latency_ms": 895.385,
+    "tokens_in": 1537,
+    "tokens_out": 62,
+    "latency_ms": 960.0,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,31 +21,13 @@
    "key": "e9d8b06183658c0cf3413149536ab2c7c1b52e0284268e3e328f8a0eb18f0bba",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\":\"en\",\"status\":\"refused\",\"summary\":\"I cannot provide price targets as that constitutes investment advice. I can only share factual margin data from company disclosures.\",\"points\":[{\"text\":\"Walmart (WMT) and Costco (COST) margin data from recent filings:\",\"cite_ids\":[]}],\"citations\":[],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice, price targets, or recommendations to buy, sell, or hold securities. I can only share factual information from company disclosures.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 980,
-    "tokens_out": 193,
-    "latency_ms": 4771.555,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "60e5fe1b659362ce17c5cb1c0c896aa8b48c693de04fe9ea929a009e32d8b27e",
-   "task_class": "strong",
-   "response": {
-    "content": "{\"language\":\"en\",\"status\":\"refused\",\"summary\":\"I cannot provide price targets as that constitutes investment advice. I can only share factual margin data from company disclosures.\",\"points\":[{\"text\":\"Walmart (WMT) and Costco (COST) margin data from recent filings:\",\"cite_ids\":[]}],\"citations\":[],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1084,
-    "tokens_out": 175,
-    "latency_ms": 2874.858,
+    "tokens_out": 314,
+    "latency_ms": 48774.075,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -57,5 +39,5 @@
  "tools": [],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 9436
+ "elapsed_ms": 50257
 }

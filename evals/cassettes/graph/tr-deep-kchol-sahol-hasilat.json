@@ -3,31 +3,31 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "5d601961e7781d0a8ad5f51dec166636a7ef7d6d6c6f3b321e00928968d4ea4a",
+   "key": "b5daf31b59eee6ad207c44a184a08faca835f827f6fef67ee4ee20037f77a14d",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"KCHOL\",\n    \"SAHOL\"\n  ],\n  \"periods\": [\n    \"2024-FY\",\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1026,
+    "tokens_in": 1033,
     "tokens_out": 93,
-    "latency_ms": 1166.374,
+    "latency_ms": 1510.683,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "98bba9863620d18164ce855b004befd6864884e920429472845560352bbca8db",
+   "key": "1bd0f7cefcc61faec295d25fae382556d8d3a844e774d4103512db84b9100921",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Koç Holding ve Sabancı Holding'in 2024 ve 2025 yıl sonu hasılat (revenue) rakamlarını getir\",\n      \"tickers\": [\"KCHOL\", \"SAHOL\"],\n      \"periods\": [\"2024-FY\", \"2025-FY\"],\n      \"metrics\": [\"revenue\"]\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Koç Holding ve Sabancı Holding'in 2024 ve 2025 mali yılları hasılat (revenue) verilerini getir\",\n      \"tickers\": [\n        \"KCHOL\",\n        \"SAHOL\"\n      ],\n      \"periods\": [\n        \"2024-FY\",\n        \"2025-FY\"\n      ],\n      \"metrics\": [\n        \"revenue\"\n      ],\n      \"status\": \"pending\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1260,
-    "tokens_out": 270,
-    "latency_ms": 7978.783,
+    "tokens_in": 1326,
+    "tokens_out": 298,
+    "latency_ms": 5737.319,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -36,46 +36,46 @@
    }
   },
   {
-   "key": "cb45600a331e865d25a346b8a880e0e7f08b8eb88ea2d66eb0c0f5b7a8a4ee1b",
+   "key": "17c748f2a22e7d67bef532f08478fcefbb423c683be974d75eac9c5e8f9feca8",
    "task_class": "cheap",
    "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": true, \"rewritten_query\": null}]}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 842,
-    "tokens_out": 25,
-    "latency_ms": 991.306,
+    "tokens_in": 840,
+    "tokens_out": 45,
+    "latency_ms": 923.771,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "16a4544c555188c3dbe3395988a5886dd94bb99d876bbfb24f02f4c4b52114ed",
+   "key": "64d1cf368d61ce6da08b3578bd34ed74bb83cb04acdbcc7d437322674d2cf181",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Koç Holding'in 2024 yılı hasılatı 1.611.489.000.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\n        \"f:2261\"\n      ]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Koç Holding'in 2025 yılı hasılatı 1.838.618.000.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\n        \"f:2309\"\n      ]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Sabancı Holding'in 2024 yılı hasılatı 195.092.886.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\n        \"f:3029\"\n      ]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"Sabancı Holding'in 2025 yılı hasılatı 246.235.586.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\n        \"f:3077\"\n      ]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"kchol_revenue_growth\",\n      \"description\": \"Koç Holding hasılat büyümesi\",\n      \"inputs\": [\n        {\n          \"name\": \"rev_2024\",\n          \"cite_id\": \"f:2261\"\n        },\n        {\n          \"name\": \"rev_2025\",\n          \"cite_id\": \"f:2309\"\n        }\n      ],\n      \"code\": \"result = (inputs['rev_2025'] - inputs['rev_2024']) / inputs['rev_2024']\"\n    },\n    {\n      \"name\": \"sahol_revenue_growth\",\n      \"description\": \"Sabancı Holding hasılat büyümesi\",\n      \"inputs\": [\n        {\n          \"name\": \"rev_2024\",\n          \"cite_id\": \"f:3029\"\n        },\n        {\n          \"name\": \"rev_2025\",\n          \"cite_id\": \"f:3077\"\n        }\n      ],\n      \"code\": \"result = (inputs['rev_2025'] - inputs['rev_2024']) / inputs['rev_2024']\"\n    }\n  ]\n}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Koç Holding'in 2024 mali yılı hasılatı 1.611.489.000.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:2261\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Koç Holding'in 2025 mali yılı hasılatı 1.838.618.000.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:2309\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Sabancı Holding'in 2024 mali yılı hasılatı 195.092.886.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:3029\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"Sabancı Holding'in 2025 mali yılı hasılatı 246.235.586.000 TRY olarak bildirilmiştir.\",\n      \"cite_ids\": [\"f:3077\"]\n    }\n  ],\n  \"calculations\": []\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 2424,
-    "tokens_out": 641,
-    "latency_ms": 2097.514,
+    "tokens_in": 2473,
+    "tokens_out": 318,
+    "latency_ms": 1435.823,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "e969eddec2ebedae8dc5795670f28037ea70b6f6d85ef260c31e7866f0e1b81c",
+   "key": "ed60cf254637715d7b4352be851113df0da4a716d7662b8a2710e7d683a1e88a",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Kanıt f:2261'de 2024-FY hasılatı 1.611.489.000.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Kanıt f:2309'da 2025-FY hasılatı 1.838.618.000.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Kanıt f:3029'da 2024-FY hasılatı 195.092.886.000 TRY olarak açıkça belirtiliyor.\"}, {\"finding_id\": \"F4\", \"supported\": true, \"reason\": \"Kanıt f:3077'de 2025-FY hasılatı 246.235.586.000 TRY olarak açıkça belirtiliyor.\"}]}",
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Kanıt f:2261'de Koç Holding 2024-FY hasılatı 1.611.489.000.000 TRY olarak tam eşleşiyor.\"}, {\"finding_id\": \"F2\", \"supported\": true, \"reason\": \"Kanıt f:2309'da Koç Holding 2025-FY hasılatı 1.838.618.000.000 TRY olarak tam eşleşiyor.\"}, {\"finding_id\": \"F3\", \"supported\": true, \"reason\": \"Kanıt f:3029'da Sabancı Holding 2024-FY hasılatı 195.092.886.000 TRY olarak tam eşleşiyor.\"}, {\"finding_id\": \"F4\", \"supported\": true, \"reason\": \"Kanıt f:3077'de Sabancı Holding 2025-FY hasılatı 246.235.586.000 TRY olarak tam eşleşiyor.\"}]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1287,
-    "tokens_out": 894,
-    "latency_ms": 21605.462,
+    "tokens_in": 1191,
+    "tokens_out": 788,
+    "latency_ms": 12377.836,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -84,21 +84,18 @@
    }
   },
   {
-   "key": "3874317c6e086de551886e12ec1961076c0905fa1216b86c9812f57d0917f442",
+   "key": "cc799d0a9051231b39c5464077a890bdfb201b30c95fbe063c813b18f2d21c36",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Koç Holding'in 2024 hasılatı 1,61 trilyon TRY, 2025'te 1,84 trilyon TRY'ye yükselmiş (%14,09 büyüme). Sabancı Holding'in 2024 hasılatı 195,1 milyar TRY, 2025'te 246,2 milyar TRY'ye çıkmış (%26,21 büyüme). Her iki holdingde de hasılat artmış, Sabancı Holding'in büyüme hızı daha yüksek gerçekleşmiş [1][2][3][4][5][6].\",\n  \"points\": [\n    {\n      \"text\": \"Koç Holding 2024 hasılatı: 1.611.489.000.000 TRY\",\n      \"cite_ids\": [\"f:2261\"]\n    },\n    {\n      \"text\": \"Koç Holding 2025 hasılatı: 1.838.618.000.000 TRY\",\n      \"cite_ids\": [\"f:2309\"]\n    },\n    {\n      \"text\": \"Koç Holding hasılat büyümesi (2024-2025): %14,09\",\n      \"cite_ids\": [\"k:1\"]\n    },\n    {\n      \"text\": \"Sabancı Holding 2024 hasılatı: 195.092.886.000 TRY\",\n      \"cite_ids\": [\"f:3029\"]\n    },\n    {\n      \"text\": \"Sabancı Holding 2025 hasılatı: 246.235.586.000 TRY\",\n      \"cite_ids\": [\"f:3077\"]\n    },\n    {\n      \"text\": \"Sabancı Holding hasılat büyümesi (2024-2025): %26,21\",\n      \"cite_ids\": [\"k:2\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Hasılat Karşılaştırması (TRY)\",\n      \"columns\": [\n        \"Yıl\",\n        \"Koç Holding\",\n        \"Sabancı Holding\"\n      ],\n      \"rows\": [\n        [\n          {\n            \"text\": \"2024\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"1.611.489.000.000\",\n            \"cite_id\": \"f:2261\"\n          },\n          {\n            \"text\": \"195.092.886.000\",\n            \"cite_id\": \"f:3029\"\n          }\n        ],\n        [\n          {\n            \"text\": \"2025\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"1.838.618.000.000\",\n            \"cite_id\": \"f:2309\"\n          },\n          {\n            \"text\": \"246.235.586.000\",\n            \"cite_id\": \"f:3077\"\n          }\n        ]\n      ]\n    },\n    {\n      \"title\": \"Hasılat Büyüme Oranları\",\n      \"columns\": [\n        \"Şirket\",\n        \"2024-2025 Büyüme (%)\"\n      ],\n      \"rows\": [\n        [\n          {\n            \"text\": \"Koç Holding\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"%14,09\",\n            \"cite_id\": \"k:1\"\n          }\n        ],\n        [\n          {\n            \"text\": \"Sabancı Holding\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"%26,21\",\n            \"cite_id\": \"k:2\"\n          }\n        ]\n      ]\n    }\n  ],\n  \"chart\": {\n    \"kind\": \"bar\",\n    \"table\": 0,\n    \"x_column\": \"Yıl\",\n    \"series\": [\n      \"Koç Holding\",\n      \"Sabancı Holding\"\n    ]\n  },\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Her iki holdingin 2024 ve 2025 hasılat rakamları ve büyüme oranları kanıtlarla doğrulanmıştır.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2261\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2309\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:3029\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:3077\"\n    },\n    {\n      \"marker\": 5,\n      \"cite_id\": \"k:1\"\n    },\n    {\n      \"marker\": 6,\n      \"cite_id\": \"k:2\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\": \"tr\", \"status\": \"completed\", \"summary\": \"Koç Holding'in 2024 yılı hasılatı 1.611.489.000.000 TRY iken [1], 2025 yılı hasılatı 1.838.618.000.000 TRY olarak bildirilmiştir [2]. Sabancı Holding'in 2024 yılı hasılatı 195.092.886.000 TRY [3] ve 2025 yılı hasılatı 246.235.586.000 TRY olarak açıklanmıştır [4].\", \"points\": [{\"text\": \"Koç Holding'in 2024 mali yılı hasılatı 1.611.489.000.000 TRY'dir.\", \"cite_ids\": [\"f:2261\"]}, {\"text\": \"Koç Holding'in 2025 mali yılı hasılatı 1.838.618.000.000 TRY'dir.\", \"cite_ids\": [\"f:2309\"]}, {\"text\": \"Sabancı Holding'in 2024 mali yılı hasılatı 195.092.886.000 TRY'dir.\", \"cite_ids\": [\"f:3029\"]}, {\"text\": \"Sabancı Holding'in 2025 mali yılı hasılatı 246.235.586.000 TRY'dir.\", \"cite_ids\": [\"f:3077\"]}], \"tables\": [{\"title\": \"Koç Holding ve Sabancı Holding Hasılat Karşılaştırması (TRY)\", \"columns\": [\"Yıl\", \"Koç Holding Hasılatı\", \"Sabancı Holding Hasılatı\"], \"rows\": [[{\"text\": \"2024\", \"cite_id\": null}, {\"text\": \"1.611.489.000.000\", \"cite_id\": \"f:2261\"}, {\"text\": \"195.092.886.000\", \"cite_id\": \"f:3029\"}], [{\"text\": \"2025\", \"cite_id\": null}, {\"text\": \"1.838.618.000.000\", \"cite_id\": \"f:2309\"}, {\"text\": \"246.235.586.000\", \"cite_id\": \"f:3077\"}]]}], \"chart\": {\"kind\": \"bar\", \"table\": 0, \"x_column\": \"Yıl\", \"series\": [\"Koç Holding Hasılatı\", \"Sabancı Holding Hasılatı\"]}, \"confidence\": {\"level\": \"high\"}, \"citations\": [{\"marker\": 1, \"cite_id\": \"f:2261\"}, {\"marker\": 2, \"cite_id\": \"f:2309\"}, {\"marker\": 3, \"cite_id\": \"f:3029\"}, {\"marker\": 4, \"cite_id\": \"f:3077\"}]}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2924,
-    "tokens_out": 1624,
-    "latency_ms": 40614.695,
+    "provider": "gemini-flash-stable",
+    "model": "gemini-2.5-flash",
+    "tokens_in": 2933,
+    "tokens_out": 741,
+    "latency_ms": 5000.513,
     "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
+    "fallback_from": []
    }
   }
  ],
@@ -256,36 +253,7 @@
    "error": null
   }
  ],
- "sandbox": [
-  {
-   "key": "b52a5d3c6b5aa9d0d99c3882f4717938e283de3ad6a73e81556a4a8282886ca5",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "kchol_revenue_growth": "0.14094356213415046",
-     "sahol_revenue_growth": "0.26214538648016106"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  },
-  {
-   "key": "b52a5d3c6b5aa9d0d99c3882f4717938e283de3ad6a73e81556a4a8282886ca5",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "kchol_revenue_growth": "0.14094356213415046",
-     "sahol_revenue_growth": "0.26214538648016106"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  }
- ],
+ "sandbox": [],
  "decision": "approve",
- "elapsed_ms": 115775
+ "elapsed_ms": 59519
 }

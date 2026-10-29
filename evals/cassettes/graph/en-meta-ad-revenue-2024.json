@@ -3,91 +3,77 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "2d77f4e7b6ad004ddf41d11867c2b4cf19ca57453ab553b4c738cc43404a1fce",
+   "key": "9b907cd9f7e0264b9e15ddd8362fbd8c723dd9726cfb699c384dd9a15a6a1d42",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"META\"\n  ],\n  \"periods\": [\n    \"2024-FY\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"META\"\n  ],\n  \"periods\": [\n    \"2024-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 939,
-    "tokens_out": 67,
-    "latency_ms": 982.048,
+    "tokens_in": 946,
+    "tokens_out": 75,
+    "latency_ms": 842.499,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "807687bc54735a4c3332a70a54a4ad2efa722126020c47847a4e425a1918f95c",
+   "key": "7e70ec13b7ce59a2d798f087d03c486ccad5655be8f50598f93d3426239f3548",
    "task_class": "cheap",
    "response": {
     "content": null,
     "tool_calls": [
      {
-      "id": "call_5245716",
+      "id": "call_259190",
       "name": "search_documents",
       "arguments": {
        "ticker": "META",
-       "query": "advertising revenue 2024 2023"
+       "query": "advertising revenue 2024 growth",
+       "period_to": "2024-FY",
+       "period_from": "2024-FY"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0TGgtnLJ6d8e8aTZD9dtSAuzdjlsaXknsbXQDDYituW6V3roj/B03/BuZQyp53z8jB0pF9vGABDsyd2Pq1LbQNg142O3DAX6owUWGC5gbhDUt3sb0ytid009w="
+        "thought_signature": "EmAKXgFpFH0Tw5+0+QGR0FHOna8f6AY6bh6EQjOLPBoY7gDvidrAmunfZKzBaAxWBQxI1oIW7qIaMCGSiXUuGcwexzsqmgsvXqalCuhoJZaNkQT4pJi8Zl1wvpkPUCOngpk="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 3891,
-    "tokens_out": 33,
-    "latency_ms": 1665.379,
+    "tokens_in": 1833,
+    "tokens_out": 55,
+    "latency_ms": 658.532,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "99c74f51d1182f15dc2a18e2b8360b52def767b2e23e16997d4be7923980f997",
+   "key": "3dc0a9f16246edc7ed296907740ad076c397f665898a1948e69413f3d3368370",
    "task_class": "cheap",
    "response": {
-    "content": null,
-    "tool_calls": [
-     {
-      "id": "call_4487784",
-      "name": "search_documents",
-      "arguments": {
-       "period_to": "2025-FY",
-       "ticker": "META",
-       "period_from": "2024-FY",
-       "query": "advertising revenue"
-      },
-      "extra": {
-       "google": {
-        "thought_signature": "EmAKXgFpFH0TegvOPADvJhcQcvoof0dLIG/ov2ZUIZa8PWeuAOlt3GG4C/Lfv6J2xOJDl7YURtLCPu4iiBZSzqqNP9AlmRZgs7YYhyLzoLyXuhWaT0BI7Mq6YiBiNwkfHww="
-       }
-      }
-     }
-    ],
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In 2024, Meta's advertising revenue increased by $28.68 billion, or 22%, compared to 2023 [c:6f31ec36453d348abe60fb6c1f1f786e23450073d1339858d2107e06245bc9d7]. This growth was driven by increases in both ad impressions delivered (up 11%) and the average price per ad (up 10%) [c:6f31ec36453d348abe60fb6c1f1f786e23450073d1339858d2107e06245bc9d7].\",\n  \"points\": [\n    {\n      \"text\": \"Advertising revenue in 2024 increased $28.68 billion, or 22%, compared to 2023.\",\n      \"cite_ids\": [\n        \"c:6f31ec36453d348abe60fb6c1f1f786e23450073d1339858d2107e06245bc9d7\"\n      ]\n    },\n    {\n      \"text\": \"Ad impressions delivered increased by 11% year-over-year in 2024.\",\n      \"cite_ids\": [\n        \"c:6f31ec36453d348abe60fb6c1f1f786e23450073d1339858d2107e06245bc9d7\"\n      ]\n    },\n    {\n      \"text\": \"The average price per ad increased by 10% year-over-year in 2024.\",\n      \"cite_ids\": [\n        \"c:6f31ec36453d348abe60fb6c1f1f786e23450073d1339858d2107e06245bc9d7\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:6f31ec36453d348abe60fb6c1f1f786e23450073d1339858d2107e06245bc9d7\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 3945,
-    "tokens_out": 49,
-    "latency_ms": 835.557,
+    "tokens_in": 5107,
+    "tokens_out": 679,
+    "latency_ms": 2422.012,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "78340d28ebb9620a369457184411e944ad06aebd3499e16554b6c7e55c7a3791",
+   "key": "f20403cdf57c0ecb7512cc7ab01ca4f6d47eaf48183270555ad212008fc60d47",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Meta's advertising revenue grew by $28.68 billion, or 22%, in 2024 compared to 2023.\",\n  \"points\": [\n    {\n      \"text\": \"Advertising revenue in 2024 increased $28.68 billion, or 22%, compared to 2023.\",\n      \"cite_ids\": [\n        \"c:8df17a80914dc409e0663be869e51c19cd78dc6165dd56344a4494054078346a\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:8df17a80914dc409e0663be869e51c19cd78dc6165dd56344a4494054078346a\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\": \"en\", \"status\": \"completed\", \"summary\": \"Meta's advertising revenue grew by $28.68 billion, or 22%, in 2024 compared to 2023.\", \"points\": [{\"text\": \"Advertising revenue in 2024 increased $28.68 billion, or 22%, compared to 2023.\", \"cite_ids\": [\"c:6f31ec36453d348abe60fb6c1f1f786e23450073d1339858d2107e06245bc9d7\"]}], \"citations\": [{\"marker\": 1, \"cite_id\": \"c:6f31ec36453d348abe60fb6c1f1f786e23450073d1339858d2107e06245bc9d7\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 7543,
-    "tokens_out": 765,
-    "latency_ms": 19897.655,
+    "tokens_in": 4533,
+    "tokens_out": 589,
+    "latency_ms": 21376.626,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -98,620 +84,12 @@
  ],
  "tools": [
   {
-   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\",\"gross_profit\",\"cost_of_revenue\"],\"periods\":[\"2024-FY\"],\"ticker\":\"META\"},\"name\":\"get_financial_facts\"}",
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\"],\"periods\":[\"2024-FY\"],\"ticker\":\"META\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:820\">Cash and cash equivalents (2024-FY): 43,889,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4224\">Cash and cash equivalents (2024-FY): 43,889,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:19021\">Cash and cash equivalents (2024-FY): 43,889,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:824\">Cash and cash equivalents (2024-FY; 2025-FY report): 43,889,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4228\">Cash and cash equivalents (2024-FY; 2025-FY report): 43,889,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:19025\">Cash and cash equivalents (2024-FY; 2025-FY report): 43,889,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:23008\">Cost of revenue (2024-FY): 30,161,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:23009\">Cost of revenue (2024-FY; 2025-FY report): 30,161,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:805\">Depreciation and amortization (2024-FY): 15,498,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4209\">Depreciation and amortization (2024-FY): 15,498,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:19006\">Depreciation and amortization (2024-FY): 15,498,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:806\">Depreciation and amortization (2024-FY; 2025-FY report): 15,498,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4210\">Depreciation and amortization (2024-FY; 2025-FY report): 15,498,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:19007\">Depreciation and amortization (2024-FY; 2025-FY report): 15,498,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:839\">EBITDA (2024-FY): 84,878,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4243\">EBITDA (2024-FY): 84,878,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:19043\">EBITDA (2024-FY): 84,878,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:840\">EBITDA (2024-FY; 2025-FY report): 84,878,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4244\">EBITDA (2024-FY; 2025-FY report): 84,878,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:19044\">EBITDA (2024-FY; 2025-FY report): 84,878,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:757\">Net income (2024-FY): 62,360,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4161\">Net income (2024-FY): 62,360,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18952\">Net income (2024-FY): 62,360,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:758\">Net income (2024-FY; 2025-FY report): 62,360,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4162\">Net income (2024-FY; 2025-FY report): 62,360,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18953\">Net income (2024-FY; 2025-FY report): 62,360,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:775\">Operating income (2024-FY): 69,380,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4179\">Operating income (2024-FY): 69,380,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18972\">Operating income (2024-FY): 69,380,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:776\">Operating income (2024-FY; 2025-FY report): 69,380,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4180\">Operating income (2024-FY; 2025-FY report): 69,380,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18973\">Operating income (2024-FY; 2025-FY report): 69,380,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:739\">Revenue (2024-FY): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4143\">Revenue (2024-FY): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18932\">Revenue (2024-FY): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:740\">Revenue (2024-FY; 2025-FY report): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4144\">Revenue (2024-FY; 2025-FY report): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18933\">Revenue (2024-FY; 2025-FY report): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:788\">Total debt (2024-FY): 28,826,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4192\">Total debt (2024-FY): 28,826,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18987\">Total debt (2024-FY): 28,826,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:789\">Total debt (2024-FY; 2025-FY report): 28,826,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4193\">Total debt (2024-FY; 2025-FY report): 28,826,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18988\">Total debt (2024-FY; 2025-FY report): 28,826,000,000 USD</untrusted_document>",
-   "summary": "META 2024-FY net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization, gross_profit, c",
-   "count": 44,
+   "content": "<untrusted_document cite_id=\"f:739\">Revenue (2024-FY): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4143\">Revenue (2024-FY): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18932\">Revenue (2024-FY): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:740\">Revenue (2024-FY; 2025-FY report): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4144\">Revenue (2024-FY; 2025-FY report): 164,501,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:18933\">Revenue (2024-FY; 2025-FY report): 164,501,000,000 USD</untrusted_document>",
+   "summary": "META 2024-FY revenue",
+   "count": 6,
    "items": [
-    {
-     "cite_id": "f:820",
-     "text": "Cash and cash equivalents (2024-FY): 43,889,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 153,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "cash",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "43889000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4224",
-     "text": "Cash and cash equivalents (2024-FY): 43,889,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2370,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "cash",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "43889000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:19021",
-     "text": "Cash and cash equivalents (2024-FY): 43,889,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3308,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "cash",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "43889000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:824",
-     "text": "Cash and cash equivalents (2024-FY; 2025-FY report): 43,889,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 149,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "cash",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "43889000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4228",
-     "text": "Cash and cash equivalents (2024-FY; 2025-FY report): 43,889,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2366,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "cash",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "43889000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:19025",
-     "text": "Cash and cash equivalents (2024-FY; 2025-FY report): 43,889,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3304,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "cash",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "43889000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:23008",
-     "text": "Cost of revenue (2024-FY): 30,161,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3308,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "cost_of_revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:CostOfRevenue 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "30161000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:23009",
-     "text": "Cost of revenue (2024-FY; 2025-FY report): 30,161,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3304,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "cost_of_revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:CostOfRevenue 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "30161000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:805",
-     "text": "Depreciation and amortization (2024-FY): 15,498,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 153,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "depreciation_amortization",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "15498000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4209",
-     "text": "Depreciation and amortization (2024-FY): 15,498,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2370,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "depreciation_amortization",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "15498000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:19006",
-     "text": "Depreciation and amortization (2024-FY): 15,498,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3308,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "depreciation_amortization",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "15498000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:806",
-     "text": "Depreciation and amortization (2024-FY; 2025-FY report): 15,498,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 149,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "depreciation_amortization",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "15498000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4210",
-     "text": "Depreciation and amortization (2024-FY; 2025-FY report): 15,498,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2366,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "depreciation_amortization",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "15498000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:19007",
-     "text": "Depreciation and amortization (2024-FY; 2025-FY report): 15,498,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3304,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "depreciation_amortization",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:DepreciationDepletionAndAmortization 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "15498000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:839",
-     "text": "EBITDA (2024-FY): 84,878,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 153,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "ebitda",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0001326801-25-000017 + us-gaap:DepreciationDepletionAndAmortization 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "84878000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4243",
-     "text": "EBITDA (2024-FY): 84,878,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2370,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "ebitda",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0001326801-25-000017 + us-gaap:DepreciationDepletionAndAmortization 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "84878000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:19043",
-     "text": "EBITDA (2024-FY): 84,878,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3308,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "ebitda",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0001326801-25-000017 + us-gaap:DepreciationDepletionAndAmortization 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "84878000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:840",
-     "text": "EBITDA (2024-FY; 2025-FY report): 84,878,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 149,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "ebitda",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0001628280-26-003942 + us-gaap:DepreciationDepletionAndAmortization 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "84878000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4244",
-     "text": "EBITDA (2024-FY; 2025-FY report): 84,878,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2366,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "ebitda",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0001628280-26-003942 + us-gaap:DepreciationDepletionAndAmortization 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "84878000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:19044",
-     "text": "EBITDA (2024-FY; 2025-FY report): 84,878,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3304,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "ebitda",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "derived: us-gaap:OperatingIncomeLoss 0001628280-26-003942 + us-gaap:DepreciationDepletionAndAmortization 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "84878000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:757",
-     "text": "Net income (2024-FY): 62,360,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 153,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "net_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:NetIncomeLoss 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "62360000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4161",
-     "text": "Net income (2024-FY): 62,360,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2370,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "net_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:NetIncomeLoss 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "62360000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:18952",
-     "text": "Net income (2024-FY): 62,360,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3308,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "net_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:NetIncomeLoss 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "62360000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:758",
-     "text": "Net income (2024-FY; 2025-FY report): 62,360,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 149,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "net_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "62360000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4162",
-     "text": "Net income (2024-FY; 2025-FY report): 62,360,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2366,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "net_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "62360000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:18953",
-     "text": "Net income (2024-FY; 2025-FY report): 62,360,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3304,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "net_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:NetIncomeLoss 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "62360000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:775",
-     "text": "Operating income (2024-FY): 69,380,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 153,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "operating_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:OperatingIncomeLoss 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "69380000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4179",
-     "text": "Operating income (2024-FY): 69,380,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2370,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "operating_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:OperatingIncomeLoss 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "69380000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:18972",
-     "text": "Operating income (2024-FY): 69,380,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3308,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "operating_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:OperatingIncomeLoss 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "69380000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:776",
-     "text": "Operating income (2024-FY; 2025-FY report): 69,380,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 149,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "operating_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:OperatingIncomeLoss 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "69380000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4180",
-     "text": "Operating income (2024-FY; 2025-FY report): 69,380,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2366,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "operating_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:OperatingIncomeLoss 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "69380000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:18973",
-     "text": "Operating income (2024-FY; 2025-FY report): 69,380,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3304,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "operating_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:OperatingIncomeLoss 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "69380000000",
-     "scale": "1",
-     "unit_note": null
-    },
     {
      "cite_id": "f:739",
      "text": "Revenue (2024-FY): 164,501,000,000 USD",
@@ -825,163 +203,23 @@
      "value": "164501000000",
      "scale": "1",
      "unit_note": null
-    },
-    {
-     "cite_id": "f:788",
-     "text": "Total debt (2024-FY): 28,826,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 153,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "total_debt",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:LongTermDebt 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "28826000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4192",
-     "text": "Total debt (2024-FY): 28,826,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2370,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "total_debt",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:LongTermDebt 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "28826000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:18987",
-     "text": "Total debt (2024-FY): 28,826,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3308,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "total_debt",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:LongTermDebt 0001326801-25-000017",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
-     },
-     "value": "28826000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:789",
-     "text": "Total debt (2024-FY; 2025-FY report): 28,826,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 149,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "total_debt",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:LongTermDebt 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "28826000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4193",
-     "text": "Total debt (2024-FY; 2025-FY report): 28,826,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2366,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "total_debt",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:LongTermDebt 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "28826000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:18988",
-     "text": "Total debt (2024-FY; 2025-FY report): 28,826,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3304,
-      "ticker": "META",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "total_debt",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:LongTermDebt 0001628280-26-003942",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
-     },
-     "value": "28826000000",
-     "scale": "1",
-     "unit_note": null
     }
    ],
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"query\":\"advertising revenue 2024 2023\",\"ticker\":\"META\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"period_from\":\"2024-FY\",\"period_to\":\"2024-FY\",\"query\":\"advertising revenue 2024 growth\",\"ticker\":\"META\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
-   "content": "Tool error: document search is temporarily unavailable",
-   "summary": "META advertising revenue 2024 2023",
-   "count": 0,
-   "items": [],
-   "error": "document search is temporarily unavailable"
-  },
-  {
-   "key": "{\"arguments\":{\"period_from\":\"2024-FY\",\"period_to\":\"2025-FY\",\"query\":\"advertising revenue\",\"ticker\":\"META\"},\"name\":\"search_documents\"}",
-   "tool": "search_documents",
-   "content": "<untrusted_document cite_id=\"c:62bf99d60bf4d669d02c1a02c2511cf3d82435b3b68d3a9e209ae86e102cc837\" amounts_in=\"millions\">Family of Apps FoA revenue in the three months ended March 31, 2025 increased $5.89 billion, or 16%, compared to the same period in 2024. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in the three months ended March 31, 2025 increased $5.76 billion, or 16%, compared to the same period in 2024, due to increases in ad impressions delivered and average price per ad. During the three months ended March 31, 2025, ad impressions delivered increased by 5%, year-over-year, as compared with a 20% increase in the same period in 2024. Ad impressions delivered during the three months ended March 31, 2025 grew in all regions, especially in Asia-Pacific, which was primarily driven by increases in users and their engagement on our products. During the three months ended March 31, 2025, the average price per ad increased by 10%, year-over-year, as compared with an increase of 6% in the same period in 2024. The increase in average price per ad during the three months ended March 31, 2025 was driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of First Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three months ended March 31, 2025 compared to the same period in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three months ended March 31, 2025 increased $130 million, or 34%, compared to the same period in 2024. The increase was mostly driven by revenue from WhatsApp Business Platform and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended March 31, 2025 decreased $28 million, or 6%, compared to the same period in 2024. The decrease in RL revenue was driven by a net decrease in Meta Quest sales, partially offset by an increase in sales of Ray-Ban Meta AI glasses. Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the three months ended March 31, 2025 compared to the same period in 2024. To calculate revenue on a constant currency basis, we translated revenue using the prior year's monthly exchange rates for our settlement or billing currencies other than the U.S. dollar.</untrusted_document>\n<untrusted_document cite_id=\"c:8df17a80914dc409e0663be869e51c19cd78dc6165dd56344a4494054078346a\" amounts_in=\"millions\">Family of Apps FoA revenue in 2024 increased $29.35 billion, or 22%, compared to 2023. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in 2024 increased $28.68 billion, or 22%, compared to 2023 due to increases in ad impressions delivered and average price per ad. In 2024, ad impressions delivered increased by 11%, as compared with a 28% increase in 2023, year-over-year. Ad impressions delivered during 2024 grew in all regions, especially in Asia-Pacific and Rest of World, which was mostly driven by increases in users and their engagement on our products. In 2024, the average price per ad increased by 10%, as compared with a decrease of 9% in 2023, year-over-year. The increase in average price per ad in 2024 was driven by an increase in advertising demand, which we believe is mainly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Full Year 2024 Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in 2024 compared to 2023. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in 2024 increased $664 million, or 63%, compared to 2023. The increase was primarily driven by WhatsApp Business Platform revenue. Reality Labs RL revenue in 2024 increased $250 million, or 13%, compared to 2023. The increase was mostly due to an increase in RL consumer hardware products sold. Revenue Seasonality Revenue is traditionally seasonally strong in the fourth quarter of each year due in part to seasonal holiday demand. We believe that this seasonality in both advertising revenue and RL consumer hardware sales affects our quarterly results, which generally reflect significant growth in revenue between the third and fourth quarters and a decline between the fourth and subsequent first quarters. For instance, our total revenue increased 19%, 17%, and 16% between the third and fourth quarters of 2024, 2023, and 2022, respectively, while total revenue for the first quarters of 2024, 2023, and 2022 declined 9%, 11%, and 17% compared to the fourth quarters of 2023, 2022, and 2021, respectively. 72 Table of Contents Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the full year 2024 compared to the same period in 2023.</untrusted_document>\n<untrusted_document cite_id=\"c:575097ef7f8e4f32f02964d8a43006c3ce339d1779cd749103d75c93758bedc6\" amounts_in=\"millions\">Family of Apps FoA revenue in 2025 increased $36.40 billion, or 22%, compared to 2024. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in 2025 increased $35.54 billion, or 22%, compared to 2024 due to increases in ad impressions delivered and average price per ad. In 2025, ad impressions delivered increased by 12%, as compared with an increase of 11% in 2024, year-over-year. Ad impressions delivered during 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. In 2025, the average price per ad increased by 9%, as compared with an increase of 10% in 2024, year-over-year. The increase in average price per ad in 2025 was driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Full Year 2025 Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in 2025 compared to 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in 2025 increased $862 million, or 50%, compared to 2024. The increase was mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in 2025 increased $61 million, or 3%, compared to 2024. The increase was driven by an increase in sales of AI glasses, partially offset by a decrease in Meta Quest sales. Revenue Seasonality Revenue is traditionally seasonally strong in the fourth quarter of each year due in part to seasonal holiday demand. We believe that this seasonality in both advertising revenue and RL consumer hardware sales affects our quarterly results, which generally reflect significant growth in revenue between the third and fourth quarters and a decline between the fourth and subsequent first quarters. For instance, our total revenue increased 17%, 19%, and 17% between the third and fourth quarters of 2025, 2024, and 2023, respectively, while total revenue for the first quarters of 2025, 2024, and 2023 declined 13%, 9%, and 11% compared to the fourth quarters of 2024, 2023, and 2022, respectively. 73 Table of Contents Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the full year 2025 compared to the same period in 2024.</untrusted_document>\n<untrusted_document cite_id=\"c:501e15f1cf5fc76e1447e1320a9ca1e37cf647b67f2bee471309340759e2d6b9\" amounts_in=\"millions\">Family of Apps FoA revenue in the three and six months ended June 30, 2025 increased $8.43 billion, or 22%, and $14.31 billion, or 19%, respectively, compared to the same periods in 2024. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and six months ended June 30, 2025 increased $8.23 billion, or 21%, and $13.99 billion, or 19%, respectively, compared to the same periods in 2024, due to increases in ad impressions delivered and average price per ad. During the three and six months ended June 30, 2025, ad impressions delivered increased by 11% and 8%, respectively, year-over-year, as compared with increases of 10% and 15%, respectively in the same periods in 2024. Ad impressions delivered during the three and six months ended June 30, 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. During the three and six months ended June 30, 2025, the average price per ad increased by 9% and 10%, respectively, year-over-year, as compared with increases of 10% and 8%, respectively, in the same periods in 2024. The increases in average price per ad were driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Second Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three and six months ended June 30, 2025 compared to the same periods in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and six months ended June 30, 2025 increased $194 million, or 50%, and $324 million, or 42%, respectively, compared to the same periods in 2024. The increases were mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended June 30, 2025 increased $17 million, or 5%, compared to the same period in 2024, driven by an increase in sales of Ray-Ban Meta AI glasses, partially offset by a net decrease in Meta Quest sales. RL revenue in the six months ended June 30, 2025 decreased $11 million, or 1%, compared to the same period in 2024. Foreign Exchange Impact on Revenue</untrusted_document>\n<untrusted_document cite_id=\"c:2fc92ad397fc88c10d5e924675dea234e757b19e9eb421b49f1d92553d673655\" amounts_in=\"millions\">Family of Apps FoA revenue in the three and nine months ended September 30, 2025 increased $10.45 billion, or 26%, and $24.77 billion, or 22%, respectively, compared to the same periods in 2024. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and nine months ended September 30, 2025 increased $10.20 billion, or 26%, and $24.19 billion, or 21%, respectively, compared to the same periods in 2024, due to increases in ad impressions delivered and average price per ad. During the three and nine months ended September 30, 2025, ad impressions delivered increased by 14% and 10%, respectively, year-over-year, as compared with increases of 7% and 12%, respectively in the same periods in 2024. Ad impressions delivered during the three and nine months ended September 30, 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. During the three and nine months ended September 30, 2025, the average price per ad increased by 10% and 10%, respectively, year-over-year, as compared with increases of 11% and 9%, respectively, in the same periods in 2024. The increases in average price per ad were driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Third Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three and nine months ended September 30, 2025 compared to the same periods in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and nine months ended September 30, 2025 increased $256 million, or 59%, and $581 million, or 48%, respectively, compared to the same periods in 2024. The increases were mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended September 30, 2025 increased $200 million, or 74%, compared to the same period in 2024, mostly due to increases in sales of Meta Quest and AI glasses.</untrusted_document>\n<untrusted_document cite_id=\"c:a36e5c2d925dc602e0c9011937c36c5b46b35977a5b775cd77d11e53ef9f4c00\">33 Table of Contents Trends in Our Ad Impressions and Average Price Per Ad • Ad Impressions. Our advertising revenue is generated by displaying ad products on Facebook, Instagram, Messenger, and third-party mobile applications. Impressions are considered delivered when an ad is displayed to a user. _ _ Note: Our ad impressions growth by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when an ad impression is delivered. 34 Table of Contents • Average Price Per Ad. We calculate average price per ad as total advertising revenue divided by the number of ads delivered. _ _ Note: Our average price per ad growth by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when an ad impression is delivered. 35 Table of Contents Components of Results of Operations Revenue Family of Apps (FoA) Advertising . We generate substantially all of our revenue from advertising. Our advertising revenue is generated by displaying ad products on Facebook, Instagram, Messenger, and third-party mobile applications. Marketers pay for ad products either directly or through their relationships with advertising agencies or resellers, based on the number of impressions delivered or the number of actions, such as clicks, taken by users. We recognize revenue from the display of impression-based ads in the contracted period in which the impressions are delivered. Impressions are considered delivered when an ad is displayed to a user. We recognize revenue from the delivery of action-based ads in the period in which a user takes the action the marketer contracted for. The number of ads we show is subject to methodological changes as we continue to evolve our ads business and the structure of our ads products. In particular, the ads we show may vary by product (for example, our video and Reels products are not currently monetized at the same rate as our Feed or Stories products), and from time to time we increase or decrease the number or frequency of ads we show as part of our product and monetization strategies. We calculate average price per ad as total advertising revenue divided by the number of ads delivered, representing the average price paid per ad by a marketer regardless of their desired objective such as impression or action. For advertising revenue arrangements where we are not the principal, we recognize revenue on a net basis. Other revenue . Other revenue consists of revenue from WhatsApp Business Platform, Meta Verified subscriptions, net fees we receive from developers using our Payments infrastructure, and revenue from various other sources. Reality Labs (RL)</untrusted_document>",
-   "summary": "META advertising revenue",
+   "content": "<untrusted_document cite_id=\"c:6f31ec36453d348abe60fb6c1f1f786e23450073d1339858d2107e06245bc9d7\" amounts_in=\"millions\">Family of Apps FoA revenue in 2024 increased $29.35 billion, or 22%, compared to 2023. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in 2024 increased $28.68 billion, or 22%, compared to 2023 due to increases in ad impressions delivered and average price per ad. In 2024, ad impressions delivered increased by 11%, as compared with a 28% increase in 2023, year-over-year. Ad impressions delivered during 2024 grew in all regions, especially in Asia-Pacific and Rest of World, which was mostly driven by increases in users and their engagement on our products. In 2024, the average price per ad increased by 10%, as compared with a decrease of 9% in 2023, year-over-year. The increase in average price per ad in 2024 was driven by an increase in advertising demand, which we believe is mainly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Full Year 2024 Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in 2024 compared to 2023. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in 2024 increased $664 million, or 63%, compared to 2023. The increase was primarily driven by WhatsApp Business Platform revenue. Reality Labs RL revenue in 2024 increased $250 million, or 13%, compared to 2023. The increase was mostly due to an increase in RL consumer hardware products sold. Revenue Seasonality Revenue is traditionally seasonally strong in the fourth quarter of each year due in part to seasonal holiday demand. We believe that this seasonality in both advertising revenue and RL consumer hardware sales affects our quarterly results, which generally reflect significant growth in revenue between the third and fourth quarters and a decline between the fourth and subsequent first quarters. For instance, our total revenue increased 19%, 17%, and 16% between the third and fourth quarters of 2024, 2023, and 2022, respectively, while total revenue for the first quarters of 2024, 2023, and 2022 declined 9%, 11%, and 17% compared to the fourth quarters of 2023, 2022, and 2021, respectively. 72 Table of Contents Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the full year 2024 compared to the same period in 2023.</untrusted_document>\n<untrusted_document cite_id=\"c:011768b0c50fa350dbebf7cc37aaf2db2181d8172c3d9627db82aa2805dc2b86\" amounts_in=\"millions\">____________________________________ NM - not meaningful Interest and other income (expense), net in 2024 increased $606 million compared to 2023, mostly due to an increase in interest income from a combination of higher balances and interest rates, partially offset by an increase in interest expense on our long-term debt. Provision for income taxes</untrusted_document>\n<untrusted_document cite_id=\"c:c66d689f937fa513421ebd3920f4a7e71f770500b8fc711c9b9a8d05c024bfc2\">We are investing now because we believe this is the next chapter of the internet and will unlock monetization opportunities for businesses, developers, and creators, including around advertising, hardware, and digital goods. 62 Table of Contents Trends in Our Revenue by User Geography We calculate our revenue by user geography based on our estimate of the geography in which ad impressions are delivered, virtual and digital goods are purchased, or consumer hardware products are shipped. The geography of our users affects our revenue and financial results. Our revenue in regions such as United States & Canada and Europe is relatively higher primarily due to the size and maturity of those online and mobile advertising markets, and ad impression growth is primarily in geographies that monetize at lower rates, such as Asia-Pacific and Rest of World. In 2024, revenue increased by 18% in United States & Canada, 26% in Europe, 22% in Asia-Pacific, and 31% in Rest of World, in each case relative to 2023. - Note: Non-advertising revenue includes RL revenue generated from the delivery of consumer hardware products and FoA Other revenue, which consists of revenue from WhatsApp Business Platform, Meta Verified subscriptions, net fees we receive from developers using our Payments infrastructure, and revenue from various other sources. Our revenue by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when they perform a revenue-generating activity. This allocation differs from our revenue disaggregated by geography disclosure in Note 2 — Revenue in our consolidated financial statements included in Part II, Item 8, \"Financial Statements and Supplemental Data\" where revenue is geographically apportioned based on the addresses of our customers. 63 Table of Contents Trends in Our Family Metrics The numbers for our key Family metrics, our DAP and average revenue per person (ARPP), do not include users on our other products unless they would otherwise qualify as DAP based on their other activities on our Family products. Trends in the number of people in our community affect our revenue and financial results by influencing the number of ads we are able to show, the value of our ads to marketers, as well as our expenses and capital expenditures. Substantially all of our daily active people (as defined below) access our Family products on mobile devices. • Daily Active People (DAP).</untrusted_document>\n<untrusted_document cite_id=\"c:bf5586b05f5b67c4a9eb71856598c47814cb23d7aae9178910909de3b4c8dcea\">Note: We updated our definition of ARPP beginning in the first quarter of 2024 and have recast ARPP in prior periods for comparative purposes. Our annual worldwide ARPP in 2024, which represents the sum of quarterly ARPP during such period, was $49.63, an increase of 15% from 2023. 65 Table of Contents Trends in Our Ad Impressions and Average Price Per Ad • Ad Impressions. Our advertising revenue is generated by displaying ad products on Facebook, Instagram, Messenger, and third-party mobile applications. Impressions are considered delivered when an ad is displayed to a user. Note: Our ad impressions growth by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when an ad impression is delivered. 66 Table of Contents • Average Price Per Ad. We calculate average price per ad as total advertising revenue divided by the number of ads delivered. Note: Our average price per ad growth by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when an ad impression is delivered. 67 Table of Contents Critical Accounting Estimates Our consolidated financial statements are prepared in accordance with GAAP. The preparation of these consolidated financial statements requires us to make estimates and assumptions that affect the reported amounts of assets, liabilities, revenue, costs and expenses, and related disclosures. On an ongoing basis, we evaluate our accounting estimates based on historical experience and on various other assumptions that we believe are reasonable under the circumstances. The actual impact on our financial performance could differ from these estimates under different assumptions or conditions. An accounting estimate is considered critical if both (i) the nature of the estimates or assumptions is material due to the levels of subjectivity and judgment involved, and (ii) the impact within a reasonable range of outcomes of the estimates and assumptions is material to our consolidated financial statements. We believe that the estimates and assumptions associated with loss contingencies, income taxes, and valuation of assets, when applicable, have the greatest potential impact on our consolidated financial statements. Therefore, we consider these to be our critical accounting estimates. For further information on all of our significant accounting policies, see Note 1 — Summary of Significant Accounting Policies in the accompanying notes to the consolidated financial statements included in Part II, Item 8, \"Financial Statements and Supplementary Data\" of this Annual Report on Form 10-K. Loss Contingencies</untrusted_document>\n<untrusted_document cite_id=\"c:1a3d1c7cb0b0ab5434c66cb00fadd591570cca8160ef3548ddf5b7a884a7d26d\" amounts_in=\"millions\">Further, we are focused on driving onsite conversions in our business messaging ad products by developing new features and scaling existing features. We are also engaging with others across our industry to explore the possibility of new open standards for the private and secure processing of data for advertising purposes. We believe our ongoing improvements to ad targeting and measurement are continuing to drive improved results for advertisers. However, we expect that some of these efforts will be long-term initiatives, and that the legislative, regulatory and platform developments described above will continue to adversely impact our advertising revenue for the foreseeable future. In addition, we maintain advertising policies to protect the security and integrity of our platform and comply with global content, security, and integrity obligations. Our ongoing efforts to enhance enforcement against ads and marketers which violate our advertising policies adversely affect our revenue, and we expect that the continued enhancement of such efforts will have an impact on our revenue in the future, which may be material. Other Business and Macroeconomic Conditions Other global and regional business, macroeconomic, and geopolitical conditions also have had, and we believe will continue to have, an impact on our user growth and engagement and advertising revenue. In particular, we believe advertising budgets have been pressured from time to time by factors such as inflation, high interest rates, and related market uncertainty, which has led to reduced marketer spending. While we saw improvement in business and macroeconomic conditions in recent periods, continued business, macroeconomic, and geopolitical uncertainty remains, which could impact our financial results in future periods. In addition, competitive products and services have reduced some users' engagement with our products and services. We are investing in Reels and in AI initiatives across our products, including our AI-powered discovery engine to recommend relevant content, which we have already seen results in improved user engagement and monetization of our products. However, we continue to face competition from other products and services within certain demographics, in particular younger users. In addition, while Reels is growing in usage, it monetizes at a lower rate than our Feed and Stories products and we expect it will continue to monetize at a lower rate for the foreseeable future. We also have seen fluctuations and declines in the size of our active user base in one or more regions from time to time due to geopolitical conditions, which have adversely affected our user growth and engagement. These trends adversely affected advertising revenue in 2024, and we expect will continue to affect our advertising revenue in the foreseeable future. 61 Table of Contents</untrusted_document>\n<untrusted_document cite_id=\"c:37b6a98157545b34768f735a7dc8cdb10e452ea063fc93580c40486d58a36ab9\">These laws and regulations are evolving and subject to interpretation, and resulting limitations on our advertising services, or reductions of advertising by marketers, have to some extent adversely affected, and will continue to adversely affect, our advertising business. Some states have also proposed or enacted laws specifically focused on the privacy rights and controls for users under 18 years old and their parents or guardians. Like comprehensive privacy laws, these laws are evolving and subject to interpretation, and may restrict our ability to offer certain products and services provided to all or certain cohorts of users in those states, adversely affecting our advertising business. In Europe, evolving interpretation of the ePrivacy Directive's requirements regarding the use of cookies and similar technologies may lead to regulators imposing specific measures in the future which could directly impact our use of such technologies. In addition, the ePrivacy Directive and national implementation laws impose additional limitations on the use of data across messaging products and include significant penalties for non-compliance. Changes to our products or business practices as a result of these or similar developments have adversely affected, and may in the future adversely affect, our advertising business. For example, in response to regulatory developments in Europe, we announced plans to change the legal basis for behavioral advertising on Facebook and Instagram in the European Union, European Economic Area, and Switzerland from \"legitimate interests\" to \"consent,\" and in November 2023 we began offering users in the region a \"subscription for no ads\" alternative. We are engaging with regulators on our consent model, including regarding compliance with requirements under the GDPR, Digital Markets Act (DMA), and EU consumer laws. For example, in March 2024, the European Commission opened formal proceedings regarding the compliance of our \"subscription for no ads\" model with requirements under the DMA, and it issued preliminary findings in July 2024, reflecting its preliminary view that our model does not comply with such requirements, and indicated that it will conclude its investigation in March 2025. In addition, the European Data Protection Board has published an opinion on the operation of such models under GDPR and European consumer protection organizations have raised concerns regarding our compliance with consumer protection laws. In response to these developments, in November 2024, we began offering users in the European Union, European Economic Area, and Switzerland who elect to continue using our services free-of-charge, supported by ads, an option to see less personalized ads, 10 Table of Contents which are expected to be less relevant and effective than our premium ad offerings. These or any similar developments in the future may negatively impact our user growth and engagement, revenue, and financial results.</untrusted_document>",
+   "summary": "META advertising revenue 2024 growth",
    "count": 6,
    "items": [
     {
-     "cite_id": "c:62bf99d60bf4d669d02c1a02c2511cf3d82435b3b68d3a9e209ae86e102cc837",
-     "text": "Family of Apps FoA revenue in the three months ended March 31, 2025 increased $5.89 billion, or 16%, compared to the same period in 2024. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in the three months ended March 31, 2025 increased $5.76 billion, or 16%, compared to the same period in 2024, due to increases in ad impressions delivered and average price per ad. During the three months ended March 31, 2025, ad impressions delivered increased by 5%, year-over-year, as compared with a 20% increase in the same period in 2024. Ad impressions delivered during the three months ended March 31, 2025 grew in all regions, especially in Asia-Pacific, which was primarily driven by increases in users and their engagement on our products. During the three months ended March 31, 2025, the average price per ad increased by 10%, year-over-year, as compared with an increase of 6% in the same period in 2024. The increase in average price per ad during the three months ended March 31, 2025 was driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of First Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three months ended March 31, 2025 compared to the same period in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three months ended March 31, 2025 increased $130 million, or 34%, compared to the same period in 2024. The increase was mostly driven by revenue from WhatsApp Business Platform and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended March 31, 2025 decreased $28 million, or 6%, compared to the same period in 2024. The decrease in RL revenue was driven by a net decrease in Meta Quest sales, partially offset by an increase in sales of Ray-Ban Meta AI glasses. Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the three months ended March 31, 2025 compared to the same period in 2024. To calculate revenue on a constant currency basis, we translated revenue using the prior year's monthly exchange rates for our settlement or billing currencies other than the U.S. dollar.",
-     "source": {
-      "kind": "chunk",
-      "document_id": 3628,
-      "ticker": "META",
-      "doc_type": "10-Q",
-      "period": "2025-Q1",
-      "section": "Item 2",
-      "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
-     },
-     "value": null,
-     "scale": "1000000",
-     "unit_note": "millions"
-    },
-    {
-     "cite_id": "c:8df17a80914dc409e0663be869e51c19cd78dc6165dd56344a4494054078346a",
+     "cite_id": "c:6f31ec36453d348abe60fb6c1f1f786e23450073d1339858d2107e06245bc9d7",
      "text": "Family of Apps FoA revenue in 2024 increased $29.35 billion, or 22%, compared to 2023. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in 2024 increased $28.68 billion, or 22%, compared to 2023 due to increases in ad impressions delivered and average price per ad. In 2024, ad impressions delivered increased by 11%, as compared with a 28% increase in 2023, year-over-year. Ad impressions delivered during 2024 grew in all regions, especially in Asia-Pacific and Rest of World, which was mostly driven by increases in users and their engagement on our products. In 2024, the average price per ad increased by 10%, as compared with a decrease of 9% in 2023, year-over-year. The increase in average price per ad in 2024 was driven by an increase in advertising demand, which we believe is mainly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Full Year 2024 Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in 2024 compared to 2023. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in 2024 increased $664 million, or 63%, compared to 2023. The increase was primarily driven by WhatsApp Business Platform revenue. Reality Labs RL revenue in 2024 increased $250 million, or 13%, compared to 2023. The increase was mostly due to an increase in RL consumer hardware products sold. Revenue Seasonality Revenue is traditionally seasonally strong in the fourth quarter of each year due in part to seasonal holiday demand. We believe that this seasonality in both advertising revenue and RL consumer hardware sales affects our quarterly results, which generally reflect significant growth in revenue between the third and fourth quarters and a decline between the fourth and subsequent first quarters. For instance, our total revenue increased 19%, 17%, and 16% between the third and fourth quarters of 2024, 2023, and 2022, respectively, while total revenue for the first quarters of 2024, 2023, and 2022 declined 9%, 11%, and 17% compared to the fourth quarters of 2023, 2022, and 2021, respectively. 72 Table of Contents Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the full year 2024 compared to the same period in 2023.",
      "source": {
       "kind": "chunk",
-      "document_id": 3629,
+      "document_id": 3786,
       "ticker": "META",
       "doc_type": "10-K",
       "period": "2024-FY",
@@ -994,68 +232,85 @@
      "unit_note": "millions"
     },
     {
-     "cite_id": "c:575097ef7f8e4f32f02964d8a43006c3ce339d1779cd749103d75c93758bedc6",
-     "text": "Family of Apps FoA revenue in 2025 increased $36.40 billion, or 22%, compared to 2024. The increase was almost entirely driven by advertising revenue. Advertising Advertising revenue in 2025 increased $35.54 billion, or 22%, compared to 2024 due to increases in ad impressions delivered and average price per ad. In 2025, ad impressions delivered increased by 12%, as compared with an increase of 11% in 2024, year-over-year. Ad impressions delivered during 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. In 2025, the average price per ad increased by 9%, as compared with an increase of 10% in 2024, year-over-year. The increase in average price per ad in 2025 was driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Full Year 2025 Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in 2025 compared to 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in 2025 increased $862 million, or 50%, compared to 2024. The increase was mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in 2025 increased $61 million, or 3%, compared to 2024. The increase was driven by an increase in sales of AI glasses, partially offset by a decrease in Meta Quest sales. Revenue Seasonality Revenue is traditionally seasonally strong in the fourth quarter of each year due in part to seasonal holiday demand. We believe that this seasonality in both advertising revenue and RL consumer hardware sales affects our quarterly results, which generally reflect significant growth in revenue between the third and fourth quarters and a decline between the fourth and subsequent first quarters. For instance, our total revenue increased 17%, 19%, and 17% between the third and fourth quarters of 2025, 2024, and 2023, respectively, while total revenue for the first quarters of 2025, 2024, and 2023 declined 13%, 9%, and 11% compared to the fourth quarters of 2024, 2023, and 2022, respectively. 73 Table of Contents Foreign Exchange Impact on Revenue Changes in foreign exchange rates had an unfavorable impact on our revenue in the full year 2025 compared to the same period in 2024.",
+     "cite_id": "c:011768b0c50fa350dbebf7cc37aaf2db2181d8172c3d9627db82aa2805dc2b86",
+     "text": "____________________________________ NM - not meaningful Interest and other income (expense), net in 2024 increased $606 million compared to 2023, mostly due to an increase in interest income from a combination of higher balances and interest rates, partially offset by an increase in interest expense on our long-term debt. Provision for income taxes",
      "source": {
       "kind": "chunk",
-      "document_id": 3625,
+      "document_id": 3786,
       "ticker": "META",
       "doc_type": "10-K",
-      "period": "2025-FY",
+      "period": "2024-FY",
       "section": "Item 7",
       "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm"
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
      },
      "value": null,
      "scale": "1000000",
      "unit_note": "millions"
     },
     {
-     "cite_id": "c:501e15f1cf5fc76e1447e1320a9ca1e37cf647b67f2bee471309340759e2d6b9",
-     "text": "Family of Apps FoA revenue in the three and six months ended June 30, 2025 increased $8.43 billion, or 22%, and $14.31 billion, or 19%, respectively, compared to the same periods in 2024. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and six months ended June 30, 2025 increased $8.23 billion, or 21%, and $13.99 billion, or 19%, respectively, compared to the same periods in 2024, due to increases in ad impressions delivered and average price per ad. During the three and six months ended June 30, 2025, ad impressions delivered increased by 11% and 8%, respectively, year-over-year, as compared with increases of 10% and 15%, respectively in the same periods in 2024. Ad impressions delivered during the three and six months ended June 30, 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. During the three and six months ended June 30, 2025, the average price per ad increased by 9% and 10%, respectively, year-over-year, as compared with increases of 10% and 8%, respectively, in the same periods in 2024. The increases in average price per ad were driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Second Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three and six months ended June 30, 2025 compared to the same periods in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and six months ended June 30, 2025 increased $194 million, or 50%, and $324 million, or 42%, respectively, compared to the same periods in 2024. The increases were mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended June 30, 2025 increased $17 million, or 5%, compared to the same period in 2024, driven by an increase in sales of Ray-Ban Meta AI glasses, partially offset by a net decrease in Meta Quest sales. RL revenue in the six months ended June 30, 2025 decreased $11 million, or 1%, compared to the same period in 2024. Foreign Exchange Impact on Revenue",
+     "cite_id": "c:c66d689f937fa513421ebd3920f4a7e71f770500b8fc711c9b9a8d05c024bfc2",
+     "text": "We are investing now because we believe this is the next chapter of the internet and will unlock monetization opportunities for businesses, developers, and creators, including around advertising, hardware, and digital goods. 62 Table of Contents Trends in Our Revenue by User Geography We calculate our revenue by user geography based on our estimate of the geography in which ad impressions are delivered, virtual and digital goods are purchased, or consumer hardware products are shipped. The geography of our users affects our revenue and financial results. Our revenue in regions such as United States & Canada and Europe is relatively higher primarily due to the size and maturity of those online and mobile advertising markets, and ad impression growth is primarily in geographies that monetize at lower rates, such as Asia-Pacific and Rest of World. In 2024, revenue increased by 18% in United States & Canada, 26% in Europe, 22% in Asia-Pacific, and 31% in Rest of World, in each case relative to 2023. - Note: Non-advertising revenue includes RL revenue generated from the delivery of consumer hardware products and FoA Other revenue, which consists of revenue from WhatsApp Business Platform, Meta Verified subscriptions, net fees we receive from developers using our Payments infrastructure, and revenue from various other sources. Our revenue by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when they perform a revenue-generating activity. This allocation differs from our revenue disaggregated by geography disclosure in Note 2 — Revenue in our consolidated financial statements included in Part II, Item 8, \"Financial Statements and Supplemental Data\" where revenue is geographically apportioned based on the addresses of our customers. 63 Table of Contents Trends in Our Family Metrics The numbers for our key Family metrics, our DAP and average revenue per person (ARPP), do not include users on our other products unless they would otherwise qualify as DAP based on their other activities on our Family products. Trends in the number of people in our community affect our revenue and financial results by influencing the number of ads we are able to show, the value of our ads to marketers, as well as our expenses and capital expenditures. Substantially all of our daily active people (as defined below) access our Family products on mobile devices. • Daily Active People (DAP).",
      "source": {
       "kind": "chunk",
-      "document_id": 3627,
+      "document_id": 3786,
       "ticker": "META",
-      "doc_type": "10-Q",
-      "period": "2025-Q2",
-      "section": "Item 2",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 7",
       "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025036791/meta-20250630.htm"
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:bf5586b05f5b67c4a9eb71856598c47814cb23d7aae9178910909de3b4c8dcea",
+     "text": "Note: We updated our definition of ARPP beginning in the first quarter of 2024 and have recast ARPP in prior periods for comparative purposes. Our annual worldwide ARPP in 2024, which represents the sum of quarterly ARPP during such period, was $49.63, an increase of 15% from 2023. 65 Table of Contents Trends in Our Ad Impressions and Average Price Per Ad • Ad Impressions. Our advertising revenue is generated by displaying ad products on Facebook, Instagram, Messenger, and third-party mobile applications. Impressions are considered delivered when an ad is displayed to a user. Note: Our ad impressions growth by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when an ad impression is delivered. 66 Table of Contents • Average Price Per Ad. We calculate average price per ad as total advertising revenue divided by the number of ads delivered. Note: Our average price per ad growth by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when an ad impression is delivered. 67 Table of Contents Critical Accounting Estimates Our consolidated financial statements are prepared in accordance with GAAP. The preparation of these consolidated financial statements requires us to make estimates and assumptions that affect the reported amounts of assets, liabilities, revenue, costs and expenses, and related disclosures. On an ongoing basis, we evaluate our accounting estimates based on historical experience and on various other assumptions that we believe are reasonable under the circumstances. The actual impact on our financial performance could differ from these estimates under different assumptions or conditions. An accounting estimate is considered critical if both (i) the nature of the estimates or assumptions is material due to the levels of subjectivity and judgment involved, and (ii) the impact within a reasonable range of outcomes of the estimates and assumptions is material to our consolidated financial statements. We believe that the estimates and assumptions associated with loss contingencies, income taxes, and valuation of assets, when applicable, have the greatest potential impact on our consolidated financial statements. Therefore, we consider these to be our critical accounting estimates. For further information on all of our significant accounting policies, see Note 1 — Summary of Significant Accounting Policies in the accompanying notes to the consolidated financial statements included in Part II, Item 8, \"Financial Statements and Supplementary Data\" of this Annual Report on Form 10-K. Loss Contingencies",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3786,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:1a3d1c7cb0b0ab5434c66cb00fadd591570cca8160ef3548ddf5b7a884a7d26d",
+     "text": "Further, we are focused on driving onsite conversions in our business messaging ad products by developing new features and scaling existing features. We are also engaging with others across our industry to explore the possibility of new open standards for the private and secure processing of data for advertising purposes. We believe our ongoing improvements to ad targeting and measurement are continuing to drive improved results for advertisers. However, we expect that some of these efforts will be long-term initiatives, and that the legislative, regulatory and platform developments described above will continue to adversely impact our advertising revenue for the foreseeable future. In addition, we maintain advertising policies to protect the security and integrity of our platform and comply with global content, security, and integrity obligations. Our ongoing efforts to enhance enforcement against ads and marketers which violate our advertising policies adversely affect our revenue, and we expect that the continued enhancement of such efforts will have an impact on our revenue in the future, which may be material. Other Business and Macroeconomic Conditions Other global and regional business, macroeconomic, and geopolitical conditions also have had, and we believe will continue to have, an impact on our user growth and engagement and advertising revenue. In particular, we believe advertising budgets have been pressured from time to time by factors such as inflation, high interest rates, and related market uncertainty, which has led to reduced marketer spending. While we saw improvement in business and macroeconomic conditions in recent periods, continued business, macroeconomic, and geopolitical uncertainty remains, which could impact our financial results in future periods. In addition, competitive products and services have reduced some users' engagement with our products and services. We are investing in Reels and in AI initiatives across our products, including our AI-powered discovery engine to recommend relevant content, which we have already seen results in improved user engagement and monetization of our products. However, we continue to face competition from other products and services within certain demographics, in particular younger users. In addition, while Reels is growing in usage, it monetizes at a lower rate than our Feed and Stories products and we expect it will continue to monetize at a lower rate for the foreseeable future. We also have seen fluctuations and declines in the size of our active user base in one or more regions from time to time due to geopolitical conditions, which have adversely affected our user growth and engagement. These trends adversely affected advertising revenue in 2024, and we expect will continue to affect our advertising revenue in the foreseeable future. 61 Table of Contents",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3786,
+      "ticker": "META",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 7",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
      },
      "value": null,
      "scale": "1000000",
      "unit_note": "millions"
     },
     {
-     "cite_id": "c:2fc92ad397fc88c10d5e924675dea234e757b19e9eb421b49f1d92553d673655",
-     "text": "Family of Apps FoA revenue in the three and nine months ended September 30, 2025 increased $10.45 billion, or 26%, and $24.77 billion, or 22%, respectively, compared to the same periods in 2024. The increases were almost entirely driven by advertising revenue. Advertising Advertising revenue in the three and nine months ended September 30, 2025 increased $10.20 billion, or 26%, and $24.19 billion, or 21%, respectively, compared to the same periods in 2024, due to increases in ad impressions delivered and average price per ad. During the three and nine months ended September 30, 2025, ad impressions delivered increased by 14% and 10%, respectively, year-over-year, as compared with increases of 7% and 12%, respectively in the same periods in 2024. Ad impressions delivered during the three and nine months ended September 30, 2025 grew in all regions, especially in Asia-Pacific, which was driven by increases in users and their engagement on our products. During the three and nine months ended September 30, 2025, the average price per ad increased by 10% and 10%, respectively, year-over-year, as compared with increases of 11% and 9%, respectively, in the same periods in 2024. The increases in average price per ad were driven by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especially in geographies and in products, such as Reels, that monetize at lower rates. Other factors are discussed in the section entitled \"—Executive Overview of Third Quarter Results.\" In addition, the online commerce vertical was the largest contributor to the increase in advertising revenue in the three and nine months ended September 30, 2025 compared to the same periods in 2024. We anticipate that future advertising revenue will be driven by a combination of price and ad impressions delivered. Other revenue FoA other revenue in the three and nine months ended September 30, 2025 increased $256 million, or 59%, and $581 million, or 48%, respectively, compared to the same periods in 2024. The increases were mostly driven by paid messaging from WhatsApp and Meta Verified subscriptions. Reality Labs RL revenue in the three months ended September 30, 2025 increased $200 million, or 74%, compared to the same period in 2024, mostly due to increases in sales of Meta Quest and AI glasses.",
+     "cite_id": "c:37b6a98157545b34768f735a7dc8cdb10e452ea063fc93580c40486d58a36ab9",
+     "text": "These laws and regulations are evolving and subject to interpretation, and resulting limitations on our advertising services, or reductions of advertising by marketers, have to some extent adversely affected, and will continue to adversely affect, our advertising business. Some states have also proposed or enacted laws specifically focused on the privacy rights and controls for users under 18 years old and their parents or guardians. Like comprehensive privacy laws, these laws are evolving and subject to interpretation, and may restrict our ability to offer certain products and services provided to all or certain cohorts of users in those states, adversely affecting our advertising business. In Europe, evolving interpretation of the ePrivacy Directive's requirements regarding the use of cookies and similar technologies may lead to regulators imposing specific measures in the future which could directly impact our use of such technologies. In addition, the ePrivacy Directive and national implementation laws impose additional limitations on the use of data across messaging products and include significant penalties for non-compliance. Changes to our products or business practices as a result of these or similar developments have adversely affected, and may in the future adversely affect, our advertising business. For example, in response to regulatory developments in Europe, we announced plans to change the legal basis for behavioral advertising on Facebook and Instagram in the European Union, European Economic Area, and Switzerland from \"legitimate interests\" to \"consent,\" and in November 2023 we began offering users in the region a \"subscription for no ads\" alternative. We are engaging with regulators on our consent model, including regarding compliance with requirements under the GDPR, Digital Markets Act (DMA), and EU consumer laws. For example, in March 2024, the European Commission opened formal proceedings regarding the compliance of our \"subscription for no ads\" model with requirements under the DMA, and it issued preliminary findings in July 2024, reflecting its preliminary view that our model does not comply with such requirements, and indicated that it will conclude its investigation in March 2025. In addition, the European Data Protection Board has published an opinion on the operation of such models under GDPR and European consumer protection organizations have raised concerns regarding our compliance with consumer protection laws. In response to these developments, in November 2024, we began offering users in the European Union, European Economic Area, and Switzerland who elect to continue using our services free-of-charge, supported by ads, an option to see less personalized ads, 10 Table of Contents which are expected to be less relevant and effective than our premium ad offerings. These or any similar developments in the future may negatively impact our user growth and engagement, revenue, and financial results.",
      "source": {
       "kind": "chunk",
-      "document_id": 3626,
+      "document_id": 3786,
       "ticker": "META",
-      "doc_type": "10-Q",
-      "period": "2025-Q3",
-      "section": "Item 2",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 1",
       "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828025047240/meta-20250930.htm"
-     },
-     "value": null,
-     "scale": "1000000",
-     "unit_note": "millions"
-    },
-    {
-     "cite_id": "c:a36e5c2d925dc602e0c9011937c36c5b46b35977a5b775cd77d11e53ef9f4c00",
-     "text": "33 Table of Contents Trends in Our Ad Impressions and Average Price Per Ad • Ad Impressions. Our advertising revenue is generated by displaying ad products on Facebook, Instagram, Messenger, and third-party mobile applications. Impressions are considered delivered when an ad is displayed to a user. _ _ Note: Our ad impressions growth by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when an ad impression is delivered. 34 Table of Contents • Average Price Per Ad. We calculate average price per ad as total advertising revenue divided by the number of ads delivered. _ _ Note: Our average price per ad growth by user geography in the charts above is geographically apportioned based on our estimation of the geographic location of our users when an ad impression is delivered. 35 Table of Contents Components of Results of Operations Revenue Family of Apps (FoA) Advertising . We generate substantially all of our revenue from advertising. Our advertising revenue is generated by displaying ad products on Facebook, Instagram, Messenger, and third-party mobile applications. Marketers pay for ad products either directly or through their relationships with advertising agencies or resellers, based on the number of impressions delivered or the number of actions, such as clicks, taken by users. We recognize revenue from the display of impression-based ads in the contracted period in which the impressions are delivered. Impressions are considered delivered when an ad is displayed to a user. We recognize revenue from the delivery of action-based ads in the period in which a user takes the action the marketer contracted for. The number of ads we show is subject to methodological changes as we continue to evolve our ads business and the structure of our ads products. In particular, the ads we show may vary by product (for example, our video and Reels products are not currently monetized at the same rate as our Feed or Stories products), and from time to time we increase or decrease the number or frequency of ads we show as part of our product and monetization strategies. We calculate average price per ad as total advertising revenue divided by the number of ads delivered, representing the average price paid per ad by a marketer regardless of their desired objective such as impression or action. For advertising revenue arrangements where we are not the principal, we recognize revenue on a net basis. Other revenue . Other revenue consists of revenue from WhatsApp Business Platform, Meta Verified subscriptions, net fees we receive from developers using our Payments infrastructure, and revenue from various other sources. Reality Labs (RL)",
-     "source": {
-      "kind": "chunk",
-      "document_id": 3628,
-      "ticker": "META",
-      "doc_type": "10-Q",
-      "period": "2025-Q1",
-      "section": "Item 2",
-      "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000054/meta-20250331.htm"
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000017/meta-20241231.htm"
      },
      "value": null,
      "scale": null,
@@ -1067,5 +322,5 @@
  ],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 35392
+ "elapsed_ms": 32084
 }

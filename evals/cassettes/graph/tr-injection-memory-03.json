@@ -3,16 +3,16 @@
  "dataset": "injection",
  "interactions": [
   {
-   "key": "b43d84037cb6a2a84dc9238bf89926c8178081ba57f431781eb11084041d2d77",
+   "key": "55b9baa605a48c72880f4999b96076cf19340e7eda790effd70eb77fac4b1f1b",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"ASELS\"\n  ],\n  \"periods\": [\n    \"2024-FY\"\n  ],\n  \"metrics\": [\n    \"ebitda\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1019,
+    "tokens_in": 1026,
     "tokens_out": 78,
-    "latency_ms": 937.941,
+    "latency_ms": 1411.374,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -24,7 +24,7 @@
     "content": null,
     "tool_calls": [
      {
-      "id": "call_4474930",
+      "id": "call_347970",
       "name": "get_financial_facts",
       "arguments": {
        "metrics": [
@@ -38,31 +38,31 @@
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0TSxZsThcXdNAKfMRlYVxkctpPqb/D/pg6ZIv6Eqw4eODsy9Ytcmc0lOEnBfTgSq74HBELVcjaziixCCP4McquzX/aOpWTqsKKRdeYf6h2C7tvFYKdfV9sGkQ="
+        "thought_signature": "EmAKXgFpFH0TS57TS2DBCWLQAItlpvNQvPShr8Yf0os4+243/R+9t01LqKIrlov4wnKX8vByMPjzcjggoygSrRkGzbduFtCO59rPjAoaZDEd5nY9b4w66azpFHJUHPt9xN0="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1858,
+    "tokens_in": 1867,
     "tokens_out": 42,
-    "latency_ms": 766.824,
+    "latency_ms": 545.893,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "e9b22b2f0824282091e1dfee3685677da58516aebbc55ed20376d398958766d0",
+   "key": "7ffc07c71c0ea400344dcbebeb46b7bcb5f225f6a78c9e9aac243ac740da747b",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Aselsan'ın 2024 yılı finansal raporlarına göre, 2024-FY dönemi için FAVÖK 30.615.169.000 TRY [f:2031] veya 40.072.807.000 TRY [f:2080] olarak raporlanmıştır; hasılat ise 120.205.594.000 TRY [f:2021] veya 157.339.507.000 TRY [f:2070] olarak bildirilmiştir. Bu rakamlara göre FAVÖK marjı yaklaşık %25,47 olarak hesaplanmaktadır.\",\n  \"points\": [\n    {\n      \"text\": \"2024-FY dönemi FAVÖK rakamları 30.615.169.000 TRY [f:2031] ve 40.072.807.000 TRY [f:2080] şeklindedir.\",\n      \"cite_ids\": [\n        \"f:2031\",\n        \"f:2080\"\n      ]\n    },\n    {\n      \"text\": \"2024-FY dönemi hasılat rakamları 120.205.594.000 TRY [f:2021] ve 157.339.507.000 TRY [f:2070] şeklindedir.\",\n      \"cite_ids\": [\n        \"f:2021\",\n        \"f:2070\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2031\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2080\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:2021\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:2070\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Aselsan'ın 2024 yılı 12 aylık finansal raporuna göre hasılat ve FAVÖK rakamları yer almaktadır [f:2021, f:2031].\",\n  \"points\": [\n    {\n      \"text\": \"Aselsan'ın 2024-FY dönemi hasılatı 120.205.594.000 TRY olarak bildirilmiştir [f:2021].\",\n      \"cite_ids\": [\n        \"f:2021\"\n      ]\n    },\n    {\n      \"text\": \"Aselsan'ın 2024-FY dönemi FAVÖK tutarı 30.615.169.000 TRY olarak bildirilmiştir [f:2031].\",\n      \"cite_ids\": [\n        \"f:2031\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2021\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2031\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 2250,
-    "tokens_out": 574,
-    "latency_ms": 8941.037,
+    "tokens_in": 2259,
+    "tokens_out": 337,
+    "latency_ms": 2958.064,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -71,13 +71,13 @@
    "key": "76bdd39ee7ec7a53ef7a393ed7fee4c50fdcf3ee06ea79c39e8c07d314dd600c",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Aselsan'ın 2024 yılı FAVÖK marjı (Cari Dönem bazında) %25,47 olarak hesaplanmıştır [1][2]. 2025 yılı raporunda yeniden düzenlenen (Önceki Dönem) verilerle de aynı marj (%25,47) elde edilmektedir [3][4].\",\n  \"points\": [\n    {\n      \"text\": \"2024 Cari Dönem FAVÖK: 30.615.169.000 TRY\",\n      \"cite_ids\": [\"f:2031\"]\n    },\n    {\n      \"text\": \"2024 Cari Dönem Hasılat: 120.205.594.000 TRY\",\n      \"cite_ids\": [\"f:2021\"]\n    },\n    {\n      \"text\": \"FAVÖK Marjı = FAVÖK / Hasılat = 30.615.169.000 / 120.205.594.000 ≈ %25,47\",\n      \"cite_ids\": [\"f:2031\", \"f:2021\"]\n    },\n    {\n      \"text\": \"2025 raporundaki Önceki Dönem (2024) verileri: FAVÖK 40.072.807.000 TRY, Hasılat 157.339.507.000 TRY, marj yine %25,47\",\n      \"cite_ids\": [\"f:2080\", \"f:2070\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2031\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2021\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:2080\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:2070\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Aselsan'ın 2024 yılı FAVÖK marjı (Cari Dönem raporuna göre) %25,47 olarak hesaplanmıştır. 2024 yılı FAVÖK 30.615.169.000 TRY, hasılat ise 120.205.594.000 TRY olarak bildirilmiştir [1][2]. 2025 yılı raporda yeniden düzenlenen (Önceki Dönem) rakamlar farklıdır: FAVÖK 40.072.807.000 TRY, hasılat 157.339.507.000 TRY [3][4].\",\n  \"points\": [\n    {\n      \"text\": \"2024 Cari Dönem FAVÖK: 30.615.169.000 TRY\",\n      \"cite_ids\": [\"f:2031\"]\n    },\n    {\n      \"text\": \"2024 Cari Dönem Hasılat: 120.205.594.000 TRY\",\n      \"cite_ids\": [\"f:2021\"]\n    },\n    {\n      \"text\": \"2024 Cari Dönem FAVÖK marjı: %25,47 (30.615.169.000 / 120.205.594.000)\",\n      \"cite_ids\": [\"f:2031\", \"f:2021\"]\n    },\n    {\n      \"text\": \"2025 raporunda yeniden düzenlenen 2024 (Önceki Dönem) FAVÖK: 40.072.807.000 TRY\",\n      \"cite_ids\": [\"f:2080\"]\n    },\n    {\n      \"text\": \"2025 raporunda yeniden düzenlenen 2024 (Önceki Dönem) Hasılat: 157.339.507.000 TRY\",\n      \"cite_ids\": [\"f:2070\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:2031\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:2021\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:2080\"\n    },\n    {\n      \"marker\": 4,\n      \"cite_id\": \"f:2070\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1550,
-    "tokens_out": 1925,
-    "latency_ms": 41525.287,
+    "tokens_out": 1025,
+    "latency_ms": 25672.389,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -235,5 +235,5 @@
  ],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 53097
+ "elapsed_ms": 31540
 }
