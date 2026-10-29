@@ -3,31 +3,31 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "c139c4340303f38445fc3e089b2a7a1d2d8e72a8ff031323274152127b1ab595",
+   "key": "45ad09c0e29c912a747166cd92b2398f38b595b0c4666c5419428e943eb0769b",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"THYAO\"\n  ],\n  \"periods\": [\n    \"2024-FY\"\n  ],\n  \"metrics\": [\n    \"total_debt\",\n    \"cash\",\n    \"ebitda\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1023,
+    "tokens_in": 1030,
     "tokens_out": 91,
-    "latency_ms": 1063.709,
+    "latency_ms": 3275.788,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "fccc78233a12b7876870f45a8a8d0a3850df0c145bb39eb896afbfdc31c7e5f1",
+   "key": "b7ac5e11c5ba95476568b595b10eaf08ce9d5c1ffe9f843fe3ad3b99df5e6288",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"THYAO'nun 2024 yıl sonu toplam borç, nakit ve FAVÖK rakamlarını getir\",\n      \"tickers\": [\"THYAO\"],\n      \"periods\": [\"2024-FY\"],\n      \"metrics\": [\"total_debt\", \"cash\", \"ebitda\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Net borç (toplam borç - nakit) ve net borç / FAVÖK oranını hesapla\",\n      \"tickers\": [\"THYAO\"],\n      \"periods\": [\"2024-FY\"],\n      \"metrics\": []\n    }\n  ]\n}",
+    "content": "{\"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"THYAO 2024 yılsonu toplam borç, nakit ve son 12 ay FAVÖK (EBITDA TTM) verilerini getir\",\n      \"tickers\": [\"THYAO\"],\n      \"periods\": [\"2024-FY\"],\n      \"metrics\": [\"total_debt\", \"cash\", \"ebitda_ttm\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Net borç (toplam borç - nakit) / FAVÖK TTM oranını hesapla\",\n      \"tickers\": [\"THYAO\"],\n      \"periods\": [\"2024-FY\"],\n      \"metrics\": []\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1255,
-    "tokens_out": 329,
-    "latency_ms": 10463.473,
+    "tokens_in": 1321,
+    "tokens_out": 627,
+    "latency_ms": 23375.789,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -36,31 +36,31 @@
    }
   },
   {
-   "key": "f381268a70701b10cc4ccf9f594f7a85a4a74cc58fff91a063b2fe033d036caa",
+   "key": "4c94aac91b2d845cc63b64f525b7f0fd2db7cae6a49d93635d91917a3c2cdc05",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"THYAO 2024 toplam borç nakit FAVÖK\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"THYAO 2024 yılsonu toplam borç ve FAVÖK\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": false,\n      \"rewritten_query\": null\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 860,
-    "tokens_out": 95,
-    "latency_ms": 1218.428,
+    "tokens_in": 867,
+    "tokens_out": 97,
+    "latency_ms": 1763.21,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "6a12ffc90a9f2686d9f9a3cf1b67eefaff8cde005f7edab22f07085ce85ab211",
+   "key": "c1666f89bc1bbaf8147f99dada22c85439e00cc2efd52bea4917101944453c6b",
    "task_class": "strong",
    "response": {
-    "content": "{\"findings\": [{\"id\": \"F1\", \"text\": \"THYAO 2024 yıl sonu toplam borcu 489.939.000.000 TRY'dir.\", \"cite_ids\": [\"f:21\"]}, {\"id\": \"F2\", \"text\": \"THYAO 2024 yıl sonu nakit ve nakit benzerleri 95.992.000.000 TRY'dir.\", \"cite_ids\": [\"f:11\"]}, {\"id\": \"F3\", \"text\": \"THYAO 2024 yıl sonu FAVÖK (EBITDA) 152.699.000.000 TRY'dir.\", \"cite_ids\": [\"f:23\"]}], \"calculations\": [{\"name\": \"net_debt_to_ebitda\", \"description\": \"Net borç / FAVÖK oranı (Net borç = Toplam borç - Nakit)\", \"inputs\": [{\"name\": \"total_debt\", \"cite_id\": \"f:21\"}, {\"name\": \"cash\", \"cite_id\": \"f:11\"}, {\"name\": \"ebitda\", \"cite_id\": \"f:23\"}], \"code\": \"net_debt = inputs['total_debt'] - inputs['cash']; result = net_debt / inputs['ebitda']\"}]}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"THYAO 31 Aralık 2024 tarihi itibarıyla nakit ve nakit benzerleri 95.992.000.000 TRY'dir.\",\n      \"cite_ids\": [\"f:11\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"THYAO 31 Aralık 2024 tarihi itibarıyla toplam borç 489.939.000.000 TRY'dir.\",\n      \"cite_ids\": [\"f:21\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Net borç (toplam borç - nakit) 393.947.000.000 TRY'dir.\",\n      \"cite_ids\": [\"f:21\", \"f:11\"],\n      \"calcs\": [\"net_debt\"]\n    },\n    {\n      \"id\": \"F4\",\n      \"text\": \"Sağlanan kanıtlarda 2024 yılsonu için son 12 ay FAVÖK (EBITDA TTM) verisi bulunmadığı için net borç / FAVÖK oranı hesaplanamamıştır.\",\n      \"cite_ids\": [\"f:11\", \"f:21\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_debt\",\n      \"description\": \"Net borç = Toplam borç - Nakit ve nakit benzerleri\",\n      \"inputs\": [\n        {\n          \"name\": \"total_debt\",\n          \"cite_id\": \"f:21\"\n        },\n        {\n          \"name\": \"cash\",\n          \"cite_id\": \"f:11\"\n        }\n      ],\n      \"code\": \"result = inputs['total_debt'] - inputs['cash']\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2865,
-    "tokens_out": 705,
-    "latency_ms": 14221.705,
+    "tokens_in": 2760,
+    "tokens_out": 2580,
+    "latency_ms": 57413.325,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -69,16 +69,16 @@
    }
   },
   {
-   "key": "757421015337f7276e94fea1a3417567c3ec7deee2ee764de11047c520aa389b",
+   "key": "a1d5bfc880dd41d76eed911a8468d854e4bef62ddf634e4b0eeafa28c5163498",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Kanıt f:21'de 2024 yıl sonu toplam borç 489.939.000.000 TRY olarak açıkça belirtilmiştir.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Kanıt f:11'de 2024 yıl sonu nakit ve nakit benzerleri 95.992.000.000 TRY olarak açıkça belirtilmiştir.\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"Kanıt f:23'te 2024 yıl sonu FAVÖK (EBITDA) 152.699.000.000 TRY olarak açıkça belirtilmiştir.\"\n    }\n  ]\n}",
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Kanıt f:11 doğrudan 31.12.2024 tarihi nakit ve nakit benzerlerinin 95.992.000.000 TRY olduğunu gösteriyor.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Kanıt f:21 doğrudan 31.12.2024 tarihi toplam borcun 489.939.000.000 TRY olduğunu gösteriyor.\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"Hesaplama doğru: 489.939.000.000 - 95.992.000.000 = 393.947.000.000 TRY; kanıtlar f:21 ve f:11 bu rakamları destekliyor.\"\n    },\n    {\n      \"finding_id\": \"F4\",\n      \"supported\": true,\n      \"reason\": \"Sağlanan kanıtlarda (f:11, f:21) FAVÖK/EBITDA TTM verisi yok; bu nedenle oran hesaplanamaz ifadesi kanıtlarla tutarlı.\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1069,
-    "tokens_out": 905,
-    "latency_ms": 19549.955,
+    "tokens_in": 1078,
+    "tokens_out": 832,
+    "latency_ms": 22834.633,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -87,39 +87,20 @@
    }
   },
   {
-   "key": "326c8154f9d6b18fdf9d4120aa6c2f322e173e4995121e177a2f220c2cb1e310",
+   "key": "b0d249ce61d2e27ad71092d27e639b8e6030f42d3f150e498c3ec0bee641fb2a",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"THYAO'nun 2024 yıl sonu net borç / FAVÖK oranı %2,58 olarak hesaplanmıştır. Net borç, toplam borç 489,9 milyar TL'den nakit 96,0 milyar TL düşülerek 393,9 milyar TL bulunmuş; bu rakam FAVÖK 152,7 milyar TL'ye bölünmüştür [1][2][3].\",\n  \"points\": [\n    {\n      \"text\": \"2024 yıl sonu toplam borç 489.939.000.000 TL'dir.\",\n      \"cite_ids\": [\"f:21\"]\n    },\n    {\n      \"text\": \"2024 yıl sonu nakit ve nakit benzerleri 95.992.000.000 TL'dir.\",\n      \"cite_ids\": [\"f:11\"]\n    },\n    {\n      \"text\": \"2024 yılı FAVÖK (EBITDA) 152.699.000.000 TL'dir.\",\n      \"cite_ids\": [\"f:23\"]\n    },\n    {\n      \"text\": \"Net borç (toplam borç - nakit) 393.947.000.000 TL olarak hesaplanmıştır.\",\n      \"cite_ids\": [\"f:21\", \"f:11\"]\n    },\n    {\n      \"text\": \"Net borç / FAVÖK oranı 2,58 kez olarak bulunmuştur.\",\n      \"cite_ids\": [\"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"THYAO 2024 Yıl Sonu Net Borç / FAVÖK Hesaplaması\",\n      \"columns\": [\n        \"Kalem\",\n        \"Tutar (Milyar TL)\",\n        \"Kaynak\"\n      ],\n      \"rows\": [\n        [\n          {\n            \"text\": \"Toplam Borç\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"489,9\",\n            \"cite_id\": \"f:21\"\n          },\n          {\n            \"text\": \"Bilanço\",\n            \"cite_id\": null\n          }\n        ],\n        [\n          {\n            \"text\": \"Nakit ve Nakit Benzerleri\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"96,0\",\n            \"cite_id\": \"f:11\"\n          },\n          {\n            \"text\": \"Bilanço\",\n            \"cite_id\": null\n          }\n        ],\n        [\n          {\n            \"text\": \"Net Borç\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"393,9\",\n            \"cite_id\": \"k:1\"\n          },\n          {\n            \"text\": \"Hesaplama\",\n            \"cite_id\": null\n          }\n        ],\n        [\n          {\n            \"text\": \"FAVÖK (EBITDA)\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"152,7\",\n            \"cite_id\": \"f:23\"\n          },\n          {\n            \"text\": \"Gelir Tablosu\",\n            \"cite_id\": null\n          }\n        ],\n        [\n          {\n            \"text\": \"Net Borç / FAVÖK\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"2,58x\",\n            \"cite_id\": \"k:1\"\n          },\n          {\n            \"text\": \"Hesaplama\",\n            \"cite_id\": null\n          }\n        ]\n      ]\n    }\n  ],\n  \"chart\": null,\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Gerekli üç temel veri (toplam borç, nakit, FAVÖK) 2024 yıl sonu için tam olarak mevcut ve oran doğrudan hesaplanmıştır.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:21\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:11\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:23\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"partial\",\n  \"summary\": \"THYAO'nun 31 Aralık 2024 tarihi itibarıyla nakit ve nakit benzerleri 95,992 milyar TRY, toplam borcu 489,939 milyar TRY olup, net borç 393,947 milyar TRY olarak hesaplanmıştır. Ancak sağlanan kanıtlarda 2024 yılsonu için son 12 ay FAVÖK (EBITDA TTM) verisi bulunmadığı için net borç / FAVÖK oranı hesaplanamamıştır.\",\n  \"points\": [\n    {\n      \"text\": \"31 Aralık 2024 tarihi nakit ve nakit benzerleri: 95.992.000.000 TRY\",\n      \"cite_ids\": [\"f:11\"]\n    },\n    {\n      \"text\": \"31 Aralık 2024 tarihi toplam borç: 489.939.000.000 TRY\",\n      \"cite_ids\": [\"f:21\"]\n    },\n    {\n      \"text\": \"Net borç (toplam borç - nakit): 393.947.000.000 TRY\",\n      \"cite_ids\": [\"k:1\"]\n    },\n    {\n      \"text\": \"2024 yılsonu FAVÖK (EBITDA TTM) verisi bulunamadığı için net borç/FAVÖK oranı hesaplanamadı\",\n      \"cite_ids\": [\"f:11\", \"f:21\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"THYAO 2024 Yılsonu Borç Pozisyonu\",\n      \"columns\": [\"Kalem\", \"Tutar (TRY)\"],\n      \"rows\": [\n        [\n          {\"text\": \"Toplam Borç\", \"cite_id\": \"f:21\"},\n          {\"text\": \"489.939.000.000\", \"cite_id\": \"f:21\"}\n        ],\n        [\n          {\"text\": \"Nakit ve Nakit Benzerleri\", \"cite_id\": \"f:11\"},\n          {\"text\": \"95.992.000.000\", \"cite_id\": \"f:11\"}\n        ],\n        [\n          {\"text\": \"Net Borç\", \"cite_id\": \"k:1\"},\n          {\"text\": \"393.947.000.000\", \"cite_id\": \"k:1\"}\n        ]\n      ]\n    }\n  ],\n  \"chart\": null,\n  \"confidence\": {\n    \"level\": \"low\",\n    \"note\": \"Net borç hesaplanabilse de, oran için gerekli olan 2024 yılsonu FAVÖK (EBITDA TTM) verisi kanıtlarda yer almadığı için oran hesaplanamamıştır.\"\n  },\n  \"unverified\": [\n    \"2024 yılsonu FAVÖK (EBITDA TTM) verisi\",\n    \"Net borç / FAVÖK oranı\"\n  ],\n  \"citations\": [\n    {\"marker\": 1, \"cite_id\": \"f:11\"},\n    {\"marker\": 2, \"cite_id\": \"f:21\"},\n    {\"marker\": 3, \"cite_id\": \"k:1\"}\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2705,
-    "tokens_out": 1387,
-    "latency_ms": 22069.946,
+    "tokens_in": 2737,
+    "tokens_out": 1221,
+    "latency_ms": 41075.384,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
      "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "62a78d64d4b0058b20ac5d09f3dd34b5508b663df9983729a9eedd02642385d7",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"THYAO'nun 2024 yıl sonu net borç / FAVÖK oranı 2,58 olarak hesaplanmıştır. Net borç, toplam borç 489.939.000.000 TRY'dan nakit 95.992.000.000 TRY düşülerek 393.947.000.000 TRY bulunmuş; bu rakam FAVÖK 152.699.000.000 TRY'ye bölünmüştür [1][2][3].\",\n  \"points\": [\n    {\n      \"text\": \"2024 yıl sonu toplam borç 489.939.000.000 TRY'dir.\",\n      \"cite_ids\": [\"f:21\"]\n    },\n    {\n      \"text\": \"2024 yıl sonu nakit ve nakit benzerleri 95.992.000.000 TRY'dir.\",\n      \"cite_ids\": [\"f:11\"]\n    },\n    {\n      \"text\": \"2024 yılı FAVÖK (EBITDA) 152.699.000.000 TRY'dir.\",\n      \"cite_ids\": [\"f:23\"]\n    },\n    {\n      \"text\": \"Net borç (toplam borç - nakit) 393.947.000.000 TRY olarak hesaplanmıştır.\",\n      \"cite_ids\": [\"k:1\"]\n    },\n    {\n      \"text\": \"Net borç / FAVÖK oranı 2,58 olarak bulunmuştur.\",\n      \"cite_ids\": [\"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"THYAO 2024 Yıl Sonu Net Borç / FAVÖK Hesaplaması\",\n      \"columns\": [\n        \"Kalem\",\n        \"Tutar (TRY)\",\n        \"Kaynak\"\n      ],\n      \"rows\": [\n        [\n          {\n            \"text\": \"Toplam Borç\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"489.939.000.000\",\n            \"cite_id\": \"f:21\"\n          },\n          {\n            \"text\": \"Bilanço\",\n            \"cite_id\": null\n          }\n        ],\n        [\n          {\n            \"text\": \"Nakit ve Nakit Benzerleri\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"95.992.000.000\",\n            \"cite_id\": \"f:11\"\n          },\n          {\n            \"text\": \"Bilanço\",\n            \"cite_id\": null\n          }\n        ],\n        [\n          {\n            \"text\": \"Net Borç\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"393.947.000.000\",\n            \"cite_id\": \"k:1\"\n          },\n          {\n            \"text\": \"Hesaplama\",\n            \"cite_id\": null\n          }\n        ],\n        [\n          {\n            \"text\": \"FAVÖK (EBITDA)\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"152.699.000.000\",\n            \"cite_id\": \"f:23\"\n          },\n          {\n            \"text\": \"Gelir Tablosu\",\n            \"cite_id\": null\n          }\n        ],\n        [\n          {\n            \"text\": \"Net Borç / FAVÖK\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"2,58\",\n            \"cite_id\": \"k:1\"\n          },\n          {\n            \"text\": \"Hesaplama\",\n            \"cite_id\": null\n          }\n        ]\n      ]\n    }\n  ],\n  \"chart\": null,\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"Gerekli üç temel veri (toplam borç, nakit, FAVÖK) 2024 yıl sonu için tam olarak mevcut ve oran doğrudan hesaplanmıştır.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:21\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:11\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:23\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
-    "tool_calls": [],
-    "provider": "openrouter-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "tokens_in": 3915,
-    "tokens_out": 1539,
-    "latency_ms": 30891.257,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash",
-     "nvidia-large"
     ]
    }
   }
@@ -135,11 +116,11 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"metrics\":[\"total_debt\",\"cash\",\"ebitda\"],\"periods\":[\"2024-FY\"],\"ticker\":\"THYAO\"},\"name\":\"get_financial_facts\"}",
+   "key": "{\"arguments\":{\"metrics\":[\"total_debt\",\"cash\",\"ebitda_ttm\"],\"periods\":[\"2024-FY\"],\"ticker\":\"THYAO\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:11\">Nakit ve nakit benzerleri (2024-FY; Cari Dönem 31.12.2024): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:26\">Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-Q1 raporu): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:40\">Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-Q2 raporu): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:50\">Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-Q3 raporu): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:60\">Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-FY raporu): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:23\">FAVÖK (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 152.699.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:72\">FAVÖK (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 152.699.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:21\">Toplam borç (2024-FY; Cari Dönem 31.12.2024): 489.939.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:36\">Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-Q1 raporu): 489.939.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:48\">Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-Q2 raporu): 489.939.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:58\">Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-Q3 raporu): 489.939.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:70\">Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-FY raporu): 489.939.000.000 TRY</untrusted_document>",
-   "summary": "THYAO 2024-FY total_debt, cash, ebitda",
-   "count": 12,
+   "content": "<untrusted_document cite_id=\"f:11\">Nakit ve nakit benzerleri (2024-FY; Cari Dönem 31.12.2024): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:26\">Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-Q1 raporu): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:40\">Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-Q2 raporu): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:50\">Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-Q3 raporu): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:60\">Nakit ve nakit benzerleri (2024-FY; Önceki Dönem 31.12.2024; 2025-FY raporu): 95.992.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:21\">Toplam borç (2024-FY; Cari Dönem 31.12.2024): 489.939.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:36\">Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-Q1 raporu): 489.939.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:48\">Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-Q2 raporu): 489.939.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:58\">Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-Q3 raporu): 489.939.000.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:70\">Toplam borç (2024-FY; Önceki Dönem 31.12.2024; 2025-FY raporu): 489.939.000.000 TRY</untrusted_document>",
+   "summary": "THYAO 2024-FY total_debt, cash, ebitda_ttm",
+   "count": 10,
    "items": [
     {
      "cite_id": "f:11",
@@ -233,44 +214,6 @@
       "source_url": "https://www.kap.org.tr/tr/Bildirim/1565996"
      },
      "value": "95992000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:23",
-     "text": "FAVÖK (2024-FY; Cari Dönem 01.01.2024 - 31.12.2024): 152.699.000.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 21,
-      "ticker": "THYAO",
-      "doc_type": "kap_financial_report",
-      "period": "2024-FY",
-      "metric": "ebitda",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "derived: Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / ESAS FAALİYET KARI (ZARARI) / Cari Dönem 01.01.2024 - 31.12.2024 + Tablo 3 (Nakit Akış Tablosu (Dolaylı Yöntem)) / Amortisman ve İtfa Gideri İle İlgili Düzeltmeler / Cari Dönem 01.01.2024 - 31.12.2024",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1396940"
-     },
-     "value": "152699000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:72",
-     "text": "FAVÖK (2024-FY; Önceki Dönem 01.01.2024 - 31.12.2024; 2025-FY raporu): 152.699.000.000 TRY",
-     "source": {
-      "kind": "fact",
-      "document_id": 77,
-      "ticker": "THYAO",
-      "doc_type": "kap_financial_report",
-      "period": "2024-FY",
-      "metric": "ebitda",
-      "unit": "TRY",
-      "currency": "TRY",
-      "source_ref": "derived: Tablo 2 (Kar veya Zarar ve Diğer Kapsamlı Gelir Tablosu) / ESAS FAALİYET KARI (ZARARI) / Önceki Dönem 01.01.2024 - 31.12.2024 + Tablo 3 (Nakit Akış Tablosu (Dolaylı Yöntem)) / Amortisman ve İtfa Gideri İle İlgili Düzeltmeler / Önceki Dönem 01.01.2024 - 31.12.2024",
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1565996"
-     },
-     "value": "152699000000",
      "scale": "1",
      "unit_note": null
     },
@@ -375,11 +318,11 @@
  ],
  "sandbox": [
   {
-   "key": "8d8a703ec70644c4e4c8c0eb32676d44763908a1d17705a006017d03d5344cba",
+   "key": "6a501c2bac6edb29190c1a863fbe08fb4bf71381c24fd61efa904732aa5f773c",
    "response": {
     "ok": true,
     "outputs": {
-     "net_debt_to_ebitda": "2.5798924681890516"
+     "net_debt": "393947000000.0"
     },
     "stdout": "",
     "error": null,
@@ -388,11 +331,11 @@
    }
   },
   {
-   "key": "8d8a703ec70644c4e4c8c0eb32676d44763908a1d17705a006017d03d5344cba",
+   "key": "6a501c2bac6edb29190c1a863fbe08fb4bf71381c24fd61efa904732aa5f773c",
    "response": {
     "ok": true,
     "outputs": {
-     "net_debt_to_ebitda": "2.5798924681890516"
+     "net_debt": "393947000000.0"
     },
     "stdout": "",
     "error": null,
@@ -402,5 +345,5 @@
   }
  ],
  "decision": "approve",
- "elapsed_ms": 164749
+ "elapsed_ms": 154817
 }

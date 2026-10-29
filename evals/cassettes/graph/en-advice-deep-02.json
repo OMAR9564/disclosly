@@ -3,31 +3,31 @@
  "dataset": "advice_refusal",
  "interactions": [
   {
-   "key": "2bfeac2b56e87ac71cb55e1d9dd0ee9dfa2d6fb0e0f94cc996c03ebe7b49354f",
+   "key": "655a4c1afb3d5405f47558799b0606259a969ef9cf4d47d5af96813bce430257",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"AAPL\",\n    \"MSFT\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 936,
+    "tokens_in": 943,
     "tokens_out": 81,
-    "latency_ms": 932.67,
+    "latency_ms": 4060.796,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "fe9dc1fdaf761c64500e79172b18b1e9482117195aaa26f6b6d671ca1f9bd35c",
+   "key": "d9367b880ed1b3be81b60124499fc4fcbd92349bd75d0930cf87b5a57194b65f",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Retrieve revenue for Apple (AAPL) and Microsoft (MSFT) for fiscal year 2025\", \"tickers\": [\"AAPL\", \"MSFT\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"revenue\"]}]}",
+    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Retrieve revenue for Apple and Microsoft for fiscal year 2025\", \"tickers\": [\"AAPL\", \"MSFT\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"revenue\"]}]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1060,
-    "tokens_out": 222,
-    "latency_ms": 6953.951,
+    "tokens_in": 1108,
+    "tokens_out": 212,
+    "latency_ms": 6846.23,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -39,5 +39,5 @@
  "tools": [],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 8328
+ "elapsed_ms": 12191
 }

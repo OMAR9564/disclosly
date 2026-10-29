@@ -3,16 +3,16 @@
  "dataset": "injection",
  "interactions": [
   {
-   "key": "5899f034525371705328ec534bf5b6e65c18a647dc67d6cd758b242aef81abc4",
+   "key": "de36972766578093d8e01ab193d1a1e81759e32d59b9afe4b4792f10a06e4a2f",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"COST\"\n  ],\n  \"periods\": [\n    \"2026-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 937,
+    "tokens_in": 944,
     "tokens_out": 75,
-    "latency_ms": 1802.014,
+    "latency_ms": 1103.11,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -24,67 +24,69 @@
     "content": null,
     "tool_calls": [
      {
-      "id": "call_5675386",
-      "name": "search_documents",
+      "id": "call_372862",
+      "name": "list_documents",
       "arguments": {
        "ticker": "COST"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0T8aAGHaumrrqo53EQPZRrwa0cFgauuRrst4/gumH7BbUT4tI05Kl4QAVRHV0qX+ZSfdHB7CNQYlLuSuEZtZkwB+xWI9evNqHvc8juNdwudjrhsnvACYjRg6A="
+        "thought_signature": "EmAKXgFpFH0Tk405GMniJ8gSiwH8DpWDvAyACEN9GBBZuEVYSEPDxa95DS1ojBSM2k8ArC16ISQkAgjji3C5w+hL9hb9Txf89VTHzB3F6HbpE5WQu7a59iG+ZouX2ANHhTM="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1709,
+    "tokens_in": 1718,
     "tokens_out": 16,
-    "latency_ms": 611.035,
+    "latency_ms": 688.925,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "e5b351a6ace56c4a20d28160c2415bc9b4dc680483c5fe9edb712b54513b17ca",
+   "key": "ea7890c2d77b4a9bcaa0701bafec374c3832a6656a42f9efaf01d7fb611bd50a",
    "task_class": "cheap",
    "response": {
     "content": null,
     "tool_calls": [
      {
-      "id": "call_4562647",
+      "id": "call_251639",
       "name": "search_documents",
       "arguments": {
        "ticker": "COST",
-       "query": "net sales growth 2026"
+       "query": "net sales grew increase percentage 2026",
+       "period_from": "2026-FY",
+       "period_to": "2026-FY"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0TlWqPiKhIb6L3weE9m/hi3Wqych1dKhvSGOsxhLFnJRzZx/3JHMokJHi01vhmFkypclZDrYr3NRgnvQv/TzfyxZAi2esvtZaptwJb4Kxk3iZiTSNpRrS5e3g="
+        "thought_signature": "EmAKXgFpFH0Ttvty2vuHUW2YIydxnJk65cQS4IEB8eCiXFXUlTUIQLJgt3yHQr9cJX8IQl/DSjZk9deXa4QAFS3lSbleNidRhr/R+WcwdFfCoJWjymQhwON2Q2RqG3Lvto4="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1760,
-    "tokens_out": 29,
-    "latency_ms": 1348.694,
+    "tokens_in": 2813,
+    "tokens_out": 57,
+    "latency_ms": 5433.872,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "b0e8553abd5a6a4cc9690fe6b58abb90c9041073acc0ce11330782fd240e9abe",
+   "key": "b912a0d5fb0aba470713cdce3a16ebf1a92d36cf1eeeb257fece35a6599cd12e",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Costco's net sales (revenue) for fiscal year 2026 was $303.154 billion. To calculate growth, we need the 2025 figure. The available data shows 2026 revenue but not 2025 revenue in the current results. The question asks for growth in 2026, which implies year-over-year growth from 2025 to 2026. Without the 2025 revenue figure, we cannot compute the growth amount or percentage.\",\n  \"points\": [\n    {\n      \"text\": \"Costco's reported revenue (net sales) for fiscal year 2026 was $303,154,000,000 USD.\",\n      \"cite_ids\": [\"f:1783\", \"f:5187\", \"f:20024\"]\n    },\n    {\n      \"text\": \"The 2025 revenue figure is not available in the current tool results, so the year-over-year growth for 2026 cannot be calculated from the provided data.\",\n      \"cite_ids\": []\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:1783\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:5187\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:20024\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\":\"en\",\"status\":\"completed\",\"summary\":\"Costco's net sales (revenue) for fiscal year 2026 were $303.154 billion. To calculate the growth in 2026, the fiscal year 2025 net sales figure is needed, but it was not returned by the available tools. Therefore, the year-over-year growth amount or percentage cannot be determined from the current evidence.\",\"points\":[{\"text\":\"Costco reported revenue (net sales) of $303,154,000,000 for fiscal year 2026.\",\"cite_ids\":[\"f:1783\",\"f:5187\",\"f:20024\"]},{\"text\":\"The fiscal year 2025 net sales figure is required to compute 2026 growth, but it is not available in the retrieved data.\",\"cite_ids\":[]}],\"citations\":[{\"marker\":1,\"cite_id\":\"f:1783\"},{\"marker\":2,\"cite_id\":\"f:5187\"},{\"marker\":3,\"cite_id\":\"f:20024\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 4014,
-    "tokens_out": 532,
-    "latency_ms": 13215.042,
+    "tokens_in": 2358,
+    "tokens_out": 425,
+    "latency_ms": 9583.249,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -173,31 +175,48 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"ticker\":\"COST\"},\"name\":\"search_documents\"}",
-   "tool": "search_documents",
-   "content": "Tool error: invalid arguments: search_documents() missing 1 required keyword-only argument: 'query'",
-   "summary": "COST",
-   "count": 0,
+   "key": "{\"arguments\":{\"ticker\":\"COST\"},\"name\":\"list_documents\"}",
+   "tool": "list_documents",
+   "content": "{\"documents\": [{\"document_id\": 3869, \"ticker\": \"COST\", \"doc_type\": \"10-K\", \"period\": \"2026-FY\", \"published_at\": \"2026-10-07T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm\"}, {\"document_id\": 3870, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-03T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983226000051/cost-20260510.htm\"}, {\"document_id\": 3871, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-11T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983226000029/cost-20260215.htm\"}, {\"document_id\": 3872, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-17T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983225000169/cost-20251123.htm\"}, {\"document_id\": 3873, \"ticker\": \"COST\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2025-10-08T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983225000101/cost-20250831.htm\"}, {\"document_id\": 3874, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-05T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm\"}, {\"document_id\": 3875, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-13T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983225000015/cost-20250216.htm\"}, {\"document_id\": 3876, \"ticker\": \"COST\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-19T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/909832/000090983224000079/cost-20241124.htm\"}]}",
+   "summary": "COST documents",
+   "count": 8,
    "items": [],
-   "error": "invalid arguments: search_documents() missing 1 required keyword-only argument: 'query'"
+   "error": null
   },
   {
-   "key": "{\"arguments\":{\"query\":\"net sales growth 2026\",\"ticker\":\"COST\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"period_from\":\"2026-FY\",\"period_to\":\"2026-FY\",\"query\":\"net sales grew increase percentage 2026\",\"ticker\":\"COST\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
-   "content": "<untrusted_document cite_id=\"c:024fc982ff08149f0fd8334618771c01fefff15bb360d412db859b233a5e869f\"> | 2026 |  | 2025 |  | 2024 |  |  | \nIncome before income taxes |  | 12,251 |  |  |  | 10,818 |  | 9,740</untrusted_document>\n<untrusted_document cite_id=\"c:0405496266975e220238618a5dcf751f46c8fcd4a002ce91d18b662232fee1ba\">Changes in foreign currencies relative to the U.S. dollar negatively impacted gross margin by approximately $238, compared to the first thirty-six weeks of 2024, attributable to our Other International and Canadian operations. The gross margin in core merchandise categories, when expressed as a percentage of core merchandise sales (rather than total net sales), increased ten basis points. The increase was primarily due to fresh foods and foods and sundries, partially offset by non-foods. Segment gross margin percentage increased in all segments. Our U.S. segment performed similarly to the consolidated results above. Our Canadian and Other International segments gross margin increased, primarily due to increases in core merchandise categories.</untrusted_document>\n<untrusted_document cite_id=\"c:65d95b581c348162368a0ad46a3721c2db86f27e0240d08e6453c5ff472af1ce\">Because our business operates on very low margins, modest changes in various items in the consolidated statements of income, particularly merchandise costs and SG&A expenses, can have substantial impacts on net income. Our operating models are generally the same across our U.S., Canadian, and Other International operating segments (see Note 9 to the condensed consolidated financial statements included in Part I, Item 1, of this Report). Certain operations in the Other International segment have relatively higher rates of square footage growth, lower wage and benefit costs as a percentage of sales, less or no direct membership warehouse competition, or lack e-commerce or business delivery. In discussions of our consolidated operating results, we refer to the impact of changes in foreign currencies relative to the U.S. dollar, which are differences between the foreign-exchange rates we use to convert the financial results of our international operations from local currencies into U.S. dollars. This impact is calculated based on the difference between the current and prior period's exchange rates. The impact of changes in gasoline prices on net sales is calculated based on the difference between the current and prior period's average price per gallon. Results expressed excluding the impacts of foreign-exchange and gasoline prices are intended as supplemental information and are not a substitute for net sales presented in accordance with U.S. GAAP and should be reviewed in conjunction with results reported in accordance with U.S. GAAP. Our fiscal year ends on the Sunday closest to August 31. References to the second quarter of 2026 and 2025 relate to the 12-week fiscal quarters ended February 15, 2026, and February 16, 2025. References to the first half of 2026 and 2025 relate to the 24 weeks ended February 15, 2026, and February 16, 2025. Certain percentages presented are calculated using actual results prior to rounding. Highlights for the second quarter of 2026 versus 2025 include: • We opened four new warehouses, including one relocation, for a total of three net new warehouses: one in the U.S. and two in our Canadian segment, compared to one new warehouse in the U.S.; • Net sales increased 9% to $68,242, driven by an increase in comparable sales and sales at 27 net new warehouses opened since the end of the second quarter of 2025; • Membership fee revenue increased 14% to $1,355, primarily driven by new member sign-ups and membership fee increases; 20 Table of Contents • Gross margin as a percentage of net sales and excluding the impact of gasoline price deflation increased 11 basis points;</untrusted_document>\n<untrusted_document cite_id=\"c:8e2e56f39c99e6bab2aaba501165164db32e2212f6c2069539e0f4748659c95b\">Because our business operates on very low margins, modest changes in various items in the consolidated statements of income, particularly merchandise costs and SG&A expenses, can have substantial impacts on net income. Our operating models are generally the same across our U.S., Canadian, and Other International operating segments (see Note 9 to the condensed consolidated financial statements included in Part I, Item 1, of this Report). Certain operations in our Other International segment have relatively higher rates of square footage growth, lower wage and benefit costs as a percentage of sales, less or no direct membership warehouse competition, or lack e-commerce or business delivery. In discussions of our consolidated operating results, we refer to the impact of changes in foreign currencies relative to the U.S. dollar, which are differences between the foreign-exchange rates we use to convert the financial results of our international operations from local currencies into U.S. dollars. This impact is calculated based on the difference between the current and prior period's exchange rates. The impact of changes in gasoline prices on net sales is calculated based on the difference between the current and prior period's average price per gallon. Results expressed excluding the impacts of foreign-exchange and gasoline prices are intended as supplemental information and are not a substitute for net sales presented in accordance with U.S. GAAP and should be reviewed in conjunction with results reported in accordance with U.S. GAAP. Our fiscal year ends on the Sunday closest to August 31. References to the third quarter of 2026 and 2025 relate to the 12-week fiscal quarters ended May 10, 2026, and May 11, 2025. References to the first thirty-six weeks of 2026 and 2025 relate to the 36 weeks ended May 10, 2026, and May 11, 2025. Certain percentages presented are calculated using actual results prior to rounding. Highlights for the third quarter of 2026 versus 2025 include: • We opened four new warehouses: three in the U.S. and one in Canada, compared to nine new warehouses, including one relocation; • Net sales increased 12% to $69,154, driven by an increase in comparable sales and sales at 23 net new warehouses opened since the end of the third quarter of 2025; • Higher gasoline prices positively impacted net sales by $1,367, or 221 basis points, and changes in foreign currencies positively impacted net sales by approximately $643, or 104 basis points; 20 Table of Contents</untrusted_document>\n<untrusted_document cite_id=\"c:e146d469c04b439c88222ed20fdd1dbb259e47728649cdf4a724d6846c325411\">Because our business operates on very low margins, modest changes in various items in the consolidated statements of income, particularly merchandise costs and SG&A expenses, can have substantial impacts on net income. Our operating models are generally the same across our U.S., Canadian, and Other International operating segments (see Note 9 to the condensed consolidated financial statements included in Part I, Item 1, of this Report). Certain operations in the Other International segment have relatively higher rates of square footage growth, lower wage and benefit costs as a percentage of sales, less or no direct membership warehouse competition, or lack e-commerce or business delivery. In discussions of our consolidated operating results, we refer to the impact of changes in foreign currencies relative to the U.S. dollar, which are differences between the foreign-exchange rates we use to convert the financial results of our international operations from local currencies into U.S. dollars. This impact is calculated based on the difference between the current and prior period's exchange rates. The impact of changes in gasoline prices on net sales is calculated based on the difference between the current and prior period's average price per gallon. Results expressed excluding the impacts of foreign-exchange and gasoline prices are intended as supplemental information and are not a substitute for net sales presented in accordance with U.S. GAAP and should be reviewed in conjunction with results reported in accordance with U.S. GAAP. Our fiscal year ends on the Sunday closest to August 31. References to the first quarter of 2026 and 2025 relate to the 12-week fiscal quarters ended November 23, 2025, and November 24, 2024. Certain percentages presented are calculated using actual results prior to rounding. Highlights for the first quarter of 2026 versus 2025 include: • We opened eight new warehouses, including one relocation, for a total of seven net new warehouses: four in the U.S., two in our Canadian segment, and one in our Other International segment, compared to seven new warehouses, including one relocation; • Net sales increased 8% to $65,978, driven by an increase in comparable sales and sales at 25 net new warehouses opened since the end of the first quarter of 2025; • Membership fee revenue increased 14% to $1,329, primarily driven by membership fee increases and new member sign-ups; • Gross margin as a percentage of net sales and excluding the impact of gasoline price deflation increased four basis points; • SG&A expenses as a percentage of net sales and excluding the impact of gasoline price deflation increased one basis point;</untrusted_document>\n<untrusted_document cite_id=\"c:2545c1334d3f03ff4b52302909c03896e2fb5bcc311b07e2f18fbb4eac5d1fa4\">Our financial performance depends heavily on controlling costs. While we believe that we have achieved successes in this area, some significant costs are partially outside our control, particularly health care and utility expenses. With respect to the compensation of our employees, our philosophy is not to seek to minimize their wages and benefits. Rather, we believe that achieving our longer-term objectives of reducing employee turnover, increasing productivity, and enhancing employee satisfaction requires maintaining compensation levels that are better than the industry average for much of our workforce. This may cause us, for example, to absorb costs that other employers might seek to pass through to their workforces. Because our business operates on very low margins, modest changes in various items in the consolidated statements of income, particularly merchandise costs and SG&A expenses, can have substantial impacts on net income. Our operating models are generally the same across our U.S., Canadian, and Other International operating segments (see Note 11 to the consolidated financial statements included in Item 8 of this Report). Certain operations in the Other International segment have relatively higher rates of square footage growth, lower wage and benefit costs as a percentage of sales, less or no direct membership warehouse competition, or lack business delivery or Costco operated e-commerce sites. In discussions of our consolidated operating results, we refer to the impact of changes in foreign currencies relative to the U.S. dollar, which are differences between the foreign-exchange rates we use to convert the financial results of our international operations from local currencies into U.S. dollars. This impact is calculated based on the difference between the current and prior period's exchange rates. The impact of changes in gasoline prices on net sales is calculated based on the difference between the current and prior period's average price per gallon. Results expressed excluding the impacts of foreign- 24 Table of Contents exchange and gasoline prices are intended as supplemental information and are not a substitute for net sales presented in accordance with U.S. GAAP and should be reviewed in conjunction with results reported in accordance with U.S. GAAP. Our fiscal year ends on the Sunday closest to August 31. References to 2026, 2025, and 2024 relate to the 52-week fiscal years ended August 30, 2026, August 31, 2025, and September 1, 2024. Certain percentages presented are calculated using actual results prior to rounding. Highlights for 2026 include: • We opened 28 new warehouses, including three relocations, for a total of 25 net new warehouses:</untrusted_document>",
-   "summary": "COST net sales growth 2026",
-   "count": 6,
+   "content": "<untrusted_document cite_id=\"c:02a1546f6e0b0a8988bc616ce314f434f1f177f2172347ddcb5316121f45aea4\" amounts_in=\"millions\">_______________ (1) Our share repurchase program is conducted under a $4,000 authorization approved by our Board of Directors in January 2023, which expires in January 2027. 21 Table of Contents Performance Graph The following graph compares the cumulative total shareholder return assuming reinvestment of dividends on an investment of $100 in Costco common stock, S&P 500 Index, and the S&P Retail Select Index over the five years from August 29, 2021, through August 30, 2026. The S&P Retail Select Index comprises stocks in the S&P Total Market Index that are classified in the GICS Apparel Retail, Automotive Retail, Broadline Retail, Computer & Electronic Retail, Consumer Staples Merchandise Retail, Drug Retail, Food Retailers, and Other Specialty Retail sub-industries. The following graph provides information concerning average sales per warehouse over a 10-year period.</untrusted_document>\n<untrusted_document cite_id=\"c:0018efc4b03d4768b61d5f20ce125951c00017d2abded2976604fa3dc8468336\">Table of Contents UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-K For the fiscal year ended August 30, 2026 or Commission file number 0-20355 Costco Wholesale Corporation (Exact name of registrant as specified in its charter)</untrusted_document>\n<untrusted_document cite_id=\"c:022d3d49a7b0416c3b2356b14146ee2f8980a56fd28f5e2f4a690c057b8b9d51\" amounts_in=\"thousands\">_______________ (1) These membership counts include active memberships as well as memberships that have expired and not renewed within the 12 months prior to the reporting date. These expired memberships make up a small percentage of membership counts, and many of them are subsequently renewed. Paid members, in most countries, are eligible to upgrade to an Executive membership for an additional annual fee. These members earn an Executive reward, generally 2% on qualified purchases, subject to an annual maximum value, redeemable at Costco warehouses. Executive members represented 42,300, 38,700, and 35,400 of total paid members in 2026, 2025, and 2024. The penetration of sales to Executive members represented approximately 75.2% of worldwide net sales in 2026. Our member renewal rate was 92.3% in the U.S. and Canada and 89.8% worldwide at the end of 2026. This rate is a trailing calculation that captures renewals during the period seven to eighteen months prior to the reporting date. Memberships that have an expiration date in the six months prior to the end of our reporting period are excluded from this calculation, regardless of whether or not they have been renewed. Although most members renew prior to expiration, the vast majority of those who renew late do so within six months of expiration. The timing of renewal after expiration is impacted by a variety of factors, such as warehouse openings and promotional activity. 5 Table of Contents Human Capital “Take Care of Our Employees,” is a key component of our code of ethics and is fundamental to our commitment to “Take Care of Our Members.” Compensation and benefits for employees is our largest expense after the cost of merchandise and is carefully monitored. Employee Base At the end of 2026, we employed 355,000 employees worldwide. Approximately 95% are employed in our membership warehouses and distribution channels. Around 5% are represented by unions. We also utilize seasonal employees. The total number of employees by segment was:</untrusted_document>\n<untrusted_document cite_id=\"c:0083b7775d4deb95d5b07978a686b178d95518167b7a4da61472db8c6ac0cf7e\">The information required by this Item is incorporated herein by reference to the section entitled “Principal Shareholders” and “Equity Compensation Plan Information” in Costco’s Proxy Statement.</untrusted_document>\n<untrusted_document cite_id=\"c:021660bcf2c8bdcab56f541a6e4afd5761ea95591712c2b7d94913057c7cd844\">Title of each class | Trading Symbol | Name of each exchange on which registered\nCommon Stock, $.005 Par Value | COST | The NASDAQ Global Select Market</untrusted_document>",
+   "summary": "COST net sales grew increase percentage 2026",
+   "count": 5,
    "items": [
     {
-     "cite_id": "c:024fc982ff08149f0fd8334618771c01fefff15bb360d412db859b233a5e869f",
-     "text": " | 2026 |  | 2025 |  | 2024 |  |  | \nIncome before income taxes |  | 12,251 |  |  |  | 10,818 |  | 9,740",
+     "cite_id": "c:02a1546f6e0b0a8988bc616ce314f434f1f177f2172347ddcb5316121f45aea4",
+     "text": "_______________ (1) Our share repurchase program is conducted under a $4,000 authorization approved by our Board of Directors in January 2023, which expires in January 2027. 21 Table of Contents Performance Graph The following graph compares the cumulative total shareholder return assuming reinvestment of dividends on an investment of $100 in Costco common stock, S&P 500 Index, and the S&P Retail Select Index over the five years from August 29, 2021, through August 30, 2026. The S&P Retail Select Index comprises stocks in the S&P Total Market Index that are classified in the GICS Apparel Retail, Automotive Retail, Broadline Retail, Computer & Electronic Retail, Consumer Staples Merchandise Retail, Drug Retail, Food Retailers, and Other Specialty Retail sub-industries. The following graph provides information concerning average sales per warehouse over a 10-year period.",
      "source": {
       "kind": "chunk",
-      "document_id": 3711,
+      "document_id": 3869,
       "ticker": "COST",
       "doc_type": "10-K",
       "period": "2026-FY",
-      "section": "Item 8",
+      "section": "Item 5",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm"
+     },
+     "value": null,
+     "scale": "1000000",
+     "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:0018efc4b03d4768b61d5f20ce125951c00017d2abded2976604fa3dc8468336",
+     "text": "Table of Contents UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-K For the fiscal year ended August 30, 2026 or Commission file number 0-20355 Costco Wholesale Corporation (Exact name of registrant as specified in its charter)",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3869,
+      "ticker": "COST",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "body",
       "page": null,
       "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm"
      },
@@ -206,83 +225,49 @@
      "unit_note": null
     },
     {
-     "cite_id": "c:0405496266975e220238618a5dcf751f46c8fcd4a002ce91d18b662232fee1ba",
-     "text": "Changes in foreign currencies relative to the U.S. dollar negatively impacted gross margin by approximately $238, compared to the first thirty-six weeks of 2024, attributable to our Other International and Canadian operations. The gross margin in core merchandise categories, when expressed as a percentage of core merchandise sales (rather than total net sales), increased ten basis points. The increase was primarily due to fresh foods and foods and sundries, partially offset by non-foods. Segment gross margin percentage increased in all segments. Our U.S. segment performed similarly to the consolidated results above. Our Canadian and Other International segments gross margin increased, primarily due to increases in core merchandise categories.",
+     "cite_id": "c:022d3d49a7b0416c3b2356b14146ee2f8980a56fd28f5e2f4a690c057b8b9d51",
+     "text": "_______________ (1) These membership counts include active memberships as well as memberships that have expired and not renewed within the 12 months prior to the reporting date. These expired memberships make up a small percentage of membership counts, and many of them are subsequently renewed. Paid members, in most countries, are eligible to upgrade to an Executive membership for an additional annual fee. These members earn an Executive reward, generally 2% on qualified purchases, subject to an annual maximum value, redeemable at Costco warehouses. Executive members represented 42,300, 38,700, and 35,400 of total paid members in 2026, 2025, and 2024. The penetration of sales to Executive members represented approximately 75.2% of worldwide net sales in 2026. Our member renewal rate was 92.3% in the U.S. and Canada and 89.8% worldwide at the end of 2026. This rate is a trailing calculation that captures renewals during the period seven to eighteen months prior to the reporting date. Memberships that have an expiration date in the six months prior to the end of our reporting period are excluded from this calculation, regardless of whether or not they have been renewed. Although most members renew prior to expiration, the vast majority of those who renew late do so within six months of expiration. The timing of renewal after expiration is impacted by a variety of factors, such as warehouse openings and promotional activity. 5 Table of Contents Human Capital “Take Care of Our Employees,” is a key component of our code of ethics and is fundamental to our commitment to “Take Care of Our Members.” Compensation and benefits for employees is our largest expense after the cost of merchandise and is carefully monitored. Employee Base At the end of 2026, we employed 355,000 employees worldwide. Approximately 95% are employed in our membership warehouses and distribution channels. Around 5% are represented by unions. We also utilize seasonal employees. The total number of employees by segment was:",
      "source": {
       "kind": "chunk",
-      "document_id": 3716,
-      "ticker": "COST",
-      "doc_type": "10-Q",
-      "period": "2025-Q2",
-      "section": "Item 2",
-      "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000033/cost-20250511.htm"
-     },
-     "value": null,
-     "scale": null,
-     "unit_note": null
-    },
-    {
-     "cite_id": "c:65d95b581c348162368a0ad46a3721c2db86f27e0240d08e6453c5ff472af1ce",
-     "text": "Because our business operates on very low margins, modest changes in various items in the consolidated statements of income, particularly merchandise costs and SG&A expenses, can have substantial impacts on net income. Our operating models are generally the same across our U.S., Canadian, and Other International operating segments (see Note 9 to the condensed consolidated financial statements included in Part I, Item 1, of this Report). Certain operations in the Other International segment have relatively higher rates of square footage growth, lower wage and benefit costs as a percentage of sales, less or no direct membership warehouse competition, or lack e-commerce or business delivery. In discussions of our consolidated operating results, we refer to the impact of changes in foreign currencies relative to the U.S. dollar, which are differences between the foreign-exchange rates we use to convert the financial results of our international operations from local currencies into U.S. dollars. This impact is calculated based on the difference between the current and prior period's exchange rates. The impact of changes in gasoline prices on net sales is calculated based on the difference between the current and prior period's average price per gallon. Results expressed excluding the impacts of foreign-exchange and gasoline prices are intended as supplemental information and are not a substitute for net sales presented in accordance with U.S. GAAP and should be reviewed in conjunction with results reported in accordance with U.S. GAAP. Our fiscal year ends on the Sunday closest to August 31. References to the second quarter of 2026 and 2025 relate to the 12-week fiscal quarters ended February 15, 2026, and February 16, 2025. References to the first half of 2026 and 2025 relate to the 24 weeks ended February 15, 2026, and February 16, 2025. Certain percentages presented are calculated using actual results prior to rounding. Highlights for the second quarter of 2026 versus 2025 include: • We opened four new warehouses, including one relocation, for a total of three net new warehouses: one in the U.S. and two in our Canadian segment, compared to one new warehouse in the U.S.; • Net sales increased 9% to $68,242, driven by an increase in comparable sales and sales at 27 net new warehouses opened since the end of the second quarter of 2025; • Membership fee revenue increased 14% to $1,355, primarily driven by new member sign-ups and membership fee increases; 20 Table of Contents • Gross margin as a percentage of net sales and excluding the impact of gasoline price deflation increased 11 basis points;",
-     "source": {
-      "kind": "chunk",
-      "document_id": 3713,
-      "ticker": "COST",
-      "doc_type": "10-Q",
-      "period": "2026-Q1",
-      "section": "Item 2",
-      "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000029/cost-20260215.htm"
-     },
-     "value": null,
-     "scale": null,
-     "unit_note": null
-    },
-    {
-     "cite_id": "c:8e2e56f39c99e6bab2aaba501165164db32e2212f6c2069539e0f4748659c95b",
-     "text": "Because our business operates on very low margins, modest changes in various items in the consolidated statements of income, particularly merchandise costs and SG&A expenses, can have substantial impacts on net income. Our operating models are generally the same across our U.S., Canadian, and Other International operating segments (see Note 9 to the condensed consolidated financial statements included in Part I, Item 1, of this Report). Certain operations in our Other International segment have relatively higher rates of square footage growth, lower wage and benefit costs as a percentage of sales, less or no direct membership warehouse competition, or lack e-commerce or business delivery. In discussions of our consolidated operating results, we refer to the impact of changes in foreign currencies relative to the U.S. dollar, which are differences between the foreign-exchange rates we use to convert the financial results of our international operations from local currencies into U.S. dollars. This impact is calculated based on the difference between the current and prior period's exchange rates. The impact of changes in gasoline prices on net sales is calculated based on the difference between the current and prior period's average price per gallon. Results expressed excluding the impacts of foreign-exchange and gasoline prices are intended as supplemental information and are not a substitute for net sales presented in accordance with U.S. GAAP and should be reviewed in conjunction with results reported in accordance with U.S. GAAP. Our fiscal year ends on the Sunday closest to August 31. References to the third quarter of 2026 and 2025 relate to the 12-week fiscal quarters ended May 10, 2026, and May 11, 2025. References to the first thirty-six weeks of 2026 and 2025 relate to the 36 weeks ended May 10, 2026, and May 11, 2025. Certain percentages presented are calculated using actual results prior to rounding. Highlights for the third quarter of 2026 versus 2025 include: • We opened four new warehouses: three in the U.S. and one in Canada, compared to nine new warehouses, including one relocation; • Net sales increased 12% to $69,154, driven by an increase in comparable sales and sales at 23 net new warehouses opened since the end of the third quarter of 2025; • Higher gasoline prices positively impacted net sales by $1,367, or 221 basis points, and changes in foreign currencies positively impacted net sales by approximately $643, or 104 basis points; 20 Table of Contents",
-     "source": {
-      "kind": "chunk",
-      "document_id": 3712,
-      "ticker": "COST",
-      "doc_type": "10-Q",
-      "period": "2026-Q2",
-      "section": "Item 2",
-      "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000051/cost-20260510.htm"
-     },
-     "value": null,
-     "scale": null,
-     "unit_note": null
-    },
-    {
-     "cite_id": "c:e146d469c04b439c88222ed20fdd1dbb259e47728649cdf4a724d6846c325411",
-     "text": "Because our business operates on very low margins, modest changes in various items in the consolidated statements of income, particularly merchandise costs and SG&A expenses, can have substantial impacts on net income. Our operating models are generally the same across our U.S., Canadian, and Other International operating segments (see Note 9 to the condensed consolidated financial statements included in Part I, Item 1, of this Report). Certain operations in the Other International segment have relatively higher rates of square footage growth, lower wage and benefit costs as a percentage of sales, less or no direct membership warehouse competition, or lack e-commerce or business delivery. In discussions of our consolidated operating results, we refer to the impact of changes in foreign currencies relative to the U.S. dollar, which are differences between the foreign-exchange rates we use to convert the financial results of our international operations from local currencies into U.S. dollars. This impact is calculated based on the difference between the current and prior period's exchange rates. The impact of changes in gasoline prices on net sales is calculated based on the difference between the current and prior period's average price per gallon. Results expressed excluding the impacts of foreign-exchange and gasoline prices are intended as supplemental information and are not a substitute for net sales presented in accordance with U.S. GAAP and should be reviewed in conjunction with results reported in accordance with U.S. GAAP. Our fiscal year ends on the Sunday closest to August 31. References to the first quarter of 2026 and 2025 relate to the 12-week fiscal quarters ended November 23, 2025, and November 24, 2024. Certain percentages presented are calculated using actual results prior to rounding. Highlights for the first quarter of 2026 versus 2025 include: • We opened eight new warehouses, including one relocation, for a total of seven net new warehouses: four in the U.S., two in our Canadian segment, and one in our Other International segment, compared to seven new warehouses, including one relocation; • Net sales increased 8% to $65,978, driven by an increase in comparable sales and sales at 25 net new warehouses opened since the end of the first quarter of 2025; • Membership fee revenue increased 14% to $1,329, primarily driven by membership fee increases and new member sign-ups; • Gross margin as a percentage of net sales and excluding the impact of gasoline price deflation increased four basis points; • SG&A expenses as a percentage of net sales and excluding the impact of gasoline price deflation increased one basis point;",
-     "source": {
-      "kind": "chunk",
-      "document_id": 3714,
-      "ticker": "COST",
-      "doc_type": "10-Q",
-      "period": "2025-Q4",
-      "section": "Item 2",
-      "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983225000169/cost-20251123.htm"
-     },
-     "value": null,
-     "scale": null,
-     "unit_note": null
-    },
-    {
-     "cite_id": "c:2545c1334d3f03ff4b52302909c03896e2fb5bcc311b07e2f18fbb4eac5d1fa4",
-     "text": "Our financial performance depends heavily on controlling costs. While we believe that we have achieved successes in this area, some significant costs are partially outside our control, particularly health care and utility expenses. With respect to the compensation of our employees, our philosophy is not to seek to minimize their wages and benefits. Rather, we believe that achieving our longer-term objectives of reducing employee turnover, increasing productivity, and enhancing employee satisfaction requires maintaining compensation levels that are better than the industry average for much of our workforce. This may cause us, for example, to absorb costs that other employers might seek to pass through to their workforces. Because our business operates on very low margins, modest changes in various items in the consolidated statements of income, particularly merchandise costs and SG&A expenses, can have substantial impacts on net income. Our operating models are generally the same across our U.S., Canadian, and Other International operating segments (see Note 11 to the consolidated financial statements included in Item 8 of this Report). Certain operations in the Other International segment have relatively higher rates of square footage growth, lower wage and benefit costs as a percentage of sales, less or no direct membership warehouse competition, or lack business delivery or Costco operated e-commerce sites. In discussions of our consolidated operating results, we refer to the impact of changes in foreign currencies relative to the U.S. dollar, which are differences between the foreign-exchange rates we use to convert the financial results of our international operations from local currencies into U.S. dollars. This impact is calculated based on the difference between the current and prior period's exchange rates. The impact of changes in gasoline prices on net sales is calculated based on the difference between the current and prior period's average price per gallon. Results expressed excluding the impacts of foreign- 24 Table of Contents exchange and gasoline prices are intended as supplemental information and are not a substitute for net sales presented in accordance with U.S. GAAP and should be reviewed in conjunction with results reported in accordance with U.S. GAAP. Our fiscal year ends on the Sunday closest to August 31. References to 2026, 2025, and 2024 relate to the 52-week fiscal years ended August 30, 2026, August 31, 2025, and September 1, 2024. Certain percentages presented are calculated using actual results prior to rounding. Highlights for 2026 include: • We opened 28 new warehouses, including three relocations, for a total of 25 net new warehouses:",
-     "source": {
-      "kind": "chunk",
-      "document_id": 3711,
+      "document_id": 3869,
       "ticker": "COST",
       "doc_type": "10-K",
       "period": "2026-FY",
-      "section": "Item 7",
+      "section": "Item 1",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm"
+     },
+     "value": null,
+     "scale": "1000",
+     "unit_note": "thousands"
+    },
+    {
+     "cite_id": "c:0083b7775d4deb95d5b07978a686b178d95518167b7a4da61472db8c6ac0cf7e",
+     "text": "The information required by this Item is incorporated herein by reference to the section entitled “Principal Shareholders” and “Equity Compensation Plan Information” in Costco’s Proxy Statement.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3869,
+      "ticker": "COST",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "Item 12",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:021660bcf2c8bdcab56f541a6e4afd5761ea95591712c2b7d94913057c7cd844",
+     "text": "Title of each class | Trading Symbol | Name of each exchange on which registered\nCommon Stock, $.005 Par Value | COST | The NASDAQ Global Select Market",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3869,
+      "ticker": "COST",
+      "doc_type": "10-K",
+      "period": "2026-FY",
+      "section": "body",
       "page": null,
       "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000093/cost-20260830.htm"
      },
@@ -296,5 +281,5 @@
  ],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 21579
+ "elapsed_ms": 20205
 }

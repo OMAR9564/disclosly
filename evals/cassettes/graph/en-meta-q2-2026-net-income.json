@@ -3,16 +3,16 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "94053ce1c90e2d312d346ceabd1416a4aca61b4a8e248cad3c453a45db0631c8",
+   "key": "19abee9623b7437b8cf2c7183b097a59e138898c678bae2d03fddf8620e0b347",
    "task_class": "cheap",
    "response": {
-    "content": "{\"mode\": \"simple\", \"tickers\": [\"META\"], \"periods\": [\"2026-Q2\"], \"metrics\": [\"net_income\"], \"uses_watchlist\": false, \"memory_intent\": null}",
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"META\"\n  ],\n  \"periods\": [\n    \"2026-Q2\"\n  ],\n  \"metrics\": [\n    \"net_income\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 945,
-    "tokens_out": 46,
-    "latency_ms": 1272.951,
+    "tokens_in": 952,
+    "tokens_out": 78,
+    "latency_ms": 5955.068,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -24,44 +24,44 @@
     "content": null,
     "tool_calls": [
      {
-      "id": "call_4689579",
+      "id": "call_323526",
       "name": "get_financial_facts",
       "arguments": {
-       "periods": [
-        "2026-Q2"
-       ],
-       "ticker": "META",
        "metrics": [
         "net_income"
+       ],
+       "ticker": "META",
+       "periods": [
+        "2026-Q2"
        ]
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0T4RXLhqS83Kas3wI0KWGfWkl6XtkxgN0GJa/1Ukj7dTbOPc6xEWbqMDx5Sb2JlG3PPPu5LaEv8+BlXd+FQqRx6jpwLktRqIpLMCBB+S9uPzPDRgLngMFnjuo="
+        "thought_signature": "EmAKXgFpFH0T9GNPWRnX4M1EDQRKAXsaWmv1Hf2rI87Q4OOZRXN8KJsyyY3g+BeW67oLXhnPW3N0/wzuSXz2lTYnbKMuvwKiFEnx8lvbqr+OAML7lqaNRg9muyVvE6ODq14="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1659,
+    "tokens_in": 1668,
     "tokens_out": 38,
-    "latency_ms": 676.132,
+    "latency_ms": 6489.976,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "c054201ab4fcb5bcb0ad864570e7b263068d74a98839b07dcc424ff5ed425792",
+   "key": "3e01ad5e1f57994ac0bfe918229f5368b34d9b861da8454abfb368809e5b8bce",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Meta's net income for the quarter ended June 30, 2026, was 15,848,000,000 USD [1].\",\n  \"points\": [\n    {\n      \"text\": \"Meta's net income for the quarter ended June 30, 2026 was 15,848,000,000 USD.\",\n      \"cite_ids\": [\n        \"f:766\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:766\"\n    }\n  ]\n}\n```",
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Meta's net income for the quarter ended June 30, 2026 was 15,848,000,000 USD [1].\",\n  \"points\": [\n    {\n      \"text\": \"Meta reported a net income of 15,848,000,000 USD for the quarter ended June 30, 2026.\",\n      \"cite_ids\": [\n        \"f:766\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:766\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1861,
-    "tokens_out": 186,
-    "latency_ms": 872.276,
+    "tokens_in": 1870,
+    "tokens_out": 204,
+    "latency_ms": 5360.185,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -70,13 +70,13 @@
    "key": "85aaa8a671715a1b8d0152faf0bcb7835ba12e7626a609555d112c1db9ef7664",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Meta's net income for the quarter ended June 30, 2026 (2026-Q2) was $15,848,000,000 USD.\",\n  \"points\": [\n    {\n      \"text\": \"Net income for 2026-Q2 (quarter ended June 30, 2026) was $15,848,000,000 USD.\",\n      \"cite_ids\": [\"f:766\", \"f:4170\", \"f:18962\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:766\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:4170\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:18962\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Meta's net income for the quarter ended June 30, 2026 (2026-Q2) was $15,848,000,000.\",\n  \"points\": [\n    {\n      \"text\": \"Meta's net income for the quarter ended June 30, 2026 (2026-Q2) was $15,848,000,000.\",\n      \"cite_ids\": [\n        \"f:766\",\n        \"f:4170\",\n        \"f:18962\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:766\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:4170\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:18962\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1104,
-    "tokens_out": 468,
-    "latency_ms": 18481.21,
+    "tokens_out": 533,
+    "latency_ms": 12242.594,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -223,5 +223,5 @@
  ],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 22838
+ "elapsed_ms": 30994
 }

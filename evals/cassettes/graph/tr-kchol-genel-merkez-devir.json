@@ -3,16 +3,16 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "f8b6b11345fba047121f3125524bcaa1c0c679880eeb265fd8012053c560399a",
+   "key": "e286b7d1769272dc5444745e6b9fc951992c0718a7b5a032f934ec00dfada922",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"KCHOL\"\n  ],\n  \"periods\": [],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\"KCHOL\"],\n  \"periods\": [],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1017,
-    "tokens_out": 56,
-    "latency_ms": 1770.496,
+    "tokens_in": 1024,
+    "tokens_out": 50,
+    "latency_ms": 1159.849,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,13 @@
    "key": "73653dbffbdff8a2d02c4d265dd7fa5547c91331db9a09246763859b374070a4",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"Belgelerde Koç Holding'in genel merkez devrinde kendi payına düşen bedel ile ilgili doğrudan bir bilgi bulunmamaktadır. Açıklamalar Aygaz ve Tofaş'ın genel merkez devir bedellerini içermektedir.\",\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Taranan belgelerde Koç Holding'in genel merkez devrindeki payına düşen net bedel ile ilgili doğrudan tek bir rakam belirtilmemekle birlikte, aynı parseldeki (Zincirlikuyu / İstanbul 2011 ada 1 no'lu parsel) diğer ortakların pay devir bilgileri yer almaktadır [c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6, c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742, c:d68a8b9edd240cbab69be411420c24bb54a188fd406302d23130b1f88b6e4631]. Aygaz ve Tofaş bildirimlerinde, Koç Holding'in de aynı parseldeki paylarını Temel Ticaret ve Yatırım A.Ş.'ye devrettiği, işlemde devir bedelinin Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. raporuna istinaden belirlendiği ifade edilmektedir [c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6, c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742].\",\n  \"points\": [\n    {\n      \"text\": \"Büyükdere Caddesi No: 145 Zincirlikuyu / İstanbul adresindeki 2011 ada 1 no'lu parselde yer alan gayrimenkul paylarının Temel Ticaret ve Yatırım A.Ş.'ye devredilmesine karar verilmiştir [c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6, c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742].\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\",\n        \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n      ]\n    },\n    {\n      \"text\": \"Söz konusu gayrimenkul devri işlemlerinde Koç Holding'in pay sahipliği oranının %15,7 olduğu belirtilmiştir [c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6, c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742].\",\n      \"cite_ids\": [\n        \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 5556,
-    "tokens_out": 109,
-    "latency_ms": 1109.563,
+    "tokens_in": 5565,
+    "tokens_out": 1020,
+    "latency_ms": 3615.698,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -36,13 +36,31 @@
    "key": "9df5b5769f1fe268e18917cc42b7ba031fddedb35cbbeb133d41ea1dbc360033",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"Sağlanan belgelerde Koç Holding'in genel merkez devrine ilişkin payına düşen bedel tutarı açıkça belirtilmemiştir. Belgelerde, devir bedelinin değerleme raporuna göre belirleneceği ve işlem tarihinde kesinleşeceği ifade edilmektedir.\",\n  \"points\": [\n    {\n      \"text\": \"Büyükdere Caddesi No: 145 Zincirlikuyu/İstanbul adresindeki mülkiyet paylarının devri kapsamında Koç Holding'in %15,7 oranında payı bulunduğu belirtilse de, Koç Holding'in payına düşen net devir bedeli tutarı belgelerde sayısal olarak verilmedi.\",\n      \"cite_ids\": [\"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\", \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"]\n    },\n    {\n      \"text\": \"Devir bedelinin Çelen Kurumsal Gayrimenkul Değerleme ve Danışmanlık A.Ş. tarafından hazırlanan değerleme raporu dikkate alınarak belirleneceği ve işlem tarihinde kesinleşen tutarın ayrıca kamuya açıklanacağı ifade edilmiştir.\",\n      \"cite_ids\": [\"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\", \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:47c15244581a1a8ec061656df75ae956181b1da56e50d9ba13d9bdfbd70958b6\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:fd62602ef993c323107f6d6066622d30da72aba74b4cb49b6abb59d1072fb742\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\": \"tr\", \"status\": \"no_evidence\", \"summary\": \"Sağlanan belgelerde Koç Holding'in genel merkez devrine ilişkin payına düşen bedel tutarı açıkça belirtilmemiştir. Belgelerde Koç Holding'in %15,7 paya sahip olduğu Büyükdere Caddesi No:145 adresli mülkün toplam değerleme bedeli (KDV hariç 2.778.528.000 TL) ve diğer ortakların (Aygaz ~1,2 Milyar TL, açıklama yapan şirket ~1,147-1,194 Milyar TL) payları yer almaktadır; ancak Koç Holding'in kendi payı için kesinleşen/ilan edilen tutar belgelerde yer almamaktadır.\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 5473,
-    "tokens_out": 1472,
-    "latency_ms": 29966.042,
+    "tokens_out": 1477,
+    "latency_ms": 26936.369,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "1b774a41827a6ffc27cef66a0202f327a38d1bb619fba192cde798b3853f4f21",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"Sağlanan belgelerde Koç Holding'in genel merkez devrine ilişkin payına düşen bedel tutarı açıkça belirtilmemiştir.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 5749,
+    "tokens_out": 426,
+    "latency_ms": 16172.926,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -167,5 +185,5 @@
  ],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 36465
+ "elapsed_ms": 51080
 }

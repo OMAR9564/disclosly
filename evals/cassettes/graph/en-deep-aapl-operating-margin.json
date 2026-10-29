@@ -3,95 +3,97 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "fdb82c2ed4ecb76c7f4ca088c95571e65083c50f1b793b46bb892a77a2958f4f",
+   "key": "fd67b5fe20455df07beb901f796c1158b736be11dd48e20e98d0f3e62f592005",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"AAPL\"\n  ],\n  \"periods\": [\n    \"2024-FY\"\n  ],\n  \"metrics\": [\n    \"operating_income\",\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"AAPL\"\n  ],\n  \"periods\": [\n    \"2024-FY\"\n  ],\n  \"metrics\": [\n    \"operating_income\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 938,
-    "tokens_out": 82,
-    "latency_ms": 997.835,
+    "tokens_in": 945,
+    "tokens_out": 77,
+    "latency_ms": 3386.007,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "cb9f210a4f4fc04f04b81bd3b92a7b02bab55d916a73bb67e0ec71bd4e558eee",
+   "key": "1ae3752a5ce0853e484cc8c7cbf265bfddcea24db23a176eb9ba24cd43294b29",
    "task_class": "cheap",
    "response": {
     "content": null,
     "tool_calls": [
      {
-      "id": "call_4142767",
+      "id": "call_211207",
       "name": "get_financial_facts",
       "arguments": {
-       "metrics": [
-        "operating_income",
-        "revenue"
-       ],
+       "ticker": "AAPL",
        "periods": [
         "2024-FY"
        ],
-       "ticker": "AAPL"
+       "metrics": [
+        "revenue",
+        "operating_income"
+       ]
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0T30tXdgdUTu4ORywNx9u4Z6Cck4/ANeK5wfgGBCAMbeZJ7Czf45kdOLOXEYMUo8g5uCTQw7nsm12fEOoAgEy07Bz/rvvyrvwDN0Ivm0FCWxzKm+7bfP1MV5A="
+        "thought_signature": "EmAKXgFpFH0TdMe2pOkPuRTlh9QrgnOsFKTNGb6R5ek3kP/OrmtYNd81yJIqlSP/Vd2RWDCUpP0SFY80C5esV5Cvl+w47vrIdgmzTj/28O8kpiOkPvL2nVN9OQcREdvA7Z4="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1930,
+    "tokens_in": 1727,
     "tokens_out": 41,
-    "latency_ms": 1375.473,
+    "latency_ms": 718.446,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "c62fec047145d4431f88b342b0790ec26b6672956d1fa08bfa333a901fb71210",
+   "key": "8750cdfdfc308626516822b1abcb88ea9cdfbfd12bc0054db74d5c2e115bc21d",
    "task_class": "cheap",
    "response": {
     "content": null,
     "tool_calls": [
      {
-      "id": "call_3944810",
+      "id": "call_136805",
       "name": "search_documents",
       "arguments": {
+       "query": "operating margin 2024 percentage",
        "ticker": "AAPL",
-       "query": "operating margin operating income 391,035 123,216"
+       "period_from": "2024-FY",
+       "period_to": "2024-FY"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0Thj0MhLMPmwI5sLCk1Y6hlxOTfnEk+YnXlsx7fJWPttkGXQb+Z8q59uX1VKwRSpE/VSSXMGqEgT+rFOpTETJ7scR3KRomPLzD7FT+mL8bH5B8jTmxOqwWtnw="
+        "thought_signature": "EmAKXgFpFH0TCFLkF3ClNldUHtdyQJt9GYs4PIxsZnCm/2XwpODeIgpaIQUqNKXbWwtdA18tIlEpZiBl87P6vw2zuMYb3q7wWMkz+ZXY2kd8JYiYSP8CR06OnYc5tEi2gC4="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 2413,
-    "tokens_out": 41,
-    "latency_ms": 1069.967,
+    "tokens_in": 2210,
+    "tokens_out": 55,
+    "latency_ms": 3167.958,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "1eda627bda5f6ad6fe12b8976b8c70ee8a008c4be0b621d4489b486b63db7a8f",
+   "key": "e4a419640e7b98d8d4383e7a72c49c2427ef3edc63c2d89d4e786ffc8f04aff3",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Apple's operating margin for fiscal 2024 was 31.51%, calculated as operating income of $123.216 billion divided by revenue of $391.035 billion.\",\n  \"points\": [\n    {\n      \"text\": \"Operating income (2024-FY): $123,216,000,000\",\n      \"cite_ids\": [\"f:139\"]\n    },\n    {\n      \"text\": \"Revenue (2024-FY): $391,035,000,000\",\n      \"cite_ids\": [\"f:103\"]\n    },\n    {\n      \"text\": \"Operating margin = Operating income / Revenue = 123,216,000,000 / 391,035,000,000 = 31.51%\",\n      \"cite_ids\": [\"f:139\", \"f:103\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:139\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:103\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Apple's operating margin for fiscal 2024 was 31.51%, calculated as operating income of $123.216 billion divided by revenue of $391.035 billion.\",\n  \"points\": [\n    {\n      \"text\": \"Operating income for fiscal 2024: $123,216,000,000\",\n      \"cite_ids\": [\"f:139\"]\n    },\n    {\n      \"text\": \"Revenue for fiscal 2024: $391,035,000,000\",\n      \"cite_ids\": [\"f:103\"]\n    },\n    {\n      \"text\": \"Operating margin = Operating income / Revenue = 123,216,000,000 / 391,035,000,000 = 31.51%\",\n      \"cite_ids\": [\"f:139\", \"f:103\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:139\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:103\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 3065,
-    "tokens_out": 627,
-    "latency_ms": 9292.53,
+    "tokens_in": 3612,
+    "tokens_out": 606,
+    "latency_ms": 15069.151,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -102,10 +104,96 @@
  ],
  "tools": [
   {
-   "key": "{\"arguments\":{\"metrics\":[\"operating_income\",\"revenue\"],\"periods\":[\"2024-FY\"],\"ticker\":\"AAPL\"},\"name\":\"get_financial_facts\"}",
+   "key": "{\"arguments\":{\"metrics\":[\"operating_income\"],\"periods\":[\"2024-FY\"],\"ticker\":\"AAPL\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:139\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3649\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:140\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3650\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>",
+   "summary": "AAPL 2024-FY operating_income",
+   "count": 4,
+   "items": [
+    {
+     "cite_id": "f:139",
+     "text": "Operating income (2024-FY): 123,216,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 114,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "123216000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3649",
+     "text": "Operating income (2024-FY): 123,216,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2331,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-24-000123",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": "123216000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:140",
+     "text": "Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 110,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "123216000000",
+     "scale": "1",
+     "unit_note": null
+    },
+    {
+     "cite_id": "f:3650",
+     "text": "Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD",
+     "source": {
+      "kind": "fact",
+      "document_id": 2327,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "metric": "operating_income",
+      "unit": "USD",
+      "currency": "USD",
+      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-25-000079",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+     },
+     "value": "123216000000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"revenue\",\"operating_income\"],\"periods\":[\"2024-FY\"],\"ticker\":\"AAPL\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
    "content": "<untrusted_document cite_id=\"f:139\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3649\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:140\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3650\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:103\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3613\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:104\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3614\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>",
-   "summary": "AAPL 2024-FY operating_income, revenue",
+   "summary": "AAPL 2024-FY revenue, operating_income",
    "count": 8,
    "items": [
     {
@@ -264,197 +352,52 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"metrics\":[\"operating_income\",\"revenue\"],\"periods\":[\"2024-FY\"],\"ticker\":\"AAPL\"},\"name\":\"get_financial_facts\"}",
-   "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:139\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3649\">Operating income (2024-FY): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:140\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3650\">Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:103\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3613\">Revenue (2024-FY): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:104\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:3614\">Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD</untrusted_document>",
-   "summary": "AAPL 2024-FY operating_income, revenue",
-   "count": 8,
-   "items": [
-    {
-     "cite_id": "f:139",
-     "text": "Operating income (2024-FY): 123,216,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 114,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "operating_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-24-000123",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
-     },
-     "value": "123216000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:3649",
-     "text": "Operating income (2024-FY): 123,216,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2331,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "operating_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-24-000123",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
-     },
-     "value": "123216000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:140",
-     "text": "Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 110,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "operating_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-25-000079",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
-     },
-     "value": "123216000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:3650",
-     "text": "Operating income (2024-FY; 2025-FY report): 123,216,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2327,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "operating_income",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:OperatingIncomeLoss 0000320193-25-000079",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
-     },
-     "value": "123216000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:103",
-     "text": "Revenue (2024-FY): 391,035,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 114,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-24-000123",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
-     },
-     "value": "391035000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:3613",
-     "text": "Revenue (2024-FY): 391,035,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2331,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-24-000123",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
-     },
-     "value": "391035000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:104",
-     "text": "Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 110,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
-     },
-     "value": "391035000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:3614",
-     "text": "Revenue (2024-FY; 2025-FY report): 391,035,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2327,
-      "ticker": "AAPL",
-      "doc_type": "10-K",
-      "period": "2024-FY",
-      "metric": "revenue",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax 0000320193-25-000079",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
-     },
-     "value": "391035000000",
-     "scale": "1",
-     "unit_note": null
-    }
-   ],
-   "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"query\":\"operating margin operating income 391,035 123,216\",\"ticker\":\"AAPL\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"period_from\":\"2024-FY\",\"period_to\":\"2024-FY\",\"query\":\"operating margin 2024 percentage\",\"ticker\":\"AAPL\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
-   "content": "<untrusted_document cite_id=\"c:12741fbf4bec80b03df81bf2f8af22cc55807622b92e55b1073dfb90477be7a0\" amounts_in=\"millions\"> | Years ended |  |  |  |  |  |  | \n | September 27, 2025 |  | September 28, 2024 |  | September 30, 2023 |  |  | \nNet sales: |  |  |  |  |  |  |  | \nProducts |  | 307,003 |  |  |  | 294,866 |  | 298,085\nServices | 109,158 |  |  | 96,169 |  |  | 85,200 | \nTotal net sales | 416,161 |  |  | 391,035 |  |  | 383,285 | \nCost of sales: |  |  |  |  |  |  |  | \nProducts | 194,116 |  |  | 185,233 |  |  | 189,282 | \nServices | 26,844 |  |  | 25,119 |  |  | 24,855 | \nTotal cost of sales | 220,960 |  |  | 210,352 |  |  | 214,137 | \nGross margin | 195,201 |  |  | 180,683 |  |  | 169,148 | \nOperating expenses: |  |  |  |  |  |  |  | \nResearch and development | 34,550 |  |  | 31,370 |  |  | 29,915 | \nSelling, general and administrative | 27,601 |  |  | 26,097 |  |  | 24,932 | \nTotal operating expenses | 62,151 |  |  | 57,467 |  |  | 54,847 | \nOperating income | 133,050 |  |  | 123,216 |  |  | 114,301 | \nOther income/(expense), net | ( 321 ) |  |  | 269 |  |  | ( 565 ) | \nIncome before provision for income taxes | 132,729 |  |  | 123,485 |  |  | 113,736 | \nProvision for income taxes | 20,719 |  |  | 29,749 |  |  | 16,741 | \nNet income |  | 112,010 |  |  |  | 93,736 |  | 96,995\nEarnings per share: |  |  |  |  |  |  |  | \nBasic |  | 7.49 |  |  |  | 6.11 |  | 6.16</untrusted_document>\n<untrusted_document cite_id=\"c:6e8abca712902055fe5085e2072e6e090ffd78eda4fa712bf8b3a43c3015d850\" amounts_in=\"millions\"> | Years ended |  |  |  |  |  |  | \n | September 28, 2024 |  | September 30, 2023 |  | September 24, 2022 |  |  | \nNet sales: |  |  |  |  |  |  |  | \nProducts |  | 294,866 |  |  |  | 298,085 |  | 316,199\nServices | 96,169 |  |  | 85,200 |  |  | 78,129 | \nTotal net sales | 391,035 |  |  | 383,285 |  |  | 394,328 | \nCost of sales: |  |  |  |  |  |  |  | \nProducts | 185,233 |  |  | 189,282 |  |  | 201,471 | \nServices | 25,119 |  |  | 24,855 |  |  | 22,075 | \nTotal cost of sales | 210,352 |  |  | 214,137 |  |  | 223,546 | \nGross margin | 180,683 |  |  | 169,148 |  |  | 170,782 | \nOperating expenses: |  |  |  |  |  |  |  | \nResearch and development | 31,370 |  |  | 29,915 |  |  | 26,251 | \nSelling, general and administrative | 26,097 |  |  | 24,932 |  |  | 25,094 | \nTotal operating expenses | 57,467 |  |  | 54,847 |  |  | 51,345 | \nOperating income | 123,216 |  |  | 114,301 |  |  | 119,437 | \nOther income/(expense), net | 269 |  |  | ( 565 ) |  |  | ( 334 ) | \nIncome before provision for income taxes | 123,485 |  |  | 113,736 |  |  | 119,103 | \nProvision for income taxes | 29,749 |  |  | 16,741 |  |  | 19,300 | \nNet income |  | 93,736 |  |  |  | 96,995 |  | 99,803\nEarnings per share: |  |  |  |  |  |  |  | \nBasic |  | 6.11 |  |  |  | 6.16 |  | 6.15</untrusted_document>",
-   "summary": "AAPL operating margin operating income 391,035 123,216",
-   "count": 2,
+   "content": "<untrusted_document cite_id=\"c:4d92515ffda01bb93ba02bafefdc7362c4c3341a430a8b28323aa395a78037a1\" amounts_in=\"millions\">Products Gross Margin Products gross margin and Products gross margin percentage increased during 2024 compared to 2023 due to cost savings, partially offset by a different Products mix and the weakness in foreign currencies relative to the U.S. dollar. Services Gross Margin Services gross margin increased during 2024 compared to 2023 due primarily to higher Services net sales. Services gross margin percentage increased during 2024 compared to 2023 due to a different Services mix. The Company’s future gross margins can be impacted by a variety of factors, as discussed in Part I, Item 1A of this Form 10-K under the heading “Risk Factors.” As a result, the Company believes, in general, gross margins will be subject to volatility and downward pressure. Operating Expenses Operating expenses for 2024, 2023 and 2022 were as follows (dollars in millions):</untrusted_document>\n<untrusted_document cite_id=\"c:01f620f61dc3244d9f230beedc10fd9ebd08ada2b30a9a4443ea33f3b799d995\">The Company’s business, reputation, results of operations, financial condition and stock price can be affected by a number of factors, whether currently known or unknown, including those described below. When any one or more of these risks materialize from time to time, the Company’s business, reputation, results of operations, financial condition and stock price can be materially and adversely affected. Because of the following factors, as well as other factors affecting the Company’s results of operations and financial condition, past financial performance should not be considered to be a reliable indicator of future performance, and investors should not use historical trends to anticipate results or trends in future periods. This discussion of risk factors contains forward-looking statements. This section should be read in conjunction with Part II, Item 7, “Management’s Discussion and Analysis of Financial Condition and Results of Operations” and the consolidated financial statements and accompanying notes in Part II, Item 8, “Financial Statements and Supplementary Data” of this Form 10-K. Macroeconomic and Industry Risks The Company’s operations and performance depend significantly on global and regional economic conditions and adverse economic conditions can materially adversely affect the Company’s business, results of operations and financial condition. The Company has international operations with sales outside the U.S. representing a majority of the Company’s total net sales. In addition, the Company’s global supply chain is large and complex and a majority of the Company’s supplier facilities, including manufacturing and assembly sites, are located outside the U.S. As a result, the Company’s operations and performance depend significantly on global and regional economic conditions. Adverse macroeconomic conditions, including slow growth or recession, high unemployment, inflation, tighter credit, higher interest rates, and currency fluctuations, can adversely impact consumer confidence and spending and materially adversely affect demand for the Company’s products and services. In addition, consumer confidence and spending can be materially adversely affected in response to changes in fiscal and monetary policy, financial market volatility, declines in income or asset values, and other economic factors. In addition to an adverse impact on demand for the Company’s products and services, uncertainty about, or a decline in, global or regional economic conditions can have a significant impact on the Company’s suppliers, contract manufacturers, logistics providers, distributors, cellular network carriers and other channel partners, and developers. Potential outcomes include financial instability; inability to obtain credit to finance business operations; and insolvency. Adverse economic conditions can also lead to increased credit and collectibility risk on the Company’s trade receivables;</untrusted_document>\n<untrusted_document cite_id=\"c:01c32d12125b2f1e38eace804ee768a33c366d376746eac5cb6fdb5323cea4b9\" amounts_in=\"millions\"> | Years ended |  |  |  |  |  |  | \n | September 28, 2024 |  | September 30, 2023 |  | September 24, 2022 |  |  | \nNet sales: |  |  |  |  |  |  |  | \nProducts |  | 294,866 |  |  |  | 298,085 |  | 316,199\nServices | 96,169 |  |  | 85,200 |  |  | 78,129 | \nTotal net sales | 391,035 |  |  | 383,285 |  |  | 394,328 | \nCost of sales: |  |  |  |  |  |  |  | \nProducts | 185,233 |  |  | 189,282 |  |  | 201,471 | \nServices | 25,119 |  |  | 24,855 |  |  | 22,075 | \nTotal cost of sales | 210,352 |  |  | 214,137 |  |  | 223,546 | \nGross margin | 180,683 |  |  | 169,148 |  |  | 170,782 | \nOperating expenses: |  |  |  |  |  |  |  | \nResearch and development | 31,370 |  |  | 29,915 |  |  | 26,251 | \nSelling, general and administrative | 26,097 |  |  | 24,932 |  |  | 25,094 | \nTotal operating expenses | 57,467 |  |  | 54,847 |  |  | 51,345 | \nOperating income | 123,216 |  |  | 114,301 |  |  | 119,437 | \nOther income/(expense), net | 269 |  |  | ( 565 ) |  |  | ( 334 ) | \nIncome before provision for income taxes | 123,485 |  |  | 113,736 |  |  | 119,103 | \nProvision for income taxes | 29,749 |  |  | 16,741 |  |  | 19,300 | \nNet income |  | 93,736 |  |  |  | 96,995 |  | 99,803\nEarnings per share: |  |  |  |  |  |  |  | \nBasic |  | 6.11 |  |  |  | 6.16 |  | 6.15</untrusted_document>\n<untrusted_document cite_id=\"c:00729e9341e6fb2cbb8b2f4da7666cd1308628ce0b9c73f46bf6c979b6b197b9\">The Company orders components for its products and builds inventory in advance of product announcements and shipments. Manufacturing purchase obligations cover the Company’s forecasted component and manufacturing requirements, typically for periods up to 150 days. Because the Company’s markets are volatile, competitive and subject to rapid technology and price changes, there is a risk the Company will forecast incorrectly and order or produce excess or insufficient amounts of components or products, or not fully utilize firm purchase commitments. The Company relies on access to third-party intellectual property, which may not be available to the Company on commercially reasonable terms, or at all. The Company’s products and services are designed to include intellectual property owned by third parties, which requires licenses from those third parties. In addition, because of technological changes in the industries in which the Company currently competes or in the future may compete, current extensive patent coverage and the rapid rate of issuance of new patents, the Company’s products and services can unknowingly infringe existing patents or intellectual property rights of others. From time to time, the Company has been notified that it may be infringing certain patents or other intellectual property rights of third parties. Based on experience and industry practice, the Company believes licenses to such third-party intellectual property can generally be obtained on commercially reasonable terms. However, there can be no assurance the necessary licenses can be obtained on commercially reasonable terms or at all. Failure to obtain the right to use third-party intellectual property, or to use such intellectual property on commercially reasonable terms, can require the Company to modify certain products, services or features or preclude the Company from selling certain products or services, or otherwise have a material adverse impact on the Company’s business, results of operations and financial condition. Apple Inc. | 2024 Form 10-K | 9 The Company’s future performance depends in part on support from third-party software developers. The Company believes decisions by customers to purchase its hardware products depend in part on the availability of third-party software applications and services. There can be no assurance third-party developers will continue to develop and maintain software applications and services for the Company’s products. If third-party software applications and services cease to be developed and maintained for the Company’s products, customers may choose not to buy the Company’s products.</untrusted_document>",
+   "summary": "AAPL operating margin 2024 percentage",
+   "count": 4,
    "items": [
     {
-     "cite_id": "c:12741fbf4bec80b03df81bf2f8af22cc55807622b92e55b1073dfb90477be7a0",
-     "text": " | Years ended |  |  |  |  |  |  | \n | September 27, 2025 |  | September 28, 2024 |  | September 30, 2023 |  |  | \nNet sales: |  |  |  |  |  |  |  | \nProducts |  | 307,003 |  |  |  | 294,866 |  | 298,085\nServices | 109,158 |  |  | 96,169 |  |  | 85,200 | \nTotal net sales | 416,161 |  |  | 391,035 |  |  | 383,285 | \nCost of sales: |  |  |  |  |  |  |  | \nProducts | 194,116 |  |  | 185,233 |  |  | 189,282 | \nServices | 26,844 |  |  | 25,119 |  |  | 24,855 | \nTotal cost of sales | 220,960 |  |  | 210,352 |  |  | 214,137 | \nGross margin | 195,201 |  |  | 180,683 |  |  | 169,148 | \nOperating expenses: |  |  |  |  |  |  |  | \nResearch and development | 34,550 |  |  | 31,370 |  |  | 29,915 | \nSelling, general and administrative | 27,601 |  |  | 26,097 |  |  | 24,932 | \nTotal operating expenses | 62,151 |  |  | 57,467 |  |  | 54,847 | \nOperating income | 133,050 |  |  | 123,216 |  |  | 114,301 | \nOther income/(expense), net | ( 321 ) |  |  | 269 |  |  | ( 565 ) | \nIncome before provision for income taxes | 132,729 |  |  | 123,485 |  |  | 113,736 | \nProvision for income taxes | 20,719 |  |  | 29,749 |  |  | 16,741 | \nNet income |  | 112,010 |  |  |  | 93,736 |  | 96,995\nEarnings per share: |  |  |  |  |  |  |  | \nBasic |  | 7.49 |  |  |  | 6.11 |  | 6.16",
+     "cite_id": "c:4d92515ffda01bb93ba02bafefdc7362c4c3341a430a8b28323aa395a78037a1",
+     "text": "Products Gross Margin Products gross margin and Products gross margin percentage increased during 2024 compared to 2023 due to cost savings, partially offset by a different Products mix and the weakness in foreign currencies relative to the U.S. dollar. Services Gross Margin Services gross margin increased during 2024 compared to 2023 due primarily to higher Services net sales. Services gross margin percentage increased during 2024 compared to 2023 due to a different Services mix. The Company’s future gross margins can be impacted by a variety of factors, as discussed in Part I, Item 1A of this Form 10-K under the heading “Risk Factors.” As a result, the Company believes, in general, gross margins will be subject to volatility and downward pressure. Operating Expenses Operating expenses for 2024, 2023 and 2022 were as follows (dollars in millions):",
      "source": {
       "kind": "chunk",
-      "document_id": 3585,
+      "document_id": 3745,
       "ticker": "AAPL",
       "doc_type": "10-K",
-      "period": "2025-FY",
-      "section": "Item 8",
+      "period": "2024-FY",
+      "section": "Item 7",
       "page": null,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019325000079/aapl-20250927.htm"
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
      },
      "value": null,
      "scale": "1000000",
      "unit_note": "millions"
     },
     {
-     "cite_id": "c:6e8abca712902055fe5085e2072e6e090ffd78eda4fa712bf8b3a43c3015d850",
+     "cite_id": "c:01f620f61dc3244d9f230beedc10fd9ebd08ada2b30a9a4443ea33f3b799d995",
+     "text": "The Company’s business, reputation, results of operations, financial condition and stock price can be affected by a number of factors, whether currently known or unknown, including those described below. When any one or more of these risks materialize from time to time, the Company’s business, reputation, results of operations, financial condition and stock price can be materially and adversely affected. Because of the following factors, as well as other factors affecting the Company’s results of operations and financial condition, past financial performance should not be considered to be a reliable indicator of future performance, and investors should not use historical trends to anticipate results or trends in future periods. This discussion of risk factors contains forward-looking statements. This section should be read in conjunction with Part II, Item 7, “Management’s Discussion and Analysis of Financial Condition and Results of Operations” and the consolidated financial statements and accompanying notes in Part II, Item 8, “Financial Statements and Supplementary Data” of this Form 10-K. Macroeconomic and Industry Risks The Company’s operations and performance depend significantly on global and regional economic conditions and adverse economic conditions can materially adversely affect the Company’s business, results of operations and financial condition. The Company has international operations with sales outside the U.S. representing a majority of the Company’s total net sales. In addition, the Company’s global supply chain is large and complex and a majority of the Company’s supplier facilities, including manufacturing and assembly sites, are located outside the U.S. As a result, the Company’s operations and performance depend significantly on global and regional economic conditions. Adverse macroeconomic conditions, including slow growth or recession, high unemployment, inflation, tighter credit, higher interest rates, and currency fluctuations, can adversely impact consumer confidence and spending and materially adversely affect demand for the Company’s products and services. In addition, consumer confidence and spending can be materially adversely affected in response to changes in fiscal and monetary policy, financial market volatility, declines in income or asset values, and other economic factors. In addition to an adverse impact on demand for the Company’s products and services, uncertainty about, or a decline in, global or regional economic conditions can have a significant impact on the Company’s suppliers, contract manufacturers, logistics providers, distributors, cellular network carriers and other channel partners, and developers. Potential outcomes include financial instability; inability to obtain credit to finance business operations; and insolvency. Adverse economic conditions can also lead to increased credit and collectibility risk on the Company’s trade receivables;",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3745,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:01c32d12125b2f1e38eace804ee768a33c366d376746eac5cb6fdb5323cea4b9",
      "text": " | Years ended |  |  |  |  |  |  | \n | September 28, 2024 |  | September 30, 2023 |  | September 24, 2022 |  |  | \nNet sales: |  |  |  |  |  |  |  | \nProducts |  | 294,866 |  |  |  | 298,085 |  | 316,199\nServices | 96,169 |  |  | 85,200 |  |  | 78,129 | \nTotal net sales | 391,035 |  |  | 383,285 |  |  | 394,328 | \nCost of sales: |  |  |  |  |  |  |  | \nProducts | 185,233 |  |  | 189,282 |  |  | 201,471 | \nServices | 25,119 |  |  | 24,855 |  |  | 22,075 | \nTotal cost of sales | 210,352 |  |  | 214,137 |  |  | 223,546 | \nGross margin | 180,683 |  |  | 169,148 |  |  | 170,782 | \nOperating expenses: |  |  |  |  |  |  |  | \nResearch and development | 31,370 |  |  | 29,915 |  |  | 26,251 | \nSelling, general and administrative | 26,097 |  |  | 24,932 |  |  | 25,094 | \nTotal operating expenses | 57,467 |  |  | 54,847 |  |  | 51,345 | \nOperating income | 123,216 |  |  | 114,301 |  |  | 119,437 | \nOther income/(expense), net | 269 |  |  | ( 565 ) |  |  | ( 334 ) | \nIncome before provision for income taxes | 123,485 |  |  | 113,736 |  |  | 119,103 | \nProvision for income taxes | 29,749 |  |  | 16,741 |  |  | 19,300 | \nNet income |  | 93,736 |  |  |  | 96,995 |  | 99,803\nEarnings per share: |  |  |  |  |  |  |  | \nBasic |  | 6.11 |  |  |  | 6.16 |  | 6.15",
      "source": {
       "kind": "chunk",
-      "document_id": 3589,
+      "document_id": 3745,
       "ticker": "AAPL",
       "doc_type": "10-K",
       "period": "2024-FY",
@@ -465,6 +408,23 @@
      "value": null,
      "scale": "1000000",
      "unit_note": "millions"
+    },
+    {
+     "cite_id": "c:00729e9341e6fb2cbb8b2f4da7666cd1308628ce0b9c73f46bf6c979b6b197b9",
+     "text": "The Company orders components for its products and builds inventory in advance of product announcements and shipments. Manufacturing purchase obligations cover the Company’s forecasted component and manufacturing requirements, typically for periods up to 150 days. Because the Company’s markets are volatile, competitive and subject to rapid technology and price changes, there is a risk the Company will forecast incorrectly and order or produce excess or insufficient amounts of components or products, or not fully utilize firm purchase commitments. The Company relies on access to third-party intellectual property, which may not be available to the Company on commercially reasonable terms, or at all. The Company’s products and services are designed to include intellectual property owned by third parties, which requires licenses from those third parties. In addition, because of technological changes in the industries in which the Company currently competes or in the future may compete, current extensive patent coverage and the rapid rate of issuance of new patents, the Company’s products and services can unknowingly infringe existing patents or intellectual property rights of others. From time to time, the Company has been notified that it may be infringing certain patents or other intellectual property rights of third parties. Based on experience and industry practice, the Company believes licenses to such third-party intellectual property can generally be obtained on commercially reasonable terms. However, there can be no assurance the necessary licenses can be obtained on commercially reasonable terms or at all. Failure to obtain the right to use third-party intellectual property, or to use such intellectual property on commercially reasonable terms, can require the Company to modify certain products, services or features or preclude the Company from selling certain products or services, or otherwise have a material adverse impact on the Company’s business, results of operations and financial condition. Apple Inc. | 2024 Form 10-K | 9 The Company’s future performance depends in part on support from third-party software developers. The Company believes decisions by customers to purchase its hardware products depend in part on the availability of third-party software applications and services. There can be no assurance third-party developers will continue to develop and maintain software applications and services for the Company’s products. If third-party software applications and services cease to be developed and maintained for the Company’s products, customers may choose not to buy the Company’s products.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 3745,
+      "ticker": "AAPL",
+      "doc_type": "10-K",
+      "period": "2024-FY",
+      "section": "Item 1A",
+      "page": null,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019324000123/aapl-20240928.htm"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
     }
    ],
    "error": null
@@ -472,5 +432,5 @@
  ],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 28558
+ "elapsed_ms": 25706
 }

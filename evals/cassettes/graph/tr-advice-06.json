@@ -6,13 +6,13 @@
    "key": "540fb08c176c09516c1a03527fbd701ff6b0f5f41e54af35ef03d4f5a3309e6a",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi taleplerine yanıt verilememektedir. Koç Holding hakkında yatırım kararı veya öneri içeren sorular yanıtlanmamaktadır.\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Bu soru yatırım tavsiyesi niteliğindedir. Bu nedenle menkul kıymet alımı, satımı veya tutulmasıyla ilgili önerilerde bulunulmamaktadır.\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1649,
-    "tokens_out": 63,
-    "latency_ms": 872.113,
+    "tokens_in": 1658,
+    "tokens_out": 68,
+    "latency_ms": 1071.015,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,31 @@
    "key": "559e4fbc6201d81f585ab8a8c979ecef409b2f01cd5be22f78fdb39966799cc0",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"tr\", \"status\": \"refused\", \"summary\": \"Yatırım tavsiyesi verilemez. Koç Holding ile ilgili şirket açıklamalarına dayalı bilgi sağlayabilirim, ancak alım/satım önerisi yapmam.\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi verilemez. Koç Holding (KCHOL) ile ilgili genel şirket bilgileri ve finansal veriler için resmi açıklamalar incelenebilir.\",\n  \"points\": [\n    {\n      \"text\": \"Koç Holding A.Ş. (KCHOL) Türkiye'nin en büyük konglomeranlarından biridir ve Borsa İstanbul'da işlem görmektedir.\",\n      \"cite_ids\": []\n    },\n    {\n      \"text\": \"Şirketin finansal tabloları, faaliyet raporları ve önemli gelişmeler Kamu Aydınlatma Platformu (KAP) üzerinden duyurulmaktadır.\",\n      \"cite_ids\": []\n    }\n  ],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1165,
-    "tokens_out": 199,
-    "latency_ms": 8414.304,
+    "tokens_out": 446,
+    "latency_ms": 43073.497,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "38550ed8d4641f7a7aa0f5c92f7fdb46ae62d11bef2951fd5165bd68c116c203",
+   "task_class": "strong",
+   "response": {
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi verilemez. Koç Holding (KCHOL) ile ilgili genel şirket bilgileri ve finansal veriler için resmi açıklamalar incelenebilir.\",\n  \"points\": [\n    {\n      \"text\": \"Koç Holding A.Ş. (KCHOL) Türkiye'nin en büyük konglomeranlarından biridir ve Borsa İstanbul'da işlem görmektedir.\",\n      \"cite_ids\": [\"c:1\"]\n    },\n    {\n      \"text\": \"Şirketin finansal tabloları, faaliyet raporları ve önemli gelişmeler Kamu Aydınlatma Platformu (KAP) üzerinden duyurulmaktadır.\",\n      \"cite_ids\": [\"c:1\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:1\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1388,
+    "tokens_out": 514,
+    "latency_ms": 12502.684,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -39,5 +57,5 @@
  "tools": [],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 9769
+ "elapsed_ms": 57831
 }

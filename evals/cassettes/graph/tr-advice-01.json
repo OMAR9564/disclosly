@@ -6,13 +6,13 @@
    "key": "71e8696c83ac0923dae493a6cedaf0694c1d3fc135646a6d4934355f6970c96f",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi talebinde bulunduğunuz için bu soru yanıtlanamamaktadır. Lütfen şirket açıklamaları ve finansal veriler hakkındaki bilgi talepleriyle tekrar başvurun.\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi niteliğindeki sorular yanıtlanmamaktadır.\",\n  \"points\": [],\n  \"citations\": []\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1654,
-    "tokens_out": 72,
-    "latency_ms": 705.237,
+    "tokens_in": 1663,
+    "tokens_out": 59,
+    "latency_ms": 3039.281,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,13 @@
    "key": "cc974484202f21999176fd04af674b08debc2ae1912412b7fbc49a75406625d0",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"tr\", \"status\": \"refused\", \"summary\": \"Yatırım tavsiyesi veremem. THYAO ile ilgili şirket açıklamalarına ve finansal verilerine erişim sağlayabilirim, ancak alım-satım kararı size aittir.\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi verilemez. THYAO ile ilgili şirket açıklamalarına dayalı bilgi için belge araması yapabilirim.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1170,
-    "tokens_out": 211,
-    "latency_ms": 4031.372,
+    "tokens_out": 159,
+    "latency_ms": 3411.797,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -39,5 +39,5 @@
  "tools": [],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 5167
+ "elapsed_ms": 6957
 }

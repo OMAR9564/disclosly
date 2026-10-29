@@ -37,7 +37,9 @@ from tools.types import SandboxUnavailable, SeenItem
 MAX_FINDINGS = 30
 MAX_EVIDENCE_ITEMS = 60
 EVIDENCE_ITEM_CHARS = 1500
-MAX_TOKENS = 2048
+# A deep plan with several calculate steps writes code for each: 2048 tokens cut it off.
+MAX_TOKENS = 4096
+ANALYST_FAILED = "analyst: no valid output"
 _FENCE = re.compile(r"^```(?:json)?\s*|\s*```$")
 _REASK = {
     "tr": "Yanıtın şemaya uymadı. Şu hataları düzelt ve yalnızca JSON'u yeniden ver:\n",
@@ -113,10 +115,12 @@ async def analyst_node(state: ResearchState, ctx: NodeContext) -> dict[str, Any]
             ChatMessage(role="user", content=_REASK[language] + "\n".join(errors)),
         ]
 
-    findings = [
-        f for f in (output.findings if output else []) if all(c in known for c in f.cite_ids)
-    ]
-    specs = output.calculations if output else []
+    if output is None:
+        # The writer must not read "no findings" as "no evidence": it leaves the report to
+        # finalize_partial.
+        return {"findings": [], "calculations": [], "errors": [ANALYST_FAILED]}
+    findings = [f for f in output.findings if all(c in known for c in f.cite_ids)]
+    specs = output.calculations
     calculations = await run_calculations(state, ctx, specs) if specs else []
     return {"findings": findings, "calculations": calculations}
 

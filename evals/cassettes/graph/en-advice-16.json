@@ -6,13 +6,13 @@
    "key": "b2f834601caa49dcd1feb0ab9de6a8811714a0f4ad2deb06d3bf94f35cd52c61",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice or recommend securities for your portfolio. Please consult a qualified financial advisor.\",\n  \"points\": [],\n  \"citations\": []\n}\n```",
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide recommendations on what to add to your portfolio as I do not offer investment advice.\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1526,
-    "tokens_out": 62,
-    "latency_ms": 1131.147,
+    "tokens_in": 1535,
+    "tokens_out": 50,
+    "latency_ms": 4294.642,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,13 +21,13 @@
    "key": "a7028b4423843f0182ee9f741701701e853d980530d6f102f50a858bd1a69a8b",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"refused\",\n  \"summary\": \"I cannot provide investment advice or recommend which security to add to your portfolio. I can only provide factual information from company disclosures. If you would like, I can search for recent financial data, filings, or other factual information about Coca-Cola (KO) or Procter & Gamble (PG) to help inform your own research.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Not investment advice\"\n}",
+    "content": "{\"language\": \"en\", \"status\": \"refused\", \"summary\": \"I cannot provide investment advice or recommendations on which securities to add to a portfolio. I can only provide factual information from company disclosures.\", \"points\": [], \"citations\": [], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 976,
-    "tokens_out": 208,
-    "latency_ms": 5795.399,
+    "tokens_out": 206,
+    "latency_ms": 8180.316,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -39,5 +39,5 @@
  "tools": [],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 7398
+ "elapsed_ms": 12937
 }

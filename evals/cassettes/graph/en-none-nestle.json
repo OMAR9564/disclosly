@@ -3,16 +3,16 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "0eafe2a5271c04639f936e0eebef8c3c5ba84f5cdc0e08d5a32f3902867e09e4",
+   "key": "ba8d759667d2385a81adba0aae93ea04c131c4879b217454b97f29e728a2b8c7",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"NESN\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\"mode\": \"simple\", \"tickers\": [\"NESN\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"revenue\"], \"uses_watchlist\": false, \"memory_intent\": null}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 937,
-    "tokens_out": 76,
-    "latency_ms": 984.737,
+    "tokens_in": 944,
+    "tokens_out": 44,
+    "latency_ms": 6346.193,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -24,35 +24,35 @@
     "content": null,
     "tool_calls": [
      {
-      "id": "call_4166458",
+      "id": "call_207454",
       "name": "list_documents",
       "arguments": {
        "ticker": "NESN"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0TTziQSFobYkB3NE8y5FH5RmN3MuqcICKLiorYrzQQihM1/+tpqz+LvRejDLJlV2ixojwbZLXtqy5IW+PrKeAhA2Z7Rx4wggNxFqyUCJK7bMsoVmGhxGVRISM="
+        "thought_signature": "EmAKXgFpFH0TH/5+243jpF3cRQvvxJdjTkmmtIms38RDRdoIWS08ShpmcI8EXgmF88qggZZcnKSfZjeF/rRQLPhuNA4NTCDGFb+5kDZSdFTbze6ZBWrkgeI1Ywkqz3ybXuo="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1501,
+    "tokens_in": 1510,
     "tokens_out": 17,
-    "latency_ms": 508.587,
+    "latency_ms": 3622.503,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "65f5a4aff492a0268244be3e0a014b485d60bfec7fd9364e586cca6cec291f22",
+   "key": "0eebbaba464011fb06c91aa596545875eb740c2b2a1c2d98ce998084a612950f",
    "task_class": "cheap",
    "response": {
     "content": null,
     "tool_calls": [
      {
-      "id": "call_942554",
+      "id": "call_263415",
       "name": "search_documents",
       "arguments": {
        "query": "Nestle revenue 2025",
@@ -60,16 +60,16 @@
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0TlDRLsjF3TxRyu8C2G6w3cbvuRei67IH87b9+H7BYQ05+IrwdGqvR9OjWVtonvCAjzuhvWAHvrOYFpGHvAjg97tIIZU7E/OlMuaXm8b08lSskj65kRpS282A="
+        "thought_signature": "EmAKXgFpFH0TzVllhplzle51AksKhs0miEyDXQvS14nLWn7gdGRHQ8iIVnqm2F1ygeTtgexkqZprJD15HE7Uo0TJv1FpE1beMkL4E1Rxm9hfNAhij1wfqPFRok+k8CSf0qg="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1536,
+    "tokens_in": 1545,
     "tokens_out": 30,
-    "latency_ms": 587.649,
+    "latency_ms": 4131.617,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -88,11 +88,11 @@
   {
    "key": "{\"arguments\":{\"query\":\"What was Nestlé's revenue in 2025?\",\"ticker\":\"NESN\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
-   "content": "No results.",
+   "content": "Tool error: document search is temporarily unavailable",
    "summary": "NESN What was Nestlé's revenue in 2025?",
    "count": 0,
    "items": [],
-   "error": null
+   "error": "document search is temporarily unavailable"
   },
   {
    "key": "{\"arguments\":{\"ticker\":\"NESN\"},\"name\":\"list_documents\"}",
@@ -115,5 +115,5 @@
  ],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 4194
+ "elapsed_ms": 18948
 }

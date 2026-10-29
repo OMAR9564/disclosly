@@ -3,16 +3,16 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "009bf5f3020e0763a67f3f6289dd3a3117502ea1a8b603b134ca4825c96c31fc",
+   "key": "accd05c967a5fa124dfaf55b8642ea52846228ab557eee951e21bfa5b74365c9",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\"COST\"],\n  \"periods\": [\"2026-FY\"],\n  \"metrics\": [\"revenue\"],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"COST\"\n  ],\n  \"periods\": [\n    \"2026-FY\"\n  ],\n  \"metrics\": [\n    \"revenue\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 943,
-    "tokens_out": 57,
-    "latency_ms": 897.892,
+    "tokens_in": 950,
+    "tokens_out": 75,
+    "latency_ms": 1481.115,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -24,45 +24,45 @@
     "content": null,
     "tool_calls": [
      {
-      "id": "call_5554592",
+      "id": "call_215530",
       "name": "get_financial_facts",
       "arguments": {
+       "ticker": "COST",
        "periods": [
         "2025-FY",
         "2026-FY"
        ],
-       "ticker": "COST",
        "metrics": [
         "revenue"
        ]
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0Tk2OJqBjMh5p5gyd2lp3H9u9XsTibfgnHXQ/X/i0yjZ5AxfGuZs9gRVxIND4UVle0WPWf4kanSWd1pZ3gay/+0fMvYIHd4fi+VpQZT9jW5q6HwPlLKEyt4gs="
+        "thought_signature": "EmAKXgFpFH0TwDn7EbpstybdCY2KgoKNEUq7BWg8wYOn70U5LO+3DU1G+ulgHhWe7kWKUi4ccO7af18ZRLfPBO7mMPugERq/omwLrOLupy+h9x2iQbpDokbwjuepKC2YU8M="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1655,
+    "tokens_in": 1664,
     "tokens_out": 44,
-    "latency_ms": 912.317,
+    "latency_ms": 649.994,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "bd37adce35fcb6bec045c328be381298ab59dc5ace4365dab888ba66036247af",
+   "key": "a3c5fd33c2119aad29ebe9db02b899516d948c574bd066ad13767c70d1666777",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In fiscal 2026, Costco's net sales (revenue) increased to $303,154 million (or $303,154,000,000) [1] from $275,235 million (or $275,235,000,000) in fiscal 2025 [2], representing an increase of $27,919 million or approximately 10.14%.\",\n  \"points\": [\n    {\n      \"text\": \"Costco's net sales for fiscal 2026 were $303,154 million ($303,154,000,000).\",\n      \"cite_ids\": [\n        \"f:1783\"\n      ]\n    },\n    {\n      \"text\": \"Costco's net sales for fiscal 2025 were $275,235 million ($275,235,000,000).\",\n      \"cite_ids\": [\n        \"f:1776\"\n      ]\n    },\n    {\n      \"text\": \"The increase in net sales was $27,919 million, which is a 10.14% increase.\",\n      \"cite_ids\": [\n        \"f:1783\",\n        \"f:1776\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:1783\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:1776\"\n    }\n  ]\n}\n```",
+    "content": "```json\n{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"In fiscal 2026, Costco's net sales (revenue) increased to $303,154,000,000 [f:1783] compared to $275,235,000,000 in fiscal 2025 [f:1776], representing an increase of $27,919,000,000 (or approximately 10.14%).\",\n  \"points\": [\n    {\n      \"text\": \"Fiscal 2026 revenue was $303,154,000,000.\",\n      \"cite_ids\": [\n        \"f:1783\"\n      ]\n    },\n    {\n      \"text\": \"Fiscal 2025 revenue was $275,235,000,000.\",\n      \"cite_ids\": [\n        \"f:1776\"\n      ]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:1783\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:1776\"\n    }\n  ]\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 2184,
-    "tokens_out": 434,
-    "latency_ms": 1910.173,
+    "tokens_in": 2193,
+    "tokens_out": 327,
+    "latency_ms": 2479.421,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -71,13 +71,13 @@
    "key": "112d87a1e8db6d69d5ca0dd146c0a7560e658192adf643f80b8d4441758ebf66",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Costco's net sales (revenue) increased by $27,919 million (approximately 10.14%) in fiscal 2026 compared to fiscal 2025.\",\n  \"points\": [\n    {\n      \"text\": \"Fiscal 2026 revenue: $303,154 million\",\n      \"cite_ids\": [\"f:1783\"]\n    },\n    {\n      \"text\": \"Fiscal 2025 revenue: $275,235 million\",\n      \"cite_ids\": [\"f:1776\"]\n    },\n    {\n      \"text\": \"Increase in millions: $27,919 million\",\n      \"cite_ids\": [\"f:1783\", \"f:1776\"]\n    },\n    {\n      \"text\": \"Percentage increase: 10.14%\",\n      \"cite_ids\": [\"f:1783\", \"f:1776\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"f:1783\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:1776\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\"language\": \"en\", \"status\": \"completed\", \"summary\": \"Costco's net sales (revenue) increased by $27,919 million (approximately 10.14%) in fiscal 2026 compared to fiscal 2025.\", \"points\": [{\"text\": \"Fiscal 2026 revenue: $303,154 million; Fiscal 2025 revenue: $275,235 million. Increase: $27,919 million (10.14%).\", \"cite_ids\": [\"f:1783\", \"f:1776\"]}], \"citations\": [{\"marker\": 1, \"cite_id\": \"f:1783\"}, {\"marker\": 2, \"cite_id\": \"f:1776\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
     "tokens_in": 1425,
-    "tokens_out": 820,
-    "latency_ms": 55836.813,
+    "tokens_out": 622,
+    "latency_ms": 24641.525,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -338,5 +338,5 @@
  ],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 61191
+ "elapsed_ms": 30632
 }

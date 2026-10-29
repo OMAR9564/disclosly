@@ -3,31 +3,31 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "59b78f63fe7633fe095cc49f2beb5f459b0f77ae89019f32d7a3ecb8938a4a41",
+   "key": "05e8d0a93ab5b4364dbd733767d28a6795025f3c506ee8a3b1d939cd3bc6e051",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"TCELL\",\n    \"TTKOM\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"ebitda\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1020,
+    "tokens_in": 1027,
     "tokens_out": 84,
-    "latency_ms": 1586.501,
+    "latency_ms": 989.108,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "0df3b6b547f12326d3553f1ae5274977c6cb29bb54883d021256c376d4789655",
+   "key": "a4815fa3f6d09cb374ad62a6a45e77d114e0d8dd2280fd132208a77130345b5c",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Turkcell ve Türk Telekom'un 2025 yılı FAVÖK (EBITDA) rakamlarını getir.\",\n      \"tickers\": [\"TCELL\", \"TTKOM\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": [\"ebitda\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"İki şirketin 2025 FAVÖK değerlerini karşılaştır (fark ve oran).\",\n      \"tickers\": [\"TCELL\", \"TTKOM\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": []\n    }\n  ]\n}",
+    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Turkcell ve Türk Telekom'un 2025 yılı FAVÖK (EBITDA) rakamlarını getir\", \"tickers\": [\"TCELL\", \"TTKOM\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"ebitda\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"İki şirketin 2025 FAVÖK değerlerini fark ve oran olarak karşılaştır\", \"tickers\": [\"TCELL\", \"TTKOM\"], \"periods\": [\"2025-FY\"], \"metrics\": []}]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1249,
-    "tokens_out": 659,
-    "latency_ms": 24629.001,
+    "tokens_in": 1315,
+    "tokens_out": 753,
+    "latency_ms": 23370.852,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -36,31 +36,31 @@
    }
   },
   {
-   "key": "2ededcc3cb7843a30cf3615996c388ce8e266077d41c0ade0581edc18ccf5a65",
+   "key": "bf695db2c6b4d0cf1529b071d17832263252d6877667c80b8f6b3ec6fd236575",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": false,\n      \"rewritten_query\": \"Turkcell ve Turk Telekom 2025 FAVÖK EBITDA rakamları\"\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    }\n  ]\n}",
+    "content": "{\n  \"steps\": [\n    {\n      \"step_id\": \"s1\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    },\n    {\n      \"step_id\": \"s2\",\n      \"sufficient\": true,\n      \"rewritten_query\": null\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 704,
-    "tokens_out": 97,
-    "latency_ms": 980.711,
+    "tokens_in": 781,
+    "tokens_out": 78,
+    "latency_ms": 847.42,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "f961372748251b519e62357694d1ad8869839044ff1fe2ed71d8b8e463e0a5f0",
+   "key": "5f463fbe300abc57474bec5cbe3411a0a7ca6fa63b32d2a827b8d1b53de6b692",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"2025 yılı FAVÖK rakamı 95.925.540.000 TRY olarak raporlanmıştır (hangi şirkete ait olduğu belgede belirtilmemiştir).\",\n      \"cite_ids\": [\"f:3183\"]\n    }\n  ],\n  \"calculations\": []\n}",
+    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Turkcell'in 2025 yılı FAVÖK (EBITDA) rakamı 136.785.848.000 TRY'dır.\",\n      \"cite_ids\": [\"f:2991\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Türk Telekom'un 2025 yılı FAVÖK (EBITDA) rakamı 95.925.540.000 TRY'dır.\",\n      \"cite_ids\": [\"f:3183\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"ebitda_difference\",\n      \"description\": \"Turkcell ve Türk Telekom 2025 FAVÖK farkı (Turkcell - Türk Telekom), TRY cinsinden\",\n      \"inputs\": [\n        {\n          \"name\": \"tcell_ebitda\",\n          \"cite_id\": \"f:2991\"\n        },\n        {\n          \"name\": \"ttkom_ebitda\",\n          \"cite_id\": \"f:3183\"\n        }\n      ],\n      \"code\": \"result = inputs['tcell_ebitda'] - inputs['ttkom_ebitda']\"\n    },\n    {\n      \"name\": \"ebitda_ratio\",\n      \"description\": \"Turkcell 2025 FAVÖK / Türk Telekom 2025 FAVÖK oranı\",\n      \"inputs\": [\n        {\n          \"name\": \"tcell_ebitda\",\n          \"cite_id\": \"f:2991\"\n        },\n        {\n          \"name\": \"ttkom_ebitda\",\n          \"cite_id\": \"f:3183\"\n        }\n      ],\n      \"code\": \"result = inputs['tcell_ebitda'] / inputs['ttkom_ebitda']\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2005,
-    "tokens_out": 1457,
-    "latency_ms": 30958.972,
+    "tokens_in": 2138,
+    "tokens_out": 995,
+    "latency_ms": 44188.147,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -69,16 +69,16 @@
    }
   },
   {
-   "key": "6e6d30b5ea408f750b825555f12b8b123e4f67144e1cd2f06155cd6090245efc",
+   "key": "8e91a3fc0e70425fd1e0e9a19a6fd8564d963825bf87729cebdf09b6dcd19c8d",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Kanıt 2025 FAVÖK rakamının 95.925.540.000 TRY olduğunu onaylıyor; hangi şirkete ait olduğu ne bulguda ne kanıtta belirtilmemiş.\"\n    }\n  ]\n}",
+    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Kanıt f:2991'de Turkcell 2025 FAVÖK rakamı 136.785.848.000 TRY olarak açıkça belirtiliyor.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Kanıt f:3183'te Türk Telekom 2025 FAVÖK rakamı 95.925.540.000 TRY olarak açıkça belirtiliyor.\"\n    }\n  ]\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 752,
-    "tokens_out": 495,
-    "latency_ms": 19873.951,
+    "tokens_in": 1025,
+    "tokens_out": 638,
+    "latency_ms": 10014.387,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -87,20 +87,22 @@
    }
   },
   {
-   "key": "36a21f8fa327af7715a48ce83187bf4cd1c89fe88cd3f2d4bd23372cce7cf83a",
+   "key": "671701fe941e5addcd7e00c873d81aceb94f626607c6730e9899235c5540834e",
    "task_class": "strong",
    "response": {
-    "content": "{\"language\": \"tr\", \"status\": \"partial\", \"summary\": \"2025 yılı için tek bir FAVÖK rakamı (95,9 Milyar TRY) bulunmuştur ancak bu rakamın Turkcell mi yoksa Türk Telekom mu ait olduğu belgelerde belirtilmemiştir. Bu nedenle iki şirketin FAVÖK'ları karşılaştırılamamıştır.\", \"points\": [{\"text\": \"2025 yılı için 95.925.540.000 TRY tutarında bir FAVÖK rakamı raporlanmıştır.\", \"cite_ids\": [\"f:3183\"]}, {\"text\": \"Rakamın hangi şirkete (Turkcell veya Türk Telekom) ait olduğu kaynak belgede belirtilmemiştir.\", \"cite_ids\": [\"f:3183\"]}], \"tables\": [{\"title\": \"2025 FAVÖK Rakamı (Şirket Atıfsız)\", \"columns\": [\"Öğe\", \"Değer (TRY)\"], \"rows\": [[{\"text\": \"2025 FAVÖK\", \"cite_id\": \"f:3183\"}, {\"text\": \"95.925.540.000\", \"cite_id\": \"f:3183\"}]]}], \"chart\": null, \"confidence\": {\"level\": \"low\", \"note\": \"Tek bir FAVÖK rakamı bulundu ancak şirket ayrımı yapılamadığı için karşılaştırma mümkün değildir.\"}, \"unverified\": [\"Turkcell 2025 FAVÖK\", \"Türk Telekom 2025 FAVÖK\", \"İki şirket arası FAVÖK farkı ve oranı\"], \"citations\": [{\"marker\": 1, \"cite_id\": \"f:3183\"}], \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"}",
+    "content": "{\"language\":\"tr\",\"status\":\"completed\",\"summary\":\"Turkcell'in 2025 yılı FAVÖK'ü 136.785.848.000 TRY'dir[1]. Türk Telekom'un 2025 yılı FAVÖK'ü 95.925.540.000 TRY'dir[2]. İki şirket arasındaki fark 40.860.308.000 TRY'dir[3]. Turkcell'in FAVÖK'ü, Türk Telekom'un FAVÖK'ünün %142,60'ı kadardır[4].\",\"points\":[{\"text\":\"Turkcell'in 2025 FAVÖK'ü 136.785.848.000 TRY'dir.\",\"cite_ids\":[\"f:2991\"]},{\"text\":\"Türk Telekom'un 2025 FAVÖK'ü 95.925.540.000 TRY'dir.\",\"cite_ids\":[\"f:3183\"]},{\"text\":\"Fark 40.860.308.000 TRY ve oran %142,60'tır.\",\"cite_ids\":[\"k:1\",\"k:2\"]}],\"tables\":[{\"title\":\"2025 FAVÖK (TRY)\",\"columns\":[\"Şirket\",\"FAVÖK\"],\"rows\":[[{\"text\":\"Turkcell\",\"cite_id\":null},{\"text\":\"136.785.848.000\",\"cite_id\":\"f:2991\"}],[{\"text\":\"Türk Telekom\",\"cite_id\":null},{\"text\":\"95.925.540.000\",\"cite_id\":\"f:3183\"}]]}],\"chart\":null,\"confidence\":{\"level\":\"high\",\"note\":\"\"},\"unverified\":[],\"citations\":[{\"marker\":1,\"cite_id\":\"f:2991\"},{\"marker\":2,\"cite_id\":\"f:3183\"},{\"marker\":3,\"cite_id\":\"k:1\"},{\"marker\":4,\"cite_id\":\"k:2\"}],\"disclaimer\":\"Yatırım tavsiyesi değildir / Not investment advice\"}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2368,
-    "tokens_out": 716,
-    "latency_ms": 31158.528,
+    "provider": "groq-large",
+    "model": "openai/gpt-oss-120b",
+    "tokens_in": 3333,
+    "tokens_out": 874,
+    "latency_ms": 7834.581,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
-     "gemini-flash"
+     "gemini-flash",
+     "nvidia-large",
+     "openrouter-large"
     ]
    }
   }
@@ -109,11 +111,11 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"TCELL\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "Tool error: document search is temporarily unavailable",
+   "content": "{\"documents\": [{\"document_id\": 2791, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q4\", \"published_at\": \"2026-10-22T16:58:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1686074\"}, {\"document_id\": 1722, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-24T16:18:31Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1667936\"}, {\"document_id\": 1721, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-24T16:18:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1667934\"}, {\"document_id\": 1720, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-22T14:14:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1666707\"}, {\"document_id\": 1719, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-15T18:10:45Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1663237\"}, {\"document_id\": 1718, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-09-08T13:16:44Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1660180\"}, {\"document_id\": 1717, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-31T20:30:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1656529\"}, {\"document_id\": 1716, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q3\", \"published_at\": \"2026-08-13T15:45:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1649495\"}, {\"document_id\": 1715, \"ticker\": \"TCELL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-13T15:45:02Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1649493\"}, {\"document_id\": 1714, \"ticker\": \"TCELL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q2\", \"published_at\": \"2026-08-13T15:44:51Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1649492\"}, {\"document_id\": 1713, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-22T10:00:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1619301\"}, {\"document_id\": 1712, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-18T18:55:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1618795\"}, {\"document_id\": 1711, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-06-01T16:32:59Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1611689\"}, {\"document_id\": 1710, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-22T12:53:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1610434\"}, {\"document_id\": 1709, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-14T18:43:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1607579\"}, {\"document_id\": 1708, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-11T15:34:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1605257\"}, {\"document_id\": 1707, \"ticker\": \"TCELL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-11T15:34:13Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1605253\"}, {\"document_id\": 1706, \"ticker\": \"TCELL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2026-Q1\", \"published_at\": \"2026-05-11T15:33:58Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1605247\"}, {\"document_id\": 1705, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-05-11T14:32:19Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1604844\"}, {\"document_id\": 1704, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-21T18:12:09Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1596359\"}, {\"document_id\": 1703, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-17T17:48:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1595004\"}, {\"document_id\": 1702, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q2\", \"published_at\": \"2026-04-01T06:57:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1582019\"}, {\"document_id\": 1701, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-23T15:01:15Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1574790\"}, {\"document_id\": 1700, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-18T19:40:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1574286\"}, {\"document_id\": 1699, \"ticker\": \"TCELL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-03-11T19:49:55Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1571241\"}, {\"document_id\": 1698, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-05T17:03:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1566716\"}, {\"document_id\": 1697, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-03-05T15:50:42Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1566640\"}, {\"document_id\": 1696, \"ticker\": \"TCELL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-FY\", \"published_at\": \"2026-03-05T15:47:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1566628\"}, {\"document_id\": 1695, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-02-17T17:20:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1557897\"}, {\"document_id\": 1694, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-27T14:31:36Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1547276\"}, {\"document_id\": 1693, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2026-Q1\", \"published_at\": \"2026-01-02T06:02:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1532018\"}, {\"document_id\": 1692, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-30T18:41:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1531403\"}, {\"document_id\": 1691, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-12-08T12:32:37Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1524528\"}, {\"document_id\": 1690, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-28T14:56:43Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1521305\"}, {\"document_id\": 1689, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-17T16:03:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1517505\"}, {\"document_id\": 1688, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-12T03:55:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1515880\"}, {\"document_id\": 1687, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-06T15:21:12Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1512403\"}, {\"document_id\": 1686, \"ticker\": \"TCELL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-06T15:20:05Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1512395\"}, {\"document_id\": 1685, \"ticker\": \"TCELL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q3\", \"published_at\": \"2025-11-06T15:19:41Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1512392\"}, {\"document_id\": 1684, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-11-05T05:58:39Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1511395\"}, {\"document_id\": 1683, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-16T18:49:57Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1505148\"}, {\"document_id\": 1682, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-15T15:42:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1504837\"}, {\"document_id\": 1681, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q4\", \"published_at\": \"2025-10-10T14:16:46Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1502395\"}, {\"document_id\": 1680, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-09-24T17:17:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1492708\"}, {\"document_id\": 1679, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-13T15:48:18Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1477832\"}, {\"document_id\": 1678, \"ticker\": \"TCELL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-13T15:46:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1477824\"}, {\"document_id\": 1677, \"ticker\": \"TCELL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q2\", \"published_at\": \"2025-08-13T15:45:10Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1477817\"}, {\"document_id\": 1676, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q3\", \"published_at\": \"2025-08-04T17:53:45Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1472015\"}, {\"document_id\": 1675, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-06-25T18:30:23Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1452058\"}, {\"document_id\": 1674, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-30T13:21:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1443747\"}, {\"document_id\": 1673, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-29T15:16:30Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1443312\"}, {\"document_id\": 1672, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-20T18:43:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1440385\"}, {\"document_id\": 1671, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-15T16:47:59Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1439471\"}, {\"document_id\": 1670, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-15T16:47:33Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1439470\"}, {\"document_id\": 1669, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-09T16:11:08Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1436857\"}, {\"document_id\": 1668, \"ticker\": \"TCELL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-09T16:10:35Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1436855\"}, {\"document_id\": 1667, \"ticker\": \"TCELL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2025-Q1\", \"published_at\": \"2025-05-09T16:10:21Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1436853\"}, {\"document_id\": 1666, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-07T19:16:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1435176\"}, {\"document_id\": 1665, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-05-07T17:01:29Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1435109\"}, {\"document_id\": 1664, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-30T21:37:59Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1432571\"}, {\"document_id\": 1663, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-29T21:00:53Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1431313\"}, {\"document_id\": 1662, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q2\", \"published_at\": \"2025-04-16T06:52:39Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1426502\"}, {\"document_id\": 1661, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-28T11:24:07Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1414322\"}, {\"document_id\": 1660, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-26T15:51:14Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1412483\"}, {\"document_id\": 1659, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-25T21:23:27Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1411830\"}, {\"document_id\": 1658, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-25T21:22:52Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1411828\"}, {\"document_id\": 1657, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-25T21:22:20Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1411827\"}, {\"document_id\": 1656, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-11T19:28:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1405102\"}, {\"document_id\": 1655, \"ticker\": \"TCELL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-03-11T19:24:24Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1405081\"}, {\"document_id\": 1654, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-05T16:05:58Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1401043\"}, {\"document_id\": 1653, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-05T05:52:56Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1400534\"}, {\"document_id\": 1652, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-03-04T14:49:48Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1400164\"}, {\"document_id\": 1651, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-27T16:38:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1396815\"}, {\"document_id\": 1650, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-27T16:00:35Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1396784\"}, {\"document_id\": 1649, \"ticker\": \"TCELL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-27T15:56:06Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1396778\"}, {\"document_id\": 1648, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-02-07T15:35:26Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1390955\"}, {\"document_id\": 1647, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-27T15:26:32Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1384798\"}, {\"document_id\": 1646, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-21T17:41:47Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1383219\"}, {\"document_id\": 1645, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-16T19:38:42Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1381886\"}, {\"document_id\": 1644, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2025-Q1\", \"published_at\": \"2025-01-16T19:38:28Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1381885\"}, {\"document_id\": 1643, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-12-16T05:59:16Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1365803\"}, {\"document_id\": 1642, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-14T13:35:10Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1357974\"}, {\"document_id\": 1641, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-13T14:37:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1357670\"}, {\"document_id\": 1640, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-07T16:34:48Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1355218\"}, {\"document_id\": 1639, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-11-07T16:34:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1355217\"}, {\"document_id\": 1638, \"ticker\": \"TCELL\", \"doc_type\": \"kap_annual_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-07T16:33:04Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1355214\"}, {\"document_id\": 1637, \"ticker\": \"TCELL\", \"doc_type\": \"kap_financial_report\", \"period\": \"2024-Q3\", \"published_at\": \"2024-11-07T16:27:22Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1355213\"}, {\"document_id\": 1636, \"ticker\": \"TCELL\", \"doc_type\": \"kap_material_event\", \"period\": \"2024-Q4\", \"published_at\": \"2024-10-21T16:31:00Z\", \"language\": \"tr\", \"source_url\": \"https://www.kap.org.tr/tr/Bildirim/1349848\"}]}",
    "summary": "TCELL documents",
-   "count": 0,
+   "count": 88,
    "items": [],
-   "error": "document search is temporarily unavailable"
+   "error": null
   },
   {
    "key": "{\"arguments\":{\"ticker\":\"TTKOM\"},\"name\":\"list_documents\"}",
@@ -122,6 +124,35 @@
    "summary": "TTKOM documents",
    "count": 109,
    "items": [],
+   "error": null
+  },
+  {
+   "key": "{\"arguments\":{\"metrics\":[\"ebitda\"],\"periods\":[\"2025-FY\"],\"ticker\":\"TCELL\"},\"name\":\"get_financial_facts\"}",
+   "tool": "get_financial_facts",
+   "content": "<untrusted_document cite_id=\"f:2991\">FAVÖK (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 136.785.848.000 TRY</untrusted_document>",
+   "summary": "TCELL 2025-FY ebitda",
+   "count": 1,
+   "items": [
+    {
+     "cite_id": "f:2991",
+     "text": "FAVÖK (2025-FY; Cari Dönem 01.01.2025 - 31.12.2025): 136.785.848.000 TRY",
+     "source": {
+      "kind": "fact",
+      "document_id": 1696,
+      "ticker": "TCELL",
+      "doc_type": "kap_financial_report",
+      "period": "2025-FY",
+      "metric": "ebitda",
+      "unit": "TRY",
+      "currency": "TRY",
+      "source_ref": "derived: Tablo 2 (Kar veya Zarar Tablosu) / ESAS FAALİYET KARI (ZARARI) / Cari Dönem 01.01.2025 - 31.12.2025 + Tablo 4 (Nakit Akış Tablosu (Dolaylı Yöntem)) / Amortisman ve İtfa Gideri İle İlgili Düzeltmeler / Cari Dönem 01.01.2025 - 31.12.2025",
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1566628"
+     },
+     "value": "136785848000",
+     "scale": "1",
+     "unit_note": null
+    }
+   ],
    "error": null
   },
   {
@@ -154,7 +185,36 @@
    "error": null
   }
  ],
- "sandbox": [],
+ "sandbox": [
+  {
+   "key": "a9c0a90dcacdc7571de86402770159d2bc01410c835e777f23e67ebd0d3481fc",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "ebitda_difference": "40860308000.0",
+     "ebitda_ratio": "1.4259585924666152"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  },
+  {
+   "key": "a9c0a90dcacdc7571de86402770159d2bc01410c835e777f23e67ebd0d3481fc",
+   "response": {
+    "ok": true,
+    "outputs": {
+     "ebitda_difference": "40860308000.0",
+     "ebitda_ratio": "1.4259585924666152"
+    },
+    "stdout": "",
+    "error": null,
+    "timed_out": false,
+    "oom": false
+   }
+  }
+ ],
  "decision": "approve",
- "elapsed_ms": 131128
+ "elapsed_ms": 276455
 }

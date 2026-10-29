@@ -3,100 +3,49 @@
  "dataset": "deep_golden",
  "interactions": [
   {
-   "key": "1c6b6fed8c987f9423971761f3e50a32e860fa3cf743b369f579a3d5858a2816",
+   "key": "9f08ffdf117bf8bb5bc3ff5552130686afcc443212ce8d0f96e188714f4a3542",
    "task_class": "cheap",
    "response": {
-    "content": "{\n  \"mode\": \"deep\",\n  \"tickers\": [\n    \"JNJ\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [\n    \"total_debt\",\n    \"cash\"\n  ],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
+    "content": "{\"mode\": \"deep\", \"tickers\": [\"JNJ\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"total_debt\", \"cash\"], \"uses_watchlist\": false, \"memory_intent\": null}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 948,
-    "tokens_out": 83,
-    "latency_ms": 917.011,
+    "tokens_in": 955,
+    "tokens_out": 49,
+    "latency_ms": 855.355,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "4d18282f777deac024f17d0de6905a832b1565a96605e145192f2a2feb772c1e",
+   "key": "70c91e21223821ea7b343d106882df7d911b9db902707372f3cc9cf16835d9c6",
    "task_class": "strong",
    "response": {
-    "content": "{\"steps\": [\n    {\n      \"id\": \"s1\",\n      \"kind\": \"facts\",\n      \"goal\": \"Retrieve Johnson & Johnson's total debt and cash balances at the end of fiscal year 2025\",\n      \"tickers\": [\"JNJ\"],\n      \"periods\": [\"2025-FY\"],\n      \"metrics\": [\"total_debt\", \"cash\"]\n    },\n    {\n      \"id\": \"s2\",\n      \"kind\": \"calculate\",\n      \"goal\": \"Calculate net debt as total debt minus cash for Johnson & Johnson at end of 2025\",\n      \"tickers\": [\"JNJ\"],\n      \"periods\": [\"2025-FY\"]\n    }\n  ]}",
+    "content": "{\"steps\": [{\"id\": \"s1\", \"kind\": \"facts\", \"goal\": \"Get Johnson & Johnson's total debt and cash at end of 2025\", \"tickers\": [\"JNJ\"], \"periods\": [\"2025-FY\"], \"metrics\": [\"total_debt\", \"cash\"]}, {\"id\": \"s2\", \"kind\": \"calculate\", \"goal\": \"Calculate net debt as total debt minus cash for JNJ at end of 2025\", \"tickers\": [\"JNJ\"], \"periods\": [\"2025-FY\"]}]}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1072,
+    "tokens_in": 1120,
+    "tokens_out": 277,
+    "latency_ms": 27234.921,
+    "cache_hit": false,
+    "fallback_from": [
+     "gemini-flash-stable",
+     "gemini-flash"
+    ]
+   }
+  },
+  {
+   "key": "b079465fedf0a4bb0901445b54224a7899a2c5e58f1fe9af9ed31ae8fa9ab42f",
+   "task_class": "strong",
+   "response": {
+    "content": "{\"findings\": [], \"calculations\": []}",
+    "tool_calls": [],
+    "provider": "nvidia-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "tokens_in": 1731,
     "tokens_out": 330,
-    "latency_ms": 7247.243,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "f61a9a2060ca24e6a47da4e47a1abcdbdb18764f9a039349aac64ddb0d85ea10",
-   "task_class": "cheap",
-   "response": {
-    "content": "{\"steps\": [{\"step_id\": \"s1\", \"sufficient\": false, \"rewritten_query\": \"Johnson & Johnson total debt short-term long-term borrowings balance sheet 2025\"}, {\"step_id\": \"s2\", \"sufficient\": false, \"rewritten_query\": null}]}",
-    "tool_calls": [],
-    "provider": "gemini-flash-lite",
-    "model": "gemini-3.5-flash-lite",
-    "tokens_in": 742,
-    "tokens_out": 66,
-    "latency_ms": 822.78,
-    "cache_hit": false,
-    "fallback_from": []
-   }
-  },
-  {
-   "key": "d00231cf728fbb3dbfa2187d1c98d8942263608ca16367b0efdd41c60bd3c10e",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"findings\": [\n    {\n      \"id\": \"F1\",\n      \"text\": \"Johnson & Johnson reported total debt of 41,438,000,000 USD at the end of fiscal year 2025.\",\n      \"cite_ids\": [\"f:1059\"]\n    },\n    {\n      \"id\": \"F2\",\n      \"text\": \"Johnson & Johnson reported cash and cash equivalents of 19,709,000,000 USD at the end of fiscal year 2025.\",\n      \"cite_ids\": [\"f:1092\"]\n    },\n    {\n      \"id\": \"F3\",\n      \"text\": \"Johnson & Johnson's net debt (total debt minus cash) at the end of fiscal year 2025 was 21,729,000,000 USD.\",\n      \"cite_ids\": [\"f:1059\", \"f:1092\"],\n      \"calcs\": [\"net_debt_2025\"]\n    }\n  ],\n  \"calculations\": [\n    {\n      \"name\": \"net_debt_2025\",\n      \"description\": \"Net debt = Total debt - Cash and cash equivalents (in USD)\",\n      \"inputs\": [\n        {\n          \"name\": \"total_debt\",\n          \"cite_id\": \"f:1059\"\n        },\n        {\n          \"name\": \"cash\",\n          \"cite_id\": \"f:1092\"\n        }\n      ],\n      \"code\": \"result = inputs['total_debt'] - inputs['cash']\"\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 1979,
-    "tokens_out": 618,
-    "latency_ms": 40494.648,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "ccf3066654507740ad53aaab408bc8008b7a25d121c62e1f86465029ba3062d2",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"claims\": [\n    {\n      \"finding_id\": \"F1\",\n      \"supported\": true,\n      \"reason\": \"Matches cited evidence f:1059 exactly.\"\n    },\n    {\n      \"finding_id\": \"F2\",\n      \"supported\": true,\n      \"reason\": \"Matches cited evidence f:1092 exactly.\"\n    },\n    {\n      \"finding_id\": \"F3\",\n      \"supported\": true,\n      \"reason\": \"Calculation net_debt_2025 = 41,438,000,000 - 19,709,000,000 = 21,729,000,000 matches the finding and cited evidence.\"\n    }\n  ]\n}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 871,
-    "tokens_out": 592,
-    "latency_ms": 14453.298,
-    "cache_hit": false,
-    "fallback_from": [
-     "gemini-flash-stable",
-     "gemini-flash"
-    ]
-   }
-  },
-  {
-   "key": "1beb4c02298a2ba543c1b0144736e609ba906da59a5da6d6b86a0926224f5775",
-   "task_class": "strong",
-   "response": {
-    "content": "{\n  \"language\": \"en\",\n  \"status\": \"completed\",\n  \"summary\": \"Johnson & Johnson's net debt at the end of fiscal year 2025 was $21,729,000,000, calculated as total debt of $41,438,000,000 minus cash and cash equivalents of $19,709,000,000 [1][2][3].\",\n  \"points\": [\n    {\n      \"text\": \"Net debt (total debt minus cash) at end of FY 2025 was $21,729,000,000.\",\n      \"cite_ids\": [\"k:1\"]\n    }\n  ],\n  \"tables\": [\n    {\n      \"title\": \"Johnson & Johnson Net Debt Components (FY 2025)\",\n      \"columns\": [\n        \"Item\",\n        \"Amount (USD)\"\n      ],\n      \"rows\": [\n        [\n          {\n            \"text\": \"Total Debt\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"41,438,000,000\",\n            \"cite_id\": \"f:1059\"\n          }\n        ],\n        [\n          {\n            \"text\": \"Cash and Cash Equivalents\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"19,709,000,000\",\n            \"cite_id\": \"f:1092\"\n          }\n        ],\n        [\n          {\n            \"text\": \"Net Debt\",\n            \"cite_id\": null\n          },\n          {\n            \"text\": \"21,729,000,000\",\n            \"cite_id\": \"k:1\"\n          }\n        ]\n      ]\n    }\n  ],\n  \"chart\": null,\n  \"confidence\": {\n    \"level\": \"high\",\n    \"note\": \"The net debt figure is directly provided by a calculation using the reported total debt and cash balances from the company's disclosures.\"\n  },\n  \"unverified\": [],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"k:1\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"f:1059\"\n    },\n    {\n      \"marker\": 3,\n      \"cite_id\": \"f:1092\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
-    "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 2428,
-    "tokens_out": 1068,
-    "latency_ms": 21223.132,
+    "latency_ms": 20323.855,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -109,165 +58,14 @@
   {
    "key": "{\"arguments\":{\"ticker\":\"JNJ\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
-   "content": "{\"documents\": [{\"document_id\": 3647, \"ticker\": \"JNJ\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q3\", \"published_at\": \"2026-10-21T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/200406/000020040626000197/jnj-20260927.htm\"}, {\"document_id\": 3648, \"ticker\": \"JNJ\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q2\", \"published_at\": \"2026-07-23T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/200406/000020040626000153/jnj-20260628.htm\"}, {\"document_id\": 3649, \"ticker\": \"JNJ\", \"doc_type\": \"10-Q\", \"period\": \"2026-Q1\", \"published_at\": \"2026-04-22T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/200406/000020040626000087/jnj-20260329.htm\"}, {\"document_id\": 3650, \"ticker\": \"JNJ\", \"doc_type\": \"10-K\", \"period\": \"2025-FY\", \"published_at\": \"2026-02-11T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228.htm\"}, {\"document_id\": 3651, \"ticker\": \"JNJ\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q3\", \"published_at\": \"2025-10-22T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/200406/000020040625000209/jnj-20250928.htm\"}, {\"document_id\": 3652, \"ticker\": \"JNJ\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q2\", \"published_at\": \"2025-07-24T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/200406/000020040625000178/jnj-20250629.htm\"}, {\"document_id\": 3653, \"ticker\": \"JNJ\", \"doc_type\": \"10-Q\", \"period\": \"2025-Q1\", \"published_at\": \"2025-04-23T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/200406/000020040625000119/jnj-20250330.htm\"}, {\"document_id\": 3654, \"ticker\": \"JNJ\", \"doc_type\": \"10-K\", \"period\": \"2024-FY\", \"published_at\": \"2025-02-13T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/200406/000020040625000038/jnj-20241229.htm\"}, {\"document_id\": 2714, \"ticker\": \"JNJ\", \"doc_type\": \"10-Q\", \"period\": \"2024-Q3\", \"published_at\": \"2024-10-23T00:00:00Z\", \"language\": \"en\", \"source_url\": \"https://www.sec.gov/Archives/edgar/data/200406/000020040624000096/jnj-20240929.htm\"}]}",
+   "content": "Tool error: document search is temporarily unavailable",
    "summary": "JNJ documents",
-   "count": 9,
+   "count": 0,
    "items": [],
-   "error": null
-  },
-  {
-   "key": "{\"arguments\":{\"metrics\":[\"total_debt\",\"cash\"],\"periods\":[\"2025-FY\"],\"ticker\":\"JNJ\"},\"name\":\"get_financial_facts\"}",
-   "tool": "get_financial_facts",
-   "content": "<untrusted_document cite_id=\"f:1092\">Cash and cash equivalents (2025-FY): 19,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4626\">Cash and cash equivalents (2025-FY): 19,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:19319\">Cash and cash equivalents (2025-FY): 19,709,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:1059\">Total debt (2025-FY): 41,438,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:4593\">Total debt (2025-FY): 41,438,000,000 USD</untrusted_document>\n<untrusted_document cite_id=\"f:19284\">Total debt (2025-FY): 41,438,000,000 USD</untrusted_document>",
-   "summary": "JNJ 2025-FY total_debt, cash",
-   "count": 6,
-   "items": [
-    {
-     "cite_id": "f:1092",
-     "text": "Cash and cash equivalents (2025-FY): 19,709,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 177,
-      "ticker": "JNJ",
-      "doc_type": "10-K",
-      "period": "2025-FY",
-      "metric": "cash",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000200406-26-000016",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228.htm"
-     },
-     "value": "19709000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4626",
-     "text": "Cash and cash equivalents (2025-FY): 19,709,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2402,
-      "ticker": "JNJ",
-      "doc_type": "10-K",
-      "period": "2025-FY",
-      "metric": "cash",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000200406-26-000016",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228.htm"
-     },
-     "value": "19709000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:19319",
-     "text": "Cash and cash equivalents (2025-FY): 19,709,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3176,
-      "ticker": "JNJ",
-      "doc_type": "10-K",
-      "period": "2025-FY",
-      "metric": "cash",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:CashAndCashEquivalentsAtCarryingValue 0000200406-26-000016",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228.htm"
-     },
-     "value": "19709000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:1059",
-     "text": "Total debt (2025-FY): 41,438,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 177,
-      "ticker": "JNJ",
-      "doc_type": "10-K",
-      "period": "2025-FY",
-      "metric": "total_debt",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:LongTermDebt 0000200406-26-000016",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228.htm"
-     },
-     "value": "41438000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:4593",
-     "text": "Total debt (2025-FY): 41,438,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 2402,
-      "ticker": "JNJ",
-      "doc_type": "10-K",
-      "period": "2025-FY",
-      "metric": "total_debt",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:LongTermDebt 0000200406-26-000016",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228.htm"
-     },
-     "value": "41438000000",
-     "scale": "1",
-     "unit_note": null
-    },
-    {
-     "cite_id": "f:19284",
-     "text": "Total debt (2025-FY): 41,438,000,000 USD",
-     "source": {
-      "kind": "fact",
-      "document_id": 3176,
-      "ticker": "JNJ",
-      "doc_type": "10-K",
-      "period": "2025-FY",
-      "metric": "total_debt",
-      "unit": "USD",
-      "currency": "USD",
-      "source_ref": "us-gaap:LongTermDebt 0000200406-26-000016",
-      "source_url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228.htm"
-     },
-     "value": "41438000000",
-     "scale": "1",
-     "unit_note": null
-    }
-   ],
-   "error": null
+   "error": "document search is temporarily unavailable"
   }
  ],
- "sandbox": [
-  {
-   "key": "69eb34d3fa947b397b4a7768a5243e693472e6bca7bde8b63e11ebad567ce460",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "net_debt_2025": "21729000000.0"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  },
-  {
-   "key": "69eb34d3fa947b397b4a7768a5243e693472e6bca7bde8b63e11ebad567ce460",
-   "response": {
-    "ok": true,
-    "outputs": {
-     "net_debt_2025": "21729000000.0"
-    },
-    "stdout": "",
-    "error": null,
-    "timed_out": false,
-    "oom": false
-   }
-  }
- ],
+ "sandbox": [],
  "decision": "approve",
- "elapsed_ms": 89102
+ "elapsed_ms": 52151
 }

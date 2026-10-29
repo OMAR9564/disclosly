@@ -3,16 +3,16 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "62f515aedc1ea526c3fbc58d82af3ebc7388de3c34a0ec60839fd92b677af0c2",
+   "key": "0891c5e44af0aeeafd46bded0058b46826db2fddcd90b0adc38dca0aa839f98c",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"005930.KS\"\n  ],\n  \"periods\": [\n    \"2025-FY\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 940,
+    "tokens_in": 947,
     "tokens_out": 74,
-    "latency_ms": 872.475,
+    "latency_ms": 5860.58,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -24,52 +24,56 @@
     "content": null,
     "tool_calls": [
      {
-      "id": "call_4097172",
+      "id": "call_229898",
       "name": "list_documents",
       "arguments": {
-       "ticker": "SSNLF"
+       "period_to": "2025-FY",
+       "ticker": "005930.KS",
+       "period_from": "2025-Q1"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0TX3VQHk4UgVIyq8uLJ99s6cBI1uXmLpAaeIRk5rTExptV0DXq6lW1M96gyUvCwmku1NfGjvffLfQ4pZlPi8sayX6jxVXmAQU2t9QjzMRYt0blmCVIZYDoGss="
+        "thought_signature": "EmAKXgFpFH0Tiin3z9V90aCFEI+NrOHUL6L0Mqu0o1MeConaNEW/FVubmGuhyQshrOyTIf3duXKHfFVymDTACi7jE/1LFxBPfBKsEK047QYGUbuwLqyaq0HavtQIkAOcB/A="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1504,
-    "tokens_out": 18,
-    "latency_ms": 732.098,
+    "tokens_in": 1513,
+    "tokens_out": 50,
+    "latency_ms": 4115.224,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "b9d2518e6752fd7f06632eb030dbcfb24efe7a77b467580129edf9d15251275b",
+   "key": "a6317da81bfd0ee77356180f5c48096f91519896e79469537b07c2dc5dfcfa0a",
    "task_class": "cheap",
    "response": {
     "content": null,
     "tool_calls": [
      {
-      "id": "call_4438057",
+      "id": "call_197978",
       "name": "search_documents",
       "arguments": {
-       "ticker": "SSNLF",
-       "query": "Research and development expense 2025"
+       "query": "research and development R&D 2025",
+       "period_to": "2025-FY",
+       "ticker": "005930.KS",
+       "period_from": "2025-Q1"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0ToyNb7VkqZ+Uv9qqoJqSARdcvXiDjHuyNSNnLZ3JrdocfR/DgvkdBVH82TlAL4Kc55LzKO//qyM+ZLamNykx05vUmtAlBZSJD8AC/nEIQ4mtSleTWVS5jzUI="
+        "thought_signature": "EmAKXgFpFH0TrfQh5SgepRJBv/0z9vdsJsrRrzTMcKpWK0fDv8xU+AnCmvtKo1My/zGZLtchY/VmFHraUPOenSGkzgGGlZQT/PJT5ecDPND6aLnfWTuXlHHBrWSktOF0Vps="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1540,
-    "tokens_out": 32,
-    "latency_ms": 589.838,
+    "tokens_in": 1581,
+    "tokens_out": 66,
+    "latency_ms": 3901.81,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -77,10 +81,10 @@
  ],
  "tools": [
   {
-   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\",\"gross_profit\",\"cost_of_revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"005930.KS\"},\"name\":\"get_financial_facts\"}",
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"ebitda_ttm\",\"cash\",\"total_debt\",\"depreciation_amortization\",\"gross_profit\",\"cost_of_revenue\"],\"periods\":[\"2025-FY\"],\"ticker\":\"005930.KS\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
    "content": "No results.",
-   "summary": "005930.KS 2025-FY net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization, gross_prof",
+   "summary": "005930.KS 2025-FY net_income, revenue, operating_income, ebitda, ebitda_ttm, cash, total_debt, depreciation_amortization",
    "count": 0,
    "items": [],
    "error": null
@@ -95,19 +99,19 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"ticker\":\"SSNLF\"},\"name\":\"list_documents\"}",
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q1\",\"period_to\":\"2025-FY\",\"ticker\":\"005930.KS\"},\"name\":\"list_documents\"}",
    "tool": "list_documents",
    "content": "{\"documents\": []}",
-   "summary": "SSNLF documents",
+   "summary": "005930.KS documents",
    "count": 0,
    "items": [],
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"query\":\"Research and development expense 2025\",\"ticker\":\"SSNLF\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q1\",\"period_to\":\"2025-FY\",\"query\":\"research and development R&D 2025\",\"ticker\":\"005930.KS\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
    "content": "No results.",
-   "summary": "SSNLF Research and development expense 2025",
+   "summary": "005930.KS research and development R&D 2025",
    "count": 0,
    "items": [],
    "error": null
@@ -115,5 +119,5 @@
  ],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 4755
+ "elapsed_ms": 16145
 }

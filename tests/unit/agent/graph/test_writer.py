@@ -6,9 +6,11 @@ from typing import Any
 
 from agent.answer import DISCLAIMER
 from agent.budget import ModeBudget, Usage
+from agent.graph.nodes.analyst import ANALYST_FAILED
 from agent.graph.nodes.writer import (
     calculation_material,
     display_number,
+    reask_message,
     verified_outputs,
     writer_node,
 )
@@ -228,3 +230,27 @@ def test_calculation_material_gives_display_values_the_validator_accepts() -> No
         }
     )
     assert validate_report(report, {}, outputs, "tr", derived_ok=False).ok
+
+
+async def test_evidence_the_analyst_could_not_read_is_not_no_evidence() -> None:
+    router = ScriptedRouter([])
+    update = await _run(router, findings=[], errors=[ANALYST_FAILED])
+    assert update == {"draft": None}  # finalize_partial writes a partial report
+    assert router.calls == []
+
+
+def test_a_number_mismatch_reask_lists_the_calculation_values() -> None:
+    calc = Calculation(
+        cite_id="k:3",
+        name="net_debt_to_ebitda",
+        description="Net borç / FAVÖK",
+        code="result = 1",
+        output=Decimal("8.0214"),
+        verified=True,
+    )
+    errors = ["summary numbers not found in cited sources: ['8,01']"]
+
+    message = reask_message(errors, [calc], "tr")
+
+    assert message.endswith("k:3 = 8,02")
+    assert "k:3" not in reask_message(["point 0 has no cite_ids"], [calc], "tr")

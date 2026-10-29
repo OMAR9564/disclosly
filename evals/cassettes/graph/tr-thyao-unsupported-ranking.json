@@ -6,17 +6,18 @@
    "key": "c9d410bddbcc078f5db8c7dffc0ae1c8b23b482fec00598d18fbad3e73f81713",
    "task_class": "strong",
    "response": {
-    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Toplam borç, nakit ve FAVÖK rakamları alıntılanan üç belgede (f:7000, f:7001, f:7002) birebir eşleşiyor.\"}, {\"finding_id\": \"F2\", \"supported\": false, \"reason\": \"FAVÖK rakamı kanıtlanıyor ancak 'sektörün en yüksek FAVÖK'ü' iddiası için herhangi bir sektör karşılaştırma kanıtı yok.\"}]}",
+    "content": "{\"claims\": [{\"finding_id\": \"F1\", \"supported\": true, \"reason\": \"Toplam borç, nakit ve FAVÖK rakamları kanıt belgelerinde (f:7000, f:7001, f:7002) birebir eşleşiyor; net borç/FAVÖK hesaplaması da bu rakamlarla uyumlu.\"}, {\"finding_id\": \"F2\", \"supported\": false, \"reason\": \"FAVÖK rakamı kanıtlanıyor (f:7002) ancak 'sektörün en yüksek FAVÖK'ü' iddiasını destekleyen herhangi bir sektör karşılaştırma verisi kanıt belgelerinde yok.\"}]}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
     "tokens_in": 970,
-    "tokens_out": 761,
-    "latency_ms": 29068.767,
+    "tokens_out": 685,
+    "latency_ms": 24236.12,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
-     "gemini-flash"
+     "gemini-flash",
+     "nvidia-large"
     ]
    }
   }
@@ -38,5 +39,5 @@
   }
  ],
  "decision": null,
- "elapsed_ms": 29902
+ "elapsed_ms": 87533
 }

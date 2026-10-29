@@ -6,13 +6,13 @@
    "key": "a5bf9ad08531ca34bdb5a6a35278c52da9a147b3d0eed35d9ee811dad30748dc",
    "task_class": "cheap",
    "response": {
-    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi verilmemektedir.\"\n}\n```",
+    "content": "```json\n{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi talepleri karşılanmamaktadır.\",\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}\n```",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1652,
-    "tokens_out": 41,
-    "latency_ms": 1002.271,
+    "tokens_in": 1661,
+    "tokens_out": 63,
+    "latency_ms": 893.416,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -21,17 +21,18 @@
    "key": "58e2a1aab1d85b9fe83d5435cc8692714b6aafd25aaaa0570aceb1c9029b024a",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi veremem. Garanti Bankası (GARAN) ile ilgili kamu açıklamalarındaki finansal veriler, risk bildirimleri veya stratejik açıklamalar hakkında bilgi sağlayabilirim.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"refused\",\n  \"summary\": \"Yatırım tavsiyesi veremem. Garanti Bankası (Ticker: GARAN) ile ilgili şirket açıklamaları, finansal tablolar veya diğer resmi belgelerden elde edilen gerçeksel bilgileri paylaşabilirim. Belirli bir konuda (ör. son çeyrek kârı, temettü politikası, sermaye yeterliliği vb.) belge dayalı veri isterseniz yardımcı olabilirim.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
-    "provider": "nvidia-large",
-    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "provider": "openrouter-large",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
     "tokens_in": 1169,
-    "tokens_out": 456,
-    "latency_ms": 15291.506,
+    "tokens_out": 500,
+    "latency_ms": 44568.705,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
-     "gemini-flash"
+     "gemini-flash",
+     "nvidia-large"
     ]
    }
   }
@@ -39,5 +40,5 @@
  "tools": [],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 16765
+ "elapsed_ms": 46324
 }

@@ -3,16 +3,16 @@
  "dataset": "answers_golden",
  "interactions": [
   {
-   "key": "f9d5d231146ec2f55a2acd87a0db4d27e110df0fb233fb63857dc65034b3f58a",
+   "key": "861277281ba6a83567bc3caac91d916b2dadb5f02c4980a97d94412cb8b234f0",
    "task_class": "cheap",
    "response": {
     "content": "{\n  \"mode\": \"simple\",\n  \"tickers\": [\n    \"GARAN\"\n  ],\n  \"periods\": [\n    \"2025-Q2\"\n  ],\n  \"metrics\": [],\n  \"uses_watchlist\": false,\n  \"memory_intent\": null\n}",
     "tool_calls": [],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1029,
+    "tokens_in": 1036,
     "tokens_out": 69,
-    "latency_ms": 1083.591,
+    "latency_ms": 8410.632,
     "cache_hit": false,
     "fallback_from": []
    }
@@ -24,70 +24,72 @@
     "content": null,
     "tool_calls": [
      {
-      "id": "call_3370678",
+      "id": "call_257592",
       "name": "search_documents",
       "arguments": {
-       "ticker": "GARAN",
-       "query": "takipteki kredi portföyü satışı"
+       "period_from": "2025-Q2",
+       "period_to": "2025-Q2",
+       "query": "takipteki kredi portföyü satışı",
+       "ticker": "GARAN"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0T5r2FvhiZWvAM2uPbVMkfkVeT7EDqaEeryd3VCypHbbh/icBcOobDeogG+8vGBohAynMh+57BeEhEN4adMi+Ov0+hjDbyX0MCsiVOYwQZRltvMoMzPWdjXJE="
+        "thought_signature": "EmAKXgFpFH0Tkwe1mvlsXiyFjbjOHgOIoRiGnBuJUGQL3LhQpRSGmVMjrKEPbeQ+bO2RA024umXUjgy1CXXY/zQn5KWxOJcx6ilqW1e+kDR4aeQ4WYrqs7JGkGP9JTj64gA="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 1864,
-    "tokens_out": 32,
-    "latency_ms": 762.576,
+    "tokens_in": 1873,
+    "tokens_out": 60,
+    "latency_ms": 11815.352,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "ac8d2523312f5c875acd76da1db4a87b48d91123ba381cb4a117b083d4f553c1",
+   "key": "e8f73841049e5b8aac13fb88bf751e36971e052e3394b41e66eefdac8ec83c77",
    "task_class": "cheap",
    "response": {
     "content": null,
     "tool_calls": [
      {
-      "id": "call_4269292",
+      "id": "call_243410",
       "name": "search_documents",
       "arguments": {
-       "period_from": "2025-04-01",
-       "query": "takipteki kredi portföyü satışı",
+       "period_to": "2025-Q2",
+       "period_from": "2025-Q2",
        "ticker": "GARAN",
-       "period_to": "2025-06-30"
+       "query": "haziran 2025 takipteki kredi portföyü satışı"
       },
       "extra": {
        "google": {
-        "thought_signature": "EmAKXgFpFH0TGy0u/YasRZdaSBDvXDPaKXpSGO8e09A1/0ryUIRzoznTL7GCTIupNjiMHOmEOWBgl02Dmjvbvz9z9obB6NZAHrkt12eKLxCIbIr7YDPW3IYPJ+xYfbq7WJs="
+        "thought_signature": "EmAKXgFpFH0TZk84b0laZQwqPcAyBNpInKa084Qeb8WPaiZXfQ/p5diJ9S+4aBnSLQaPLgK87ZY+kg/smbwDGSZRCqLVpytcxk2M62k/Ha6w4NCHrlRkCnCH48wPGpV7vUY="
        }
       }
      }
     ],
     "provider": "gemini-flash-lite",
     "model": "gemini-3.5-flash-lite",
-    "tokens_in": 5362,
+    "tokens_in": 3480,
     "tokens_out": 66,
-    "latency_ms": 942.587,
+    "latency_ms": 9032.955,
     "cache_hit": false,
     "fallback_from": []
    }
   },
   {
-   "key": "7a4df3afeb1757d9959a8fd91ef641922b1a5041f668f49f97f9c97504172a04",
+   "key": "c7fc4552052e3701590e90c83f092b514e8f9ad03d400a1f9ecfe58f4c59a693",
    "task_class": "strong",
    "response": {
-    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"no_evidence\",\n  \"summary\": \"Sağlanan belgelerde Garanti BBVA'nın 2025 yılı ikinci çeyreğinde (Nisan-Haziran 2025) takipteki kredi portföyü satışıyla ilgili bir kayıt bulunmamaktadır. Belgeler Şubat 2025 (Q1), Ağustos 2025 (Q3), Ekim 2025 (Q4), Aralık 2025 (Q4) ve 2026 tarihli satışları içermektedir.\",\n  \"points\": [],\n  \"citations\": [],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
+    "content": "{\n  \"language\": \"tr\",\n  \"status\": \"completed\",\n  \"summary\": \"Garanti BBVA (Türkiye Garanti Bankası A.Ş.) 2025 yılı ikinci çeyreğinde (Nisan-Haziran) takipteki kredi portföyünden toplam 318.630.000 TL bedelle satış gerçekleştirmiştir. Bu tutar; 28 Nisan 2025'te 113.500.000 TL, 7 Mayıs 2025'te 103.000.000 TL ve 8 Mayıs 2025'te 102.130.000 TL olmak üzere üç ayrı satıştan oluşmaktadır.\",\n  \"points\": [\n    {\n      \"text\": \"28 Nisan 2025 tarihinde toplam anapara ve akdi faiz bakiyesi 456.303.421,91 TL olan takipteki kredi portföyü, 113.500.000,00 TL bedelle Sümer Varlık Yönetim A.Ş.'ye satılmıştır.\",\n      \"cite_ids\": [\"c:d52561d9a5f13abf071adf95c82e42470b2c4b0dbf4a53aa3b1b48e25a83bf9b\"]\n    },\n    {\n      \"text\": \"7 Mayıs 2025 tarihinde toplam anapara ve akdi faiz bakiyesi 512.690.008,28 TL olan portföy, 103.000.000,00 TL bedelle Sümer Varlık Yönetim A.Ş.'ye satılmıştır.\",\n      \"cite_ids\": [\"c:dbbbc9547ca3c1b57d39b78e284aee38407569fadeb55ed9dde186a8b0b886a0\"]\n    },\n    {\n      \"text\": \"8 Mayıs 2025 tarihinde toplam anapara ve akdi faiz bakiyesi 510.639.573,82 TL olan portföy, 102.130.000,00 TL bedelle Gelecek Varlık Yönetimi A.Ş.'ye satılmıştır.\",\n      \"cite_ids\": [\"c:dbbbc9547ca3c1b57d39b78e284aee38407569fadeb55ed9dde186a8b0b886a0\"]\n    }\n  ],\n  \"citations\": [\n    {\n      \"marker\": 1,\n      \"cite_id\": \"c:d52561d9a5f13abf071adf95c82e42470b2c4b0dbf4a53aa3b1b48e25a83bf9b\"\n    },\n    {\n      \"marker\": 2,\n      \"cite_id\": \"c:dbbbc9547ca3c1b57d39b78e284aee38407569fadeb55ed9dde186a8b0b886a0\"\n    }\n  ],\n  \"disclaimer\": \"Yatırım tavsiyesi değildir / Not investment advice\"\n}",
     "tool_calls": [],
     "provider": "nvidia-large",
     "model": "nvidia/nemotron-3-ultra-550b-a55b",
-    "tokens_in": 5050,
-    "tokens_out": 947,
-    "latency_ms": 27565.898,
+    "tokens_in": 3284,
+    "tokens_out": 1302,
+    "latency_ms": 24439.548,
     "cache_hit": false,
     "fallback_from": [
      "gemini-flash-stable",
@@ -98,10 +100,10 @@
  ],
  "tools": [
   {
-   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"cash\",\"total_debt\",\"depreciation_amortization\",\"gross_profit\",\"cost_of_revenue\"],\"periods\":[\"2025-Q2\"],\"ticker\":\"GARAN\"},\"name\":\"get_financial_facts\"}",
+   "key": "{\"arguments\":{\"metrics\":[\"net_income\",\"revenue\",\"operating_income\",\"ebitda\",\"ebitda_ttm\",\"cash\",\"total_debt\",\"depreciation_amortization\",\"gross_profit\",\"cost_of_revenue\"],\"periods\":[\"2025-Q2\"],\"ticker\":\"GARAN\"},\"name\":\"get_financial_facts\"}",
    "tool": "get_financial_facts",
    "content": "<untrusted_document cite_id=\"f:2221\">Nakit ve nakit benzerleri (2025-Q2; Cari Dönem 30.06.2025): 336.535.603.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:2223\">Nakit ve nakit benzerleri (2025-Q2; Cari Dönem 30.06.2025): 314.302.843.000 TRY</untrusted_document>\n<untrusted_document cite_id=\"f:24725\">Net dönem kârı (2025-Q2; Cari Dönem 01.01.2025 - 31.03.2025): 28.214.572.000 TRY</untrusted_document>",
-   "summary": "GARAN 2025-Q2 net_income, revenue, operating_income, ebitda, cash, total_debt, depreciation_amortization, gross_profit, ",
+   "summary": "GARAN 2025-Q2 net_income, revenue, operating_income, ebitda, ebitda_ttm, cash, total_debt, depreciation_amortization, gr",
    "count": 3,
    "items": [
     {
@@ -165,109 +167,109 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"query\":\"takipteki kredi portföyü satışı\",\"ticker\":\"GARAN\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q2\",\"period_to\":\"2025-Q2\",\"query\":\"takipteki kredi portföyü satışı\",\"ticker\":\"GARAN\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
-   "content": "<untrusted_document cite_id=\"c:49f4966ee56f412fbab07ce7457c198df32b5a8889d8dd42b98b150acff5a925\">Bankamızın takipteki krediler portföyünde yer alan; - 15 Haziran 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 233.032.674,04 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 60.000.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, - 16 Haziran 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 250.945.304,9 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 62.000.000,00-TL'ye Tuna Varlık Yönetim A.Ş.'ye, - 17 Haziran 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 500.895.556,71 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 85.000.000,00-TL'ye Met-ay Varlık Yönetim A.Ş.'ye, - 18 Haziran 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 534.564.918,17 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 58.000.000,00-TL'ye İstanbul Varlık Yönetim A.Ş.'ye, - 19 Haziran 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 557.999.086,96 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 46.000.000,00-TL'ye Dünya Varlık Yönetim A.Ş.'ye, olmak üzere beş ayrı portföy halinde, toplam 311.000.000,00 TL bedele satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:a07af26b869a74e858300ede9567b0689e3d8cd703e280c005322d887a52b5c2\">Bankamızın takipteki krediler portföyünde yer alan; 20 Ekim 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 544.149.217,26 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 91.000.000,00-TL'ye Ortak Varlık Yönetim A.Ş.'ye, 21 Ekim 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 545.126.430,04 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 91.000.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, 22 Ekim 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 546.748.645,13 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 90.000.000,00-TL'ye Dünya Varlık Yönetim A.Ş.'ye, olmak üzere üç ayrı portföy halinde, toplam 272.000.000.- TL bedele satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:252faf573fb65825a2ff9a947ae1f7d16690f2aaa07a93be268c0b105773fa3d\">Bankamızın takipteki krediler portföyünde yer alan; - 24 Aralık 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 517.370.667,73 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 59.000.000,00-TL'ye Emir Varlık Yönetim A.Ş.'ye, - 25 Aralık 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 517.367.141,59 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 61.000.000,00-TL'ye Pozitif Varlık Yönetim A.Ş.'ye, olmak üzere iki ayrı portföy halinde, toplam 120.000.000,00 TL bedele satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:08e00b97cb52ef5ebdb8aeb6fa6f3181d22b275fef7526ce5198455315813bad\">Bankamızın takipteki krediler portföyünde yer alan; 07 Ağustos 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 640.476.798,93 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 138.150.000,00-TL'ye Ortak Varlık Yönetim A.Ş.'ye, 10 Ağustos 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 531.593.672,30 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 62.000.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, 11 Ağustos 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 510.411.616,84 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 79.001.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, olmak üzere üç ayrı portföy halinde, toplam 279.151.000,00 TL bedele satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:10483d2bc7078286e09d08b4c0c9b8b5710d9c1c68800dd7128e1fb53cf5cb05\">Bankamızın takipteki krediler portföyünde yer alan; - 21 Eylül 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 452.443.303,72 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 49.000.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, - 22 Eylül 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 448.405.481,61 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 49.000.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, - 23 Eylül 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 599.893.056,49 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 62.000.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, - 24 Eylül 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 548.984.638,80 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 56.000.000,00-TL'ye Birikim Varlık Yönetim A.Ş.'ye, olmak üzere dört ayrı portföy halinde, toplam 216.000.000,00 TL bedele satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:30d1ff47979002a097208acb5180b9e7b91f17fe583ee0a7a7a7175f89700057\">Bankamızın takipteki krediler portföyünde yer alan; - 5 ve 9 Şubat 2025 tarihleri itibarı ile toplam anapara ve akdi faiz bakiyesi 971.137.906,49 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 202.000.000,00-TL.'ye Dünya Varlık Yönetim AŞ.'ye, - 06 Şubat 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 486.341.157,87-TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 98.000.000,00-TL.'ye Ortak Varlık Yönetim AŞ.'ye, - 11 ve 12 Şubat 2025 tarihleri itibarı ile toplam anapara ve akdi faiz bakiyesi 1.458.896.372,42 -TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 303.000.000,00-TL.'ye Gelecek Varlık Yönetim AŞ.'ye, olmak üzere 5 ayrı portföy halinde, toplam 603.000.000,00 TL bedele satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,</untrusted_document>",
+   "content": "<untrusted_document cite_id=\"c:12eacc5047be58f027b0a4f0b6cf1e68b3ded59260be240c9621b63249951c44\">Bankamızın takipteki krediler portföyünde yer alan ve 25 Mart 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 244.529.933,21 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 41.000.100,00-TL'ye Doğru Varlık Yönetim A.Ş.'ye satılmıştır. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:d52561d9a5f13abf071adf95c82e42470b2c4b0dbf4a53aa3b1b48e25a83bf9b\">Bankamızın takipteki krediler portföyünde yer alan ve 28 Nisan 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 456.303.421,91 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 113.500.000,00-TL'ye Sümer Varlık Yönetim A.Ş.'ye satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:dbbbc9547ca3c1b57d39b78e284aee38407569fadeb55ed9dde186a8b0b886a0\">Bankamızın takipteki krediler portföyünde yer alan; - 7 Mayıs 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 512.690.008,28 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 103.000.000,00-TL'ye Sümer Varlık Yönetim A.Ş.'ye, - 8 Mayıs 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 510.639.573,82 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 102.130.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, olmak üzere iki ayrı portföy halinde, toplam 205.130.000,00 TL bedele satılmıştır. Bilgilerinize sunarız. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:fe0c2ebe2608451ee52e0f488ef6bf17f334d8abaae29bfa88cc37fc4f7e37bb\">Şirketimiz, Türkiye Garanti Bankası A.Ş.'nin gerçekleştirdiği tahsili gecikmiş alacak satışında, 29/04/2025 tarihinde satışa çıkarılan toplam 202,1 milyon TL anaparaya sahip 1 bireysel nitelikli portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 16 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan finansal kuruluş Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:de8d6713f3c59fbf16716579cd392636d257ad83499d53497ef219668a929cb5\">Şirketimiz, Türkiye Garanti Bankası A.Ş.'nin 12.06.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 5 portföyden toplamda 510,6 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .</untrusted_document>\n<untrusted_document cite_id=\"c:bf39d524cf764643a47b6a26091f34bd90e9c8eba0c461ba1fc49202541ab338\">Şirketimiz, 12.06.2025 tarihinde T. Garanti Bankası A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplam 512.690.008,28 TL anapara büyüklüğündeki 1 adet bireysel portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 25.06.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>",
    "summary": "GARAN takipteki kredi portföyü satışı",
    "count": 6,
    "items": [
     {
-     "cite_id": "c:49f4966ee56f412fbab07ce7457c198df32b5a8889d8dd42b98b150acff5a925",
-     "text": "Bankamızın takipteki krediler portföyünde yer alan; - 15 Haziran 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 233.032.674,04 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 60.000.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, - 16 Haziran 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 250.945.304,9 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 62.000.000,00-TL'ye Tuna Varlık Yönetim A.Ş.'ye, - 17 Haziran 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 500.895.556,71 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 85.000.000,00-TL'ye Met-ay Varlık Yönetim A.Ş.'ye, - 18 Haziran 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 534.564.918,17 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 58.000.000,00-TL'ye İstanbul Varlık Yönetim A.Ş.'ye, - 19 Haziran 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 557.999.086,96 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 46.000.000,00-TL'ye Dünya Varlık Yönetim A.Ş.'ye, olmak üzere beş ayrı portföy halinde, toplam 311.000.000,00 TL bedele satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,",
+     "cite_id": "c:12eacc5047be58f027b0a4f0b6cf1e68b3ded59260be240c9621b63249951c44",
+     "text": "Bankamızın takipteki krediler portföyünde yer alan ve 25 Mart 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 244.529.933,21 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 41.000.100,00-TL'ye Doğru Varlık Yönetim A.Ş.'ye satılmıştır. Saygılarımızla,",
      "source": {
       "kind": "chunk",
-      "document_id": 636,
+      "document_id": 511,
       "ticker": "GARAN",
       "doc_type": "kap_material_event",
-      "period": "2026-Q3",
+      "period": "2025-Q2",
       "section": "body",
       "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1634570"
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1439412"
      },
      "value": null,
      "scale": null,
      "unit_note": null
     },
     {
-     "cite_id": "c:a07af26b869a74e858300ede9567b0689e3d8cd703e280c005322d887a52b5c2",
-     "text": "Bankamızın takipteki krediler portföyünde yer alan; 20 Ekim 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 544.149.217,26 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 91.000.000,00-TL'ye Ortak Varlık Yönetim A.Ş.'ye, 21 Ekim 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 545.126.430,04 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 91.000.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, 22 Ekim 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 546.748.645,13 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 90.000.000,00-TL'ye Dünya Varlık Yönetim A.Ş.'ye, olmak üzere üç ayrı portföy halinde, toplam 272.000.000.- TL bedele satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,",
+     "cite_id": "c:d52561d9a5f13abf071adf95c82e42470b2c4b0dbf4a53aa3b1b48e25a83bf9b",
+     "text": "Bankamızın takipteki krediler portföyünde yer alan ve 28 Nisan 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 456.303.421,91 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 113.500.000,00-TL'ye Sümer Varlık Yönetim A.Ş.'ye satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,",
      "source": {
       "kind": "chunk",
-      "document_id": 559,
+      "document_id": 514,
       "ticker": "GARAN",
       "doc_type": "kap_material_event",
-      "period": "2025-Q4",
+      "period": "2025-Q2",
       "section": "body",
       "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1517875"
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1443298"
      },
      "value": null,
      "scale": null,
      "unit_note": null
     },
     {
-     "cite_id": "c:252faf573fb65825a2ff9a947ae1f7d16690f2aaa07a93be268c0b105773fa3d",
-     "text": "Bankamızın takipteki krediler portföyünde yer alan; - 24 Aralık 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 517.370.667,73 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 59.000.000,00-TL'ye Emir Varlık Yönetim A.Ş.'ye, - 25 Aralık 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 517.367.141,59 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 61.000.000,00-TL'ye Pozitif Varlık Yönetim A.Ş.'ye, olmak üzere iki ayrı portföy halinde, toplam 120.000.000,00 TL bedele satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,",
+     "cite_id": "c:dbbbc9547ca3c1b57d39b78e284aee38407569fadeb55ed9dde186a8b0b886a0",
+     "text": "Bankamızın takipteki krediler portföyünde yer alan; - 7 Mayıs 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 512.690.008,28 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 103.000.000,00-TL'ye Sümer Varlık Yönetim A.Ş.'ye, - 8 Mayıs 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 510.639.573,82 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 102.130.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, olmak üzere iki ayrı portföy halinde, toplam 205.130.000,00 TL bedele satılmıştır. Bilgilerinize sunarız. Saygılarımızla,",
      "source": {
       "kind": "chunk",
-      "document_id": 581,
+      "document_id": 521,
       "ticker": "GARAN",
       "doc_type": "kap_material_event",
-      "period": "2026-Q1",
+      "period": "2025-Q2",
       "section": "body",
       "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1544318"
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1449219"
      },
      "value": null,
      "scale": null,
      "unit_note": null
     },
     {
-     "cite_id": "c:08e00b97cb52ef5ebdb8aeb6fa6f3181d22b275fef7526ce5198455315813bad",
-     "text": "Bankamızın takipteki krediler portföyünde yer alan; 07 Ağustos 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 640.476.798,93 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 138.150.000,00-TL'ye Ortak Varlık Yönetim A.Ş.'ye, 10 Ağustos 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 531.593.672,30 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 62.000.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, 11 Ağustos 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 510.411.616,84 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 79.001.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, olmak üzere üç ayrı portföy halinde, toplam 279.151.000,00 TL bedele satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,",
+     "cite_id": "c:fe0c2ebe2608451ee52e0f488ef6bf17f334d8abaae29bfa88cc37fc4f7e37bb",
+     "text": "Şirketimiz, Türkiye Garanti Bankası A.Ş.'nin gerçekleştirdiği tahsili gecikmiş alacak satışında, 29/04/2025 tarihinde satışa çıkarılan toplam 202,1 milyon TL anaparaya sahip 1 bireysel nitelikli portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 16 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan finansal kuruluş Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.",
      "source": {
       "kind": "chunk",
-      "document_id": 541,
+      "document_id": 509,
       "ticker": "GARAN",
       "doc_type": "kap_material_event",
-      "period": "2025-Q3",
+      "period": "2025-Q2",
       "section": "body",
       "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1488159"
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1430995"
      },
      "value": null,
      "scale": null,
      "unit_note": null
     },
     {
-     "cite_id": "c:10483d2bc7078286e09d08b4c0c9b8b5710d9c1c68800dd7128e1fb53cf5cb05",
-     "text": "Bankamızın takipteki krediler portföyünde yer alan; - 21 Eylül 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 452.443.303,72 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 49.000.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, - 22 Eylül 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 448.405.481,61 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 49.000.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, - 23 Eylül 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 599.893.056,49 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 62.000.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, - 24 Eylül 2026 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 548.984.638,80 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 56.000.000,00-TL'ye Birikim Varlık Yönetim A.Ş.'ye, olmak üzere dört ayrı portföy halinde, toplam 216.000.000,00 TL bedele satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,",
+     "cite_id": "c:de8d6713f3c59fbf16716579cd392636d257ad83499d53497ef219668a929cb5",
+     "text": "Şirketimiz, Türkiye Garanti Bankası A.Ş.'nin 12.06.2025 tarihinde gerçekleştirdiği tahsili gecikmiş alacak satışında satışa çıkarılan 5 portföyden toplamda 510,6 milyon TL anapara büyüklüğündeki 1 bireysel portföyün ihalesini en yüksek teklifi vererek kazanmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan banka Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyunun bilgilerine sunarız .",
      "source": {
       "kind": "chunk",
-      "document_id": 662,
+      "document_id": 519,
       "ticker": "GARAN",
       "doc_type": "kap_material_event",
-      "period": "2026-Q4",
+      "period": "2025-Q2",
       "section": "body",
       "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1684067"
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1448385"
      },
      "value": null,
      "scale": null,
      "unit_note": null
     },
     {
-     "cite_id": "c:30d1ff47979002a097208acb5180b9e7b91f17fe583ee0a7a7a7175f89700057",
-     "text": "Bankamızın takipteki krediler portföyünde yer alan; - 5 ve 9 Şubat 2025 tarihleri itibarı ile toplam anapara ve akdi faiz bakiyesi 971.137.906,49 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 202.000.000,00-TL.'ye Dünya Varlık Yönetim AŞ.'ye, - 06 Şubat 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 486.341.157,87-TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 98.000.000,00-TL.'ye Ortak Varlık Yönetim AŞ.'ye, - 11 ve 12 Şubat 2025 tarihleri itibarı ile toplam anapara ve akdi faiz bakiyesi 1.458.896.372,42 -TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 303.000.000,00-TL.'ye Gelecek Varlık Yönetim AŞ.'ye, olmak üzere 5 ayrı portföy halinde, toplam 603.000.000,00 TL bedele satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,",
+     "cite_id": "c:bf39d524cf764643a47b6a26091f34bd90e9c8eba0c461ba1fc49202541ab338",
+     "text": "Şirketimiz, 12.06.2025 tarihinde T. Garanti Bankası A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplam 512.690.008,28 TL anapara büyüklüğündeki 1 adet bireysel portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 25.06.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.",
      "source": {
       "kind": "chunk",
-      "document_id": 496,
+      "document_id": 523,
       "ticker": "GARAN",
       "doc_type": "kap_material_event",
-      "period": "2025-Q1",
+      "period": "2025-Q2",
       "section": "body",
       "page": null,
-      "source_url": "https://www.kap.org.tr/tr/Bildirim/1408480"
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1451877"
      },
      "value": null,
      "scale": null,
@@ -277,16 +279,119 @@
    "error": null
   },
   {
-   "key": "{\"arguments\":{\"period_from\":\"2025-04-01\",\"period_to\":\"2025-06-30\",\"query\":\"takipteki kredi portföyü satışı\",\"ticker\":\"GARAN\"},\"name\":\"search_documents\"}",
+   "key": "{\"arguments\":{\"period_from\":\"2025-Q2\",\"period_to\":\"2025-Q2\",\"query\":\"haziran 2025 takipteki kredi portföyü satışı\",\"ticker\":\"GARAN\"},\"name\":\"search_documents\"}",
    "tool": "search_documents",
-   "content": "Tool error: invalid arguments: 2 validation errors for SearchFilters\nperiod_from\n  Value error, period must look like 2025-Q3 or 2025-FY [type=value_error, input_value='2025-04-01', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error\nperiod_to\n  Value error, period must look like 2025-Q3 or 2025-FY [type=value_error, input_value='2025-06-30', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error",
-   "summary": "GARAN takipteki kredi portföyü satışı",
-   "count": 0,
-   "items": [],
-   "error": "invalid arguments: 2 validation errors for SearchFilters\nperiod_from\n  Value error, period must look like 2025-Q3 or 2025-FY [type=value_error, input_value='2025-04-01', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error\nperiod_to\n  Value error, period must look like 2025-Q3 or 2025-FY [type=value_error, input_value='2025-06-30', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/value_error"
+   "content": "<untrusted_document cite_id=\"c:12eacc5047be58f027b0a4f0b6cf1e68b3ded59260be240c9621b63249951c44\">Bankamızın takipteki krediler portföyünde yer alan ve 25 Mart 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 244.529.933,21 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 41.000.100,00-TL'ye Doğru Varlık Yönetim A.Ş.'ye satılmıştır. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:d52561d9a5f13abf071adf95c82e42470b2c4b0dbf4a53aa3b1b48e25a83bf9b\">Bankamızın takipteki krediler portföyünde yer alan ve 28 Nisan 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 456.303.421,91 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 113.500.000,00-TL'ye Sümer Varlık Yönetim A.Ş.'ye satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:dbbbc9547ca3c1b57d39b78e284aee38407569fadeb55ed9dde186a8b0b886a0\">Bankamızın takipteki krediler portföyünde yer alan; - 7 Mayıs 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 512.690.008,28 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 103.000.000,00-TL'ye Sümer Varlık Yönetim A.Ş.'ye, - 8 Mayıs 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 510.639.573,82 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 102.130.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, olmak üzere iki ayrı portföy halinde, toplam 205.130.000,00 TL bedele satılmıştır. Bilgilerinize sunarız. Saygılarımızla,</untrusted_document>\n<untrusted_document cite_id=\"c:fb78f389585987dcae7d96ef6c47c52e476689644de56db65d9c67a0ba43f54e\">Şirketimiz, 28.05.2025 tarihinde T. Garanti Bankası A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplam 457.051.042,00 TL anapara büyüklüğündeki 1 adet ticari portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 11.06.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:bf39d524cf764643a47b6a26091f34bd90e9c8eba0c461ba1fc49202541ab338\">Şirketimiz, 12.06.2025 tarihinde T. Garanti Bankası A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplam 512.690.008,28 TL anapara büyüklüğündeki 1 adet bireysel portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 25.06.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>\n<untrusted_document cite_id=\"c:fe0c2ebe2608451ee52e0f488ef6bf17f334d8abaae29bfa88cc37fc4f7e37bb\">Şirketimiz, Türkiye Garanti Bankası A.Ş.'nin gerçekleştirdiği tahsili gecikmiş alacak satışında, 29/04/2025 tarihinde satışa çıkarılan toplam 202,1 milyon TL anaparaya sahip 1 bireysel nitelikli portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 16 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan finansal kuruluş Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.</untrusted_document>",
+   "summary": "GARAN haziran 2025 takipteki kredi portföyü satışı",
+   "count": 6,
+   "items": [
+    {
+     "cite_id": "c:12eacc5047be58f027b0a4f0b6cf1e68b3ded59260be240c9621b63249951c44",
+     "text": "Bankamızın takipteki krediler portföyünde yer alan ve 25 Mart 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 244.529.933,21 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 41.000.100,00-TL'ye Doğru Varlık Yönetim A.Ş.'ye satılmıştır. Saygılarımızla,",
+     "source": {
+      "kind": "chunk",
+      "document_id": 511,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1439412"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:d52561d9a5f13abf071adf95c82e42470b2c4b0dbf4a53aa3b1b48e25a83bf9b",
+     "text": "Bankamızın takipteki krediler portföyünde yer alan ve 28 Nisan 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 456.303.421,91 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 113.500.000,00-TL'ye Sümer Varlık Yönetim A.Ş.'ye satılmıştır. Bilgilerinize arz ederiz. Saygılarımızla,",
+     "source": {
+      "kind": "chunk",
+      "document_id": 514,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1443298"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:dbbbc9547ca3c1b57d39b78e284aee38407569fadeb55ed9dde186a8b0b886a0",
+     "text": "Bankamızın takipteki krediler portföyünde yer alan; - 7 Mayıs 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 512.690.008,28 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 103.000.000,00-TL'ye Sümer Varlık Yönetim A.Ş.'ye, - 8 Mayıs 2025 tarihi itibarı ile toplam anapara ve akdi faiz bakiyesi 510.639.573,82 TL olan; kredi, kredi kartı, destek kredisi, çek hesabı, taksitli kredi, kredili mevduat hesabı alacakları ile bunlara bağlı masraf hesabı ve diğer alacak türündeki tahsili gecikmiş alacakları faizleri ile birlikte, 102.130.000,00-TL'ye Gelecek Varlık Yönetimi A.Ş.'ye, olmak üzere iki ayrı portföy halinde, toplam 205.130.000,00 TL bedele satılmıştır. Bilgilerinize sunarız. Saygılarımızla,",
+     "source": {
+      "kind": "chunk",
+      "document_id": 521,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1449219"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:fb78f389585987dcae7d96ef6c47c52e476689644de56db65d9c67a0ba43f54e",
+     "text": "Şirketimiz, 28.05.2025 tarihinde T. Garanti Bankası A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplam 457.051.042,00 TL anapara büyüklüğündeki 1 adet ticari portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 11.06.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 518,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1447726"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:bf39d524cf764643a47b6a26091f34bd90e9c8eba0c461ba1fc49202541ab338",
+     "text": "Şirketimiz, 12.06.2025 tarihinde T. Garanti Bankası A.Ş'nin gerçekleştirdiği tahsili gecikmiş alacak ihalesinde satışa çıkarılan toplam 512.690.008,28 TL anapara büyüklüğündeki 1 adet bireysel portföye en yüksek teklifi vererek kazandığını duyurmuştu. Bu ihaleye konu alacakların devir ve temlik işlemleri tamamlanmış olup 25.06.2025 tarihi itibariyle tahsilat sürecine dahil edilmiştir. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 523,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1451877"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    },
+    {
+     "cite_id": "c:fe0c2ebe2608451ee52e0f488ef6bf17f334d8abaae29bfa88cc37fc4f7e37bb",
+     "text": "Şirketimiz, Türkiye Garanti Bankası A.Ş.'nin gerçekleştirdiği tahsili gecikmiş alacak satışında, 29/04/2025 tarihinde satışa çıkarılan toplam 202,1 milyon TL anaparaya sahip 1 bireysel nitelikli portföyün ihalesini en yüksek teklifi vererek kazanmıştır. Bu ihaleye toplam 16 varlık yönetim şirketi katılmıştır. İhale sonuçlarının kesinleşmesi ihaleyi açan finansal kuruluş Yönetim Kurulu'nun onayına bağlı olup, onay sonrası sözleşmenin imza süreci ve satışa konu alacakların devir işlemleri başlatılacaktır. Kamuoyuna ve yatırımcılarımıza saygı ile duyurulur.",
+     "source": {
+      "kind": "chunk",
+      "document_id": 509,
+      "ticker": "GARAN",
+      "doc_type": "kap_material_event",
+      "period": "2025-Q2",
+      "section": "body",
+      "page": null,
+      "source_url": "https://www.kap.org.tr/tr/Bildirim/1430995"
+     },
+     "value": null,
+     "scale": null,
+     "unit_note": null
+    }
+   ],
+   "error": null
   }
  ],
  "sandbox": [],
  "decision": null,
- "elapsed_ms": 34512
+ "elapsed_ms": 58578
 }
